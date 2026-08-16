@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "id": "fabrica-multipass-recipes",
+  "publisher": "autoscalers",
+  "name": "Multipass VM Recipes",
+  "version": "1.0.0",
+  "description": "A reviewed starter lifecycle for disposable Multipass workspaces.",
+  "repository": "https://github.com/Auto-Scalers/fabrica-multipass-recipes",
+  "engines": { "fabrica": ">=1.4.0" },
+  "pluginApi": 1,
+  "contributes": {
+    "vmRecipes": [{ "path": "recipes/ubuntu-lts.json" }]
+  },
+  "capabilities": []
+}

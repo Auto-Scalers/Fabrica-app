@@ -1,0 +1,4 @@
+provider: github
+owner: Auto-Scalers
+repo: fabrica
+updaterCacheDirName: fabrica-updater

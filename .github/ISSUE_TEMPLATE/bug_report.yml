@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a problem with Fabrica
+title: '[Bug]: '
+type: Bug
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for Fabrica bugs. Include enough detail for someone else to reproduce the issue.
+
+        Please write your issue in English.
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: fabrica_version
+    attributes:
+      label: Fabrica version
+      description: Include the exact Fabrica version if you can. You can find it in `Fabrica > About Fabrica`.
+      placeholder: v0.14.2
+    validations:
+      required: false
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the bug in your own words. Include a short summary, reproduction steps, and anything else that seems relevant.
+      placeholder: |
+        Short summary:
+        Fabrica crashes when ...
+
+        What happened?
+
+        How can we reproduce it?
+        1. ...
+        2. ...
+        3. ...
+
+        Anything else that might help:
+    validations:
+      required: true

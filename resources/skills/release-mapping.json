@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "releases": [
+    {
+      "appVersion": "1.0.81",
+      "skills": {
+        "fabrica-cli": 1
+      }
+    },
+    {
+      "appVersion": "1.0.86",
+      "skills": {
+        "fabrica-cli": 2
+      }
+    },
+    {
+      "appVersion": "1.0.94-rc.0",
+      "skills": {
+        "fabrica-cli": 3
+      }
+    },
+    {
+      "appVersion": "1.3.8-rc.1",
+      "skills": {
+        "fabrica-cli": 4
+      }
+    },
+    {
+      "appVersion": "1.3.12-rc.4",
+      "skills": {
+        "fabrica-cli": 5
+      }
+    },
+    {
+      "appVersion": "1.3.24-rc.2",
+      "skills": {
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.33-rc.3",
+      "skills": {
+        "mobile-fit-debug": 1,
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "0.0.1",
+      "skills": {
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.35-rc.0",
+      "skills": {
+        "mobile-fit-debug": 1,
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.38-rc.3",
+      "skills": {
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.38",
+      "skills": {
+        "mobile-fit-debug": 1,
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.39",
+      "skills": {
+        "fabrica-cli": 6,
+        "orchestration": 1
+      }
+    },
+    {
+      "appVersion": "1.3.46-rc.3",
+      "skills": {
+        "fabrica-cli": 7,
+        "orchestration": 2
+      }
+    },
+    {
+      "appVersion": "1.3.47-rc.0",
+      "skills": {
+        "fabrica-cli": 8,
+        "orchestration": 3
+      }
+    },
+    {
+      "appVersion": "1.3.49-rc.0",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 8,
+        "orchestration": 3
+      }
+    },
+    {
+      "appVersion": "1.4.2-rc.10",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 9,
+        "orchestration": 4
+      }
+    },
+    {
+      "appVersion": "1.4.2",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 10,
+        "orchestration": 5
+      }
+    },
+    {
+      "appVersion": "1.4.3-rc.0",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 11,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.9-rc.1",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 12,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.10-rc.3",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 13,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.11-rc.0",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 14,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.18-rc.2",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 15,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.18-rc.3",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 16,
+        "orchestration": 6
+      }
+    },
+    {
+      "appVersion": "1.4.22",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 16,
+        "orchestration": 7
+      }
+    },
+    {
+      "appVersion": "1.4.36-rc.2",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 17,
+        "orchestration": 8
+      }
+    },
+    {
+      "appVersion": "1.4.36-rc.6",
+      "skills": {
+        "computer-use": 1,
+        "fabrica-cli": 18,
+        "orchestration": 9
+      }
+    },
+    {
+      "appVersion": "1.4.42-rc.8",
+      "skills": {
+        "computer-use": 2,
+        "fabrica-cli": 19,
+        "orchestration": 10
+      }
+    },
+    {
+      "appVersion": "1.4.46-rc.0",
+      "skills": {
+        "computer-use": 2,
+        "fabrica-cli": 19,
+        "orchestration": 11
+      }
+    },
+    {
+      "appVersion": "1.4.51-rc.8",
+      "skills": {
+        "computer-use": 3,
+        "fabrica-cli": 19,
+        "orchestration": 11
+      }
+    },
+    {
+      "appVersion": "1.4.51-rc.9",
+      "skills": {
+        "computer-use": 3,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 12
+      }
+    },
+    {
+      "appVersion": "1.4.65-rc.3",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 1,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 12
+      }
+    },
+    {
+      "appVersion": "1.4.65",
+      "skills": {
+        "computer-use": 3,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 12
+      }
+    },
+    {
+      "appVersion": "1.4.66-rc.0",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 1,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 12
+      }
+    },
+    {
+      "appVersion": "1.4.67-rc.0",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 12
+      }
+    },
+    {
+      "appVersion": "1.4.68",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 20,
+        "fabrica-emulator": 1,
+        "orchestration": 13
+      }
+    },
+    {
+      "appVersion": "1.4.74-rc.0",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 21,
+        "fabrica-emulator": 1,
+        "orchestration": 14
+      }
+    },
+    {
+      "appVersion": "1.4.78-rc.1",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 22,
+        "fabrica-emulator": 1,
+        "orchestration": 15
+      }
+    },
+    {
+      "appVersion": "1.4.78-rc.2",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 23,
+        "fabrica-emulator": 1,
+        "orchestration": 16
+      }
+    },
+    {
+      "appVersion": "1.4.81-rc.2",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 24,
+        "fabrica-emulator": 1,
+        "orchestration": 16
+      }
+    },
+    {
+      "appVersion": "1.4.81-rc.3",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 25,
+        "fabrica-emulator": 1,
+        "orchestration": 16
+      }
+    },
+    {
+      "appVersion": "1.4.88",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 2,
+        "fabrica-cli": 26,
+        "fabrica-emulator": 1,
+        "orchestration": 17
+      }
+    },
+    {
+      "appVersion": "1.4.90",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 26,
+        "fabrica-emulator": 1,
+        "fabrica-linear": 1,
+        "orchestration": 17
+      }
+    },
+    {
+      "appVersion": "1.4.92-rc.1",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 27,
+        "fabrica-emulator": 1,
+        "fabrica-linear": 1,
+        "orchestration": 17
+      }
+    },
+    {
+      "appVersion": "1.4.96-rc.1",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 28,
+        "fabrica-emulator": 1,
+        "fabrica-linear": 1,
+        "orchestration": 17
+      }
+    },
+    {
+      "appVersion": "1.4.105-rc.2",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 29,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 1,
+        "orchestration": 18
+      }
+    },
+    {
+      "appVersion": "1.4.111-rc.0",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 29,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 1,
+        "fabrica-per-workspace-env": 1,
+        "orchestration": 18
+      }
+    },
+    {
+      "appVersion": "1.4.124-rc.6",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 29,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 1,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 18
+      }
+    },
+    {
+      "appVersion": "1.4.124-rc.9",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 3,
+        "fabrica-cli": 29,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 1,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 19
+      }
+    },
+    {
+      "appVersion": "1.4.124",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 4,
+        "fabrica-cli": 29,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 20
+      }
+    },
+    {
+      "appVersion": "1.4.137-rc.1",
+      "skills": {
+        "computer-use": 3,
+        "linear-tickets": 4,
+        "fabrica-cli": 30,
+        "fabrica-emulator": 2,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 21
+      }
+    },
+    {
+      "appVersion": "1.4.138-rc.0",
+      "skills": {
+        "computer-use": 4,
+        "linear-tickets": 4,
+        "fabrica-cli": 31,
+        "fabrica-emulator": 3,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 22
+      }
+    },
+    {
+      "appVersion": "1.4.138-rc.3",
+      "skills": {
+        "computer-use": 4,
+        "linear-tickets": 4,
+        "fabrica-cli": 31,
+        "fabrica-emulator": 3,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 23
+      }
+    },
+    {
+      "appVersion": "1.4.138-rc.4",
+      "skills": {
+        "computer-use": 4,
+        "linear-tickets": 4,
+        "fabrica-cli": 31,
+        "fabrica-emulator": 3,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 24
+      }
+    },
+    {
+      "appVersion": "1.4.141",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 4,
+        "fabrica-cli": 32,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 24
+      }
+    },
+    {
+      "appVersion": "1.4.147-rc.2.ghes",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 4,
+        "fabrica-cli": 32,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.148-rc.1",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 4,
+        "fabrica-cli": 33,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.148",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 4,
+        "fabrica-cli": 34,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.149-rc.0",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 4,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 2,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.149-rc.1.issue7936",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 5,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 3,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.149-rc.2",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 6,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 4,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.150-rc.0",
+      "skills": {
+        "computer-use": 5,
+        "linear-tickets": 7,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 4,
+        "fabrica-emulator-android": 2,
+        "fabrica-linear": 5,
+        "fabrica-per-workspace-env": 2,
+        "orchestration": 25
+      }
+    },
+    {
+      "appVersion": "1.4.151-rc.1",
+      "skills": {
+        "computer-use": 6,
+        "linear-tickets": 8,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 5,
+        "fabrica-emulator-android": 3,
+        "fabrica-linear": 6,
+        "fabrica-per-workspace-env": 3,
+        "orchestration": 26
+      }
+    },
+    {
+      "appVersion": "1.4.151",
+      "skills": {
+        "computer-use": 7,
+        "linear-tickets": 9,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 6,
+        "fabrica-emulator-android": 4,
+        "fabrica-linear": 7,
+        "fabrica-per-workspace-env": 4,
+        "orchestration": 27
+      }
+    },
+    {
+      "appVersion": "1.4.151-rc.2",
+      "skills": {
+        "computer-use": 8,
+        "linear-tickets": 10,
+        "fabrica-cli": 35,
+        "fabrica-emulator": 7,
+        "fabrica-emulator-android": 5,
+        "fabrica-linear": 8,
+        "fabrica-per-workspace-env": 5,
+        "orchestration": 28
+      }
+    },
+    {
+      "appVersion": "1.4.178-rc.2",
+      "skills": {
+        "computer-use": 8,
+        "linear-tickets": 10,
+        "fabrica-cli": 36,
+        "fabrica-emulator": 7,
+        "fabrica-emulator-android": 5,
+        "fabrica-linear": 8,
+        "fabrica-per-workspace-env": 5,
+        "orchestration": 28
+      }
+    }
+  ]
+}

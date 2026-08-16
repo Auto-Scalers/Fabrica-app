@@ -1,0 +1,36 @@
+{
+  "name": "Fabrica Official Plugins",
+  "owner": "autoscalers",
+  "plugins": [
+    {
+      "id": "autoscalers.fabrica-portuguese",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/Auto-Scalers/fabrica-portuguese.git",
+        "ref": "v1.0.0"
+      },
+      "description": "Brazilian Portuguese translations for common Fabrica navigation.",
+      "categories": ["languages", "official"]
+    },
+    {
+      "id": "autoscalers.fabrica-multipass-recipes",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/Auto-Scalers/fabrica-multipass-recipes.git",
+        "ref": "v1.0.0"
+      },
+      "description": "A reviewed starter lifecycle for disposable Multipass workspaces.",
+      "categories": ["vm-recipes", "official"]
+    },
+    {
+      "id": "autoscalers.fabrica-navigation-shortcuts",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/Auto-Scalers/fabrica-navigation-shortcuts.git",
+        "ref": "v1.0.0"
+      },
+      "description": "Command aliases and optional shortcuts for frequent Fabrica views.",
+      "categories": ["keybindings", "official"]
+    }
+  ]
+}

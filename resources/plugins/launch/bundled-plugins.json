@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "pluginKey": "autoscalers.fabrica-navigation-shortcuts",
+      "path": "autoscalers.fabrica-navigation-shortcuts",
+      "contentHash": "28c2a7a9869ccce15945f65211ab72c47d26b8c1d391f647e94daf2d3aa5b5f9"
+    }
+  ]
+}

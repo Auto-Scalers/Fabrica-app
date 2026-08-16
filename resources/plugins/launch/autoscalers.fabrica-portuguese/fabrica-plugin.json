@@ -1,0 +1,15 @@
+{
+  "manifestVersion": 1,
+  "id": "fabrica-portuguese",
+  "publisher": "autoscalers",
+  "name": "Português do Brasil",
+  "version": "1.0.0",
+  "description": "Brazilian Portuguese translations for common Fabrica navigation.",
+  "repository": "https://github.com/Auto-Scalers/fabrica-portuguese",
+  "engines": { "fabrica": ">=1.4.0" },
+  "pluginApi": 1,
+  "contributes": {
+    "languagePacks": [{ "locale": "pt-BR", "path": "locales/pt-BR.json" }]
+  },
+  "capabilities": []
+}

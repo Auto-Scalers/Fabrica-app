@@ -1,0 +1,5033 @@
+{
+  "auto.App.03a14f6b5b": {
+    "ko": "???? ?? ????? ?? FABRICA ???? ?????."
+  },
+  "auto.App.8d1e160ed1": {
+    "ko": "????? ?? ????? ?? ??? ? ??? ?? ?????."
+  },
+  "auto.App.98d4ea2823": {
+    "ko": "? ???????? Terminal, ???? ?? ??? ???? ??????. ?? ??? ???."
+  },
+  "auto.components.FirstLaunchBanner.958d2cc31b": {
+    "ko": "?? ??? ?????? ?? ?? ??? ??? ?? ???? ??? ? ??? ???. ?? ??, ????, terminal ?? ? ???? ??? ? ?? ??? ???? ????. ?? -> ?? ?? ?? ? ??????? ???? ??? ? ????."
+  },
+  "auto.components.GitHubItemDialog.03e542fcfe": {
+    "ko": "??? ??? ???? ?? AI agent? ???? ?????: {{value0}}"
+  },
+  "auto.components.GitHubItemDialog.0ae387d8ca": {
+    "ko": "???"
+  },
+  "auto.components.GitHubItemDialog.0bbdc673c1": {
+    "ko": "??? ?????? ?????."
+  },
+  "auto.components.GitHubItemDialog.1690fd7f4a": {
+    "ko": "??? ??? ??? ????."
+  },
+  "auto.components.GitHubItemDialog.2511f44bb7": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.GitHubItemDialog.28986b3747": {
+    "ko": "??? ??? ?? AI agent? ??????."
+  },
+  "auto.components.GitHubItemDialog.2d89a38d9d": {
+    "ko": "{{value0}} {{value1}}?(?) ? ??? ??"
+  },
+  "auto.components.GitHubItemDialog.5932578f51": {
+    "ko": "????? ??? ?? repo? ?????."
+  },
+  "auto.components.GitHubItemDialog.71c11aff84": {
+    "ko": "?? ?? ?? ??"
+  },
+  "auto.components.GitHubItemDialog.744197c84d": {
+    "ko": "? ???? ??? ??? ????."
+  },
+  "auto.components.GitHubItemDialog.745c9089ec": {
+    "ko": "repos ??? ??? ??? ? ? ????."
+  },
+  "auto.components.GitHubItemDialog.773ff70035": {
+    "ko": "? ? ??"
+  },
+  "auto.components.GitHubItemDialog.829674460a": {
+    "ko": "PR commit SHA? ???? diff? ??? ? ????."
+  },
+  "auto.components.GitHubItemDialog.8b15a5e91c": {
+    "ko": "??? ?? {{value0}}"
+  },
+  "auto.components.GitHubItemDialog.8c45901789": {
+    "ko": "??? ?? {{value0}}"
+  },
+  "auto.components.GitHubItemDialog.9157d48ddb": {
+    "ko": "?? ??"
+  },
+  "auto.components.GitHubItemDialog.924c2fe05e": {
+    "ko": "???"
+  },
+  "auto.components.GitHubItemDialog.934d87ab96": {
+    "ko": "?? ?? ?? ?? ?…"
+  },
+  "auto.components.GitHubItemDialog.9e7c221b8d": {
+    "ko": "??? ?? ???? ?????."
+  },
+  "auto.components.GitHubItemDialog.af924014f8": {
+    "ko": "??"
+  },
+  "auto.components.GitHubItemDialog.b7bf31b8de": {
+    "ko": "? ??? GitHub? ????? ?????."
+  },
+  "auto.components.GitHubItemDialog.ba8e329d92": {
+    "ko": "? ??? ?? ??"
+  },
+  "auto.components.GitHubItemDialog.bd3b4492a0": {
+    "ko": "PR? ?? ?????"
+  },
+  "auto.components.GitHubItemDialog.bd7be7b1fd": {
+    "ko": "?? L"
+  },
+  "auto.components.GitHubItemDialog.c0253318d6": {
+    "ko": "? PR? ?? ??? ???? ? ????."
+  },
+  "auto.components.GitHubItemDialog.d23bbb6416": {
+    "ko": "{{value0}} ???"
+  },
+  "auto.components.GitHubItemDialog.dc1ca081a8": {
+    "ko": "??"
+  },
+  "auto.components.GitHubItemDialog.e31651a224": {
+    "ko": "??? ?? ?? ??"
+  },
+  "auto.components.GitHubItemDialog.e463ec935f": {
+    "ko": "?? ??? ???"
+  },
+  "auto.components.GitHubItemDialog.e7007aa1d8": {
+    "ko": "repos ??? ??? ??? ????? ? ????."
+  },
+  "auto.components.GitHubItemDialog.ea985e657f": {
+    "ko": "???? ???"
+  },
+  "auto.components.GitHubItemDialog.ecffebc251": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.GitHubItemDialog.f4b1292569": {
+    "ko": "? ??? ?? AI agent ??"
+  },
+  "auto.components.GitHubItemDialog.fedc09eeb9": {
+    "ko": "??? ?? ?? {{value0}}"
+  },
+  "auto.components.GitLabItemDialog.00d0d25825": {
+    "ko": "??, ?, ??? ?????."
+  },
+  "auto.components.GitLabItemDialog.00f3bab87b": {
+    "ko": " / ? {{value0}}? ??"
+  },
+  "auto.components.GitLabItemDialog.1b19cdc510": {
+    "ko": "??? ?? {{value0}}"
+  },
+  "auto.components.GitLabItemDialog.4168eb2c51": {
+    "ko": "??"
+  },
+  "auto.components.GitLabItemDialog.7a7204417f": {
+    "ko": "?"
+  },
+  "auto.components.GitLabItemDialog.865ea2703e": {
+    "ko": "MR !{{value0}}?(?) ?? ?????."
+  },
+  "auto.components.GitLabItemDialog.9b11cd233f": {
+    "ko": "MR !{{value0}}?(?) ?????."
+  },
+  "auto.components.GitLabItemDialog.9bfb4a24d7": {
+    "ko": "???"
+  },
+  "auto.components.GitLabItemDialog.a7eb4f4916": {
+    "ko": "?? ??: "
+  },
+  "auto.components.GitLabItemDialog.f11e3e7675": {
+    "ko": "? MR? ??? ?????? ????."
+  },
+  "auto.components.GitLabItemDialog.ffdd9a78e1": {
+    "ko": "??? ???? MR diff ??? ??? ? ????."
+  },
+  "auto.components.JiraIssueWorkspace.2a829a2f00": {
+    "ko": "????"
+  },
+  "auto.components.JiraIssueWorkspace.666cfdd835": {
+    "ko": "? ? ??"
+  },
+  "auto.components.JiraIssueWorkspace.693be070d0": {
+    "ko": "??"
+  },
+  "auto.components.LinearIssueMarkdownDescriptionEditor.28fd951b83": {
+    "ko": "???"
+  },
+  "auto.components.LinearIssueMarkdownDescriptionEditor.5666b4493d": {
+    "ko": "???"
+  },
+  "auto.components.LinearIssueMarkdownDescriptionEditor.caa88f50d0": {
+    "ko": "??"
+  },
+  "auto.components.LinearIssueWorkspace.8a33c85e9c": {
+    "ko": "???"
+  },
+  "auto.components.LinearIssueWorkspace.c23e79e5c0": {
+    "ko": "??"
+  },
+  "auto.components.LinearIssueWorkspace.ca8778c124": {
+    "ko": "? ? ??"
+  },
+  "auto.components.LinearItemDrawer.48e17e8cbd": {
+    "ko": "? ? ??"
+  },
+  "auto.components.LinearItemDrawer.59b6cd3706": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.LinearItemDrawer.780ea6ed89": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.LinearItemDrawer.fbb90300e2": {
+    "ko": "??? ?? ???"
+  },
+  "auto.components.NewWorkspaceComposerCard.cloneHostSetup": {
+    "ko": "??"
+  },
+  "auto.components.NewWorkspaceComposerCard.cloneProjectOnHost": {
+    "ko": "???? ??"
+  },
+  "auto.components.NewWorkspaceComposerCard.cloningHostSetup": {
+    "ko": "?? ?..."
+  },
+  "auto.components.NewWorkspaceComposerCard.connectingSsh": {
+    "ko": "SSH ?? ?..."
+  },
+  "auto.components.NewWorkspaceComposerCard.importExistingFolderOnHost": {
+    "ko": "?? ?? ????"
+  },
+  "auto.components.NewWorkspaceComposerCard.importingHostSetup": {
+    "ko": "???? ?..."
+  },
+  "auto.components.NewWorkspaceComposerCard.notConnected": {
+    "ko": "???? ??"
+  },
+  "auto.components.NewWorkspaceComposerCard.preparingSshConnection": {
+    "ko": "SSH ?? ?? ?..."
+  },
+  "auto.components.NewWorkspaceComposerCard.reconnectingSsh": {
+    "ko": "SSH ?? ?? ?..."
+  },
+  "auto.components.NewWorkspaceComposerCard.setupHostExistingFolderHelp": {
+    "ko": "?? ???? ?? ?? ????? ??? ??, ? ????? ? ??????? ????."
+  },
+  "auto.components.NewWorkspaceComposerCard.setupHostExistingFolderTitle": {
+    "ko": "{{value0}} ??"
+  },
+  "auto.components.NewWorkspaceComposerCard.setupKindGit": {
+    "ko": "Git ?????"
+  },
+  "auto.components.NewWorkspaceComposerCard.sshAuthenticationFailed": {
+    "ko": "SSH ?? ??"
+  },
+  "auto.components.NewWorkspaceComposerCard.sshNotConnected": {
+    "ko": "SSH? ???? ??"
+  },
+  "auto.components.NewWorkspaceComposerCard.sshReconnectionFailed": {
+    "ko": "SSH ?? ?? ??"
+  },
+  "auto.components.NewWorkspaceComposerModal.fa90f739a5": {
+    "ko": "??????? ??? ?? ????, ?????? ??, agent? ?????."
+  },
+  "auto.components.PullRequestPage.00b7b82329": {
+    "ko": "?? ???"
+  },
+  "auto.components.PullRequestPage.0fa8b8faec": {
+    "ko": "? ??? ?? AI agent ??"
+  },
+  "auto.components.PullRequestPage.1550675e5f": {
+    "ko": "? ???? ??? ??? ????."
+  },
+  "auto.components.PullRequestPage.18f2af42ac": {
+    "ko": "?? ??? ???"
+  },
+  "auto.components.PullRequestPage.19f19560d5": {
+    "ko": "???"
+  },
+  "auto.components.PullRequestPage.246b2c6456": {
+    "ko": "??? ?????? ?????."
+  },
+  "auto.components.PullRequestPage.36b514a457": {
+    "ko": "{{value0}} ?? ?? ??"
+  },
+  "auto.components.PullRequestPage.3c891789f6": {
+    "ko": "???"
+  },
+  "auto.components.PullRequestPage.41d275d3ec": {
+    "ko": "??? {{value0}} ??"
+  },
+  "auto.components.PullRequestPage.45877f5089": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.PullRequestPage.4d18310d55": {
+    "ko": "??? ??"
+  },
+  "auto.components.PullRequestPage.51c65c0265": {
+    "ko": "??? ??? ??? ????."
+  },
+  "auto.components.PullRequestPage.51ed0cf38b": {
+    "ko": "?? ? ? ??"
+  },
+  "auto.components.PullRequestPage.54cddd1858": {
+    "ko": "?? ?? ?? ??"
+  },
+  "auto.components.PullRequestPage.68605516dd": {
+    "ko": "??? ?? ?? ??"
+  },
+  "auto.components.PullRequestPage.6885c619e7": {
+    "ko": "repos ??? ??? ??? ? ? ????."
+  },
+  "auto.components.PullRequestPage.710e47aa06": {
+    "ko": "PR? ?? ?????"
+  },
+  "auto.components.PullRequestPage.74660bd80b": {
+    "ko": "PR commit SHA? ???? diff? ??? ? ????."
+  },
+  "auto.components.PullRequestPage.77d9388fb0": {
+    "ko": "? ? ??"
+  },
+  "auto.components.PullRequestPage.788a782bb0": {
+    "ko": "??? ?? ???? ?????."
+  },
+  "auto.components.PullRequestPage.791ddede19": {
+    "ko": "?? L"
+  },
+  "auto.components.PullRequestPage.85e62c5266": {
+    "ko": "??? ??? ?? AI agent? ??????."
+  },
+  "auto.components.PullRequestPage.98583589c6": {
+    "ko": "??? ??? ???? ?? AI agent? ???? ?????: {{value0}}"
+  },
+  "auto.components.PullRequestPage.a053bdd082": {
+    "ko": "AI? ??? ?? ??"
+  },
+  "auto.components.PullRequestPage.a4541fd3db": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.PullRequestPage.ae9a38fd4a": {
+    "ko": "??? {{value0}} ??"
+  },
+  "auto.components.PullRequestPage.b0e80f083d": {
+    "ko": "?? ???? ????? ?"
+  },
+  "auto.components.PullRequestPage.b8c6cbb8c4": {
+    "ko": "PR {{value0}}? ??????."
+  },
+  "auto.components.PullRequestPage.c057f2fcb0": {
+    "ko": "repos ??? ??? ??? ????? ? ????."
+  },
+  "auto.components.PullRequestPage.c808db1dd1": {
+    "ko": "?? ??"
+  },
+  "auto.components.PullRequestPage.d8e82b7f15": {
+    "ko": "?? ?? ?? ?? ?…"
+  },
+  "auto.components.PullRequestPage.ddfd42f460": {
+    "ko": "agent? ???? ?? ????? ?????."
+  },
+  "auto.components.PullRequestPage.e1f3641bfd": {
+    "ko": "?? ???"
+  },
+  "auto.components.PullRequestPage.eca289e593": {
+    "ko": "????? ??? ?? repo? ?????."
+  },
+  "auto.components.PullRequestPage.f119e5f5ef": {
+    "ko": "??"
+  },
+  "auto.components.PullRequestPage.ff84e1f54c": {
+    "ko": "{{value0}} {{value1}}?(?) ? ??? ??"
+  },
+  "auto.components.QuickOpen.1cf8561ab4": {
+    "ko": "??? gitignore? ???? ??? ?????? ?? ????? ??? ?????:"
+  },
+  "auto.components.QuickOpen.250e5b2dfb": {
+    "ko": "Enter"
+  },
+  "auto.components.QuickOpen.9e97f08d0f": {
+    "ko": "? ?? ??"
+  },
+  "auto.components.ShortcutKeyCombo.07eb4985a1": {
+    "ko": "{{value0}} ? ? ???"
+  },
+  "auto.components.TaskPage.0c11ca0b6d": {
+    "ko": "? Jira ??"
+  },
+  "auto.components.TaskPage.1301d376f1": {
+    "ko": "???"
+  },
+  "auto.components.TaskPage.171b7739d8": {
+    "ko": "MR"
+  },
+  "auto.components.TaskPage.297a805b64": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.345b169f1f": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.34d97ca682": {
+    "ko": "?? ?? ????"
+  },
+  "auto.components.TaskPage.34da8ac06c": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.3659f9792a": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.3b11c8e8fc": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.3cb855080f": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.3f9604efc7": {
+    "ko": "?? #{{value0}}? ?????"
+  },
+  "auto.components.TaskPage.3feb524d42": {
+    "ko": "? Linear ??"
+  },
+  "auto.components.TaskPage.4b6e40e42c": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.TaskPage.524f095d55": {
+    "ko": "?? ??"
+  },
+  "auto.components.TaskPage.5d2d835467": {
+    "ko": "?? ??"
+  },
+  "auto.components.TaskPage.606a85c774": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.6430594b18": {
+    "ko": "? ? ?? ???"
+  },
+  "auto.components.TaskPage.69591944e7": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.6d56559467": {
+    "ko": "Linear ?? ??"
+  },
+  "auto.components.TaskPage.733b8f2421": {
+    "ko": "Linear / ??"
+  },
+  "auto.components.TaskPage.7698af5263": {
+    "ko": "? ??"
+  },
+  "auto.components.TaskPage.7719d8daa9": {
+    "ko": "{{value0}} ??{{value1}}"
+  },
+  "auto.components.TaskPage.7762f4b03a": {
+    "ko": "/"
+  },
+  "auto.components.TaskPage.8a07f21e76": {
+    "ko": "???"
+  },
+  "auto.components.TaskPage.8f06dbb9e5": {
+    "ko": "???? ???"
+  },
+  "auto.components.TaskPage.903c7af49f": {
+    "ko": "Linear ??? ?? ? ????."
+  },
+  "auto.components.TaskPage.937b29fa35": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.995dd6af9b": {
+    "ko": "PR ?? ??"
+  },
+  "auto.components.TaskPage.9cd11ba218": {
+    "ko": "Jira"
+  },
+  "auto.components.TaskPage.9f2b4c03a6": {
+    "ko": "?? ??: "
+  },
+  "auto.components.TaskPage.a04fe7ba73": {
+    "ko": "?? ??"
+  },
+  "auto.components.TaskPage.a0544fb653": {
+    "ko": "MR !{{value0}}"
+  },
+  "auto.components.TaskPage.afc68824ff": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.TaskPage.c8d5bec5f7": {
+    "ko": "????"
+  },
+  "auto.components.TaskPage.cc13109b5d": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.TaskPage.cfaadb6b22": {
+    "ko": "?? ??"
+  },
+  "auto.components.TaskPage.d1132848f8": {
+    "ko": "GitHub?? ? GitHub ???? ??? ?????."
+  },
+  "auto.components.TaskPage.d3d0998b7d": {
+    "ko": "? GitHub ??"
+  },
+  "auto.components.TaskPage.d6cda23ef1": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.d747aed72f": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.e224d76876": {
+    "ko": "MR"
+  },
+  "auto.components.TaskPage.e65757a338": {
+    "ko": "??????"
+  },
+  "auto.components.TaskPage.f373ab1a4f": {
+    "ko": "??"
+  },
+  "auto.components.TaskPage.f4374519ae": {
+    "ko": "???? ?? ??(upstream)? ? ?? {{value0}}? ???? ?? ????. origin? ?????."
+  },
+  "auto.components.TaskPage.fe28c9821f": {
+    "ko": "??"
+  },
+  "auto.components.Terminal.5b2c1a9e44": {
+    "ko": "agent CLI? ?? ?????. ??? ????? ???? ?? agent? ?????."
+  },
+  "auto.components.Terminal.7958465754": {
+    "ko": "?? ?? ????? ?? ?? terminals? ????. ??? ?? ????????"
+  },
+  "auto.components.Terminal.cdc9ac4b2d": {
+    "ko": "???"
+  },
+  "auto.components.Terminal.e57db40c11": {
+    "ko": "{{value0}} ?? ??? ?? ? ????."
+  },
+  "auto.components.UpdateCard.ccd8b0a793": {
+    "ko": "??? ???? ?? ???"
+  },
+  "auto.components.UpdateCard.f58b5c57a6": {
+    "ko": "? ??:"
+  },
+  "auto.components.WorktreeJumpPalette.1628fd7dfa": {
+    "ko": "?? ????, ??, ?? ?? ?? ?? ????."
+  },
+  "auto.components.WorktreeJumpPalette.1ebe225fee": {
+    "ko": "????, ??, ? ? ?? ??..."
+  },
+  "auto.components.WorktreeJumpPalette.50a1d11d5b": {
+    "ko": "?? ?"
+  },
+  "auto.components.WorktreeJumpPalette.684e8d7bc2": {
+    "ko": "?? ????? ?? ?? ???? ????."
+  },
+  "auto.components.WorktreeJumpPalette.739bda980c": {
+    "ko": "??"
+  },
+  "auto.components.WorktreeJumpPalette.95be6587d3": {
+    "ko": "???? \"{{value0}}\" ???"
+  },
+  "auto.components.WorktreeJumpPalette.c5081f2814": {
+    "ko": "?? ????"
+  },
+  "auto.components.WorktreeJumpPalette.dabd819ca1": {
+    "ko": "{{value0}}?? ?? ????? ??? ?????."
+  },
+  "auto.components.WorktreeJumpPalette.f60f8730be": {
+    "ko": "??? ?? ????? ????."
+  },
+  "auto.components.WorktreeJumpPalette.f65d992a11": {
+    "ko": "Enter"
+  },
+  "auto.components.WorktreeJumpPalette.f7fda8d562": {
+    "ko": "????? ???? FABRICA?? ?? ?? ?????."
+  },
+  "auto.components.WorktreeJumpPalette.paletteHostBadge": {
+    "ko": "???: {{value0}}"
+  },
+  "auto.components.WorktreeJumpPalette.recentWorktreesHeader": {
+    "ko": "?? ????"
+  },
+  "auto.components.WorktreeJumpPalette.worktreesHeader": {
+    "ko": "????"
+  },
+  "auto.components.activity.ActivityPrototypePage.770d458144": {
+    "ko": "agent ?? ??? ??"
+  },
+  "auto.components.activity.ActivityPrototypePage.8de7c5beaa": {
+    "ko": "Terminal? ??? ? ??"
+  },
+  "auto.components.activity.ActivityPrototypePage.afdc2139a8": {
+    "ko": "Agent terminal? ?????. ????? ? ???????? ? terminal? ???."
+  },
+  "auto.components.activity.ActivityPrototypePage.b29191b3e0": {
+    "ko": "????"
+  },
+  "auto.components.activity.ActivityTitlebarControls.f915168c8e": {
+    "ko": "?? ??"
+  },
+  "auto.components.agent.AgentCombobox.48c6a5a9b4": {
+    "ko": "agents ??..."
+  },
+  "auto.components.agent.AgentCombobox.986f946354": {
+    "ko": "? Terminal"
+  },
+  "auto.components.automations.AutomationCustomCronPanel.3e3b2c369f": {
+    "ko": "Cron ?"
+  },
+  "auto.components.automations.AutomationDetail.29baf8f4c2": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationDetail.620b22145e": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationDetail.de0fedac06": {
+    "ko": "???? ?? ??"
+  },
+  "auto.components.automations.AutomationEditorDialog.a2e688226d": {
+    "ko": "????"
+  },
+  "auto.components.automations.AutomationMissedRunGraceField.3d70c185c8": {
+    "ko": "FABRICA ?? ?? ???? ??? ??? ??? ? ????, ? ?? ?? ?? ?? ????? ? FABRICA? ?? ??? ? ? ?????. ? ??? ?? ??? ?????."
+  },
+  "auto.components.automations.AutomationMissedRunGraceField.529dc6c0b7": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationMissedRunGraceField.fc089e5fde": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationPrecheckFields.99a577306c": {
+    "ko": "gh pr list --json number -q '.[0].number'"
+  },
+  "auto.components.automations.AutomationProjectCombobox.addProject": {
+    "ko": "???? ??"
+  },
+  "auto.components.automations.AutomationProjectCombobox.adding": {
+    "ko": "???? ?? ?..."
+  },
+  "auto.components.automations.AutomationProjectCombobox.chooseHost": {
+    "ko": "??? ??? ??"
+  },
+  "auto.components.automations.AutomationProjectCombobox.empty": {
+    "ko": "??? ???? ????/??? ????."
+  },
+  "auto.components.automations.AutomationProjectCombobox.search": {
+    "ko": "????/?? ??..."
+  },
+  "auto.components.automations.AutomationRunHistory.8faaa00726": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationSchedulePicker.233b8c94b6": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationSchedulePicker.6b914c5fbb": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationSessionField.c90888ee94": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationsPage.08efc3ae12": {
+    "ko": "Hermes ???? ?????????."
+  },
+  "auto.components.automations.AutomationsPage.0ae52dd760": {
+    "ko": "Hermes"
+  },
+  "auto.components.automations.AutomationsPage.53f06f0ad5": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.automations.AutomationsPage.5918020edc": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationsPage.761a35834d": {
+    "ko": "???"
+  },
+  "auto.components.automations.AutomationsPage.82eb6cb933": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationsPage.8705757e27": {
+    "ko": "??"
+  },
+  "auto.components.automations.AutomationsPage.a21f6c33ad": {
+    "ko": "??? ??? ?? ?????."
+  },
+  "auto.components.automations.AutomationsPage.aecdc3681f": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationsPage.b264564427": {
+    "ko": "? ?? ??. ?? ???? ??? ??????? ???? ????."
+  },
+  "auto.components.automations.AutomationsPage.b457436d6a": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationsPage.d441032f7e": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.AutomationsPage.dd0bc7a1ba": {
+    "ko": "???? ?? ??"
+  },
+  "auto.components.automations.CreateFromPicker.dd3841b442": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.automations.ExternalAutomationManagers.0a2d4359a8": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.ExternalAutomationManagers.701515f010": {
+    "ko": "???"
+  },
+  "auto.components.automations.ExternalAutomationManagers.8e9165af08": {
+    "ko": "??"
+  },
+  "auto.components.automations.ExternalAutomationManagers.92405f1431": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.ExternalAutomationManagers.bf5f67b590": {
+    "ko": "Hermes"
+  },
+  "auto.components.automations.ExternalAutomationManagers.e66091daf4": {
+    "ko": "??"
+  },
+  "auto.components.automations.ExternalAutomationRunTable.7475c0ce96": {
+    "ko": "?"
+  },
+  "auto.components.automations.ExternalAutomationRunTable.872d032d05": {
+    "ko": "??"
+  },
+  "auto.components.automations.ExternalAutomationRunTable.9c080765ff": {
+    "ko": "?? Hermes ??? ????."
+  },
+  "auto.components.automations.ExternalAutomationRunTable.a813df9808": {
+    "ko": "????"
+  },
+  "auto.components.automations.ExternalAutomationRunTable.d4b34feb66": {
+    "ko": "?? ??"
+  },
+  "auto.components.automations.ExternalAutomationRunTable.d5527d8fe7": {
+    "ko": "??"
+  },
+  "auto.components.automations.automation.templates.37571fcb16": {
+    "ko": "??? ??, ??? ?? ??, ??? ?? ??? ?????."
+  },
+  "auto.components.automations.automation.templates.maintenance.category": {
+    "ko": "????"
+  },
+  "auto.components.automations.automation.templates.repoHealth.category": {
+    "ko": "Repo ??"
+  },
+  "auto.components.automations.external.automation.schedule.display.a8e92b815a": {
+    "ko": "??? ??? ? ??"
+  },
+  "auto.components.browser.pane.BrowserMobileDriverOverlay.20539eca03": {
+    "ko": "????? ? ????? ?? ????."
+  },
+  "auto.components.browser.pane.BrowserPane.777b5bc4ec": {
+    "ko": "agent?? ?? ???? ????? ??? ?????."
+  },
+  "auto.components.browser.pane.BrowserPane.95af781091": {
+    "ko": "? agent?? ??? ???"
+  },
+  "auto.components.browser.pane.BrowserPane.a5dcd0fd1d": {
+    "ko": "?? ?"
+  },
+  "auto.components.browser.pane.BrowserPane.e72dfa268a": {
+    "ko": "?? ??"
+  },
+  "auto.components.browser.pane.BrowserPane.f2d0c22d67": {
+    "ko": "?? {{value0}} ??"
+  },
+  "auto.components.browser.pane.BrowserPane.f30d2d35a7": {
+    "ko": "???? ??"
+  },
+  "auto.components.browser.pane.BrowserToolbarMenu.58f2c81542": {
+    "ko": "??"
+  },
+  "auto.components.cmd.j.quick.actions.verbs.newMarkdownFile": {
+    "ko": "? markdown ??"
+  },
+  "auto.components.cmd.j.quick.actions.verbs.newShell": {
+    "ko": "? ?"
+  },
+  "auto.components.cmd.j.quick.actions.verbs.trashWorktree": {
+    "ko": "???? ????? ??"
+  },
+  "auto.components.contextual.tours.ContextualTourProgressDots.7734cb8ad3": {
+    "ko": "?"
+  },
+  "auto.components.contextual.tours.ContextualTourProgressDots.dcd6e6b03e": {
+    "ko": "{{value1}}?? ? {{value0}}??"
+  },
+  "auto.components.contextual.tours.ContextualTourOverlaySurface.complete": {
+    "ko": "??"
+  },
+  "auto.components.contextual.tours.contextual.tour.overlay.measurement.automations.intro.body": {
+    "ko": "???? ??? ?? agent ??? ?????. ? ??? ?? ???? ?????."
+  },
+  "auto.components.contextual.tours.contextual.tour.overlay.measurement.automations.intro.title": {
+    "ko": "???? ??????"
+  },
+  "auto.components.contextual.tours.contextual.tour.overlay.measurement.automations.results.body": {
+    "ko": "?? ???? ???? ?? ??????, ?? ?? ?????, ??? ??? ??? ? ??? ? ? ????."
+  },
+  "auto.components.contextual.tours.contextual.tour.overlay.measurement.automations.results.title": {
+    "ko": "?? ??"
+  },
+  "auto.components.crash.report.CrashReportDialog.88fea8e84e": {
+    "ko": "??? ??"
+  },
+  "auto.components.crash.report.CrashReportDialog.b082f27490": {
+    "ko": "?? ?? ?? ??"
+  },
+  "auto.components.crash.report.CrashReportDialog.b2e36f53a1": {
+    "ko": "??? ???? ??? ?????. ?? ?? {{value0}}? ??????? ???? ?????."
+  },
+  "auto.components.crash.report.CrashReportDialog.e59f0b9427": {
+    "ko": "???? ?? ??? ???? ?? ??? ??? ?? ??? ????."
+  },
+  "auto.components.crash.report.CrashReportDialog.ead6fc0510": {
+    "ko": "?? ??? ???? ???? ?????. ??? ?? ??? ???, ??? ?? ?? ?? ??? ??? ? ????."
+  },
+  "auto.components.dashboard.DashboardAgentRowMessage.0a01046763": {
+    "ko": "???"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.066fedd446": {
+    "ko": "??? ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.07eccfa397": {
+    "ko": "? ??? ?? ?? ??? ??? ? ????."
+  },
+  "auto.components.editor.CheckRunDetailsPanel.1f2b980522": {
+    "ko": "?? ?? ?? ???? ?…"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.2f6d8a1c45": {
+    "ko": "?? ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.3d9f2b8e14": {
+    "ko": "?? ?"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.4c8e1b2d73": {
+    "ko": "??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.5a1c8e3d67": {
+    "ko": "??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.7b3e9d4f12": {
+    "ko": "???"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.834cb3f23d": {
+    "ko": "AI? ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.91a4c7e2b0": {
+    "ko": "???"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.a54ae21c6f": {
+    "ko": "??:"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.a916648574": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.b3e7f9a1c2": {
+    "ko": "?? ?? ????? ??? ? ????."
+  },
+  "auto.components.editor.CheckRunDetailsPanel.c8f1a2d4e7": {
+    "ko": "???? ?? agent? ???? ?? ?? ??? ?????."
+  },
+  "auto.components.editor.CheckRunDetailsPanel.cdbfda4dec": {
+    "ko": "??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.d098e5529a": {
+    "ko": "??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.d5a8c2f1b9": {
+    "ko": "? ??? ??? ?? AI agent ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.e2b4d7c8a1": {
+    "ko": "? ??? ??? agent ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.f1c9e3a6d4": {
+    "ko": "??? ??? agent ??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.f2fe8a4e8f": {
+    "ko": "??"
+  },
+  "auto.components.editor.CheckRunDetailsPanel.fd46a70f1a": {
+    "ko": "???"
+  },
+  "auto.components.editor.CombinedDiffFileTree.d5ac717d65": {
+    "ko": "commit ? ?"
+  },
+  "auto.components.editor.CombinedDiffViewer.3d909843bb": {
+    "ko": "??? diff ??"
+  },
+  "auto.components.editor.ConflictReviewFileTree.496e28a932": {
+    "ko": "???"
+  },
+  "auto.components.editor.CsvViewer.eedd0d37a7": {
+    "ko": "?"
+  },
+  "auto.components.editor.EditorContent.6c4f1a8d2e": {
+    "ko": "?? ?? ??? ??? ? ????."
+  },
+  "auto.components.editor.EditorContent.d16e037f40": {
+    "ko": "??"
+  },
+  "auto.components.editor.EditorViewToggle.0d193dc03c": {
+    "ko": "????"
+  },
+  "auto.components.editor.EditorViewToggle.4d6ccb7ba6": {
+    "ko": "??"
+  },
+  "auto.components.editor.EditorViewToggle.b3410cd5e0": {
+    "ko": "???"
+  },
+  "auto.components.editor.ImageDiffViewer.57aac3979a": {
+    "ko": "??"
+  },
+  "auto.components.editor.IpynbViewer.07e7d96612": {
+    "ko": "?"
+  },
+  "auto.components.editor.IpynbViewer.3e4cbf15ea": {
+    "ko": "??"
+  },
+  "auto.components.editor.IpynbViewer.59b6cd874b": {
+    "ko": "??"
+  },
+  "auto.components.editor.IpynbViewer.d6f37a640b": {
+    "ko": "? ???"
+  },
+  "auto.components.editor.MarkdownTableOfContentsPanel.8f4d2c1a9b": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.editor.MonacoGutterContextMenu.2e0b1cdc05": {
+    "ko": "???? ?? ?? ??"
+  },
+  "auto.components.editor.MonacoGutterContextMenu.4eaa991bde": {
+    "ko": "???? ?? ??"
+  },
+  "auto.components.editor.RichMarkdownCodeBlock.a209c57063": {
+    "ko": "JavaScript"
+  },
+  "auto.components.editor.RichMarkdownCodeBlock.d01f55be57": {
+    "ko": "Shell"
+  },
+  "auto.components.editor.RichMarkdownDocLinkMenu.90c5f0e1e4": {
+    "ko": "/"
+  },
+  "auto.components.editor.RichMarkdownToolbar.0bea19a988": {
+    "ko": "???"
+  },
+  "auto.components.editor.RichMarkdownToolbar.4f9e789fe0": {
+    "ko": "??"
+  },
+  "auto.components.editor.RichMarkdownToolbar.e935c6b61e": {
+    "ko": "???"
+  },
+  "auto.components.editor.check.run.details.fix.with.ai.1a8c4e2b90": {
+    "ko": "AI ??? ???? ?? ??????? ?????."
+  },
+  "auto.components.editor.check.run.details.fix.with.ai.2ef90c9819": {
+    "ko": "? ??? ??? AI agent? ??????."
+  },
+  "auto.components.editor.check.run.details.fix.with.ai.4f2d9a8c17": {
+    "ko": "AI ??? ???? ?? repos? ?????."
+  },
+  "auto.components.editor.check.run.details.fix.with.ai.7c3e1b5d42": {
+    "ko": "AI ??? ???? ?? PR ?? MR? ???."
+  },
+  "auto.components.editor.check.run.details.fix.with.ai.9b2f6d4a81": {
+    "ko": "? ??? ?? ??? ????."
+  },
+  "auto.components.editor.rich.markdown.slash.commands.0ed9a7b38c": {
+    "ko": "Mermaid ?? ??? ?????."
+  },
+  "auto.components.editor.rich.markdown.slash.commands.2bf5544faf": {
+    "ko": "??? ??"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.41482b15ce": {
+    "ko": "?? ?? 1"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.565907cf7a": {
+    "ko": "??? LaTeX ??? ?????."
+  },
+  "auto.components.editor.rich.markdown.slash.commands.572be8e524": {
+    "ko": "???"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.58abdb9d41": {
+    "ko": "??"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.6993a38ad1": {
+    "ko": "?? ??"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.ae7d0f3f37": {
+    "ko": "????? LaTeX ??? ?????."
+  },
+  "auto.components.editor.rich.markdown.slash.commands.ae8377cf6b": {
+    "ko": "???"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.e516d3f6e3": {
+    "ko": "Mermaid ?????"
+  },
+  "auto.components.editor.rich.markdown.slash.commands.f82c78a2ee": {
+    "ko": "?? ???"
+  },
+  "auto.components.emulator.pane.MobileEmulatorAgentSetupGuideSteps.5c59ea96ca": {
+    "ko": "??? ????? FABRICA CLI ?? ??"
+  },
+  "auto.components.emulator.pane.MobileEmulatorAgentSetupGuideSteps.bff5341ac3": {
+    "ko": "??? ????? FABRICA CLI ?? ?? terminal"
+  },
+  "auto.components.emulator.pane.emulator.pane.toolbar.868c0f2938": {
+    "ko": "?? ?…"
+  },
+  "auto.components.feature.tips.CliSkillSetupTerminal.1953e90447": {
+    "ko": "Enter? ?? agents ? FABRICA CLI ??????? ??? ?????."
+  },
+  "auto.components.feature.tips.CmdJPaletteFeatureTipVisual.379d776971": {
+    "ko": "?? ?"
+  },
+  "auto.components.feature.tips.FeatureTipActions.eb04abece8": {
+    "ko": "???"
+  },
+  "auto.components.feature.wall.AiCommitPrSettingsCard.1c0cb4fabb": {
+    "ko": "AI ???"
+  },
+  "auto.components.feature.wall.AiCommitPrSettingsCard.4b2fc4b80c": {
+    "ko": "?? ??"
+  },
+  "auto.components.feature.wall.AiCommitPrSettingsCard.8d4152701a": {
+    "ko": "?: ollama run llama3.1 {{value0}}"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.0ce7c24b4d": {
+    "ko": "?? ?…"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.1bec24acc1": {
+    "ko": "@keyframes browserFlash { 0% { opacity: 0; } 20% { opacity: 0.85; } 100% { opacity: 0; } } @keyframes browserTabIn { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: none; } } @keyframes browserViewIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.25f15c2219": {
+    "ko": "Pro"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.59ae327405": {
+    "ko": "Starter"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.73bbb46073": {
+    "ko": "/pricing"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.7da6eed7bf": {
+    "ko": "localhost:3000"
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.eb88125c6f": {
+    "ko": "? ??? — ?? ???? ??? ?????."
+  },
+  "auto.components.feature.wall.BrowserAnimatedVisual.f39be6ca14": {
+    "ko": "/signup"
+  },
+  "auto.components.feature.wall.ComputerUseAnimatedVisual.6804cb356f": {
+    "ko": "?? ???"
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.33b650af52": {
+    "ko": "?? ??? ???? ???? ?????. FABRICA? ?? ??, ??, ????? ?? ??? ??????? ?????."
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.3dddb2d565": {
+    "ko": "????? ???"
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.5b3577a492": {
+    "ko": "?? ????? ???"
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.code_host_tasks_caption": {
+    "ko": "?? ???? ??? ???? ??? ? ????."
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.code_host_tasks_summary": {
+    "ko": "??? ???? ??? ? ?? · ?? Linear ?? Jira?? ??? ????? ?????"
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.list_end": {
+    "ko": ", ??? "
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.review_step_description": {
+    "ko": "FABRICA? PR ?? MR ??, ??, ??? ??? ? ??? ?? ???? ?????."
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.review_step_title": {
+    "ko": "agents? ???? ?? PR ?? ??"
+  },
+  "auto.components.feature.wall.ConnectIntegrationsList.task_step_title": {
+    "ko": "FABRICA? ??? ?? ???? agents ??"
+  },
+  "auto.components.feature.wall.EditorAnimatedVisual.22ae7b4d9d": {
+    "ko": "?? ?? ??? ?? - ???? ?? ?? ??? ?????."
+  },
+  "auto.components.feature.wall.EditorAnimatedVisual.8521536429": {
+    "ko": "?? ·"
+  },
+  "auto.components.feature.wall.EditorAnimatedVisual.95f0c3a46f": {
+    "ko": "? ???? ?? ??? ??? ??????."
+  },
+  "auto.components.feature.wall.EditorAnimatedVisual.e16479c1c5": {
+    "ko": "[data-slash-menu] [data-slash-row].slash-active { background: rgba(24,24,27,0.07); box-shadow: inset 0 0 0 1px rgba(24,24,27,0.06); } [data-md-active-line][data-role=\"active\"] { color: rgb(113 113 122); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; } [data-md-active-line][data-role=\"h1\"] { color: inherit; font-family: inherit; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; margin-top: 6px; } [data-md-caret] { display: inline-block; width: 1.5px; height: 1em; background: currentColor; vertical-align: -2px; margin-left: 1px; animation: md-caret-blink 1.05s steps(1) infinite; } @keyframes md-caret-blink { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } } @keyframes md-block-in { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: none; } } @keyframes md-cursor-ripple { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(1.4); opacity: 0; } } [data-clicking=\"1\"] [data-cursor-ripple] { animation: md-cursor-ripple 460ms ease-out forwards; }"
+  },
+  "auto.components.feature.wall.FeatureWallSetupChecklist.713cc529a5": {
+    "ko": "????"
+  },
+  "auto.components.feature.wall.FullDiskAccessSetupPrompt.0d6efe9cf4": {
+    "ko": "????? ????? ??? ??? ?? ?? macOS?? ?????."
+  },
+  "auto.components.feature.wall.ReviewAnimatedVisual.8df4d52b68": {
+    "ko": "pr-view"
+  },
+  "auto.components.feature.wall.ReviewNotesAnimatedVisual.1eee3a397e": {
+    "ko": "src/server/migrate.ts (diff)"
+  },
+  "auto.components.feature.wall.ReviewNotesAnimatedVisual.5cb213f967": {
+    "ko": "AI ??"
+  },
+  "auto.components.feature.wall.ReviewNotesAnimatedVisual.a7a89d8f94": {
+    "ko": "?"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.2ef0b97954": {
+    "ko": "typecheck"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.6e3f5223c5": {
+    "ko": "???"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.6f4c2d7cb7": {
+    "ko": "??? ?? ???? ??? ??:"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.8ed213397c": {
+    "ko": "?? ?"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.a6c8b9e32f": {
+    "ko": "?? ??"
+  },
+  "auto.components.feature.wall.ReviewPRViewAnimatedVisual.f4d5e1a7b2": {
+    "ko": "?? 3?"
+  },
+  "auto.components.feature.wall.ReviewShipAnimatedVisual.cd8a3a39d7": {
+    "ko": "commits 3? ??"
+  },
+  "auto.components.feature.wall.TasksAnimatedVisual.b13375617e": {
+    "ko": "???? ???? ??? ????."
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.0b20782e0f": {
+    "ko": "?? 4?? 12? ??? ??"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.16877e038d": {
+    "ko": "??? ??"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.17cfdc3344": {
+    "ko": "Grep"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.4371cc9931": {
+    "ko": "pnpm playwright test"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.633a91e358": {
+    "ko": "?? ?…"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.944199e54a": {
+    "ko": "› ???? ?? ????"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.9923847785": {
+    "ko": "Read"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.99f5224f1e": {
+    "ko": "Edit"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.a2b114dad0": {
+    "ko": "????? ?? ·"
+  },
+  "auto.components.feature.wall.WorkbenchAnimatedVisual.e370fa8c2b": {
+    "ko": "Terminal? ????? ??"
+  },
+  "auto.components.feature.wall.agents.orchestration.OrchestrationPage.30b509a467": {
+    "ko": "?? 2?"
+  },
+  "auto.components.feature.wall.agents.orchestration.StatusesPage.78f0318ac1": {
+    "ko": "????? ?"
+  },
+  "auto.components.feature.wall.agents.orchestration.StatusesPage.7b26349cb2": {
+    "ko": "pnpm migrate latest"
+  },
+  "auto.components.feature.wall.agents.orchestration.UsageAccountsCard.6986b36708": {
+    "ko": "??? ??? ???? ??? ????? ?????."
+  },
+  "auto.components.feature.wall.agents.orchestration.UsageAccountsCard.945865332e": {
+    "ko": "??? ?"
+  },
+  "auto.components.feature.wall.agents.orchestration.orchestration.cards.da6f1f97c9": {
+    "ko": "?? ?"
+  },
+  "auto.components.feature.wall.review.notes.diff.rows.f621c734f8": {
+    "ko": "?? · ?"
+  },
+  "auto.components.github.CloseReasonDropdown.e1f2a3b4c5": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.082515176a": {
+    "ko": "??? ???? ?????"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.0a73f59e85": {
+    "ko": "?? ???"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.9f88657c4e": {
+    "ko": "??? ?????"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.a1b2c3d4e5": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.b1c2d3e4f5": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.bd3b4492a0": {
+    "ko": "??? ?? ?????"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.c5c117270e": {
+    "ko": "??? ?????. ?? ??? ???."
+  },
+  "auto.components.github.GitHubIssueCommentComposer.e9b7cb7d17": {
+    "ko": "??? ?? ?????"
+  },
+  "auto.components.github.GitHubIssueCommentComposer.f2a8c1d903": {
+    "ko": "??? ?? ?? ?????"
+  },
+  "auto.components.github.GitHubMarkdownComposer.8f1c2d4e6a": {
+    "ko": "?? ? ??? ????"
+  },
+  "auto.components.github.GitHubMarkdownComposer.b7e4a1c902": {
+    "ko": "?????, ??? ???, ???? ?? ??"
+  },
+  "auto.components.github.GitHubMarkdownComposer.c91f0a2b14": {
+    "ko": "??"
+  },
+  "auto.components.github.GitHubMarkdownComposer.d82b1e3f05": {
+    "ko": "????"
+  },
+  "auto.components.github.GitHubMarkdownComposer.e3bd59143c": {
+    "ko": "??"
+  },
+  "auto.components.github.GitHubWorkItemAssigneePopoverContent.4f8b6f2c1d": {
+    "ko": "??? ??..."
+  },
+  "auto.components.github.GitHubWorkItemAssigneePopoverContent.a00830d3f7": {
+    "ko": "??? ??"
+  },
+  "auto.components.github.GitHubWorkItemAssigneePopoverContent.cddd9b04a7": {
+    "ko": "??? ?? ?"
+  },
+  "auto.components.github.GitHubWorkItemLabelPopoverContent.2aa9acdf34": {
+    "ko": "GitHub?? ?? ??"
+  },
+  "auto.components.github.GitHubWorkItemLabelPopoverContent.8b0d52ee3a": {
+    "ko": "?? ??..."
+  },
+  "auto.components.github.GitHubWorkItemLabelPopoverContent.cddd9b04a7": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.github.GitHubWorkItemLabelPopoverContent.de26e2eb06": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.IssueSourceSelector.51d1608920": {
+    "ko": "origin"
+  },
+  "auto.components.github.IssueSourceSelector.643d7e9496": {
+    "ko": "upstream"
+  },
+  "auto.components.github.IssueSourceSelector.cdc9bd64fa": {
+    "ko": "????"
+  },
+  "auto.components.github.PRFilterDropdowns.01f3f3d161": {
+    "ko": "???"
+  },
+  "auto.components.github.PRFilterDropdowns.19bb6f115f": {
+    "ko": "reviewed-by"
+  },
+  "auto.components.github.PRFilterDropdowns.7f1ba66c3e": {
+    "ko": "??? ??"
+  },
+  "auto.components.github.PRFilterDropdowns.9d0f2eda6d": {
+    "ko": "??"
+  },
+  "auto.components.github.PRFilterDropdowns.b27b7e526c": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.github.PRFilterSections.1e9b5244f2": {
+    "ko": "??"
+  },
+  "auto.components.github.PRFilterSections.24754c44ad": {
+    "ko": "???"
+  },
+  "auto.components.github.PRFilterSections.2b2f019091": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.PRFilterSections.712c5abdbf": {
+    "ko": "??"
+  },
+  "auto.components.github.PRFilterSections.7bf3a6e5ac": {
+    "ko": "???"
+  },
+  "auto.components.github.PRFilterSections.b1d9fdea08": {
+    "ko": "??"
+  },
+  "auto.components.github.PRFilterSections.f0cf6dd591": {
+    "ko": "??"
+  },
+  "auto.components.github.github.rate.limit.display.6da1858354": {
+    "ko": "?? · ?????"
+  },
+  "auto.components.github.github.rate.limit.display.budget_scope_prefix": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.github.rate.limit.display.f42790d150": {
+    "ko": "/"
+  },
+  "auto.components.github.githubIssueCloseReasons.completed.description": {
+    "ko": "??, ??, ???, ???"
+  },
+  "auto.components.github.githubIssueCloseReasons.duplicate.description": {
+    "ko": "?? ??? ??"
+  },
+  "auto.components.github.githubIssueCloseReasons.duplicate.label": {
+    "ko": "???? ??"
+  },
+  "auto.components.github.githubIssueCloseReasons.notPlanned.description": {
+    "ko": "???? ??, ?? ??, ???"
+  },
+  "auto.components.github.githubIssueCloseReasons.notPlanned.label": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.github.pr.merge.state.039c072f94": {
+    "ko": "???"
+  },
+  "auto.components.github.pr.merge.state.1432ecff30": {
+    "ko": "GitHub??? ? PR? ??? ? ??? ??? ?? ??? ??????."
+  },
+  "auto.components.github.pr.merge.state.4e2507176b": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.github.pr.merge.state.87fa36ac83": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.pr.merge.state.9bd983ce8f": {
+    "ko": "GitHub??? ? PR? ??? ? ??? ??? ??? ?? ?? ????."
+  },
+  "auto.components.github.pr.merge.state.a5b66afb58": {
+    "ko": "?? ??"
+  },
+  "auto.components.github.pr.merge.state.b289646bcd": {
+    "ko": "GitHub? ? PR? ?? ??? ????? ?????."
+  },
+  "auto.components.github.pr.merge.state.fbd4f57f0a": {
+    "ko": "??? ??????. ?? ?? ?? ?? ??? ?? ?????."
+  },
+  "auto.components.github.project.ProjectCell.54cac64427": {
+    "ko": "?? repo ???? ????."
+  },
+  "auto.components.github.project.ProjectCell.8d669084f6": {
+    "ko": "???"
+  },
+  "auto.components.github.project.ProjectCell.af5d8c912a": {
+    "ko": "??? ??"
+  },
+  "auto.components.github.project.ProjectPicker.9b36829267": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.github.project.ProjectPicker.b3044b7a25": {
+    "ko": "??"
+  },
+  "auto.components.github.project.ProjectViewWrapper.067119985c": {
+    "ko": "GitHub ??, ?: assignee:@me is:open"
+  },
+  "auto.components.github.project.ProjectViewWrapper.1850fceac8": {
+    "ko": "{{value0}}/{{value1}}?(?) FABRICA? ???? ?? ????. ??? ????? ????? GitHub?? ???."
+  },
+  "auto.components.github.project.ProjectViewWrapper.1aa7c952b9": {
+    "ko": "???? ??"
+  },
+  "auto.components.github.project.ProjectViewWrapper.4d2a77a119": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.gitlab.gitlab.rate.limit.display.3e2c982cfa": {
+    "ko": "??, ?????"
+  },
+  "auto.components.gitlab.gitlab.rate.limit.display.budget_scope_prefix": {
+    "ko": "?? ??"
+  },
+  "auto.components.gitlab.gitlab.rate.limit.display.ea8ad0bae8": {
+    "ko": "/"
+  },
+  "auto.components.jira.connect.dialog.2849ddb295": {
+    "ko": "Atlassian ???"
+  },
+  "auto.components.jira.connect.dialog.3d81bf3ab3": {
+    "ko": "API ??"
+  },
+  "auto.components.jira.connect.dialog.4a2ab52781": {
+    "ko": "?? ?…"
+  },
+  "auto.components.jira.connect.dialog.7b3967c12f": {
+    "ko": "Atlassian API ??"
+  },
+  "auto.components.jira.connect.dialog.8090504a3e": {
+    "ko": "???? ?? ??:"
+  },
+  "auto.components.jira.connect.dialog.8388bdea2b": {
+    "ko": "Jira ??? ??"
+  },
+  "auto.components.jira.connect.dialog.d785c42b8b": {
+    "ko": "Jira Cloud ??? URL, Atlassian ???, API ??? ??? ??? ?????."
+  },
+  "auto.components.jira.connect.dialog.e176f9d0c5": {
+    "ko": "Jira Cloud ??? URL"
+  },
+  "auto.components.jira.connect.dialog.fdd26d81cc": {
+    "ko": "Atlassian ?? ??"
+  },
+  "auto.components.linear.api.key.dialog.57a66522c8": {
+    "ko": "?? ?"
+  },
+  "auto.components.linear.api.key.dialog.edec49dfae": {
+    "ko": "lin_api_..."
+  },
+  "auto.components.linear.priority.icon.c43d3e065b": {
+    "ko": "????:"
+  },
+  "auto.components.linear.project.view.surfaces.06b887d622": {
+    "ko": "?? ??"
+  },
+  "auto.components.linear.project.view.surfaces.111bef9aa8": {
+    "ko": "??"
+  },
+  "auto.components.linear.project.view.surfaces.20b9d09b7d": {
+    "ko": "? ? ??"
+  },
+  "auto.components.linear.project.view.surfaces.3ad562bdf4": {
+    "ko": "?? ? ??"
+  },
+  "auto.components.linear.project.view.surfaces.3be47aed6f": {
+    "ko": "????"
+  },
+  "auto.components.linear.project.view.surfaces.563501f191": {
+    "ko": "???"
+  },
+  "auto.components.linear.project.view.surfaces.65bda65159": {
+    "ko": "??"
+  },
+  "auto.components.linear.project.view.surfaces.7616c986c6": {
+    "ko": "?? ?? {{value0}}?"
+  },
+  "auto.components.linear.project.view.surfaces.c8db98b73b": {
+    "ko": "???"
+  },
+  "auto.components.linear.project.view.surfaces.ef90b21366": {
+    "ko": "??? ?? ? ????."
+  },
+  "auto.components.linear.project.view.surfaces.f059181bd9": {
+    "ko": "???"
+  },
+  "auto.components.linear.project.view.surfaces.f5ef24cf46": {
+    "ko": "???"
+  },
+  "auto.components.linear.scope.selector.89f6580dbf": {
+    "ko": "? ??..."
+  },
+  "auto.components.mobile.MobilePage.1b4509a8a1": {
+    "ko": "????"
+  },
+  "auto.components.mobile.MobilePage.e17393c6a3": {
+    "ko": "??? ????"
+  },
+  "auto.components.mobile.PhoneCarousel.93217b41c1": {
+    "ko": "???? ??"
+  },
+  "auto.components.mobile.slides.HomeSlide.0bad5b07c8": {
+    "ko": "GitHub ? Linear"
+  },
+  "auto.components.mobile.slides.HomeSlide.0bc1881bc4": {
+    "ko": "??? · ???? 40? · ?? 5?"
+  },
+  "auto.components.mobile.slides.HomeSlide.c0e2e9dcd9": {
+    "ko": "?? ?? ?? ?????"
+  },
+  "auto.components.mobile.slides.TerminalSlide.2defc05141": {
+    "ko": "dev@mac"
+  },
+  "auto.components.mobile.slides.TerminalSlide.53ff909568": {
+    "ko": "Tab"
+  },
+  "auto.components.mobile.slides.TerminalSlide.58a9ee6003": {
+    "ko": "?? ?? ??. ???? diff? ??????"
+  },
+  "auto.components.mobile.slides.TerminalSlide.80cc356591": {
+    "ko": "??"
+  },
+  "auto.components.mobile.slides.TerminalSlide.8d6516312d": {
+    "ko": "terminals 2? · claude ??"
+  },
+  "auto.components.mobile.slides.TerminalSlide.a6e7cdc688": {
+    "ko": "pnpm test --filter mobile"
+  },
+  "auto.components.mobile.slides.TerminalSlide.e0f98be657": {
+    "ko": "FABRICA/feat-mobile-page"
+  },
+  "auto.components.mobile.slides.TerminalSlide.e4befee569": {
+    "ko": "?"
+  },
+  "auto.components.mobile.slides.WorktreeListSlide.17f9e0d226": {
+    "ko": "??"
+  },
+  "auto.components.new.workspace.ProjectCombobox.empty": {
+    "ko": "??? ???? ????? ????."
+  },
+  "auto.components.new.workspace.ProjectCombobox.search": {
+    "ko": "???? ??..."
+  },
+  "auto.components.notification.sound.options.0acd3d384e": {
+    "ko": "??"
+  },
+  "auto.components.notification.sound.options.1e4b81d892": {
+    "ko": "??"
+  },
+  "auto.components.notification.sound.options.79919c832d": {
+    "ko": "?"
+  },
+  "auto.components.notification.sound.options.86af8d938c": {
+    "ko": "? ??"
+  },
+  "auto.components.onboarding.AgentStep.1eee1c7bd8": {
+    "ko": "PATH?? agents? ?? ?????. ??? ??? ??? ????? ? terminal? ?? ?????."
+  },
+  "auto.components.onboarding.AgentStep.showMoreAgents": {
+    "ko": "agents {{value0}}? ? ???"
+  },
+  "auto.components.onboarding.AgentStep.yoloPermissionsInfo": {
+    "ko": "Agent ?? ??"
+  },
+  "auto.components.onboarding.AgentStep.yoloPermissionsLabel": {
+    "ko": "Yolo / ?? ?? ???? ????"
+  },
+  "auto.components.onboarding.AgentStep.yoloPermissionsTooltip": {
+    "ko": "??? ??? ?? agents ?? ??? ?????."
+  },
+  "auto.components.onboarding.IntegrationsStep.0b4a7d23ab": {
+    "ko": "??? ?"
+  },
+  "auto.components.onboarding.OnboardingFlow.322fc50a18": {
+    "ko": "FABRICA? ?? CLI agent? ?? ?????. ?? ?? ??? agent? ?????. ???? ??? ? ????."
+  },
+  "auto.components.onboarding.OnboardingFlow.a5e5da02f7": {
+    "ko": "??"
+  },
+  "auto.components.onboarding.OnboardingFlow.windowsTerminalSubtitle": {
+    "ko": "? ??? ??? ?? ?? terminal?? ??? ??? ???? ??? ?????."
+  },
+  "auto.components.onboarding.ThemeStep.7ee9234e54": {
+    "ko": "Ghostty ??? ?????."
+  },
+  "auto.components.onboarding.ThemeStep.94b9dc561d": {
+    "ko": "?? -> Terminal"
+  },
+  "auto.components.repo.NestedRepoChecklist.ea54c7bf8f": {
+    "ko": "/"
+  },
+  "auto.components.repo.NestedRepoChecklist.f7e1170567": {
+    "ko": "???"
+  },
+  "auto.components.repo.NestedRepoScanLimitNotice.642a43c139": {
+    "ko": "?? repos ?? ??"
+  },
+  "auto.components.repo.RepoCombobox.b4a235e886": {
+    "ko": "???? ?? ?"
+  },
+  "auto.components.repo.repo.icon.477b28c948": {
+    "ko": "??????"
+  },
+  "auto.components.repo.repo.icon.d202c659a3": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.agentSessionQueued": {
+    "ko": "{{value0}} ??? ???? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.clearSearch": {
+    "ko": "?? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.localWorkspacesOnly": {
+    "ko": "???? ????? ?? ????????? ??? ? ????."
+  },
+  "auto.components.right.sidebar.AiVaultPanel.noAgentSessionsFound": {
+    "ko": "agent ??? ?? ? ????"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.noSessionsMatchFilters": {
+    "ko": "?? ??? ???? ??? ????"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.openWorkspaceBeforeResuming": {
+    "ko": "??? ???? ?? ??????? ???."
+  },
+  "auto.components.right.sidebar.AiVaultPanel.refreshSessionHistory": {
+    "ko": "?? ?? ????"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.remoteBrowseLocalHistory": {
+    "ko": "?? ??????? ?? ??? ??? ? ????. ?? ??? ?? ???????? ?????."
+  },
+  "auto.components.right.sidebar.AiVaultPanel.resumeCommandCopied": {
+    "ko": "?? ??? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.resumePastSessions": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.searchSessions": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.sessionHistory": {
+    "ko": "Agent ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.shownRecent": {
+    "ko": "{{value0}}? ?? · ?? {{value1}}?"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.transcriptsSkipped": {
+    "ko": "?? ?? {{count}}? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.valueCopied": {
+    "ko": "{{value0}} ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.allScope": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.allSessions": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.allSessionsLower": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.created": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.currentWorkspace": {
+    "ko": "?? ??????"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.currentWorkspaceLower": {
+    "ko": "?? ??????"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.currentWorktreeLower": {
+    "ko": "?? ????"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.globalScope": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.group": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.hideEmptySessions": {
+    "ko": "? ?? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.lastUpdated": {
+    "ko": "??? ????"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.resetView": {
+    "ko": "?? ???"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.scanningSessions": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.scope": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.scopeAriaLabel": {
+    "ko": "?? ?? ??: {{value0}}"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.sort": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.thisScope": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.viewOptions": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.viewOptionsAriaLabel": {
+    "ko": "?? ?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.worktreeScope": {
+    "ko": "????"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.branch": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.copyDetailValue": {
+    "ko": "{{value0}} ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.copyLogPath": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.copyResumeCommand": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.copySessionId": {
+    "ko": "?? ID ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.created": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.daysAgo": {
+    "ko": "{{value0}}? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.hoursAgo": {
+    "ko": "{{value0}}?? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.justNow": {
+    "ko": "?? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.latestLog": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.log": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.minutesAgo": {
+    "ko": "{{value0}}? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.model": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.monthsAgo": {
+    "ko": "{{value0}}?? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.noReadablePreview": {
+    "ko": "? ?? ???? ?? ? ?? ??? ????? ????."
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.openLog": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.openWorkingDirectory": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.resumeCommand": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.resumeInNewTab": {
+    "ko": "? ??? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.revealLog": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.session": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.sessionActions": {
+    "ko": "{{value0}} ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.tokenSuffix": {
+    "ko": " · ?? {{value0}}?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.unknownLocation": {
+    "ko": "? ? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.unknownTime": {
+    "ko": "? ? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.updated": {
+    "ko": "?????"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.usage": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.usageValue": {
+    "ko": "??? {{value0}}?{{value1}}"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.workingDir": {
+    "ko": "?? ????"
+  },
+  "auto.components.right.sidebar.AiVaultSessionDetails.yearsAgo": {
+    "ko": "{{value0}}? ?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.copyLogPath": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.copyResumeCommand": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.copySessionId": {
+    "ko": "?? ID ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.messageCount": {
+    "ko": "??? {{value0}}?"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.openLog": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.openWorkingDirectory": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.resumeAgentSession": {
+    "ko": "{{value0}} ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.resumeInNewTab": {
+    "ko": "? ??? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.revealLog": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultSessionRow.tokenCount": {
+    "ko": "?? {{value0}}?"
+  },
+  "auto.components.right.sidebar.BulkActionBar.60ed678138": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.BulkActionBar.ef5f5bd06e": {
+    "ko": "????? ??? ("
+  },
+  "auto.components.right.sidebar.ChecksPanel.5c88c6db07": {
+    "ko": "{{value0}}?? ??"
+  },
+  "auto.components.right.sidebar.ChecksPanel.dda5924a40": {
+    "ko": "??? ??? Git ???? ??? ?? ????? ?????."
+  },
+  "auto.components.right.sidebar.ChecksPanel.fdb27637f2": {
+    "ko": "?? ?…"
+  },
+  "auto.components.right.sidebar.CreatePullRequestDialog.6f5f1962b6": {
+    "ko": "?? ???"
+  },
+  "auto.components.right.sidebar.CreatePullRequestDialog.7a21f0dae8": {
+    "ko": "{{value0}}?? ??"
+  },
+  "auto.components.right.sidebar.FileExplorerRow.3161c4e425": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.GitHistoryPanel.8232c8b2f2": {
+    "ko": "{{value0}} commit ??: {{value1}}"
+  },
+  "auto.components.right.sidebar.GitHistoryPanel.9289ba0cb9": {
+    "ko": "refs? ??????"
+  },
+  "auto.components.right.sidebar.PortsPanel.0f1d8cd324": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.PortsPanel.729be0b4e5": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.PortsPanel.9f475dc994": {
+    "ko": "?? ?..."
+  },
+  "auto.components.right.sidebar.PortsPanel.b1ff94fa27": {
+    "ko": "????"
+  },
+  "auto.components.right.sidebar.PortsPanel.c9d106547a": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.Search.1ec640c9c7": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.SourceControl.03d238218c": {
+    "ko": "????"
+  },
+  "auto.components.right.sidebar.SourceControl.0fad573938": {
+    "ko": "commit ?? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.11b5dd8e41": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.3278b2767b": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.SourceControl.383cf92c73": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.SourceControl.3a231c845b": {
+    "ko": "? ? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.6d7f2a47e5": {
+    "ko": "??? ?? ?? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.812cb992ee": {
+    "ko": "{{value0}}?? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.834cb3f23d": {
+    "ko": "AI? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.8cde1a2fb0": {
+    "ko": "????"
+  },
+  "auto.components.right.sidebar.SourceControl.9bb062a886": {
+    "ko": "commit ?? ??"
+  },
+  "auto.components.right.sidebar.SourceControl.a5e5a11090": {
+    "ko": "?? ?? ?? ?? ?? — ?? ?? ??? ????? ???? ?????."
+  },
+  "auto.components.right.sidebar.SourceControl.aaf1451654": {
+    "ko": "?? {{value0}} ???"
+  },
+  "auto.components.right.sidebar.SourceControl.c05fe04839": {
+    "ko": "{{value0}}? ??? ?????(origin ??)."
+  },
+  "auto.components.right.sidebar.SourceControl.d37e68f61d": {
+    "ko": "??? ???? ???? ?…"
+  },
+  "auto.components.right.sidebar.SourceControl.f62ce91ade": {
+    "ko": "origin"
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialog.808cfe0a3b": {
+    "ko": "? repos"
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.1bb611240f": {
+    "ko": "FABRICA ?? ????? ????? {basePrompt}? ?????."
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.23280cbab1": {
+    "ko": "? ????? {basePrompt}? ???? ?? ?? agent? FABRICA ?? ????? ?? ????."
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.6cefcdfba1": {
+    "ko": "??? Source Control AI ???? ??? ? ????."
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.c29f9cf266": {
+    "ko": "? ????? ???? ???? ? ??? ???? ??"
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.d8f40128ee": {
+    "ko": "{basePrompt}? FABRICA ?? ???????."
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.f4f3c9ca4a": {
+    "ko": "???? ???"
+  },
+  "auto.components.right.sidebar.SourceControlAgentActionDialogForm.fe119187bb": {
+    "ko": "--model sonnet"
+  },
+  "auto.components.right.sidebar.SourceControlTextGenerationDialogForm.551ffd111b": {
+    "ko": "--model sonnet"
+  },
+  "auto.components.right.sidebar.checks.panel.content.0975eeaaef": {
+    "ko": "???? ??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.0fc6f743b3": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.checks.panel.content.3a71a6ed0b": {
+    "ko": "??? ??? ????? ?? ??? ?????."
+  },
+  "auto.components.right.sidebar.checks.panel.content.a2fb3f4408": {
+    "ko": "?? 100? ?? ??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.b45db92d0e": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.b652f38caf": {
+    "ko": "??? ??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.b8c4e2a1f7": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.c16762ac8c": {
+    "ko": "?? ??? ??? ?? ??? ????? ?????."
+  },
+  "auto.components.right.sidebar.checks.panel.content.d098e5529a": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.checks.panel.content.d7a2f9c401": {
+    "ko": "???? ?? ?? {{value0}}? ???"
+  },
+  "auto.components.right.sidebar.checks.panel.content.ee07b33924": {
+    "ko": "? ? ??"
+  },
+  "auto.components.right.sidebar.gitlab.mr.merge.state.49ac4fec10": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.index.8bc2bbc3a0": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.index.fc3095d2ed": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.pull.policy.notice.body": {
+    "ko": "? ????? ?? commits? ?? commits? ?? ????. ? ???? ?? SSH ????? ?? ??? ??? ?? ? ?? ???? ?? ?????."
+  },
+  "auto.components.right.sidebar.pull.policy.notice.copyAria": {
+    "ko": "{{value0}} pull ?? ?? ??"
+  },
+  "auto.components.right.sidebar.pull.policy.notice.copyCommand": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.pull.policy.notice.fastForwardOnly": {
+    "ko": "fast-forward? ??"
+  },
+  "auto.components.right.sidebar.pull.policy.notice.fastForwardOnlyDescription": {
+    "ko": "???? ????? ?? ?? ?? pull???."
+  },
+  "auto.components.right.sidebar.pull.policy.notice.mergeDescription": {
+    "ko": "??? ??? ?? ??? ?? ?? commit? ????."
+  },
+  "auto.components.right.sidebar.pull.policy.notice.rebaseDescription": {
+    "ko": "?? commits? ?? ??? ?? ?? ?????."
+  },
+  "auto.components.right.sidebar.pull.policy.notice.title": {
+    "ko": "Pull ?? ??"
+  },
+  "auto.components.right.sidebar.right.panel.comment.composer.256300f8ea": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.right.panel.comment.composer.542bf6a7e2": {
+    "ko": "???"
+  },
+  "auto.components.right.sidebar.source.control.discard.confirmation.2ae5a785b3": {
+    "ko": "?????? ?? ?? ??? ?? ?????????"
+  },
+  "auto.components.right.sidebar.source.control.discard.confirmation.40e9357b2a": {
+    "ko": "??? ?? HEAD?? ??? ???? ?? ??? ?????. ? ??? ??? ? ????."
+  },
+  "auto.components.right.sidebar.source.control.discard.confirmation.5ddd8cac7f": {
+    "ko": "????? ?? ??? ?? ?????????"
+  },
+  "auto.components.right.sidebar.source.control.discard.confirmation.ddf36f291c": {
+    "ko": "??? ?? ????? ?? ??? ??????? ??????. ????? ? ??? ?????. ? ??? ??? ? ????."
+  },
+  "auto.components.right.sidebar.source.control.discard.dialog.6de99d162b": {
+    "ko": "??"
+  },
+  "auto.components.right.sidebar.source.control.dropdown.items.226b85a3a7": {
+    "ko": "????"
+  },
+  "auto.components.right.sidebar.source.control.dropdown.items.7aad2c0240": {
+    "ko": "??? ?? ?? ?? ?…"
+  },
+  "auto.components.right.sidebar.source.control.primary.action.1884cf34af": {
+    "ko": "? ???? origin? ??"
+  },
+  "auto.components.right.sidebar.source.control.primary.action.1d47e850cf": {
+    "ko": "??? ?? ???? ???? ??"
+  },
+  "auto.components.right.sidebar.source.control.primary.action.5a477d80cb": {
+    "ko": "?? ?? ?? ????"
+  },
+  "auto.components.right.sidebar.source.control.primary.action.a5d1f7b036": {
+    "ko": "{{value0}}?(?) ??? ?? commits? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.b6e2a8c147": {
+    "ko": "{{value0}}?(?) ??? ?? commits? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.b8e4f2a901": {
+    "ko": "?? ??? ?? ??? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.c7f3b9d258": {
+    "ko": "{{value0}}?(?) ??? ?? ? ???? ??????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.c9f3a1b802": {
+    "ko": "{{value0}}?(?) ??? ?? ??? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.d2a8c4e703": {
+    "ko": "? ????? {{value0}}? ??? ?? ??? ????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.d8a4c0e369": {
+    "ko": "{{value0}}?(?) ??? ?? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.e3b9d5f814": {
+    "ko": "?? ?????? {{value0}}?(?) ?? ? ????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.e9b5d1f470": {
+    "ko": "{{value0}}?(?) ??? ?? ???? ???????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.f0c6e2a581": {
+    "ko": "? ???? ?? {{value0}}?(?) ?? ??? ?? ?????."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.f4c0e6a925": {
+    "ko": "{{value0}}?(?) ??? ?? ?? ??? Commit ???."
+  },
+  "auto.components.right.sidebar.source.control.primary.action.h3i4j5k607": {
+    "ko": "? ????? {{value0}}?(?) ?? ? ??? ?? ?…"
+  },
+  "auto.components.right.sidebar.useFileDeletion.23e98f192f": {
+    "ko": "?? ???? ??? ????? ?????. ? ??? ??? ? ????."
+  },
+  "auto.components.right.sidebar.useFileDeletion.7fb9435c86": {
+    "ko": "?? ???? ????? ? ?? ??? ????? ?????. ? ??? ??? ? ????."
+  },
+  "auto.components.right.sidebar.useFileDeletion.a76c74f105": {
+    "ko": "???"
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.countMany": {
+    "ko": "??? ???? {{value0}}?"
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.countOne": {
+    "ko": "??? ???? 1?"
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.description": {
+    "ko": "? ?? ??????? ??? ????? ?????."
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.emptyCopy": {
+    "ko": "? ???????? ?? ????? ??? ?????."
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.emptyTitle": {
+    "ko": "?? ??? ????? ????"
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.label": {
+    "ko": "??????"
+  },
+  "auto.components.rightSidebar.FolderWorkspaceWorktreesPanel.unavailable": {
+    "ko": "?? ????????? ??????? ?????."
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.allChecksPassing": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.failingCount": {
+    "ko": "{{value0}}? ??"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.oneFailing": {
+    "ko": "1? ??"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.onePending": {
+    "ko": "1? ?? ?"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.oneWorktree": {
+    "ko": "???? 1?"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.pendingCount": {
+    "ko": "{{value0}}? ?? ?"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.reviewChecks": {
+    "ko": "?? ??"
+  },
+  "auto.components.rightSidebar.FolderWorkspacePrChecksPanel.worktreeCount": {
+    "ko": "???? {{value0}}?"
+  },
+  "auto.components.settings.AccountsPane.350b2a1aa7": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.AccountsPane.7ce0e1907c": {
+    "ko": "). ????? DevTools -> Network -> opencode.ai ?? -> Cookie ???? ????. OpenCode Go ??? ? ???? Windows ? WSL terminals?? ?????."
+  },
+  "auto.components.settings.AccountsPane.8951c5309f": {
+    "ko": "auth=Fe26.2**…"
+  },
+  "auto.components.settings.AccountsPane.b15ce90870": {
+    "ko": "{{value0}} -> {{value1}}. ?? ??? ???? ?? ?? ?? Claude terminals? ?? ?????."
+  },
+  "auto.components.settings.AccountsPane.d70a5287a4": {
+    "ko": "?? ??? ??? ? ??? ??? ?????? ID ??????."
+  },
+  "auto.components.settings.AdvancedNetworkSettingsSection.0adfce9fa7": {
+    "ko": "http, https, SOCKS, SOCKS4, SOCKS5 URL? ?????."
+  },
+  "auto.components.settings.AgentsPane.2d133152fa": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.AgentsPane.6f99bf5dd0": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.AgentsPane.agentPermissions": {
+    "ko": "Agent ??"
+  },
+  "auto.components.settings.AgentsPane.agentPermissionsDescription": {
+    "ko": "FABRICA? agents? ??? ? ?? ????? ???, ?? ??? ???? ?????."
+  },
+  "auto.components.settings.AgentsPane.agentPermissionsInfo": {
+    "ko": "Agent ?? ??"
+  },
+  "auto.components.settings.AgentsPane.f9f127d664": {
+    "ko": "? agent? ???? ??? ??? ????? ?? ?? ?? ?? ??? ?????."
+  },
+  "auto.components.settings.AppearancePane.932ff1fbff": {
+    "ko": "??"
+  },
+  "auto.components.settings.AppearancePane.fb0e0b4453": {
+    "ko": "???"
+  },
+  "auto.components.settings.AppearancePane.fd89b5487c": {
+    "ko": "???"
+  },
+  "auto.components.settings.AutoRenameBranchFromWorkSetting.2ee2779c05": {
+    "ko": "{firstPrompt}"
+  },
+  "auto.components.settings.AutoRenameBranchFromWorkSetting.69bf4830c2": {
+    "ko": "FABRICA? ??? ?????"
+  },
+  "auto.components.settings.AutoRenameBranchFromWorkSetting.800edb1e54": {
+    "ko": "fix-login-flow"
+  },
+  "auto.components.settings.AutoRenameBranchFromWorkSetting.a4fa380b67": {
+    "ko": "{assistantMessage}"
+  },
+  "auto.components.settings.AutoRenameBranchFromWorkSetting.d9b65054ef": {
+    "ko": ") ??? ???? ?? ???? ?????. FABRICA? ?? ?? ?? ???? ??? ???, ??? ??? ??? ??? ????."
+  },
+  "auto.components.settings.AutoRenameBranchPromptEditor.ebb942a2ec": {
+    "ko": "fix-login-flow"
+  },
+  "auto.components.settings.BaseRefPicker.915ad97875": {
+    "ko": "upstream"
+  },
+  "auto.components.settings.BaseRefPicker.b468f46726": {
+    "ko": "upstream/main"
+  },
+  "auto.components.settings.BrowserDefaultZoomSetting.2622126877": {
+    "ko": "?? ?? ???? ?? ???? ??/?? ?????."
+  },
+  "auto.components.settings.BrowserPane.6480776a03": {
+    "ko": "??? ???? ???? ??????."
+  },
+  "auto.components.settings.BrowserPane.86b7c83fee": {
+    "ko": "? ???"
+  },
+  "auto.components.settings.BrowserPane.c0f85056d9": {
+    "ko": "? FABRICA ??? ???? ??????."
+  },
+  "auto.components.settings.BrowserPane.cd47bc9622": {
+    "ko": "? ???? ?? ?? ???? ?????. ??? ???? ??? ???? ????? ??? ?????:"
+  },
+  "auto.components.settings.BrowserProfileRow.d420c43729": {
+    "ko": "{{value1}}{{value2}}?? {{value0}}?? ??? {{value3}}(?)? ??????."
+  },
+  "auto.components.settings.BrowserUseComputerUseNotice.15b5e680ba": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.settings.CliSection.8a9b784c60": {
+    "ko": "???"
+  },
+  "auto.components.settings.CommitMessageAiPane.15b60d54b2": {
+    "ko": "?: ollama run llama3.1 {prompt}"
+  },
+  "auto.components.settings.CommitMessageAiPane.6c84ba6de3": {
+    "ko": "???"
+  },
+  "auto.components.settings.CommitMessageAiPane.a69e1fe91a": {
+    "ko": "????"
+  },
+  "auto.components.settings.CommitMessageAiPane.b8b6fd55b4": {
+    "ko": "{prompt}"
+  },
+  "auto.components.settings.CommitMessageAiPane.d8b6764d79": {
+    "ko": "??? ?? ?? ??? ??"
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.defaultRuntime": {
+    "ko": "?? ???? ???"
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.distroRequired": {
+    "ko": "????? WSL? ????? ?? WSL ???? ?????."
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.selectDistro": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.windowsDescription": {
+    "ko": "?????? ????? ?? ? Windows? ?????."
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.wslDescription": {
+    "ko": "????? ??? ????? ?? ? WSL? ?? {{value0}}?(?) ?????."
+  },
+  "auto.components.settings.DefaultWindowsProjectRuntimeSetting.wslUnavailable": {
+    "ko": "WSL? ??? ? ????. WSL? ???? ????? ??? ?????."
+  },
+  "auto.components.settings.DevToolsPane.FABRICACloudDescription": {
+    "ko": "?? ???? ???? ??? ?? ????. ??????? ?????. ?? ????? FABRICA_CLOUD_API_URL? FABRICA_CLOUD_CLIENT_ID? ???? ???? ?? ????? ?????."
+  },
+  "auto.components.settings.DeveloperPermissionsPane.16381e040a": {
+    "ko": "???"
+  },
+  "auto.components.settings.DeveloperPermissionsPane.e119f0d66b": {
+    "ko": "???"
+  },
+  "auto.components.settings.ExperimentalPane.agentHibernation.idleMinutesDescription": {
+    "ko": "??? ????? agent? FABRICA? ?? ?? ??? ???? ?? ??? ?? ??(?)???."
+  },
+  "auto.components.settings.ExperimentalPane.agentHibernation.idleMinutesLabel": {
+    "ko": "?? ????"
+  },
+  "auto.components.settings.ExperimentalPane.agentHibernation.idleMinutesSuffix": {
+    "ko": "?"
+  },
+  "auto.components.settings.ExperimentalPane.agentHibernation.title": {
+    "ko": "Agent ?? ??"
+  },
+  "auto.components.settings.ExperimentalPane.agentHibernation.toggleLabel": {
+    "ko": "Agent ?? ?? ??"
+  },
+  "auto.components.settings.ExperimentalPane.newWorktreeCardStyle.copy": {
+    "ko": "????? ???? ?? ????, ????? ??, ?? ?? ?? ?? ? ?? ??? ?? ???."
+  },
+  "auto.components.settings.ExperimentalPane.newWorktreeCardStyle.description": {
+    "ko": "????? ???? ?? ????, ????? ??, ?? ?? ?? ?? ? ?? ??? ?? ???."
+  },
+  "auto.components.settings.EphemeralVmsPane.recipes": {
+    "ko": "???"
+  },
+  "auto.components.settings.EphemeralVmsPane.whatTitle": {
+    "ko": "? ??? ?? ?? ??"
+  },
+  "auto.components.settings.GeneralEditorSettingsSection.45c6e85c4d": {
+    "ko": "???"
+  },
+  "auto.components.settings.GeneralPane.d58fccfd84": {
+    "ko": "??"
+  },
+  "auto.components.settings.GeneralPane.projectRuntime": {
+    "ko": "???? ???"
+  },
+  "auto.components.settings.GeneralPane.projectRuntimeDescription": {
+    "ko": "??? ????? ?? ?? Windows ????? ?? ??????."
+  },
+  "auto.components.settings.GeneralSupportSection.6922c1fa2b": {
+    "ko": "GitHub?? FABRICA ?? ???"
+  },
+  "auto.components.settings.GeneralSupportSection.964acc6bb4": {
+    "ko": "??"
+  },
+  "auto.components.settings.GeneralUpdateSettingsSection.90eb7309d7": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.GeneralWorkspaceSettingsSection.5567191a6e": {
+    "ko": "????"
+  },
+  "auto.components.settings.GeneralWorkspaceSettingsSection.ba3480642f": {
+    "ko": "?????? ??"
+  },
+  "auto.components.settings.GitPane.2351aa5a31": {
+    "ko": "Git ??? ??"
+  },
+  "auto.components.settings.GitPane.36e3de3619": {
+    "ko": "??? ??? ???? ??? ???. FABRICA? ?? ???? commits ?? ?? ?? ???? ?? ?? commits? ??? ????? ?????."
+  },
+  "auto.components.settings.GitPane.976afc6b3e": {
+    "ko": "??????? ??? FABRICA? ?? ?? ???? ??????, ???? ?? ???? ???? fast-forward???. ?:"
+  },
+  "auto.components.settings.GitPane.b5f534717a": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.GitPane.b9b5771bb1": {
+    "ko": "??"
+  },
+  "auto.components.settings.GitPane.b9c011fbc2": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.GitPane.d072a12995": {
+    "ko": "git diff main...HEAD"
+  },
+  "auto.components.settings.GitPane.db3a127eb1": {
+    "ko": "??? ?? ??? ?? ??? ?????"
+  },
+  "auto.components.settings.GitPane.e02ea23a32": {
+    "ko": "FABRICA ??"
+  },
+  "auto.components.settings.GitPane.f35007e6e8": {
+    "ko": "git-username"
+  },
+  "auto.components.settings.IntegrationsPane.027440e1cb": {
+    "ko": "MR, ??, ? ?, ?????? ?? ??? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.05e5245af7": {
+    "ko": "GitLab CLI? ???? ??? ???? ?????. terminal?? ?? ??? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.09285e9fe6": {
+    "ko": "GitHub CLI? ???? ??? ???? ?????. terminal?? ?? ??? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.1683acbac4": {
+    "ko": "FABRICA? PR, MR, ??, ?? ??? ??? ?? ???? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.1a62c295c6": {
+    "ko": "Gitea ?? ??? ?????? ??? ? ????. ??, API ?? URL, repos ??? ??? ? ?? ??? ??? ?? FABRICA? ?? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.2c0330ec3e": {
+    "ko": "??? repos? ??, ???"
+  },
+  "auto.components.settings.IntegrationsPane.3ba07f933b": {
+    "ko": "FABRICA? ??? ???? ??? ????? ??????? ???? ? ??? ?? ???? ?????."
+  },
+  "auto.components.settings.IntegrationsPane.67a9f26a80": {
+    "ko": ". ??"
+  },
+  "auto.components.settings.IntegrationsPane.ae38fc62a8": {
+    "ko": "??"
+  },
+  "auto.components.settings.IntegrationsPane.d9467ab026": {
+    "ko": "?? repos? Git ???? ?????. ?????"
+  },
+  "auto.components.settings.IntegrationsPane.e74de656ce": {
+    "ko": "glab auth login"
+  },
+  "auto.components.settings.ManageSessionsSection.2896a50f50": {
+    "ko": "terminal {{value0}}(?)? ??"
+  },
+  "auto.components.settings.ManageSessionsSection.33c2a1e1b4": {
+    "ko": "?? {{value0}} ??"
+  },
+  "auto.components.settings.McpConfigSection.3b224167ff": {
+    "ko": "??"
+  },
+  "auto.components.settings.McpConfigSection.6bac9ddfc6": {
+    "ko": "SSH repos? ?? ?? ???? ?? ????. ??? ??? ?????? ?? ???? ?????."
+  },
+  "auto.components.settings.MobileEmulatorExamples.4daa95f25a": {
+    "ko": "FABRICA CLI ??? ??? ????? Claude Code, Codex ?? ?? agent? ?? ? ??? ??????."
+  },
+  "auto.components.settings.MobileEmulatorSettingsPane.a4f1c82d90": {
+    "ko": "?????"
+  },
+  "auto.components.settings.MobileEmulatorSettingsPane.ae1612c58c": {
+    "ko": "???"
+  },
+  "auto.components.settings.MobilePane.35100bca5d": {
+    "ko": "????? terminals? ???? ?? FABRICA? ??? ??? ?? terminals? ?????. ?? ??? ?? ??? ???? terminals? ??? ??? ?????(??? CLI ??? ?????? ??) ?? ?????? ?? ??? ????? ??? ?????. ???? '? terminals ??' ?? '?? terminals ??'? ??? ???? ???? ??? ??? ? ????."
+  },
+  "auto.components.settings.MobileSettingsPane.b0088412a1": {
+    "ko": "?? ???? Android APK? ????"
+  },
+  "auto.components.settings.NotificationsPane.274af61bc0": {
+    "ko": "???"
+  },
+  "auto.components.settings.NotificationsPane.4aa5085cd7": {
+    "ko": "??? ??:"
+  },
+  "auto.components.settings.NotificationsPane.b6fc369244": {
+    "ko": "????? terminal? ? ??? ?????."
+  },
+  "auto.components.settings.OpenAiTranscriptionKeyDialog.07b26f2742": {
+    "ko": "? ???"
+  },
+  "auto.components.settings.PrivacyPane.79a0f3c16c": {
+    "ko": "?????? ??? ?? ???????."
+  },
+  "auto.components.settings.PrivacyPane.e3970bbbf5": {
+    "ko": "CI ?? ??? ????? ??? ?????? ?????????. ??? ???? ?? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.applyRuntimeChange": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.defaultRuntime": {
+    "ko": "???({{value0}})"
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.distroMissing": {
+    "ko": "{{value0}}?(?) WSL? ???? ?? ????. ??? ???? ????? ? ????? Windows? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.distroRequired": {
+    "ko": "WSL ???? ????? ? ????? Windows? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.inheritedWindows": {
+    "ko": "???? ???? ????. ?? ???? Windows? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.inheritedWsl": {
+    "ko": "???? ???? ????. ?? ???? WSL? ?? {{value0}}?(?) ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.pendingRuntimeChange": {
+    "ko": "??? ??? ?? ????. ??? ? ? ???? ??? ??? ???? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.projectRuntime": {
+    "ko": "???? ???"
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.projectWindows": {
+    "ko": "? ????? Windows?? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.projectWsl": {
+    "ko": "? ????? WSL? ?? {{value0}}?? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.runtimeChangeHelp": {
+    "ko": "??? ??? ? ????? ? terminals, agent ??, ?? ??? ?????. ?? terminals? ?? ???? ?????."
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.selectDistro": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.ProjectWindowsRuntimeSetting.wslUnavailable": {
+    "ko": "WSL? ??? ? ????. ? ????? Windows? ????? WSL? ?????."
+  },
+  "auto.components.settings.ProviderHostScopeControl.change_host": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.QuickCommandsPane.9fcfc29519": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryHooksSection.0e0dd5b9a5": {
+    "ko": "???"
+  },
+  "auto.components.settings.RepositoryHooksSection.13394103bd": {
+    "ko": "??? ?? GitHub ?? ??"
+  },
+  "auto.components.settings.RepositoryHooksSection.29397e8bbc": {
+    "ko": "commit ? repo ??? ???? ?? ??? ?????."
+  },
+  "auto.components.settings.RepositoryHooksSection.2cc27dc12b": {
+    "ko": "??? ?? ??? ?? ??? ???? ??????."
+  },
+  "auto.components.settings.RepositoryHooksSection.2d03a514db": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryHooksSection.32f417fe17": {
+    "ko": "text-emerald-700 dark:text-emerald-300"
+  },
+  "auto.components.settings.RepositoryHooksSection.40a446ae16": {
+    "ko": "- ? ???? ?? ??"
+  },
+  "auto.components.settings.RepositoryHooksSection.8dbe6bedf5": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.RepositoryHooksSection.925f9e0dc4": {
+    "ko": "text-foreground"
+  },
+  "auto.components.settings.RepositoryHooksSection.95a0411b3e": {
+    "ko": "???"
+  },
+  "auto.components.settings.RepositoryHooksSection.a3fc966677": {
+    "ko": "# ?: pnpm install cp \"$FABRICA_ROOT_PATH/.env\" \"$FABRICA_WORKTREE_PATH/.env\""
+  },
+  "auto.components.settings.RepositoryHooksSection.b20c5df6ca": {
+    "ko": "? repo? ?? ??, ???? ?? ?? ??? ???? ????? `FABRICA.yaml` ??? ?????. ?? ???:"
+  },
+  "auto.components.settings.RepositoryHooksSection.b5e3e77e89": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryHooksSection.c5a55a2d2e": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryHooksSection.c90b858573": {
+    "ko": "text-amber-700 dark:text-amber-300"
+  },
+  "auto.components.settings.RepositoryHooksSection.e03d9a8f38": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.RepositoryHooksSection.fac13f8c1e": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryIconPicker.2d8bd302fa": {
+    "ko": "???"
+  },
+  "auto.components.settings.RepositoryIconPicker.b2d7fd2116": {
+    "ko": "???"
+  },
+  "auto.components.settings.RepositoryPane.addPlannedHost": {
+    "ko": "??? ????? ??"
+  },
+  "auto.components.settings.RepositoryPane.addPlannedHostConfirm": {
+    "ko": "? ????? ? ????? ??? ????? ??? ?????. ?? ??? ??? ??? ? ? ????."
+  },
+  "auto.components.settings.RepositoryPane.addPlannedHostHelp": {
+    "ko": "? ???? ??? ?? ??? ???? ??? ?????."
+  },
+  "auto.components.settings.RepositoryPane.addPlannedHostToHost": {
+    "ko": "{{host}} ??"
+  },
+  "auto.components.settings.RepositoryPane.addProjectHost": {
+    "ko": "????? ???? ??"
+  },
+  "auto.components.settings.RepositoryPane.addProjectHostHelp": {
+    "ko": "? ????? ??? ??? ??? ?????."
+  },
+  "auto.components.settings.RepositoryPane.addToAnotherHost": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.settings.RepositoryPane.availableHostsDescription": {
+    "ko": "? ????? ??? ??????."
+  },
+  "auto.components.settings.RepositoryPane.availableHostsHelp": {
+    "ko": "???? ??? ???? ??? ????? ????. ??????? ?? ? ??? ?? ? ??? ???? ??? ? ????."
+  },
+  "auto.components.settings.RepositoryPane.browseFolder": {
+    "ko": "?? ????"
+  },
+  "auto.components.settings.RepositoryPane.browseFolderHelp": {
+    "ko": "? ???? ?? ???? ?? ??? ?????."
+  },
+  "auto.components.settings.RepositoryPane.cloneFromUrl": {
+    "ko": "URL?? ??"
+  },
+  "auto.components.settings.RepositoryPane.cloneFromUrlHelp": {
+    "ko": "? ?????? ??? ???? ?????."
+  },
+  "auto.components.settings.RepositoryPane.cloneHost": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryPane.cloneUrlPlaceholder": {
+    "ko": "????? URL"
+  },
+  "auto.components.settings.RepositoryPane.cloningHost": {
+    "ko": "?? ?..."
+  },
+  "auto.components.settings.RepositoryPane.createPendingSetup": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.RepositoryPane.creatingPendingSetup": {
+    "ko": "??? ?..."
+  },
+  "auto.components.settings.RepositoryPane.existingFolder": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.RepositoryPane.hostAvailability": {
+    "ko": "??? ?? ?? ??"
+  },
+  "auto.components.settings.RepositoryPane.hostAvailabilityHelp": {
+    "ko": "?? ????? ??? ?? ????? ?????."
+  },
+  "auto.components.settings.RepositoryPane.hostSetupBlockedVersion": {
+    "ko": "FABRICA ?? ??? ???? ????."
+  },
+  "auto.components.settings.RepositoryPane.hostSetupCheckingCapability": {
+    "ko": "??? ?? ?? ?"
+  },
+  "auto.components.settings.RepositoryPane.hostSetupMissingCapability": {
+    "ko": "????? ????? ? ???? FABRICA? ???????."
+  },
+  "auto.components.settings.RepositoryPane.hostSetupStateError": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositoryPane.hostSetupStateNotSetUp": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.RepositoryPane.hostSetupStateSettingUp": {
+    "ko": "?? ?"
+  },
+  "auto.components.settings.RepositoryPane.hostSetupStateUnsupported": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.RepositoryPane.otherWaysToAdd": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.RepositoryPane.projectRuntime": {
+    "ko": "???? ???"
+  },
+  "auto.components.settings.RepositoryPane.projectRuntimeDescription": {
+    "ko": "? ????? Windows?? ???? WSL?? ???? ?????."
+  },
+  "auto.components.settings.RepositoryPane.settingUpHost": {
+    "ko": "???? ?..."
+  },
+  "auto.components.settings.RepositoryPane.setupExistingFolder": {
+    "ko": "?? ?? ????"
+  },
+  "auto.components.settings.RepositoryPane.setupExistingFolderHelp": {
+    "ko": "?? ???? ?? ?? ????? ??? ? ????? ?? ?????? ??? ? ?? ???."
+  },
+  "auto.components.settings.RepositoryPane.setupKindGit": {
+    "ko": "Git ?????"
+  },
+  "auto.components.settings.RepositoryPane.setupPathPending": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.settings.RepositoryPane.setupProjectOnHost": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.settings.RepositoryPane.setupProjectOnHostHelp": {
+    "ko": "???? ??? ? ?? ????? ?????, repos? ?????, ??? ??? ??? ?????."
+  },
+  "auto.components.settings.RepositoryPane.viewingHost": {
+    "ko": "?? ?? ???"
+  },
+  "auto.components.settings.RepositorySourceControlAiCustomCommand.f9941f0caf": {
+    "ko": "?: ollama run llama3.1 {prompt}"
+  },
+  "auto.components.settings.RepositorySourceControlAiEnablement.84233d1bb3": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositorySourceControlAiEnablement.bea897eec2": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositorySourceControlAiHostedReviewDefaults.053ccfbf52": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositorySourceControlAiHostedReviewDefaults.629ed8a9d3": {
+    "ko": "?? ? ??? ?? ??"
+  },
+  "auto.components.settings.RepositorySourceControlAiHostedReviewDefaults.777443bf89": {
+    "ko": "??"
+  },
+  "auto.components.settings.RepositorySourceControlAiHostedReviewDefaults.d32b87e754": {
+    "ko": "??? ?? ?? ??? ??"
+  },
+  "auto.components.settings.RuntimePairingUrlGenerator.b91e36a986": {
+    "ko": "?"
+  },
+  "auto.components.settings.Settings.2309068a6f": {
+    "ko": "???"
+  },
+  "auto.components.settings.Settings.23931df7e8": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.Settings.3c88ec55d6": {
+    "ko": "\"? ?? ??? ?? ? ????."
+  },
+  "auto.components.settings.Settings.3d9adfe6a5": {
+    "ko": "?? terminal, ????, Markdown ?."
+  },
+  "auto.components.settings.Settings.6742c7932c": {
+    "ko": "?? ?? ?????? ???? ??? terminal ?????."
+  },
+  "auto.components.settings.Settings.7210ac09c4": {
+    "ko": "agent ??? terminal ???? ?? ???? ???? ?????."
+  },
+  "auto.components.settings.Settings.9b83cc62c2": {
+    "ko": "terminal?? ???? ??? ??? macOS ???? ?? ?? ?????."
+  },
+  "auto.components.settings.Settings.b5ee17826b": {
+    "ko": "?? ??, ? ??? ?? ??, ? ?? ??? ????? ?? ?? FABRICA ???? ??????."
+  },
+  "auto.components.settings.Settings.b79b5b31e9": {
+    "ko": "?, ???, ??, terminal ??."
+  },
+  "auto.components.settings.Settings.c2ee313198": {
+    "ko": "SSH? ?? ?? ??? ??, terminals, Git, ??????? ?????."
+  },
+  "auto.components.settings.SettingsFormControls.c822571b2e": {
+    "ko": " \"{{value0}}\"?(?) ??"
+  },
+  "auto.components.settings.SettingsFormControls.cb330ef7f8": {
+    "ko": "/{{value0}}"
+  },
+  "auto.components.settings.SettingsFormControls.fbb428db98": {
+    "ko": "???:"
+  },
+  "auto.components.settings.SettingsFormControls.imported_from": {
+    "ko": "{{value0}}?? ???"
+  },
+  "auto.components.settings.SettingsFormControls.search_terminal_themes": {
+    "ko": "terminal ?? ??"
+  },
+  "auto.components.settings.ShortcutFilterRail.f733c4b89f": {
+    "ko": "?? ?? ? ??"
+  },
+  "auto.components.settings.ShortcutTerminalPolicyControl.0f55c6f15c": {
+    "ko": "???? ?? ? FABRICA? ???? terminal ? ?? ?? ???? ?????."
+  },
+  "auto.components.settings.ShortcutsPane.4b7ae34062": {
+    "ko": "??."
+  },
+  "auto.components.settings.SourceControlAiActionRecipeDefaults.2037c78a6f": {
+    "ko": "???"
+  },
+  "auto.components.settings.SourceControlAiActionRecipeDefaults.cb67b938c5": {
+    "ko": "??"
+  },
+  "auto.components.settings.SparsePresetSettingsSection.17f8c4ce10": {
+    "ko": "??? ???? ??? ?? ??? ???? ??? ?????."
+  },
+  "auto.components.settings.SparsePresetSettingsSection.694cc55ecb": {
+    "ko": "??? ????? ? repos? ??? ????? ??? ? ?????."
+  },
+  "auto.components.settings.SparsePresetSettingsSection.88bfbf1a9c": {
+    "ko": "? repos? ??? ??? ?? ??? ????."
+  },
+  "auto.components.settings.SparsePresetSettingsSection.8deb7024ab": {
+    "ko": "??? ?? ?? ?? ?..."
+  },
+  "auto.components.settings.SparsePresetSettingsSection.c240a16f25": {
+    "ko": "packages/web ?? apps/api? ?? repo ?? ??? ?????."
+  },
+  "auto.components.settings.SparsePresetSettingsSection.fde7ff2cc3": {
+    "ko": "packages/web shared/ui"
+  },
+  "auto.components.settings.SshPane.025e107643": {
+    "ko": "?? terminal? ???? ?????."
+  },
+  "auto.components.settings.SshPane.90e308c98b": {
+    "ko": "?? terminal ???"
+  },
+  "auto.components.settings.SshPassphraseDialog.405066423c": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.SshTargetCard.c77f1abfe3": {
+    "ko": "?? terminals ?? ?"
+  },
+  "auto.components.settings.SshTargetDestructiveActions.26be00392d": {
+    "ko": "? SSH ??? ?? ???? ??? ?????. ? ??? ?? ?? terminals? ?? ???? ?????."
+  },
+  "auto.components.settings.SshTargetForm.137e88ce8d": {
+    "ko": "FABRICA? ? ????? ?? ??? ??? ?? ???? ?? ?????."
+  },
+  "auto.components.settings.SshTargetForm.2ee9bcd2e8": {
+    "ko": "server, deploy@server:2222, ssh://server"
+  },
+  "auto.components.settings.SshTargetForm.47e082bc17": {
+    "ko": "deploy"
+  },
+  "auto.components.settings.SshTargetForm.63c0c145c1": {
+    "ko": "?? ? ??"
+  },
+  "auto.components.settings.SshTargetForm.cb91f6375c": {
+    "ko": "?? ??. ????? SSH agent? ?????."
+  },
+  "auto.components.settings.SshTargetForm.d6a5f2ee5c": {
+    "ko": "~/.ssh/id_ed25519(SSH agent? ????? ?? ???)"
+  },
+  "auto.components.settings.SshTargetForm.f42d844544": {
+    "ko": "?: cloudflared access ssh --hostname %h"
+  },
+  "auto.components.settings.TasksPane.6b23a34f6d": {
+    "ko": "Jira"
+  },
+  "auto.components.settings.TerminalAppearanceSection.16c471ee03": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalAppearanceSection.52854a5608": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalAppearanceSection.70beb1bbc7": {
+    "ko": "????"
+  },
+  "auto.components.settings.TerminalAppearanceSection.711e589f18": {
+    "ko": "? ?? ? ??? ????? ??? ?? terminal ?????????."
+  },
+  "auto.components.settings.TerminalAppearanceSection.84bd22f2cd": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalAppearanceSection.870377082f": {
+    "ko": "?"
+  },
+  "auto.components.settings.TerminalAppearanceSection.abcb4dd019": {
+    "ko": "Terminal ??"
+  },
+  "auto.components.settings.TerminalAppearanceSection.e070e8aeba": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalAppearanceSection.e90afcc44f": {
+    "ko": "?"
+  },
+  "auto.components.settings.TerminalAppearanceSection.f27a99978d": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.TerminalPane.09bf02de9a": {
+    "ko": "? terminals ??? ? ? ??? ????. ? terminals? ?????."
+  },
+  "auto.components.settings.TerminalPane.0a10420e1a": {
+    "ko": "Option? Alt? ??"
+  },
+  "auto.components.settings.TerminalPane.1c337bef4a": {
+    "ko": "JIS ?(¥) ?? ??? ????(\\\\)? ?? ????? ??? ?????."
+  },
+  "auto.components.settings.TerminalPane.219aaa59f4": {
+    "ko": "WSL ???"
+  },
+  "auto.components.settings.TerminalPane.29154326bb": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalPane.2fba319f21": {
+    "ko": "???"
+  },
+  "auto.components.settings.TerminalPane.34a0dfa06e": {
+    "ko": "? ??????? ?? ? repos ?? ????? ??? ?????."
+  },
+  "auto.components.settings.TerminalPane.3fe1c5bfe0": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalPane.4263e940e0": {
+    "ko": "JIS ?(¥) ?? ??? ?? ????(\\\\)? ?????."
+  },
+  "auto.components.settings.TerminalPane.5336c096af": {
+    "ko": "{{value0}} ?????"
+  },
+  "auto.components.settings.TerminalPane.6e6480a7df": {
+    "ko": "terminal? ????(Zellij, tmux, Neovim, fzf, Grok, SSH)? ??? ????? ??? ? ?? ???."
+  },
+  "auto.components.settings.TerminalPane.8eefeaa3da": {
+    "ko": "???? ?? ??? ??"
+  },
+  "auto.components.settings.TerminalPane.907b0b9d3e": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.TerminalPane.96be03b8eb": {
+    "ko": "PowerShell 7+"
+  },
+  "auto.components.settings.TerminalPane.9c0b1c1792": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalPane.a016ffbeed": {
+    "ko": "??? ?? Windows PowerShell? ????, PowerShell 7+? ???? ?????."
+  },
+  "auto.components.settings.TerminalPane.ab20575a8a": {
+    "ko": "??"
+  },
+  "auto.components.settings.TerminalPane.ask_before_closing_running_terminals_description": {
+    "ko": "?? ?? ???? agent? ?? terminal? ?? ?? ?? ?? ?????."
+  },
+  "auto.components.settings.TerminalPane.ask_before_closing_running_terminals_title": {
+    "ko": "?? ?? Terminals? ?? ?? ??"
+  },
+  "auto.components.settings.TerminalPane.d26174e1dd": {
+    "ko": "Windows PowerShell"
+  },
+  "auto.components.settings.TerminalPane.d78fc4fdef": {
+    "ko": "??? ?? ?"
+  },
+  "auto.components.settings.TerminalThemeSections.5e0c24b5c8": {
+    "ko": "??? ???? ?? ??? ?? ???? ?????."
+  },
+  "auto.components.settings.TerminalThemeSections.d56af60e6f": {
+    "ko": "FABRICA? ??? ??? ? ???? ??? ?????."
+  },
+  "auto.components.settings.TerminalThemeSections.d76f60c9cc": {
+    "ko": "??? ???? ?? ?? ??"
+  },
+  "auto.components.settings.TerminalThemeSections.import_themes_description": {
+    "ko": "??? ??? ?? ? ??? ?? ????? ?? ??? ? ????."
+  },
+  "auto.components.settings.TerminalThemeSections.import_themes_title": {
+    "ko": "?? ????"
+  },
+  "auto.components.settings.TerminalWindowSection.1be593d3e8": {
+    "ko": "ANSI ???"
+  },
+  "auto.components.settings.TerminalWindowSection.260d69ce9a": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.TerminalWindowSection.b96ba13ed1": {
+    "ko": "?"
+  },
+  "auto.components.settings.TerminalWindowSection.e56e7d6ea0": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.VoicePane.118b3c2dee": {
+    "ko": "??"
+  },
+  "auto.components.settings.VoicePane.174da92062": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.VoicePane.295d84b849": {
+    "ko": "? ? ??? ??, ?? ??? ??. ?? ???: ??? ?? ?? ????"
+  },
+  "auto.components.settings.VoicePane.366e1b4f36": {
+    "ko": "???? ?? ???? ???????."
+  },
+  "auto.components.settings.VoicePane.4465596675": {
+    "ko": "???"
+  },
+  "auto.components.settings.VoicePane.61a16c8141": {
+    "ko": "?? ?..."
+  },
+  "auto.components.settings.VoicePane.7cf715f891": {
+    "ko": "??? ?? ??"
+  },
+  "auto.components.settings.VoicePane.901985625d": {
+    "ko": "??"
+  },
+  "auto.components.settings.VoicePane.b6536a1d12": {
+    "ko": "?? ?"
+  },
+  "auto.components.settings.WarpThemeImportModal.builtin_themes_hint": {
+    "ko": "Warp? ?? ?? ??? Warp ?? ??? ????? ?? ? ????. FABRICA?? Dracula, Gruvbox, Solarized, Tokyo Night ? ???? ??? ?? ???? ????."
+  },
+  "auto.components.settings.WarpThemeImportModal.choose_file": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.WarpThemeImportModal.choose_folder": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.WarpThemeImportModal.choose_manually": {
+    "ko": "???? ??? ?? YAML ?? ?? ??? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.clear_all": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.WarpThemeImportModal.colors_only": {
+    "ko": "???"
+  },
+  "auto.components.settings.WarpThemeImportModal.custom_theme_yaml_hint": {
+    "ko": "??? ?? ? ???? ??? ?? ????? ?? ? ??? Warp ?? ??? YAML ??? ??? ???. Warp? ?? ?? repo? ????? Choose Folder? ??? ?? ????? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.description": {
+    "ko": "Warp ??? FABRICA terminal ??? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.found_in_source": {
+    "ko": "{{value0}}??"
+  },
+  "auto.components.settings.WarpThemeImportModal.found_theme_one": {
+    "ko": "?? 1?? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.found_theme_other": {
+    "ko": "?? {{value0}}?? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.import_theme_one": {
+    "ko": "?? 1? ????"
+  },
+  "auto.components.settings.WarpThemeImportModal.import_theme_other": {
+    "ko": "?? {{value0}}? ????"
+  },
+  "auto.components.settings.WarpThemeImportModal.import_themes": {
+    "ko": "?? ????"
+  },
+  "auto.components.settings.WarpThemeImportModal.loading": {
+    "ko": "Warp ?? ?? ?..."
+  },
+  "auto.components.settings.WarpThemeImportModal.more_skipped_files": {
+    "ko": "??? ?? {{value0}}? ? ??"
+  },
+  "auto.components.settings.WarpThemeImportModal.no_themes_found": {
+    "ko": "??? ?? Warp ??? ?? ? ????."
+  },
+  "auto.components.settings.WarpThemeImportModal.select_all": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.WarpThemeImportModal.skipped_files": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.WarpThemeImportModal.title": {
+    "ko": "Warp?? ?? ????"
+  },
+  "auto.components.settings.WarpThemeImportModal.yaml_description": {
+    "ko": "YAML ??(Warp ??)? FABRICA terminal ??? ?????."
+  },
+  "auto.components.settings.WarpThemeImportModal.yaml_no_themes_found": {
+    "ko": "??? ???? ??? ?? ? ????."
+  },
+  "auto.components.settings.WarpThemeImportModal.yaml_title": {
+    "ko": "?? YAML ????"
+  },
+  "auto.components.settings.WorkspaceDirectorySetting.1a2b3c4d5e": {
+    "ko": "????? ???"
+  },
+  "auto.components.settings.WorkspaceDirectorySetting.2b3c4d5e6f": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.WorkspaceDirectorySetting.3c4d5e6f7a": {
+    "ko": "????? ??? ???"
+  },
+  "auto.components.settings.WorkspaceDirectorySetting.4d5e6f7a8b": {
+    "ko": "????? ??? ??"
+  },
+  "auto.components.settings.WorktreeSymlinksSection.d72ba8dc68": {
+    "ko": "?? {{value0}}?"
+  },
+  "auto.components.settings.WslCliRegistration.6f91ad1333": {
+    "ko": "WSL? `{{value0}}`?(?) ???? ?????."
+  },
+  "auto.components.settings.WslCliRegistration.7ee4e52b99": {
+    "ko": "FABRICA? ??? WSL terminals?? ????? {{value0}}?(?) ?????."
+  },
+  "auto.components.settings.WslCliRegistration.951536dda5": {
+    "ko": "WSL? `{{value0}}`?(?) ??????."
+  },
+  "auto.components.settings.WslCliRegistration.e2b0ee267f": {
+    "ko": "???"
+  },
+  "auto.components.settings.WslCliRegistration.e49688f67f": {
+    "ko": "WSL? `{{value0}}`?(?) ?????????"
+  },
+  "auto.components.settings.YamlThemeImportButton.label": {
+    "ko": "YAML?? ????"
+  },
+  "auto.components.settings.accounts.search.042885c07c": {
+    "ko": "???"
+  },
+  "auto.components.settings.accounts.search.5b3f18ef4a": {
+    "ko": "??"
+  },
+  "auto.components.settings.accounts.search.7e67d7d1b6": {
+    "ko": "wrk"
+  },
+  "auto.components.settings.accounts.search.8b06729e0f": {
+    "ko": "??"
+  },
+  "auto.components.settings.accounts.search.b7c2cee442": {
+    "ko": "???"
+  },
+  "auto.components.settings.accounts.search.bdbd1e668e": {
+    "ko": "Windows"
+  },
+  "auto.components.settings.accounts.search.c759741d77": {
+    "ko": "???"
+  },
+  "auto.components.settings.accounts.search.e949b08ffb": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.advanced.search.4d44352eea": {
+    "ko": "????"
+  },
+  "auto.components.settings.advanced.search.e04e9db503": {
+    "ko": "??"
+  },
+  "auto.components.settings.agents.search.77c02fa3c3": {
+    "ko": "Windows"
+  },
+  "auto.components.settings.agents.search.agentPermissions": {
+    "ko": "Agent ??"
+  },
+  "auto.components.settings.agents.search.agentPermissionsDescription": {
+    "ko": "agent ?? ???? Yolo? ?? ???? ?????."
+  },
+  "auto.components.settings.appearance.search.00a028f25f": {
+    "ko": "???"
+  },
+  "auto.components.settings.appearance.search.0c83659f48": {
+    "ko": "???"
+  },
+  "auto.components.settings.appearance.search.35565867cb": {
+    "ko": "Moonshot"
+  },
+  "auto.components.settings.appearance.search.3a6c028ea8": {
+    "ko": "Kimi ???"
+  },
+  "auto.components.settings.appearance.search.3a9b69d734": {
+    "ko": "???"
+  },
+  "auto.components.settings.appearance.search.40e5c3c285": {
+    "ko": "kimi"
+  },
+  "auto.components.settings.appearance.search.43cfba3b95": {
+    "ko": "??"
+  },
+  "auto.components.settings.appearance.search.57fb424c56": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.appearance.search.6cf5f54ce1": {
+    "ko": "??"
+  },
+  "auto.components.settings.appearance.search.7164edf71a": {
+    "ko": "?? ????? .gitignore? ???? ??? ??? ?????."
+  },
+  "auto.components.settings.appearance.search.71e06350b4": {
+    "ko": "??"
+  },
+  "auto.components.settings.appearance.search.97957e374e": {
+    "ko": "OpenAI"
+  },
+  "auto.components.settings.appearance.search.bc046e7899": {
+    "ko": "OpenCode Go ???"
+  },
+  "auto.components.settings.appearance.search.bce3ac317a": {
+    "ko": "git"
+  },
+  "auto.components.settings.appearance.search.c690a15849": {
+    "ko": "???"
+  },
+  "auto.components.settings.appearance.search.de586def95": {
+    "ko": "??"
+  },
+  "auto.components.settings.appearance.search.e5bc35d59e": {
+    "ko": "?"
+  },
+  "auto.components.settings.appearance.search.f17d66d0d2": {
+    "ko": "?? ???? ?? ??? ?? ??? ?????."
+  },
+  "auto.components.settings.appearance.search.fe192b060e": {
+    "ko": "???"
+  },
+  "auto.components.settings.auto.rename.branch.search.7adefcdd94": {
+    "ko": "???"
+  },
+  "auto.components.settings.auto.rename.branch.search.a482f6a423": {
+    "ko": "???"
+  },
+  "auto.components.settings.browser.search.0732ebe6fb": {
+    "ko": "???"
+  },
+  "auto.components.settings.browser.search.0bb34eacc9": {
+    "ko": "??"
+  },
+  "auto.components.settings.browser.search.1c1e097985": {
+    "ko": "Arc"
+  },
+  "auto.components.settings.browser.search.1f8153acfb": {
+    "ko": "DuckDuckGo"
+  },
+  "auto.components.settings.browser.search.291f480a5e": {
+    "ko": "?"
+  },
+  "auto.components.settings.browser.search.44d14df30d": {
+    "ko": "????"
+  },
+  "auto.components.settings.browser.search.4596a52cf7": {
+    "ko": "??"
+  },
+  "auto.components.settings.browser.search.533a253deb": {
+    "ko": "Edge"
+  },
+  "auto.components.settings.browser.search.7539f6336c": {
+    "ko": "???"
+  },
+  "auto.components.settings.browser.search.90425d313c": {
+    "ko": "Shift"
+  },
+  "auto.components.settings.browser.search.a7a07d5415": {
+    "ko": "???"
+  },
+  "auto.components.settings.browser.search.ad40e75d13": {
+    "ko": "Bing"
+  },
+  "auto.components.settings.browser.search.bea27bac4b": {
+    "ko": "??"
+  },
+  "auto.components.settings.browser.search.c3d89ed4d0": {
+    "ko": "?? ?? ???? ?? ???? ??/?? ?????."
+  },
+  "auto.components.settings.browser.use.search.2e1b09897b": {
+    "ko": "Edge"
+  },
+  "auto.components.settings.browser.use.search.3f4c559deb": {
+    "ko": "Arc ???"
+  },
+  "auto.components.settings.browser.use.search.7e0dcb257a": {
+    "ko": "?"
+  },
+  "auto.components.settings.browser.use.search.a57c2172dc": {
+    "ko": "agent-browser"
+  },
+  "auto.components.settings.browser.use.search.ab349a2dd0": {
+    "ko": "Arc"
+  },
+  "auto.components.settings.browser.use.search.d5afa54d21": {
+    "ko": "Edge ???"
+  },
+  "auto.components.settings.cli.source.control.integration.cards.2e44dda68a": {
+    "ko": "GitHub CLI? ???? ??? ???? ?????. terminal?? ?? ??? ?????."
+  },
+  "auto.components.settings.cli.source.control.integration.cards.4be0616873": {
+    "ko": "GitLab CLI? ???? ??? ???? ?????. terminal?? ?? ??? ?????."
+  },
+  "auto.components.settings.cli.source.control.integration.cards.54a640af7a": {
+    "ko": "GitLab CLI ??"
+  },
+  "auto.components.settings.cli.source.control.integration.cards.6f30fc4216": {
+    "ko": "? ?????? ?? GitHub CLI ??? ??? ? ????."
+  },
+  "auto.components.settings.cli.source.control.integration.cards.7755c28af5": {
+    "ko": "GitHub CLI ??"
+  },
+  "auto.components.settings.cli.source.control.integration.cards.8cbc39f862": {
+    "ko": "??? ????"
+  },
+  "auto.components.settings.cli.source.control.integration.cards.account_scope_prefix": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.cli.source.control.integration.cards.faddeb763d": {
+    "ko": "? ?????? ?? GitLab CLI ??? ??? ? ????."
+  },
+  "auto.components.settings.commit.message.ai.search.37c65bbb44": {
+    "ko": "??"
+  },
+  "auto.components.settings.commit.message.ai.search.b7d50da4d8": {
+    "ko": "???"
+  },
+  "auto.components.settings.computerUseSkillRuntime.thisDevice": {
+    "ko": "? ??"
+  },
+  "auto.components.settings.computerUseSummary.checkingDescription": {
+    "ko": "FABRICA? Computer Use ???? macOS ???? ?? ??? ???? ????."
+  },
+  "auto.components.settings.computerUseSummary.checkingTitle": {
+    "ko": "Computer Use ??? ?? ????."
+  },
+  "auto.components.settings.computerUseSummary.permissionsRequired": {
+    "ko": "agents? ? ?? ????? ?? {{value0}} ??{{value1}}? ?????."
+  },
+  "auto.components.settings.computerUseSummary.permissionsTitle": {
+    "ko": "?? ?? ????? ??? ?????."
+  },
+  "auto.components.settings.computerUseSummary.readyDescription": {
+    "ko": "???? Agents? ? ?? ???? ??? ? ????."
+  },
+  "auto.components.settings.computerUseSummary.readyTitle": {
+    "ko": "Computer Use? ??? ??? ?????."
+  },
+  "auto.components.settings.computerUseSummary.unavailableDescription": {
+    "ko": "{{value0}} ??? Computer Use ??? ??? ? ????."
+  },
+  "auto.components.settings.computerUseSummary.unavailableTitle": {
+    "ko": "Computer Use? ??? ? ????."
+  },
+  "auto.components.settings.developer.permissions.search.00e954319e": {
+    "ko": "Whisper"
+  },
+  "auto.components.settings.developer.permissions.search.05ab708ee5": {
+    "ko": "??? ???? ? ???? ?? ???? ?? macOS ???? ?? ?? ???."
+  },
+  "auto.components.settings.developer.permissions.search.2270ccff3f": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.developer.permissions.search.4438f81bfa": {
+    "ko": "??"
+  },
+  "auto.components.settings.developer.permissions.search.5610022e1e": {
+    "ko": "???"
+  },
+  "auto.components.settings.developer.permissions.search.6db4fca386": {
+    "ko": "macOS"
+  },
+  "auto.components.settings.developer.permissions.search.78a10b826f": {
+    "ko": "Bonjour"
+  },
+  "auto.components.settings.developer.permissions.search.7f145a3984": {
+    "ko": "?"
+  },
+  "auto.components.settings.developer.permissions.search.ed7c12bdb4": {
+    "ko": "???"
+  },
+  "auto.components.settings.developer.permissions.search.f061f08b7b": {
+    "ko": "sox"
+  },
+  "auto.components.settings.experimental.search.268e99d957": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.experimental.search.65df471ab2": {
+    "ko": "?????"
+  },
+  "auto.components.settings.experimental.search.7695fd30e9": {
+    "ko": "??"
+  },
+  "auto.components.settings.experimental.search.7b79081695": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.experimental.search.9af7a518db": {
+    "ko": "???"
+  },
+  "auto.components.settings.experimental.search.9f5609bfb8": {
+    "ko": "????"
+  },
+  "auto.components.settings.experimental.search.b54cea709b": {
+    "ko": "????"
+  },
+  "auto.components.settings.experimental.search.edc49480a1": {
+    "ko": "??"
+  },
+  "auto.components.settings.experimental.search.f082788cfe": {
+    "ko": "??"
+  },
+  "auto.components.settings.experimental.search.f10d307468": {
+    "ko": "??"
+  },
+  "auto.components.settings.experimental.search.agentHibernation.hibernate": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.experimental.search.agentHibernation.title": {
+    "ko": "Agent ?? ??"
+  },
+  "auto.components.settings.experimental.search.newWorktreeCardStyle.description": {
+    "ko": "????? ???? ?? ????, ????? ??, ?? ?? ?? ?? ? ?? ??? ?? ???."
+  },
+  "auto.components.settings.general.search.12ecc640a8": {
+    "ko": "mru"
+  },
+  "auto.components.settings.general.search.141f71c69f": {
+    "ko": "?????? ??"
+  },
+  "auto.components.settings.general.search.2f42852568": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.36a72f0d9e": {
+    "ko": "GitHub?? FABRICA? ?? ??"
+  },
+  "auto.components.settings.general.search.3a73054565": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.3ca5ab78a5": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.54ba13831a": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.5d9ba08673": {
+    "ko": "Copilot"
+  },
+  "auto.components.settings.general.search.5fdf1dc2d1": {
+    "ko": "omp"
+  },
+  "auto.components.settings.general.search.7e9b556873": {
+    "ko": "????"
+  },
+  "auto.components.settings.general.search.7edf4f69e2": {
+    "ko": "???"
+  },
+  "auto.components.settings.general.search.8fb00fcd05": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.93f6ec5e70": {
+    "ko": "????"
+  },
+  "auto.components.settings.general.search.9b0bc30160": {
+    "ko": "Pi"
+  },
+  "auto.components.settings.general.search.aea7d2cccb": {
+    "ko": "OpenClaude"
+  },
+  "auto.components.settings.general.search.bdfb6dc21b": {
+    "ko": "???"
+  },
+  "auto.components.settings.general.search.c56cb6f1c2": {
+    "ko": "????"
+  },
+  "auto.components.settings.general.search.defaultProjectRuntime": {
+    "ko": "?? ???? ???"
+  },
+  "auto.components.settings.general.search.defaultProjectRuntimeDescription": {
+    "ko": "?? Windows ????? ??? ???? ?????."
+  },
+  "auto.components.settings.general.search.e1ee631696": {
+    "ko": "???"
+  },
+  "auto.components.settings.general.search.e4fb4516d0": {
+    "ko": "??"
+  },
+  "auto.components.settings.general.search.e55d62dfa4": {
+    "ko": "????"
+  },
+  "auto.components.settings.general.search.ebf8f056b5": {
+    "ko": "zed"
+  },
+  "auto.components.settings.general.search.f472e97440": {
+    "ko": "aider"
+  },
+  "auto.components.settings.general.search.f8f0ac213a": {
+    "ko": "???"
+  },
+  "auto.components.settings.general.search.fb84767421": {
+    "ko": "??"
+  },
+  "auto.components.settings.git.search.0e993bf00f": {
+    "ko": "??????? ??? FABRICA? ?? ?? ???? ??????, main ?? master?? ???? ?? ???? ???? fast-forward???. ??? ?? git diff main...HEAD ?? ??? ??? ??? ???? ????. ?? ???? commits ?? ?? ?? ???? ?? ?? commits? ??? FABRICA? ????? ?????."
+  },
+  "auto.components.settings.git.search.1d2fae1fa2": {
+    "ko": "Git ??? ??"
+  },
+  "auto.components.settings.git.search.564942ffc5": {
+    "ko": "origin/main"
+  },
+  "auto.components.settings.git.search.6ee3cfff02": {
+    "ko": "git diff"
+  },
+  "auto.components.settings.git.search.b7e52124c7": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.git.search.bae91effdd": {
+    "ko": "?? ?? ???"
+  },
+  "auto.components.settings.input.search.886597d6b3": {
+    "ko": "macOS"
+  },
+  "auto.components.settings.input.search.c4440c3986": {
+    "ko": "????"
+  },
+  "auto.components.settings.integrations.search.03a7b275be": {
+    "ko": "ADO"
+  },
+  "auto.components.settings.integrations.search.129fc59aa8": {
+    "ko": "Gitea"
+  },
+  "auto.components.settings.integrations.search.20540996ef": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.integrations.search.581844769a": {
+    "ko": "MR"
+  },
+  "auto.components.settings.integrations.search.617603509b": {
+    "ko": "Jira ??"
+  },
+  "auto.components.settings.integrations.search.67a2a0e868": {
+    "ko": "Bitbucket ??"
+  },
+  "auto.components.settings.integrations.search.aab86d64e5": {
+    "ko": "Gitea ??"
+  },
+  "auto.components.settings.integrations.search.af6611fa6e": {
+    "ko": "Azure DevOps ??"
+  },
+  "auto.components.settings.integrations.search.b027b4b318": {
+    "ko": "Linear ??"
+  },
+  "auto.components.settings.integrations.search.b40cbe5de4": {
+    "ko": "glab"
+  },
+  "auto.components.settings.integrations.search.b50b71ef9d": {
+    "ko": "GitLab ??"
+  },
+  "auto.components.settings.integrations.search.b79c21bd42": {
+    "ko": "GitHub"
+  },
+  "auto.components.settings.integrations.search.c450244ad7": {
+    "ko": "??"
+  },
+  "auto.components.settings.integrations.search.e1263dd748": {
+    "ko": "Jira"
+  },
+  "auto.components.settings.integrations.search.f16e41cc72": {
+    "ko": "GitHub ??"
+  },
+  "auto.components.settings.jira.integration.card.09742875cd": {
+    "ko": "Jira"
+  },
+  "auto.components.settings.jira.integration.card.3df81cb0ac": {
+    "ko": "??"
+  },
+  "auto.components.settings.jira.integration.card.fb854902d9": {
+    "ko": "?? ?"
+  },
+  "auto.components.settings.mobile.emulator.search.25d7bfbcd4": {
+    "ko": "udid"
+  },
+  "auto.components.settings.mobile.emulator.search.27397fe8e9": {
+    "ko": "Xcode ??? ??"
+  },
+  "auto.components.settings.mobile.emulator.search.3211e7acf9": {
+    "ko": "xcrun"
+  },
+  "auto.components.settings.mobile.emulator.search.42bfab45d8": {
+    "ko": "???"
+  },
+  "auto.components.settings.mobile.emulator.search.7c5a8a2bee": {
+    "ko": "Xcode"
+  },
+  "auto.components.settings.mobile.emulator.search.84e5706975": {
+    "ko": "serve-sim"
+  },
+  "auto.components.settings.mobile.emulator.search.8ef0f08d36": {
+    "ko": "???"
+  },
+  "auto.components.settings.mobile.emulator.search.d4b7833894": {
+    "ko": "FABRICA cli"
+  },
+  "auto.components.settings.mobile.emulator.search.ea1f51b980": {
+    "ko": "Xcode, simctl, serve-sim ? ????? ??? ?????? ?????."
+  },
+  "auto.components.settings.mobile.pane.search.16bff559a0": {
+    "ko": "tailnet"
+  },
+  "auto.components.settings.mobile.pane.search.1f70d63998": {
+    "ko": "IP"
+  },
+  "auto.components.settings.mobile.pane.search.2128a21096": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.pane.search.3a5e31e84b": {
+    "ko": "???"
+  },
+  "auto.components.settings.mobile.pane.search.4a0c826f3d": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.pane.search.5e8fda4d7f": {
+    "ko": "????"
+  },
+  "auto.components.settings.mobile.pane.search.70f505f3c3": {
+    "ko": "LAN"
+  },
+  "auto.components.settings.mobile.pane.search.7b37c2e557": {
+    "ko": "????"
+  },
+  "auto.components.settings.mobile.pane.search.8015fd9523": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.pane.search.d0c89bc4a9": {
+    "ko": "????"
+  },
+  "auto.components.settings.mobile.pane.search.e518cbd61c": {
+    "ko": "???"
+  },
+  "auto.components.settings.mobile.pane.search.fadcbfdd99": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.settings.search.0b7e585cb9": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.settings.search.59b1d75fd1": {
+    "ko": "??"
+  },
+  "auto.components.settings.mobile.settings.search.cf2c93b479": {
+    "ko": "???"
+  },
+  "auto.components.settings.notifications.search.3014ad1b8f": {
+    "ko": "?"
+  },
+  "auto.components.settings.notifications.search.57e34a31cd": {
+    "ko": "wav"
+  },
+  "auto.components.settings.notifications.search.5f7472d3fb": {
+    "ko": "??"
+  },
+  "auto.components.settings.notifications.search.72539aede4": {
+    "ko": "???"
+  },
+  "auto.components.settings.notifications.search.aa288005c3": {
+    "ko": "???"
+  },
+  "auto.components.settings.notifications.search.adbc3a0fcf": {
+    "ko": "????"
+  },
+  "auto.components.settings.notifications.search.d16ae23645": {
+    "ko": "ogg"
+  },
+  "auto.components.settings.notifications.search.d58b64dddf": {
+    "ko": "??"
+  },
+  "auto.components.settings.notifications.search.ef86a782cc": {
+    "ko": "? ??"
+  },
+  "auto.components.settings.notifications.search.fa60d8e4ab": {
+    "ko": "??"
+  },
+  "auto.components.settings.privacy.search.10124159f1": {
+    "ko": "????"
+  },
+  "auto.components.settings.privacy.search.4104f6f0f3": {
+    "ko": "??"
+  },
+  "auto.components.settings.privacy.search.4d4bb76bf4": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.privacy.search.79c319948b": {
+    "ko": "???"
+  },
+  "auto.components.settings.providerAccountScope.localCredentials": {
+    "ko": "? ???? ?? ??? ?? ??? ? ???? ?????? ?????. ?? ?? ?? ??? ?? > ?? FABRICA ?? > ???? ?????."
+  },
+  "auto.components.settings.providerAccountScope.localMac": {
+    "ko": "?? Mac"
+  },
+  "auto.components.settings.providerAccountScope.localRateLimit": {
+    "ko": "{{value0}} API ??? ? ???? ?????? CLI?? ?????. ?? ?? ??? ??? ?? > ?? FABRICA ?? > ??? ?????."
+  },
+  "auto.components.settings.providerAccountScope.remoteServer": {
+    "ko": "?? ??: {{value0}}"
+  },
+  "auto.components.settings.providerAccountScope.remoteServerCredentials": {
+    "ko": "? ???? ?? ??? ?? ??? ? ?? ??? ?????. ?? ?? ??? ??? ????? ?? > ?? FABRICA ?? > ??? ?????."
+  },
+  "auto.components.settings.providerAccountScope.remoteServerRateLimit": {
+    "ko": "{{value0}} API ??? ? ?? ??? CLI?? ?????. ?? ?? ??? ??? ??? ?? > ?? FABRICA ?? > ??? ?????."
+  },
+  "auto.components.settings.quick.commands.search.2d8aff42be": {
+    "ko": "??"
+  },
+  "auto.components.settings.quick.commands.search.a26ecdb77b": {
+    "ko": "???"
+  },
+  "auto.components.settings.quick.commands.search.d07d130849": {
+    "ko": "???"
+  },
+  "auto.components.settings.repository.search.0432d2fb7c": {
+    "ko": "??"
+  },
+  "auto.components.settings.repository.search.1ff4f12c0c": {
+    "ko": "????"
+  },
+  "auto.components.settings.repository.search.2011a6a4f2": {
+    "ko": "GitHub ?? ??"
+  },
+  "auto.components.settings.repository.search.4733ec2395": {
+    "ko": "../worktrees"
+  },
+  "auto.components.settings.repository.search.4f3c0230c2": {
+    "ko": "???"
+  },
+  "auto.components.settings.repository.search.66b584bd6c": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.repository.search.6d8de2f090": {
+    "ko": "16??"
+  },
+  "auto.components.settings.repository.search.80c490b012": {
+    "ko": "??"
+  },
+  "auto.components.settings.repository.search.aa42616e3d": {
+    "ko": "????"
+  },
+  "auto.components.settings.repository.search.availableHostsDescription": {
+    "ko": "? ????? ??? ??????."
+  },
+  "auto.components.settings.repository.search.cb4b4de666": {
+    "ko": "???"
+  },
+  "auto.components.settings.repository.search.f1e1bfa89f": {
+    "ko": "??"
+  },
+  "auto.components.settings.repository.search.f9d84b7971": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.settings.repository.search.projectRuntime": {
+    "ko": "???? ???"
+  },
+  "auto.components.settings.repository.search.projectRuntimeDescription": {
+    "ko": "? ????? Windows?? ???? WSL?? ???? ?????."
+  },
+  "auto.components.settings.runtime.environments.search.09568ccc65": {
+    "ko": "??"
+  },
+  "auto.components.settings.runtime.environments.search.104f4d7dbd": {
+    "ko": "???"
+  },
+  "auto.components.settings.runtime.environments.search.45501ff2c3": {
+    "ko": "????"
+  },
+  "auto.components.settings.runtime.environments.search.c6e5a03aa0": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.runtime.environments.search.d198440ce3": {
+    "ko": "???"
+  },
+  "auto.components.settings.runtime.environments.search.d760866285": {
+    "ko": "?????"
+  },
+  "auto.components.settings.settingOwnership.agentLaunchDefaults": {
+    "ko": "?? agent, ?? ???, CLI ??, ?? ??? ????? ???????. SSH ? ?? ?? ??? ?? ??? ??? ??? ?? ?? ??? ?????."
+  },
+  "auto.components.settings.settingOwnership.clientDefault": {
+    "ko": "????? ???"
+  },
+  "auto.components.settings.settingOwnership.clientDefaultProjectScopes": {
+    "ko": "????? ??? + ???? ??"
+  },
+  "auto.components.settings.settingOwnership.hostOverride": {
+    "ko": "??? ???"
+  },
+  "auto.components.settings.settingOwnership.projectOnThisHost": {
+    "ko": "? ???? ????"
+  },
+  "auto.components.settings.settingOwnership.providerAccounts": {
+    "ko": "?? ??? ?? ??? ??? ??? ??? ?? ????? ?? ??? ?? ??? ????."
+  },
+  "auto.components.settings.settingOwnership.providerHost": {
+    "ko": "??? ???"
+  },
+  "auto.components.settings.settingOwnership.repositorySourceControlAi": {
+    "ko": "? ???? ? ???? ??? ????, ??? ???? ??? ?????? Source Control AI ???? ?????."
+  },
+  "auto.components.settings.settingOwnership.sourceControlAiDefaults": {
+    "ko": "???, ????, ??? ?? ???? ? ??????? ?????. ?? ??? ??? agent? ???? ??? ??? ?????."
+  },
+  "auto.components.settings.settingOwnership.terminalQuickCommands": {
+    "ko": "??? ? ?????? ??? ? ?? ?? ???? ?? ??? ???? ??? terminal ?????? ?????."
+  },
+  "auto.components.settings.settingOwnership.workspaceDirectory": {
+    "ko": "???? ?? ???? ????? ???? ??? ????? ???? ?????."
+  },
+  "auto.components.settings.shortcuts.search.0ecba9aa5f": {
+    "ko": "???"
+  },
+  "auto.components.settings.shortcuts.search.7f1b38f59a": {
+    "ko": "TUI"
+  },
+  "auto.components.settings.shortcuts.search.afda131738": {
+    "ko": "FABRICA ??"
+  },
+  "auto.components.settings.shortcuts.search.ca6a0c2df7": {
+    "ko": "???"
+  },
+  "auto.components.settings.shortcuts.search.ebd7d81e1d": {
+    "ko": "???? ?? ? FABRICA? ???? terminal ? ?? ?? ???? ?????."
+  },
+  "auto.components.settings.shortcuts.search.f1adebbe8c": {
+    "ko": "?"
+  },
+  "auto.components.settings.ssh.search.09395490af": {
+    "ko": "??"
+  },
+  "auto.components.settings.ssh.search.8cb870b109": {
+    "ko": "???"
+  },
+  "auto.components.settings.ssh.search.8fb1cc87cc": {
+    "ko": "???"
+  },
+  "auto.components.settings.ssh.search.f9493b80c0": {
+    "ko": "??"
+  },
+  "auto.components.settings.source.control.action.recipe.options.commitMessage": {
+    "ko": "????? ?? ???? commit ???? ?????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.1a12e33fe5": {
+    "ko": "Linear ??? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.3e7c10d286": {
+    "ko": "??? ?..."
+  },
+  "auto.components.settings.task.tracker.integration.cards.60996beda6": {
+    "ko": "Jira ??? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.6224fe9d34": {
+    "ko": "??? ? Linear ???????? ?? ???? ???? ?? ??? ????. ?? ??? ?? ? ???? ??? ? ?? ?? ?? ??? ? ???, ??? ?? ??? ??? ? ????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.622c224082": {
+    "ko": "?????? ??? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.7ca5ffffdb": {
+    "ko": "Jira Cloud ??? ???? ????, ???? ??? ?????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.8b2408a8e5": {
+    "ko": "? ???? Jira? ???? ????. ??? ??? ??? ??? ? ??? ?? ?????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.8c20e76308": {
+    "ko": "??? ? Jira ????? ?? ???? ??? ??? ??? ????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.9fa04a032e": {
+    "ko": "{{value0}}? ???{{value1}} ???"
+  },
+  "auto.components.settings.task.tracker.integration.cards.a1093a06c7": {
+    "ko": "?? ??? ???? ?? Jira ???? ???? ????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.a2c0015fb8": {
+    "ko": "???"
+  },
+  "auto.components.settings.task.tracker.integration.cards.account_scope_prefix": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.c90f2ef419": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.cef18762a2": {
+    "ko": "Linear ??? ?? API ?? ???? ?????. ?? ??? ?? ? ???? ??? ? ?? ?? ?? ? ? ????."
+  },
+  "auto.components.settings.task.tracker.integration.cards.dd3529015d": {
+    "ko": "{{value0}} ?? ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.e1f5e6424c": {
+    "ko": "{{value0}}? ??????{{value1}} ???"
+  },
+  "auto.components.settings.task.tracker.integration.cards.e2ff968276": {
+    "ko": "Jira ??"
+  },
+  "auto.components.settings.task.tracker.integration.cards.fe9231215b": {
+    "ko": "?? ??? ???? ?? Linear ???? ???? ????."
+  },
+  "auto.components.settings.tasks.search.3d81c26d78": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.clipboard.search.2061d8db1a": {
+    "ko": "neovim"
+  },
+  "auto.components.settings.terminal.clipboard.search.459fea094a": {
+    "ko": "SSH? ???? OSC 52? ?? terminal? ????? ??? ????? ??? ? ??? ?????."
+  },
+  "auto.components.settings.terminal.clipboard.search.5fb3512e8c": {
+    "ko": "????"
+  },
+  "auto.components.settings.terminal.clipboard.search.5ffcd13c90": {
+    "ko": "tmux"
+  },
+  "auto.components.settings.terminal.clipboard.search.603818e8d8": {
+    "ko": "terminal ?? ??? ????? ?? ???? ????? ?????."
+  },
+  "auto.components.settings.terminal.clipboard.search.e87c6d776d": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.0838b3717b": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.search.0a05629060": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.0f2fb0cb74": {
+    "ko": "? ??"
+  },
+  "auto.components.settings.terminal.search.11fd3fbcf2": {
+    "ko": "ANSI"
+  },
+  "auto.components.settings.terminal.search.17cc3ea102": {
+    "ko": "terminal ?? ?? ???? ??? ???? ??? ??????. Ghostty? ??? ???? ???? ??? ?????. ?? ? ? ??? ???? ?????."
+  },
+  "auto.components.settings.terminal.search.18ce996647": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.1ab57a0fbd": {
+    "ko": "Mac"
+  },
+  "auto.components.settings.terminal.search.1dee533bd9": {
+    "ko": "FABRICA? ??? ??? ? ???? ??? ?????."
+  },
+  "auto.components.settings.terminal.search.20ce287cc6": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.232e532169": {
+    "ko": "??? ???? ??? ?? ??"
+  },
+  "auto.components.settings.terminal.search.25f606d9e5": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.2610ee3b56": {
+    "ko": "? ??????? ??? ? repos ?? ????? ???? ??: ?? ??(???), ?? ?? ?? 'Setup'??? ??? ?? ?."
+  },
+  "auto.components.settings.terminal.search.2d5ab88b7c": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.terminal.search.34fe1af39d": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.35c2311a33": {
+    "ko": "JetBrains Mono"
+  },
+  "auto.components.settings.terminal.search.36a1b38bc8": {
+    "ko": "terminal ? ?? ??? ?????."
+  },
+  "auto.components.settings.terminal.search.38f1b4f4cb": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.search.3982d88725": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.46d99ef4bb": {
+    "ko": "????"
+  },
+  "auto.components.settings.terminal.search.54a9b3725b": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.595b97b446": {
+    "ko": "??? ?? ??? ??"
+  },
+  "auto.components.settings.terminal.search.6cddc858ba": {
+    "ko": "WebGL"
+  },
+  "auto.components.settings.terminal.search.6ded6297fe": {
+    "ko": "Iosevka"
+  },
+  "auto.components.settings.terminal.search.7718d70356": {
+    "ko": "????"
+  },
+  "auto.components.settings.terminal.search.77d9f9cd55": {
+    "ko": "??? ???? ? ??? ?? ???? ?????."
+  },
+  "auto.components.settings.terminal.search.7d924d870d": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.7f1e356a54": {
+    "ko": "?? ????"
+  },
+  "auto.components.settings.terminal.search.7f7640c29e": {
+    "ko": "Fira Code"
+  },
+  "auto.components.settings.terminal.search.846a7a1204": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.search.88561b3499": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.8987db7ff2": {
+    "ko": "?? ?? ??? ??"
+  },
+  "auto.components.settings.terminal.search.97bcfff662": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.terminal.search.9bd7229927": {
+    "ko": "Option? Alt? ??"
+  },
+  "auto.components.settings.terminal.search.9f2dda133c": {
+    "ko": "pty"
+  },
+  "auto.components.settings.terminal.search.a3e5297c10": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.a6e9dcc829": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.search.abaa24752d": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.ask_before_closing_running_terminals_description": {
+    "ko": "?? ?? ???? agent? ?? terminal? ?? ?? ??? ?????."
+  },
+  "auto.components.settings.terminal.search.ask_before_closing_running_terminals_title": {
+    "ko": "?? ?? Terminals? ?? ?? ??"
+  },
+  "auto.components.settings.terminal.search.b03d01fd49": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.terminal.search.b0bb76ae6b": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.b3b94cfcb5": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.b495dc6a9f": {
+    "ko": "JIS"
+  },
+  "auto.components.settings.terminal.search.b5116e7b12": {
+    "ko": "????"
+  },
+  "auto.components.settings.terminal.search.bc7ae1f7c0": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.c4427dc5ff": {
+    "ko": "Alt"
+  },
+  "auto.components.settings.terminal.search.c6178a2b4d": {
+    "ko": "???? ???? ??"
+  },
+  "auto.components.settings.terminal.search.d8d6f7a3c5": {
+    "ko": "macOS"
+  },
+  "auto.components.settings.terminal.search.da864e6cec": {
+    "ko": "??? ??"
+  },
+  "auto.components.settings.terminal.search.dd4f6cb541": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.e3aeea308e": {
+    "ko": "Cascadia Code"
+  },
+  "auto.components.settings.terminal.search.e8baf0d12c": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.ea364ce6e4": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.search.f25d948664": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.f35400f7e8": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.f7d56b6281": {
+    "ko": "?? terminal ???? ?? ?????."
+  },
+  "auto.components.settings.terminal.search.fae142a354": {
+    "ko": "readline"
+  },
+  "auto.components.settings.terminal.search.fffdff40a7": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.search.warp_import.description": {
+    "ko": "Warp ??? FABRICA terminal ??? ?????."
+  },
+  "auto.components.settings.terminal.search.warp_import.title": {
+    "ko": "Warp?? ?? ????"
+  },
+  "auto.components.settings.terminal.search.yaml_import.description": {
+    "ko": "?? YAML ??? FABRICA terminal ??? ?????."
+  },
+  "auto.components.settings.terminal.search.yaml_import.title": {
+    "ko": "YAML?? ????"
+  },
+  "auto.components.settings.terminal.windows.search.28ff08ed35": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.windows.search.2b4a340ce0": {
+    "ko": "???"
+  },
+  "auto.components.settings.terminal.windows.search.4d09141a42": {
+    "ko": "???? ??"
+  },
+  "auto.components.settings.terminal.windows.search.591912177b": {
+    "ko": "Git Bash"
+  },
+  "auto.components.settings.terminal.windows.search.7c7056940a": {
+    "ko": "?"
+  },
+  "auto.components.settings.terminal.windows.search.d57f870938": {
+    "ko": "??"
+  },
+  "auto.components.settings.terminal.windows.search.fcfa53920b": {
+    "ko": "????"
+  },
+  "auto.components.settings.token.source.control.integration.cards.05863d2599": {
+    "ko": "Gitea REST API? ?? PR ? commit ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.0613928cb3": {
+    "ko": "? ?????? ?? Gitea ??? ??? ? ????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.087feb92f1": {
+    "ko": ", ?? ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.0b5242f8a2": {
+    "ko": "{{value0}} · PR ? commit ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.0eb50d5593": {
+    "ko": "Azure DevOps REST API ??? ?? PR ? ?? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.0fa5629dad": {
+    "ko": "PR ? ?? ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.19fb419c12": {
+    "ko": "Gitea ?? ??? ???? ??? ??? ? ????. ??, API ?? URL, repos ??? ????, ?? ??? ?????? FABRICA? ?? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.1a9475dace": {
+    "ko": "??? ????"
+  },
+  "auto.components.settings.token.source.control.integration.cards.24ac1c69dc": {
+    "ko": "? ?????? ?? Bitbucket ??? ??? ? ????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.40f678df73": {
+    "ko": "Azure DevOps ?? ??? ???? ??? ??? ? ????. ??, API ?? URL, repos ??? ????, ?? ??? ?????? FABRICA? ?? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.52f75876be": {
+    "ko": "??? repos? PR ? commit ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.54636c65d4": {
+    "ko": "??? Azure Repos? PR ? ?? ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.60708f23da": {
+    "ko": "FABRICA? ???? API URL? ??? ? ?? ???? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.6154b02093": {
+    "ko": "Bitbucket ?? ??? ???? ??? ??? ? ????. ??? repos ??? ????, ?? ??? ?????? FABRICA? ?? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.6da9dfa5de": {
+    "ko": "??? repos? ??, ???"
+  },
+  "auto.components.settings.token.source.control.integration.cards.793a06e899": {
+    "ko": "?? ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.7bd345e3f6": {
+    "ko": "FABRICA? Git ???? API ?? URL? ??? ? ?? ???? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.a924e8dcd1": {
+    "ko": "Bitbucket Cloud API ??? ?? PR ? ?? ?????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.b8a10b07c1": {
+    "ko": ". ?????"
+  },
+  "auto.components.settings.token.source.control.integration.cards.ea204f5e03": {
+    "ko": "{{value0}} · PR ? ?? ??"
+  },
+  "auto.components.settings.token.source.control.integration.cards.f3f47dc7de": {
+    "ko": "? ?????? ?? Azure DevOps ??? ??? ? ????."
+  },
+  "auto.components.settings.token.source.control.integration.cards.fc71a0e7aa": {
+    "ko": "?"
+  },
+  "auto.components.settings.token.source.control.integration.cards.fcbe0469fd": {
+    "ko": "?? repos? Git ???? ?????. ?????"
+  },
+  "auto.components.settings.useWarpThemeImport.import_failed": {
+    "ko": "??? ???? ?????."
+  },
+  "auto.components.settings.useWarpThemeImport.imported_one": {
+    "ko": "?? 1?? ??????."
+  },
+  "auto.components.settings.useWarpThemeImport.imported_other": {
+    "ko": "?? {{value0}}?? ??????."
+  },
+  "auto.components.settings.useWarpThemeImport.over_limit_one": {
+    "ko": "? ??? ???? ??? ?? terminal ?? {{value0}}? ??? ?????. ? ?? 1?? ?? ???? ?? ?????."
+  },
+  "auto.components.settings.useWarpThemeImport.over_limit_other": {
+    "ko": "? ???? ???? ??? ?? terminal ?? {{value0}}? ??? ?????. ? ?? {{value1}}?? ?? ???? ?? ?????."
+  },
+  "auto.components.settings.useWarpThemeImport.unknown_error": {
+    "ko": "? ? ?? ??"
+  },
+  "auto.components.settings.voice.pane.search.04c25a6fb0": {
+    "ko": "openai"
+  },
+  "auto.components.settings.voice.pane.search.064a9bd94a": {
+    "ko": "?? ???"
+  },
+  "auto.components.settings.voice.pane.search.3d8b853963": {
+    "ko": "??"
+  },
+  "auto.components.settings.voice.pane.search.6fa48bcd41": {
+    "ko": "??"
+  },
+  "auto.components.settings.voice.pane.search.d86f5600da": {
+    "ko": "??"
+  },
+  "auto.components.settings.voice.pane.search.e360027a65": {
+    "ko": "???"
+  },
+  "auto.components.settings.voice.pane.search.f6e0dfa61c": {
+    "ko": "????"
+  },
+  "auto.components.setup.guide.SetupGuideProgressRing.dac3a4724a": {
+    "ko": "?? ?? {{value1}}? ? {{value0}}? ??"
+  },
+  "auto.components.shared.useDaemonActions.d18f3005c2": {
+    "ko": "?? {{value0}}?{{value1}}?(?) ??? ??????."
+  },
+  "auto.components.shared.useDaemonActions.d6372cc797": {
+    "ko": "?? {{value0}}?{{value1}}? ??????."
+  },
+  "auto.components.shared.useDaemonActions.fe2ab66d45": {
+    "ko": "?? {{value1}}? ? {{value0}}?? ??????. {{value2}}?? ??? ??????."
+  },
+  "auto.components.sidebar.AddRepoCreateStep.0ae45b8238": {
+    "ko": "my-project"
+  },
+  "auto.components.sidebar.AddRepoCreateStep.11fd2a7db8": {
+    "ko": "Git ?????"
+  },
+  "auto.components.sidebar.AddRepoCreateStep.ssh_parent_manual": {
+    "ko": "SSH ?? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoHostSelector.host": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.AddRepoNestedImportStep.220dd32d83": {
+    "ko": "?? ?..."
+  },
+  "auto.components.sidebar.AddRepoNestedImportStep.b20bb7c24f": {
+    "ko": "? ??????? ??? ???? ?? ???. ????????? ?? ??? ?????? ?????."
+  },
+  "auto.components.sidebar.AddRepoNestedImportStep.e907ec8935": {
+    "ko": "?? repo ?????"
+  },
+  "auto.components.sidebar.AddRepoRemoteStep.35831a7312": {
+    "ko": "?? ?..."
+  },
+  "auto.components.sidebar.AddRepoRemoteStep.80557be85a": {
+    "ko": "??? SSH ??? ???? Git ????? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoRemoteStep.lockedDescription": {
+    "ko": "{{value0}}? Git ????? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoRemoteStep.lockedDisconnected": {
+    "ko": "{{value0}} ??? ??????."
+  },
+  "auto.components.sidebar.AddRepoServerStartStep.3d0c035483": {
+    "ko": "??? ???? ??"
+  },
+  "auto.components.sidebar.AddRepoServerStartStep.423b5d3d31": {
+    "ko": "??? ???? ?? ?? Git ????? ?? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoServerStartStep.6b9958492a": {
+    "ko": "? ?? ?? repos? ???? ?????? ?? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoServerStartStep.8efa930eb5": {
+    "ko": "??? ????? ?? ????? ?????."
+  },
+  "auto.components.sidebar.AddRepoServerStartStep.a2ea37d549": {
+    "ko": "?? Git ?????"
+  },
+  "auto.components.sidebar.AddRepoSteps.cloneOnHostDescription": {
+    "ko": "Git URL? ???? {{value0}}?? ??? ??? ?????."
+  },
+  "auto.components.sidebar.AddRepoSteps.cloneParentFolder": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.DeleteWorktreeWarningPanels.c4f96a6e18": {
+    "ko": "?? ????"
+  },
+  "auto.components.sidebar.HostRemoveDialog.1a2b3c4d5e": {
+    "ko": "{{value0}} ???"
+  },
+  "auto.components.sidebar.HostRemoveDialog.2b3c4d5e6f": {
+    "ko": "???? ???? ?????."
+  },
+  "auto.components.sidebar.HostRemoveDialog.3c4d5e6f7a": {
+    "ko": "{{value0}}?(?) ??????"
+  },
+  "auto.components.sidebar.HostRemoveDialog.4d5e6f7a8b": {
+    "ko": "? ??? ? ??? ??? ? ?? FABRICA ?? ??? ???."
+  },
+  "auto.components.sidebar.HostRemoveDialog.5e6f7a8b9c": {
+    "ko": "? ????? ??? SSH ???? ?? ??? ?????. ?? ??? ???? ????."
+  },
+  "auto.components.sidebar.HostRemoveDialog.7a8b9c0d1e": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.HostRemoveDialog.8b9c0d1e2f": {
+    "ko": "??? ??"
+  },
+  "auto.components.sidebar.HostRenameDialog.1a2b3c4d5e": {
+    "ko": "??? ?? ???"
+  },
+  "auto.components.sidebar.HostRenameDialog.2b3c4d5e6f": {
+    "ko": "? ??? ? ????? ?????. ?? ?? ?? ??? ?????."
+  },
+  "auto.components.sidebar.HostRenameDialog.3c4d5e6f7a": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.HostRenameDialog.4d5e6f7a8b": {
+    "ko": "????? ???"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.2c29e2de68": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.2d3e4f5a6b": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.3c4d5e6f7a": {
+    "ko": "??? ??…"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.4f2c8a9b10": {
+    "ko": "{{value0}} ??? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.5b8b4b6a01": {
+    "ko": "?? ???? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.63f36455cc": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.6b7c8d9e10": {
+    "ko": "??? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.6e7f8a9b0c": {
+    "ko": "??? ??…"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.7f1a2b3c4d": {
+    "ko": "{{value0}}? ??? ? ????."
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.8d1e2f3a4b": {
+    "ko": "?? ???…"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.9b3c1d2e44": {
+    "ko": "????? ???? ??"
+  },
+  "auto.components.sidebar.HostSectionHeaderMenu.bf07aee59e": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.sidebar.ImportedWorktreesVisibilityLine.2251d41ebb": {
+    "ko": "??? ???? ??"
+  },
+  "auto.components.sidebar.ImportedWorktreesVisibilityLine.ad99f4eea9": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.ImportedWorktreesVisibilityLine.b7a87dc32f": {
+    "ko": "???? ??? ??"
+  },
+  "auto.components.sidebar.ImportedWorktreesVisibilityLine.f54f2bec5d": {
+    "ko": "{{value1}}? ??? ???? {{value0}}?"
+  },
+  "auto.components.sidebar.NonGitFolderDialog.c49fb13492": {
+    "ko": "? ???? ??? ???? ?????."
+  },
+  "auto.components.sidebar.FABRICAYamlTrustDialog.43b7bec4cd": {
+    "ko": "?? ? ?"
+  },
+  "auto.components.sidebar.FABRICAYamlTrustDialog.531689199b": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.FABRICAYamlTrustDialog.831f2cd9f0": {
+    "ko": "? ????? ??"
+  },
+  "auto.components.sidebar.PendingWorktreeRow.af21e953d1": {
+    "ko": "???? ??? ??"
+  },
+  "auto.components.sidebar.ProjectOrderManualDefaultNotice.e8c1f4a2b9": {
+    "ko": "?????? ????."
+  },
+  "auto.components.sidebar.RemoteFileBrowser.971d85cc84": {
+    "ko": "? ????? ????? ???? · {{value0}}"
+  },
+  "auto.components.sidebar.RemoveFolderDialog.e62415c3d0": {
+    "ko": "?? ??? ?????"
+  },
+  "auto.components.sidebar.ScrollToCurrentWorkspaceToolbarButton.23989bb663": {
+    "ko": "?? ??????? ??"
+  },
+  "auto.components.sidebar.SetupScriptPromptCardViews.bb879db364": {
+    "ko": "? repo? ??? ?????"
+  },
+  "auto.components.sidebar.SidebarFeedbackDialog.3460258a54": {
+    "ko": "X?? ???"
+  },
+  "auto.components.sidebar.SidebarHostScopeStrip.backToAll": {
+    "ko": "?? ???"
+  },
+  "auto.components.sidebar.SidebarHostScopeStrip.scopedTo": {
+    "ko": "{{value0}} ?? ?"
+  },
+  "auto.components.sidebar.SidebarSettingsHelpMenu.2991a0106c": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.631b97eea9": {
+    "ko": "??? ??"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.activeRuntimeHost": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.allHostsDetail": {
+    "ko": "?? ??? ??"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.automation": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.b451c8b162": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.configuredSshHost": {
+    "ko": "??? SSH"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.hosts": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.projectRuntimeHost": {
+    "ko": "???? ??"
+  },
+  "auto.components.sidebar.SidebarWorkspaceOptionsMenu.projectSshHost": {
+    "ko": "???? SSH"
+  },
+  "auto.components.sidebar.SshDisconnectedDialog.authFailed": {
+    "ko": "?? ??? ??? ??????."
+  },
+  "auto.components.sidebar.SshDisconnectedDialog.disconnected": {
+    "ko": "? SSH ???? ???? ?? ????."
+  },
+  "auto.components.sidebar.SshDisconnectedDialog.reconnecting": {
+    "ko": "?? ???? ?? ???? ?..."
+  },
+  "auto.components.sidebar.SshDisconnectedDialog.reconnectionFailed": {
+    "ko": "?? ???? ?? ???? ?????."
+  },
+  "auto.components.sidebar.WorkspaceKanbanStatusLane.8ad104642b": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.WorkspaceStatusAppearancePopover.8be427206b": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.WorktreeCard.0777de5970": {
+    "ko": "?? ????(?? ?? ????)"
+  },
+  "auto.components.sidebar.WorktreeCard.0f33af979b": {
+    "ko": "?? ????. ? ?? ??? ??? ???? ????."
+  },
+  "auto.components.sidebar.WorktreeCard.4f964d5e8c": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.WorktreeCard.7d517f82e2": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.WorktreeCardMetadataStatusBadges.29df45afa2": {
+    "ko": "MR"
+  },
+  "auto.components.sidebar.WorktreeContextMenu.250de158fd": {
+    "ko": "?????? ??"
+  },
+  "auto.components.sidebar.WorktreeContextMenu.3baa7d6507": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.WorktreeContextMenu.8d9cd19d09": {
+    "ko": "?? ?????? ??"
+  },
+  "auto.components.sidebar.WorktreeContextMenu.8dacff1fe0": {
+    "ko": "???? ??"
+  },
+  "auto.components.sidebar.WorktreeList.2ef41bf9a7": {
+    "ko": "???? ??"
+  },
+  "auto.components.sidebar.WorktreeList.7a8b9c0d1e": {
+    "ko": "???? ??"
+  },
+  "auto.components.sidebar.WorktreeList.b667b59632": {
+    "ko": "?? ????? FABRICA?? ???? ?????."
+  },
+  "auto.components.sidebar.WorktreeList.bfbedc547b": {
+    "ko": "????"
+  },
+  "auto.components.sidebar.WorktreeList.f94466bc39": {
+    "ko": "?? ?? ??? {{value0}}/{{value1}} ????{{value2}}? ?? ????."
+  },
+  "auto.components.sidebar.WorktreeList.groupDeleteFailed": {
+    "ko": "??? ???? ?????."
+  },
+  "auto.components.sidebar.WorktreeList.groupDeleteFailedDesc": {
+    "ko": "??? ???? ? ??? ??????. ??? ????? ????."
+  },
+  "auto.components.sidebar.WorktreeList.hostAuthNeeded": {
+    "ko": "?? ??"
+  },
+  "auto.components.sidebar.WorktreeMetaDialog.b48c271d39": {
+    "ko": "??, ? ??? Shift+Enter."
+  },
+  "auto.components.sidebar.WorktreeOpenInMenu.0bed8727db": {
+    "ko": "?????? ????? ? ????. ??????? ??????? FABRICA?? ?????."
+  },
+  "auto.components.sidebar.WorktreeTitleInlineRename.2f42ae024f": {
+    "ko": "?? ??:"
+  },
+  "auto.components.sidebar.WorktreeVisibilityDialog.83a5ba8dd1": {
+    "ko": "FABRICA ?? ????"
+  },
+  "auto.components.sidebar.add.repo.local.start.actions.runtimeBrowseDescription": {
+    "ko": "? ???? ?? Git ????? ?? ??"
+  },
+  "auto.components.sidebar.add.repo.local.start.actions.sshBrowseDescription": {
+    "ko": "? SSH ???? ?? Git ????? ?? ??"
+  },
+  "auto.components.sidebar.add.repo.local.start.actions.sshBrowseTitle": {
+    "ko": "SSH ????? ???? ??"
+  },
+  "auto.components.sidebar.add.repo.local.start.actions.sshCreateUnavailable": {
+    "ko": "?? SSH ?????? ??? ? ????."
+  },
+  "auto.components.sidebar.index.b826a98b6f": {
+    "ko": "?? ?"
+  },
+  "auto.components.sidebar.sidebar.project.drop.740e8d0d46": {
+    "ko": "?? ??? ???? ??? ?????"
+  },
+  "auto.components.sidebar.sidebarHostOptions.3e102f111c": {
+    "ko": "?? ???"
+  },
+  "auto.components.sidebar.sidebarHostOptions.visibleHostsCount": {
+    "ko": "??? {{value0}}?"
+  },
+  "auto.components.sidebar.useAddRepoLocalFolderFlow.7ab10e4974": {
+    "ko": "?? ????? ????? ????? ??? ??? ?????."
+  },
+  "auto.components.sidebar.workspace.status.1a9383112b": {
+    "ko": "Conductor ??"
+  },
+  "auto.components.sidebar.workspace.status.1b81da243a": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.workspace.status.226d1e7773": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.2c19d1db33": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.409528031f": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.52e3c6e2a4": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.642da473f2": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.6437a8c253": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.workspace.status.6c1efa2cf8": {
+    "ko": "?? ?"
+  },
+  "auto.components.sidebar.workspace.status.7adb43ecf0": {
+    "ko": "???"
+  },
+  "auto.components.sidebar.workspace.status.895f381714": {
+    "ko": "Conductor ??"
+  },
+  "auto.components.sidebar.workspace.status.caabd5ca85": {
+    "ko": "??"
+  },
+  "auto.components.sidebar.workspace.status.caebe3c10f": {
+    "ko": "Conductor ??"
+  },
+  "auto.components.sidebar.worktree.list.groups.6798dc7c94": {
+    "ko": "?? ?"
+  },
+  "auto.components.skills.SkillsPage.b088e0785d": {
+    "ko": "??"
+  },
+  "auto.components.source.control.SourceControlActionVariableChips.4bf6d88039": {
+    "ko": "(?? ??)"
+  },
+  "auto.components.sparse.SparseCheckoutPresetSelect.bd6cec2056": {
+    "ko": "? ?? ??"
+  },
+  "auto.components.sparse.SparseCheckoutPresetSelect.c7f9b3f0c1": {
+    "ko": "?"
+  },
+  "auto.components.sparse.SparseCheckoutPresetSelect.ddbcaef7be": {
+    "ko": "src/renderer packages/ui"
+  },
+  "auto.components.star.nag.StarNagToastHost.body": {
+    "ko": "FABRICA? ??? ???? GitHub ??? ?? ???? FABRICA? ???? ? ??? ???."
+  },
+  "auto.components.star.nag.StarNagToastHost.githubOpened": {
+    "ko": "GitHub ??"
+  },
+  "auto.components.star.nag.StarNagToastHost.onboardingCompleted": {
+    "ko": "??? ??!"
+  },
+  "auto.components.star.nag.StarNagToastHost.openGithub": {
+    "ko": "GitHub ??"
+  },
+  "auto.components.star.nag.StarNagToastHost.opening": {
+    "ko": "?? ?…"
+  },
+  "auto.components.star.nag.StarNagToastHost.starOnGithub": {
+    "ko": "GitHub?? ?? ???"
+  },
+  "auto.components.star.nag.StarNagToastHost.starredThanks": {
+    "ko": "??? ????? ?????!"
+  },
+  "auto.components.star.nag.StarNagToastHost.starring": {
+    "ko": "?? ??? ?…"
+  },
+  "auto.components.stats.ClaudeUsagePane.cfe2282ffa": {
+    "ko": "? ? ??"
+  },
+  "auto.components.stats.ClaudeUsagePane.rangeAllTime": {
+    "ko": "?? ??"
+  },
+  "auto.components.stats.ClaudeUsagePane.rangeLast30Days": {
+    "ko": "?? 30?"
+  },
+  "auto.components.stats.ClaudeUsagePane.rangeLast7Days": {
+    "ko": "?? 7?"
+  },
+  "auto.components.stats.ClaudeUsagePane.rangeLast90Days": {
+    "ko": "?? 90?"
+  },
+  "auto.components.stats.CodexUsageDailyChart.1e6f62d7e3": {
+    "ko": "??"
+  },
+  "auto.components.stats.CodexUsagePane.bf6cf2d4dd": {
+    "ko": "? ? ??"
+  },
+  "auto.components.stats.CodexUsagePane.e0b988599d": {
+    "ko": "??"
+  },
+  "auto.components.stats.CodexUsagePane.rangeAllTime": {
+    "ko": "?? ??"
+  },
+  "auto.components.stats.CodexUsagePane.rangeLast30Days": {
+    "ko": "?? 30?"
+  },
+  "auto.components.stats.CodexUsagePane.rangeLast7Days": {
+    "ko": "?? 7?"
+  },
+  "auto.components.stats.CodexUsagePane.rangeLast90Days": {
+    "ko": "?? 90?"
+  },
+  "auto.components.stats.OpenCodeUsagePane.349f7c3f5c": {
+    "ko": "??"
+  },
+  "auto.components.stats.OpenCodeUsagePane.362231082f": {
+    "ko": "? ? ??"
+  },
+  "auto.components.stats.OpenCodeUsagePane.rangeAllTime": {
+    "ko": "?? ??"
+  },
+  "auto.components.stats.OpenCodeUsagePane.rangeLast30Days": {
+    "ko": "?? 30?"
+  },
+  "auto.components.stats.OpenCodeUsagePane.rangeLast7Days": {
+    "ko": "?? 7?"
+  },
+  "auto.components.stats.OpenCodeUsagePane.rangeLast90Days": {
+    "ko": "?? 90?"
+  },
+  "auto.components.stats.UsageOverviewPane.444585cb41": {
+    "ko": "??? ??"
+  },
+  "auto.components.stats.UsageOverviewPane.6c00c46815": {
+    "ko": "???? ???? ?? agent ??? ???? ?? ?? ??? ????."
+  },
+  "auto.components.stats.UsageOverviewPane.e06d1baf5c": {
+    "ko": "??? ?? ????"
+  },
+  "auto.components.stats.UsageSessionsTable.01476891c7": {
+    "ko": "??? ??"
+  },
+  "auto.components.stats.UsageSessionsTable.0f03975d59": {
+    "ko": "???"
+  },
+  "auto.components.stats.UsageSessionsTable.1afc25eb06": {
+    "ko": "?"
+  },
+  "auto.components.stats.UsageSessionsTable.21ea00bfa8": {
+    "ko": "??"
+  },
+  "auto.components.stats.UsageSessionsTable.e0b988599d": {
+    "ko": "??"
+  },
+  "auto.components.stats.share.card.utils.19f4b4dc75": {
+    "ko": "github.com/Auto-Scalers/Fabrica-app"
+  },
+  "auto.components.stats.share.card.utils.7080aeaebb": {
+    "ko": "??"
+  },
+  "auto.components.stats.stats.search.26bb901fcd": {
+    "ko": "FABRICA ??, Claude/Codex/OpenCode ?? ??? ??, ??, ??, ??, ??"
+  },
+  "auto.components.stats.usage.overview.sections.1dd166c920": {
+    "ko": "??"
+  },
+  "auto.components.stats.usage.overview.sections.3a795542fa": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.stats.usage.overview.sections.4ff104da47": {
+    "ko": "?? ??"
+  },
+  "auto.components.stats.usage.overview.sections.c424eb3f8e": {
+    "ko": "??:"
+  },
+  "auto.components.stats.usage.overview.sections.e65084cb4b": {
+    "ko": "??"
+  },
+  "auto.components.stats.usage.overview.sections.f6df0d7d6d": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.ResourceUsageStatusSegment.0f9e50eb07": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.SshStatusSegment.3ad70e0365": {
+    "ko": "?? ??? ??…"
+  },
+  "auto.components.status.bar.SshStatusSegment.6e8a9a4242": {
+    "ko": "?? ???"
+  },
+  "auto.components.status.bar.SshStatusSegment.d09ec41831": {
+    "ko": "?? ???"
+  },
+  "auto.components.status.bar.SshStatusSegment.fdc57e9970": {
+    "ko": "?? ??? ?? ??"
+  },
+  "auto.components.status.bar.SshStatusSegment.remote_server": {
+    "ko": "?? ??"
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_connect_unavailable": {
+    "ko": "?? ???? ??? ? ????."
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_disconnect_failed": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_last_close_reason": {
+    "ko": "??: {{value0}}"
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_reconnect_attempt": {
+    "ko": "{{value0}}?? ??"
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_reconnecting": {
+    "ko": "?? ?? ?"
+  },
+  "auto.components.status.bar.SshStatusSegment.runtime_unavailable": {
+    "ko": "?? ??"
+  },
+  "auto.components.status.bar.SshTargetStatusRow.sshHost": {
+    "ko": "SSH ???"
+  },
+  "auto.components.status.bar.StatusBar.24ac89df1a": {
+    "ko": "?? ???"
+  },
+  "auto.components.status.bar.StatusBar.25d8bbde69": {
+    "ko": "??? ?? ?…"
+  },
+  "auto.components.status.bar.StatusBar.5e5f9f5160": {
+    "ko": "rate-limit ??? 1? ?? ??"
+  },
+  "auto.components.status.bar.StatusBar.5ecae9197c": {
+    "ko": "rate-limit ??? {{value0}}? ?? ??"
+  },
+  "auto.components.status.bar.StatusBar.6d1042aa6f": {
+    "ko": "?? ??? Codex rate-limit ??? ??? 1?? ??? ??? ??? ??? ?? ?? ??????."
+  },
+  "auto.components.status.bar.StatusBar.972a1ff497": {
+    "ko": "Codex ??? ???????"
+  },
+  "auto.components.status.bar.StatusBar.e159fc1fd7": {
+    "ko": "?? ???"
+  },
+  "auto.components.status.bar.StatusBar.f077f586db": {
+    "ko": "?? ?? ??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceCompactPanel.0582df6d2e": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceCompactPanel.5691353a21": {
+    "ko": "?? ?"
+  },
+  "auto.components.status.bar.WorkspaceSpaceCompactPanel.8ff597593d": {
+    "ko": "?? ??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceCompactPanel.9be86c46a0": {
+    "ko": "?? ??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceCompactPanel.c361440dc0": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.0bc756efaf": {
+    "ko": "Git ????"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.1fce91d1b9": {
+    "ko": "?? ?"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.39801484e0": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.433bb7f595": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.63efebe0e6": {
+    "ko": "{{value0}} {{value1}}?(?) Space?? ???????."
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.65402b7192": {
+    "ko": "???"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.81f14d9924": {
+    "ko": "?????"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.8c7c57fbf8": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.9155381019": {
+    "ko": "???"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.a998501630": {
+    "ko": "??"
+  },
+  "auto.components.status.bar.WorkspaceSpaceManagerPanel.d384a4ce9f": {
+    "ko": "?? ??"
+  },
+  "auto.components.status.bar.tooltip.1292d4f2ee": {
+    "ko": "??? ? ??"
+  },
+  "auto.components.status.bar.tooltip.45198c7d95": {
+    "ko": "rate-limit ??? 1? ?? ??"
+  },
+  "auto.components.status.bar.tooltip.7567cd1c6b": {
+    "ko": "???? ??? ? ??"
+  },
+  "auto.components.status.bar.tooltip.bce421cba3": {
+    "ko": "rate-limit ??? {{value0}}? ?? ??"
+  },
+  "auto.components.tab.bar.BrowserTab.2186a8407c": {
+    "ko": "??? ??"
+  },
+  "auto.components.tab.bar.BrowserTab.911542656f": {
+    "ko": "? ??"
+  },
+  "auto.components.tab.bar.BrowserTab.96354ed249": {
+    "ko": "?? ??"
+  },
+  "auto.components.tab.bar.EditorFileTabContextMenu.1d04b1630b": {
+    "ko": "??? ??"
+  },
+  "auto.components.tab.bar.EditorFileTabContextMenu.6b3efb106e": {
+    "ko": "?? ??"
+  },
+  "auto.components.tab.bar.EditorFileTabContextMenu.fdd29eb669": {
+    "ko": "? ??"
+  },
+  "auto.components.tab.bar.RecentTabSwitcher.329638ff6f": {
+    "ko": "? ??"
+  },
+  "auto.components.tab.bar.SortableTabContextMenu.591f9b12c1": {
+    "ko": "?? ??"
+  },
+  "auto.components.tab.bar.SortableTabContextMenu.60f958ec75": {
+    "ko": "? ??"
+  },
+  "auto.components.tab.bar.SortableTabContextMenu.845576bed1": {
+    "ko": "???"
+  },
+  "auto.components.tab.bar.SortableTabContextMenu.8d16f9cd30": {
+    "ko": "?? ? ??"
+  },
+  "auto.components.tab.bar.SortableTabContextMenu.af80ed83c1": {
+    "ko": "??? ??"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.77ac113df0": {
+    "ko": "{{value0}} ??: {{value1}}"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.7b1c9d6ae1": {
+    "ko": "??"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.b4e7f9a2c1": {
+    "ko": "???? ?? ??"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.b82e237a4b": {
+    "ko": "?? ?? ? ??"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.c781f992e4": {
+    "ko": "destructive"
+  },
+  "auto.components.tab.bar.TabBarQuickCommandsButton.f3a8c2d1e7": {
+    "ko": "?? ?? ??..."
+  },
+  "auto.components.tab.bar.tab.create.menu.options.164c394bab": {
+    "ko": "?? ??"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.1baeb07c17": {
+    "ko": "iOS ?????"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.37ff3ddca1": {
+    "ko": "Markdown ??"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.6d0e6a4b7a": {
+    "ko": "? ????"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.6d8b6b4117": {
+    "ko": "? ??"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.a094576900": {
+    "ko": "? terminal"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.bbaf4f85a4": {
+    "ko": "??? ?????"
+  },
+  "auto.components.tab.bar.tab.create.menu.options.c87ad57785": {
+    "ko": "???? ?"
+  },
+  "auto.components.tab.group.AiVaultSessionDropLayer.couldNotReadPayload": {
+    "ko": "?? ??? ???? ?? ? ????."
+  },
+  "auto.components.tab.group.AiVaultSessionDropLayer.dropOntoTerminalPane": {
+    "ko": "? ??? ????? terminal ?? ????."
+  },
+  "auto.components.tab.group.AiVaultSessionDropLayer.localWorkspacesOnly": {
+    "ko": "???? ????? ?? ????????? ??? ? ????."
+  },
+  "auto.components.tab.group.AiVaultSessionDropLayer.openLocalWorkspace": {
+    "ko": "??? ???? ?? ?? ??????? ???."
+  },
+  "auto.components.tab.group.AiVaultSessionDropLayer.sessionQueued": {
+    "ko": "??? ???? ???"
+  },
+  "auto.components.tab.group.TabGroupPanel.0db2081805": {
+    "ko": "?? ??"
+  },
+  "auto.components.tab.group.TabGroupPanel.4df2a06d36": {
+    "ko": "??? ??"
+  },
+  "auto.components.task.project.source.combobox.allProjects": {
+    "ko": "?? ????"
+  },
+  "auto.components.task.project.source.combobox.hostCount": {
+    "ko": "??? {{value0}}?"
+  },
+  "auto.components.task.project.source.combobox.noMatches": {
+    "ko": "??? ???? ????? ????."
+  },
+  "auto.components.task.project.source.combobox.noProjects": {
+    "ko": "???? ??"
+  },
+  "auto.components.task.project.source.combobox.searchProjects": {
+    "ko": "???? ??..."
+  },
+  "auto.components.taskPageEmptyState.changeQueryDescription": {
+    "ko": "??? ????? ????."
+  },
+  "auto.components.taskPageEmptyState.noGitLabIssuesTitle": {
+    "ko": "GitLab ?? ??"
+  },
+  "auto.components.taskPageEmptyState.noGitLabMrsDescription": {
+    "ko": "? ??? ???? GitLab MR? ????."
+  },
+  "auto.components.taskPageEmptyState.noGitLabMrsTitle": {
+    "ko": "GitLab MR ??"
+  },
+  "auto.components.taskPageEmptyState.noGitLabWorkDescription": {
+    "ko": "? ??? ???? GitLab ??? ????."
+  },
+  "auto.components.taskPageEmptyState.noGitLabWorkTitle": {
+    "ko": "GitLab ?? ??"
+  },
+  "auto.components.taskPageEmptyState.noMatchingGitHubWorkTitle": {
+    "ko": "???? GitHub ?? ??"
+  },
+  "auto.components.taskPageEmptyState.noProjectSourcesDescription": {
+    "ko": "FABRICA? ?? ???/???? ??? ???? ? ? ??? ???? ??? ?? ?? ?????."
+  },
+  "auto.components.taskPageEmptyState.noProjectSourcesTitle": {
+    "ko": "??? ???? ?? ??"
+  },
+  "auto.components.taskSourceContextSummary.reconnectOrUpdateTitle": {
+    "ko": "? ??? ????? {{value0}}?(?) ?? ????? ???????."
+  },
+  "auto.components.taskSourceContextSummary.someSourceHostsUnavailable": {
+    "ko": "?? {{value0}} ?? ???? ??? ? ??: {{value1}}"
+  },
+  "auto.components.taskSourceContextSummary.sourceUnavailable": {
+    "ko": "{{value0}} ??? ??? ? ??: {{value1}}"
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.dont_ask_again": {
+    "ko": "?? ?? terminals? ?? ?? ?? ??"
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_agent_confirm": {
+    "ko": "Agent ??"
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_agent_description": {
+    "ko": "? terminal? ??? agent? ?? ??? ?????."
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_agent_title": {
+    "ko": "? agent? ??????"
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_command_confirm": {
+    "ko": "???? ??"
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_command_description": {
+    "ko": "? terminal? ??? ???? ?? ?? ??? ?????."
+  },
+  "auto.components.terminal.pane.CloseTerminalDialog.stop_command_title": {
+    "ko": "?? ?? ??? ??????"
+  },
+  "auto.components.terminal.pane.MobileDriverOverlay.54f7d6f69d": {
+    "ko": "?? terminals ??? ????"
+  },
+  "auto.components.terminal.pane.MobileDriverOverlay.faa367dc74": {
+    "ko": "???? ? ??? ??? ??? ?? ?????"
+  },
+  "auto.components.terminal.pane.TerminalContextMenu.c2f0b72b8d": {
+    "ko": "??"
+  },
+  "auto.components.terminal.pane.TerminalErrorToast.5c8ce20be6": {
+    "ko": "??? ????"
+  },
+  "auto.components.terminal.pane.TerminalSessionStateSaveFailureDialog.6bee0c8f17": {
+    "ko": "??? ?? ??? ??"
+  },
+  "auto.components.terminal.quick.commands.TerminalQuickCommandAppendEnterSwitch.5fa607d807": {
+    "ko": "Enter ??"
+  },
+  "auto.components.terminal.quick.commands.TerminalQuickCommandAppendEnterSwitch.c936c2d6d2": {
+    "ko": "???? ???? ?? ?? ?????."
+  },
+  "auto.components.terminal.quick.commands.TerminalQuickCommandAppendEnterSwitch.e4e5fed3b3": {
+    "ko": "Enter ?? ??"
+  },
+  "auto.components.ui.color.picker.faa855a582": {
+    "ko": "Hex"
+  },
+  "auto.components.workspace.cleanup.WorkspaceCleanupDialog.1b18868569": {
+    "ko": "?? ??"
+  },
+  "auto.components.workspace.cleanup.WorkspaceCleanupDialog.7eee951968": {
+    "ko": "?????? ??? ?? ?"
+  },
+  "auto.components.workspace.cleanup.WorkspaceCleanupDialog.8b74d4ea6e": {
+    "ko": "??? ???? ?? ????? Git ??? ????, ?? ?, terminal, ?? ?? agent, ?? ?? ?? ?? ??? ?? ?????."
+  },
+  "auto.components.workspace.cleanup.WorkspaceCleanupDialog.97c772c4fe": {
+    "ko": "??? ??????? ??? ??????? ?? ?????."
+  },
+  "auto.components.workspace.cleanup.WorkspaceCleanupDialog.a19040cd67": {
+    "ko": "??? ?????? ???? ??? ??????? ????."
+  },
+  "auto.components.workspace.space.WorkspaceSpacePage.45f6302dbc": {
+    "ko": "?? ??"
+  },
+  "auto.components.workspace.space.WorkspaceSpacePage.8d0048e1cb": {
+    "ko": "?????? ??? ???? ?? ??? ???? ?? ??."
+  },
+  "auto.components.workspace.space.WorkspaceSpacePage.e8d6ba11ab": {
+    "ko": "??"
+  },
+  "auto.hooks.useAutomationDispatchEvents.3ad7d77f57": {
+    "ko": "?? ??????? ? ??? ?? ??? ?? ???? ????."
+  },
+  "auto.hooks.useComposerState.3db83fc58a": {
+    "ko": "? ???? ?? ??? ??? ? ?? ???? ??? ????."
+  },
+  "auto.hooks.useSettingsNavigationMetadata.31e57d1c70": {
+    "ko": "SSH? ?? ?? ??? ??, terminals, Git, ??????? ?????."
+  },
+  "auto.hooks.useSettingsNavigationMetadata.3d65d3f1b9": {
+    "ko": "FABRICA ? ?? agents? ??? ????? ??? ?????."
+  },
+  "auto.hooks.useSettingsNavigationMetadata.40d80bad8a": {
+    "ko": "??"
+  },
+  "auto.hooks.useSettingsNavigationMetadata.7682607591": {
+    "ko": "agent ? terminal ???? ?? ???? ???? ?????."
+  },
+  "auto.lib.pr.comment.audience.a7150a17bc": {
+    "ko": "??"
+  },
+  "auto.lib.pr.comment.audience.empty.human": {
+    "ko": "?? ??? ????."
+  },
+  "auto.lib.projectSkillRuntime.distroMissing": {
+    "ko": "??? WSL ???? ??? ? ????. ?? ??? ???? ????? ? ????? Windows? ?????."
+  },
+  "auto.lib.projectSkillRuntime.distroRequired": {
+    "ko": "? ??? ???? ?? ????? WSL ???? ?????."
+  },
+  "auto.lib.projectSkillRuntime.wslDefault": {
+    "ko": "WSL ???"
+  },
+  "auto.lib.projectSkillRuntime.wslUnavailable": {
+    "ko": "? ??? ????? ???? ???? WSL? ?????."
+  },
+  "auto.lib.source.control.agent.action.plan.3f0ea9aa0d": {
+    "ko": "agent ?? ??? ?? ? ????."
+  },
+  "auto.lib.sparse.preset.draft.5915a0a1f6": {
+    "ko": "??, ?? ??, ?? ??? ??? repo ?? ?? ????? ?????."
+  },
+  "auto.lib.terminal.shortcut.capture.notification.0ab0cd001a": {
+    "ko": "size-4 text-muted-foreground"
+  },
+  "auto.store.slices.editor.checkRunDetailsLoadFailed": {
+    "ko": "?? ?? ??? ???? ?????."
+  },
+  "auto.store.slices.editor.checkRunDetailsUnavailable": {
+    "ko": "? ??? ??? ? ?? ?? ??? ????."
+  },
+  "auto.store.slices.jira.856083302c": {
+    "ko": "? ??? ??? ?? Jira ?? ??? ???????."
+  },
+  "auto.store.slices.linear.37d36984d0": {
+    "ko": "? ??? ??? ?? Linear ?? ??? ???????."
+  },
+  "auto.store.slices.repos.e649269645": {
+    "ko": "??? ???? ??? ????? ???? ??? ?????."
+  },
+  "auto.store.slices.worktrees.903b51c2ed": {
+    "ko": "{{value0}}?? ??????? ????? {{value2}} ??? FABRICA? ?? {{value1}}?(?) fast-forward? ? ????."
+  },
+  "auto.store.slices.worktrees.d1d78a7baa": {
+    "ko": "Git? \"{{value0}}\"{{value1}} ???? ???? ??? ? ??, ?? commits ??? ???? ?? FABRICA? ???? ??????."
+  },
+  "auto.store.slices.worktrees.fa9299a66f": {
+    "ko": "? ????? ????? ?? {{value0}}?(?) {{value1}} {{value2}} ??? ????. AI diff? ?? commits? ?? ? ????."
+  },
+  "auto.web.WebConnect.4a4c017be1": {
+    "ko": "?????:"
+  },
+  "settings.appearance.statusBar.resourceUsageToggleDescription": {
+    "ko": "??? ???? ?????. ???? CPU, ???, ??, ?? ??, ?????? ??? ??? ? ? ????."
+  },
+  "settings.appearance.statusBar.sshToggleDescription": {
+    "ko": "?? ??? SSH ? ?? FABRICA ???? ??? ?????."
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.selectAllAgents": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanelControls.clearAgents": {
+    "ko": "?? ??"
+  },
+  "auto.components.right.sidebar.AiVaultPanel.noAgentsSelected": {
+    "ko": "??? ????? ????"
+  }
+}
