@@ -200,6 +200,24 @@ When a new session starts, it should immediately:
 - Decisions that affect the landing page or marketing
 - Anything blocking progress that needs prioritization
 
+### CRITICAL: One-Way vs Two-Way Communication
+
+**`orca terminal send`** = one-way. The sub-agent receives the message but has NO way to send results back. Use only for simple notifications that don't need a response.
+
+**`orca orchestration dispatch --inject`** = two-way. Injects a preamble with `run_id`, `task_id`, `dispatch_id`, and `coordinator_handle` so the worker can send `worker_done`, `ask`, or `escalation` back to you.
+
+**Rule:** ALWAYS use `orca orchestration dispatch --inject` when you need a response from workers. NEVER use `orca terminal send` for tasks that require results.
+
+```bash
+# WRONG — one-way, no reply possible
+orca terminal send --terminal <handle> --text "Push your changes" --enter --json
+
+# CORRECT — two-way, worker can reply
+orca orchestration task-create --spec "Push changes" --json
+orca orchestration dispatch --task <task_id> --to <handle> --inject --json
+orca orchestration check --wait --types worker_done,escalation,question --timeout-ms 300000 --json
+```
+
 ## Orchestration Skill
 
 **Load the orchestration skill before running any orchestration commands:**
@@ -226,6 +244,7 @@ When you receive a task from the top-level orchestrator, you get these IDs (via 
 ### How to Report Back to Top-Level Orchestrator
 
 ```bash
+# Use the coordinator_handle from the dispatch preamble to reply
 orca orchestration send --type worker_done --subject "Done" \
   --body "Summary of what you did, what you found, what's left" \
   --task-id <task_id> --dispatch-id <dispatch_id> --outcome succeeded \
@@ -237,6 +256,8 @@ If you need help or are blocked:
 ```bash
 orca orchestration ask --question "I need help with X" --options "yes,no" --json
 ```
+
+**IMPORTANT:** Only use `worker_done` and `ask` when you have a valid dispatch preamble with `task_id` and `dispatch_id`. If you received a plain message via `orca terminal send` (no preamble), you cannot send worker_done — just acknowledge the message.
 
 ### How to Dispatch Work to Agents in This Project
 
