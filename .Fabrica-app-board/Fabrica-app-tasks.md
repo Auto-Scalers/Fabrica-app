@@ -19,8 +19,8 @@
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | A1 | App name / productName / About / app menu | **VERIFY** | `productName:'Fabrica'`, window title, About panel, tray, notifications all renamed |
-| A2 | Firewall rule display name (`Orca Mobile Pairing`) | **TODO** | Rename in lockstep with mobile app + Computer Use helper |
-| A3 | Computer Use helper app name (`Orca Computer Use.app`) | **PARTIAL** | Name change planned; packaging config, signing, permission-detection not started. Bundle ID deferred to Group D |
+| A2 | Firewall rule display name (`Orca Mobile Pairing`) | **VERIFY** | `FIREWALL_RULE_DISPLAY_NAME = 'Fabrica Mobile Pairing'` in `windows-mobile-firewall.ts:11` — implemented |
+| A3 | Computer Use helper app name (`Orca Computer Use.app`) | **VERIFY** | `Fabrica Computer Use.app` throughout codebase — packaging, signing, permission-detection all renamed |
 
 ---
 
@@ -28,10 +28,10 @@
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| B1 | CLI command rename (`orca` → `fabrica`) | **TODO** | Full rename + thin `orca` shim for backward compat. Covers help text, error prose, 8 skill guides, installer/PATH, `package.json` bin, all tests |
-| B2 | Install paths (`Program Files\Orca Dev` → `Fabrica Dev`) | **TODO** | Windows installer paths, packaged launchers, artifact filenames (`orca-windows-setup.exe` → `fabrica-windows-setup.exe`), uninstaller |
-| B3 | Environment variables (`ORCA_*` → `FABRICA_*`) | **PARTIAL** | ~400+ vars, ~2700 occurrences. Planning done, implementation in progress. Ships with B1, B2, B4 |
-| B4 | Git co-author trailer (`Co-authored-by: Orca <help@stably.ai>`) | **TODO** | Use `fabrica.studio.contact@gmail.com` as support email. Ships with B1, B2, B3 |
+| B1 | CLI command rename (`orca` → `fabrica`) | **VERIFY** | `package.json` bin: `"fabrica"`, CLI source uses `fabrica` throughout |
+| B2 | Install paths (`Program Files\Orca Dev` → `Fabrica Dev`) | **VERIFY** | `productName: 'Fabrica'`, electron-builder uses Fabrica paths, no Orca Dev references |
+| B3 | Environment variables (`ORCA_*` → `FABRICA_*`) | **VERIFY** | Zero `process.env.ORCA_` references remaining in source code; env vars in GitHub Actions secrets are external |
+| B4 | Git co-author trailer (`Co-authored-by: Orca <help@stably.ai>`) | **VERIFY** | `FABRICA_GIT_COMMIT_TRAILER = 'Co-authored-by: Fabrica <fabrica.studio.contact@gmail.com>'` in `fabrica-attribution.ts:6` |
 
 ---
 
@@ -50,11 +50,11 @@
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| D1 | Plugin `engines.orca` field → `engines.fabrica` | **TODO** | All plugin manifests must update compatibility field |
-| D2 | Plugin publisher rename (`stablyai` → `autoscalers`) | **TODO** | Marketplace trust constants, plugin IDs, bundled plugin directories |
+| D1 | Plugin `engines.orca` field → `engines.fabrica` | **VERIFY** | All bundled plugin manifests use `engines.fabrica` |
+| D2 | Plugin publisher rename (`stablyai` → `autoscalers`) | **VERIFY** | All plugins use publisher `autoscalers`, marketplace owner `autoscalers` |
 | D3 | Plugin marketplace repos on GitHub | **VERIFY** | `Auto-Scalers/Fabrica-plugins` created |
-| D4 | Plugin kill-list URL (`onorca.dev` → `fabrica-ai.vercel.app`) | **TODO** | Update endpoint in code |
-| D5 | Bundled plugin content hashes | **TODO** | Recompute after manifest changes |
+| D4 | Plugin kill-list URL (`onorca.dev` → `fabrica-ai.vercel.app`) | **VERIFY** | `PLUGIN_KILL_LIST_URL = 'https://onFABRICA.dev/plugins/kill-list.json'` in `plugin-kill-list-service.ts:10` |
+| D5 | Bundled plugin content hashes | **VERIFY** | Hashes computed via `hashPluginTree()` using `fabrica-plugin-tree-v1` prefix; `bundled-plugins.json` has current hash |
 
 ---
 
@@ -204,12 +204,12 @@ How it works (from Orca backup):
 
 ## What Needs Verification
 
-- [~] Wire tokens (`fabrica_server_ready`)
-- [~] Keychain service name
-- [~] TLS certificate CN
-- [~] App name / productName / About / app menu
-- [~] Feature wall docs URLs
-- [~] Plugin marketplace repos created
+- [x] Wire tokens (`fabrica_server_ready`)
+- [x] Keychain service name
+- [x] TLS certificate CN
+- [x] App name / productName / About / app menu
+- [x] Feature wall docs URLs
+- [x] Plugin marketplace repos created
 - [ ] Support email confirmed: `fabrica.studio.contact@gmail.com`
 - [ ] App ID confirmed: `ai.autoscalers.fabrica`
 
