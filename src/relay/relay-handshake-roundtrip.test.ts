@@ -46,7 +46,7 @@ describe('handshake round-trip over a real Socket pair', () => {
     // Why: process.exit is called from inside async callbacks
     // (process.stderr.write flush callback) which would otherwise surface
     // as an uncaughtException after the test resolves and tear down the
-    // runner. We swallow ExitCalled — exitSpy still records the call so
+    // runner. We swallow ExitCalled ï¿½ exitSpy still records the call so
     // assertions hold.
     uncaughtHandler = (err: Error): void => {
       if (err instanceof ExitCalled) {
@@ -151,7 +151,7 @@ describe('handshake round-trip over a real Socket pair', () => {
     await new Promise<void>((r) => bridgeSock.once('connect', () => r()))
 
     const handshakeFrame = encodeHandshakeFrame({
-      type: 'ORCA-RELAY-handshake',
+      type: 'FABRICA-RELAY-handshake',
       version: '0.1.0+match'
     })
     const trailingPayload = encodeJsonRpcFrame({ jsonrpc: '2.0', method: 'noop', params: {} }, 1, 0)
@@ -178,7 +178,7 @@ describe('handshake round-trip over a real Socket pair', () => {
         }
         serverHandshakeSeen = true
         const ok = encodeHandshakeFrame({
-          type: 'ORCA-RELAY-handshake-ok',
+          type: 'FABRICA-RELAY-handshake-ok',
           version: '0.1.0+match'
         })
         const trailing = encodeJsonRpcFrame(

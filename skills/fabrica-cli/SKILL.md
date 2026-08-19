@@ -1,55 +1,55 @@
 ---
-name: orca-cli
+name: fabrica-cli
 description: >-
-  Use the public `fabrica` CLI to operate Orca-managed worktrees, folder contexts,
+  Use the public `fabrica` CLI to operate fabrica-managed worktrees, folder contexts,
   terminals, repos, automations, artifacts, worktree comments, and the browser
-  embedded inside the Orca app. Use when the user says "$orca-cli", "use orca cli",
-  "Orca worktree", "child worktree", "cardStatus", "spawn codex/claude in a worktree",
-  "read/wait/send Orca terminal", "terminal send", "full handoff", "handover",
-  "give this to another agent", "another worktree", "Orca browser", "fabrica artifacts",
+  embedded inside the fabrica app. Use when the user says "$fabrica-cli", "use fabrica cli",
+  "fabrica worktree", "child worktree", "cardStatus", "spawn codex/claude in a worktree",
+  "read/wait/send fabrica terminal", "terminal send", "full handoff", "handover",
+  "give this to another agent", "another worktree", "fabrica browser", "fabrica artifacts",
   "share HTML/Markdown", "public artifact link", or "control the browser inside
-  Orca". Prefer this over raw `git worktree`, ad hoc
-  PTYs, Playwright, or Computer Use when the task touches Orca-managed state.
-  Use Computer Use for browser windows, webviews, or desktop UI outside Orca's
+  fabrica". Prefer this over raw `git worktree`, ad hoc
+  PTYs, Playwright, or Computer Use when the task touches fabrica-managed state.
+  Use Computer Use for browser windows, webviews, or desktop UI outside fabrica's
   embedded browser.
 ---
 
-# Orca CLI
+# fabrica CLI
 
-This file is a discovery stub, not the usage guide. The full, version-matched Orca CLI
-reference is served by the `orca` binary itself — kept out of this file on purpose so it
+This file is a discovery stub, not the usage guide. The full, version-matched fabrica CLI
+reference is served by the `fabrica` binary itself — kept out of this file on purpose so it
 can never drift from the binary that will actually run your commands.
 
-Engage Orca whenever its running editor/runtime is the source of truth: Orca-managed
+Engage fabrica whenever its running editor/runtime is the source of truth: fabrica-managed
 worktrees, folder contexts, terminals, repos, automations, worktree comments, and the
-browser embedded inside the Orca app. Triggers include "$orca-cli", "Orca worktree",
-"child worktree", "spawn codex/claude in a worktree", "read/wait/send Orca terminal",
+browser embedded inside the fabrica app. Triggers include "$fabrica-cli", "fabrica worktree",
+"child worktree", "spawn codex/claude in a worktree", "read/wait/send fabrica terminal",
 "full handoff" / "handover" / "give this to another agent", and "control the browser
-inside Orca". Use plain shell tools when Orca state does not matter.
+inside fabrica". Use plain shell tools when fabrica state does not matter.
 
 ## Resolve the CLI for this session
 
 Choose the executable once and reuse it for every later command:
 
-- If the `FABRICA_CLI_COMMAND` environment variable is set, use its value. Orca exports this
+- If the `FABRICA_CLI_COMMAND` environment variable is set, use its value. fabrica exports this
   for managed WSL sessions.
-- Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `orca-dev`.
-- Otherwise, on Linux outside an Orca-managed terminal, use `orca-ide`. Never run bare
-  `orca` there — outside Orca's terminals it normally resolves to the
+- Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
+- Otherwise, on Linux outside a Fabrica-managed terminal, use `fabrica-ide`. Never run bare
+  `fabrica` there — outside Fabrica's terminals it normally resolves to the
   GNOME Orca screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
-- Otherwise, use `orca`.
+- Otherwise, use `fabrica`.
 
-Below, `ORCA` is a placeholder for the executable you resolved. Substitute it before
-running anything; do not create a shell variable or run `ORCA` literally. This works the
+Below, `fabrica` is a placeholder for the executable you resolved. Substitute it before
+running anything; do not create a shell variable or run `fabrica` literally. This works the
 same way in POSIX shells, PowerShell, and cmd.exe.
 
 If the selected executable cannot run, report its exact error and stop. Do not fall through
-to another executable, which could silently target a different Orca build.
+to another executable, which could silently target a different fabrica build.
 
-## Load the full guide before running Orca commands
+## Load the full guide before running fabrica commands
 
 ```text
-ORCA skills get orca-cli
+fabrica skills get fabrica-cli
 ```
 
 That prints the complete, version-matched guide for the exact binary that will handle your
@@ -57,11 +57,11 @@ next commands — worktrees, handoffs, terminals, automations, and the built-in 
 Read it first, then run the specific command you need.
 
 Don't guess subcommands or flags from memory or from a cached copy of this stub. They
-change between Orca releases, and this file deliberately no longer lists them. Confirm the
-app is up with `ORCA status --json` (start it with `ORCA open --json` if needed), and
+change between fabrica releases, and this file deliberately no longer lists them. Confirm the
+app is up with `fabrica status --json` (start it with `fabrica open --json` if needed), and
 prefer `--json` for agent-driven calls.
 
-## If an older Orca does not recognize `skills get`
+## If an older fabrica does not recognize `skills get`
 
 Use this fallback only when the selected binary explicitly reports that `skills get` is an
 unknown command. Another failure is not proof of an older binary; report it rather than
@@ -69,11 +69,11 @@ guessing or changing executables. For a confirmed pre-guide binary, use only thi
 read-only bootstrap to orient. Do not dead-end and do not invent commands:
 
 ```text
-ORCA status --json
-ORCA worktree ps --json
-ORCA terminal list --json
+fabrica status --json
+fabrica worktree ps --json
+fabrica terminal list --json
 ```
 
-Then tell the user that updating Orca restores the full, version-matched guide via
-`ORCA skills get orca-cli`. Beyond these commands, ask the user rather than guessing a
+Then tell the user that updating fabrica restores the full, version-matched guide via
+`fabrica skills get fabrica-cli`. Beyond these commands, ask the user rather than guessing a
 command surface this older binary may not support.

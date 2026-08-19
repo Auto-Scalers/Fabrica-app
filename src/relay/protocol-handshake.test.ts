@@ -9,9 +9,9 @@ import {
 } from './protocol'
 
 describe('handshake framing', () => {
-  it('round-trips an ORCA-RELAY-handshake envelope through the existing framing', () => {
+  it('round-trips an FABRICA-RELAY-handshake envelope through the existing framing', () => {
     const sent = encodeHandshakeFrame({
-      type: 'ORCA-RELAY-handshake',
+      type: 'FABRICA-RELAY-handshake',
       version: '0.1.0+deadbeef'
     })
     expect(sent[0]).toBe(MessageType.Handshake)
@@ -24,24 +24,24 @@ describe('handshake framing', () => {
     expect(frames).toHaveLength(1)
     expect(frames[0].type).toBe(MessageType.Handshake)
     const msg = parseHandshakeMessage(frames[0].payload)
-    expect(msg).toEqual({ type: 'ORCA-RELAY-handshake', version: '0.1.0+deadbeef' })
+    expect(msg).toEqual({ type: 'FABRICA-RELAY-handshake', version: '0.1.0+deadbeef' })
   })
 
-  it('round-trips an ORCA-RELAY-handshake-ok reply', () => {
+  it('round-trips an FABRICA-RELAY-handshake-ok reply', () => {
     const sent = encodeHandshakeFrame({
-      type: 'ORCA-RELAY-handshake-ok',
+      type: 'FABRICA-RELAY-handshake-ok',
       version: '0.1.0+deadbeef'
     })
     const frames: DecodedFrame[] = []
     const decoder = new FrameDecoder((f) => frames.push(f))
     decoder.feed(sent)
     const msg = parseHandshakeMessage(frames[0].payload)
-    expect(msg).toEqual({ type: 'ORCA-RELAY-handshake-ok', version: '0.1.0+deadbeef' })
+    expect(msg).toEqual({ type: 'FABRICA-RELAY-handshake-ok', version: '0.1.0+deadbeef' })
   })
 
-  it('round-trips an ORCA-RELAY-handshake-mismatch reply', () => {
+  it('round-trips an FABRICA-RELAY-handshake-mismatch reply', () => {
     const sent = encodeHandshakeFrame({
-      type: 'ORCA-RELAY-handshake-mismatch',
+      type: 'FABRICA-RELAY-handshake-mismatch',
       expected: '0.1.0+aaa',
       got: '0.1.0+bbb'
     })
@@ -50,7 +50,7 @@ describe('handshake framing', () => {
     decoder.feed(sent)
     const msg = parseHandshakeMessage(frames[0].payload)
     expect(msg).toEqual({
-      type: 'ORCA-RELAY-handshake-mismatch',
+      type: 'FABRICA-RELAY-handshake-mismatch',
       expected: '0.1.0+aaa',
       got: '0.1.0+bbb'
     })

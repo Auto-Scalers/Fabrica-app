@@ -31,7 +31,7 @@ vi.mock('./relay-protocol', () => ({
     }
     return null
   }),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 
@@ -776,7 +776,7 @@ describe('deployAndLaunchRelay', () => {
       '"C:/Users/me user/.FABRICA-remote/relay-0.1.0+abcdef012345/relay.js"'
     )
     expect(launchScript).toContain(
-      '"C:/Users/me user/.FABRICA-remote/relay-0.1.0+abcdef012345/agent-hooks/ORCA-RELAY-'
+      '"C:/Users/me user/.FABRICA-remote/relay-0.1.0+abcdef012345/agent-hooks/FABRICA-RELAY-'
     )
     expect(launchScript).toContain('--endpoint-dir')
     expect(launchScript).not.toContain('--pty-source-credit-v1')

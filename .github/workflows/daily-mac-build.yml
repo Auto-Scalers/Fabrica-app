@@ -18,7 +18,7 @@ name: Daily macOS Dev Build
 #     a ticket every daily reads as a new client and silently loses file access
 #     under Documents/Desktop/Downloads.
 #
-# Artifacts publish to stablyai/fabrica-daily, never to stablyai/fabrica: the main
+# Artifacts publish to Auto-Scalers/fabrica-daily, never to Auto-Scalers/fabrica: the main
 # repo's releases atom feed exposes only its 10 newest entries, so high-volume
 # dev tags would evict every stable/RC entry and break updates for real users.
 # Separate from fabrica-hourly so someone riding main's hourlies never sees the
@@ -63,13 +63,13 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  DAILY_REPO: stablyai/fabrica-daily
+  DAILY_REPO: Auto-Scalers/fabrica-daily
   # Keep ~30 days so a regression can be bisected without holding a full year.
   DAILY_RETAIN_COUNT: 30
 
 jobs:
   build-daily-mac:
-    if: github.repository == 'stablyai/fabrica'
+    if: github.repository == 'Auto-Scalers/fabrica'
     runs-on: blacksmith-6vcpu-macos-15
     # Why 150: it must exceed the worst case the retry budgets below can produce
     # (install 3x10 + publish 2x45 = 120, plus ~25 for checkout/build/verify), or
@@ -84,7 +84,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          # Why: this job only reads stablyai/fabrica and never pushes; every write
+          # Why: this job only reads Auto-Scalers/fabrica and never pushes; every write
           # goes to the daily repo through a minted App token passed by env.
           # Not persisting the checkout credential shrinks the blast radius if a
           # build step is compromised (zizmor: artipacked).
@@ -96,7 +96,7 @@ jobs:
         with:
           app-id: ${{ secrets.HOURLY_RELEASE_APP_ID }}
           private-key: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
           repositories: fabrica-daily
 
       # Why: main is often idle. Rebuilding an unchanged commit burns a runner
@@ -247,7 +247,7 @@ jobs:
         with:
           app-id: ${{ secrets.HOURLY_RELEASE_APP_ID }}
           private-key: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
           repositories: fabrica-daily
 
       - name: Create daily release
@@ -271,7 +271,7 @@ jobs:
           cat >"$notes_file" <<EOF
           Automated daily macOS dev build from commit \`$short_sha\`.
 
-          Built from [\`stablyai/fabrica@$short_sha\`](https://github.com/stablyai/fabrica/commit/$SHA).
+          Built from [\`Auto-Scalers/fabrica@$short_sha\`](https://github.com/Auto-Scalers/fabrica/commit/$SHA).
 
           **Unvetted.** No tests ran. Signed and notarized like a release, so it
           installs through Fabrica's in-app updater and opens from a manual download
@@ -337,7 +337,7 @@ jobs:
         with:
           app-id: ${{ secrets.HOURLY_RELEASE_APP_ID }}
           private-key: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
           repositories: fabrica-daily
 
       # Why: the updater resolves a tag, then fetches latest-mac.yml from it. A

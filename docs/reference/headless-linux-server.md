@@ -1,13 +1,13 @@
 # Headless Linux Server
 
-Use this guide when you want to run `orca serve` on a Linux machine without a
+Use this guide when you want to run `fabrica serve` on a Linux machine without a
 desktop session, such as an Ubuntu VPS or a remote build box.
 
-`orca serve` starts the Orca runtime without opening the desktop window. On
+`fabrica serve` starts the Fabrica runtime without opening the desktop window. On
 Linux, the packaged AppImage still needs the libraries that Electron expects at
-startup. Current Orca builds start Xvfb automatically for `orca serve` when no
+startup. Current Fabrica builds start Xvfb automatically for `fabrica serve` when no
 `DISPLAY` is set, but Xvfb must be installed first. A separate D-Bus session is
-not required. When `DISPLAY` is set, Orca uses that display instead of starting
+not required. When `DISPLAY` is set, Fabrica uses that display instead of starting
 a competing Xvfb process.
 
 The supported deployment matrix covers Ubuntu 20.04, 22.04, and 24.04 and
@@ -29,24 +29,24 @@ Ubuntu 24.04 and Debian, the equivalent package may be `libfuse2t64`. FUSE is
 optional: without it, use the AppImage's supported extraction path:
 
 ```bash
-cd /opt/orca
-./orca-linux.AppImage --appimage-extract
-/opt/orca/squashfs-root/AppRun serve --port 6768
+cd /opt/fabrica
+./fabrica-linux.AppImage --appimage-extract
+/opt/fabrica/squashfs-root/AppRun serve --port 6768
 ```
 
 Docker commonly has no FUSE device. Use `--appimage-extract` once or
 `--appimage-extract-and-run`; neither requires a privileged container. The
-extract-and-run wrapper can print extracted paths before Orca starts, so
+extract-and-run wrapper can print extracted paths before Fabrica starts, so
 automation that requires stdout to contain only the ready JSON should extract
 once and invoke `squashfs-root/AppRun`.
 
 Download and make the AppImage executable:
 
 ```bash
-sudo mkdir -p /opt/orca
-sudo curl -L https://github.com/stablyai/orca/releases/latest/download/orca-linux.AppImage \
-  -o /opt/orca/orca-linux.AppImage
-sudo chmod +x /opt/orca/orca-linux.AppImage
+sudo mkdir -p /opt/fabrica
+sudo curl -L https://github.com/stablyai/orca/releases/latest/download/fabrica-linux.AppImage \
+  -o /opt/fabrica/fabrica-linux.AppImage
+sudo chmod +x /opt/fabrica/fabrica-linux.AppImage
 ```
 
 If `Xvfb` was installed somewhere other than `/usr/bin`, confirm systemd can
@@ -61,23 +61,23 @@ command -v Xvfb
 Start with a foreground run before creating a service:
 
 ```bash
-LIBGL_ALWAYS_SOFTWARE=1 /opt/orca/orca-linux.AppImage serve --port 6768
+LIBGL_ALWAYS_SOFTWARE=1 /opt/fabrica/fabrica-linux.AppImage serve --port 6768
 ```
 
 For remote clients, pass the address they should use to reach this server. A
 Tailscale address is usually the safest option for private servers:
 
 ```bash
-LIBGL_ALWAYS_SOFTWARE=1 /opt/orca/orca-linux.AppImage serve \
+LIBGL_ALWAYS_SOFTWARE=1 /opt/fabrica/fabrica-linux.AppImage serve \
   --port 6768 \
   --pairing-address 100.64.1.20
 ```
 
 `--pairing-address` is only the address advertised to clients. It does not
-change the listener bind address. Orca binds its WebSocket listener, then
+change the listener bind address. Fabrica binds its WebSocket listener, then
 combines the actual bound port with the advertised host when the address omits
 a port. Use a reachable LAN/Tailscale hostname or IP, or a complete reverse
-proxy URL such as `https://orca.example.com/runtime` (`http(s)` is normalized
+proxy URL such as `https://fabrica.example.com/runtime` (`http(s)` is normalized
 to `ws(s)`). Wildcard addresses such as `*`, `0.0.0.0`, and `::` cannot be
 advertised.
 
@@ -85,16 +85,16 @@ The command writes one ready block to stdout after the listener bind and
 pairing initialization complete:
 
 ```text
-Orca server ready
+Fabrica server ready
 Bound endpoint: ws://0.0.0.0:6768
 Advertised endpoint: ws://100.64.1.20:6768
-Pairing URL: orca://pair?code=...
+Pairing URL: fabrica://pair?code=...
 ```
 
 For supervisors, request the versioned single-line JSON contract:
 
 ```bash
-/opt/orca/orca-linux.AppImage serve --port 6768 \
+/opt/fabrica/fabrica-linux.AppImage serve --port 6768 \
   --pairing-address 100.64.1.20 --json
 ```
 
@@ -112,7 +112,7 @@ readability:
   "managedWslCliReconciliation": "settled",
   "pairing": {
     "available": true,
-    "url": "orca://pair?code=...",
+    "url": "fabrica://pair?code=...",
     "endpoint": "ws://100.64.1.20:6768",
     "deviceId": "...",
     "webClientUrl": "...",
@@ -141,18 +141,18 @@ the install directory root-owned: the service needs to read and execute the
 AppImage, but must not be able to replace it or the rollback artifacts.
 
 ```bash
-sudo useradd --system --create-home --shell /usr/sbin/nologin orca
-sudo chown root:root /opt/orca /opt/orca/orca-linux.AppImage
-sudo chmod 755 /opt/orca /opt/orca/orca-linux.AppImage
+sudo useradd --system --create-home --shell /usr/sbin/nologin fabrica
+sudo chown root:root /opt/fabrica /opt/fabrica/fabrica-linux.AppImage
+sudo chmod 755 /opt/fabrica /opt/fabrica/fabrica-linux.AppImage
 ```
 
-For most hosts, one `orca serve` service is enough because Orca starts Xvfb on
+For most hosts, one `fabrica serve` service is enough because Fabrica starts Xvfb on
 display `:99` when no display exists:
 
 ```ini
-# /etc/systemd/system/orca-serve.service
+# /etc/systemd/system/fabrica-serve.service
 [Unit]
-Description=Orca runtime server
+Description=Fabrica runtime server
 After=network-online.target
 Wants=network-online.target
 StartLimitIntervalSec=300
@@ -160,10 +160,10 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
-User=orca
-WorkingDirectory=/home/orca
+User=fabrica
+WorkingDirectory=/home/fabrica
 Environment=LIBGL_ALWAYS_SOFTWARE=1
-ExecStart=/opt/orca/orca-linux.AppImage serve --port 6768 --pairing-address 100.64.1.20
+ExecStart=/opt/fabrica/fabrica-linux.AppImage serve --port 6768 --pairing-address 100.64.1.20
 StandardOutput=journal
 StandardError=journal
 Restart=on-failure
@@ -184,18 +184,18 @@ cannot succeed. Any other permanent startup fault is capped at 5 starts per
 `RestartSec=5`, which is how one bad launch could restart thousands of times.
 The start limit counts operator-initiated starts too, so once it trips systemd
 refuses a plain `systemctl start` until the 5-minute window rolls over. Run
-`sudo systemctl reset-failed orca-serve.service` first to clear it — the
+`sudo systemctl reset-failed fabrica-serve.service` first to clear it — the
 [Upgrade](#upgrade-steps) and [Roll back](#roll-back) scripts already do.
 On systemd older than 230 those two directives are spelled
 `StartLimitInterval=`/`StartLimitBurst=` and belong in `[Service]`; Ubuntu
-20.04, Orca's oldest supported base, ships systemd 245.
+20.04, Fabrica's oldest supported base, ships systemd 245.
 
 Enable the service:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now orca-serve.service
-sudo journalctl -u orca-serve.service -f
+sudo systemctl enable --now fabrica-serve.service
+sudo journalctl -u fabrica-serve.service -f
 ```
 
 `journalctl -o cat` removes journal metadata but still mixes the service's
@@ -203,7 +203,7 @@ stdout and stderr. Parse each line as JSON and require the readiness type and
 schema before treating the service as ready:
 
 ```bash
-sudo journalctl -u orca-serve.service -o cat \
+sudo journalctl -u fabrica-serve.service -o cat \
   | jq -Rrc 'fromjson? | select(.type == "fabrica_server_ready" and .schemaVersion == 1)'
 ```
 
@@ -214,12 +214,12 @@ error, or missing library.
 ## Managed Xvfb Service
 
 If you prefer to own the virtual display lifecycle in systemd, run Xvfb as a
-separate service and set `DISPLAY=:99` for Orca.
+separate service and set `DISPLAY=:99` for Fabrica.
 
 ```ini
-# /etc/systemd/system/orca-xvfb.service
+# /etc/systemd/system/fabrica-xvfb.service
 [Unit]
-Description=Virtual X display for Orca
+Description=Virtual X display for Fabrica
 After=network-online.target
 Wants=network-online.target
 
@@ -236,24 +236,24 @@ WantedBy=multi-user.target
 If `command -v Xvfb` returned a different path, update `ExecStart` to that
 absolute path.
 
-Then add the display dependency to the Orca service:
+Then add the display dependency to the Fabrica service:
 
 ```ini
-# /etc/systemd/system/orca-serve.service
+# /etc/systemd/system/fabrica-serve.service
 [Unit]
-Description=Orca runtime server
-After=network-online.target orca-xvfb.service
-Wants=network-online.target orca-xvfb.service
+Description=Fabrica runtime server
+After=network-online.target fabrica-xvfb.service
+Wants=network-online.target fabrica-xvfb.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
 
 [Service]
 Type=simple
-User=orca
-WorkingDirectory=/home/orca
+User=fabrica
+WorkingDirectory=/home/fabrica
 Environment=DISPLAY=:99
 Environment=LIBGL_ALWAYS_SOFTWARE=1
-ExecStart=/opt/orca/orca-linux.AppImage serve --port 6768 --pairing-address 100.64.1.20
+ExecStart=/opt/fabrica/fabrica-linux.AppImage serve --port 6768 --pairing-address 100.64.1.20
 Restart=on-failure
 RestartPreventExitStatus=3
 RestartSec=5
@@ -266,7 +266,7 @@ Enable both units:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now orca-xvfb.service orca-serve.service
+sudo systemctl enable --now fabrica-xvfb.service fabrica-serve.service
 ```
 
 ## CLI Install Note
@@ -275,14 +275,14 @@ On a headless host, you do not need to open the desktop UI just to run the
 server. Invoke the AppImage directly:
 
 ```bash
-/opt/orca/orca-linux.AppImage serve --help
+/opt/fabrica/fabrica-linux.AppImage serve --help
 ```
 
 Running an AppImage as root requires Chromium's `--no-sandbox` switch before
 the command:
 
 ```bash
-/opt/orca/orca-linux.AppImage --no-sandbox serve --port 6768
+/opt/fabrica/fabrica-linux.AppImage --no-sandbox serve --port 6768
 ```
 
 This disables a security boundary. Prefer a dedicated unprivileged service
@@ -300,7 +300,7 @@ user, especially when the listener is reachable beyond localhost.
 - An omitted advertised port uses the actual bound port, including a fallback
   port selected after a collision. An explicit proxy port is preserved. A port
   mismatch therefore means the supplied external routing is wrong, not that
-  Orca changes it.
+  Fabrica changes it.
 - Reverse proxies must support WebSocket upgrade and route the advertised path.
   Use `wss://` or `https://` when TLS terminates at the proxy; do not advertise
   `ws://` through an HTTPS-only endpoint.
@@ -312,13 +312,13 @@ user, especially when the listener is reachable beyond localhost.
   did not reach serve mode; confirm the AppImage version and exact argument
   order, especially `--no-sandbox serve`.
 
-If you later install the desktop CLI from Orca settings, use that CLI for normal
+If you later install the desktop CLI from Fabrica settings, use that CLI for normal
 shell workflows. Keep the AppImage path in systemd so service restarts do not
 depend on an interactive shell profile.
 
 ## Upgrade
 
-`orca serve` never updates itself. In headless mode Orca wires up no auto-updater
+`fabrica serve` never updates itself. In headless mode Fabrica wires up no auto-updater
 at all — the built-in updater only runs in the desktop GUI, and no paired mobile
 or web client can trigger it remotely. Upgrading is always a deliberate step:
 replace the AppImage and restart the service.
@@ -326,12 +326,12 @@ replace the AppImage and restart the service.
 Two facts make this safe and predictable:
 
 - **State lives in the service user's home, not next to the binary.** Persisted
-  data is under `/home/orca/.config/` (Orca uses both an `orca` and an `Orca`
-  directory there), fully independent of `/opt/orca/orca-linux.AppImage`.
+  data is under `/home/fabrica/.config/` (Fabrica uses both a `fabrica` and a `Fabrica`
+  directory there), fully independent of `/opt/fabrica/fabrica-linux.AppImage`.
   Replacing the binary never touches projects, worktree metadata, terminal
   history, orchestration state, or paired-device keys — so mobile and web
   clients reconnect after an upgrade without re-pairing.
-- **New builds migrate old state on load.** Orca loads older `orca-data.json`
+- **New builds migrate old state on load.** Fabrica loads older `fabrica-data.json`
   state into the current schema and writes it back in the current shape, so a
   forward upgrade needs no manual data step.
 
@@ -339,15 +339,15 @@ Rolling back is the case that needs care — see [Roll back](#roll-back).
 
 ### Record the version you deploy
 
-Orca has no headless version command: there is no `--version` flag or `version`
-subcommand, and `orca serve` prints only its endpoint. Choose a release tag
+Fabrica has no headless version command: there is no `--version` flag or `version`
+subcommand, and `fabrica serve` prints only its endpoint. Choose a release tag
 explicitly instead of following the `latest` URL, and record it next to the
 binary so upgrades are auditable. The steps below keep that record in
-`/opt/orca/VERSION`.
+`/opt/fabrica/VERSION`.
 
 ### Upgrade steps
 
-Never download straight onto `/opt/orca/orca-linux.AppImage`. The AppImage is
+Never download straight onto `/opt/fabrica/fabrica-linux.AppImage`. The AppImage is
 FUSE-mounted, so overwriting it in place while the service runs can crash or
 corrupt the live process — and even with the service stopped, a failed or partial
 download would clobber the working binary. Instead download to a temporary name
@@ -356,21 +356,21 @@ on the same filesystem, verify it, then swap it in with an atomic rename.
 Check capacity before starting:
 
 ```bash
-sudo chown root:root /opt/orca
-sudo chmod 755 /opt/orca
-sudo test ! -L /opt/orca/orca-linux.AppImage
-sudo chown root:root /opt/orca/orca-linux.AppImage
-sudo chmod 755 /opt/orca/orca-linux.AppImage
+sudo chown root:root /opt/fabrica
+sudo chmod 755 /opt/fabrica
+sudo test ! -L /opt/fabrica/fabrica-linux.AppImage
+sudo chown root:root /opt/fabrica/fabrica-linux.AppImage
+sudo chmod 755 /opt/fabrica/fabrica-linux.AppImage
 # Clear predictable staging names left by an older attempt after locking the directory
-sudo rm -f /opt/orca/orca-linux.AppImage.new /opt/orca/VERSION.new \
-  /opt/orca/orca-linux.AppImage.recovering /opt/orca/VERSION.recovering
-sudo du -sh /home/orca/.config
-df -h /opt/orca /home/orca
+sudo rm -f /opt/fabrica/fabrica-linux.AppImage.new /opt/fabrica/VERSION.new \
+  /opt/fabrica/fabrica-linux.AppImage.recovering /opt/fabrica/VERSION.recovering
+sudo du -sh /home/fabrica/.config
+df -h /opt/fabrica /home/fabrica
 ```
 
-`/opt/orca` needs room for the compressed Orca profile archive, the staged
+`/opt/fabrica` needs room for the compressed Fabrica profile archive, the staged
 build, and the rollback binary. A rollback extracts the old profile and preserves
-the post-upgrade Orca profile directories, so `/home` needs room for both copies.
+the post-upgrade Fabrica profile directories, so `/home` needs room for both copies.
 
 Run the following block as one Bash script so its fail-fast and recovery traps
 remain active for the whole operation:
@@ -381,14 +381,14 @@ set -euo pipefail
 # Replace this example with the release tag you intend to deploy
 FABRICA_VERSION=v1.4.147
 
-# Select the release asset on the server where Orca runs
+# Select the release asset on the server where Fabrica runs
 case "$(uname -m)" in
   x86_64)
-    FABRICA_ASSET=orca-linux.AppImage
+    FABRICA_ASSET=fabrica-linux.AppImage
     FABRICA_FILE_MACHINE=x86-64
     ;;
   aarch64 | arm64)
-    FABRICA_ASSET=orca-linux-arm64.AppImage
+    FABRICA_ASSET=fabrica-linux-arm64.AppImage
     FABRICA_FILE_MACHINE='ARM aarch64'
     ;;
   *)
@@ -406,8 +406,8 @@ recover_failed_upgrade() {
   trap - EXIT
   set +e
   if ((exit_status != 0)); then
-    sudo rm -f /opt/orca/orca-linux.AppImage.new /opt/orca/VERSION.new \
-      /opt/orca/orca-linux.AppImage.recovering /opt/orca/VERSION.recovering
+    sudo rm -f /opt/fabrica/fabrica-linux.AppImage.new /opt/fabrica/VERSION.new \
+      /opt/fabrica/fabrica-linux.AppImage.recovering /opt/fabrica/VERSION.recovering
   fi
   if ((exit_status != 0)) && [[ -n "$FABRICA_ROLLBACK_NEW" ]] && \
     sudo test -d "$FABRICA_ROLLBACK_NEW"; then
@@ -416,27 +416,27 @@ recover_failed_upgrade() {
   if ((exit_status != 0 && FABRICA_SERVICE_STOPPED)); then
     recovery_ok=1
     if ((FABRICA_BINARY_PROMOTED)); then
-      if ! sudo cp -a "$FABRICA_ROLLBACK/orca-linux.AppImage" \
-        /opt/orca/orca-linux.AppImage.recovering || \
-        ! sudo mv -f /opt/orca/orca-linux.AppImage.recovering \
-          /opt/orca/orca-linux.AppImage; then
+      if ! sudo cp -a "$FABRICA_ROLLBACK/fabrica-linux.AppImage" \
+        /opt/fabrica/fabrica-linux.AppImage.recovering || \
+        ! sudo mv -f /opt/fabrica/fabrica-linux.AppImage.recovering \
+          /opt/fabrica/fabrica-linux.AppImage; then
         recovery_ok=0
       fi
       if sudo test -f "$FABRICA_ROLLBACK/VERSION"; then
-        if ! sudo cp -a "$FABRICA_ROLLBACK/VERSION" /opt/orca/VERSION.recovering || \
-          ! sudo mv -f /opt/orca/VERSION.recovering /opt/orca/VERSION; then
+        if ! sudo cp -a "$FABRICA_ROLLBACK/VERSION" /opt/fabrica/VERSION.recovering || \
+          ! sudo mv -f /opt/fabrica/VERSION.recovering /opt/fabrica/VERSION; then
           recovery_ok=0
         fi
-      elif ! sudo rm -f /opt/orca/VERSION; then
+      elif ! sudo rm -f /opt/fabrica/VERSION; then
         recovery_ok=0
       fi
     fi
-    sudo rm -f /opt/orca/orca-linux.AppImage.recovering \
-      /opt/orca/VERSION.recovering
+    sudo rm -f /opt/fabrica/fabrica-linux.AppImage.recovering \
+      /opt/fabrica/VERSION.recovering
     if ((recovery_ok)); then
       # A tripped StartLimitBurst refuses a plain start
-      sudo systemctl reset-failed orca-serve.service || true
-      sudo systemctl start orca-serve.service || true
+      sudo systemctl reset-failed fabrica-serve.service || true
+      sudo systemctl start fabrica-serve.service || true
     else
       echo 'Upgrade recovery failed; service remains stopped' >&2
     fi
@@ -447,82 +447,82 @@ trap recover_failed_upgrade EXIT
 
 # 1. Stage and verify the new build while the server stays online
 sudo curl -fL --retry 3 "https://github.com/stablyai/orca/releases/download/${FABRICA_VERSION}/${FABRICA_ASSET}" \
-  -o /opt/orca/orca-linux.AppImage.new
-sudo chown root:root /opt/orca/orca-linux.AppImage.new
-sudo chmod 755 /opt/orca/orca-linux.AppImage.new
+  -o /opt/fabrica/fabrica-linux.AppImage.new
+sudo chown root:root /opt/fabrica/fabrica-linux.AppImage.new
+sudo chmod 755 /opt/fabrica/fabrica-linux.AppImage.new
 
 # Both checks must match; either grep stops this fail-fast block otherwise
-FABRICA_FILE_INFO=$(LC_ALL=C file /opt/orca/orca-linux.AppImage.new)
+FABRICA_FILE_INFO=$(LC_ALL=C file /opt/fabrica/fabrica-linux.AppImage.new)
 grep 'ELF .* executable' <<<"$FABRICA_FILE_INFO"
 grep -F "$FABRICA_FILE_MACHINE" <<<"$FABRICA_FILE_INFO"
 
 # 2. Assemble the prior binary and version in a root-only rollback bundle
-FABRICA_ROLLBACK_BASE=/opt/orca/orca-rollback-$(date +%F-%H%M%S-%N)
+FABRICA_ROLLBACK_BASE=/opt/fabrica/fabrica-rollback-$(date +%F-%H%M%S-%N)
 FABRICA_ROLLBACK_NEW=${FABRICA_ROLLBACK_BASE}.new
 FABRICA_ROLLBACK=${FABRICA_ROLLBACK_BASE}.ready
 sudo install -d -m 700 "$FABRICA_ROLLBACK_NEW"
-sudo cp -a /opt/orca/orca-linux.AppImage "$FABRICA_ROLLBACK_NEW/orca-linux.AppImage"
-if sudo test -f /opt/orca/VERSION; then
-  sudo cp -a /opt/orca/VERSION "$FABRICA_ROLLBACK_NEW/VERSION"
+sudo cp -a /opt/fabrica/fabrica-linux.AppImage "$FABRICA_ROLLBACK_NEW/fabrica-linux.AppImage"
+if sudo test -f /opt/fabrica/VERSION; then
+  sudo cp -a /opt/fabrica/VERSION "$FABRICA_ROLLBACK_NEW/VERSION"
 fi
 
 # Stage the new version record before the stop window
-printf '%s\n' "$FABRICA_VERSION" | sudo tee /opt/orca/VERSION.new >/dev/null
-sudo chown root:root /opt/orca/VERSION.new
-sudo chmod 644 /opt/orca/VERSION.new
+printf '%s\n' "$FABRICA_VERSION" | sudo tee /opt/fabrica/VERSION.new >/dev/null
+sudo chown root:root /opt/fabrica/VERSION.new
+sudo chmod 644 /opt/fabrica/VERSION.new
 
 # 3. Stop the server so the profile backup is consistent
 FABRICA_SERVICE_STOPPED=1
-sudo systemctl stop orca-serve.service
+sudo systemctl stop fabrica-serve.service
 
-# Add only Orca-owned profile directories, then publish the complete bundle
+# Add only Fabrica-owned profile directories, then publish the complete bundle
 FABRICA_PROFILE_DIRS=()
-for profile_dir in orca Orca; do
-  if sudo test -L "/home/orca/.config/$profile_dir"; then
-    echo "Refusing symlinked Orca profile: /home/orca/.config/$profile_dir" >&2
+for profile_dir in fabrica Fabrica; do
+  if sudo test -L "/home/fabrica/.config/$profile_dir"; then
+    echo "Refusing symlinked Fabrica profile: /home/fabrica/.config/$profile_dir" >&2
     exit 1
   fi
-  if sudo test -d "/home/orca/.config/$profile_dir"; then
-    if [[ "$profile_dir" == Orca ]] && \
-      sudo test /home/orca/.config/orca -ef /home/orca/.config/Orca; then
+  if sudo test -d "/home/fabrica/.config/$profile_dir"; then
+    if [[ "$profile_dir" == Fabrica ]] && \
+      sudo test /home/fabrica/.config/fabrica -ef /home/fabrica/.config/Fabrica; then
       continue
     fi
     FABRICA_PROFILE_DIRS+=("$profile_dir")
   fi
 done
 if ((${#FABRICA_PROFILE_DIRS[@]} == 0)); then
-  echo 'No Orca profile directory found under /home/orca/.config' >&2
+  echo 'No Fabrica profile directory found under /home/fabrica/.config' >&2
   exit 1
 fi
 sudo tar czf "$FABRICA_ROLLBACK_NEW/profile.tgz" \
-  -C /home/orca/.config "${FABRICA_PROFILE_DIRS[@]}"
+  -C /home/fabrica/.config "${FABRICA_PROFILE_DIRS[@]}"
 sudo chmod 600 "$FABRICA_ROLLBACK_NEW/profile.tgz"
 sudo mv "$FABRICA_ROLLBACK_NEW" "$FABRICA_ROLLBACK"
 
 # 4. Atomically replace the binary and version record, then start
 FABRICA_BINARY_PROMOTED=1
-sudo mv -f /opt/orca/orca-linux.AppImage.new /opt/orca/orca-linux.AppImage
-sudo mv -f /opt/orca/VERSION.new /opt/orca/VERSION
+sudo mv -f /opt/fabrica/fabrica-linux.AppImage.new /opt/fabrica/fabrica-linux.AppImage
+sudo mv -f /opt/fabrica/VERSION.new /opt/fabrica/VERSION
 # Clears a start-limit hit left by the version being replaced
-sudo systemctl reset-failed orca-serve.service
-sudo systemctl start orca-serve.service
+sudo systemctl reset-failed fabrica-serve.service
+sudo systemctl start fabrica-serve.service
 FABRICA_SERVICE_STOPPED=0
 trap - EXIT
 ```
 
-The profile archive created in step 3 captures both Orca profile directory names
-when present without rewinding unrelated tools under `/home/orca/.config`. The
+The profile archive created in step 3 captures both Fabrica profile directory names
+when present without rewinding unrelated tools under `/home/fabrica/.config`. The
 `.ready` suffix is published only after the prior binary, version record, and
 profile archive are complete. If you run the managed Xvfb unit, only
-`orca-serve.service` needs restarting — leave `orca-xvfb.service` running.
+`fabrica-serve.service` needs restarting — leave `fabrica-xvfb.service` running.
 
 ### Verify
 
 ```bash
-sudo journalctl -u orca-serve.service -f
+sudo journalctl -u fabrica-serve.service -f
 ```
 
-A healthy start prints one `Orca server ready` block with the actual bound and
+A healthy start prints one `Fabrica server ready` block with the actual bound and
 advertised endpoints. Verify those values rather than assuming the configured
 port, because a collision can select a fallback port.
 Confirm a client reconnects before you discard the backup. The timestamped
@@ -532,7 +532,7 @@ removing it:
 
 ```bash
 shopt -s nullglob
-FABRICA_ROLLBACK_SETS=(/opt/orca/orca-rollback-*.ready)
+FABRICA_ROLLBACK_SETS=(/opt/fabrica/fabrica-rollback-*.ready)
 ((${#FABRICA_ROLLBACK_SETS[@]} > 0))
 FABRICA_ROLLBACK=${FABRICA_ROLLBACK_SETS[${#FABRICA_ROLLBACK_SETS[@]} - 1]}
 printf 'Removing rollback bundle: %s\n' "$FABRICA_ROLLBACK"
@@ -546,9 +546,9 @@ files from different bundles.
 ### Roll back
 
 A rollback is **not** binary-only safe. Once a newer build has started, it can
-rewrite `orca-data.json` in the current schema. If an older build then writes
+rewrite `fabrica-data.json` in the current schema. If an older build then writes
 that file, it can discard fields it does not recognize. The rolling
-`orca-data.json.bak.*` files are corruption-recovery snapshots, not a dedicated
+`fabrica-data.json.bak.*` files are corruption-recovery snapshots, not a dedicated
 pre-upgrade copy, and normal writes can rotate them away. To roll back cleanly,
 restore the backup from step 3 **and** swap the binary back. Run this block as one
 Bash script:
@@ -558,10 +558,10 @@ set -euo pipefail
 
 # Select and validate one complete generation before taking the service offline
 shopt -s nullglob
-FABRICA_ROLLBACK_SETS=(/opt/orca/orca-rollback-*.ready)
+FABRICA_ROLLBACK_SETS=(/opt/fabrica/fabrica-rollback-*.ready)
 ((${#FABRICA_ROLLBACK_SETS[@]} > 0))
 FABRICA_ROLLBACK=${FABRICA_ROLLBACK_SETS[${#FABRICA_ROLLBACK_SETS[@]} - 1]}
-sudo test -f "$FABRICA_ROLLBACK/orca-linux.AppImage"
+sudo test -f "$FABRICA_ROLLBACK/fabrica-linux.AppImage"
 sudo tar tzf "$FABRICA_ROLLBACK/profile.tgz" >/dev/null
 
 # Extract and validate the old profile while the current server stays online
@@ -569,11 +569,11 @@ sudo test ! -L /home
 FABRICA_HOME_OWNER=$(sudo stat -c %u /home)
 FABRICA_HOME_MODE=$(sudo stat -c %a /home)
 if [[ "$FABRICA_HOME_OWNER" != 0 ]] || ((8#$FABRICA_HOME_MODE & 0022)) || \
-  sudo -u orca test -w /home; then
+  sudo -u fabrica test -w /home; then
   echo 'Refusing rollback because /home is not root-controlled' >&2
   exit 1
 fi
-FABRICA_RESTORE=$(sudo mktemp -d /home/.orca-restore.XXXXXX)
+FABRICA_RESTORE=$(sudo mktemp -d /home/.fabrica-restore.XXXXXX)
 FABRICA_SERVICE_STOPPED=0
 FABRICA_MOVED_CURRENT_DIRS=()
 FABRICA_INSTALLED_RESTORE_DIRS=()
@@ -592,8 +592,8 @@ restart_after_rollback_error() {
     recovery_ok=1
     if ((${#FABRICA_INSTALLED_RESTORE_DIRS[@]})); then
       for profile_dir in "${FABRICA_INSTALLED_RESTORE_DIRS[@]}"; do
-        if sudo test -d "/home/orca/.config/$profile_dir"; then
-          if ! sudo mv "/home/orca/.config/$profile_dir" \
+        if sudo test -d "/home/fabrica/.config/$profile_dir"; then
+          if ! sudo mv "/home/fabrica/.config/$profile_dir" \
             "$FABRICA_RESTORE/$profile_dir.failed"; then
             recovery_ok=0
           fi
@@ -603,10 +603,10 @@ restart_after_rollback_error() {
     if ((${#FABRICA_MOVED_CURRENT_DIRS[@]})); then
       for profile_dir in "${FABRICA_MOVED_CURRENT_DIRS[@]}"; do
         if sudo test -d "$FABRICA_POST_UPGRADE/$profile_dir"; then
-          if ! sudo mv "$FABRICA_POST_UPGRADE/$profile_dir" /home/orca/.config/; then
+          if ! sudo mv "$FABRICA_POST_UPGRADE/$profile_dir" /home/fabrica/.config/; then
             recovery_ok=0
           fi
-        elif ! sudo test -d "/home/orca/.config/$profile_dir"; then
+        elif ! sudo test -d "/home/fabrica/.config/$profile_dir"; then
           recovery_ok=0
         fi
       done
@@ -616,30 +616,30 @@ restart_after_rollback_error() {
     fi
     if ((FABRICA_CURRENT_BINARY_MOVED)); then
       if sudo test -f "$FABRICA_CURRENT_BINARY"; then
-        if ! sudo mv -f "$FABRICA_CURRENT_BINARY" /opt/orca/orca-linux.AppImage; then
+        if ! sudo mv -f "$FABRICA_CURRENT_BINARY" /opt/fabrica/fabrica-linux.AppImage; then
           recovery_ok=0
         fi
-      elif ! sudo test -f /opt/orca/orca-linux.AppImage; then
+      elif ! sudo test -f /opt/fabrica/fabrica-linux.AppImage; then
         recovery_ok=0
       fi
     fi
     if ((FABRICA_CURRENT_VERSION_MOVED)); then
       if sudo test -f "$FABRICA_CURRENT_VERSION"; then
-        if ! sudo mv -f "$FABRICA_CURRENT_VERSION" /opt/orca/VERSION; then
+        if ! sudo mv -f "$FABRICA_CURRENT_VERSION" /opt/fabrica/VERSION; then
           recovery_ok=0
         fi
-      elif ! sudo test -f /opt/orca/VERSION; then
+      elif ! sudo test -f /opt/fabrica/VERSION; then
         recovery_ok=0
       fi
     elif ((FABRICA_VERSION_REPLACEMENT_STARTED)); then
-      if ! sudo rm -f /opt/orca/VERSION; then
+      if ! sudo rm -f /opt/fabrica/VERSION; then
         recovery_ok=0
       fi
     fi
     if ((recovery_ok)); then
       # A tripped StartLimitBurst refuses a plain start
-      sudo systemctl reset-failed orca-serve.service || true
-      sudo systemctl start orca-serve.service || true
+      sudo systemctl reset-failed fabrica-serve.service || true
+      sudo systemctl start fabrica-serve.service || true
     else
       echo 'Rollback recovery failed; service remains stopped' >&2
     fi
@@ -656,125 +656,125 @@ restart_after_rollback_error() {
 trap restart_after_rollback_error EXIT
 
 if [[ "$(sudo stat -c %d "$FABRICA_RESTORE")" != \
-  "$(sudo stat -c %d /home/orca/.config)" ]]; then
-  echo 'Refusing rollback because staging and the Orca profile are on different filesystems' >&2
+  "$(sudo stat -c %d /home/fabrica/.config)" ]]; then
+  echo 'Refusing rollback because staging and the Fabrica profile are on different filesystems' >&2
   exit 1
 fi
 sudo tar xzf "$FABRICA_ROLLBACK/profile.tgz" -C "$FABRICA_RESTORE"
 FABRICA_RESTORE_DIRS=()
-for profile_dir in orca Orca; do
+for profile_dir in fabrica Fabrica; do
   if sudo test -L "$FABRICA_RESTORE/$profile_dir"; then
     echo "Rollback bundle contains a symlinked profile: $profile_dir" >&2
     exit 1
   fi
   if sudo test -d "$FABRICA_RESTORE/$profile_dir"; then
-    if [[ "$profile_dir" == Orca ]] && \
-      sudo test "$FABRICA_RESTORE/orca" -ef "$FABRICA_RESTORE/Orca"; then
+    if [[ "$profile_dir" == Fabrica ]] && \
+      sudo test "$FABRICA_RESTORE/fabrica" -ef "$FABRICA_RESTORE/Fabrica"; then
       continue
     fi
     FABRICA_RESTORE_DIRS+=("$profile_dir")
   fi
 done
 if ((${#FABRICA_RESTORE_DIRS[@]} == 0)); then
-  echo "Rollback bundle has no Orca profile directories: $FABRICA_ROLLBACK" >&2
+  echo "Rollback bundle has no Fabrica profile directories: $FABRICA_ROLLBACK" >&2
   exit 1
 fi
 for profile_dir in "${FABRICA_RESTORE_DIRS[@]}"; do
-  sudo chown -R orca:orca "$FABRICA_RESTORE/$profile_dir"
+  sudo chown -R fabrica:fabrica "$FABRICA_RESTORE/$profile_dir"
 done
 
 FABRICA_ROLLBACK_STAMP=$(date +%F-%H%M%S-%N)
-FABRICA_ROLLBACK_BINARY_STAGED=/opt/orca/orca-linux.AppImage.rollback-staged-$FABRICA_ROLLBACK_STAMP
-sudo cp -a "$FABRICA_ROLLBACK/orca-linux.AppImage" "$FABRICA_ROLLBACK_BINARY_STAGED"
+FABRICA_ROLLBACK_BINARY_STAGED=/opt/fabrica/fabrica-linux.AppImage.rollback-staged-$FABRICA_ROLLBACK_STAMP
+sudo cp -a "$FABRICA_ROLLBACK/fabrica-linux.AppImage" "$FABRICA_ROLLBACK_BINARY_STAGED"
 if sudo test -f "$FABRICA_ROLLBACK/VERSION"; then
   FABRICA_ROLLBACK_HAS_VERSION=1
-  FABRICA_ROLLBACK_VERSION_STAGED=/opt/orca/VERSION.rollback-staged-$FABRICA_ROLLBACK_STAMP
+  FABRICA_ROLLBACK_VERSION_STAGED=/opt/fabrica/VERSION.rollback-staged-$FABRICA_ROLLBACK_STAMP
   sudo cp -a "$FABRICA_ROLLBACK/VERSION" "$FABRICA_ROLLBACK_VERSION_STAGED"
 fi
 
 FABRICA_SERVICE_STOPPED=1
-sudo systemctl stop orca-serve.service
+sudo systemctl stop fabrica-serve.service
 
-# Preserve and replace only Orca-owned profile directories
+# Preserve and replace only Fabrica-owned profile directories
 FABRICA_CURRENT_DIRS=()
-for profile_dir in orca Orca; do
-  if sudo test -L "/home/orca/.config/$profile_dir"; then
-    echo "Refusing symlinked Orca profile: /home/orca/.config/$profile_dir" >&2
+for profile_dir in fabrica Fabrica; do
+  if sudo test -L "/home/fabrica/.config/$profile_dir"; then
+    echo "Refusing symlinked Fabrica profile: /home/fabrica/.config/$profile_dir" >&2
     exit 1
   fi
-  if sudo test -d "/home/orca/.config/$profile_dir"; then
-    if [[ "$profile_dir" == Orca ]] && \
-      sudo test /home/orca/.config/orca -ef /home/orca/.config/Orca; then
+  if sudo test -d "/home/fabrica/.config/$profile_dir"; then
+    if [[ "$profile_dir" == Fabrica ]] && \
+      sudo test /home/fabrica/.config/fabrica -ef /home/fabrica/.config/Fabrica; then
       continue
     fi
     FABRICA_CURRENT_DIRS+=("$profile_dir")
   fi
 done
-FABRICA_POST_UPGRADE=/home/orca/.config/orca-rollback-$FABRICA_ROLLBACK_STAMP
-sudo install -d -o orca -g orca -m 700 "$FABRICA_POST_UPGRADE"
+FABRICA_POST_UPGRADE=/home/fabrica/.config/fabrica-rollback-$FABRICA_ROLLBACK_STAMP
+sudo install -d -o fabrica -g fabrica -m 700 "$FABRICA_POST_UPGRADE"
 if ((${#FABRICA_CURRENT_DIRS[@]})); then
   for profile_dir in "${FABRICA_CURRENT_DIRS[@]}"; do
     FABRICA_MOVED_CURRENT_DIRS+=("$profile_dir")
-    sudo mv "/home/orca/.config/$profile_dir" "$FABRICA_POST_UPGRADE/"
+    sudo mv "/home/fabrica/.config/$profile_dir" "$FABRICA_POST_UPGRADE/"
   done
 fi
 for profile_dir in "${FABRICA_RESTORE_DIRS[@]}"; do
   FABRICA_INSTALLED_RESTORE_DIRS+=("$profile_dir")
-  sudo mv "$FABRICA_RESTORE/$profile_dir" /home/orca/.config/
+  sudo mv "$FABRICA_RESTORE/$profile_dir" /home/fabrica/.config/
 done
 
-FABRICA_CURRENT_BINARY=/opt/orca/orca-linux.AppImage.rollback-current-$FABRICA_ROLLBACK_STAMP
+FABRICA_CURRENT_BINARY=/opt/fabrica/fabrica-linux.AppImage.rollback-current-$FABRICA_ROLLBACK_STAMP
 FABRICA_CURRENT_BINARY_MOVED=1
-sudo mv /opt/orca/orca-linux.AppImage "$FABRICA_CURRENT_BINARY"
-sudo mv -f "$FABRICA_ROLLBACK_BINARY_STAGED" /opt/orca/orca-linux.AppImage
+sudo mv /opt/fabrica/fabrica-linux.AppImage "$FABRICA_CURRENT_BINARY"
+sudo mv -f "$FABRICA_ROLLBACK_BINARY_STAGED" /opt/fabrica/fabrica-linux.AppImage
 
-FABRICA_CURRENT_VERSION=/opt/orca/VERSION.rollback-current-$FABRICA_ROLLBACK_STAMP
-if sudo test -f /opt/orca/VERSION; then
+FABRICA_CURRENT_VERSION=/opt/fabrica/VERSION.rollback-current-$FABRICA_ROLLBACK_STAMP
+if sudo test -f /opt/fabrica/VERSION; then
   FABRICA_CURRENT_VERSION_MOVED=1
-  sudo mv /opt/orca/VERSION "$FABRICA_CURRENT_VERSION"
+  sudo mv /opt/fabrica/VERSION "$FABRICA_CURRENT_VERSION"
 fi
 FABRICA_VERSION_REPLACEMENT_STARTED=1
 if ((FABRICA_ROLLBACK_HAS_VERSION)); then
-  sudo mv -f "$FABRICA_ROLLBACK_VERSION_STAGED" /opt/orca/VERSION
+  sudo mv -f "$FABRICA_ROLLBACK_VERSION_STAGED" /opt/fabrica/VERSION
 else
-  sudo rm -f /opt/orca/VERSION
+  sudo rm -f /opt/fabrica/VERSION
 fi
 # The crash-looping build you are rolling back from tripped StartLimitBurst
-sudo systemctl reset-failed orca-serve.service
-sudo systemctl start orca-serve.service
+sudo systemctl reset-failed fabrica-serve.service
+sudo systemctl start fabrica-serve.service
 FABRICA_SERVICE_STOPPED=0
 sudo rm -rf -- "$FABRICA_RESTORE"
 trap - EXIT
 ```
 
 Restoring the backup is required, not optional: swapping only the binary leaves
-the newer `orca-data.json` in place, where an older build can discard state it
+the newer `fabrica-data.json` in place, where an older build can discard state it
 does not understand. Keep the pre-upgrade backup until the new version is proven
-on your host. The `orca-rollback-*` directory inside `.config` is also retained
+on your host. The `fabrica-rollback-*` directory inside `.config` is also retained
 deliberately. The post-upgrade binary and version record are retained in
-`/opt/orca` with the same `rollback-current-<timestamp>` suffix. Inspect these
+`/opt/fabrica` with the same `rollback-current-<timestamp>` suffix. Inspect these
 artifacts and remove them according to your retention policy after the rollback
 is resolved.
 
 ## Installing Agent Skills Without A Desktop
 
-Orca's agent skills (CLI usage, orchestration, computer use, etc.) are normally
-installed from Orca Settings, which pre-fills an `npx skills add ... --global`
+Fabrica's agent skills (CLI usage, orchestration, computer use, etc.) are normally
+installed from Fabrica Settings, which pre-fills an `npx skills add ... --global`
 command in a terminal for you to run. A headless host has no Settings UI, so
-use `orca skills install` instead:
+use `fabrica skills install` instead:
 
 ```bash
-orca skills install                                      # list installable skills
-orca skills install --skill orca-cli --skill orchestration # install globally (default)
-orca skills install --skill orca-cli --local              # install into the current project only
-orca skills install --all                                 # install every bundled skill
-orca skills install --all --dry-run                       # print the npx command without running it
+fabrica skills install                                      # list installable skills
+fabrica skills install --skill orca-cli --skill orchestration # install globally (default)
+fabrica skills install --skill orca-cli --local              # install into the current project only
+fabrica skills install --all                                 # install every bundled skill
+fabrica skills install --all --dry-run                       # print the npx command without running it
 ```
 
 This resolves the same `npx skills add <repo> --skill <name> ...` command
 Settings would show you (adding `--global` unless `--local` is passed), then
 runs it and forwards its output and exit code. It requires `node`/`npx` on the
-host; it does not need a running Orca runtime.
+host; it does not need a running Fabrica runtime.
 
 Unlike the command Settings shows, the spawned one adds `npx --yes` and `-y`.
 Without them the `skills` CLI opens an interactive agent picker and blocks
@@ -783,31 +783,31 @@ forever on any allocated TTY — which includes a normal `ssh` session. Use
 
 Settings keeps that picker deliberately, because choosing which agents get a
 skill is a real decision. A headless run cannot answer it, so instead of dropping
-the choice Orca makes it explicitly: it passes an `--agent` list built from the
+the choice Fabrica makes it explicitly: it passes an `--agent` list built from the
 coding agents it detects on the host, plus the shared `.agents/skills` directory
 it reads itself. Left to decide on its own with no agent detected, the `skills`
 CLI installs into all ~75 agents it knows and leaves a config directory for each.
 Override the targets yourself, or narrow to the shared directory alone:
 
 ```bash
-orca skills install --skill orca-cli --agent claude-code,codex
-orca skills install --skill orca-cli --agent universal
+fabrica skills install --skill orca-cli --agent claude-code,codex
+fabrica skills install --skill orca-cli --agent universal
 ```
 
-If Orca detects no agent at all, `orca skills install` stops and asks for
+If Fabrica detects no agent at all, `fabrica skills install` stops and asks for
 `--agent` rather than guessing.
 
-To refresh already-installed skills, `orca skills update` mirrors the same
+To refresh already-installed skills, `fabrica skills update` mirrors the same
 selection flags (`--skill`, `--all`, `--local`, `--dry-run`) and resolves to
 `npx skills update <names...>` with a matching scope flag — `--global`, or
 `--project` when you pass `--local`:
 
 ```bash
-orca skills update --all                                  # update every bundled skill globally
-orca skills update --skill orca-cli --dry-run             # print the npx command without running it
+fabrica skills update --all                                  # update every bundled skill globally
+fabrica skills update --skill orca-cli --dry-run             # print the npx command without running it
 ```
 
-`orca skills update` only refreshes skills that are already installed — it exits
+`fabrica skills update` only refreshes skills that are already installed — it exits
 0 without doing anything for a skill that is missing, so install it first. More
 generally, a 0 exit means the `skills` CLI ran without erroring, not that it
 wrote anything; read its output to confirm what changed.
@@ -815,8 +815,8 @@ wrote anything; read its output to confirm what changed.
 `--json` covers the skill listing and `--dry-run`. A real run streams the
 `skills` CLI's own non-JSON output and rejects `--json`.
 
-Both commands install onto the machine that runs them. In an Orca SSH workspace
-or the WSL bridge the `orca` shim forwards commands to the Orca host, so they
+Both commands install onto the machine that runs them. In a Fabrica SSH workspace
+or the WSL bridge the `fabrica` shim forwards commands to the Fabrica host, so they
 refuse to run there and print the command to run on the machine you want.
 
 ## Troubleshooting
@@ -829,27 +829,27 @@ refuse to run there and print the command to run on the machine you want.
 - GPU or DRI warnings on a VPS: keep `LIBGL_ALWAYS_SOFTWARE=1` in the service
   environment.
 - Chromium sandbox errors: confirm the service is running as the non-root
-  `orca` user and that `/opt/orca` is readable by that user.
+  `fabrica` user and that `/opt/fabrica` is readable by that user.
 - Clients cannot connect: make sure `--pairing-address` is an address reachable
   from the client, and make sure firewalls allow the selected `--port`.
-- Journal shows `Another Orca instance is already running for this userData
+- Journal shows `Another Fabrica instance is already running for this userData
   profile` and the unit exits `3`: another process already owns the profile, so
   `RestartPreventExitStatus=3` leaves the unit `failed` on purpose. Find the
-  owner with `systemctl status orca-serve` and `pgrep -af orca`. Stop it (or
+  owner with `systemctl status fabrica-serve` and `pgrep -af fabrica`. Stop it (or
   keep it and leave the unit down), then run
-  `sudo systemctl reset-failed orca-serve && sudo systemctl start orca-serve` —
+  `sudo systemctl reset-failed fabrica-serve && sudo systemctl start fabrica-serve` —
   `reset-failed` clears the failed state and any start-limit counter. If no owner
   exists, the lock is stale (Chromium recorded a pid that
   has since been reused): remove `SingletonLock` and `SingletonSocket` from the
   userData directory and start again. If an earlier crash-loop already leaked
-  AppImage mounts, list them with `findmnt -rn -t fuse.orca-linux.AppImage` and
+  AppImage mounts, list them with `findmnt -rn -t fuse.fabrica-linux.AppImage` and
   release only the ones with no live owner using `fusermount -uz <target>` (or
   `umount -l <target>`), leaving the running instance's mount alone.
 - Service crash-loops right after an upgrade: use [Roll back](#roll-back) with
   the pre-upgrade `.ready` bundle. Do not rerun the upgrade first; doing so would
   make the crashing version the next rollback binary. The loop trips
   `StartLimitBurst`, so any manual `systemctl start` outside that script needs
-  `sudo systemctl reset-failed orca-serve.service` first.
+  `sudo systemctl reset-failed fabrica-serve.service` first.
 - Diagnosing other missing libraries: extract the AppImage without launching it
-  with `./orca-linux.AppImage --appimage-extract`, then run
-  `ldd squashfs-root/orca` to list any shared libraries the host is missing.
+  with `./fabrica-linux.AppImage --appimage-extract`, then run
+  `ldd squashfs-root/fabrica` to list any shared libraries the host is missing.

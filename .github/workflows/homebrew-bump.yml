@@ -1,13 +1,13 @@
 name: Homebrew Cask Bump
 
-# Why: keep the stablyai/homebrew-fabrica tap in sync with GitHub Releases.
+# Why: keep the Auto-Scalers/homebrew-fabrica tap in sync with GitHub Releases.
 # Triggers:
 #   - workflow_call → release-cut.yml finished publishing a stable tag
 #   - workflow_dispatch → manual backfill for a specific tag
 #
 # The job computes the sha256 of fabrica-macos-arm64.dmg + fabrica-macos-x64.dmg
 # from the release, templates the channel-specific cask in this repo with the
-# new version and hashes, then PRs the result into stablyai/homebrew-fabrica.
+# new version and hashes, then PRs the result into Auto-Scalers/homebrew-fabrica.
 # Stable tags update Casks/fabrica.rb; RC tags update Casks/fabrica@rc.rb.
 #
 # Why no `release.published` trigger: other products shipped from this repo
@@ -134,7 +134,7 @@ jobs:
 
       # Why: reuse the existing buf0-bot GitHub App (also used by
       # track-community-prs.yaml) instead of minting a new PAT. The app is
-      # installed org-wide, so it has access to stablyai/homebrew-fabrica
+      # installed org-wide, so it has access to Auto-Scalers/homebrew-fabrica
       # automatically. GITHUB_TOKEN cannot push cross-repo; a short-lived
       # installation token can.
       - name: Generate buf0-bot token
@@ -143,13 +143,13 @@ jobs:
         with:
           app-id: 2590194
           private-key: ${{ secrets.BUFO_BOT_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
           repositories: homebrew-fabrica
 
       - name: Checkout tap
         uses: actions/checkout@v6
         with:
-          repository: stablyai/homebrew-fabrica
+          repository: Auto-Scalers/homebrew-fabrica
           path: tap
           token: ${{ steps.app-token.outputs.token }}
 
@@ -187,7 +187,7 @@ jobs:
           # the PR title if creation reports that one already exists.
           gh pr create \
             --title "$TITLE" \
-            --body "Automated bump of $CASK_PATH from stablyai/fabrica release $TAG." \
+            --body "Automated bump of $CASK_PATH from Auto-Scalers/fabrica release $TAG." \
             --base main \
             --head "$branch" \
             || gh pr edit "$branch" --title "$TITLE"

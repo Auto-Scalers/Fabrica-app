@@ -1,6 +1,6 @@
 // Why: on a split-namespace host (Synology DSM) the shell path and the SFTP path
 // name the same directory differently, so the deploy must keep issuing shell
-// commands against the canonical path while every SFTP write is redirected — and
+// commands against the canonical path while every SFTP write is redirected ï¿½ and
 // only when this connection's own install marker proves the candidate is ours.
 
 import { EventEmitter } from 'node:events'
@@ -20,7 +20,7 @@ vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
   RELAY_REMOTE_DIR: '.FABRICA-remote',
   parseUnameToRelayPlatform: vi.fn().mockReturnValue('linux-x64'),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 
@@ -339,7 +339,7 @@ describe('relay install writes on a split SFTP namespace', () => {
       `${capture.uploadTargets[0]}/.version`,
       `${SFTP_RELAY_DIR}/package.json`
     ])
-    // Every shell command — mkdir, chmod, npm, launch — still names the shell path.
+    // Every shell command ï¿½ mkdir, chmod, npm, launch ï¿½ still names the shell path.
     for (const command of execCommands()) {
       expect(command).not.toContain(SFTP_RELAY_DIR)
     }

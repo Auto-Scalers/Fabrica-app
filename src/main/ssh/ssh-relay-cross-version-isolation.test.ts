@@ -1,7 +1,7 @@
 // Cross-version isolation guard.
 //
 // Why: this test is the executable form of the "Pattern Note" in
-// docs/ssh-relay-versioned-install-dirs.md — it asserts that a v2 deploy
+// docs/ssh-relay-versioned-install-dirs.md ï¿½ it asserts that a v2 deploy
 // targeting a remote where a v1 daemon is already running NEVER touches
 // v1's install dir or socket. Without this test a future refactor that
 // collapses to a shared dir passes every other unit test and re-introduces
@@ -24,7 +24,7 @@ vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
   RELAY_REMOTE_DIR: '.FABRICA-remote',
   parseUnameToRelayPlatform: vi.fn().mockReturnValue('linux-x64'),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 
@@ -193,7 +193,7 @@ describe('cross-version isolation', () => {
 
     // (d) blanket isolation: every command that mentions v1hash MUST be a
     // GC liveness probe (`ls`, `test -d`, `test -f`, or `for f in .../*.sock`)
-    // — never a write, mkdir, chmod, touch, rm, node launch, or socket poll.
+    // ï¿½ never a write, mkdir, chmod, touch, rm, node launch, or socket poll.
     // This prevents a future refactor that accidentally writes to the v1 dir
     // (e.g. shared install-complete, upload over symlink) from passing.
     const v1Refs = allCmds.filter((c) => c.includes('relay-0.1.0+111111111111'))

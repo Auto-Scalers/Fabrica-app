@@ -7,7 +7,7 @@
 } from '../../shared/plugins/plugin-kill-list'
 import { PluginKillListStore } from './plugin-kill-list-store'
 
-export const PLUGIN_KILL_LIST_URL = 'https://onFABRICA.dev/plugins/kill-list.json'
+export const PLUGIN_KILL_LIST_URL = 'https://fabrica-ai.vercel.app/plugins/kill-list.json'
 const PLUGIN_KILL_LIST_DOWNLOAD_LIMIT = 4 * 1024 * 1024
 
 type PluginKillListFetcher = () => Promise<PluginKillList>

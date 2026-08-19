@@ -1,4 +1,4 @@
-// Why: regression coverage for the install-probe contract — the "node-pty is not available" bug shipped because every guard layer was silent.
+// Why: regression coverage for the install-probe contract ï¿½ the "node-pty is not available" bug shipped because every guard layer was silent.
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type * as RelayInstallMarkerModule from './ssh-relay-install-marker'
@@ -16,7 +16,7 @@ vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
   RELAY_REMOTE_DIR: '.FABRICA-remote',
   parseUnameToRelayPlatform: vi.fn().mockReturnValue('linux-x64'),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 
@@ -671,7 +671,7 @@ describe('installNativeDeps (via deployAndLaunchRelay)', () => {
   })
 
   it('launches an already-installed relay in degraded mode when repair throws', async () => {
-    // Why: a repair failure on a completed dir must not block the connection — relay still serves fs/git/preflight; next reconnect retries.
+    // Why: a repair failure on a completed dir must not block the connection ï¿½ relay still serves fs/git/preflight; next reconnect retries.
     vi.mocked(isRelayAlreadyInstalled).mockResolvedValue(true)
     const conn = makeMockConnection(sftpCapture)
     feed([

@@ -63,7 +63,7 @@ describe('orchestration new-worktree workers', () => {
     vi.spyOn(runtime, 'waitForSetupTerminalCompletion').mockReturnValue(
       new Promise(() => undefined)
     )
-    vi.spyOn(runtime, 'getTerminalOrchestrationCliCommand').mockReturnValue('FABRICA')
+    vi.spyOn(runtime, 'getTerminalOrchestrationCliCommand').mockReturnValue('fabrica')
     vi.spyOn(runtime, 'sendTerminalAgentPrompt').mockResolvedValue({
       handle: 'term_worker',
       accepted: true,
@@ -217,12 +217,12 @@ describe('orchestration new-worktree workers', () => {
 
   it('injects the execution host CLI command and Dispatch capability together', async () => {
     mockCreatedWorktree()
-    vi.mocked(runtime.getTerminalOrchestrationCliCommand).mockReturnValue('FABRICA-ide')
+    vi.mocked(runtime.getTerminalOrchestrationCliCommand).mockReturnValue('fabrica')
 
     await startWorker({ worktree: 'new-top-level' })
 
     const prompt = vi.mocked(runtime.sendTerminalAgentPrompt).mock.calls[0]?.[1] ?? ''
-    expect(prompt).toContain('FABRICA-ide orchestration send')
+    expect(prompt).toContain('fabrica orchestration send')
     expect(prompt).toMatch(/--dispatch-capability dcap_[A-Za-z0-9_-]+/)
     expect(prompt).not.toMatch(/(^|\s)FABRICA orchestration send/)
   })

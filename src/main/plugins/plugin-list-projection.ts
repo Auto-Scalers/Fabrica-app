@@ -115,9 +115,9 @@ export async function buildPluginList(
           commands: [],
           hasWorker: false,
           vmRecipes: [],
-          restarts: 0
-        }
+        restarts: 0
       }
+    }
       const activation = service.activationState(plugin)
       const worker = service.workerState(plugin.pluginKey)
       const activationError = service.activationError(plugin.pluginKey)

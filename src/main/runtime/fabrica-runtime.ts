@@ -12483,7 +12483,7 @@ export class FABRICARuntimeService {
       : undefined
   }
 
-  getTerminalOrchestrationCliCommand(handle: string): 'fabrica' | 'FABRICA' | 'FABRICA-ide' {
+  getTerminalOrchestrationCliCommand(handle: string): 'fabrica' {
     let pty: RuntimePtyWorktreeRecord | null = null
     try {
       const ptyId = this.resolveLeafForHandle(handle)?.ptyId

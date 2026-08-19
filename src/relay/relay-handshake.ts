@@ -118,7 +118,7 @@ function handleDaemonHandshakeFrame(
     sock.destroy()
     return false
   }
-  if (msg.type !== 'ORCA-RELAY-handshake') {
+  if (msg.type !== 'FABRICA-RELAY-handshake') {
     relayLogLine(`[relay] Unexpected handshake type from client: ${msg.type}; closing socket`)
     sock.destroy()
     return false
@@ -130,13 +130,13 @@ function handleDaemonHandshakeFrame(
     try {
       sock.write(
         encodeHandshakeFrame({
-          type: 'ORCA-RELAY-handshake-mismatch',
+          type: 'FABRICA-RELAY-handshake-mismatch',
           expected: launchVersion,
           got: msg.version
         })
       )
     } catch {
-      /* best-effort — close+exit-42 still wins */
+      /* best-effort ï¿½ close+exit-42 still wins */
     }
     sock.end()
     return false
@@ -150,7 +150,7 @@ function handleDaemonHandshakeFrame(
     return false
   }
   process.stderr.write(`[relay] Handshake OK from version=${msg.version}\n`)
-  sock.write(encodeHandshakeFrame({ type: 'ORCA-RELAY-handshake-ok', version: launchVersion }))
+  sock.write(encodeHandshakeFrame({ type: 'FABRICA-RELAY-handshake-ok', version: launchVersion }))
   return true
 }
 
@@ -192,7 +192,7 @@ export function runConnectHandshake(
         sock.destroy()
         process.exit(1)
       }
-      if (msg.type === 'ORCA-RELAY-handshake-ok') {
+      if (msg.type === 'FABRICA-RELAY-handshake-ok') {
         process.stderr.write(`[relay-connect] Handshake OK at version=${msg.version}\n`)
         handshakeDone = true
         const leftover = decoder.drain()
@@ -200,7 +200,7 @@ export function runConnectHandshake(
         cb.onAccepted(leftover)
         return
       }
-      if (msg.type === 'ORCA-RELAY-handshake-mismatch') {
+      if (msg.type === 'FABRICA-RELAY-handshake-mismatch') {
         // Why: exit inside the write callback; stderr is async on pipe transports, so exiting early drops the version detail.
         process.stderr.write(
           `[relay-connect] Handshake mismatch: expected=${msg.expected}, daemon=${msg.got}; exiting ${EXIT_CODE_VERSION_MISMATCH}\n`,
@@ -230,7 +230,7 @@ export function runConnectHandshake(
 
   sock.write(
     encodeHandshakeFrame({
-      type: 'ORCA-RELAY-handshake',
+      type: 'FABRICA-RELAY-handshake',
       version: myVersion,
       ...(endpointCredential ? { endpointCredential } : {})
     })

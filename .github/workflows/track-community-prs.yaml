@@ -24,12 +24,12 @@ jobs:
         with:
           app-id: 2590194
           private-key: ${{ secrets.BUFO_BOT_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
 
       - name: Add PR to project
         uses: actions/github-script@v8
         env:
-          PROJECT_OWNER: stablyai
+          PROJECT_OWNER: Auto-Scalers
           PROJECT_NUMBER: '13'
           INTERNAL_TEAM_SLUG: stably-eng
         with:

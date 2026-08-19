@@ -27,7 +27,7 @@ vi.mock('./relay-protocol', () => ({
     }
     return null
   }),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 

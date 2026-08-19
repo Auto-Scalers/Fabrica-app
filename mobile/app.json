@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.stablyai.fabrica.mobile",
+      "bundleIdentifier": "com.autoscalers.fabrica.mobile",
       "buildNumber": "1",
       "infoPlist": {
         "NSLocalNetworkUsageDescription": "Fabrica connects to the desktop app on your LAN.",
@@ -74,7 +74,7 @@
       "usesCleartextTraffic": true,
       "allowBackup": false,
       "permissions": ["RECORD_AUDIO", "MODIFY_AUDIO_SETTINGS"],
-      "package": "com.stablyai.fabrica.mobile",
+      "package": "com.autoscalers.fabrica.mobile",
       "versionCode": 12
     },
     "plugins": [

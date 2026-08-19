@@ -12,7 +12,7 @@ name: Adhoc macOS Dev Build
 #     grants survive an update; an unnotarized build reads as a new client and
 #     silently loses file access under Documents/Desktop/Downloads.
 #
-# Artifacts publish to stablyai/fabrica-adhoc — separate from both fabrica and
+# Artifacts publish to Auto-Scalers/fabrica-adhoc — separate from both fabrica and
 # fabrica-hourly. Separate from fabrica because the main repo's releases atom feed
 # exposes only its 10 newest entries. Separate from fabrica-hourly because a build
 # from someone's branch must never be picked up by a developer who only meant to
@@ -52,7 +52,7 @@ on:
         # than the one the workflow file itself is read from — normally leave the
         # picker on main and name your branch here, so a stale copy of this
         # workflow on an old branch is not what runs.
-        description: 'Branch, tag, or SHA to build — must live in stablyai/fabrica; PR refs are refused (default: the branch selected above)'
+        description: 'Branch, tag, or SHA to build — must live in Auto-Scalers/fabrica; PR refs are refused (default: the branch selected above)'
         required: false
         default: ''
         type: string
@@ -74,7 +74,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  ADHOC_REPO: stablyai/fabrica-adhoc
+  ADHOC_REPO: Auto-Scalers/fabrica-adhoc
   # Why age and not a count like hourly: this channel is low-volume and bursty, so
   # a count would either hold one week's experiments forever or evict a build
   # someone is still running after a busy afternoon. A month is well past the "few
@@ -83,7 +83,7 @@ env:
 
 jobs:
   build-adhoc-mac:
-    if: github.repository == 'stablyai/fabrica'
+    if: github.repository == 'Auto-Scalers/fabrica'
     # Why an environment: it gives the signing/notary/App secrets somewhere to
     # live that a stale copy of this workflow on an old branch cannot reach.
     # Referencing it is a no-op until repo settings give it teeth; the intended
@@ -117,7 +117,7 @@ jobs:
           set -euo pipefail
           case "$REQUESTED_REF" in
             refs/pull/*|pull/*)
-              echo "::error::Refusing to build PR ref '$REQUESTED_REF': this workflow signs with release credentials, so it only builds branches, tags, or commits of stablyai/fabrica. Push the code to a branch of this repo instead."
+              echo "::error::Refusing to build PR ref '$REQUESTED_REF': this workflow signs with release credentials, so it only builds branches, tags, or commits of Auto-Scalers/fabrica. Push the code to a branch of this repo instead."
               exit 1
               ;;
           esac
@@ -137,7 +137,7 @@ jobs:
             sha=""
           done
           if [[ -z "$sha" ]]; then
-            echo "::error::'$REQUESTED_REF' does not resolve to a branch, tag, or commit of stablyai/fabrica."
+            echo "::error::'$REQUESTED_REF' does not resolve to a branch, tag, or commit of Auto-Scalers/fabrica."
             exit 1
           fi
           # The object resolving locally is not proof a branch or tag reaches
@@ -145,7 +145,7 @@ jobs:
           # GitHub serves PR-only commits by SHA. Reachability is the actual
           # trust test.
           if [[ -z "$(git -C "$scratch" for-each-ref --contains "$sha" refs/heads refs/tags | head -1)" ]]; then
-            echo "::error::Commit $REQUESTED_REF is not reachable from any branch or tag of stablyai/fabrica; refusing to build it with release credentials."
+            echo "::error::Commit $REQUESTED_REF is not reachable from any branch or tag of Auto-Scalers/fabrica; refusing to build it with release credentials."
             exit 1
           fi
           echo "Vetted $REQUESTED_REF -> $sha"
@@ -160,7 +160,7 @@ jobs:
           # applies main's current copy of this file to an arbitrary branch.
           ref: ${{ steps.vetted.outputs.sha }}
           fetch-depth: 0
-          # This job only reads stablyai/fabrica and never pushes; every write goes
+          # This job only reads Auto-Scalers/fabrica and never pushes; every write goes
           # to the adhoc repo through a minted App token passed by env. Not
           # persisting the checkout credential shrinks the blast radius if a build
           # step is compromised (zizmor: artipacked).
@@ -258,7 +258,7 @@ jobs:
         with:
           app-id: ${{ secrets.HOURLY_RELEASE_APP_ID }}
           private-key: ${{ secrets.HOURLY_RELEASE_APP_PRIVATE_KEY }}
-          owner: stablyai
+          owner: Auto-Scalers
           repositories: fabrica-adhoc
 
       - name: Create adhoc release
@@ -292,7 +292,7 @@ jobs:
             --draft \
             --notes "Adhoc macOS dev build of \`$REF\` at commit \`$short_sha\`.
 
-          Built from [\`stablyai/fabrica@$short_sha\`](https://github.com/stablyai/fabrica/commit/$SHA), cut by @$ACTOR.
+          Built from [\`Auto-Scalers/fabrica@$short_sha\`](https://github.com/Auto-Scalers/fabrica/commit/$SHA), cut by @$ACTOR.
 
           **Unlanded and unvetted.** This is somebody's branch, not main. No tests
           ran. Signed and notarized like a release, so it installs through Fabrica's

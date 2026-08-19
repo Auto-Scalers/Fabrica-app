@@ -2,7 +2,7 @@
 import { isWslUncPath } from '../../../shared/wsl-paths'
 import { splitWorktreeIdForFilesystem } from '../../../shared/worktree-id'
 
-export type OrchestrationCliCommand = 'fabrica' | 'orca' | 'orca-ide' | 'orca-dev'
+export type OrchestrationCliCommand = 'fabrica'
 
 export function resolveTerminalOrchestrationCliCommand(args: {
   connectionId: string | null

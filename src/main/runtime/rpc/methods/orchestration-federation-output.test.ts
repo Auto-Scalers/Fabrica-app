@@ -146,7 +146,7 @@ describe('orchestration federated worker output', () => {
       'tab_worker:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'
     )
     vi.spyOn(runtime, 'getTerminalProcessIncarnation').mockReturnValue('windows_runtime:pty:1')
-    vi.spyOn(runtime, 'getTerminalOrchestrationCliCommand').mockReturnValue('FABRICA')
+    vi.spyOn(runtime, 'getTerminalOrchestrationCliCommand').mockReturnValue('fabrica')
     vi.spyOn(runtime, 'sendTerminalAgentPrompt').mockResolvedValue({
       handle: 'term_windows_worker',
       accepted: true,

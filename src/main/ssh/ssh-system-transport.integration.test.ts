@@ -62,7 +62,7 @@ function writeFakeRelay(dir: string): void {
     `
 const fs = require('fs');
 const net = require('net');
-const sentinel = 'ORCA-RELAY v0.1.0 READY\\n';
+const sentinel = 'FABRICA-RELAY v0.1.0 READY\\n';
 const sockPath = process.argv[process.argv.indexOf('--sock-path') + 1];
 
 function encode(msg) {

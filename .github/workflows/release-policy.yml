@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   enforce:
-    if: github.repository == 'stablyai/fabrica'
+    if: github.repository == 'Auto-Scalers/fabrica'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

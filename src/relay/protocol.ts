@@ -1,4 +1,4 @@
-// Self-contained relay protocol — mirrors src/main/ssh/relay-protocol.ts
+// Self-contained relay protocol ï¿½ mirrors src/main/ssh/relay-protocol.ts
 // but has no Electron dependencies. Deployed standalone to remote hosts.
 
 import {
@@ -25,7 +25,7 @@ export {
 export type { DecodedFrame, FrameDecoderOptions } from './relay-frame-decoder'
 
 export const RELAY_VERSION = '0.1.0'
-export const RELAY_SENTINEL = `ORCA-RELAY v${RELAY_VERSION} READY\n`
+export const RELAY_SENTINEL = `FABRICA-RELAY v${RELAY_VERSION} READY\n`
 
 export const MessageType = {
   Regular: 1,
@@ -38,9 +38,9 @@ export const MessageType = {
 // to refuse mismatched-version --connect bridges that would otherwise drive a
 // stale daemon.
 export type HandshakeMessage =
-  | { type: 'ORCA-RELAY-handshake'; version: string; endpointCredential?: string }
-  | { type: 'ORCA-RELAY-handshake-ok'; version: string }
-  | { type: 'ORCA-RELAY-handshake-mismatch'; expected: string; got: string }
+  | { type: 'FABRICA-RELAY-handshake'; version: string; endpointCredential?: string }
+  | { type: 'FABRICA-RELAY-handshake-ok'; version: string }
+  | { type: 'FABRICA-RELAY-handshake-mismatch'; expected: string; got: string }
 
 export function encodeHandshakeFrame(msg: HandshakeMessage): Buffer {
   const payload = Buffer.from(JSON.stringify(msg), 'utf-8')
@@ -51,9 +51,9 @@ export function parseHandshakeMessage(payload: Buffer): HandshakeMessage {
   const msg = JSON.parse(payload.toString('utf-8')) as HandshakeMessage
   const t = (msg as { type?: string }).type
   if (
-    t !== 'ORCA-RELAY-handshake' &&
-    t !== 'ORCA-RELAY-handshake-ok' &&
-    t !== 'ORCA-RELAY-handshake-mismatch'
+    t !== 'FABRICA-RELAY-handshake' &&
+    t !== 'FABRICA-RELAY-handshake-ok' &&
+    t !== 'FABRICA-RELAY-handshake-mismatch'
   ) {
     throw new Error(`Unknown handshake type: ${t}`)
   }
@@ -88,7 +88,7 @@ export const STREAM_ACK_STALL_RECHECK_MS = 1_000
 export const GIT_RESPONSE_STREAM_THRESHOLD = 256 * 1024
 
 /** Per-chunk size (UTF-8 bytes of the serialized result) for git response
- * streaming. Independent from STREAM_CHUNK_SIZE — this offset math is not
+ * streaming. Independent from STREAM_CHUNK_SIZE ï¿½ this offset math is not
  * shared with fs streams, so tuning it here is cross-version safe as long as
  * the client reassembles by concatenation (it does not depend on chunk size). */
 export const GIT_RESPONSE_CHUNK_SIZE = 128 * 1024

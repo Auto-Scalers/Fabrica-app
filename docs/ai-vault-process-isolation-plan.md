@@ -6,11 +6,11 @@ Last updated: 2026-08-09.
 
 ## Decision summary
 
-AI Vault will remain part of the integrated Orca renderer, but its host-side work will move behind a persistent service-process boundary.
+AI Vault will remain part of the integrated Fabrica renderer, but its host-side work will move behind a persistent service-process boundary.
 
 The target has three rules:
 
-1. The desktop and Orca runtime route local Vault scans and title resolution to one lazy, supervised Vault service process per host process.
+1. The desktop and Fabrica runtime route local Vault scans and title resolution to one lazy, supervised Vault service process per host process.
 2. The SSH relay routes Vault work to a relay-side Vault service process. The relay event loop that handles PTYs must not scan or parse Vault data.
 3. The renderer publishes completed Vault results at low priority after terminal input is quiet. xterm and the Vault panel remain in the same renderer.
 
@@ -30,7 +30,7 @@ The public Electron IPC, runtime RPC, and SSH relay method names and result mean
 
 ## Non-goals
 
-- Treating the service process as a security sandbox. It runs trusted Orca code with the same user identity.
+- Treating the service process as a security sandbox. It runs trusted Fabrica code with the same user identity.
 - Rewriting the scanner or changing session discovery semantics during the process migration.
 - Moving xterm into another renderer.
 - Adding a process per window, worktree, repository, or SSH request.
@@ -42,7 +42,7 @@ The public Electron IPC, runtime RPC, and SSH relay method names and result mean
 | Path                                    | Current execution                                                            | Remaining coupling                                                                                                           |
 | --------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Desktop local scan and title resolution | Persistent `worker_threads.Worker` from `session-scanner-worker-spawn.ts`    | Separate V8 isolate, but the same OS process, priority class, failure domain, and overall memory accounting as Electron main |
-| Orca runtime scan and title resolution  | The same worker client used by runtime RPC methods                           | Same-process CPU, memory, and lifecycle coupling with the runtime host                                                       |
+| Fabrica runtime scan and title resolution  | The same worker client used by runtime RPC methods                           | Same-process CPU, memory, and lifecycle coupling with the runtime host                                                       |
 | SSH relay scan and title resolution     | `AiVaultHandler` calls the remote scanner and title reader inside `relay.ts` | Vault discovery, reads, parsing, cache work, and PTY routing share one event loop and process                                |
 | Old SSH relay fallback                  | Desktop main crawls the host through the SSH filesystem provider             | Compatibility path can consume desktop and SSH multiplexer work; complete remote isolation is impossible without a new relay |
 | Renderer result publication             | `setScanResult(result)` and `setSessions(result.sessions)` immediately       | Deserialization, projection, filtering, grouping, and React rendering share the renderer thread with xterm                   |
@@ -61,7 +61,7 @@ The migration changes execution ownership only. Unless a separate product change
 | Session result        | Preserve every `AiVaultSession` field, including host/platform identity, paths, Codex home, timestamps, previews, token/message counts, queued/recoverable state, subagent count, resume command, and subagent metadata | Service result builder; router validates/restamps only where it does today  |
 | Scope and depth       | Preserve workspace/project/all scoping, guaranteed older in-scope sessions, 250/500/1000/unlimited depth, sorting, deduplication, and issue rows                                                                        | Service per-host scan; router multi-host merge; renderer view projection    |
 | Host routing          | Preserve local, all-host, individual SSH, and individual runtime selection with the same per-host time budgets and partial-failure issue behavior                                                                       | Router                                                                      |
-| Dynamic roots         | Preserve environment overrides, managed/per-account Codex homes, runtime Codex homes, WSL default and Orca-owned homes, and every platform-specific agent root                                                          | Router resolves dynamic homes per request; service discovers within them    |
+| Dynamic roots         | Preserve environment overrides, managed/per-account Codex homes, runtime Codex homes, WSL default and Fabrica-owned homes, and every platform-specific agent root                                                          | Router resolves dynamic homes per request; service discovers within them    |
 | Refresh semantics     | Preserve TTL reuse, force refresh, request-token cancellation, force preemption, coalescing, window-focus refresh, and new-agent-session refresh throttling                                                             | Router coordinator plus service cancellation                                |
 | Title synchronization | Preserve local, SSH, and runtime Claude/Codex title resolution and the existing input-quiet tab-title gate                                                                                                              | Service title operation plus existing host routing                          |
 | Subagent expansion    | Preserve local-only Claude and OMP child listing, path containment, status, issue rows, and retry behavior. Runtime/SSH/web remain empty until a separately negotiated feature exists                                   | Service interactive operation; router retains current host gate             |
@@ -98,7 +98,7 @@ The two relay branches share only the relay's bounded request/response routing. 
 ## Process ownership
 
 - Desktop: one Vault service per Electron main process, shared by every window and workspace.
-- Orca runtime: one Vault service per runtime host process, shared by all connected clients.
+- Fabrica runtime: one Vault service per runtime host process, shared by all connected clients.
 - SSH relay: one Vault service per live relay daemon, shared across relay reconnects and requests.
 - WSL: preserve current source ownership initially. The Windows local service invokes the existing WSL-aware adapters; do not add a process per distro in this migration.
 - Old relay: retain the bounded desktop fallback only when the relay method is unavailable. A new relay whose sidecar fails must return an issue instead of scanning inline on the relay loop.

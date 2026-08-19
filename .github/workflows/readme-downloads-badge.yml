@@ -20,7 +20,7 @@ concurrency:
 jobs:
   update:
     # Why: this workflow commits to main, so forks should not create divergent badge commits.
-    if: github.repository == 'stablyai/fabrica'
+    if: github.repository == 'Auto-Scalers/fabrica'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main

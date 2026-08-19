@@ -40,7 +40,7 @@ export type CoordinatorRuntime = {
     launchTokenHash: string | null
   } | null
   // Why: Windows can host native and WSL workers at once, so the worker pane (not the coordinator) picks the packaged CLI name.
-  getTerminalOrchestrationCliCommand?(handle: string): 'fabrica' | 'FABRICA' | 'FABRICA-ide'
+  getTerminalOrchestrationCliCommand?(handle: string): 'fabrica'
 }
 
 // Why (§3.1): 20 lets normal monorepo day-velocity pass but trips the 168-commit harm from ORCHESTRATOR_FEEDBACK.md (chosen in msg_eff3a646110d).

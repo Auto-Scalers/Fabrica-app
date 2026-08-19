@@ -1,6 +1,6 @@
 // --- Relay Protocol -------------------------------------------------
 // 13-byte framing header matching VS Code's PersistentProtocol wire format.
-// See design-ssh-support.md § JSON-RPC Protocol Specification.
+// See design-ssh-support.md ï¿½ JSON-RPC Protocol Specification.
 
 import {
   FrameDecoder,
@@ -26,7 +26,7 @@ export {
 export type { DecodedFrame, FrameDecoderOptions } from '../../shared/relay-frame-decoder'
 
 export const RELAY_VERSION = '0.1.0'
-export const RELAY_SENTINEL = `ORCA-RELAY v${RELAY_VERSION} READY\n`
+export const RELAY_SENTINEL = `FABRICA-RELAY v${RELAY_VERSION} READY\n`
 export const RELAY_SENTINEL_TIMEOUT_MS = 10_000
 export const RELAY_REMOTE_DIR = '.fabrica-remote'
 

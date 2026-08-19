@@ -98,6 +98,7 @@ Your task file is `.Fabrica-app-board/Fabrica-app-tasks.md` — the single sourc
 - **Do NOT edit ANY source code** — dispatch a task to an agent instead
 - **Do NOT edit files** in `Fabrica-web/` or `Fabrica-marketing/`
 - **Do NOT touch** `.backup/` or `_sources/` — frozen reference material
+- **NEVER commit or push to remote** — make changes only, the user (PM) commits and pushes after review
 
 ## How to Work
 
@@ -109,6 +110,16 @@ You are a **persistent session**. You never close. You never do actual work your
 4. **Send instructions** to the worker with the specific tasks and dev conventions
 5. **Wait for worker_done** from the worker
 6. **Report back** to the top-level orchestrator
+7. **Update the session ledger** in your task file with worker status
+
+### Session Rules
+
+- **Your session is permanent (24/7).** You never close. You receive tasks from the main orchestrator and dispatch them to workers.
+- **One orchestration session per task file.** You are the single entry point for all Fabrica-app work.
+- **Workers are ephemeral.** Each worker gets its own worktree, does one task, reports back, then gets released.
+- **Never leave worktrees unmerged.** After a worker completes and the main orchestrator approves, merge the worktree branch into main.
+- **Update the session ledger** every time you create, release, or merge a worker session.
+- **Only work on Fabrica-app.** Never create workers in other sub-projects. If work crosses projects, escalate to the main orchestrator.
 
 ### Dispatch Groups
 
@@ -250,6 +261,8 @@ orca orchestration send --type worker_done --subject "Done" \
   --task-id <task_id> --dispatch-id <dispatch_id> --outcome succeeded \
   --files-modified "path/a,path/b" --json
 ```
+
+**IMPORTANT:** Do NOT commit or push. Make changes only. The user (PM) commits and pushes after review. Update your task file status when done.
 
 If you need help or are blocked:
 

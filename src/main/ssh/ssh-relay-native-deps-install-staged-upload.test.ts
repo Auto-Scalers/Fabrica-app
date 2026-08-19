@@ -14,7 +14,7 @@ vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
   RELAY_REMOTE_DIR: '.FABRICA-remote',
   parseUnameToRelayPlatform: vi.fn().mockReturnValue('linux-x64'),
-  RELAY_SENTINEL: 'ORCA-RELAY v0.1.0 READY\n',
+  RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
 }))
 
@@ -131,7 +131,7 @@ describe('installNativeDeps staged uploads', () => {
     const written = sftpCapture.contents[pkgPath as string]
     expect(written).toBeTruthy()
     const parsed = JSON.parse(written) as Record<string, unknown>
-    expect(parsed.name).toBe('ORCA-RELAY')
+    expect(parsed.name).toBe('FABRICA-RELAY')
     expect(parsed.version).toBe('1.0.0')
     expect(parsed.private).toBe(true)
     expect(parsed.type).toBe('commonjs')
