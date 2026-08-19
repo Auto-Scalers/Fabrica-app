@@ -1,4 +1,4 @@
-﻿// Forked (ELECTRON_RUN_AS_NODE) child that hosts its assigned @parcel/watcher
+// Forked (ELECTRON_RUN_AS_NODE) child that hosts its assigned @parcel/watcher
 // subscriptions. Why: watcher.node has native teardown races that fail-fast
 // the hosting process (issue #7547, 0xc0000409 on Windows; same class as
 // #5377/#6635). Running the native module here turns a watcher fault into a
