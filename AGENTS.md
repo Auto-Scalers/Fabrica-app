@@ -274,19 +274,27 @@ orca orchestration ask --question "I need help with X" --options "yes,no" --json
 
 ### How to Dispatch Work to Agents in This Project
 
-```bash
-# Create a task for an agent in this project
-orca orchestration task-create --spec "Rebrand Orca to Fabrica in settings module" --json
+**CRITICAL: Workers must NEVER receive empty prompts.** Every worker must get a detailed task brief with:
+- What to do (specific task)
+- What files to read
+- What to search for
+- What to send back (worker_done format)
 
-# Start a worker in this worktree
+```bash
+# 1. Create a task with a detailed spec (this becomes the worker's prompt)
+orca orchestration task-create --spec "Detailed task description here..." --json
+
+# 2. Start a worker — the task spec IS the prompt
 orca orchestration worker-start --task <task_id> --worktree "id:<this_worktree_id>" --agent opencode --json
 
-# Wait for the agent to finish
+# 3. Wait for the agent to finish
 orca orchestration check --wait --types worker_done,escalation,question --timeout-ms 300000 --json
 
-# Release the worker when done
+# 4. Review the work, then release
 orca orchestration worker-release --dispatch <dispatch_id> --json
 ```
+
+**NEVER** start a worker without a task spec. The spec IS the prompt.
 
 ### What You Remember
 
