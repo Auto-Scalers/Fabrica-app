@@ -68,5 +68,68 @@
     "text": "ghostty",
     "dynamic": false,
     "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Relay account",
+    "dynamic": false,
+    "count": 2
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Signed in as",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-expression",
+    "text": "unknown user",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Sign out",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Sign in with email and password to authenticate Fabrica Relay.",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Email",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-text",
+    "text": "Password",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-expression",
+    "text": "Signing in…",
+    "dynamic": false,
+    "count": 1
+  },
+  {
+    "filePath": "src/renderer/src/components/settings/SupabaseAccountSignInCard.tsx",
+    "kind": "jsx-expression",
+    "text": "Sign in",
+    "dynamic": false,
+    "count": 1
   }
 ]

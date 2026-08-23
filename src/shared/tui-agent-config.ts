@@ -107,8 +107,8 @@ export const TUI_AGENT_CONFIG: Record<TuiAgent, TuiAgentConfig> = {
     expectedProcess: 'traecli',
     // Why: `traecli [prompt]` takes the task as a positional argv, same as Claude/Codex.
     promptInjectionMode: 'argv',
-    // Why: separator so prompts starting with `help`/`config`/`-…` aren't parsed as a
-    // Trae subcommand or flag — `--` stops both in its Cobra parser.
+    // Why: separator so prompts starting with `help`/`config`/`-â€¦` aren't parsed as a
+    // Trae subcommand or flag â€” `--` stops both in its Cobra parser.
     argvPromptSeparator: '--'
   },
   opencode: {
@@ -150,8 +150,8 @@ export const TUI_AGENT_CONFIG: Record<TuiAgent, TuiAgentConfig> = {
     expectedProcess: 'prime-agent',
     // Why: `prime-agent [options] [@files...] [message...]` takes the task as positional argv.
     promptInjectionMode: 'argv',
-    // Why: separator so prompts starting with `help`/`agents`/`-…` aren't parsed as a
-    // subcommand or flag — its help documents `--` as "treat all following arguments as messages".
+    // Why: separator so prompts starting with `help`/`agents`/`-â€¦` aren't parsed as a
+    // subcommand or flag â€” its help documents `--` as "treat all following arguments as messages".
     argvPromptSeparator: '--',
     // Why: Prime Agent embeds Pi's TUI and decodes CSI-u the same way (see pi above).
     windowsShiftEnterEncoding: 'csi-u'

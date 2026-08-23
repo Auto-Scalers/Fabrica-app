@@ -1,4 +1,4 @@
-﻿import { Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -26,7 +26,10 @@ export function FABRICAProfileSignOutConfirmDialog({
       <DialogContent className="sm:max-w-[420px]">
         <DialogHeader>
           <DialogTitle>
-            {translate('auto.components.FABRICA.profiles.signout.confirm.title', 'Sign out of Fabrica?')}
+            {translate(
+              'auto.components.FABRICA.profiles.signout.confirm.title',
+              'Sign out of Fabrica?'
+            )}
           </DialogTitle>
           <DialogDescription>
             {translate(

@@ -1,12 +1,12 @@
 ---
 name: computer-use
 description: >-
-  Use Orca's computer-use CLI to inspect and operate local desktop app windows
+  Use Fabrica's computer-use CLI to inspect and operate local desktop app windows
   through accessibility trees, screenshots, and safe UI actions. Use for
   desktop app interaction: list apps/windows, get app state, read visible UI,
   click controls, type, press keys, scroll, drag, set values, or perform
-  accessibility actions. Also use for browser windows, webviews, Orca app UI,
-  or other desktop UI. Triggers include "computer use", "orca computer", "read
+  accessibility actions. Also use for browser windows, webviews, Fabrica app UI,
+  or other desktop UI. Triggers include "computer use", "fabrica computer", "read
   Spotify", "read Slack", "control/click/read in a desktop app", and "get app
   state".
 ---
@@ -18,28 +18,29 @@ Use this skill for desktop UI through `fabrica computer`. When the requested tar
 ## Preconditions
 
 - Choose the Fabrica executable once: use the `FABRICA_CLI_COMMAND` environment value when set;
-  otherwise use `fabrica-dev` in a dev session exposing `FABRICA_DEV_REPO_ROOT`, and `fabrica`
-  everywhere else. Never try bare `orca` on unmanaged Linux because it normally resolves to the
+  otherwise use `fabrica-dev` in a dev session exposing `FABRICA_DEV_REPO_ROOT`, `fabrica-ide`
+  on Linux outside a Fabrica-managed terminal, and `fabrica`
+  everywhere else. Never try bare `fabrica` on unmanaged Linux because it normally resolves to the
   GNOME screen reader.
-- In every command example, `ORCA` is a documentation placeholder — including examples that
+- In every command example, `FABRICA` is a documentation placeholder — including examples that
   name a specific shell. Replace it with that chosen executable before running the command;
-  do not create a shell variable or run `ORCA` literally. Blocks that name no shell are
+  do not create a shell variable or run `FABRICA` literally. Blocks that name no shell are
   intentionally shell-neutral for POSIX shells, PowerShell, and cmd.exe.
 - Prefer `--json`. Screenshot bytes are omitted from JSON and written to `screenshot.path`.
 - Do not push, submit forms, send messages, buy items, delete data, change account settings, or expose secrets unless the user explicitly asked for that action.
 - If an app contains sensitive content, read only what the user requested.
 
 ```text
-ORCA status --json
-ORCA computer capabilities --json
+FABRICA status --json
+FABRICA computer capabilities --json
 ```
 
 ## Core Loop
 
 ```text
-ORCA computer list-apps --json
-ORCA computer get-app-state --app com.spotify.client --json
-ORCA computer click --app com.spotify.client --element-index 42 --json
+FABRICA computer list-apps --json
+FABRICA computer get-app-state --app com.spotify.client --json
+FABRICA computer click --app com.spotify.client --element-index 42 --json
 ```
 
 Use the fresh state returned by each action for the next element index. Element indexes are the numeric labels shown in the tree; they may be sparse when noisy sections are omitted, so never infer valid indexes from `elementCount` or "Visible elements." Element indexes are short-lived and go stale after delays, navigation, focus changes, scrolling, window changes, or app re-rendering.
@@ -51,9 +52,9 @@ In `--json` output, read the accessibility tree and action indexes from `result.
 Prefer bundle IDs from `list-apps`; names are acceptable when unambiguous. Use `pid:<number>` only when bundle ID or name matching is ambiguous.
 
 ```text
-ORCA computer get-app-state --app com.microsoft.edgemac --json
-ORCA computer get-app-state --app Spotify --json
-ORCA computer get-app-state --app pid:12345 --json
+FABRICA computer get-app-state --app com.microsoft.edgemac --json
+FABRICA computer get-app-state --app Spotify --json
+FABRICA computer get-app-state --app pid:12345 --json
 ```
 
 For apps with multiple windows or ambiguous titles, run `list-windows` first. Prefer `--window-id <id>` when the listed id is not `none`; otherwise use `--window-index <n>`. Once you choose a window, pass the same selector to `get-app-state` and later actions until the target window changes.
@@ -61,24 +62,24 @@ For apps with multiple windows or ambiguous titles, run `list-windows` first. Pr
 ## Commands
 
 ```text
-ORCA computer permissions --json
-ORCA computer capabilities --json
-ORCA computer list-apps --json
-ORCA computer list-windows --app <app> --json
-ORCA computer get-app-state --app <app> --json
-ORCA computer get-app-state --app <app> --restore-window --json
-ORCA computer click --app <app> --element-index <index> --json
-ORCA computer click --app <app> --x 100 --y 100 --json
-ORCA computer click --app <app> --x 100 --y 100 --modifiers CmdOrCtrl+Shift --json
-ORCA computer perform-secondary-action --app <app> --element-index <index> --action <name> --json
-ORCA computer set-value --app <app> --element-index <index> --value "text" --json
-ORCA computer type-text --app <app> --text "text" --json
-ORCA computer press-key --app <app> --key Return --json
-ORCA computer hotkey --app <app> --key CmdOrCtrl+A --json
-ORCA computer paste-text --app <app> --text "text" --json
-ORCA computer scroll --app <app> (--element-index <index> | --x <x> --y <y>) --direction down --json
-ORCA computer drag --app <app> --from-element-index <index> --to-element-index <index> --json
-ORCA computer drag --app <app> --from-x 100 --from-y 100 --to-x 300 --to-y 300 --json
+FABRICA computer permissions --json
+FABRICA computer capabilities --json
+FABRICA computer list-apps --json
+FABRICA computer list-windows --app <app> --json
+FABRICA computer get-app-state --app <app> --json
+FABRICA computer get-app-state --app <app> --restore-window --json
+FABRICA computer click --app <app> --element-index <index> --json
+FABRICA computer click --app <app> --x 100 --y 100 --json
+FABRICA computer click --app <app> --x 100 --y 100 --modifiers CmdOrCtrl+Shift --json
+FABRICA computer perform-secondary-action --app <app> --element-index <index> --action <name> --json
+FABRICA computer set-value --app <app> --element-index <index> --value "text" --json
+FABRICA computer type-text --app <app> --text "text" --json
+FABRICA computer press-key --app <app> --key Return --json
+FABRICA computer hotkey --app <app> --key CmdOrCtrl+A --json
+FABRICA computer paste-text --app <app> --text "text" --json
+FABRICA computer scroll --app <app> (--element-index <index> | --x <x> --y <y>) --direction down --json
+FABRICA computer drag --app <app> --from-element-index <index> --to-element-index <index> --json
+FABRICA computer drag --app <app> --from-x 100 --from-y 100 --to-x 300 --to-y 300 --json
 ```
 
 Use `--no-screenshot` only when pixels are not needed. Use `--text-stdin` or `--value-stdin` for sensitive text so payloads do not land in shell history. On Linux and Windows, action payloads still pass through a short-lived local operation file, so avoid sending secrets unless the user explicitly asked for them:
@@ -87,7 +88,7 @@ POSIX-shell example (use the equivalent stdin mechanism without command-history 
 PowerShell or cmd.exe):
 
 ```bash
-printf '%s' "$TEXT" | ORCA computer set-value --app <app> --element-index <index> --value-stdin --json
+printf '%s' "$TEXT" | FABRICA computer set-value --app <app> --element-index <index> --value-stdin --json
 ```
 
 ## Action Rules
@@ -123,9 +124,9 @@ Browsers: for Edge, Chrome, Safari, and similar browser windows, set the address
 For browser-hosted forms such as Gmail compose, verify the focused UI element after each field action. Page text fields can expose accessibility actions without moving DOM focus; if a click or `set-value` does not change the focused receiver, use `Tab` / `Shift+Tab` from a known focused field or window-local coordinates from a fresh screenshot. Prefer `paste-text` into the verified focused field for draft bodies, then inspect the returned state before continuing.
 
 ```text
-ORCA computer get-app-state --app com.microsoft.edgemac --restore-window --json
-ORCA computer set-value --app com.microsoft.edgemac --element-index <addressBarIndex> --value "test123" --json
-ORCA computer press-key --app com.microsoft.edgemac --key Return --json
+FABRICA computer get-app-state --app com.microsoft.edgemac --restore-window --json
+FABRICA computer set-value --app com.microsoft.edgemac --element-index <addressBarIndex> --value "test123" --json
+FABRICA computer press-key --app com.microsoft.edgemac --key Return --json
 ```
 
 Spotify: refresh after playback clicks; the UI often changes asynchronously.
@@ -134,7 +135,7 @@ Slack: the accessibility tree may be shallow while the screenshot contains usefu
 
 ## Errors
 
-- `app_not_found`: run `list-apps` and retry with the bundle ID. If the target is a web app such as Gmail, choose the desktop browser app/window that contains it; do not retry `ORCA computer ... --app Gmail` unchanged because `fabrica computer` app selectors refer to desktop apps, not website names.
+- `app_not_found`: run `list-apps` and retry with the bundle ID. If the target is a web app such as Gmail, choose the desktop browser app/window that contains it; do not retry `FABRICA computer ... --app Gmail` unchanged because `fabrica computer` app selectors refer to desktop apps, not website names.
 - `app_blocked`: stop; the target is intentionally blocked from computer-use.
 - `window_not_found` / `window_stale`: run `list-windows`, choose a current selector, then rerun `get-app-state`.
 - `window_not_focused`: retry once with `--restore-window`; if the message says restore was already requested, stop retrying restore and bring the app forward manually or check permissions. For editable fields prefer `set-value`, then inspect before assuming keyboard input worked.
@@ -145,11 +146,11 @@ Slack: the accessibility tree may be shallow while the screenshot contains usefu
 - `element_not_clickable`: the element has no actionable frame; use a parent/child element with a frame or choose window-local coordinates from the latest screenshot.
 - `invalid_argument`: fix the command flags; do not retry the same command unchanged.
 - `action_timeout`: inspect current state before retrying, then use a simpler semantic action or `--no-screenshot` if observation is slow.
-- `screenshot_failed`: use `--no-screenshot` if tree state is enough; if the message names Screen Recording or screenshots permission, run `ORCA computer permissions --id screenshots --json`.
-- `accessibility_error`: run `ORCA computer capabilities --json`; if the message names Accessibility permission, run `ORCA computer permissions --id accessibility --json`.
+- `screenshot_failed`: use `--no-screenshot` if tree state is enough; if the message names Screen Recording or screenshots permission, run `FABRICA computer permissions --id screenshots --json`.
+- `accessibility_error`: run `FABRICA computer capabilities --json`; if the message names Accessibility permission, run `FABRICA computer permissions --id accessibility --json`.
 - Empty tree or no screenshot: app may have no visible window, be minimized, or need permissions.
-- Permission errors: run `ORCA computer permissions --json`, or `ORCA computer permissions --id accessibility --json` / `--id screenshots --json` when the message names one permission, use the setup UI, then retry.
+- Permission errors: run `FABRICA computer permissions --json`, or `FABRICA computer permissions --id accessibility --json` / `--id screenshots --json` when the message names one permission, use the setup UI, then retry.
 
 ## Next Action
 
-Confirm Orca status unless already checked, then run `ORCA computer capabilities --json`. For website or web-app targets such as Gmail, identify the desktop browser app/window that contains the page, then get that target app state with `ORCA computer get-app-state --app <app> --json`.
+Confirm Fabrica status unless already checked, then run `FABRICA computer capabilities --json`. For website or web-app targets such as Gmail, identify the desktop browser app/window that contains the page, then get that target app state with `FABRICA computer get-app-state --app <app> --json`.

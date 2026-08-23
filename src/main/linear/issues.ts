@@ -552,7 +552,7 @@ function isDuplicateIdError(error: unknown): boolean {
   )
 }
 
-function errFABRICAuseCode(error: unknown): string {
+function causeCode(error: unknown): string {
   if (!error || typeof error !== 'object') {
     return ''
   }
@@ -573,7 +573,7 @@ export function classifyLinearWriteFailure(error: unknown): LinearWriteFailure {
   }
   const message = linearWriteMessage(error)
   const lower = message.toLowerCase()
-  const code = errFABRICAuseCode(error)
+  const code = causeCode(error)
   if (
     lower.includes('enotfound') ||
     lower.includes('econnrefused') ||

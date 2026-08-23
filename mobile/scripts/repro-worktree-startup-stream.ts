@@ -208,7 +208,6 @@ function summarize(capture: Capture): Record<string, unknown> {
   const serialized =
     typeof capture.scrollback?.serialized === 'string' ? capture.scrollback.serialized : ''
   const live = capture.chunks.join('')
-  const serializedPreview = normalizePreview(serialized)
   const livePreview = normalizePreview(live)
   return {
     handle: capture.handle,
@@ -222,7 +221,7 @@ function summarize(capture: Capture): Record<string, unknown> {
     liveSgr: (live.match(new RegExp(`${ESC}\\[[0-9;:]*m`, 'g')) ?? []).length,
     livePreviewContainedInSerialized:
       livePreview.length > 0 && stripAnsi(serialized).includes(livePreview.split('\n')[0] ?? ''),
-    serializedPreview,
+    serializedPreview: normalizePreview(serialized),
     livePreview
   }
 }

@@ -33,7 +33,7 @@ function placement(
     currentPackageDigest: 'current',
     currentAppVersion: '2.0.0',
     observedPackageDigest: 'old',
-    errFABRICAtegory: null,
+    errCategory: null,
     ...overrides
   }
 }
@@ -170,10 +170,10 @@ describe('skill freshness name-scoped update eligibility', () => {
   })
 
   it('builds only an explicit, deterministic global command', () => {
-    expect(buildTargetedSkillUpdateCommand(['orchestration', 'FABRICA-cli', 'FABRICA-cli'])).toBe(
-      'npx skills update FABRICA-cli orchestration --global'
+    expect(buildTargetedSkillUpdateCommand(['orchestration', 'fabrica-cli', 'fabrica-cli'])).toBe(
+      'npx skills update fabrica-cli orchestration --global'
     )
     expect(buildTargetedSkillUpdateCommand([])).toBeNull()
-    expect(buildTargetedSkillUpdateCommand(['FABRICA-cli;echo unsafe'])).toBeNull()
+    expect(buildTargetedSkillUpdateCommand(['fabrica-cli;echo unsafe'])).toBeNull()
   })
 })

@@ -9,6 +9,12 @@ import type {
   HostedReviewProvider
 } from '../shared/hosted-review'
 import type { NativeFileDropPayload } from '../shared/native-file-drop'
+import type {
+  SignInSupabaseArgs,
+  SignInSupabaseResult,
+  SignOutSupabaseResult,
+  SupabaseAuthStatus
+} from '../shared/supabase-auth'
 import type { ComputerAwakeStatus } from '../shared/computer-awake-mode'
 import type { BrowserFindSource } from '../shared/browser-find-source'
 import type {
@@ -1141,6 +1147,11 @@ export type PreloadApi = {
     orgMemberRemove: (
       args: FABRICAProfileOrgMemberRemoveArgs
     ) => Promise<FABRICAProfileOrgMemberMutationResult>
+  }
+  supabaseAuth: {
+    getStatus: () => Promise<SupabaseAuthStatus>
+    signIn: (args: SignInSupabaseArgs) => Promise<SignInSupabaseResult>
+    signOut: () => Promise<SignOutSupabaseResult>
   }
   platform: {
     get: () => {

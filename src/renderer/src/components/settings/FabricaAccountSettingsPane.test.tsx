@@ -34,7 +34,7 @@ vi.mock('@/store', () => ({
     })
 }))
 
-vi.mock('../fabrica-profiles/FABRICAProfileSignOutConfirmDialog', () => ({
+vi.mock('../fabrica-profiles/FabricaProfileSignOutConfirmDialog', () => ({
   FABRICAProfileSignOutConfirmDialog: ({
     open,
     onConfirm
@@ -53,6 +53,16 @@ describe('FABRICAAccountSettingsPane', () => {
     mocks.fetchAuthStatus.mockReset()
     mocks.signOut.mockReset()
     mocks.signOut.mockResolvedValue({ status: 'signed-out' })
+    Object.defineProperty(window, 'api', {
+      configurable: true,
+      value: {
+        supabaseAuth: {
+          getStatus: vi.fn().mockResolvedValue({ configured: false, signedIn: false }),
+          signIn: vi.fn(),
+          signOut: vi.fn()
+        }
+      }
+    })
     mocks.state.FABRICAProfileAuthStatus = {
       configured: true,
       state: 'connected',

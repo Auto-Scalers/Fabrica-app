@@ -69,7 +69,7 @@ describe('ChecksPanelReviewHeader', () => {
 
     expect(markup).toContain('Open on GitHub')
     expect(markup).toContain('system browser')
-    expect(markup).toContain('??+click')
+    expect(markup).toContain('⇧⌘+click')
     expect(markup).not.toContain('?+click to open')
     expect(markup).toContain('#2964')
     expect(markup).toContain('underline decoration-border underline-offset-2')
@@ -85,13 +85,15 @@ describe('ChecksPanelReviewHeader', () => {
 
     expect(markup).toContain('Open on GitHub')
     expect(markup).not.toContain('system browser')
-    expect(markup).not.toContain('??+click')
+    expect(markup).not.toContain('⇧⌘+click')
   })
 
   // Why: with inverting on and Link Routing off the modifier reaches FABRICA here, so the
   // hint must name FABRICA rather than the destination a plain click already uses.
   it('names Fabrica when the modifier inverts toward the built-in browser', () => {
-    expect(renderHeader({ modifierHintDestination: 'FABRICA' })).toContain('??+click to open in Fabrica')
+    expect(renderHeader({ modifierHintDestination: 'FABRICA' })).toContain(
+      '⇧⌘+click to open in Fabrica'
+    )
 
     vi.stubGlobal('navigator', { userAgent: 'Windows' })
     expect(renderHeader({ modifierHintDestination: 'FABRICA' })).toContain(

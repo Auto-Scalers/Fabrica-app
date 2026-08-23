@@ -9,7 +9,7 @@ export type ClassifiedSkillTopology = {
   topology: SkillInstallationTopology
   resolvedPath: string | null
   identity: string | null
-  errFABRICAtegory: string | null
+  errCategory: string | null
 }
 
 export function skillPlacementId(unresolvedPath: string, name: string): string {
@@ -93,7 +93,7 @@ export async function classifyHomeSkillTopology(
         topology: 'broken-link',
         resolvedPath: null,
         identity: null,
-        errFABRICAtegory: 'missing'
+        errCategory: 'missing'
       }
     }
     throw error
@@ -109,7 +109,7 @@ export async function classifyHomeSkillTopology(
       topology: 'broken-link',
       resolvedPath: null,
       identity: null,
-      errFABRICAtegory: 'dangling-link'
+      errCategory: 'dangling-link'
     }
   }
   if (!resolvedStat.isDirectory()) {
@@ -117,7 +117,7 @@ export async function classifyHomeSkillTopology(
       topology: 'broken-link',
       resolvedPath,
       identity: null,
-      errFABRICAtegory: 'not-directory'
+      errCategory: 'not-directory'
     }
   }
 
@@ -139,7 +139,7 @@ export async function classifyHomeSkillTopology(
   if (topology !== 'external-link' && !(await writableDestination(resolvedPath))) {
     topology = 'read-only'
   }
-  return { topology, resolvedPath, identity, errFABRICAtegory: null }
+  return { topology, resolvedPath, identity, errCategory: null }
 }
 
 export async function classifyUnsupportedSkillTopology(
@@ -156,14 +156,14 @@ export async function classifyUnsupportedSkillTopology(
       topology: sourceKind === 'repo' ? 'repo-scope' : 'plugin-cache',
       resolvedPath,
       identity: skillPhysicalIdentity(resolvedPath, resolvedStat),
-      errFABRICAtegory: null
+      errCategory: null
     }
   } catch (error) {
     return {
       topology: sourceKind === 'repo' ? 'repo-scope' : 'plugin-cache',
       resolvedPath: null,
       identity: null,
-      errFABRICAtegory: error instanceof Error ? error.message : 'read-failed'
+      errCategory: error instanceof Error ? error.message : 'read-failed'
     }
   }
 }

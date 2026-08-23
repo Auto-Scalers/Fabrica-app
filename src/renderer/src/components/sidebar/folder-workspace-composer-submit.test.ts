@@ -749,7 +749,7 @@ describe('submitFolderWorkspaceCreate native-chat launch draft', () => {
     })
 
     // The draft rides in on `--prefill`, so the plan carries no draftPrompt at
-    // all — keying the mirror off it would silently drop this whole branch.
+    // all â€” keying the mirror off it would silently drop this whole branch.
     const startup = mocks.activateAndRevealFolderWorkspace.mock.calls[0]?.[1]?.startup
     expect(startup?.draftPrompt).toBeUndefined()
     expect(startup?.command).toContain(ISSUE_URL)

@@ -1,5 +1,5 @@
 /**
- * Issue #8832 — Cmd-click URL must not glue the next logical line.
+ * Issue #8832 â€” Cmd-click URL must not glue the next logical line.
  *
  * Root cause: path hard-wrap reconstruction (from #8339) still joins a URL
  * suffix ending in `/` with the next row's path-like prefix. HTTP hit-testing
@@ -149,7 +149,7 @@ describe('#8832 hard-wrapped path candidates glue next-line text into URLs', () 
 
     expect(opened).toBe(true)
     expect(url).toBe('https://example.com/docs/')
-    expect(url).not.toMatch(/??|Users|usr|src|server/)
+    expect(url).not.toMatch(/Users|usr|src|server/)
   })
 
   it('still joins a soft-wrapped multi-line URL via native wrap metadata', () => {

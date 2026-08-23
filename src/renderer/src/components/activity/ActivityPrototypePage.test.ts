@@ -318,7 +318,7 @@ describe('buildActivityEvents', () => {
       entries: {
         [PANE_KEY]: {
           ...makeWorkingEntryWithoutHistory(),
-          prompt: 'You are working inside Fabrica, a multi-agent IDE.',
+          prompt: 'You are working inside FABRICA, a multi-agent IDE.',
           orchestration: {
             taskId: 'task-1',
             dispatchId: 'ctx-1',

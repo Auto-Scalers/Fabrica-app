@@ -181,7 +181,7 @@ function createWindowsLauncherCompileCommand(
       '$windowsDirectory = if ($env:WINDIR) { $env:WINDIR } else { $env:SystemRoot }',
       `$compilerCandidates = @((Join-Path $windowsDirectory 'Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe'), (Join-Path $windowsDirectory 'Microsoft.NET\\Framework\\v4.0.30319\\csc.exe'))`,
       '$compiler = $compilerCandidates | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1',
-      "if (-not $compiler) { Write-Error 'Unable to find the .NET Framework C# compiler required for the Fabrica SSH CLI launcher.'; exit 1 }",
+      "if (-not $compiler) { Write-Error 'Unable to find the .NET Framework C# compiler required for the FABRICA SSH CLI launcher.'; exit 1 }",
       `& $compiler ${compilerArgs}`,
       'if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }',
       `if (-not (Test-Path -LiteralPath ${powerShellLiteral(launcherPath)} -PathType Leaf)) { Write-Error 'The Fabrica SSH CLI launcher compiler produced no executable.'; exit 1 }`,

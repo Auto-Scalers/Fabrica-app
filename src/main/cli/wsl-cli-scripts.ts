@@ -1,5 +1,5 @@
-﻿const MANAGED_MARKER = '# Fabrica managed WSL CLI launcher'
-const BRIDGE_MANAGED_MARKER = '# Fabrica managed WSL CLI PowerShell bridge'
+﻿const MANAGED_MARKER = '# FABRICA managed WSL CLI launcher'
+const BRIDGE_MANAGED_MARKER = '# FABRICA managed WSL CLI PowerShell bridge'
 
 export function buildWslLauncher(
   windowsLauncherPath: string,

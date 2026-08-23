@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env npx tsx
+#!/usr/bin/env npx tsx
 // Why: standalone mock WebSocket server for developing the mobile app without
 // a running FABRICA desktop instance. Responds to the same RPC methods the real
 // runtime exposes, with realistic fake data. Supports E2EE handshake.

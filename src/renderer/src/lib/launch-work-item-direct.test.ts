@@ -461,7 +461,7 @@ describe('launchWorkItemDirect', () => {
     expect(mocks.seedNativeChatLaunchPrompt).not.toHaveBeenCalled()
     // Why: the draft is inside `--prefill`, so the plan sets no draftPrompt.
     // launchDraftText is the only thing that lets the view-mode gate see a
-    // draft here — without it this tab opens in chat unconditionally.
+    // draft here â€” without it this tab opens in chat unconditionally.
     const startup = mocks.activateAndRevealWorktree.mock.calls.at(-1)?.[1]?.startup
     expect(startup?.draftPrompt).toBeUndefined()
     expect(startup?.launchDraftText).toBe('https://github.com/acme/repo/issues/12')

@@ -1,4 +1,4 @@
-﻿// Why: the shell path and the SFTP-relative path must be built from the same
+// Why: the shell path and the SFTP-relative path must be built from the same
 // validated segments, and the install-owner marker is what proves a redirected
 // directory belongs to this install rather than an unrelated same-version one.
 
@@ -21,11 +21,14 @@ import { computeRemoteRelayDir } from './ssh-relay-versioned-install'
 const LINUX = getRemoteHostPlatform('linux-x64')
 const WINDOWS = getRemoteHostPlatform('win32-x64')
 const VERSION = '0.1.0+abc123'
-const SHELL_RELAY_DIR = `/var/services/homes/alice/.FABRICA-remote/relay-${VERSION}`
+const SHELL_RELAY_DIR = `/var/services/homes/alice/.fabrica-remote/relay-${VERSION}`
 
 describe('relayRemoteDirSegments', () => {
   it('builds the two segments every relay path shares', () => {
-    expect(relayRemoteDirSegments(VERSION, 'posix')).toEqual(['.FABRICA-remote', `relay-${VERSION}`])
+    expect(relayRemoteDirSegments(VERSION, 'posix')).toEqual([
+      '.fabrica-remote',
+      `relay-${VERSION}`
+    ])
   })
 
   it('produces a home-relative dir that matches the shell dir suffix', () => {
@@ -64,7 +67,7 @@ describe('computeRemoteRelayDir agreement', () => {
 
   it('applies Windows segment rules on the windows flavor', () => {
     expect(computeRemoteRelayDir('C:\\Users\\u', VERSION, 'windows')).toBe(
-      `C:/Users/u/.FABRICA-remote/relay-${VERSION}`
+      `C:/Users/u/.fabrica-remote/relay-${VERSION}`
     )
     expect(() => computeRemoteRelayDir('C:\\Users\\u', '0.1.0 ', 'windows')).toThrow(
       'Unsafe remote path segment'
@@ -79,7 +82,7 @@ describe('createRelayInstallNamespace', () => {
 
     expect(first.markerFileName).toMatch(/^\.sftp-namespace-[0-9a-f]{32}$/)
     expect(first.markerFileName).not.toBe(second.markerFileName)
-    expect(first.homeRelativeRelayDir).toBe(`.FABRICA-remote/relay-${VERSION}`)
+    expect(first.homeRelativeRelayDir).toBe(`.fabrica-remote/relay-${VERSION}`)
   })
 })
 
@@ -89,10 +92,10 @@ describe('relaySftpNamespaceMapping', () => {
   it('maps the bundle directory itself when no file name is given', () => {
     const mapping = relaySftpNamespaceMapping(namespace, LINUX, SHELL_RELAY_DIR)
 
-    expect(mapping.homeRelativePath).toBe(`.FABRICA-remote/relay-${VERSION}`)
-    expect(mapping.homeRelativeNamespaceRoot).toBe(`.FABRICA-remote/relay-${VERSION}`)
+    expect(mapping.homeRelativePath).toBe(`.fabrica-remote/relay-${VERSION}`)
+    expect(mapping.homeRelativeNamespaceRoot).toBe(`.fabrica-remote/relay-${VERSION}`)
     expect(mapping.homeRelativeProbePath).toBe(
-      `.FABRICA-remote/relay-${VERSION}/.install-lock/${namespace.markerFileName}`
+      `.fabrica-remote/relay-${VERSION}/.install-lock/${namespace.markerFileName}`
     )
     expect(mapping.shellProbePath).toBe(
       `${SHELL_RELAY_DIR}/.install-lock/${namespace.markerFileName}`
@@ -102,7 +105,7 @@ describe('relaySftpNamespaceMapping', () => {
   it('maps a file inside the bundle directory', () => {
     const mapping = relaySftpNamespaceMapping(namespace, LINUX, SHELL_RELAY_DIR, 'package.json')
 
-    expect(mapping.homeRelativePath).toBe(`.FABRICA-remote/relay-${VERSION}/package.json`)
+    expect(mapping.homeRelativePath).toBe(`.fabrica-remote/relay-${VERSION}/package.json`)
   })
 
   it('shares one marker across every write of an install', () => {
@@ -124,7 +127,7 @@ describe('relaySftpNamespaceMapping', () => {
 })
 
 describe('relay upload stage namespace', () => {
-  const stageSuffix = `.FABRICA-remote/relay-${VERSION}.upload-123e4567-e89b-12d3-a456-426614174000`
+  const stageSuffix = `.fabrica-remote/relay-${VERSION}.upload-123e4567-e89b-12d3-a456-426614174000`
   const shellStageDir = `/var/services/homes/alice/${stageSuffix}`
   const namespace = createRelayUploadStageNamespace(stageSuffix)
 

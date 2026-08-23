@@ -36,7 +36,7 @@ export type NativeChatPickerState = {
   clearSkillOrigin: () => void
   completeItem: (item: NativeChatPickerItem) => void
   dismiss: (triggerKey: string) => void
-  handleDraftFABRICAretChange: (value: string, caret: number) => void
+  handleDraftCaretChange: (value: string, caret: number) => void
 }
 
 export function useNativeChatPickerState(args: {
@@ -130,7 +130,7 @@ export function useNativeChatPickerState(args: {
     [agent, autocomplete, caret, draft, setActiveSuggestion, setCaret, setDraft, textareaRef]
   )
 
-  const handleDraftFABRICAretChange = useCallback(
+  const handleDraftCaretChange = useCallback(
     (value: string, nextCaret: number) => {
       const firstToken = value.split(/\s/, 1)[0] ?? ''
       if (skillOriginRef.current && firstToken !== skillOriginRef.current) {
@@ -193,6 +193,6 @@ export function useNativeChatPickerState(args: {
     clearSkillOrigin,
     completeItem,
     dismiss,
-    handleDraftFABRICAretChange
+    handleDraftCaretChange
   }
 }

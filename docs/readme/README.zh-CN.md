@@ -218,8 +218,8 @@ _也可以通过包管理器安装：_
 # macOS (Homebrew)
 brew install --cask Auto-Scalers/Fabrica-app/fabrica
 
-# Arch Linux (AUR) — or stably-fabrica-git to build from source
-yay -S stably-fabrica-bin
+# Arch Linux (AUR) — or fabrica-git to build from source
+yay -S fabrica-bin
 ```
 
 ### 移动 Companion 应用 — iOS、Android

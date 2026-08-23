@@ -77,16 +77,16 @@ describe('markdown document templates', () => {
     ).toHaveLength(0)
   })
 
-  it('discovers markdown files under .FABRICA/templates and skips unsafe entries', async () => {
+  it('discovers markdown files under .fabrica/templates and skips unsafe entries', async () => {
     const readDir = stubReadDir({
-      '/repo/.FABRICA/templates': [
+      '/repo/.fabrica/templates': [
         entry('daily-note.md'),
         entry('scratch.txt'),
         entry('linked.md', false, true),
         entry('nested', true),
         entry('node_modules', true)
       ],
-      '/repo/.FABRICA/templates/nested': [entry('meeting.markdown'), entry('brief.mdx')]
+      '/repo/.fabrica/templates/nested': [entry('meeting.markdown'), entry('brief.mdx')]
     })
 
     await expect(
@@ -101,33 +101,33 @@ describe('markdown document templates', () => {
       )
     ).resolves.toEqual([
       {
-        id: '.FABRICA/templates/nested/brief.mdx',
+        id: '.fabrica/templates/nested/brief.mdx',
         name: 'Brief',
-        filePath: '/repo/.FABRICA/templates/nested/brief.mdx',
-        relativePath: '.FABRICA/templates/nested/brief.mdx',
+        filePath: '/repo/.fabrica/templates/nested/brief.mdx',
+        relativePath: '.fabrica/templates/nested/brief.mdx',
         templateRelativePath: 'nested/brief.mdx',
         basename: 'brief.mdx'
       },
       {
-        id: '.FABRICA/templates/daily-note.md',
+        id: '.fabrica/templates/daily-note.md',
         name: 'Daily note',
-        filePath: '/repo/.FABRICA/templates/daily-note.md',
-        relativePath: '.FABRICA/templates/daily-note.md',
+        filePath: '/repo/.fabrica/templates/daily-note.md',
+        relativePath: '.fabrica/templates/daily-note.md',
         templateRelativePath: 'daily-note.md',
         basename: 'daily-note.md'
       },
       {
-        id: '.FABRICA/templates/nested/meeting.markdown',
+        id: '.fabrica/templates/nested/meeting.markdown',
         name: 'Meeting',
-        filePath: '/repo/.FABRICA/templates/nested/meeting.markdown',
-        relativePath: '.FABRICA/templates/nested/meeting.markdown',
+        filePath: '/repo/.fabrica/templates/nested/meeting.markdown',
+        relativePath: '.fabrica/templates/nested/meeting.markdown',
         templateRelativePath: 'nested/meeting.markdown',
         basename: 'meeting.markdown'
       }
     ])
 
     expect(readDir).toHaveBeenCalledWith({
-      dirPath: '/repo/.FABRICA/templates',
+      dirPath: '/repo/.fabrica/templates',
       connectionId: 'conn-1'
     })
   })
@@ -145,7 +145,7 @@ describe('markdown document templates', () => {
 
   it('keeps Windows file paths native while exposing root-relative template paths', async () => {
     stubReadDir({
-      'C:\\repo\\.FABRICA\\templates': [entry('daily.md')]
+      'C:\\repo\\.fabrica\\templates': [entry('daily.md')]
     })
 
     await expect(
@@ -155,10 +155,10 @@ describe('markdown document templates', () => {
       )
     ).resolves.toEqual([
       {
-        id: '.FABRICA/templates/daily.md',
+        id: '.fabrica/templates/daily.md',
         name: 'Daily',
-        filePath: 'C:\\repo\\.FABRICA\\templates\\daily.md',
-        relativePath: '.FABRICA/templates/daily.md',
+        filePath: 'C:\\repo\\.fabrica\\templates\\daily.md',
+        relativePath: '.fabrica/templates/daily.md',
         templateRelativePath: 'daily.md',
         basename: 'daily.md'
       }

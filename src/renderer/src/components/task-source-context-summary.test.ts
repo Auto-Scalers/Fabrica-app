@@ -21,7 +21,7 @@ describe('task source context summary', () => {
           hostId: 'ssh:devbox',
           projectHostSetupId: 'setup-1',
           repoId: 'repo-1',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
         }
       ]
     })
@@ -43,7 +43,7 @@ describe('task source context summary', () => {
           hostId: 'local',
           projectHostSetupId: 'setup-local',
           repoId: 'repo-local',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' },
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' },
           accountLabel: 'personal-gh'
         },
         {
@@ -53,7 +53,7 @@ describe('task source context summary', () => {
           hostId: 'ssh:builder',
           projectHostSetupId: 'setup-builder',
           repoId: 'repo-builder',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' },
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' },
           accountLabel: 'work-gh'
         }
       ]
@@ -77,7 +77,7 @@ describe('task source context summary', () => {
           projectId: 'github:Auto-Scalers/Fabrica-app',
           hostId: 'ssh:devbox',
           repoId: 'repo-1',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
         }
       ],
       hostAvailability: [{ hostId: 'ssh:devbox', status: 'disconnected' }]
@@ -170,13 +170,15 @@ describe('task source context summary', () => {
           projectId: 'project-a',
           hostId: 'runtime:old-server',
           repoId: 'repo-a',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
         }
       ],
       hostAvailability: [{ hostId: 'runtime:old-server', health: 'blocked' }]
     })
 
-    expect(summary.label).toBe('GitHub · old-server · server update needed · Auto-Scalers/Fabrica-app')
+    expect(summary.label).toBe(
+      'GitHub · old-server · server update needed · Auto-Scalers/Fabrica-app'
+    )
     expect(summary.title).toBe(
       'GitHub · Host: old-server · Availability: old-server server update needed · Source: Auto-Scalers/Fabrica-app'
     )
@@ -194,7 +196,7 @@ describe('task source context summary', () => {
           projectId: 'project-a',
           hostId: 'runtime:old-server',
           repoId: 'repo-a',
-          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+          providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
         }
       ],
       hostAvailability: [
@@ -202,7 +204,9 @@ describe('task source context summary', () => {
       ]
     })
 
-    expect(summary.label).toBe('GitHub · old-server · checking server capabilities · Auto-Scalers/Fabrica-app')
+    expect(summary.label).toBe(
+      'GitHub · old-server · checking server capabilities · Auto-Scalers/Fabrica-app'
+    )
     expect(summary.title).toBe(
       'GitHub · Host: old-server · Availability: old-server checking server capabilities · Source: Auto-Scalers/Fabrica-app'
     )
@@ -224,7 +228,7 @@ describe('task source context summary', () => {
             projectId: 'github:Auto-Scalers/Fabrica-app',
             hostId: 'runtime:03ef704c-b180-4b10-998d-e28fbd5de9a3',
             repoId: 'repo-runtime',
-            providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+            providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
           }
         ],
         hostAvailability: [
@@ -344,7 +348,7 @@ describe('task source context summary', () => {
             projectId: 'github:Auto-Scalers/Fabrica-app',
             hostId: 'ssh:devbox',
             repoId: 'repo-1',
-            providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' }
+            providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
           }
         ],
         hostAvailability: [{ hostId: 'ssh:devbox', reason: 'missing-provider-auth' }]

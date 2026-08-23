@@ -2,17 +2,17 @@
 import { resolveTerminalOrchestrationCliCommand } from './cli-command'
 
 describe('resolveTerminalOrchestrationCliCommand', () => {
-  it('uses FABRICA-ide for a pane recorded as WSL', () => {
+  it('uses the fabrica command for a pane recorded as WSL', () => {
     expect(
       resolveTerminalOrchestrationCliCommand({
         connectionId: null,
         isWsl: true,
         worktreeId: 'repo::C:\\repo'
       })
-    ).toBe('FABRICA-ide')
+    ).toBe('fabrica')
   })
 
-  it('uses project runtime and WSL paths when restored pane metadata is unavailable', () => {
+  it('uses the fabrica command when restored pane metadata is unavailable', () => {
     expect(
       resolveTerminalOrchestrationCliCommand({
         connectionId: null,
@@ -30,30 +30,30 @@ describe('resolveTerminalOrchestrationCliCommand', () => {
           }
         }
       })
-    ).toBe('FABRICA-ide')
+    ).toBe('fabrica')
     expect(
       resolveTerminalOrchestrationCliCommand({
         connectionId: null,
         isWsl: null,
         worktreeId: 'repo::\\\\wsl.localhost\\Ubuntu\\home\\alice\\repo'
       })
-    ).toBe('FABRICA-ide')
+    ).toBe('fabrica')
   })
 
-  it('preserves native and SSH bare-FABRICA commands', () => {
+  it('preserves native and SSH fabrica commands', () => {
     expect(
       resolveTerminalOrchestrationCliCommand({
         connectionId: null,
         isWsl: false,
         worktreeId: 'repo::/home/alice/repo'
       })
-    ).toBe('FABRICA')
+    ).toBe('fabrica')
     expect(
       resolveTerminalOrchestrationCliCommand({
         connectionId: 'ssh-1',
         isWsl: null,
         worktreeId: 'repo::\\\\wsl.localhost\\Ubuntu\\home\\alice\\repo'
       })
-    ).toBe('FABRICA')
+    ).toBe('fabrica')
   })
 })

@@ -1,6 +1,9 @@
 ﻿import { createHash } from 'node:crypto'
 import type { LegacyCoordinatorAuthorityProof, RpcRequest } from './core'
-import type { FABRICARuntimeService, OrchestrationCompatibilityCallerAuthority } from '../fabrica-runtime'
+import type {
+  FABRICARuntimeService,
+  OrchestrationCompatibilityCallerAuthority
+} from '../fabrica-runtime'
 import { CURRENT_CONTRACT_VERSION } from '../orchestration/db'
 import { LegacyCompatibilityAuthority } from './orchestration-legacy-authority'
 import { handleLegacyLifecycleSend } from './orchestration-legacy-lifecycle'
@@ -173,7 +176,7 @@ export class OrchestrationLegacyCompatibility {
     }
     const legacyCandidate =
       boundRun.id === adoption.adopted_run_id
-        ? db.resolveLegacyCoordinatFABRICAndidate({
+        ? db.resolveLegacyCoordinatorCandidate({
             runId: adoption.adopted_run_id,
             terminalHandle: evidence.terminalHandle,
             paneKey: evidence.paneKey
@@ -193,7 +196,7 @@ export class OrchestrationLegacyCompatibility {
     if (boundRun.id !== adoption.adopted_run_id) {
       return caller
     }
-    return !db.resolveLegacyCoordinatFABRICAndidate({
+    return !db.resolveLegacyCoordinatorCandidate({
       runId: adoption.adopted_run_id,
       terminalHandle: caller.terminalHandle,
       paneKey: caller.paneKey

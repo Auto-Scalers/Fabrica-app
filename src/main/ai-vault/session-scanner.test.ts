@@ -277,7 +277,7 @@ describe('scanAiVaultSessions', () => {
         wslHome,
         '.local',
         'share',
-        'FABRICA',
+        'fabrica',
         'codex-runtime-home',
         'home',
         'sessions',
@@ -313,7 +313,7 @@ describe('scanAiVaultSessions', () => {
       'Codex WSL title'
     ])
     expect(result.sessions.find((session) => session.agent === 'codex')?.codexHome).toBe(
-      join(wslHome, '.local', 'share', 'FABRICA', 'codex-runtime-home', 'home')
+      join(wslHome, '.local', 'share', 'fabrica', 'codex-runtime-home', 'home')
     )
   })
 

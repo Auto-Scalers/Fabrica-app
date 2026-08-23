@@ -137,7 +137,7 @@ export async function inventorySkillFreshness(args: {
                 topology: 'repo-scope',
                 resolvedPath: null,
                 identity: null,
-                errFABRICAtegory: 'repository-scan-limit'
+                errCategory: 'repository-scan-limit'
               }
             })
         )

@@ -148,7 +148,7 @@ export const NativeChatComposer = forwardRef<NativeChatComposerHandle, NativeCha
       clearSkillOrigin,
       completeItem,
       dismiss,
-      handleDraftFABRICAretChange
+      handleDraftCaretChange
     } = picker
 
     // Resolve the live ptyId for this chat leaf; runtime owner settings route
@@ -385,10 +385,10 @@ export const NativeChatComposer = forwardRef<NativeChatComposerHandle, NativeCha
         setDraft(value)
         setHistory((prev) => ({ entries: prev.entries, index: null }))
         syncCaret(element)
-        handleDraftFABRICAretChange(value, element.selectionStart ?? value.length)
+        handleDraftCaretChange(value, element.selectionStart ?? value.length)
         setActiveSuggestion(0)
       },
-      [handleDraftFABRICAretChange, setDraft, syncCaret]
+      [handleDraftCaretChange, setDraft, syncCaret]
     )
 
     return (
@@ -411,7 +411,7 @@ export const NativeChatComposer = forwardRef<NativeChatComposerHandle, NativeCha
         onDraftChange={handleDraftChange}
         onTextareaSelect={(element) => {
           syncCaret(element)
-          handleDraftFABRICAretChange(element.value, element.selectionStart ?? element.value.length)
+          handleDraftCaretChange(element.value, element.selectionStart ?? element.value.length)
           setActiveSuggestion(0)
         }}
         onKeyDown={handleKeyDown}

@@ -4,9 +4,9 @@ import {
   reserveWatcherChild,
   resetWatcherChildRegistryForTest
 } from './parcel-watcher-child-registry'
-import { WatcherSupervisFABRICApacityWait } from './parcel-watcher-supervisor-capacity-wait'
+import { WatcherSupervisorCapacityWait } from './parcel-watcher-supervisor-capacity-wait'
 
-describe('WatcherSupervisFABRICApacityWait', () => {
+describe('WatcherSupervisorCapacityWait', () => {
   beforeEach(() => resetWatcherChildRegistryForTest())
   afterEach(() => resetWatcherChildRegistryForTest())
 
@@ -15,7 +15,7 @@ describe('WatcherSupervisFABRICApacityWait', () => {
       reserveWatcherChild()
     )
     expect(releases.every(Boolean)).toBe(true)
-    const capacity = new WatcherSupervisFABRICApacityWait()
+    const capacity = new WatcherSupervisorCapacityWait()
     const anchor = capacity.wait()
     const controllers = Array.from({ length: 10_000 }, () => new AbortController())
     const cancelled = controllers.map((controller) =>

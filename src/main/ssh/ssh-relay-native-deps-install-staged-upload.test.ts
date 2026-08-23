@@ -12,7 +12,7 @@ vi.mock('fs', () => ({
 
 vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
-  RELAY_REMOTE_DIR: '.FABRICA-remote',
+  RELAY_REMOTE_DIR: '.fabrica-remote',
   parseUnameToRelayPlatform: vi.fn().mockReturnValue('linux-x64'),
   RELAY_SENTINEL: 'FABRICA-RELAY v0.1.0 READY\n',
   RELAY_SENTINEL_TIMEOUT_MS: 10_000
@@ -42,7 +42,7 @@ vi.mock('./ssh-relay-install-marker', async (importOriginal) => ({
 
 vi.mock('./ssh-relay-versioned-install', () => ({
   readLocalFullVersion: vi.fn().mockReturnValue('0.1.0+testhash'),
-  computeRemoteRelayDir: (home: string, v: string) => `${home}/.FABRICA-remote/relay-${v}`,
+  computeRemoteRelayDir: (home: string, v: string) => `${home}/.fabrica-remote/relay-${v}`,
   isRelayAlreadyInstalled: vi.fn().mockResolvedValue(false),
   finalizeInstall: vi.fn().mockResolvedValue(undefined),
   abandonInstall: vi.fn().mockResolvedValue(undefined),
@@ -131,7 +131,7 @@ describe('installNativeDeps staged uploads', () => {
     const written = sftpCapture.contents[pkgPath as string]
     expect(written).toBeTruthy()
     const parsed = JSON.parse(written) as Record<string, unknown>
-    expect(parsed.name).toBe('FABRICA-RELAY')
+    expect(parsed.name).toBe('FABRICA-relay')
     expect(parsed.version).toBe('1.0.0')
     expect(parsed.private).toBe(true)
     expect(parsed.type).toBe('commonjs')

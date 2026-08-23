@@ -646,7 +646,7 @@ describe('gitStreamStdout', () => {
     let calls = 0
     const promise = gitStreamStdout(['status'], {
       cwd: '/repo',
-      // Stop after the first chunk — mirrors a parser hitting its entry limit.
+      // Stop after the first chunk â€” mirrors a parser hitting its entry limit.
       onStdout: () => {
         calls += 1
         return true

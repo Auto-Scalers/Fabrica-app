@@ -251,7 +251,7 @@ describe('runBackgroundWorktreeCreation', () => {
     expect(prepareEphemeralVmWorkspaceTargetMock).toHaveBeenCalledWith({
       repoId: 'repo-1',
       recipeId: 'cloud-sandbox',
-      projectId: 'github:Auto-Scalers/Fabrica-app',
+      projectId: 'github:auto-scalers/fabrica-app',
       workspaceName: 'feature',
       provisionId: 'creation-1',
       setupExistingFolder: store.setupProjectExistingFolder
@@ -629,7 +629,7 @@ describe('staged background worktree creation', () => {
     )
 
     expect(started).toBe(true)
-    // Why: vi.waitFor instead of a fixed microtask flush — the await count in
+    // Why: vi.waitFor instead of a fixed microtask flush â€” the await count in
     // executeWorktreeCreation grows over time (e.g. VM preflight), and a fixed
     // flush silently starves this assertion in merged builds.
     await vi.waitFor(() =>
@@ -646,7 +646,7 @@ describe('staged background worktree creation', () => {
   })
 
   // Why: the still-watching path activates the worktree directly, so the issue
-  // command must reach activateAndRevealWorktree too — both branches carry it.
+  // command must reach activateAndRevealWorktree too â€” both branches carry it.
   it('threads the request issue command into the active reveal', async () => {
     store.activeView = 'terminal'
     store.activePendingCreationId = 'creation-1'
@@ -709,7 +709,7 @@ describe('staged background worktree creation', () => {
   })
 
   it('seeds the backend-spawned agent tab, not the worktree default terminal tab', async () => {
-    // Repo default tabs ("dev server", "logs", …) make activation's primaryTabId
+    // Repo default tabs ("dev server", "logs", â€¦) make activation's primaryTabId
     // a tab that runs no agent; main's startup terminal is the agent's own tab.
     store.activeView = 'terminal'
     store.activePendingCreationId = 'creation-1'
@@ -779,7 +779,7 @@ describe('staged background worktree creation', () => {
 
   it('carries launchDraftText into activation for an argv-prefill launch', async () => {
     // Why: the draft rides inside `launchCommand` here, so the plan sets no
-    // draftPrompt — without launchDraftText the initial view-mode decision
+    // draftPrompt â€” without launchDraftText the initial view-mode decision
     // never sees a draft and opens chat on an unmirrorable one.
     store.activeView = 'terminal'
     store.activePendingCreationId = 'creation-1'

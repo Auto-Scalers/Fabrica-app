@@ -12,7 +12,10 @@ export function appendFabricaRpcOutput(output, chunk, bytes, limit = MAX_FABRICA
   }
 }
 
-export function resolveFabricaCliCommand({ env = process.env, platform = process.platform } = {}) {
+export function resolveFabricaCliCommand({
+  env = process.env,
+  platform: _platform = process.platform
+} = {}) {
   if (env.FABRICA_CLI_COMMAND?.trim()) {
     return env.FABRICA_CLI_COMMAND.trim()
   }
@@ -232,7 +235,8 @@ export function createFabricaRpc({
       notes.push(`fabrica open ms=${opened.elapsedMs.toFixed(0)}`)
     } catch (error) {
       notes.push(`fabrica open failed: ${String(error).slice(0, 200)}`)
-    }    const storm = await runReconnectRefreshStorm(notes)
+    }
+    const storm = await runReconnectRefreshStorm(notes)
     return { wallMs: performance.now() - started, storm }
   }
 

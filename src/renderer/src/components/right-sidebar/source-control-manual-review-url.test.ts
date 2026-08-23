@@ -105,7 +105,9 @@ describe('buildSourceControlManualReviewUrl', () => {
           remoteUrl: 'git@github.com:contributor/FABRICA.git'
         }
       })
-    ).toBe('https://github.com/Auto-Scalers/Fabrica-app/compare/main...contributor:feature/fork-head?expand=1')
+    ).toBe(
+      'https://github.com/Auto-Scalers/Fabrica-app/compare/main...contributor:feature/fork-head?expand=1'
+    )
   })
 
   it('keeps slashes literal in a GitHub compare URL for a slash-containing branch name', () => {
@@ -151,7 +153,7 @@ describe('buildSourceControlManualReviewUrl', () => {
           remoteUrl: 'git@gitlab.company.test:contributor/FABRICA.git'
         }
       })
-      // On the fork project — not group/sub/FABRICA, where source_branch would 404.
+      // On the fork project â€” not group/sub/FABRICA, where source_branch would 404.
     ).toBe(
       'https://gitlab.company.test/contributor/FABRICA/-/merge_requests/new?merge_request%5Bsource_branch%5D=feature%2Ffork-head&merge_request%5Btarget_branch%5D=main'
     )
@@ -221,7 +223,9 @@ describe('buildSourceControlManualReviewUrl', () => {
         repoRemoteUrl: 'git@github.com:Auto-Scalers/Fabrica-app.git',
         upstreamName: 'origin/feature/pushed-name'
       })
-    ).toBe('https://github.com/Auto-Scalers/Fabrica-app/compare/main...feature/pushed-name?expand=1')
+    ).toBe(
+      'https://github.com/Auto-Scalers/Fabrica-app/compare/main...feature/pushed-name?expand=1'
+    )
   })
 
   it('still qualifies the fork head when Fabrica resolved the fork push URL', () => {
@@ -238,7 +242,9 @@ describe('buildSourceControlManualReviewUrl', () => {
           remoteUrl: 'git@github.com:devajmeireles/FABRICA.git'
         }
       })
-    ).toBe('https://github.com/Auto-Scalers/Fabrica-app/compare/main...devajmeireles:quick-commands?expand=1')
+    ).toBe(
+      'https://github.com/Auto-Scalers/Fabrica-app/compare/main...devajmeireles:quick-commands?expand=1'
+    )
   })
 
   it('does not guess a provider for unknown hosts without a provider hint', () => {

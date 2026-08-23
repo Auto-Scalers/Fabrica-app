@@ -36,8 +36,8 @@ describe('resolveRepoBackedProjectDialogState', () => {
 
 describe('resolveMissingRepoProjectDialogState', () => {
   it('clears fallback dialogs while the slug index is rebuilding', () => {
-    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'fabrica' } }
-    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'fabrica', url: null }
+    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'Fabrica-app' } }
+    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'Fabrica-app', url: null }
 
     expect(
       resolveMissingRepoProjectDialogState({
@@ -51,7 +51,7 @@ describe('resolveMissingRepoProjectDialogState', () => {
   })
 
   it('clears slug fallback dialogs once the repo slug resolves', () => {
-    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'fabrica' } }
+    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'Fabrica-app' } }
     const repoNotInFABRICA = { owner: 'other', repo: 'tool', url: null }
     const result = resolveMissingRepoProjectDialogState({
       slugIndexReady: true,
@@ -67,7 +67,7 @@ describe('resolveMissingRepoProjectDialogState', () => {
 
   it('clears repo-not-in-FABRICA dialogs once the repo slug resolves', () => {
     const slugDialog = { origin: { owner: 'other', repo: 'tool' } }
-    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'fabrica', url: null }
+    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'Fabrica-app', url: null }
     const result = resolveMissingRepoProjectDialogState({
       slugIndexReady: true,
       slugDialog,
@@ -81,8 +81,8 @@ describe('resolveMissingRepoProjectDialogState', () => {
   })
 
   it('clears fallback dialogs when the repo is globally known but not selected', () => {
-    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'fabrica' } }
-    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'fabrica', url: null }
+    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'Fabrica-app' } }
+    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'Fabrica-app', url: null }
     const result = resolveMissingRepoProjectDialogState({
       slugIndexReady: true,
       slugDialog,
@@ -95,8 +95,8 @@ describe('resolveMissingRepoProjectDialogState', () => {
   })
 
   it('keeps missing-repo fallback dialogs when there are no global matches', () => {
-    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'fabrica' } }
-    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'fabrica', url: null }
+    const slugDialog = { origin: { owner: 'Auto-Scalers', repo: 'Fabrica-app' } }
+    const repoNotInFABRICA = { owner: 'Auto-Scalers', repo: 'Fabrica-app', url: null }
     const result = resolveMissingRepoProjectDialogState({
       slugIndexReady: true,
       slugDialog,

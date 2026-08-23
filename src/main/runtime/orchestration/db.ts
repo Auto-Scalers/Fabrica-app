@@ -1572,7 +1572,7 @@ export class OrchestrationDb {
       }
       if (
         params.role === 'coordinator' &&
-        !this.resolveLegacyCoordinatFABRICAndidate({
+        !this.resolveLegacyCoordinatorCandidate({
           runId: params.runId,
           terminalHandle: params.terminalHandle,
           paneKey: params.paneKey
@@ -1725,7 +1725,7 @@ export class OrchestrationDb {
     return rows[0] ? { dispatch: rows[0] } : undefined
   }
 
-  resolveLegacyCoordinatFABRICAndidate(params: {
+  resolveLegacyCoordinatorCandidate(params: {
     runId: string
     terminalHandle?: string
     paneKey?: string

@@ -28,7 +28,7 @@ const MAC_DOCK_ICON_PATHS = {
 type ExecFile = (
   file: string,
   args: string[],
-  optionsFABRICAllback: ExecFileOptions | ((error: Error | null) => void),
+  optionsCallback: ExecFileOptions | ((error: Error | null) => void),
   callback?: (error: Error | null) => void
 ) => unknown
 
@@ -63,11 +63,11 @@ const MAC_DOCK_ICON_CLEAR_SCRIPT = [
 const MAC_DOCK_ICON_COMMAND_TIMEOUT_MS = 10_000
 const MAC_DOCK_ICON_COMMAND_FALLBACK_MS = 1_000
 
-const defaultExecFile: ExecFile = (file, args, optionsFABRICAllback, callback) => {
-  if (typeof optionsFABRICAllback === 'function') {
-    return execFileChildProcess(file, args, optionsFABRICAllback)
+const defaultExecFile: ExecFile = (file, args, optionsCallback, callback) => {
+  if (typeof optionsCallback === 'function') {
+    return execFileChildProcess(file, args, optionsCallback)
   }
-  return execFileChildProcess(file, args, optionsFABRICAllback, callback ?? (() => {}))
+  return execFileChildProcess(file, args, optionsCallback, callback ?? (() => {}))
 }
 
 let macDockIconPersistenceGeneration = 0

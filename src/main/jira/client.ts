@@ -372,7 +372,7 @@ function authHeader(email: string, apiToken: string, authType?: JiraAuthType): s
   return `Basic ${Buffer.from(`${email}:${apiToken}`).toString('base64')}`
 }
 
-function describeErrFABRICAuse(error: unknown): string | undefined {
+function describeErrorCause(error: unknown): string | undefined {
   if (!error || typeof error !== 'object' || !('cause' in error)) {
     return undefined
   }
@@ -410,9 +410,9 @@ async function jiraFetch(url: string, init: RequestInit): Promise<Response> {
           'jira.transportErrorMessage',
           error instanceof Error ? error.message : String(error)
         )
-        const cause = describeErrFABRICAuse(error)
+        const cause = describeErrorCause(error)
         if (cause) {
-          span.setAttribute('jira.transportErrFABRICAuse', cause)
+          span.setAttribute('jira.transportErrorCause', cause)
         }
         throw error
       }

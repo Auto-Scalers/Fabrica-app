@@ -134,7 +134,7 @@ describe('worktree-palette-search', () => {
   })
 
   it('enforces the query budget by UTF-8 byte length', () => {
-    const query = 'é'.repeat(WORKTREE_PALETTE_QUERY_MAX_BYTES)
+    const query = 'Ã©'.repeat(WORKTREE_PALETTE_QUERY_MAX_BYTES)
 
     expect(query.length).toBe(WORKTREE_PALETTE_QUERY_MAX_BYTES)
     expect(isWorktreePaletteQueryTooLarge(query)).toBe(true)
@@ -180,7 +180,7 @@ describe('worktree-palette-search', () => {
 
   it('still lists a branch-less row on the empty query, which renders every row', () => {
     // Why: the empty query short-circuits before any branch read, so the row reaches the
-    // render loop untouched — the label resolution there has to be guarded too.
+    // render loop untouched â€” the label resolution there has to be guarded too.
     const cleared = makeWorktree({
       displayName: undefined as unknown as string,
       branch: undefined as unknown as string
@@ -564,7 +564,7 @@ describe('worktree-palette-search', () => {
     expect(results[0].matchedField).toBe('port')
     expect(results[0].supportingText).toEqual({
       labelKind: 'port',
-      text: '3000 · vite',
+      text: '3000 Â· vite',
       matchRange: { start: 0, end: 4 }
     })
   })

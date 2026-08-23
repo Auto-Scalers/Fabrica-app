@@ -221,8 +221,8 @@ _Ou por um gerenciador de pacotes:_
 # macOS (Homebrew)
 brew install --cask Auto-Scalers/Fabrica-app/fabrica
 
-# Arch Linux (AUR) — ou stably-fabrica-git para compilar a partir do código-fonte
-yay -S stably-fabrica-bin
+# Arch Linux (AUR) — ou fabrica-git para compilar a partir do código-fonte
+yay -S fabrica-bin
 ```
 
 ### Companion móvel — iOS, Android

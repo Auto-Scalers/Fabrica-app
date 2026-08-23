@@ -17,7 +17,7 @@ type StarNagMode = 'gh' | 'web'
  * confirm an existing star, or close the card. Nonterminal exits set a
  * persisted cooldown in the main process.
  *
- * Visibility is driven by the main-process 'star-nag:show' IPC event — this
+ * Visibility is driven by the main-process 'star-nag:show' IPC event â€” this
  * component does no threshold math or gh-CLI checks locally.
  */
 export function StarNagCard(): React.JSX.Element | null {
@@ -27,7 +27,7 @@ export function StarNagCard(): React.JSX.Element | null {
   const mountedRef = useMountedRef()
   // Why: UpdateCard lives at the same bottom-right slot. When it is visible
   // (any non-idle / non-not-available state), stack the star-nag card above
-  // it instead of overlapping — we must not cover a pending update prompt
+  // it instead of overlapping â€” we must not cover a pending update prompt
   // because that's a higher-priority action.
   const updateStatus = useAppStore((s) => s.updateStatus)
   const updateCardVisible = updateStatus.state !== 'idle' && updateStatus.state !== 'not-available'
@@ -58,7 +58,7 @@ export function StarNagCard(): React.JSX.Element | null {
     }
     setVisible(false)
     // Why: fire-and-forget. If persisting the dismissal fails the worst case
-    // is we re-fire the same threshold on next launch — not worth blocking
+    // is we re-fire the same threshold on next launch â€” not worth blocking
     // the close animation on.
     void window.api.starNag.dismiss()
   }, [busy])
@@ -149,7 +149,7 @@ export function StarNagCard(): React.JSX.Element | null {
   return (
     <div
       // Why: when UpdateCard is up, it occupies bottom-10. Raise the star-nag
-      // card above it so both are visible — the update action stays on top
+      // card above it so both are visible â€” the update action stays on top
       // visually (it's the higher-priority one) and the star-nag sits above.
       className={`fixed right-4 z-40 w-[360px] max-w-[calc(100vw-32px)]
       max-[480px]:left-4 max-[480px]:right-4 max-[480px]:w-auto ${
@@ -200,7 +200,7 @@ export function StarNagCard(): React.JSX.Element | null {
               {busy
                 ? mode === 'web'
                   ? translate('auto.components.StarNagCard.d32015fec7', 'Opening...')
-                  : translate('auto.components.StarNagCard.af3c9bbb37', 'Starring…')
+                  : translate('auto.components.StarNagCard.af3c9bbb37', 'Starringâ€¦')
                 : mode === 'web'
                   ? translate('auto.components.StarNagCard.157bb5ecbb', 'Open GitHub')
                   : translate('auto.components.StarNagCard.2d67b6c849', 'Star on GitHub')}

@@ -71,7 +71,7 @@ describe('gitlab project ref parsing', () => {
     ).toEqual({ host: 'gitlab.example.com:8443', path: 'team/api' })
   })
 
-  it('distinguishes two services on the same host by port — only the GitLab one matches', () => {
+  it('distinguishes two services on the same host by port â€” only the GitLab one matches', () => {
     // Why: a GitLab on :8443 and a Gitea on :3030 share a hostname but are
     // different services. With only the GitLab port in known hosts, the Gitea
     // remote must NOT be classified as GitLab.

@@ -38,7 +38,7 @@ describe('repository GitHub avatar resolution', () => {
 
   it('uses stored upstream by default and keeps the parent avatar for same-name forks', async () => {
     const repo = makeRepo({ upstream: { owner: 'Auto-Scalers', repo: 'Fabrica' } })
-    // The fork's own origin owner — same repo name, so the parent avatar wins.
+    // The fork's own origin owner â€” same repo name, so the parent avatar wins.
     apiMocks.repoSlug.mockResolvedValueOnce({ owner: 'tmchow', repo: 'Fabrica' })
 
     await expect(resolveRepositoryGitHubAvatar({ kind: 'local' }, repo)).resolves.toEqual({
@@ -46,7 +46,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/Fabrica'
       },
       upstream: { owner: 'Auto-Scalers', repo: 'Fabrica' }
     })
@@ -97,7 +97,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/Fabrica'
       }
     })
     apiMocks.repoUpstream.mockResolvedValueOnce(null)
@@ -112,7 +112,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/parkerrex.png?size=64',
         source: 'github',
-        label: 'parkerrex/FABRICA'
+        label: 'parkerrex/fabrica'
       },
       upstream: null
     })
@@ -130,7 +130,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/parkerrex.png?size=64',
         source: 'github',
-        label: 'parkerrex/FABRICA'
+        label: 'parkerrex/fabrica'
       }
     })
   })
@@ -141,7 +141,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/Fabrica'
       }
     })
 
@@ -171,11 +171,11 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/Fabrica'
       }
     })
     apiMocks.repoUpstream.mockResolvedValueOnce(null)
-    // The fork's own origin owner — same repo name, so it must NOT replace the parent.
+    // The fork's own origin owner â€” same repo name, so it must NOT replace the parent.
     apiMocks.repoSlug.mockResolvedValueOnce({ owner: 'parkerrex', repo: 'Fabrica' })
 
     const resolution = await resolveRepositoryGitHubAvatar({ kind: 'local' }, repo, {
@@ -187,7 +187,7 @@ describe('repository GitHub avatar resolution', () => {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/Fabrica'
       },
       upstream: { owner: 'Auto-Scalers', repo: 'Fabrica' }
     })
@@ -198,7 +198,7 @@ describe('repository GitHub avatar resolution', () => {
   it('propagates an ambiguous origin probe failure instead of flipping to the parent avatar', async () => {
     // A renamed fork already showing its own owner. A rejected origin probe cannot
     // tell renamed from same-name, so it must surface rather than resolve to the
-    // parent avatar — callers keep the stored icon.
+    // parent avatar â€” callers keep the stored icon.
     const repo = makeRepo({
       upstream: { owner: 'upstream-org', repo: 'rocket' },
       repoIcon: githubAvatarIcon({ owner: 'acme', repo: 'rocket-pro' })

@@ -5,7 +5,7 @@ describe('runtime provider search bounds', () => {
   it('accepts absent provider queries and small text', () => {
     expect(isRuntimeProviderSearchQueryWithinLimit(undefined)).toBe(true)
     expect(isRuntimeProviderSearchQueryWithinLimit(null)).toBe(true)
-    expect(isRuntimeProviderSearchQueryWithinLimit('project = FABRICA', 14)).toBe(true)
+    expect(isRuntimeProviderSearchQueryWithinLimit('project = FABRICA', 17)).toBe(true)
   })
 
   it('measures pasted provider search text as UTF-8 bytes', () => {

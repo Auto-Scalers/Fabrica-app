@@ -220,8 +220,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
     const { terminal } = makeTerminal({
       cols: 135,
       urlRows: FRAMED_URL_ROWS,
-      linePrefix: ' ¦   ',
-      lineSuffix: '¦ ',
+      linePrefix: ' Â¦   ',
+      lineSuffix: 'Â¦ ',
       softWrapped: false
     })
     const event = mouseEventForRow(0)
@@ -242,8 +242,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
 
   it('reconstructs a URL that fills each cursor-positioned TUI row up to its frame', () => {
     const cols = 135
-    const linePrefix = ' ¦   '
-    const lineSuffix = '¦ '
+    const linePrefix = ' Â¦   '
+    const lineSuffix = 'Â¦ '
     const contentWidth = cols - linePrefix.length - lineSuffix.length
     const fullWidthRows = Array.from(
       { length: Math.ceil(FULL_URL.length / contentWidth) },
@@ -272,8 +272,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
 
   it('reconstructs supported URLs spanning more than twenty framed rows', () => {
     const cols = 80
-    const linePrefix = ' ¦   '
-    const lineSuffix = '¦ '
+    const linePrefix = ' Â¦   '
+    const lineSuffix = 'Â¦ '
     const contentWidth = cols - linePrefix.length - lineSuffix.length
     const longUrl = `http://example.com/${'a'.repeat(contentWidth * 20)}`
     const urlRows = Array.from(
@@ -302,8 +302,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
 
   it('keeps nested HTTP URLs inside a wrapped query parameter', () => {
     const cols = 80
-    const linePrefix = ' ¦   '
-    const lineSuffix = '¦ '
+    const linePrefix = ' Â¦   '
+    const lineSuffix = 'Â¦ '
     const contentWidth = cols - linePrefix.length - lineSuffix.length
     const firstRow = `http://example.com/${'a'.repeat(contentWidth - 'http://example.com/'.length)}`
     const nestedQuery = 'segment?redirect=https://nested.example/path'
@@ -333,8 +333,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
     const { terminal, registrations } = makeTerminal({
       cols: 135,
       urlRows: ['http://example.com/', 'next-token'],
-      linePrefix: ' ¦   ',
-      lineSuffix: '¦ ',
+      linePrefix: ' Â¦   ',
+      lineSuffix: 'Â¦ ',
       softWrapped: false
     })
     const disposable = installHttpLinkClickFallback(terminal, { worktreeId: 'wt-1' })
@@ -364,8 +364,8 @@ describe('hard-wrapped terminal HTTP clicks', () => {
     const { terminal } = makeTerminal({
       cols: 110,
       urlRows: ['http://example.com/', unrelatedFilledRow, 'unrelated'],
-      linePrefix: ' ¦   ',
-      lineSuffix: '¦ ',
+      linePrefix: ' Â¦   ',
+      lineSuffix: 'Â¦ ',
       softWrapped: false
     })
 

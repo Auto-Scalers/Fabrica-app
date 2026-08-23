@@ -43,7 +43,7 @@ function placement(
     currentPackageDigest: 'current',
     currentAppVersion: '2.0.0',
     observedPackageDigest: 'old',
-    errFABRICAtegory: null,
+    errCategory: null,
     ...overrides
   }
 }

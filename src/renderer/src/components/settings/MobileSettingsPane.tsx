@@ -43,7 +43,7 @@ export function MobileSettingsPane(): React.JSX.Element {
             >
               {translate('auto.components.settings.MobileSettingsPane.b5a2ed83ff', 'App Store')}
             </button>
-            {' · '}
+            {' Â· '}
             <button
               type="button"
               // Why: Android is moving to Google Play soon, but until then

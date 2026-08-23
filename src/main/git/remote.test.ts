@@ -443,7 +443,7 @@ describe('git remote operations', () => {
       .mockRejectedValueOnce(mergeConflictError)
 
     await expect(gitPull('/repo')).rejects.toThrow()
-    // At-most-once retry: probe+pull, then probe+fallback-pull — no further attempts.
+    // At-most-once retry: probe+pull, then probe+fallback-pull â€” no further attempts.
     expect(gitExecFileAsyncMock.mock.calls).toHaveLength(6)
   })
 

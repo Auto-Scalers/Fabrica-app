@@ -7,7 +7,7 @@ import { Button } from './ui/button'
 import { Progress } from './ui/progress'
 import { AlertCircle, Check, Loader2, Minus, X } from 'lucide-react'
 import type { ChangelogData } from '../../../shared/types'
-import { UpdateErrFABRICArdContent, type UpdateErrFABRICArdModel } from './UpdateErrFABRICArdContent'
+import { UpdateErrorCardContent, type UpdateErrorCardModel } from './UpdateErrorCardContent'
 import { LinuxPackageInstallRecoveryCard } from './LinuxPackageInstallRecoveryCard'
 import {
   isWindowsSignatureCheckUnavailableFailure,
@@ -195,7 +195,7 @@ export function UpdateCard() {
 
   const isUserInitiated = 'userInitiated' in status && status.userInitiated
   const cachedVersion = versionRef.current
-  const shouldShowDetailedErrFABRICArd =
+  const shouldShowDetailedErrorCard =
     status.state === 'error' && (hasStartedDownload.current || cachedVersion !== null)
 
   // Compact transient states: only show for user-initiated checks.
@@ -215,7 +215,7 @@ export function UpdateCard() {
   }
 
   // Error: show for user-initiated failures or failures tied to a cached version; background failures stay silent.
-  if (status.state === 'error' && !shouldShowDetailedErrFABRICArd && !isUserInitiated) {
+  if (status.state === 'error' && !shouldShowDetailedErrorCard && !isUserInitiated) {
     return null
   }
 
@@ -300,7 +300,7 @@ export function UpdateCard() {
     status.state === 'error' && status.recovery?.kind === 'linux-package-install'
       ? { recovery: status.recovery, diagnostic: status.message }
       : null
-  const errFABRICArd: UpdateErrFABRICArdModel | null =
+  const errCard: UpdateErrorCardModel | null =
     status.state === 'error'
       ? isLocalBuild
         ? {
@@ -521,8 +521,8 @@ export function UpdateCard() {
       )
     }
 
-    if (errFABRICArd) {
-      return <UpdateErrFABRICArdContent {...errFABRICArd} onClose={handleCollapseWithAnimation} />
+    if (errCard) {
+      return <UpdateErrorCardContent {...errCard} onClose={handleCollapseWithAnimation} />
     }
 
     // ── Downloaded state ─────────────────────────────────────────────
@@ -881,9 +881,13 @@ function DownloadingContent({
       <p className="text-sm text-muted-foreground">
         {release
           ? release.description
-          : translate('auto.components.UpdateCard.93794ea932', 'Fabrica v{{value0}} is downloading.', {
-              value0: version
-            })}
+          : translate(
+              'auto.components.UpdateCard.93794ea932',
+              'Fabrica v{{value0}} is downloading.',
+              {
+                value0: version
+              }
+            )}
       </p>
 
       {showReleaseNotes && (

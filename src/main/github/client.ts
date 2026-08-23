@@ -261,7 +261,7 @@ const PR_BRANCH_LOOKUP_BUCKETS = ['core', 'graphql'] as const
  *
  * The coordinator guards and paces its own background refreshes, but
  * `hostedReview:forBranch` polls the same lookup straight from the renderer.
- * Ungated, the two paths together could spend the user's entire hourly quota —
+ * Ungated, the two paths together could spend the user's entire hourly quota â€”
  * which is per user and shared with their own `gh` and CLI agents.
  * Returns the reset time when the caller must not spend, else `null`.
  */
@@ -306,7 +306,7 @@ function prRefreshUpstreamError(
     message: safePRRefreshErrorMessage(errorType),
     fetchedAt: Date.now()
   }
-  // Why: a Retry-After is a real cooldown — surface it as the retry schedule so the renderer doesn't retry into another 429.
+  // Why: a Retry-After is a real cooldown â€” surface it as the retry schedule so the renderer doesn't retry into another 429.
   if (errorType === 'rate_limited') {
     const retryAfterMs = parseRetryAfterMs(extractExecError(err).stderr)
     if (retryAfterMs !== null && retryAfterMs > 0) {
@@ -342,7 +342,7 @@ export async function checkFABRICAStarred(): Promise<boolean | null> {
     return null
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
-    // 404 means the user hasn't starred — the only expected "no" answer
+    // 404 means the user hasn't starred â€” the only expected "no" answer
     if (message.includes('HTTP 404')) {
       return false
     }
@@ -549,7 +549,7 @@ export async function getAuthenticatedViewer(): Promise<GitHubViewer | null> {
   }
 }
 
-// Why: omit repoId — the main process only has the path; the renderer stamps repoId after IPC.
+// Why: omit repoId â€” the main process only has the path; the renderer stamps repoId after IPC.
 export type MainWorkItem = Omit<GitHubWorkItem, 'repoId'>
 
 // Why: issue numbers follow creation order, so this sort aligns gh's PR rows with numbered Search API issue pages.
@@ -558,7 +558,7 @@ const WORK_ITEM_NUMBER_SORT_QUALIFIER = 'sort:created-desc'
 const WORK_ITEM_PR_LIST_JSON_FIELDS =
   'number,title,state,url,labels,updatedAt,author,isDraft,headRefName,baseRefName,headRefOid,headRepositoryOwner,reviewRequests'
 
-// Why: kept out of `gh pr list` — statusCheckRollup/reviewDecision/merge metadata fan out into expensive per-row GraphQL.
+// Why: kept out of `gh pr list` â€” statusCheckRollup/reviewDecision/merge metadata fan out into expensive per-row GraphQL.
 // Requested reviewers stay in the list payload because Tasks renders that column on first paint.
 const WORK_ITEM_PR_DETAIL_JSON_FIELDS =
   'number,title,state,url,labels,updatedAt,author,isDraft,headRefName,baseRefName,headRefOid,headRepositoryOwner,additions,deletions,changedFiles,reviewDecision,reviewRequests,latestReviews,assignees,statusCheckRollup,mergeable,mergeStateStatus,autoMergeRequest,maintainerCanModify'
@@ -587,7 +587,7 @@ function mapIssueWorkItem(item: Record<string, unknown>): MainWorkItem {
 }
 
 /**
- * Derive author login + avatar_url together so GHE avatars render — the login-only
+ * Derive author login + avatar_url together so GHE avatars render â€” the login-only
  * `{login}.png` URL 404s on GHE. REST uses `user.avatar_url`, gh/GraphQL `author.avatarUrl` (#8784).
  */
 function authorFieldsFromUnknown(
@@ -1003,7 +1003,7 @@ async function fetchPullRequestWorkItem(
       )
       const item = JSON.parse(stdout) as Record<string, unknown>
       const mapped = mapPullRequestWorkItem(item, ownerRepo)
-      // Why: merge-metadata GraphQL is best-effort — don't fall through to REST, which drops latestReviews and blanks bot-only reviewer lists.
+      // Why: merge-metadata GraphQL is best-effort â€” don't fall through to REST, which drops latestReviews and blanks bot-only reviewer lists.
       const baseRefName = typeof item.baseRefName === 'string' ? item.baseRefName : undefined
       try {
         const mergeMetadata = await detectRepositoryMergeMetadata(ownerRepo, baseRefName, ghOptions)
@@ -1177,7 +1177,7 @@ function buildWorkItemListRequest(args: {
   return { args: out, offset: (page - 1) * limit }
 }
 
-// Why: shared shape so listWorkItems can lift per-side errors (#1076 silent wrongness) into the IPC envelope — a swallowed side reads as end-of-data to pagination (#11485).
+// Why: shared shape so listWorkItems can lift per-side errors (#1076 silent wrongness) into the IPC envelope â€” a swallowed side reads as end-of-data to pagination (#11485).
 type PartialWorkItemsResult = {
   items: MainWorkItem[]
   issuesError?: ClassifiedError
@@ -1253,7 +1253,7 @@ async function listRecentWorkItems(
   if (noCache && issueRequest) {
     issueRequest.args.splice(1, 2)
   }
-  // Why: unresolved sources must stay empty — an unscoped Search API would return other public repos' issues (#9660).
+  // Why: unresolved sources must stay empty â€” an unscoped Search API would return other public repos' issues (#9660).
   // Why: allSettled so a 403 on the issue side doesn't zero the PR half (partial results + banner).
   const [issuesSettled, prsSettled] = await Promise.allSettled([
     issueRequest && issueOwnerRepo
@@ -1337,7 +1337,7 @@ async function listQueriedWorkItems(
   let availabilityError: unknown
   let prsError: ClassifiedError | undefined
 
-  // Why: surface the issue-side error separately for the IPC envelope; PR-side keeps prior swallow-and-log (parent doc §6).
+  // Why: surface the issue-side error separately for the IPC envelope; PR-side keeps prior swallow-and-log (parent doc Â§6).
   const issueFetch = (async (): Promise<PartialWorkItemsResult> => {
     if (!issueScope) {
       return { items: [] }
@@ -1460,7 +1460,7 @@ export async function listWorkItems(
   const prOwnerRepo = prResolved.source
   await acquire()
   try {
-    // Why: let errors propagate to IPC — a catch-all would make failure indistinguishable from empty and under-report per-repo failures.
+    // Why: let errors propagate to IPC â€” a catch-all would make failure indistinguishable from empty and under-report per-repo failures.
     const partial = !trimmedQuery
       ? await listRecentWorkItems(
           repoPath,
@@ -1578,7 +1578,7 @@ async function countWorkItemsForQuery(
     ],
     ghOptions
   )
-  // Why: over-counting cache hits is the safe direction — the next probe corrects the estimate.
+  // Why: over-counting cache hits is the safe direction â€” the next probe corrects the estimate.
   noteRepositoryRateLimitSpend(ownerRepo, 'search', 1, ghOptions)
   return Number.parseInt(stdout.trim(), 10) || 0
 }
@@ -1653,7 +1653,7 @@ export async function countWorkItems(
     }
 
     const counts: Promise<number>[] = []
-    // Why: draft/reviewRequested/reviewedBy are PR-only, so the issue half would always return 0 — skip it to save a search call.
+    // Why: draft/reviewRequested/reviewedBy are PR-only, so the issue half would always return 0 â€” skip it to save a search call.
     const hasPrOnlyFilter =
       effectiveQuery.draft ||
       effectiveQuery.reviewRequested !== null ||
@@ -3200,7 +3200,7 @@ export async function getPRForBranchOutcome(
     if (connectionId && candidates.length === 0) {
       return { kind: 'no-pr', fetchedAt: Date.now() }
     }
-    // Why (#11532): account every lookup, not just the coordinator's queue —
+    // Why (#11532): account every lookup, not just the coordinator's queue â€”
     // `hostedReview:forBranch` reaches this directly from renderer polling and
     // was spending the shared quota invisibly. headRepo is `origin`, the same
     // identity the coordinator guards on.
@@ -3278,7 +3278,7 @@ export async function getPRForBranchOutcome(
       if (!shouldHideMergedImplicitPR(candidate, linkedPRNumber, currentHeadOidForMergedImplicit)) {
         return false
       }
-      // Why: a head that is one of the PR's own commits (update-branch/web commits) is the same work, not a reused branch name — keep the merged PR visible.
+      // Why: a head that is one of the PR's own commits (update-branch/web commits) is the same work, not a reused branch name â€” keep the merged PR visible.
       return (
         (await mergedPRContainsHead(candidate, candidateRepo, currentHeadOidForMergedImplicit)) !==
         'contained'
@@ -3392,7 +3392,7 @@ export async function getPRForBranchOutcome(
       return { kind: 'no-pr', fetchedAt: Date.now() }
     }
     // Why (#9171): on the default branch an implicit branch/fallback match must
-    // never surface a non-open PR — it overrides the merged-fallback
+    // never surface a non-open PR â€” it overrides the merged-fallback
     // preservation and merged-at-head carve-out on the trunk only. An exact
     // linked lookup returns the linked number, so linked PRs are exempt.
     if (
@@ -4433,7 +4433,7 @@ query($owner: String!, $repo: String!, $pr: Int!) {
 }`
 
 /**
- * Get all comments on a PR — both top-level conversation comments and inline
+ * Get all comments on a PR â€” both top-level conversation comments and inline
  * review comments (including suggestions). Uses GraphQL for review threads
  * to get resolution status, REST for issue-level comments.
  */
@@ -4666,7 +4666,7 @@ export async function getPRComments(
       return all
     }
 
-    // Fallback: non-GitHub remote — use gh pr view (only returns issue-level comments)
+    // Fallback: non-GitHub remote â€” use gh pr view (only returns issue-level comments)
     const { stdout } = await ghExecFileAsync(
       ['pr', 'view', String(prNumber), '--json', 'comments'],
       ghOptions

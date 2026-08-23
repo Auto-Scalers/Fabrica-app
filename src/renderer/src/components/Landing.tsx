@@ -190,7 +190,7 @@ function PreflightBanner({
   return (
     // Why: cap width below the max-w-lg column so the card reads as part of the
     // centered content stack instead of stretching edge-to-edge. The styleguide
-    // reserves color for true error state — these are soft setup nudges, so use
+    // reserves color for true error state â€” these are soft setup nudges, so use
     // the quiet muted/border surface, not an amber frame.
     <div className="w-full max-w-sm space-y-1.5 rounded-lg border border-border bg-muted/40 p-3">
       {visibleIssues.map((issue) => (

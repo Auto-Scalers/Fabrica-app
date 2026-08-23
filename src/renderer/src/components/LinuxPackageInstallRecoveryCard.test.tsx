@@ -9,7 +9,8 @@ const RELEASE_URL = 'https://github.com/Auto-Scalers/Fabrica-app/releases/tag/v1
 const DIAGNOSTIC = 'pkexec: no polkit authentication agent found'
 const INSTALL_COMMAND = 'sudo apt-get install -y /tmp/FABRICA-updates/FABRICA_1.4.200_amd64.deb'
 const PACKAGE_FILE_NAME = 'FABRICA_1.4.200_amd64.deb'
-const SUMMARY = 'Fabrica downloaded the update but could not install the system package automatically.'
+const SUMMARY =
+  'Fabrica downloaded the update but could not install the system package automatically.'
 const COPIED_NOTE =
   `Command copied. Run it in a system terminal to install ${PACKAGE_FILE_NAME}, ` +
   'then quit and reopen Fabrica.'
@@ -70,7 +71,7 @@ function renderCard(options: CardOptions = {}): RenderResult {
 
 /**
  * Main force-sends a new recovery object on every attempt, which re-renders this card rather than
- * remounting it. That push is the only signal a retry failed — quitAndInstall already resolved.
+ * remounting it. That push is the only signal a retry failed â€” quitAndInstall already resolved.
  */
 function pushFreshRecovery(view: RenderResult, options: CardOptions = {}): void {
   view.rerender(cardElement({ ...options, recovery: makeRecovery(options.recovery) }))
@@ -103,7 +104,7 @@ function isAriaDisabled(element: HTMLElement): boolean {
 }
 
 /**
- * Trailing <p> of the actions column. It owns no live-region role of its own — the surrounding
+ * Trailing <p> of the actions column. It owns no live-region role of its own â€” the surrounding
  * update Card is already aria-live, and nesting one inside another duplicates announcements.
  */
 function footnoteElement(): HTMLElement | null {
@@ -309,7 +310,7 @@ describe('LinuxPackageInstallRecoveryCard copy action', () => {
 
     expect(footnoteText()).toBe('Clipboard is unavailable.')
     expect(screen.queryByText(COPIED_NOTE)).toBeNull()
-    // Why: the command was built and validated — only the clipboard failed, so nothing is demoted.
+    // Why: the command was built and validated â€” only the clipboard failed, so nothing is demoted.
     const copyButton = button('Copy Install Command')
     expect(copyButton.dataset.variant).toBe('default')
     expect(isAriaDisabled(copyButton)).toBe(false)
@@ -437,7 +438,9 @@ describe('LinuxPackageInstallRecoveryCard details', () => {
     fireEvent.click(button('Show details'))
 
     // Why: the digest check is a point-in-time claim, not a standing guarantee about the file.
-    const detail = screen.getByText(/Fabrica checks the downloaded file against the release metadata/)
+    const detail = screen.getByText(
+      /Fabrica checks the downloaded file against the release metadata/
+    )
     expect(detail.textContent).toContain('at the moment it builds this command')
     expect(detail.textContent).toContain(
       'The system package itself is not signature-checked, and Fabrica cannot vouch for the file ' +
@@ -488,7 +491,7 @@ describe('LinuxPackageInstallRecoveryCard retry', () => {
     // progress instead of leaving three inert buttons for the length of the hash.
     expect(isAriaDisabled(button('Checking package...'))).toBe(true)
     // Why: quitAndInstall resolves as soon as main schedules the install, so a resolved promise is
-    // not an outcome — the slot stays held until a real status arrives.
+    // not an outcome â€” the slot stays held until a real status arrives.
     expect(isAriaDisabled(button('Copy Install Command'))).toBe(true)
     expect(isAriaDisabled(button('Show Package'))).toBe(true)
 
@@ -508,7 +511,7 @@ describe('LinuxPackageInstallRecoveryCard retry', () => {
     await flushActions()
     expect(isAriaDisabled(button('Copy Install Command'))).toBe(true)
 
-    // A failed retry never rejects — main pushes a new recovery status a moment later.
+    // A failed retry never rejects â€” main pushes a new recovery status a moment later.
     pushFreshRecovery(view)
 
     expect(isAriaDisabled(button('Copy Install Command'))).toBe(false)
@@ -531,7 +534,7 @@ describe('LinuxPackageInstallRecoveryCard retry', () => {
     fireEvent.click(button('Copy Install Command'))
     pushFreshRecovery(view)
 
-    // Why: the release is scoped to the retry slot — a running hash must keep its busy state.
+    // Why: the release is scoped to the retry slot â€” a running hash must keep its busy state.
     expect(button('Checking package...')).toBeTruthy()
     expect(isAriaDisabled(button('Show Package'))).toBe(true)
 

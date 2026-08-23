@@ -125,7 +125,7 @@ describe('StarNagToastHost', () => {
 
     expect(toastContainer.textContent).toContain('Onboarding completed!')
     expect(toastContainer.textContent).toContain(
-      'If you’re enjoying Fabrica so far, a GitHub star helps other developers discover it.'
+      'If youâ€™re enjoying Fabrica so far, a GitHub star helps other developers discover it.'
     )
     expect(toastContainer.textContent).toContain('Star on GitHub')
     expect((customToastMock.mock.calls[0][1] as CustomToastOptions).dismissible).toBe(false)
@@ -139,7 +139,7 @@ describe('StarNagToastHost', () => {
     })
 
     expect(starNag.starFABRICA).toHaveBeenCalledTimes(1)
-    expect(toastContainer.textContent).toContain('Starred — thank you!')
+    expect(toastContainer.textContent).toContain('Starred â€” thank you!')
   })
 
   it('opens GitHub fallback without calling direct star success path', async () => {

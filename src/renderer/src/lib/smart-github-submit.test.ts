@@ -9,19 +9,23 @@ import {
 
 describe('getSmartGitHubSubmitIntent', () => {
   it('treats GitHub issue and pull URLs as submit-time source intent', () => {
-    expect(getSmartGitHubSubmitIntent('https://github.com/Auto-Scalers/Fabrica-app/pull/2049')).toEqual({
+    expect(
+      getSmartGitHubSubmitIntent('https://github.com/Auto-Scalers/Fabrica-app/pull/2049')
+    ).toEqual({
       kind: 'link',
       host: 'github.com',
       owner: 'Auto-Scalers',
-      repo: 'fabrica',
+      repo: 'Fabrica-app',
       number: 2049,
       type: 'pr'
     })
-    expect(getSmartGitHubSubmitIntent('https://github.com/Auto-Scalers/Fabrica-app/issues/2050')).toEqual({
+    expect(
+      getSmartGitHubSubmitIntent('https://github.com/Auto-Scalers/Fabrica-app/issues/2050')
+    ).toEqual({
       kind: 'link',
       host: 'github.com',
       owner: 'Auto-Scalers',
-      repo: 'fabrica',
+      repo: 'Fabrica-app',
       number: 2050,
       type: 'issue'
     })
@@ -59,26 +63,28 @@ describe('getSmartGitHubSubmitIntent', () => {
 
   it('finds an embedded GitHub item URL when prose punctuation touches the URL', () => {
     expect(
-      getSmartGitHubSubmitIntent('review (https://github.com/Auto-Scalers/Fabrica-app/pull/2049), please')
+      getSmartGitHubSubmitIntent(
+        'review (https://github.com/Auto-Scalers/Fabrica-app/pull/2049), please'
+      )
     ).toEqual({
       kind: 'link',
       host: 'github.com',
       owner: 'Auto-Scalers',
-      repo: 'fabrica',
+      repo: 'Fabrica-app',
       number: 2049,
       type: 'pr'
     })
 
-    expect(getSmartGitHubSubmitIntent('fix https://github.com/Auto-Scalers/Fabrica-app/issues/2050.')).toEqual(
-      {
-        kind: 'link',
-        host: 'github.com',
-        owner: 'Auto-Scalers',
-        repo: 'fabrica',
-        number: 2050,
-        type: 'issue'
-      }
-    )
+    expect(
+      getSmartGitHubSubmitIntent('fix https://github.com/Auto-Scalers/Fabrica-app/issues/2050.')
+    ).toEqual({
+      kind: 'link',
+      host: 'github.com',
+      owner: 'Auto-Scalers',
+      repo: 'Fabrica-app',
+      number: 2050,
+      type: 'issue'
+    })
   })
 
   it('treats #number as source intent but leaves plain numbers as names', () => {

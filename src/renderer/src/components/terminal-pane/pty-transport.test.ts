@@ -446,7 +446,7 @@ describe('createIpcPtyTransport', () => {
     const onPtySpawn = vi.fn()
     const onDataCallback = vi.fn()
     const onExitCallback = vi.fn()
-    const onErrFABRICAllback = vi.fn()
+    const onErrorCallback = vi.fn()
     const retirementError = new Error('provider shutdown refused')
     spawn.mockResolvedValueOnce({ id: 'pty-fresh-fallback', sessionExpired: true })
     kill.mockRejectedValueOnce(retirementError)
@@ -460,7 +460,7 @@ describe('createIpcPtyTransport', () => {
         callbacks: {
           onData: onDataCallback,
           onExit: onExitCallback,
-          onError: onErrFABRICAllback
+          onError: onErrorCallback
         }
       })
     ).resolves.toBeUndefined()
@@ -471,7 +471,7 @@ describe('createIpcPtyTransport', () => {
     expect(onPtySpawn).not.toHaveBeenCalled()
     expect(onDataCallback).not.toHaveBeenCalled()
     expect(onExitCallback).not.toHaveBeenCalled()
-    expect(onErrFABRICAllback).toHaveBeenCalledExactlyOnceWith(retirementError.message)
+    expect(onErrorCallback).toHaveBeenCalledExactlyOnceWith(retirementError.message)
     expect(transport.getPtyId()).toBeNull()
     expect(transport.isConnected()).toBe(false)
   })

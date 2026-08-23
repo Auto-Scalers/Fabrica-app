@@ -5,7 +5,10 @@ import type {
   LegacyPrincipalRole
 } from '../orchestration/types'
 import { OrchestrationError } from '../orchestration/orchestration-error'
-import type { FABRICARuntimeService, OrchestrationCompatibilityCallerAuthority } from '../fabrica-runtime'
+import type {
+  FABRICARuntimeService,
+  OrchestrationCompatibilityCallerAuthority
+} from '../fabrica-runtime'
 import { LEGACY_CONTRACT_VERSION } from '../orchestration/db'
 import type { RpcRequest } from './core'
 import {
@@ -203,7 +206,7 @@ export class LegacyCompatibilityAuthority {
     required = true
   ): LegacyCompatibilityPrincipalRow | undefined {
     const db = this.runtime.getOrchestrationDb()
-    const candidate = db.resolveLegacyCoordinatFABRICAndidate({
+    const candidate = db.resolveLegacyCoordinatorCandidate({
       runId,
       terminalHandle: request.orchestrationCompatibilityEvidence?.terminalHandle,
       paneKey: request.orchestrationCompatibilityEvidence?.paneKey

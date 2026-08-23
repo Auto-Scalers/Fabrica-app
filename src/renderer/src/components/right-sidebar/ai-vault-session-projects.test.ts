@@ -131,7 +131,9 @@ describe('buildAiVaultProjectContext', () => {
       repos: [repo],
       worktrees: [worktree],
       projectHostSetupProjection: makeProjection({
-        projects: [makeProject({ id: 'github:Auto-Scalers/Fabrica-app', displayName: 'Canonical Fabrica' })],
+        projects: [
+          makeProject({ id: 'github:Auto-Scalers/Fabrica-app', displayName: 'Canonical Fabrica' })
+        ],
         setups: [
           makeSetup({
             repoId: repo.id,
@@ -166,7 +168,9 @@ describe('buildAiVaultProjectContext', () => {
       repos: [repo],
       worktrees: [worktree],
       projectHostSetupProjection: makeProjection({
-        projects: [makeProject({ id: 'github:Auto-Scalers/Fabrica-app', displayName: 'Canonical Fabrica' })],
+        projects: [
+          makeProject({ id: 'github:Auto-Scalers/Fabrica-app', displayName: 'Canonical Fabrica' })
+        ],
         setups: [
           makeSetup({
             repoId: repo.id,
@@ -181,7 +185,9 @@ describe('buildAiVaultProjectContext', () => {
     })
 
     expect(context.activeProjectKey).toBe('project:github:Auto-Scalers/Fabrica-app')
-    expect(context.sessionProjectById.get(session.id)?.key).toBe('project:github:Auto-Scalers/Fabrica-app')
+    expect(context.sessionProjectById.get(session.id)?.key).toBe(
+      'project:github:Auto-Scalers/Fabrica-app'
+    )
   })
 
   it('inherits setup host ids for legacy worktrees without host metadata', () => {
@@ -508,8 +514,8 @@ describe('buildAiVaultSessionProjectById', () => {
   })
 
   it('attributes non-ASCII cwds across unicode normalization forms', () => {
-    // NFC worktree path vs NFD session cwd — both spell /Users/ada/café.
-    const repo = makeRepo({ id: 'repo-1', displayName: 'Café', path: '/Users/ada/caf\u00e9' })
+    // NFC worktree path vs NFD session cwd â€” both spell /Users/ada/cafÃ©.
+    const repo = makeRepo({ id: 'repo-1', displayName: 'CafÃ©', path: '/Users/ada/caf\u00e9' })
     const worktree = makeWorktree({ id: 'wt-1', repoId: repo.id, path: '/Users/ada/caf\u00e9' })
 
     const map = buildAiVaultSessionProjectById({

@@ -18,7 +18,7 @@ function repo(id: string, overrides: Partial<Repo> = {}): Repo {
     displayName: id,
     badgeColor: '#111111',
     addedAt: 1,
-    upstream: { owner: 'Auto-Scalers', repo: 'fabrica' },
+    upstream: { owner: 'Auto-Scalers', repo: 'Fabrica-app' },
     ...overrides
   }
 }
@@ -28,7 +28,7 @@ function project(overrides: Partial<Project> = {}): Project {
     id: 'github:Auto-Scalers/Fabrica-app',
     displayName: 'FABRICA',
     badgeColor: '#111111',
-    providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'fabrica' },
+    providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' },
     sourceRepoIds: ['local-repo', 'ssh-repo'],
     createdAt: 1,
     updatedAt: 1,
@@ -134,7 +134,10 @@ describe('buildNewWorkspaceProjectOptions', () => {
     })
 
     expect(options).toEqual([
-      expect.objectContaining({ id: 'github:Auto-Scalers/Fabrica-app', detail: 'Auto-Scalers/Fabrica-app' })
+      expect.objectContaining({
+        id: 'github:Auto-Scalers/Fabrica-app',
+        detail: 'Auto-Scalers/Fabrica-app'
+      })
     ])
   })
 
@@ -341,8 +344,8 @@ describe('buildNewWorkspaceProjectOptions', () => {
     })
 
     expect(options.map((option) => option.detail).sort()).toEqual([
-      'Builder · /workspace/merchant',
-      'Local Mac · /workspace/merchant'
+      'Builder Â· /workspace/merchant',
+      'Local Mac Â· /workspace/merchant'
     ])
   })
 
@@ -384,8 +387,8 @@ describe('buildNewWorkspaceProjectOptions', () => {
     })
 
     expect(options.map((option) => option.detail).sort()).toEqual([
-      'Builder (ssh:builder-a) · /workspace/merchant',
-      'Builder (ssh:builder-b) · /workspace/merchant'
+      'Builder (ssh:builder-a) Â· /workspace/merchant',
+      'Builder (ssh:builder-b) Â· /workspace/merchant'
     ])
   })
 
@@ -410,7 +413,9 @@ describe('buildNewWorkspaceProjectOptions', () => {
     ]
 
     expect(searchNewWorkspaceProjectOptions(options, 'docs')).toEqual([options[1]])
-    expect(searchNewWorkspaceProjectOptions(options, 'Auto-Scalers/Fabrica-app')).toEqual([options[0]])
+    expect(searchNewWorkspaceProjectOptions(options, 'Auto-Scalers/Fabrica-app')).toEqual([
+      options[0]
+    ])
   })
 
   it('rejects oversized pasted searches before reading project options', () => {

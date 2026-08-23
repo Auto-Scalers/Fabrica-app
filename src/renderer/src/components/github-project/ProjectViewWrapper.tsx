@@ -165,7 +165,7 @@ export default function ProjectViewWrapper({ selectedRepoIds }: Props): React.JS
     Record<string, GitHubProjectViewSummary[]>
   >({})
 
-  // Why: ephemeral per-(project,view) search override, never persisted (design doc §"Out of scope"); `undefined` = use the view's filter as-is.
+  // Why: ephemeral per-(project,view) search override, never persisted (design doc Â§"Out of scope"); `undefined` = use the view's filter as-is.
   const [appliedQueryByView, setAppliedQueryByView] = useState<Record<string, string>>({})
 
   const doFetch = useCallback(
@@ -525,7 +525,7 @@ export default function ProjectViewWrapper({ selectedRepoIds }: Props): React.JS
       }
       const origin = buildOrigin(row, currentCacheKey, table)
       if (!origin) {
-        // Redacted / draft / missing slug — fall back to opening GitHub.
+        // Redacted / draft / missing slug â€” fall back to opening GitHub.
         if (row.content.url) {
           void window.api.shell.openUrl(row.content.url)
         }
@@ -561,7 +561,7 @@ export default function ProjectViewWrapper({ selectedRepoIds }: Props): React.JS
         }
       }
       if (resolution.status === 'no_global_match') {
-        // Unknown repo — use the simplified slug-mode dialog.
+        // Unknown repo â€” use the simplified slug-mode dialog.
         setSlugDialog({ origin })
         return
       }
@@ -1203,7 +1203,7 @@ function ViewTabStrip({
                 ? v.name
                 : translate(
                     'auto.components.github.project.ProjectViewWrapper.2edf5e7e77',
-                    "{{value0}} — Fabrica doesn't support {{value1}} project views yet. File a feature request at {{value2}}.",
+                    "{{value0}} â€” Fabrica doesn't support {{value1}} project views yet. File a feature request at {{value2}}.",
                     { value0: v.name, value1: layoutLabel, value2: FABRICA_FEATURE_REQUEST_URL }
                   )
             }
@@ -1232,7 +1232,11 @@ function ViewTabStrip({
                 aria-label={translate(
                   'auto.components.github.project.ProjectViewWrapper.55de4fb57a',
                   '{{value0}}. {{value1}} File a feature request at {{value2}}.',
-                  { value0: v.name, value1: unsupportedMessage, value2: FABRICA_FEATURE_REQUEST_URL }
+                  {
+                    value0: v.name,
+                    value1: unsupportedMessage,
+                    value2: FABRICA_FEATURE_REQUEST_URL
+                  }
                 )}
                 className="inline-flex shrink-0 cursor-not-allowed rounded-t-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
               >
@@ -1300,7 +1304,7 @@ function ErrorState({
   }
   const copy =
     error.type === 'too_large'
-      ? `This view has ${totalCount ?? 'many'} items — too large to render in Fabrica. Narrow the view's filter on GitHub.`
+      ? `This view has ${totalCount ?? 'many'} items â€” too large to render in Fabrica. Narrow the view's filter on GitHub.`
       : error.type === 'unsupported_layout'
         ? 'Fabrica only renders table views yet. This is a Board or Roadmap view.'
         : error.type === 'not_found'

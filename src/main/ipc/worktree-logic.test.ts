@@ -64,26 +64,26 @@ describe('sanitizeWorktreeName', () => {
     // Why: users name workspaces in their own language (CJK, accented Latin,
     // Cyrillic, etc.). Stripping these to ASCII left the name empty and threw
     // "Invalid worktree name" on every non-Latin keyboard input.
-    expect(sanitizeWorktreeName('??')).toBe('??')
-    expect(sanitizeWorktreeName('??? ???')).toBe('???-???')
-    expect(sanitizeWorktreeName('caf�-d�j�')).toBe('caf�-d�j�')
-    expect(sanitizeWorktreeName('?????? ???')).toBe('??????-???')
+    expect(sanitizeWorktreeName('한국')).toBe('한국')
+    expect(sanitizeWorktreeName('한국어 텍스트')).toBe('한국어-텍스트')
+    expect(sanitizeWorktreeName('café-déjà')).toBe('café-déjà')
+    expect(sanitizeWorktreeName('привет мир')).toBe('привет-мир')
   })
 
   it('still strips git-unsafe punctuation around Unicode names', () => {
-    expect(sanitizeWorktreeName('feat: ?? (v2)')).toBe('feat-??-v2')
+    expect(sanitizeWorktreeName('feat: 한국 (v2)')).toBe('feat-한국-v2')
   })
 
   it('uses readable git-safe shortcodes for known emoji', () => {
-    expect(sanitizeWorktreeName('??')).toBe('rocket')
-    expect(sanitizeWorktreeName('??????')).toBe('woman-technologist-sparkles')
-    expect(sanitizeWorktreeName('????')).toBe('japan')
-    expect(sanitizeWorktreeName('??')).toBe('thumbsdown')
-    expect(sanitizeWorktreeName('1??')).toBe('one')
+    expect(sanitizeWorktreeName('🚀')).toBe('rocket')
+    expect(sanitizeWorktreeName('👩‍💻✨')).toBe('woman-technologist-sparkles')
+    expect(sanitizeWorktreeName('🇯🇵')).toBe('japan')
+    expect(sanitizeWorktreeName('👎')).toBe('thumbsdown')
+    expect(sanitizeWorktreeName('1️⃣')).toBe('one')
   })
 
   it('keeps readable text and emoji shortcodes in branch and path names', () => {
-    expect(sanitizeWorktreeName('Ship it ??')).toBe('Ship-it-rocket')
+    expect(sanitizeWorktreeName('Ship it 🚀')).toBe('Ship-it-rocket')
   })
 
   it('uses a git-safe fallback for emoji newer than the shortcode catalog', () => {
@@ -106,8 +106,8 @@ describe('sanitizeWorktreeName', () => {
 
 describe('sanitizeWorktreeDisplayName', () => {
   it('preserves emoji in display names', () => {
-    expect(sanitizeWorktreeDisplayName('  Ship it ??  ')).toBe('Ship it ??')
-    expect(sanitizeWorktreeDisplayName('?????')).toBe('?????')
+    expect(sanitizeWorktreeDisplayName('  Ship it 🚀  ')).toBe('Ship it 🚀')
+    expect(sanitizeWorktreeDisplayName('🎉👍💯')).toBe('🎉👍💯')
   })
 
   it('keeps readable punctuation while collapsing unsafe controls and whitespace', () => {

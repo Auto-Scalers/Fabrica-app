@@ -58,6 +58,17 @@ const FABRICA_DIAGNOSTICS_TOKEN_URL_LITERAL =
     ? JSON.stringify(fabricaDiagnosticsTokenUrl)
     : 'null'
 
+// Why: the relay prefers a Supabase session JWT for auth, but packaged builds
+// have no shell environment. Bake SUPABASE_URL / SUPABASE_ANON_KEY (with
+// NEXT_PUBLIC_* fallbacks) into the main bundle at compile time; unset vars
+// fold to '' and the app falls back to FABRICA Cloud relay tokens. The anon
+// key is restricted by Supabase RLS and is safe to ship.
+const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
+const supabaseAnonKey =
+  process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
+const SUPABASE_URL_LITERAL = JSON.stringify(supabaseUrl)
+const SUPABASE_ANON_KEY_LITERAL = JSON.stringify(supabaseAnonKey)
+
 function createStartupDiagnosticsBanner(chunkName: string): string {
   return `
 ;(() => {
@@ -265,7 +276,9 @@ export const electronViteConfig: UserConfig = {
     define: {
       FABRICA_BUILD_IDENTITY: FABRICA_BUILD_IDENTITY_LITERAL,
       FABRICA_POSTHOG_WRITE_KEY: FABRICA_POSTHOG_WRITE_KEY_LITERAL,
-      FABRICA_DIAGNOSTICS_TOKEN_URL: FABRICA_DIAGNOSTICS_TOKEN_URL_LITERAL
+      FABRICA_DIAGNOSTICS_TOKEN_URL: FABRICA_DIAGNOSTICS_TOKEN_URL_LITERAL,
+      'process.env.SUPABASE_URL': SUPABASE_URL_LITERAL,
+      'process.env.SUPABASE_ANON_KEY': SUPABASE_ANON_KEY_LITERAL
     },
     // Why: @xterm/headless declares "exports": null in package.json, which
     // prevents Vite's default resolver from finding the CJS entry. Point

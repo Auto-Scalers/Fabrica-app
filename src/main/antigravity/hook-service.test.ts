@@ -75,7 +75,9 @@ describe('AntigravityHookService', () => {
       ANTIGRAVITY_PRE_INVOCATION_COMMAND
     )
     if (process.platform === 'win32') {
-      expect(config['FABRICA-status'].PreInvocation[0].command).not.toContain('FABRICA_ANTIGRAVITY_EVENT')
+      expect(config['FABRICA-status'].PreInvocation[0].command).not.toContain(
+        'FABRICA_ANTIGRAVITY_EVENT'
+      )
     } else {
       expect(config['FABRICA-status'].PreInvocation[0].command).toContain(
         "FABRICA_ANTIGRAVITY_EVENT='PreInvocation'"
@@ -84,7 +86,7 @@ describe('AntigravityHookService', () => {
     }
 
     const script = readFileSync(
-      join(homeDir, '.FABRICA', 'agent-hooks', ANTIGRAVITY_SCRIPT_FILE_NAME),
+      join(homeDir, '.fabrica', 'agent-hooks', ANTIGRAVITY_SCRIPT_FILE_NAME),
       'utf8'
     )
     expect(script).toContain('/hook/antigravity')
@@ -112,7 +114,7 @@ describe('AntigravityHookService', () => {
       const configPath = join(homeDir, '.gemini', 'config', 'hooks.json')
       const staleScriptPath = join(
         homeDir,
-        '.FABRICA',
+        '.fabrica',
         'agent-hooks',
         'antigravity-hook.cmd'
       ).replaceAll('/', '\\')
@@ -171,13 +173,16 @@ describe('AntigravityHookService', () => {
         expect(command).not.toContain('cmd /d /s /c')
         expect(command).not.toContain('FABRICA_ANTIGRAVITY_EVENT')
 
-        const wrapper = readFileSync(join(homeDir, '.FABRICA', 'agent-hooks', wrapperFileName), 'utf8')
+        const wrapper = readFileSync(
+          join(homeDir, '.fabrica', 'agent-hooks', wrapperFileName),
+          'utf8'
+        )
         expect(wrapper).toContain(`set "FABRICA_ANTIGRAVITY_EVENT=${eventName}"`)
         expect(wrapper).toContain('call "%FABRICA_ANTIGRAVITY_CORE%"')
       }
 
       const script = readFileSync(
-        join(homeDir, '.FABRICA', 'agent-hooks', 'antigravity-hook.cmd'),
+        join(homeDir, '.fabrica', 'agent-hooks', 'antigravity-hook.cmd'),
         'utf8'
       )
       expect(script).toContain('/hook/antigravity')
@@ -260,7 +265,7 @@ describe('AntigravityHookService', () => {
     )
     expect(commands).toHaveLength(1)
     expect(commands[0]).toContain(
-      join(homeDir, '.FABRICA', 'agent-hooks', ANTIGRAVITY_POST_TOOL_USE_COMMAND)
+      join(homeDir, '.fabrica', 'agent-hooks', ANTIGRAVITY_POST_TOOL_USE_COMMAND)
     )
   })
 })

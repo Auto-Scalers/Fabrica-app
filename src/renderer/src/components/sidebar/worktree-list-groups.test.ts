@@ -431,7 +431,12 @@ describe('buildRows with pinned worktrees', () => {
     )
 
     expect(rows).toMatchObject([
-      { type: 'header', key: 'project:github:Auto-Scalers/Fabrica-app', label: 'Fabrica', count: 2 },
+      {
+        type: 'header',
+        key: 'project:github:Auto-Scalers/Fabrica-app',
+        label: 'Fabrica',
+        count: 2
+      },
       { type: 'item', worktree: { id: worktree.id }, hostContextLabel: LOCAL_HOST_LABEL },
       { type: 'item', worktree: { id: remoteWorktree.id }, hostContextLabel: 'gpu-vm' }
     ])
@@ -886,7 +891,10 @@ describe('buildRows with pinned worktrees', () => {
         undefined,
         grouping
       )
-    ]).toEqual(['project:github:Auto-Scalers/Fabrica-app', 'project:github:Auto-Scalers/Fabrica-app'])
+    ]).toEqual([
+      'project:github:Auto-Scalers/Fabrica-app',
+      'project:github:Auto-Scalers/Fabrica-app'
+    ])
   })
 
   it('keeps Git hosts grouped when folder setups share the project identity', () => {
@@ -1027,7 +1035,7 @@ describe('buildRows with pinned worktrees', () => {
     // Why: guards the intersection of #5374 (real same-host checkouts split) and
     // #6320 (provisioned copies nest). Two legacy checkouts must each get their own
     // header while a provisioned copy of the same project stays under the plain
-    // project header — all on one host surface, simultaneously.
+    // project header â€” all on one host surface, simultaneously.
     const localRepoB: Repo = {
       ...repo,
       id: 'repo-local-b',
@@ -1113,7 +1121,9 @@ describe('buildRows with pinned worktrees', () => {
     expect(
       headers.some((row) => row.key === 'project:github:Auto-Scalers/Fabrica::setup:repo-runtime-b')
     ).toBe(false)
-    expect(headers.find((row) => row.key === 'project:github:Auto-Scalers/Fabrica-app')).toMatchObject({
+    expect(
+      headers.find((row) => row.key === 'project:github:Auto-Scalers/Fabrica-app')
+    ).toMatchObject({
       count: 1
     })
   })
@@ -1252,7 +1262,12 @@ describe('buildRows with pinned worktrees', () => {
     )
 
     expect(rows).toMatchObject([
-      { type: 'header', key: 'project:github:Auto-Scalers/Fabrica-app', label: 'Fabrica', count: 2 },
+      {
+        type: 'header',
+        key: 'project:github:Auto-Scalers/Fabrica-app',
+        label: 'Fabrica',
+        count: 2
+      },
       { type: 'item', worktree: { id: worktree.id }, hostContextLabel: LOCAL_HOST_LABEL },
       { type: 'item', worktree: { id: runtimeWorktree.id }, hostContextLabel: 'dev box' }
     ])
@@ -1351,7 +1366,12 @@ describe('buildRows with pinned worktrees', () => {
     )
 
     expect(rows).toMatchObject([
-      { type: 'header', key: 'project:github:Auto-Scalers/Fabrica-app', label: 'Fabrica', count: 2 },
+      {
+        type: 'header',
+        key: 'project:github:Auto-Scalers/Fabrica-app',
+        label: 'Fabrica',
+        count: 2
+      },
       { type: 'item', worktree: { id: worktree.id } },
       { type: 'item', worktree: { id: secondLocalWorktree.id } }
     ])
@@ -2160,7 +2180,7 @@ describe('buildRows project grouping order', () => {
   }
 
   it('orders repo headers by explicit repoOrder, not first-encounter', () => {
-    // Worktree stream encounters in order C, A, B — but repoOrder says B, A, C.
+    // Worktree stream encounters in order C, A, B â€” but repoOrder says B, A, C.
     const repoOrder = new Map([
       [repoB.id, 0],
       [repoA.id, 1],
@@ -2452,7 +2472,7 @@ describe('project groups', () => {
   })
 
   it('keeps sleep-filtered Project Group members as empty project headers', () => {
-    // Why: #8865 — Hide sleeping removes workspace cards; membership placeholders
+    // Why: #8865 â€” Hide sleeping removes workspace cards; membership placeholders
     // must still project the grouped project header so the group count stays honest.
     const group: ProjectGroup = {
       id: 'group-1',

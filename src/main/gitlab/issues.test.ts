@@ -57,7 +57,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('gets a single issue from the project ref', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({
         iid: 923,
@@ -70,14 +73,17 @@ describe('gitlab issue operations', () => {
 
     await expect(getIssue('/repo-root', 923)).resolves.toMatchObject({ number: 923 })
     expect(glabExecFileAsyncMock).toHaveBeenCalledWith(
-      ['api', 'projects/Auto-Scalers%2FFabrica/issues/923'],
+      ['api', 'projects/Auto-Scalers%2FFabrica-app/issues/923'],
       { cwd: '/repo-root' }
     )
   })
 
   it('routes local WSL issue operations through project resolution and glab execution options', async () => {
     const localGitOptions = { wslDistro: 'Ubuntu' }
-    getIssueProjectRefMock.mockResolvedValue({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValue({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     resolveIssueSourceMock.mockResolvedValue({
       source: { host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' },
       fellBack: false
@@ -162,7 +168,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('lists issues with state=opened ordering', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({ stdout: '[]' })
 
     await expect(listIssues('/repo-root', 5)).resolves.toEqual({ items: [] })
@@ -170,14 +179,17 @@ describe('gitlab issue operations', () => {
     expect(glabExecFileAsyncMock).toHaveBeenCalledWith(
       [
         'api',
-        'projects/Auto-Scalers%2FFabrica/issues?per_page=5&order_by=updated_at&sort=desc&state=opened'
+        'projects/Auto-Scalers%2FFabrica-app/issues?per_page=5&order_by=updated_at&sort=desc&state=opened'
       ],
       { cwd: '/repo-root' }
     )
   })
 
   it('surfaces a permission_denied error instead of collapsing to empty', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockRejectedValueOnce(new Error('HTTP 403 Forbidden'))
 
     const result = await listIssues('/repo-root', 5)
@@ -187,7 +199,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('reports the body instead of ".map is not a function" when the API returns a non-array', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({ data: [], total: 0 })
     })
@@ -201,7 +216,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('reports a GitLab error envelope by its own message', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({ message: '403 Forbidden' })
     })
@@ -235,7 +253,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('threads connectionId into getGlabKnownHosts for listIssues', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({ stdout: '[]' })
 
     await listIssues('/repo-root', 5, undefined, 'opened', undefined, 'conn-7')
@@ -244,7 +265,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('creates an issue and returns its iid + web_url', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({
         iid: 924,
@@ -262,7 +286,7 @@ describe('gitlab issue operations', () => {
         'api',
         '-X',
         'POST',
-        'projects/Auto-Scalers%2FFabrica/issues',
+        'projects/Auto-Scalers%2FFabrica-app/issues',
         '-f',
         'title=New issue',
         '-f',
@@ -281,7 +305,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('updateIssue closes via `glab issue close` when state=closed', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({ stdout: '' })
 
     await expect(updateIssue('/repo-root', 5, { state: 'closed' })).resolves.toEqual({ ok: true })
@@ -292,14 +319,20 @@ describe('gitlab issue operations', () => {
   })
 
   it("updateIssue treats 'already closed' as a no-op", async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockRejectedValueOnce(new Error('Issue is already closed'))
 
     await expect(updateIssue('/repo-root', 5, { state: 'closed' })).resolves.toEqual({ ok: true })
   })
 
   it('updateIssue applies field edits via `glab issue update`', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({ stdout: '' })
 
     await expect(
@@ -335,7 +368,10 @@ describe('gitlab issue operations', () => {
   })
 
   it('updateIssue applies body edits via the issue API', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({ stdout: '' })
 
     await expect(updateIssue('/repo-root', 5, { body: 'Updated body' })).resolves.toEqual({
@@ -343,7 +379,14 @@ describe('gitlab issue operations', () => {
     })
 
     expect(glabExecFileAsyncMock).toHaveBeenCalledWith(
-      ['api', '-X', 'PUT', 'projects/Auto-Scalers%2FFabrica/issues/5', '-f', 'description=Updated body'],
+      [
+        'api',
+        '-X',
+        'PUT',
+        'projects/Auto-Scalers%2FFabrica-app/issues/5',
+        '-f',
+        'description=Updated body'
+      ],
       { cwd: '/repo-root' }
     )
   })
@@ -378,7 +421,7 @@ describe('gitlab issue operations', () => {
       '--hostname',
       'git.internal',
       '--paginate',
-      'projects/Auto-Scalers%2FFabrica/labels',
+      'projects/Auto-Scalers%2FFabrica-app/labels',
       '--jq',
       '.[].name'
     ])
@@ -387,14 +430,17 @@ describe('gitlab issue operations', () => {
       '--hostname',
       'git.internal',
       '--paginate',
-      'projects/Auto-Scalers%2FFabrica/members/all?per_page=100',
+      'projects/Auto-Scalers%2FFabrica-app/members/all?per_page=100',
       '--jq',
       '.[] | {id, username, name, avatar_url, state}'
     ])
   })
 
   it('addIssueComment posts to /notes and maps the response', async () => {
-    getIssueProjectRefMock.mockResolvedValueOnce({ host: 'gitlab.com', path: 'Auto-Scalers/Fabrica-app' })
+    getIssueProjectRefMock.mockResolvedValueOnce({
+      host: 'gitlab.com',
+      path: 'Auto-Scalers/Fabrica-app'
+    })
     glabExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({
         id: 100,
@@ -418,7 +464,14 @@ describe('gitlab issue operations', () => {
       }
     })
     expect(glabExecFileAsyncMock).toHaveBeenCalledWith(
-      ['api', '-X', 'POST', 'projects/Auto-Scalers%2FFabrica/issues/5/notes', '-f', 'body=Hello'],
+      [
+        'api',
+        '-X',
+        'POST',
+        'projects/Auto-Scalers%2FFabrica-app/issues/5/notes',
+        '-f',
+        'body=Hello'
+      ],
       { cwd: '/repo-root' }
     )
   })
@@ -441,7 +494,7 @@ describe('gitlab issue operations', () => {
         'gitlab.example.com',
         '-X',
         'POST',
-        'projects/Auto-Scalers%2FFabrica/issues/5/notes',
+        'projects/Auto-Scalers%2FFabrica-app/issues/5/notes',
         '-f',
         'body=Hello'
       ],

@@ -50,7 +50,7 @@ describe('FABRICA computer observation CLI handlers', () => {
 
     const output = vi.mocked(console.log).mock.calls[0][0]
     expect(output).toContain(
-      'FABRICA computer permissions [--id <accessibility|screenshots>] [--json]'
+      'fabrica computer permissions [--id <accessibility|screenshots>] [--json]'
     )
     expect(output).toContain('--id <id>')
     expect(output).toContain('Identifier for a target item or permission')

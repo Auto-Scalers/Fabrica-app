@@ -322,7 +322,7 @@ describe('validateCommandAndFlags', () => {
     } catch (error) {
       const data = (error as { data?: { suggestions: string[]; nextSteps: string[] } }).data
       expect(data?.suggestions).toContain('worktree rm')
-      expect(data?.nextSteps[0]).toContain('FABRICA worktree rm')
+      expect(data?.nextSteps[0]).toContain('fabrica worktree rm')
     }
   })
 })

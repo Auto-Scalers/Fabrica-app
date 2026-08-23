@@ -566,6 +566,12 @@ const api = {
     orgMemberRemove: (args) => ipcRenderer.invoke('FABRICAProfiles:orgMemberRemove', args)
   } satisfies PreloadApi['FABRICAProfiles'],
 
+  supabaseAuth: {
+    getStatus: () => ipcRenderer.invoke('supabaseAuth:getStatus'),
+    signIn: (args) => ipcRenderer.invoke('supabaseAuth:signIn', args),
+    signOut: () => ipcRenderer.invoke('supabaseAuth:signOut')
+  } satisfies PreloadApi['supabaseAuth'],
+
   platform: {
     get: () => ({
       platform: process.platform,
@@ -1640,7 +1646,8 @@ const api = {
       return () => ipcRenderer.removeListener('gh:workItemMutated', listener)
     },
 
-    checkFABRICAStarred: (): Promise<boolean | null> => ipcRenderer.invoke('gh:checkFABRICAStarred'),
+    checkFABRICAStarred: (): Promise<boolean | null> =>
+      ipcRenderer.invoke('gh:checkFABRICAStarred'),
     starFABRICA: (source: AppStarSource): Promise<boolean> =>
       ipcRenderer.invoke('gh:starFABRICA', source),
 

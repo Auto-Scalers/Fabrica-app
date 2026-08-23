@@ -1,5 +1,6 @@
 import type { RelayBrokerStatus } from './relay-session-broker'
 import { RelayHttpError, shouldRetryRelayConnectionError } from './relay-http-client'
+import { getSupabaseAccessToken } from './supabase-session'
 
 export type RelayAuthIdentity = {
   userId: string
@@ -260,7 +261,9 @@ export class RelayAuthCoordinator {
     ) {
       return null
     }
-    return context.accessToken
+    // Why: when a Supabase session exists its access token is authoritative
+    // for relay auth; the FABRICA Cloud token is only the fallback.
+    return (await getSupabaseAccessToken()) ?? context.accessToken
   }
 
   private invalidateOwnership(): void {

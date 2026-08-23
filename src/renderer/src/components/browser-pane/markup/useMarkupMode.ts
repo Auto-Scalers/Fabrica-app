@@ -92,7 +92,7 @@ export function useMarkupMode({
       // Why: a capture failure has no overlay to fall back to, so return to idle
       // (not a stuck 'active' state with no surface and an inert Escape).
       reportError(
-        'auto.components.browser-pane.markup.errFABRICApture',
+        'auto.components.browser-pane.markup.capture',
         'Could not capture the page to draw on.'
       )
       reset()

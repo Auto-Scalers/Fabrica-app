@@ -1217,7 +1217,13 @@ describe('repos:addRemote', () => {
 
     expect(mockFilesystemProvider.createDir).toHaveBeenCalledWith('/home/user')
     expect(mockGitProvider.clone).toHaveBeenCalledWith(
-      ['clone', '--progress', '--', 'https://github.com/Auto-Scalers/Fabrica-app.git', 'FABRICA'],
+      [
+        'clone',
+        '--progress',
+        '--',
+        'https://github.com/Auto-Scalers/Fabrica-app.git',
+        'Fabrica-app'
+      ],
       '/home/user',
       expect.objectContaining({
         signal: expect.any(AbortSignal),
@@ -1227,19 +1233,19 @@ describe('repos:addRemote', () => {
     )
     expect(mockStore.addRepo).toHaveBeenCalledWith(
       expect.objectContaining({
-        path: '/home/user/FABRICA',
+        path: '/home/user/Fabrica-app',
         connectionId: 'conn-1',
         kind: 'git',
-        displayName: 'FABRICA',
+        displayName: 'Fabrica-app',
         badgeColor: DEFAULT_REPO_BADGE_COLOR,
         externalWorktreeVisibility: 'hide',
         externalWorktreeVisibilityLegacy: false
       })
     )
     expect(mockMultiplexer.notify).toHaveBeenCalledWith('session.registerRoot', {
-      rootPath: '/home/user/FABRICA'
+      rootPath: '/home/user/Fabrica-app'
     })
-    expect(result).toHaveProperty('path', '/home/user/FABRICA')
+    expect(result).toHaveProperty('path', '/home/user/Fabrica-app')
     expect(result).toHaveProperty('connectionId', 'conn-1')
   })
 
@@ -1270,9 +1276,9 @@ describe('repos:addRemote', () => {
   it('returns an existing SSH repo instead of cloning the same target again', async () => {
     const existing = {
       id: 'existing-id',
-      path: '/home/user/FABRICA',
+      path: '/home/user/Fabrica-app',
       connectionId: 'conn-1',
-      displayName: 'FABRICA',
+      displayName: 'Fabrica-app',
       badgeColor: '#fff',
       addedAt: 1000,
       kind: 'git'
@@ -1293,9 +1299,9 @@ describe('repos:addRemote', () => {
   it('upgrades an existing SSH folder repo after cloning into that path', async () => {
     const existing = {
       id: 'existing-folder',
-      path: '/home/user/FABRICA',
+      path: '/home/user/Fabrica-app',
       connectionId: 'conn-1',
-      displayName: 'FABRICA',
+      displayName: 'Fabrica-app',
       badgeColor: '#fff',
       addedAt: 1000,
       kind: 'folder'
@@ -1311,7 +1317,13 @@ describe('repos:addRemote', () => {
     })
 
     expect(mockGitProvider.clone).toHaveBeenCalledWith(
-      ['clone', '--progress', '--', 'https://github.com/Auto-Scalers/Fabrica-app.git', 'FABRICA'],
+      [
+        'clone',
+        '--progress',
+        '--',
+        'https://github.com/Auto-Scalers/Fabrica-app.git',
+        'Fabrica-app'
+      ],
       '/home/user',
       expect.objectContaining({
         signal: expect.any(AbortSignal),
@@ -1383,7 +1395,13 @@ describe('repos:addRemote', () => {
       path: '~/projects'
     })
     expect(mockGitProvider.clone).toHaveBeenCalledWith(
-      ['clone', '--progress', '--', 'https://github.com/Auto-Scalers/Fabrica-app.git', 'FABRICA'],
+      [
+        'clone',
+        '--progress',
+        '--',
+        'https://github.com/Auto-Scalers/Fabrica-app.git',
+        'Fabrica-app'
+      ],
       '/home/ubuntu/projects',
       expect.any(Object)
     )
@@ -2022,7 +2040,7 @@ describe('repos:add + repos:clone', () => {
     }
     const existingProject = { id: 'repo:repo-setup-enterprise', displayName: 'Existing' }
     const selectedProject = {
-      id: 'github:github.acme-corp.com/acme/FABRICA',
+      id: 'github:github.acme-corp.com/acme/fabrica',
       displayName: 'Enterprise project',
       providerIdentity: {
         provider: 'github',
@@ -2084,7 +2102,7 @@ describe('repos:add + repos:clone', () => {
       return repo
         ? [
             {
-              id: 'github:github.acme.test/acme/FABRICA',
+              id: 'github:github.acme.test/acme/fabrica',
               displayName: 'FABRICA',
               providerIdentity: {
                 provider: 'github',
@@ -2098,7 +2116,7 @@ describe('repos:add + repos:clone', () => {
     })
 
     const result = await handlers.get('projectHostSetups:setupExistingFolder')!(null, {
-      projectId: 'github:github.acme.test/acme/FABRICA',
+      projectId: 'github:github.acme.test/acme/fabrica',
       projectProviderIdentity: {
         provider: 'github',
         owner: 'acme',
@@ -2115,7 +2133,7 @@ describe('repos:add + repos:clone', () => {
       repo: 'fabrica',
       host: 'github.acme.test'
     })
-    expect(result).toHaveProperty('project.id', 'github:github.acme.test/acme/FABRICA')
+    expect(result).toHaveProperty('project.id', 'github:github.acme.test/acme/fabrica')
   })
 
   it('rolls back a new repo when the supplied identity does not match the project', async () => {
@@ -2125,7 +2143,7 @@ describe('repos:add + repos:clone', () => {
 
     await expect(
       handlers.get('projectHostSetups:setupExistingFolder')!(null, {
-        projectId: 'github:acme/FABRICA',
+        projectId: 'github:acme/fabrica',
         projectProviderIdentity: { provider: 'github', owner: 'other', repo: 'fabrica' },
         hostId: 'local',
         path: '/tmp/mismatched-project',
@@ -2376,7 +2394,13 @@ describe('repos:add + repos:clone', () => {
 
     // Without this env, a clone needing auth makes Git Credential Manager pop and loop its OAuth window on Windows.
     expect(gitSpawnMock).toHaveBeenCalledWith(
-      ['clone', '--progress', '--', 'https://example.com/FABRICA.git', join(destination, 'FABRICA')],
+      [
+        'clone',
+        '--progress',
+        '--',
+        'https://example.com/FABRICA.git',
+        join(destination, 'FABRICA')
+      ],
       expect.objectContaining({
         env: expect.objectContaining({
           GIT_TERMINAL_PROMPT: '0',
@@ -2824,12 +2848,12 @@ describe('repos:getBaseRefDefault envelope', () => {
       dispatchExec([
         // symbolic-ref rejects (no origin/HEAD on the remote)
         { matches: isSymbolicRef, respond: () => Promise.reject(new Error('no symbolic-ref')) },
-        // probe 1: refs/remotes/origin/main — rejects
+        // probe 1: refs/remotes/origin/main â€” rejects
         {
           matches: isRevParseFor('refs/remotes/origin/main'),
           respond: () => Promise.reject(new Error('missing'))
         },
-        // probe 2: refs/remotes/origin/master — succeeds
+        // probe 2: refs/remotes/origin/master â€” succeeds
         {
           matches: isRevParseFor('refs/remotes/origin/master'),
           respond: () => Promise.resolve({ stdout: 'abc123\n', stderr: '' })

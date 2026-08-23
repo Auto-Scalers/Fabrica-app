@@ -15,7 +15,7 @@ vi.mock('fs', () => ({
 
 vi.mock('./relay-protocol', () => ({
   RELAY_VERSION: '0.1.0',
-  RELAY_REMOTE_DIR: '.FABRICA-remote',
+  RELAY_REMOTE_DIR: '.fabrica-remote',
   parseUnameToRelayPlatform: vi.fn((os: string, arch: string) => {
     const normalizedOs = os.toLowerCase()
     const normalizedArch = arch.toLowerCase()
@@ -60,7 +60,7 @@ vi.mock('./ssh-relay-endpoint-credential', () => ({
 // and GC. Stub them so deploy tests need no real SSH connection.
 vi.mock('./ssh-relay-versioned-install', () => ({
   readLocalFullVersion: vi.fn().mockReturnValue('0.1.0+abcdef012345'),
-  computeRemoteRelayDir: (home: string, v: string) => `${home}/.FABRICA-remote/relay-${v}`,
+  computeRemoteRelayDir: (home: string, v: string) => `${home}/.fabrica-remote/relay-${v}`,
   isRelayAlreadyInstalled: vi.fn().mockResolvedValue(true),
   finalizeInstall: vi.fn().mockResolvedValue(undefined),
   abandonInstall: vi.fn().mockResolvedValue(undefined),
@@ -559,7 +559,7 @@ describe('deployAndLaunchRelay', () => {
     const execArgs = vi.mocked(conn.exec).mock.calls.map(([cmd]) => cmd as string)
     const allCmds = [...execArgs, ...mockExecCommand.mock.calls.map(([, cmd]) => cmd)]
     const sawVersionedDir = allCmds.some((cmd) =>
-      cmd.includes('/.FABRICA-remote/relay-0.1.0+abcdef012345')
+      cmd.includes('/.fabrica-remote/relay-0.1.0+abcdef012345')
     )
     expect(sawVersionedDir).toBe(true)
     const sawLegacyDir = allCmds.some((cmd) => cmd.includes('relay-v0.1.0'))
@@ -773,10 +773,10 @@ describe('deployAndLaunchRelay', () => {
       .filter((script): script is string => script !== null)
     const launchScript = decodedScripts.find((script) => script.includes('Invoke-CimMethod')) ?? ''
     expect(launchScript).toContain(
-      '"C:/Users/me user/.FABRICA-remote/relay-0.1.0+abcdef012345/relay.js"'
+      '"C:/Users/me user/.fabrica-remote/relay-0.1.0+abcdef012345/relay.js"'
     )
     expect(launchScript).toContain(
-      '"C:/Users/me user/.FABRICA-remote/relay-0.1.0+abcdef012345/agent-hooks/FABRICA-RELAY-'
+      '"C:/Users/me user/.fabrica-remote/relay-0.1.0+abcdef012345/agent-hooks/FABRICA-relay-'
     )
     expect(launchScript).toContain('--endpoint-dir')
     expect(launchScript).not.toContain('--pty-source-credit-v1')

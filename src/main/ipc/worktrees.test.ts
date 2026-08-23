@@ -911,7 +911,7 @@ describe('registerWorktreeHandlers', () => {
   })
 
   it('auto-suffixes the branch name when the first choice collides with a remote branch', async () => {
-    // Why: new-workspace flow should silently try improve-dashboard-2, -3, … rather than failing back to the name picker.
+    // Why: new-workspace flow should silently try improve-dashboard-2, -3, â€¦ rather than failing back to the name picker.
     getBranchConflictKindMock.mockImplementation(async (_repoPath: string, branch: string) =>
       branch === 'improve-dashboard' ? 'remote' : null
     )
@@ -958,7 +958,7 @@ describe('registerWorktreeHandlers', () => {
 
     await handlers['worktrees:create'](null, {
       repoId: 'repo-1',
-      name: '??'
+      name: 'ðŸš€'
     })
 
     expect(addWorktreeMock).toHaveBeenCalledWith(
@@ -970,7 +970,7 @@ describe('registerWorktreeHandlers', () => {
     )
     expect(store.setWorktreeMeta).toHaveBeenCalledWith(
       'repo-1::/workspace/rocket',
-      expect.objectContaining({ displayName: '??' })
+      expect.objectContaining({ displayName: 'ðŸš€' })
     )
   })
 
@@ -7887,7 +7887,7 @@ describe('registerWorktreeHandlers', () => {
   })
 
   it('skips past a suffix that already belongs to a PR after an initial branch conflict', async () => {
-    // Why: the PR-conflict probe (network-bound, 1–3s) only runs from suffix=2 onward, after a branch collision already forced past the first candidate.
+    // Why: the PR-conflict probe (network-bound, 1â€“3s) only runs from suffix=2 onward, after a branch collision already forced past the first candidate.
     getBranchConflictKindMock.mockImplementation(async (_repoPath: string, branch: string) =>
       branch === 'improve-dashboard' ? 'remote' : null
     )
@@ -7935,7 +7935,7 @@ describe('registerWorktreeHandlers', () => {
   })
 
   it('does not call `gh pr list` on the happy path (no branch conflict)', async () => {
-    // Why: guard against a refactor reintroducing the PR probe on the happy path (1–3s GitHub round-trip per click).
+    // Why: guard against a refactor reintroducing the PR probe on the happy path (1â€“3s GitHub round-trip per click).
     listWorktreesMock.mockResolvedValue([
       {
         path: '/workspace/improve-dashboard',
@@ -8622,7 +8622,7 @@ describe('registerWorktreeHandlers', () => {
   })
 
   // Folder projects can be SSH-backed, and folder workspace ids are `repoId::path::workspace:<uuid>`
-  // — reusable across hosts — so the sweep must name the owning connection.
+  // â€” reusable across hosts â€” so the sweep must name the owning connection.
   it('fences an SSH folder workspace PTY sweep to the owning connection', async () => {
     const sshPtyProvider = { id: 'ssh-pty-provider' } as never
     const worktreeId = 'repo-folder::/remote/folder::workspace:child-1'
@@ -9657,9 +9657,12 @@ describe('registerWorktreeHandlers', () => {
       worktreeId: 'repo-1::/workspace/feature-wt'
     })
 
-    expect(gitExecFileAsyncMock).toHaveBeenCalledWith(['remote', 'remove', 'pr-contributor-FABRICA'], {
-      cwd: '/workspace/repo'
-    })
+    expect(gitExecFileAsyncMock).toHaveBeenCalledWith(
+      ['remote', 'remove', 'pr-contributor-FABRICA'],
+      {
+        cwd: '/workspace/repo'
+      }
+    )
   })
 
   it('keeps an FABRICA-created fork remote while another worktree still uses it', async () => {
@@ -9725,9 +9728,12 @@ describe('registerWorktreeHandlers', () => {
       worktreeId: 'repo-1::/workspace/feature-wt'
     })
 
-    expect(gitExecFileAsyncMock).toHaveBeenCalledWith(['remote', 'remove', 'pr-contributor-FABRICA'], {
-      cwd: '/workspace/repo'
-    })
+    expect(gitExecFileAsyncMock).toHaveBeenCalledWith(
+      ['remote', 'remove', 'pr-contributor-FABRICA'],
+      {
+        cwd: '/workspace/repo'
+      }
+    )
   })
 
   it('reports already-missing unregistered delete paths before teardown, hooks, or git removal', async () => {
@@ -10239,7 +10245,7 @@ describe('registerWorktreeHandlers', () => {
     expect(store.removeWorktreeMeta).not.toHaveBeenCalled()
   })
 
-  it('IPC-initiated delete kills PTYs BEFORE git-level removal (design §4.3)', async () => {
+  it('IPC-initiated delete kills PTYs BEFORE git-level removal (design Â§4.3)', async () => {
     mockKnownFeatureWorktree()
     getEffectiveHooksMock.mockReturnValue(null)
     const callOrder: string[] = []
@@ -10673,7 +10679,7 @@ describe('registerWorktreeHandlers', () => {
     }
     const fsProvider = {
       readFile: vi.fn(async (filePath: string) => {
-        if (filePath.endsWith('/.FABRICA/issue-command')) {
+        if (filePath.endsWith('/.fabrica/issue-command')) {
           return { content: 'local command\n', isBinary: false }
         }
         throw new Error('shared read failed')
@@ -10740,7 +10746,7 @@ describe('registerWorktreeHandlers', () => {
     }
     const fsProvider = {
       readFile: vi.fn(async (filePath: string) => {
-        if (filePath.endsWith('/.FABRICA/issue-command')) {
+        if (filePath.endsWith('/.fabrica/issue-command')) {
           return { content: 'remote command\n', isBinary: false }
         }
         throw Object.assign(new Error('missing'), { code: 'ENOENT' })
@@ -10760,7 +10766,7 @@ describe('registerWorktreeHandlers', () => {
       effectiveContent: 'remote command',
       source: 'local'
     })
-    expect(fsProvider.readFile).toHaveBeenCalledWith('/remote/repo/.FABRICA/issue-command')
+    expect(fsProvider.readFile).toHaveBeenCalledWith('/remote/repo/.fabrica/issue-command')
   })
 
   it('creates remote .gitignore only when it is missing while writing SSH issue commands', async () => {
@@ -10788,10 +10794,10 @@ describe('registerWorktreeHandlers', () => {
       content: 'FABRICA issue command'
     })
 
-    expect(fsProvider.writeFile).toHaveBeenNthCalledWith(1, '/remote/repo/.gitignore', '.FABRICA\n')
+    expect(fsProvider.writeFile).toHaveBeenNthCalledWith(1, '/remote/repo/.gitignore', '.fabrica\n')
     expect(fsProvider.writeFile).toHaveBeenNthCalledWith(
       2,
-      '/remote/repo/.FABRICA/issue-command',
+      '/remote/repo/.fabrica/issue-command',
       'FABRICA issue command\n'
     )
   })

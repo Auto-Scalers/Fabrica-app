@@ -272,9 +272,9 @@ describe('web runtime environment identity', () => {
     ])
     expect(settings.activeRuntimeEnvironmentId).toBeNull()
     expect(globals.window.api.settings.getSync()?.activeRuntimeEnvironmentId).toBeNull()
-    expect(JSON.parse(globals.storage.getItem('FABRICA.web.settings.v1') ?? '{}')).not.toHaveProperty(
-      'activeRuntimeEnvironmentId'
-    )
+    expect(
+      JSON.parse(globals.storage.getItem('FABRICA.web.settings.v1') ?? '{}')
+    ).not.toHaveProperty('activeRuntimeEnvironmentId')
     await expect(
       globals.window.api.runtimeEnvironments.remove({ selector: paired.environment.id })
     ).resolves.toMatchObject({ removed: { id: paired.environment.id } })
@@ -639,7 +639,8 @@ describe('web runtime environment identity', () => {
     ).resolves.toMatchObject({
       ok: false,
       kind: 'environment-save-failed',
-      message: 'Fabrica verified the host but could not save it. Check browser storage and try again.'
+      message:
+        'Fabrica verified the host but could not save it. Check browser storage and try again.'
     })
     await expect(globals.window.api.runtimeEnvironments.list()).resolves.toMatchObject([
       { id: 'web-server-a' }
@@ -902,7 +903,10 @@ describe('web settings preload API', () => {
 
   it('migrates inherited terminal bar cursor defaults for stored web settings once', async () => {
     const globals = installBrowserGlobals('Linux')
-    globals.storage.setItem('FABRICA.web.settings.v1', JSON.stringify({ terminalCursorStyle: 'bar' }))
+    globals.storage.setItem(
+      'FABRICA.web.settings.v1',
+      JSON.stringify({ terminalCursorStyle: 'bar' })
+    )
     const { installWebPreloadApi } = await import('./web-preload-api')
     installWebPreloadApi()
 
@@ -956,7 +960,7 @@ describe('web settings preload API', () => {
   })
 
   it('migrates OSC 52 clipboard writes on for stored web settings once', async () => {
-    // Why: the web store is a second, independent settings store — the constants-level
+    // Why: the web store is a second, independent settings store â€” the constants-level
     // default flip only reaches profiles that never persisted the old `false` (#10567).
     const globals = installBrowserGlobals('Linux')
     globals.storage.setItem(
@@ -1012,7 +1016,7 @@ describe('web settings preload API', () => {
   it('arms the OSC 52 notice when ui.get is the read that runs the migration', async () => {
     // Why seed after install: readLocalWebUIState must run the settings migration before it
     // snapshots the UI blob, and only a ui.get that is itself the first settings read can
-    // show that. Reading first returns a pre-arm state every caller then writes back — and
+    // show that. Reading first returns a pre-arm state every caller then writes back â€” and
     // the stamp means nothing can raise the arm again. Another tab populating localStorage
     // after this one loaded is the shape that reaches it.
     const globals = installBrowserGlobals('Linux')
@@ -1744,7 +1748,7 @@ describe('web UI preload API', () => {
 
   it('yields while reading accepted large browser clipboard text', async () => {
     vi.useFakeTimers()
-    const text = 'é'.repeat(300_000)
+    const text = 'Ã©'.repeat(300_000)
     const globals = installBrowserGlobals('Linux')
     vi.stubGlobal('navigator', {
       userAgent: 'Linux',
@@ -1766,7 +1770,7 @@ describe('web UI preload API', () => {
 
   it('yields before writing accepted large browser clipboard text', async () => {
     vi.useFakeTimers()
-    const text = 'é'.repeat(300_000)
+    const text = 'Ã©'.repeat(300_000)
     const globals = installBrowserGlobals('Linux')
     const writeText = vi.fn().mockResolvedValue(undefined)
     vi.stubGlobal('navigator', {
@@ -3782,7 +3786,7 @@ describe('web git preload API', () => {
     await globals.window.api.git.status({ worktreePath: '/workspace/repo' })
 
     const statusCalls = runtimeCalls.filter((call) => call.method === 'git.status')
-    // Why: strict — `toEqual` would pass on a forwarded `branchLineTotalMergeBase: undefined`,
+    // Why: strict â€” `toEqual` would pass on a forwarded `branchLineTotalMergeBase: undefined`,
     // which is exactly what the conditional spread must avoid sending.
     expect(statusCalls).toStrictEqual([
       {

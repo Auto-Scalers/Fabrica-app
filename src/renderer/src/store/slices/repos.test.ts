@@ -54,7 +54,7 @@ describe('repo slice runtime routing', () => {
 
   it('keeps the repos array identity across a refetch that changes nothing', async () => {
     // Why: main rebuilds nested records (hookSettings et al) per list and IPC clones them, so a
-    // production-shaped repo — not a scalar-only fixture — is what proves reconciliation works.
+    // production-shaped repo â€” not a scalar-only fixture â€” is what proves reconciliation works.
     const hydrated = (): Repo => ({
       ...localRepo,
       kind: 'git',

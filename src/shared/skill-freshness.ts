@@ -90,7 +90,7 @@ export type SkillFreshnessInstallation = {
    * added a file. Absent from hosts older than this field.
    */
   observedOfficialGitTreeSha?: string | null
-  errFABRICAtegory: string | null
+  errCategory: string | null
 }
 
 // A scope whose contents belong to someone other than the user: a project's own checkout,

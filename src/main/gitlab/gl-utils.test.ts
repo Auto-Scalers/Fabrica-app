@@ -289,7 +289,7 @@ describe('gitlab project ref resolution', () => {
     glabExecFileAsyncMock.mockRejectedValue(new Error('not authenticated'))
 
     // Expiring project-ref negatives must not turn the hosted-review poll into a
-    // `glab auth status` spawn per repo per interval — the answer is per host.
+    // `glab auth status` spawn per repo per interval â€” the answer is per host.
     for (const repoPath of ['/repo-a', '/repo-b', '/repo-c']) {
       await expect(getProjectRef(repoPath)).resolves.toBeNull()
     }
@@ -540,7 +540,7 @@ describe('parseGlabJsonList', () => {
       '404 Project Not Found'
     ]
   ])('reports a GitLab error envelope by its %s field', (_label, payload, reported) => {
-    // Why: an envelope is GitLab's own diagnostic, so it stays classifiable — unlike a raw body.
+    // Why: an envelope is GitLab's own diagnostic, so it stays classifiable â€” unlike a raw body.
     expect(() => parseGlabJsonList(payload)).toThrow(`GitLab returned an error: ${reported}`)
     expect(() => parseGlabJsonList(payload)).not.toThrow(GlabNonListResponseError)
   })
@@ -793,7 +793,7 @@ describe('getGlabKnownHosts', () => {
     await expect(getGlabKnownHosts()).resolves.toEqual(['gitlab.com', 'gitlab.example.com:8080'])
   })
 
-  it('caches per connection — the local probe does not satisfy a connection probe', async () => {
+  it('caches per connection â€” the local probe does not satisfy a connection probe', async () => {
     glabExecFileAsyncMock
       .mockResolvedValueOnce({ stdout: '? Logged in to gitlab.com as user\n', stderr: '' })
       .mockResolvedValueOnce({
@@ -814,7 +814,7 @@ describe('getGlabKnownHosts', () => {
     expect(glabExecFileAsyncMock).toHaveBeenCalledTimes(2)
   })
 
-  it('does not permanently cache the failure fallback — a later probe can re-discover hosts', async () => {
+  it('does not permanently cache the failure fallback â€” a later probe can re-discover hosts', async () => {
     glabExecFileAsyncMock
       .mockRejectedValueOnce(new Error('ssh tunnel not ready'))
       .mockResolvedValueOnce({

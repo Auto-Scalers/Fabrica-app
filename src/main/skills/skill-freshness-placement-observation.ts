@@ -36,7 +36,7 @@ function freshnessStatus(
   return snapshot.packageDigest === current.packageDigest ? 'current' : 'outdated'
 }
 
-function errFABRICAtegory(error: unknown, fallback: string): string {
+function errCategory(error: unknown, fallback: string): string {
   return error instanceof Error && error.message ? error.message : fallback
 }
 
@@ -84,7 +84,7 @@ export async function observeSkillFreshnessInstallation(args: {
     currentReleaseRevision: args.current.releaseRevision,
     currentPackageDigest: args.current.packageDigest,
     currentAppVersion: args.currentAppVersion,
-    errFABRICAtegory: args.topology.errFABRICAtegory
+    errCategory: args.topology.errCategory
   }
   if (!args.topology.resolvedPath || !args.topology.identity) {
     return {
@@ -131,7 +131,7 @@ export async function observeSkillFreshnessInstallation(args: {
       installedAppVersion: null,
       observedPackageDigest: null,
       observedGitTreeSha: null,
-      errFABRICAtegory: errFABRICAtegory(error, 'skill-package-read-failed')
+      errCategory: errCategory(error, 'skill-package-read-failed')
     }
   }
 }
@@ -164,7 +164,7 @@ export async function classifyHomeSkillCandidate(args: {
         topology: 'broken-link',
         resolvedPath: null,
         identity: null,
-        errFABRICAtegory: errFABRICAtegory(error, 'skill-candidate-inaccessible')
+        errCategory: errCategory(error, 'skill-candidate-inaccessible')
       }
     })
   }
@@ -177,7 +177,7 @@ export async function classifyHomeSkillCandidate(args: {
       topology: 'broken-link',
       resolvedPath: null,
       identity: null,
-      errFABRICAtegory: errFABRICAtegory(error, 'skill-candidate-topology-failed')
+      errCategory: errCategory(error, 'skill-candidate-topology-failed')
     }
   }
   return observeSkillFreshnessInstallation({
@@ -220,7 +220,7 @@ export async function classifyUnsupportedSkillCandidate(args: {
         topology: args.root.sourceKind === 'repo' ? 'repo-scope' : 'plugin-cache',
         resolvedPath: null,
         identity: null,
-        errFABRICAtegory: errFABRICAtegory(error, 'unsupported-candidate-inaccessible')
+        errCategory: errCategory(error, 'unsupported-candidate-inaccessible')
       }
     })
   }

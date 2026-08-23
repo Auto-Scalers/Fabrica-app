@@ -108,11 +108,11 @@ describe('project host setup projection', () => {
     expect(projection.projects[0]).toMatchObject({
       id: 'github:auto-scalers/fabrica',
       sourceRepoIds: ['local-repo', 'remote-repo'],
-      providerIdentity: { provider: 'github', owner: 'StablyAI', repo: 'FABRICA' }
+      providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica' }
     })
-    expect(getProjectHostSetupsForProject(projection.setups, 'github:auto-scalers/fabrica')).toHaveLength(
-      2
-    )
+    expect(
+      getProjectHostSetupsForProject(projection.setups, 'github:auto-scalers/fabrica')
+    ).toHaveLength(2)
   })
 
   it('keeps same-named github.com and GHES repositories in separate projects', () => {
@@ -210,13 +210,13 @@ describe('project host setup projection', () => {
 
     expect(projection.projects).toHaveLength(1)
     expect(projection.projects[0]).toMatchObject({
-      id: 'github:auto-scalers/fabrica',
+      id: 'github:auto-scalers/fabrica-app',
       sourceRepoIds: ['local-repo', 'remote-repo'],
-      providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica' }
+      providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
     })
-    expect(getProjectHostSetupsForProject(projection.setups, 'github:auto-scalers/fabrica')).toHaveLength(
-      2
-    )
+    expect(
+      getProjectHostSetupsForProject(projection.setups, 'github:auto-scalers/fabrica-app')
+    ).toHaveLength(2)
   })
 
   it('uses git remote identity as a provider identity fallback', () => {
@@ -246,10 +246,10 @@ describe('project host setup projection', () => {
 
     expect(projection.projects).toHaveLength(1)
     expect(projection.projects[0]).toMatchObject({
-      id: 'github:auto-scalers/fabrica',
+      id: 'github:auto-scalers/fabrica-app',
       displayName: 'FABRICA',
       sourceRepoIds: ['canonical-local-repo', 'old-branch-checkout'],
-      providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica' }
+      providerIdentity: { provider: 'github', owner: 'Auto-Scalers', repo: 'Fabrica-app' }
     })
   })
 

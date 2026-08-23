@@ -61,14 +61,17 @@ describe('agent feature skill commands', () => {
   })
 
   it('refuses a target the skills CLI would drop', () => {
-    // Why: defence in depth behind the CLI's own check — the skills CLI silently
+    // Why: defence in depth behind the CLI's own check â€” the skills CLI silently
     // drops a `-`-leading --agent value, which empties its target list and
     // installs into every agent it knows.
     expect(() =>
       buildAgentFeatureSkillInstallCommand(['FABRICA-cli'], { yes: true, agents: ['-y'] })
     ).toThrow('"-y" is not a usable install target.')
     expect(() =>
-      buildAgentFeatureSkillInstallArgs(['FABRICA-cli'], { yes: true, agents: ['universal', 'a b'] })
+      buildAgentFeatureSkillInstallArgs(['FABRICA-cli'], {
+        yes: true,
+        agents: ['universal', 'a b']
+      })
     ).toThrow('"a b" is not a usable install target.')
   })
 
@@ -82,7 +85,9 @@ describe('agent feature skill commands', () => {
       'npx skills update FABRICA-cli --project -y'
     )
     expect(
-      buildAgentFeatureSkillInstallArgs(['FABRICA-cli'], { yes: true, agents: ['universal'] }).at(-1)
+      buildAgentFeatureSkillInstallArgs(['FABRICA-cli'], { yes: true, agents: ['universal'] }).at(
+        -1
+      )
     ).toBe('-y')
     expect(buildAgentFeatureSkillUpdateArgs(['FABRICA-cli'], { yes: true }).at(-1)).toBe('-y')
   })

@@ -259,7 +259,7 @@ export class RelayAgentHookServer {
       res.end()
       return
     }
-    if (req.headers['x-FABRICA-agent-hook-token'] !== this.token) {
+    if (req.headers['x-fabrica-agent-hook-token'] !== this.token) {
       res.writeHead(403)
       res.end()
       return

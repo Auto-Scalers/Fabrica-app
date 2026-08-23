@@ -49,20 +49,20 @@ afterEach(() => {
 describe('githubProjectKeys', () => {
   it('returns identity keys only for GitHub-backed repos', () => {
     const keys = githubProjectKeys([
-      githubRepo('a', 'autoscalers', 'FABRICA'),
+      githubRepo('a', 'Auto-Scalers', 'Fabrica-app'),
       gitlabRepo('b'),
       folderRepo('c')
     ])
-    expect(keys).toEqual(['github:Auto-Scalers/Fabrica-app'])
+    expect(keys).toEqual(['github:auto-scalers/fabrica-app'])
   })
 
   it('de-dupes the same GitHub project added twice and sorts deterministically', () => {
     const keys = githubProjectKeys([
-      githubRepo('a2', 'autoscalers', 'FABRICA'),
-      githubRepo('a1', 'autoscalers', 'FABRICA'),
+      githubRepo('a2', 'Auto-Scalers', 'Fabrica-app'),
+      githubRepo('a1', 'Auto-Scalers', 'Fabrica-app'),
       githubRepo('z', 'octocat', 'hello')
     ])
-    expect(keys).toEqual(['github:octocat/hello', 'github:Auto-Scalers/Fabrica-app'])
+    expect(keys).toEqual(['github:auto-scalers/fabrica-app', 'github:octocat/hello'])
   })
 
   it('is empty for a GitLab-only / folder-only workspace', () => {
@@ -82,7 +82,7 @@ describe('isPreflightIssueDismissed', () => {
   })
 
   it('stays dismissed when an existing GitHub project is unchanged', () => {
-    const repos = [githubRepo('a', 'autoscalers', 'FABRICA')]
+    const repos = [githubRepo('a', 'Auto-Scalers', 'Fabrica-app')]
     dismissPreflightIssue('gh', repos)
     expect(isPreflightIssueDismissed('gh', repos)).toBe(true)
   })
@@ -90,22 +90,22 @@ describe('isPreflightIssueDismissed', () => {
   it('re-surfaces when a NEW GitHub project is added', () => {
     const repos = [gitlabRepo('b')]
     dismissPreflightIssue('gh', repos)
-    const withNewGithub = [...repos, githubRepo('a', 'autoscalers', 'FABRICA')]
+    const withNewGithub = [...repos, githubRepo('a', 'Auto-Scalers', 'Fabrica-app')]
     expect(isPreflightIssueDismissed('gh', withNewGithub)).toBe(false)
   })
 
   it('stays dismissed when only a GitLab/folder repo is added', () => {
-    const repos = [githubRepo('a', 'autoscalers', 'FABRICA')]
+    const repos = [githubRepo('a', 'Auto-Scalers', 'Fabrica-app')]
     dismissPreflightIssue('gh', repos)
     const withMoreNonGithub = [...repos, gitlabRepo('b'), folderRepo('c')]
     expect(isPreflightIssueDismissed('gh', withMoreNonGithub)).toBe(true)
   })
 
   it('stays dismissed when a GitHub project is removed then re-added (set-based)', () => {
-    const repos = [githubRepo('a', 'autoscalers', 'FABRICA')]
+    const repos = [githubRepo('a', 'Auto-Scalers', 'Fabrica-app')]
     dismissPreflightIssue('gh', repos)
     // Same identity key re-appears under a different repo id � not a new project.
-    const reAdded = [githubRepo('a-again', 'autoscalers', 'FABRICA')]
+    const reAdded = [githubRepo('a-again', 'Auto-Scalers', 'Fabrica-app')]
     expect(isPreflightIssueDismissed('gh', reAdded)).toBe(true)
   })
 

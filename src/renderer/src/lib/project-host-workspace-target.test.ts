@@ -73,8 +73,13 @@ describe('project-host workspace target resolution', () => {
   })
 
   it('chooses the focused host setup when one project exists on multiple hosts', () => {
-    const repos = [makeRepo('FABRICA-local'), makeRepo('FABRICA-ssh', { connectionId: 'openclaw-2' })]
-    const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])]
+    const repos = [
+      makeRepo('FABRICA-local'),
+      makeRepo('FABRICA-ssh', { connectionId: 'openclaw-2' })
+    ]
+    const projects = [
+      makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])
+    ]
     const projectHostSetups = [
       makeSetup('FABRICA-local', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-local'),
       makeSetup('FABRICA-ssh', 'github:Auto-Scalers/Fabrica-app', 'ssh:openclaw-2', 'FABRICA-ssh')
@@ -180,10 +185,17 @@ describe('project-host workspace target resolution', () => {
       makeRepo('FABRICA-local'),
       makeRepo('FABRICA-runtime', { executionHostId: 'runtime:gpu-1' })
     ]
-    const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-runtime'])]
+    const projects = [
+      makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-runtime'])
+    ]
     const projectHostSetups = [
       makeSetup('FABRICA-local', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-local'),
-      makeSetup('FABRICA-runtime', 'github:Auto-Scalers/Fabrica-app', 'runtime:gpu-1', 'FABRICA-runtime')
+      makeSetup(
+        'FABRICA-runtime',
+        'github:Auto-Scalers/Fabrica-app',
+        'runtime:gpu-1',
+        'FABRICA-runtime'
+      )
     ]
 
     const resolution = resolveWorkspaceCreationTarget({
@@ -210,7 +222,9 @@ describe('project-host workspace target resolution', () => {
     // can still name a duplicate local setup; creation must land in the displayed path, not a
     // transient worktree path the user never sees.
     const repos = [makeRepo('FABRICA-main'), makeRepo('FABRICA-worktree')]
-    const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-main', 'FABRICA-worktree'])]
+    const projects = [
+      makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-main', 'FABRICA-worktree'])
+    ]
     const projectHostSetups = [
       makeSetup('FABRICA-main', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-main'),
       makeSetup('FABRICA-worktree', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-worktree')
@@ -231,7 +245,9 @@ describe('project-host workspace target resolution', () => {
 
   it('keeps an explicit setup id that is the only one on its host', () => {
     const repos = [makeRepo('FABRICA-local'), makeRepo('FABRICA-ssh', { connectionId: 'builder' })]
-    const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])]
+    const projects = [
+      makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])
+    ]
     const projectHostSetups = [
       makeSetup('FABRICA-local', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-local'),
       makeSetup('FABRICA-ssh', 'github:Auto-Scalers/Fabrica-app', 'ssh:builder', 'FABRICA-ssh')
@@ -268,7 +284,9 @@ describe('project-host workspace target resolution', () => {
   it('reports unavailable when the project is not set up on the selected host', () => {
     const repo = makeRepo('FABRICA')
     const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA'])]
-    const projectHostSetups = [makeSetup('FABRICA', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA')]
+    const projectHostSetups = [
+      makeSetup('FABRICA', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA')
+    ]
 
     expect(
       resolveWorkspaceCreationTarget({
@@ -287,7 +305,9 @@ describe('project-host workspace target resolution', () => {
   it('does not fall back to another host when only a host is selected', () => {
     const localRepo = makeRepo('FABRICA-local')
     const remoteRepo = makeRepo('FABRICA-ssh', { connectionId: 'builder' })
-    const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])]
+    const projects = [
+      makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA-local', 'FABRICA-ssh'])
+    ]
     const projectHostSetups = [
       makeSetup('FABRICA-local', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA-local')
     ]
@@ -337,7 +357,9 @@ describe('project-host workspace target resolution', () => {
     const repo = makeRepo('FABRICA')
     const projects = [makeProject('github:Auto-Scalers/Fabrica-app', ['FABRICA'])]
     const projectHostSetups = [
-      makeSetup('FABRICA', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA', { setupState: 'setting-up' })
+      makeSetup('FABRICA', 'github:Auto-Scalers/Fabrica-app', 'local', 'FABRICA', {
+        setupState: 'setting-up'
+      })
     ]
 
     expect(
@@ -456,7 +478,7 @@ describe('project-host workspace target resolution', () => {
 
     it('still reports unavailable for an explicit project+host with no ready setup', () => {
       // The strict projectId+hostId path (used by the explicit "Run on" host
-      // picker) keeps its hard match — only the project-dropdown call site
+      // picker) keeps its hard match â€” only the project-dropdown call site
       // changed to pass the host as a preference.
       expect(
         resolveWorkspaceCreationTarget({

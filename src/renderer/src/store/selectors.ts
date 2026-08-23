@@ -107,7 +107,7 @@ export function selectFloatingVisibleTabCount(state: FloatingVisibleTabCountStat
   return count
 }
 
-export function resetFloatingVisibleTabCountSelectFABRICAcheForTest(): void {
+export function resetFloatingVisibleTabCountSelectCacheForTest(): void {
   floatingVisibleTabCountCache = null
 }
 

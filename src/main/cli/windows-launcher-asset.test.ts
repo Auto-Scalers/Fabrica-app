@@ -13,7 +13,12 @@ describe('packaged Windows CLI launcher asset', () => {
   })
 
   it('marks the packaged child and propagates its exact exit status', () => {
-    const sourcePath = join(process.cwd(), 'native', 'windows-cli-launcher', 'FABRICACliLauncher.cs')
+    const sourcePath = join(
+      process.cwd(),
+      'native',
+      'windows-cli-launcher',
+      'FABRICACliLauncher.cs'
+    )
     const source = readFileSync(sourcePath, 'utf8')
 
     // Why: the marker and command name must ride the launcher's own environment, never
@@ -24,7 +29,7 @@ describe('packaged Windows CLI launcher asset', () => {
     expect(source).toContain(
       'string requestedCliCommand = Environment.GetEnvironmentVariable("FABRICA_CLI_COMMAND");'
     )
-    expect(source).toContain('requestedCliCommand == "FABRICA-ide" ? "FABRICA-ide" : "fabrica"')
+    expect(source).toContain('requestedCliCommand == "fabrica-ide" ? "fabrica-ide" : "fabrica"')
     expect(source).toContain('child.WaitForExit();')
     expect(source).toContain('return child.ExitCode;')
   })

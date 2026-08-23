@@ -189,7 +189,7 @@ describe('useComposerState host-context boundaries', () => {
   })
 
   it('clears only repo-scoped linked work items when the repo or project changes', () => {
-    // Why: Linear and Jira issues are workspace-scoped context — a repo or
+    // Why: Linear and Jira issues are workspace-scoped context â€” a repo or
     // project switch must keep them attached. Jira used to be dropped because
     // this path special-cased Linear only.
     const repoChangeSection = sourceBetween(
@@ -209,8 +209,8 @@ describe('useComposerState host-context boundaries', () => {
     expect(folderSourceSection).toContain('!shouldPreserveWorkspaceSourceOnRepoChange(current)')
 
     // No switch path may gate the linked-item clear on a Linear-only predicate
-    // again. (isLinearLinkedWorkItem itself may still appear — it drives the
-    // separate Linear branch-name feature — but never the preservation decision.)
+    // again. (isLinearLinkedWorkItem itself may still appear â€” it drives the
+    // separate Linear branch-name feature â€” but never the preservation decision.)
     expect(HOOK_SOURCE).not.toContain('if (!preserveLinearLinkedWorkItem)')
   })
 

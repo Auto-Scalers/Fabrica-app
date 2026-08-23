@@ -1,12 +1,12 @@
 import {
   AGENT_SESSION_EXECUTION_OWNER_PROTOCOL_VERSION,
   isAgentSessionClaimedSpawnResult,
+  SSH_AGENT_SESSION_CAPABILITY_PROBE_TIMEOUT_MS,
   type AgentSessionExecutionClaim,
   type AgentSessionSurfaceBinding
 } from '../../shared/agent-session-host-authority'
 import type { PtySpawnResult } from './pty-spawn-result'
 import type { SshChannelMultiplexer } from '../ssh/ssh-channel-multiplexer'
-import { SSH_AGENT_SESSION_CAPABILITY_PROBE_TIMEOUT_MS } from './ssh-agent-session-create-operation'
 import { isPtyIncarnationId } from '../../shared/pty-incarnation'
 
 export type ClaimedSshSpawnValidation =

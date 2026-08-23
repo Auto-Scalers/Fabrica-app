@@ -12,7 +12,7 @@ import {
   terminateDisconnectedWatcherChild
 } from './parcel-watcher-child-recovery'
 import { resetWatcherChildRegistryForTest } from './parcel-watcher-child-registry'
-import { WatcherSupervisFABRICApacityWait } from './parcel-watcher-supervisor-capacity-wait'
+import { WatcherSupervisorCapacityWait } from './parcel-watcher-supervisor-capacity-wait'
 import { WatcherProcessCrashFuse } from './parcel-watcher-crash-fuse'
 import { cancelInterruptedWatcherSubscribe } from './parcel-watcher-interrupted-cancellation'
 import {
@@ -51,7 +51,7 @@ export class WatcherProcessSupervisor {
   private readonly records = new Map<number, WatcherProcessSubscriptionRecord>()
   private readonly pendingUnsubscribes = new Map<number, PendingWatcherUnsubscribe>()
   private readonly cancelledSubscribes = new WatcherCancellationTracker()
-  private readonly capacityWait = new WatcherSupervisFABRICApacityWait()
+  private readonly capacityWait = new WatcherSupervisorCapacityWait()
 
   constructor(private readonly options: WatcherProcessSupervisorOptions = {}) {}
 

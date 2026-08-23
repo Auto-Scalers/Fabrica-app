@@ -18,7 +18,9 @@ test.describe('Workspace board lane virtualization', () => {
     await waitForActiveWorktree(fabricaPage)
   })
 
-  test('mounts a window of cards for a large lane and keeps lane indexes', async ({ fabricaPage }) => {
+  test('mounts a window of cards for a large lane and keeps lane indexes', async ({
+    fabricaPage
+  }) => {
     await fabricaPage.evaluate((count) => {
       const store = window.__store
       if (!store) {
@@ -287,7 +289,10 @@ test.describe('Workspace board lane virtualization', () => {
     if (!sourceId || !sourceBox || !targetBox) {
       throw new Error('Expected visible source card and final lane drop target')
     }
-    await fabricaPage.mouse.move(sourceBox.x + sourceBox.width / 2, sourceBox.y + sourceBox.height / 2)
+    await fabricaPage.mouse.move(
+      sourceBox.x + sourceBox.width / 2,
+      sourceBox.y + sourceBox.height / 2
+    )
     await fabricaPage.mouse.down()
     await fabricaPage.mouse.move(
       targetBox.x + targetBox.width / 2,
@@ -306,7 +311,9 @@ test.describe('Workspace board lane virtualization', () => {
       .toBe('state-21')
   })
 
-  test('selects the full lane across a single large marquee scroll jump', async ({ fabricaPage }) => {
+  test('selects the full lane across a single large marquee scroll jump', async ({
+    fabricaPage
+  }) => {
     test.skip(true, 'Quarantined by https://github.com/Auto-Scalers/Fabrica-app/issues/12415')
     const statusId = 'virtual-marquee'
     const emptyStatusId = 'virtual-marquee-start'
@@ -427,7 +434,7 @@ test.describe('Workspace board lane virtualization', () => {
     // Why: a measured card is much taller than the lane's row estimate, so each
     // jump to the bottom re-measures the window and grows the spacer past the
     // scrollTop the jump just landed on. A fixed pass budget commits the marquee
-    // mid-growth on a loaded machine — short of the last cards — so jump until
+    // mid-growth on a loaded machine â€” short of the last cards â€” so jump until
     // the virtualizer stops moving the bottom instead.
     const laneScrollSettle = await laneScroll.evaluate(async (element) => {
       let settledPasses = 0
@@ -456,7 +463,7 @@ test.describe('Workspace board lane virtualization', () => {
     await fabricaPage.mouse.move(box.x + box.width - 18, box.y + box.height - 12)
     await fabricaPage.mouse.up()
 
-    // Why: assert the badge's text, not its presence — a marquee that stopped
+    // Why: assert the badge's text, not its presence â€” a marquee that stopped
     // short reports the count it did commit instead of a bare locator timeout.
     await expect(fabricaPage.getByText(/^\d+ selected$/)).toHaveText(
       `${MARQUEE_WORKSPACE_COUNT} selected`

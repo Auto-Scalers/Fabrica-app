@@ -105,7 +105,7 @@ type CombinedDiffScrollThumb = {
 
 const combinedDiffViewStateCache = new Map<string, CachedCombinedDiffViewState>()
 const combinedDiffScrollTopCache = new Map<string, number>()
-const combinedDiffScrollAnchFABRICAche = new Map<string, VirtualizedScrollAnchor>()
+const combinedDiffScrollAnchorCache = new Map<string, VirtualizedScrollAnchor>()
 
 function buildCombinedGitStatusSignature(
   sections: readonly { path: string }[],
@@ -295,10 +295,10 @@ export default function CombinedDiffViewer({
   })
   const scrollOffsetRef = useRef(combinedDiffScrollTopCache.get(viewStateKey) ?? 0)
   const scrollAnchorRef = useRef<VirtualizedScrollAnchor>(
-    combinedDiffScrollAnchFABRICAche.get(viewStateKey) ?? null
+    combinedDiffScrollAnchorCache.get(viewStateKey) ?? null
   )
   const latestDomScrollAnchorRef = useRef<VirtualizedScrollAnchor>(
-    combinedDiffScrollAnchFABRICAche.get(viewStateKey) ?? null
+    combinedDiffScrollAnchorCache.get(viewStateKey) ?? null
   )
   const directScrollInputUntilRef = useRef(0)
   const [programmaticScrollMarks] = useState(createProgrammaticScrollMarks)
@@ -553,13 +553,13 @@ export default function CombinedDiffViewer({
       )
       loadingIndicesRef.current.clear()
       scrollOffsetRef.current = combinedDiffScrollTopCache.get(viewStateKey) ?? cached.scrollTop
-      scrollAnchorRef.current = combinedDiffScrollAnchFABRICAche.get(viewStateKey) ?? null
+      scrollAnchorRef.current = combinedDiffScrollAnchorCache.get(viewStateKey) ?? null
       latestDomScrollAnchorRef.current = scrollAnchorRef.current
       return
     }
 
     scrollOffsetRef.current = combinedDiffScrollTopCache.get(viewStateKey) ?? 0
-    scrollAnchorRef.current = combinedDiffScrollAnchFABRICAche.get(viewStateKey) ?? null
+    scrollAnchorRef.current = combinedDiffScrollAnchorCache.get(viewStateKey) ?? null
     latestDomScrollAnchorRef.current = scrollAnchorRef.current
     setSections(
       entries.map((entry) => ({
@@ -981,9 +981,9 @@ export default function CombinedDiffViewer({
   const writeCombinedDiffScrollAnchor = useCallback((): void => {
     const anchor = scrollAnchorRef.current
     if (anchor) {
-      setWithLRU(combinedDiffScrollAnchFABRICAche, viewStateKey, anchor)
+      setWithLRU(combinedDiffScrollAnchorCache, viewStateKey, anchor)
     } else {
-      combinedDiffScrollAnchFABRICAche.delete(viewStateKey)
+      combinedDiffScrollAnchorCache.delete(viewStateKey)
     }
   }, [viewStateKey])
   const persistCombinedDiffScrollAnchor = useCallback(
@@ -1205,7 +1205,10 @@ export default function CombinedDiffViewer({
     }
     window.addEventListener(FABRICA_EDITOR_EXTERNAL_FILE_CHANGE_EVENT, handler as EventListener)
     return () =>
-      window.removeEventListener(FABRICA_EDITOR_EXTERNAL_FILE_CHANGE_EVENT, handler as EventListener)
+      window.removeEventListener(
+        FABRICA_EDITOR_EXTERNAL_FILE_CHANGE_EVENT,
+        handler as EventListener
+      )
   }, [file.runtimeEnvironmentId, file.worktreeId, requestCombinedDiffSectionReload, treeMode])
 
   const setAllSectionsCollapsed = useCallback((collapsed: boolean) => {

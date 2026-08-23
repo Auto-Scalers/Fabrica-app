@@ -14,7 +14,7 @@ import { translate } from '@/i18n/i18n'
 
 const CLIPBOARD_VERSION = '1'
 const MARKER_ATTRIBUTE = 'data-rich-markdown-html-superscript-link'
-const SOURCE_ATTRIBUTE = 'data-FABRICA-superscript-link-source'
+const SOURCE_ATTRIBUTE = 'data-fabrica-superscript-link-source'
 const clipboardEncoder = new TextEncoder()
 
 export function createRichMarkdownHtmlSuperscriptLink(

@@ -117,12 +117,12 @@ describe('getDefaultTaskRepoSelection', () => {
     const selection = getDefaultTaskRepoSelection([
       repo({
         id: 'local-FABRICA',
-        upstream: { owner: 'StablyAI', repo: 'Fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'Fabrica-app' }
       }),
       repo({
         id: 'ssh-FABRICA',
         connectionId: 'builder',
-        upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'fabrica-app' }
       }),
       repo({
         id: 'other',
@@ -136,11 +136,11 @@ describe('getDefaultTaskRepoSelection', () => {
   it('keeps GitHub grouping intact while a pending-identity repo joins as its own project', () => {
     const selection = getDefaultTaskRepoSelection(
       getTaskEligibleRepos([
-        repo({ id: 'local-FABRICA', upstream: { owner: 'StablyAI', repo: 'Fabrica' } }),
+        repo({ id: 'local-FABRICA', upstream: { owner: 'Auto-Scalers', repo: 'Fabrica-app' } }),
         repo({
           id: 'ssh-FABRICA',
           connectionId: 'builder',
-          upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
+          upstream: { owner: 'Auto-Scalers', repo: 'fabrica-app' }
         }),
         repo({ id: 'ssh-gitlab-pending', connectionId: 'builder' })
       ])
@@ -196,7 +196,7 @@ describe('getDefaultTaskRepoSelection', () => {
           type: 'image',
           src: 'https://github.com/Auto-Scalers.png?size=64',
           source: 'github',
-          label: 'StablyAI/claude-swap'
+          label: 'Auto-Scalers/claude-swap'
         }
       })
     ])
@@ -210,12 +210,12 @@ describe('getTaskProjectPickerRepos', () => {
     const pickerRepos = getTaskProjectPickerRepos([
       repo({
         id: 'local-FABRICA',
-        upstream: { owner: 'StablyAI', repo: 'Fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'Fabrica-app' }
       }),
       repo({
         id: 'ssh-FABRICA',
         connectionId: 'builder',
-        upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'fabrica-app' }
       }),
       repo({
         id: 'other',
@@ -265,7 +265,7 @@ describe('getTaskProjectPickerRepos', () => {
           type: 'image',
           src: 'https://github.com/Auto-Scalers.png?size=64',
           source: 'github',
-          label: 'StablyAI/claude-swap'
+          label: 'Auto-Scalers/claude-swap'
         }
       })
     ])
@@ -279,12 +279,12 @@ describe('getTaskProjectPickerGroups', () => {
     const groups = getTaskProjectPickerGroups([
       repo({
         id: 'local-FABRICA',
-        upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'Fabrica-app' }
       }),
       repo({
         id: 'ssh-FABRICA',
         connectionId: 'builder',
-        upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
+        upstream: { owner: 'Auto-Scalers', repo: 'fabrica-app' }
       }),
       repo({
         id: 'docs',
@@ -294,12 +294,12 @@ describe('getTaskProjectPickerGroups', () => {
 
     expect(groups).toHaveLength(2)
     expect(groups[0]).toMatchObject({
-      projectKey: 'github:Auto-Scalers/Fabrica-app',
+      projectKey: 'github:auto-scalers/fabrica-app',
       repo: { id: 'local-FABRICA' }
     })
     expect(groups[0]?.sources.map((source) => source.id)).toEqual(['local-FABRICA', 'ssh-FABRICA'])
     expect(groups[1]).toMatchObject({
-      projectKey: 'github:Auto-Scalers/docs',
+      projectKey: 'github:auto-scalers/docs',
       repo: { id: 'docs' }
     })
   })

@@ -11,7 +11,7 @@ import {
 import { Button } from './ui/button'
 import { translate } from '@/i18n/i18n'
 
-export type UpdateErrFABRICArdAction = {
+export type UpdateErrorCardAction = {
   label: string
   pendingLabel?: string
   isPending?: boolean
@@ -19,7 +19,7 @@ export type UpdateErrFABRICArdAction = {
   onClick: () => void
 }
 
-export type UpdateErrFABRICArdModel = {
+export type UpdateErrorCardModel = {
   variant?: 'default' | 'http1Compatibility' | 'security'
   title: string
   summary: string
@@ -30,11 +30,11 @@ export type UpdateErrFABRICArdModel = {
   releaseUrl?: string
   /** Overrides the secondary button label (defaults to "Download Manually"). */
   manualLabel?: string
-  primaryAction?: UpdateErrFABRICArdAction
+  primaryAction?: UpdateErrorCardAction
   /** Outline button rendered beside the primary action, before any release-URL fallback. */
-  secondaryAction?: UpdateErrFABRICArdAction
+  secondaryAction?: UpdateErrorCardAction
   /** Link-style action rendered on its own row below the buttons. */
-  tertiaryAction?: UpdateErrFABRICArdAction
+  tertiaryAction?: UpdateErrorCardAction
   /** Short line under the actions — a copy confirmation or a recoverable action failure. */
   footnote?: { text: string; tone?: 'muted' | 'destructive' }
 }
@@ -44,7 +44,7 @@ function ActionButton({
   variant,
   leadingIcon
 }: {
-  action: UpdateErrFABRICArdAction
+  action: UpdateErrorCardAction
   variant: 'default' | 'outline'
   leadingIcon?: React.ReactNode
 }) {
@@ -66,7 +66,7 @@ function ActionButton({
   )
 }
 
-export function UpdateErrFABRICArdContent({
+export function UpdateErrorCardContent({
   variant = 'default',
   title,
   summary,
@@ -79,7 +79,7 @@ export function UpdateErrFABRICArdContent({
   tertiaryAction,
   footnote,
   onClose
-}: UpdateErrFABRICArdModel & { onClose: () => void }) {
+}: UpdateErrorCardModel & { onClose: () => void }) {
   // Why: raw error starts collapsed so the card leads with the plain summary, not a stack dump.
   const [showDetails, setShowDetails] = useState(false)
   const detailId = useId()

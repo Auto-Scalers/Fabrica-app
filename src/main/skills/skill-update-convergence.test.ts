@@ -34,7 +34,7 @@ function placement(
     currentPackageDigest: 'digest-current',
     currentAppVersion: '1.4.160',
     observedPackageDigest,
-    errFABRICAtegory: null
+    errCategory: null
   }
 }
 

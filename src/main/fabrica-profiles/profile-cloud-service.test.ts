@@ -190,7 +190,7 @@ describe('FABRICA cloud profile service', () => {
       state: 'unconfigured',
       persistence: 'encrypted',
       cloud: cloudSummary,
-      setupMessage: 'FABRICA Cloud sign-in is not configured for this build.'
+      setupMessage: 'Fabrica Cloud sign-in is not configured for this build.'
     })
     expect(getCurrentFABRICAProfileAuthStatus(userDataPath).organizations).toBeUndefined()
     expect(getCurrentFABRICAProfileAuthStatus(userDataPath).capabilities).toBeUndefined()

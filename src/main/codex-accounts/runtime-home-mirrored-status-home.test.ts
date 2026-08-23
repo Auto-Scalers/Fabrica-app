@@ -3,6 +3,7 @@ import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type * as NodeOs from 'node:os'
+import type * as ShellStartupEnv from '../pty/shell-startup-env'
 import type { CodexManagedAccount, GlobalSettings } from '../../shared/types'
 
 const testState = { userData: '', home: '' }
@@ -14,7 +15,7 @@ vi.mock('node:os', async () => {
   return { ...actual, homedir: () => testState.home }
 })
 vi.mock('../pty/shell-startup-env', async () => {
-  const actual = await vi.importActual<typeof import('../pty/shell-startup-env')>('../pty/shell-startup-env')
+  const actual = await vi.importActual<typeof ShellStartupEnv>('../pty/shell-startup-env')
   return { ...actual, isShellStartupEnvProbeSupported: () => true }
 })
 

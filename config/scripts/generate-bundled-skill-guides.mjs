@@ -241,10 +241,12 @@ async function verifyArtifacts(artifacts, repoRoot = REPO_ROOT) {
     }
   }
   if (stale.length > 0) {
+    const relative = stale.map((filePath) => path.relative(repoRoot, filePath))
+    const normalized = relative.map((filePath) => filePath.split(path.sep).join('/'))
     throw new Error(
-      `Generated bundled skill guides are stale:\n${stale
-        .map((filePath) => path.relative(repoRoot, filePath))
-        .join('\n')}\nRun node config/scripts/generate-bundled-skill-guides.mjs --write.`
+      `Generated bundled skill guides are stale:\n${normalized.join(
+        '\n'
+      )}\nRun node config/scripts/generate-bundled-skill-guides.mjs --write.`
     )
   }
 }

@@ -877,7 +877,7 @@ describe('fetchWorktrees', () => {
 
   // Why (#10562): the scan coalesces but each caller carries its own known-id
   // snapshot, so a caller that joined an in-flight scan must still request
-  // teardown — otherwise it purges renderer state and strands live PTYs.
+  // teardown â€” otherwise it purges renderer state and strands live PTYs.
   it('stops terminals for a caller that coalesced onto an in-flight scan', async () => {
     const store = createTestStore()
     const deleted = makeWorktree({ id: 'repo1::/p/deleted', repoId: 'repo1', path: '/p/deleted' })
@@ -972,7 +972,7 @@ describe('fetchWorktrees', () => {
           connectionId: TEST_SSH_AUTHORITY.targetId
         }
       ],
-      // Why: the target dropped — no connected authority for this host.
+      // Why: the target dropped â€” no connected authority for this host.
       sshConnectionStates: new Map([
         [
           TEST_SSH_AUTHORITY.targetId,
@@ -2527,7 +2527,7 @@ describe('fetchWorktrees', () => {
   it('pins the list fetch to the local host when forceLocalOwner is set', async () => {
     // Regression: a local `worktrees:changed` event for an unbound
     // repo while a remote runtime is active must refresh against the local
-    // host, not the runtime — otherwise CLI-created local worktrees stay
+    // host, not the runtime â€” otherwise CLI-created local worktrees stay
     // invisible in the sidebar until an app restart.
     const store = createTestStore()
     const local = makeWorktree({
@@ -4893,7 +4893,7 @@ describe('createWorktree base status merge', () => {
     })
     const description = vi.mocked(toast.warning).mock.calls.at(-1)?.[1]?.description
     expect(description).toContain('feature-wt')
-    // Create already succeeded — guidance must push manual recovery, not "try again".
+    // Create already succeeded â€” guidance must push manual recovery, not "try again".
     expect(description).toMatch(/manually/i)
     expect(description).not.toContain('try again')
     expect(description).not.toContain('AI tools')
@@ -5806,7 +5806,7 @@ describe('removeWorktree state cleanup', () => {
   })
 
   it('clears recentlyClosedBrowserTabsByWorktree for the removed worktree', async () => {
-    // Why: undo snapshots for a deleted worktree can never be restored, so removeWorktree clears the key (design §1.1).
+    // Why: undo snapshots for a deleted worktree can never be restored, so removeWorktree clears the key (design Â§1.1).
     const store = createTestStore()
     const wt = makeWorktree({ id: 'repo1::/path/wt1', repoId: 'repo1', path: '/path/wt1' })
 
@@ -6551,7 +6551,7 @@ describe('worktree remote runtime mutations', () => {
     )
 
     // Re-seed: the first removal dropped the row, and a second call for a missing
-    // worktree never reaches the API — which would silently re-read the call above.
+    // worktree never reaches the API â€” which would silently re-read the call above.
     const retry = makeWorktree({ id: 'repo1::/w/two', repoId: 'repo1', path: '/w/two' })
     store.setState({ worktreesByRepo: { repo1: [retry] } } as Partial<AppState>)
 
@@ -7426,7 +7426,13 @@ describe('worktree remote runtime mutations', () => {
     })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7474,7 +7480,13 @@ describe('worktree remote runtime mutations', () => {
     })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7526,7 +7538,13 @@ describe('worktree remote runtime mutations', () => {
     })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7576,7 +7594,13 @@ describe('worktree remote runtime mutations', () => {
     })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7629,7 +7653,13 @@ describe('worktree remote runtime mutations', () => {
     })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7664,7 +7694,13 @@ describe('worktree remote runtime mutations', () => {
     mockApi.worktrees.resolvePrBase.mockResolvedValueOnce({ baseBranch: 'main' })
     store.setState({
       repos: [
-        { id: 'repo1', path: '/repos/FABRICA', displayName: 'FABRICA', badgeColor: '#000', addedAt: 0 }
+        {
+          id: 'repo1',
+          path: '/repos/FABRICA',
+          displayName: 'FABRICA',
+          badgeColor: '#000',
+          addedAt: 0
+        }
       ],
       worktreesByRepo: { repo1: [wt] },
       fetchPRForBranch
@@ -7822,7 +7858,7 @@ describe('worktree remote runtime mutations', () => {
     await new Promise((resolve) => setTimeout(resolve, 0))
 
     expect(runtimeEnvironmentCall).not.toHaveBeenCalled()
-    // Why: worktreeMeta['folder:…'] rows are write-only — folder meta must land on the FolderWorkspace record.
+    // Why: worktreeMeta['folder:â€¦'] rows are write-only â€” folder meta must land on the FolderWorkspace record.
     expect(mockApi.worktrees.updateMeta).not.toHaveBeenCalled()
     expect(store.getState().updateFolderWorkspace).toHaveBeenCalledWith(
       folderWorkspace.id,
@@ -8149,7 +8185,7 @@ describe('worktree remote runtime mutations', () => {
   })
 })
 
-// Why: ghostty "show until interact" — BEL raises the dot even on the active worktree; only clearWorktreeUnread clears it.
+// Why: ghostty "show until interact" â€” BEL raises the dot even on the active worktree; only clearWorktreeUnread clears it.
 describe('worktree unread (show-until-interact)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -8397,8 +8433,8 @@ describe('worktree unread (show-until-interact)', () => {
   })
 })
 
-// Why: design §4.4 — hydration purge gated on per-repo success (F1 regression) so a git error can't wipe tabsByWorktree.
-describe('fetchAllWorktrees hydration-time purge (design §4.4)', () => {
+// Why: design Â§4.4 â€” hydration purge gated on per-repo success (F1 regression) so a git error can't wipe tabsByWorktree.
+describe('fetchAllWorktrees hydration-time purge (design Â§4.4)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     resetRemoteRuntimeMocks()
@@ -8583,7 +8619,7 @@ describe('fetchAllWorktrees hydration-time purge (design §4.4)', () => {
   it('defers the purge when every repo succeeds but none returns worktrees (empty-sibling safety)', async () => {
     const store = createTestStore()
 
-    // Empty valid-id union (both repos newly-cloned, empty) isn't authoritative — defer instead of wiping tabsByWorktree.
+    // Empty valid-id union (both repos newly-cloned, empty) isn't authoritative â€” defer instead of wiping tabsByWorktree.
     mockApi.worktrees.list.mockResolvedValue([])
 
     store.setState({
@@ -8731,7 +8767,7 @@ describe('fetchAllWorktrees hydration-time purge (design §4.4)', () => {
     })
   })
 
-  // Why: multi-host regression — after hydration a mid-session fetch must never purge, even if a host reports zero worktrees.
+  // Why: multi-host regression â€” after hydration a mid-session fetch must never purge, even if a host reports zero worktrees.
   it('does not purge another host tab state when hasHydratedWorktreePurge is already true and a host reports zero worktrees', async () => {
     const store = createTestStore()
     const wtA = makeWorktree({ id: 'repoA::/a/wt1', repoId: 'repoA', path: '/a/wt1' })
@@ -9135,8 +9171,8 @@ describe('fetchAllWorktrees hydration-time purge (design §4.4)', () => {
   })
 })
 
-// Why: design §4.4 — purgeWorktreeTerminalState wipes every worktree-scoped map symmetrically so no entry is stranded.
-describe('purgeWorktreeTerminalState direct (design §4.4)', () => {
+// Why: design Â§4.4 â€” purgeWorktreeTerminalState wipes every worktree-scoped map symmetrically so no entry is stranded.
+describe('purgeWorktreeTerminalState direct (design Â§4.4)', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     resetRemoteRuntimeMocks()
@@ -9835,7 +9871,7 @@ describe('migrateWorktreeIdentity', () => {
     expect(s.openFiles[0].worktreeId).toBe(NEW)
     expect(s.pendingReconnectWorktreeIds).toEqual([NEW])
     expect(s.sleepingAgentSessionsByPaneKey['tab1:leaf']?.worktreeId).toBe(NEW)
-    // Tab-id-keyed state is untouched — the tab survives with the same id.
+    // Tab-id-keyed state is untouched â€” the tab survives with the same id.
     expect(s.terminalLayoutsByTabId.tab1).toBeDefined()
   })
 

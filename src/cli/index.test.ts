@@ -26,7 +26,7 @@ vi.mock('./runtime-client', async () => {
   // Why: re-export the REAL error classes rather than redefining them. format.ts
   // narrows with `instanceof` against ./runtime/types, so a look-alike class
   // here would make every CLI error fall through to the generic `runtime_error`
-  // shape — mirroring the barrel keeps the mock faithful to production.
+  // shape â€” mirroring the barrel keeps the mock faithful to production.
   const { RuntimeClientError, RuntimeRpcFailureError } = await import('./runtime/types.js')
 
   class RuntimeClient {
@@ -146,7 +146,7 @@ describe('command aliases dispatch to the canonical handler', () => {
   afterEach(() => {
     callMock.mockReset()
     // Why: restore console.log so a downstream describe's vi.spyOn starts from a
-    // clean spy — otherwise this block's --json output leaks into its calls[0].
+    // clean spy â€” otherwise this block's --json output leaks into its calls[0].
     logSpy.mockRestore()
   })
 
@@ -187,7 +187,7 @@ describe('command aliases dispatch to the canonical handler', () => {
     runtimeClientConstructorMock.mockClear()
     await main(['agent-context', '--json'], '/tmp/repo')
 
-    // Why: pure local read — proves the SSH/offline property (no RPC).
+    // Why: pure local read â€” proves the SSH/offline property (no RPC).
     expect(runtimeClientConstructorMock).not.toHaveBeenCalled()
     expect(callMock).not.toHaveBeenCalled()
     const schema = JSON.parse(String(logSpy.mock.calls.at(-1)?.[0]))
@@ -2683,7 +2683,14 @@ describe('FABRICA cli worktree awareness', () => {
     const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
 
     await main(
-      ['project', 'setups', '--project', 'github:Auto-Scalers/Fabrica-app', '--host', 'runtime:gpu'],
+      [
+        'project',
+        'setups',
+        '--project',
+        'github:Auto-Scalers/Fabrica-app',
+        '--host',
+        'runtime:gpu'
+      ],
       '/tmp/repo'
     )
 

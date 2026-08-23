@@ -371,7 +371,7 @@ describe('rich Markdown HTML superscript links', () => {
     const encodeSpy = vi.spyOn(TextEncoder.prototype, 'encode')
     try {
       editor.commands.setContent(
-        `<sup data-rich-markdown-html-superscript-link="1" data-FABRICA-superscript-link-source="${oversizedSource}"><a>x</a></sup>`,
+        `<sup data-rich-markdown-html-superscript-link="1" data-fabrica-superscript-link-source="${oversizedSource}"><a>x</a></sup>`,
         { contentType: 'html' }
       )
       expect(nodeNames(editor)).not.toContain('richMarkdownHtmlSuperscriptLink')
@@ -425,7 +425,7 @@ describe('rich Markdown HTML superscript links', () => {
         } as unknown as ClipboardEvent
         expect(handleRichMarkdownCut(citationOnly.view, event)).toBe(true)
         expect(clipboard.get('text/plain')).toBe('[12]')
-        expect(clipboard.get('text/html')).toContain('data-FABRICA-superscript-link-source')
+        expect(clipboard.get('text/html')).toContain('data-fabrica-superscript-link-source')
         expect(citationOnly.getMarkdown()).toBe('')
       } finally {
         citationOnly.destroy()

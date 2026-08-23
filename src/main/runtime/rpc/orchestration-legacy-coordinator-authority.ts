@@ -1,4 +1,7 @@
-﻿import type { FABRICARuntimeService, OrchestrationCompatibilityCallerAuthority } from '../fabrica-runtime'
+﻿import type {
+  FABRICARuntimeService,
+  OrchestrationCompatibilityCallerAuthority
+} from '../fabrica-runtime'
 import type { OrchestrationDb } from '../orchestration/db'
 import type { LegacyCompatibilityPrincipalRow } from '../orchestration/types'
 import type { LegacyCoordinatorAuthorityProof, RpcRequest } from './core'
@@ -29,7 +32,7 @@ export class LegacyCoordinatorAuthority {
     if (requestedRun !== adoption.adopted_run_id) {
       return undefined
     }
-    const candidate = db.resolveLegacyCoordinatFABRICAndidate({
+    const candidate = db.resolveLegacyCoordinatorCandidate({
       runId: adoption.adopted_run_id,
       terminalHandle: request.orchestrationCompatibilityEvidence?.terminalHandle,
       paneKey: request.orchestrationCompatibilityEvidence?.paneKey

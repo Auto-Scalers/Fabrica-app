@@ -6316,7 +6316,7 @@ describe('createGitHubSlice.fetchWorkItems source/error envelope', () => {
   })
 
   it('stores resolved sources on the cache entry for the indicator to read', async () => {
-    // Why: parent design doc §1 suppression rule — the Tasks header indicator
+    // Why: parent design doc Â§1 suppression rule â€” the Tasks header indicator
     // consults `sources.issues` vs `sources.prs` on the cache entry. This is
     // the round-trip through fetchWorkItems that populates those fields.
     const store = createTestStore()
@@ -6343,7 +6343,7 @@ describe('createGitHubSlice.fetchWorkItems source/error envelope', () => {
   })
 
   it('stamps the issues-side ClassifiedError with its source slug for banner copy', async () => {
-    // Why: parent design doc §2 partial-failure rule — when the issue fetch
+    // Why: parent design doc Â§2 partial-failure rule â€” when the issue fetch
     // returns a 403 but the PR fetch succeeds, the cache entry carries the
     // successful items AND the error for the failing side so the banner +
     // list render together. The error's `source` is pinned to the issues
@@ -6392,7 +6392,7 @@ describe('createGitHubSlice.fetchWorkItems source/error envelope', () => {
   })
 
   it('force-retry invalidates a still-failing in-flight request instead of deduping onto it', async () => {
-    // Why: parent design doc §2 acceptance criterion 4 — the [Retry] button
+    // Why: parent design doc Â§2 acceptance criterion 4 â€” the [Retry] button
     // must re-invoke the fetch with force=true and clear the banner on
     // success. That only works when force=true does not silently dedupe onto
     // a still-failing non-forcing request.
@@ -6704,7 +6704,10 @@ describe('createGitHubSlice.fetchWorkItems source/error envelope', () => {
     mockApi.gh.listWorkItems
       .mockResolvedValueOnce({
         items: [{ type: 'issue', number: 1, title: 'Acme', url: 'https://example.test/1' }],
-        sources: { issues: { owner: 'acme', repo: 'fabrica' }, prs: { owner: 'acme', repo: 'fabrica' } }
+        sources: {
+          issues: { owner: 'acme', repo: 'fabrica' },
+          prs: { owner: 'acme', repo: 'fabrica' }
+        }
       })
       .mockResolvedValueOnce({
         items: [{ type: 'issue', number: 2, title: 'Stably', url: 'https://example.test/2' }],
@@ -7506,7 +7509,7 @@ describe('createGitHubSlice.fetchWorkItems source/error envelope', () => {
       .getState()
       .fetchWorkItemsNextPage([{ repoId: 'caller-repo-id', path: '/server/repo' }], 24, 100, '', 34)
 
-    // The window 422 travels on the envelope error channel, not failedCount —
+    // The window 422 travels on the envelope error channel, not failedCount â€”
     // resolveEmptyPageOutcome keys on this exact string (#11485).
     expect(result).toEqual({ items: [], failedCount: 0, errorTypes: ['validation_error'] })
   })
@@ -8176,10 +8179,13 @@ describe('IssueSourceIndicator suppression', () => {
 
     // Same slug ? null (no information to convey)
     expect(sameGitHubOwnerRepo({ owner: 'o', repo: 'r' }, { owner: 'o', repo: 'r' })).toBe(true)
-    // Case-insensitive equality — the parent design doc calls out that `StablyAI/FABRICA`
+    // Case-insensitive equality â€” the parent design doc calls out that `StablyAI/FABRICA`
     // and `Auto-Scalers/Fabrica-app` resolve to the same repo and must suppress.
     expect(
-      sameGitHubOwnerRepo({ owner: 'StablyAI', repo: 'Fabrica' }, { owner: 'Auto-Scalers', repo: 'fabrica' })
+      sameGitHubOwnerRepo(
+        { owner: 'StablyAI', repo: 'Fabrica' },
+        { owner: 'Auto-Scalers', repo: 'fabrica' }
+      )
     ).toBe(true)
     expect(
       sameGitHubOwnerRepo(

@@ -12,7 +12,7 @@ type CapacityWaitState = {
   cancel: () => void
 }
 
-export class WatcherSupervisFABRICApacityWait {
+export class WatcherSupervisorCapacityWait {
   private state: CapacityWaitState | null = null
   private lifecycleGeneration = 0
 

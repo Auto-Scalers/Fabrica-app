@@ -8,7 +8,7 @@ import ProjectCombobox from './ProjectCombobox'
 
 // Render the popover inline so assertions can reach the list without a portal.
 // `onOpenChange` is exposed on a button so a test can close the popover the way
-// Radix does on Escape — independently of the component's own key handler.
+// Radix does on Escape â€” independently of the component's own key handler.
 vi.mock('@/components/ui/popover', () => ({
   Popover: ({
     children,
@@ -112,7 +112,11 @@ describe('ProjectCombobox', () => {
   it('renders a logical project label without host-specific SSH chrome', () => {
     act(() => {
       root.render(
-        <ProjectCombobox options={projects} value="github:Auto-Scalers/Fabrica-app" onValueChange={vi.fn()} />
+        <ProjectCombobox
+          options={projects}
+          value="github:Auto-Scalers/Fabrica-app"
+          onValueChange={vi.fn()}
+        />
       )
     })
 
@@ -340,14 +344,18 @@ describe('ProjectCombobox', () => {
   it('restores the committed project on Escape instead of stranding a stale query', () => {
     act(() => {
       root.render(
-        <ProjectCombobox options={projects} value="github:Auto-Scalers/Fabrica-app" onValueChange={vi.fn()} />
+        <ProjectCombobox
+          options={projects}
+          value="github:Auto-Scalers/Fabrica-app"
+          onValueChange={vi.fn()}
+        />
       )
     })
     openList()
     type('zzzznomatch')
     expect(field().value).toBe('zzzznomatch')
     // Radix closes the popover itself on Escape/outside-click, leaving a closed
-    // list with a live query — the state that used to strand the field showing
+    // list with a live query â€” the state that used to strand the field showing
     // text matching nothing while hiding the committed project.
     act(() => {
       container
@@ -367,7 +375,11 @@ describe('ProjectCombobox', () => {
   it('drops an uncommitted query when the list closes, so junk text never persists', () => {
     act(() => {
       root.render(
-        <ProjectCombobox options={projects} value="github:Auto-Scalers/Fabrica-app" onValueChange={vi.fn()} />
+        <ProjectCombobox
+          options={projects}
+          value="github:Auto-Scalers/Fabrica-app"
+          onValueChange={vi.fn()}
+        />
       )
     })
     openList()

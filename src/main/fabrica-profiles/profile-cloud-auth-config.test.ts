@@ -15,7 +15,7 @@ describe('FABRICA cloud auth config', () => {
   it('reports unconfigured without both API URL and client ID', () => {
     expect(getFABRICACloudAuthConfig({})).toEqual({
       configured: false,
-      setupMessage: 'FABRICA Cloud sign-in is not configured for this build.'
+      setupMessage: 'Fabrica Cloud sign-in is not configured for this build.'
     })
   })
 
@@ -28,15 +28,15 @@ describe('FABRICA cloud auth config', () => {
     expect(state).toEqual({
       configured: true,
       config: {
-        apiBaseUrl: 'https://FABRICA-cloud.example',
-        authorizeEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/authorize',
-        sessionEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/session',
-        refreshEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/refresh',
-        capabilitiesEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/capabilities',
-        profileEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/profile',
-        orgEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/org',
-        logoutEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/logout',
-        relayTokenEndpoint: 'https://FABRICA-cloud.example/v1/desktop/auth/relay-token',
+        apiBaseUrl: 'https://fabrica-cloud.example',
+        authorizeEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/authorize',
+        sessionEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/session',
+        refreshEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/refresh',
+        capabilitiesEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/capabilities',
+        profileEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/profile',
+        orgEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/org',
+        logoutEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/logout',
+        relayTokenEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/relay-token',
         relayDirectorUrl: 'https://relay.onFABRICA.dev',
         clientId: 'desktop-client',
         scope: 'openid profile email offline_access'
@@ -49,14 +49,14 @@ describe('FABRICA cloud auth config', () => {
       configured: true,
       config: {
         apiBaseUrl: 'https://login.onFABRICA.dev',
-        authorizeEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/authorize',
-        sessionEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/session',
-        refreshEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/refresh',
-        capabilitiesEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/capabilities',
-        profileEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/profile',
-        orgEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/org',
-        logoutEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/logout',
-        relayTokenEndpoint: 'https://login.onFABRICA.dev/v1/desktop/auth/relay-token',
+        authorizeEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/authorize',
+        sessionEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/session',
+        refreshEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/refresh',
+        capabilitiesEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/capabilities',
+        profileEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/profile',
+        orgEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/org',
+        logoutEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/logout',
+        relayTokenEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/relay-token',
         relayDirectorUrl: 'https://relay.onFABRICA.dev',
         clientId: 'FABRICA-desktop',
         scope: 'openid profile email offline_access'
@@ -121,9 +121,9 @@ describe('FABRICA cloud auth config', () => {
   it('ignores dev flags in packaged builds even without NODE_ENV', () => {
     // Why: packaged main bundles never define NODE_ENV, so packaged-ness must
     // gate the escape hatches on its own.
-    expect(allowsPlaintextFABRICACloudSession({ FABRICA_CLOUD_ALLOW_PLAINTEXT_SESSION: '1' }, true)).toBe(
-      false
-    )
+    expect(
+      allowsPlaintextFABRICACloudSession({ FABRICA_CLOUD_ALLOW_PLAINTEXT_SESSION: '1' }, true)
+    ).toBe(false)
     expect(isFABRICACloudDevAuthEnabled({ FABRICA_CLOUD_DEV_AUTH: '1' }, true)).toBe(false)
   })
 

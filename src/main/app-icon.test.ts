@@ -113,12 +113,12 @@ describe('app icon selection', () => {
       (
         _file: string,
         _args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         onComplete?.(null)
       }
@@ -150,12 +150,12 @@ describe('app icon selection', () => {
       (
         _file: string,
         _args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         onComplete?.(null)
       }
@@ -208,12 +208,12 @@ describe('app icon selection', () => {
       (
         file: string,
         args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         if (file !== '/usr/bin/xattr') {
           onComplete?.(null)
@@ -246,12 +246,12 @@ describe('app icon selection', () => {
       (
         file: string,
         _args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         onComplete?.(file === '/usr/bin/osascript' ? new Error('reset denied') : null)
       }
@@ -279,12 +279,12 @@ describe('app icon selection', () => {
       (
         _file: string,
         _args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         pendingCallbacks.push(() => onComplete?.(null))
       }
@@ -389,15 +389,15 @@ describe('app icon selection', () => {
       (
         _file: string,
         _args: string[],
-        optionsFABRICAllback: unknown,
+        optionsCallback: unknown,
         callback?: (error: Error | null) => void
       ) => {
         if (execFile.mock.calls.length === 1) {
           return hungChildProcess
         }
         const onComplete =
-          typeof optionsFABRICAllback === 'function'
-            ? (optionsFABRICAllback as (error: Error | null) => void)
+          typeof optionsCallback === 'function'
+            ? (optionsCallback as (error: Error | null) => void)
             : callback
         onComplete?.(null)
         return undefined

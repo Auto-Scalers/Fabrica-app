@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 vi.mock('fs', () => ({
   existsSync: vi.fn(),
@@ -603,7 +603,12 @@ describe('gcOldRelayVersions', () => {
       )
       .mockResolvedValueOnce('')
 
-    await gcOldRelayVersions(conn, 'C:/Users/u', 'C:/Users/u/.FABRICA-remote/relay-0.1.0+bbb', windows)
+    await gcOldRelayVersions(
+      conn,
+      'C:/Users/u',
+      'C:/Users/u/.fabrica-remote/relay-0.1.0+bbb',
+      windows
+    )
 
     const removeScript = decodePowerShellCommand(mockExec.mock.calls[1]?.[1] ?? '')
     expect(removeScript).toContain('relay-v0.1.0.gc-tombstone.123.456')
@@ -780,7 +785,7 @@ describe('gcOldRelayVersions', () => {
     await gcOldRelayVersions(
       conn,
       'C:/Users/u',
-      'C:/Users/u/.FABRICA-remote/relay-0.1.0+bbb',
+      'C:/Users/u/.fabrica-remote/relay-0.1.0+bbb',
       windows,
       {
         windowsNodePath: 'C:/Program Files/nodejs/node.exe',

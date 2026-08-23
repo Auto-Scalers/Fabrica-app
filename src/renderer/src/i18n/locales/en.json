@@ -23,7 +23,7 @@
       "openExternally": "Open Externally",
       "tryHttps": "Try HTTPS",
       "proceedUnsafe": "Proceed Anyway (Unsafe)",
-      "connecting": "ConnectingÖ",
+      "connecting": "Connecting‚Ä¶",
       "certificateChallengeExpired": "This certificate approval expired. Retry the page to request a new one.",
       "certificateChallengeChanged": "The certificate request changed. Retry the page and review the new warning.",
       "certificateChallengeUnavailable": "This certificate request is no longer available. Retry the page to request a new one.",
@@ -35,7 +35,7 @@
     }
   },
   "githubChecks": {
-    "retrying": "RetryingÖ"
+    "retrying": "Retrying‚Ä¶"
   },
   "settings": {
     "appearance": {
@@ -47,7 +47,7 @@
         "chinese": "??(??)",
         "korean": "???",
         "japanese": "???",
-        "spanish": "EspaÒol"
+        "spanish": "Espa√±ol"
       },
       "statusBar": {
         "claudeToggleDescription": "Show Claude token and cost usage for the active workspace.",
@@ -115,7 +115,7 @@
       "port": "Port",
       "pr": "PR"
     },
-    "renderCapOverflow": "{{value0}} more ó scroll or keep typing to narrow",
+    "renderCapOverflow": "{{value0}} more ‚Äî scroll or keep typing to narrow",
     "filter": {
       "emptyTitle": "No results match the active filter",
       "emptySubtitle": "Clear the filter above, or widen it to more hosts and projects.",
@@ -136,7 +136,7 @@
       "noProjects": "No matching projects",
       "moreOptions": "{{value0}} more - keep typing to narrow",
       "selectAllMatching": "Select all matching ({{value0}})",
-      "selectedCollapsed": "{{value0}} selected ó remove via chips or Clear",
+      "selectedCollapsed": "{{value0}} selected ‚Äî remove via chips or Clear",
       "clearHosts": "Clear hosts",
       "clearProjects": "Clear projects",
       "back": "Back",
@@ -263,7 +263,7 @@
           "83f9b126ad": "Issue Type can only be set on Issues.",
           "f963485d37": "Row not found",
           "a967f23983": "Project view not loaded",
-          "87020f6605": "Row has no owner/repo/number ó cannot patch underlying item",
+          "87020f6605": "Row has no owner/repo/number ‚Äî cannot patch underlying item",
           "d49ef4b944": "Failed to save issue-source preference"
         },
         "sparse": {
@@ -493,13 +493,13 @@
             "new": {
               "tab": {
                 "11cce5cc77": "Could not launch {{value0}} in a new terminal.",
-                "a5a1f7033f": "Your {{value0}} wasn't sent ó paste it once the agent is ready."
+                "a5a1f7033f": "Your {{value0}} wasn't sent ‚Äî paste it once the agent is ready."
               }
             }
           },
           "background": {
             "session": {
-              "4ca0651d56": "Your automation prompt wasn't sent ó open the workspace and paste it."
+              "4ca0651d56": "Your automation prompt wasn't sent ‚Äî open the workspace and paste it."
             }
           }
         },
@@ -518,7 +518,7 @@
               "19c7683acf": "Selected agent is not available in the created workspace.",
               "8bc45efdbc": "Failed to resolve PR head.",
               "agent": {
-                "ceeeb509b5": "Agent took too long to start. The workspace is ready ó paste the {{value0}} when the agent is idle."
+                "ceeeb509b5": "Agent took too long to start. The workspace is ready ‚Äî paste the {{value0}} when the agent is idle."
               }
             }
           }
@@ -724,7 +724,7 @@
             "attachPrSummary": "Link the pull or merge request to the Linear issue when you open it.",
             "attachPrPrompt": "Use {{value0}} to attach this pull or merge request to the linked Linear issue.",
             "triageFollowupsSummary": "Set assignee, priority, or estimate, and file parented follow-up tickets.",
-            "triageFollowupsPrompt": "Use {{value0}} to triage the linked Linear issue ó set priority and estimate ó and create a parented follow-up ticket for the deferred cleanup."
+            "triageFollowupsPrompt": "Use {{value0}} to triage the linked Linear issue ‚Äî set priority and estimate ‚Äî and create a parented follow-up ticket for the deferred cleanup."
           }
         },
         "issue": {
@@ -910,7 +910,7 @@
         "pasteTooLarge": "Paste is too large."
       },
       "useMacosTccPromptNotice": {
-        "title": "Seeing ìFabrica would like to accessÖî prompts?",
+        "title": "Seeing ‚ÄúFabrica would like to access‚Ä¶‚Äù prompts?",
         "description": "Permission messages from macOS may appear when an agent or terminal tool running in Fabrica attempts to access protected files. Grant Full Disk Access in Settings to reduce these prompts.",
         "openSettings": "Open Settings",
         "dismiss": "Don't show again"
@@ -946,13 +946,13 @@
         "999b5ad7d9": "Files",
         "4bd1f5b055": "Checks",
         "e30a5470c9": "Conversation",
-        "474c59b4b3": "Close ∑ Esc",
+        "474c59b4b3": "Close ¬∑ Esc",
         "45af57999b": "Close preview",
         "3fdf777817": "Open on GitHub",
         "c43fe79ee0": "Copy GitHub link",
         "0caac1a18f": "Start workspace from PR",
         "8223320f8d": "updated",
-        "10ef1afb8e": "∑ updated",
+        "10ef1afb8e": "¬∑ updated",
         "55962099bc": "opened this issue",
         "0ab4664a8b": "Start workspace from issue",
         "36182aa57f": "Start new workspace",
@@ -966,7 +966,7 @@
         "2ef631437e": "Unable to open the workspace attached to this issue.",
         "bf43425540": "Comment",
         "0a73f59e85": "Send comment",
-        "c5c117270e": "Add a commentÖ",
+        "c5c117270e": "Add a comment‚Ä¶",
         "082515176a": "Failed to add comment",
         "c6f37a563d": "+ Assignee",
         "f41ec96c13": "+ Label",
@@ -992,7 +992,7 @@
         "0f478f5efa": "Completed",
         "4812814bc8": "Started",
         "9c3ba11a05": "Status:",
-        "934d87ab96": "Loading check detailsÖ",
+        "934d87ab96": "Loading check details‚Ä¶",
         "71c11aff84": "Rerun all checks",
         "e31651a224": "Rerun failed checks",
         "1b56e28faa": "Rerun",
@@ -1044,7 +1044,7 @@
         "b1574e8ac2": "Reset code context",
         "d43736d09c": "Code context controls",
         "bd7be7b1fd": "comment L",
-        "db61d76cd5": "Loading code contextÖ",
+        "db61d76cd5": "Loading code context‚Ä¶",
         "f2d02cdf8c": "files viewed",
         "1257d1435d": "Show file tree",
         "a341343303": "Review comment added.",
@@ -1090,7 +1090,7 @@
         "9157d48ddb": "Fix checks",
         "06482d6190": "Unable to create a fix workspace automatically.",
         "f64dd90102": "Reply",
-        "5752c25aff": "PostingÖ",
+        "5752c25aff": "Posting‚Ä¶",
         "ec5c4b3ab2": "Reopen PR",
         "21860b58d0": "Close pull request",
         "5932578f51": "Merge requires a registered local repo",
@@ -1141,7 +1141,7 @@
         "131865e231": "Create workspace",
         "f2e64d1c20": "Open in GitLab",
         "84012fa8fb": "Comment",
-        "c08e1d5a57": "Comment on {{value0}}{{value1}}Ö",
+        "c08e1d5a57": "Comment on {{value0}}{{value1}}‚Ä¶",
         "f11e3e7675": "No pipeline runs for this MR.",
         "808b1ca1ba": "No changed files.",
         "007423f585": "Diff content unavailable.",
@@ -1288,7 +1288,7 @@
         "ad5dec37b7": "Preview, edit, and start work from the selected issue.",
         "c23e79e5c0": "Actions",
         "b0eac92d85": "Retry",
-        "fabbd3f974": "updated the issue ∑",
+        "fabbd3f974": "updated the issue ¬∑",
         "543970c87a": "Activity",
         "df4c86ed12": "Close",
         "7a4997d8bb": "Close Linear issue preview",
@@ -1335,11 +1335,11 @@
         "04008e6c46": "Start workspace from issue",
         "a4fcc57522": "No comments yet.",
         "fde849b2b6": "Comments",
-        "9dc54172db": "Close ∑ Esc",
+        "9dc54172db": "Close ¬∑ Esc",
         "0190b760c1": "Open on Linear",
         "04a442f796": "Preview and edit the selected Linear issue.",
         "d369841269": "Send comment",
-        "2fcff829a8": "Add a commentÖ",
+        "2fcff829a8": "Add a comment‚Ä¶",
         "2820f0f0f0": "Leave a comment...",
         "6ab35eafd5": "Failed to add comment",
         "367f828482": "No labels found",
@@ -1437,7 +1437,7 @@
         "branchName": "Branch name",
         "branchNamePlaceholder": "feature/my-branch",
         "connectTimedOut": "Connection timed out. It may still be connecting in the background.",
-        "connectingHost": "ConnectingÖ",
+        "connectingHost": "Connecting‚Ä¶",
         "connectHost": "Connect",
         "addHost": "Add host",
         "addHostHint": "Register another machine or Fabrica server",
@@ -1461,7 +1461,7 @@
         "4d18310d55": "Files changed",
         "94d95cf1f7": "Checks",
         "9e8d45700e": "Conversation",
-        "e6996f4024": "∑ updated",
+        "e6996f4024": "¬∑ updated",
         "dd5d9a4f17": "updated {{value0}}",
         "71a3c0f9d2": "Start workspace",
         "00b7b82329": "head branch",
@@ -1480,7 +1480,7 @@
         "992e799227": "GitHub link copied",
         "61bfc81ada": "Unable to open the workspace attached to this pull request.",
         "161d91ef02": "Send comment",
-        "d2030fc8cd": "Add a commentÖ",
+        "d2030fc8cd": "Add a comment‚Ä¶",
         "1208347ac0": "Failed to add comment",
         "61452f2143": "Start workspace from issue",
         "14c9fc70ed": "+ Assignee",
@@ -1501,7 +1501,7 @@
         "000f90afcf": "Completed",
         "76551b1161": "Started",
         "662bc2998d": "Status:",
-        "d8e82b7f15": "Loading check detailsÖ",
+        "d8e82b7f15": "Loading check details‚Ä¶",
         "54cddd1858": "Rerun all checks",
         "68605516dd": "Rerun failed checks",
         "522d9353e1": "Rerun",
@@ -1553,7 +1553,7 @@
         "5f3e293517": "Reset code context",
         "85d119be40": "Code context controls",
         "791ddede19": "comment L",
-        "4b960e5978": "Loading code contextÖ",
+        "4b960e5978": "Loading code context‚Ä¶",
         "89e80af1c7": "files viewed",
         "319cf2d54b": "Show file tree",
         "eff839f438": "Review comment added.",
@@ -1593,7 +1593,7 @@
         "c808db1dd1": "Fix checks",
         "c4c02ea23e": "Unable to create a fix workspace automatically.",
         "f119e5f5ef": "Reply",
-        "894cfd884b": "PostingÖ",
+        "894cfd884b": "Posting‚Ä¶",
         "9d5425918e": "Reopen PR",
         "96d013ed28": "Close pull request",
         "d65f70786e": "closed",
@@ -1658,7 +1658,7 @@
         "b5e685e4d9": "Dismiss",
         "5f6df21046": "Enjoying Fabrica?",
         "2d67b6c849": "Star on GitHub",
-        "af3c9bbb37": "StarringÖ",
+        "af3c9bbb37": "Starring‚Ä¶",
         "68a41bc3aa": "Could not star with",
         "996bf76e46": "Open GitHub to finish in your browser.",
         "d32015fec7": "Opening...",
@@ -1667,7 +1667,7 @@
         "73dfd4eb8d": "Don't ask again"
       },
       "TaskPage": {
-        "513cddfa7a": "VerifyingÖ",
+        "513cddfa7a": "Verifying‚Ä¶",
         "ff69a30681": "Cancel",
         "2abe22ef76": "Your token is encrypted via the OS keychain and stored locally.",
         "246c2b3dd3": "Atlassian account settings",
@@ -1677,12 +1677,12 @@
         "163df31e0e": "https://example.atlassian.net",
         "33fc2bcb30": "Use a Jira Cloud site URL, Atlassian email, and API token to browse issues.",
         "60f806ce99": "Connect Jira site",
-        "8ff6fdc368": "CreatingÖ",
+        "8ff6fdc368": "Creating‚Ä¶",
         "fc0d8a1fa4": "to submit.",
         "919a20dd5b": "Enter {{value0}}",
         "56cdb413a2": "Comma-separated values",
         "1f0fce91e3": "Select {{value0}}",
-        "cbcdcbe244": "Loading required Jira fieldsÖ",
+        "cbcdcbe244": "Loading required Jira fields‚Ä¶",
         "34d97ca682": "What's going on?",
         "f161bf9ede": "Description (optional)",
         "578f730c16": "Short summary",
@@ -1782,7 +1782,7 @@
         "054bf695cc": "Draft",
         "285bc21dc5": "Change the query or clear it.",
         "d0e3c8f933": "No matching GitHub work",
-        "5b6b2af943": "RetryingÖ",
+        "5b6b2af943": "Retrying‚Ä¶",
         "0c0de0fc0e": "Couldn't load issues from",
         "d1766fd62d": "projects failed to load",
         "7762f4b03a": "of",
@@ -1810,7 +1810,7 @@
         "d09b7631b7": "Failed to switch Jira site.",
         "8029e2bd4d": "Select one Linear team to open in Linear",
         "609532fae7": "Failed to save default task source.",
-        "4826fd1ad8": "Close ∑ Esc",
+        "4826fd1ad8": "Close ¬∑ Esc",
         "1a06219d5c": "Close tasks",
         "3f594861a5": "Failed to save team selection.",
         "d0d570b306": "Failed to switch Linear workspace.",
@@ -1848,7 +1848,7 @@
         "8a22eb3f7b": "No matching reviewers.",
         "67755a83a1": "Everyone else",
         "3ace2e6bcf": "Suggestions",
-        "0eacf48491": "LoadingÖ",
+        "0eacf48491": "Loading‚Ä¶",
         "0b9b04f4b5": "Type or choose a user",
         "62c7bd789f": "Request up to 15 reviewers",
         "5d4fd69a6a": "Recently active in this pull request",
@@ -1926,7 +1926,7 @@
         "2007e14d95": "gitlab",
         "456b8512da": "MergeRequest",
         "03da966159": "Select a project so we can authenticate to GitLab.",
-        "d591aac6ae": "No pending todos. Youíre all caught up!",
+        "d591aac6ae": "No pending todos. You‚Äôre all caught up!",
         "33a4bd7f5c": "todos",
         "66ae7330f6": "More actions",
         "93d5f21fc1": "pr",
@@ -1940,7 +1940,7 @@
         "7799ad9ab6": "draft",
         "0bfbf62f75": "Retry",
         "38139edb52": "github",
-        "31f81cc334": "Refreshing GitHub workÖ",
+        "31f81cc334": "Refreshing GitHub work‚Ä¶",
         "3d93316bb0": "prs",
         "937b29fa35": "items",
         "bc46d8204e": "Select one project to open in GitHub",
@@ -1984,7 +1984,7 @@
         "75a38d7df8": "GitHub data is temporarily unavailable. Its API may be down, rate-limited, or unreachable. Please try again shortly.",
         "noGithubSourceDetected": "No GitHub source detected for",
         "noGithubSourceDetectedHint": "it may have no GitHub remote, or the source could not be resolved.",
-        "jiraLinkSourceUnavailable": "Couldnít link this Jira issue. Reconnect Jira or pick the matching site, then try again.",
+        "jiraLinkSourceUnavailable": "Couldn‚Äôt link this Jira issue. Reconnect Jira or pick the matching site, then try again.",
         "loadPageUnreachable": "Page {{value0}} is beyond what GitHub search can return.",
         "loadPageFailed": "Page {{value0}} could not be loaded from GitHub.",
         "loadPageNoMoreResults": "No more results on page {{value0}}.",
@@ -2013,7 +2013,7 @@
         "61ed600d29": "\"{{value0}}\" has unsaved changes. Do you want to save before closing?",
         "cdc9ac4b2d": "editor",
         "e57db40c11": "Could not build launch command for {{value0}}.",
-        "5b2c1a9e44": "No agent CLI detected ó install one or pick a default agent in Settings."
+        "5b2c1a9e44": "No agent CLI detected ‚Äî install one or pick a default agent in Settings."
       },
       "TerminalSearch": {
         "db234b7519": "Close",
@@ -2062,7 +2062,7 @@
         "5b309b19f3": "Update Wasn't Installed",
         "092f09fc14": "The installer's publisher doesn't match Fabrica, so we stopped the update. Don't install this download; check official releases for a corrected version.",
         "c9ff9b9ec2": "Check official releases",
-        "a05992a26b": "The signature check couldn't run ó usually because antivirus software blocked it. Retry the download, or get the installer from our official releases.",
+        "a05992a26b": "The signature check couldn't run ‚Äî usually because antivirus software blocked it. Retry the download, or get the installer from our official releases.",
         "5194358929": "Hide details",
         "8bc9e17d8f": "Show details",
         "8cf17b10af": "Local Build Error",
@@ -2169,12 +2169,12 @@
             "224c9d0ae8": "Copied to clipboard",
             "891a7d4616": "Unset for this shell",
             "fd17b3019f": "Unset (PowerShell, persistent)",
-            "ae43542893": "Find where itís set",
-            "df636f5886": "Check if itís set (PowerShell)"
+            "ae43542893": "Find where it‚Äôs set",
+            "df636f5886": "Check if it‚Äôs set (PowerShell)"
           },
           "ProjectCell": {
             "4b5b871da8": "No labels in this repo.",
-            "2219e945ef": "LoadingÖ",
+            "2219e945ef": "Loading‚Ä¶",
             "54cac64427": "Row has no repo slug.",
             "8ae56a88a6": "Labels",
             "f7cdb78efb": "Assignees",
@@ -2206,16 +2206,16 @@
           "ProjectPicker": {
             "96739284c3": "Paste a project URL below to reach missing ones.",
             "9b36829267": "No views found.",
-            "72a05c04a6": "Loading viewsÖ",
+            "72a05c04a6": "Loading views‚Ä¶",
             "9bf55fa1e8": "Choose a view",
             "a51b3337ab": "? Back",
             "8ab5447c64": "Pin",
             "5009ffc2f3": "Remove pin",
             "fce99a24a7": "Add",
             "5113ecc298": "Add by URL or owner/number",
-            "7b6d39627e": "LoadingÖ",
+            "7b6d39627e": "Loading‚Ä¶",
             "b787682111": "Browse all",
-            "ba0ab9a117": "Browse all (loadingÖ)",
+            "ba0ab9a117": "Browse all (loading‚Ä¶)",
             "b3044b7a25": "Recent",
             "707843206c": "Pinned",
             "f492e1b539": "Search projects",
@@ -2243,7 +2243,7 @@
             "4d2a77a119": "File feature request",
             "1bf8c01c8b": "Switch to a Table view to work with this project in Fabrica.",
             "55de4fb57a": "{{value0}}. {{value1}} File a feature request at {{value2}}.",
-            "2edf5e7e77": "{{value0}} ó Fabrica doesn't support {{value1}} project views yet. File a feature request at {{value2}}.",
+            "2edf5e7e77": "{{value0}} ‚Äî Fabrica doesn't support {{value1}} project views yet. File a feature request at {{value2}}.",
             "7245c3d7ac": "Clear search",
             "c5bc7ec007": "View filter: {{value0}}",
             "840c268665": "Add repo",
@@ -2264,13 +2264,13 @@
           "slug": {
             "dialog": {
               "AssigneesEditor": {
-                "529fec247b": "LoadingÖ",
+                "529fec247b": "Loading‚Ä¶",
                 "98914e6b36": "Assignees:",
                 "94a4e6e4fa": "none"
               },
               "Comments": {
                 "fd5cccd138": "Comment",
-                "1c95937c8b": "Write a commentÖ",
+                "1c95937c8b": "Write a comment‚Ä¶",
                 "c0e576e96b": "Cancel",
                 "c3e829b4d9": "Save",
                 "463d030ae4": "Delete",
@@ -2279,16 +2279,16 @@
                 "commentTooLarge": "Comment is too large to submit safely."
               },
               "LabelsEditor": {
-                "34dd57d6c8": "LoadingÖ",
+                "34dd57d6c8": "Loading‚Ä¶",
                 "a7b182fcda": "Labels:",
                 "1a5366b5be": "none"
               },
               "SlugDialogBody": {
                 "598ad6a517": "Comments",
-                "41169e41fb": "Add a descriptionÖ",
+                "41169e41fb": "Add a description‚Ä¶",
                 "a91735d19f": "Cancel",
                 "e64f6c3eff": "Save",
-                "e4ef8281e9": "LoadingÖ",
+                "e4ef8281e9": "Loading‚Ä¶",
                 "ae98897edf": "Close",
                 "69caf40ae8": "Open in GitHub",
                 "7c302f8174": "Untitled"
@@ -2363,12 +2363,12 @@
           "rate": {
             "limit": {
               "display": {
-                "5509443543": "Loading GitHub API budgetÖ",
+                "5509443543": "Loading GitHub API budget‚Ä¶",
                 "34973d4695": "GitHub API budget is unavailable.",
                 "d12d3d6f33": "Refresh GitHub API budget",
                 "d5e5de9070": "Fabrica uses REST, Search, and GraphQL through the GitHub CLI.",
                 "58c5f88216": "GitHub API Budget",
-                "6da1858354": "left ∑ resets in",
+                "6da1858354": "left ¬∑ resets in",
                 "f42790d150": "of",
                 "01f7323e58": "GraphQL API",
                 "1daf0f22a9": "GraphQL",
@@ -2535,13 +2535,13 @@
           "WorktreeCreationPanel": {
             "dabd226118": "Dismiss",
             "34dd5ee38b": "Retry",
-            "ed2a664f8b": "Couldnít create worktree",
+            "ed2a664f8b": "Couldn‚Äôt create worktree",
             "a3346fc6ed": "Cancel worktree creation",
             "532aea14ce": "Cancel",
             "767951265d": "Something went wrong while creating the worktree.",
             "vmProvisioningTitle": "Provisioning VM",
             "cancelProvisioning": "Cancel",
-            "vmProvisioningLogEmpty": "Waiting for recipe outputÖ"
+            "vmProvisioningLogEmpty": "Waiting for recipe output‚Ä¶"
           }
         }
       },
@@ -2687,7 +2687,7 @@
             "cleanup": {
               "candidate": {
                 "row": {
-                  "b5d2b33e47": "DeletingÖ",
+                  "b5d2b33e47": "Deleting‚Ä¶",
                   "e1135728e3": "Queued for deletion"
                 }
               }
@@ -2813,13 +2813,13 @@
             "8c17d6786d": "Close Pane",
             "copyTerminalId": "Copy Terminal ID",
             "2cf85a6a55": "Copy Pane ID",
-            "39809d152f": "Set TitleÖ",
+            "39809d152f": "Set Title‚Ä¶",
             "clearPaneTitle": "Clear Pane Title",
             "06c2b0f043": "Equalize Pane Sizes",
             "98bccf4fa2": "Split Terminal Down",
             "20e565d865": "Split Terminal Right",
-            "8a7ddb8b8a": "Fork Agent SessionÖ",
-            "0a82b0608c": "Add Quick CommandÖ",
+            "8a7ddb8b8a": "Fork Agent Session‚Ä¶",
+            "0a82b0608c": "Add Quick Command‚Ä¶",
             "9528a65ef8": "No quick commands",
             "3ce594a4a0": "Global",
             "ec85df5914": "Quick Commands",
@@ -2830,7 +2830,7 @@
             "925f49f210": "Expand Pane",
             "df766809e0": "Collapse Pane",
             "cff67afad1": "Copy Context",
-            "15dd899676": "Add to {{value0}}Ö"
+            "15dd899676": "Add to {{value0}}‚Ä¶"
           },
           "TerminalErrorToast": {
             "e4aa243f8c": "Restart daemon",
@@ -2920,8 +2920,8 @@
               "handler": {
                 "1e072f611e": "Failed to upload {{value0}} {{value1}}.",
                 "53f015fd85": "Skipped {{value0}} symlink{{value1}}.",
-                "29c031b49a": "Uploading {{value0}} file{{value1}} to runtimeÖ",
-                "0c77693641": "Worktree not ready ó try again in a moment.",
+                "29c031b49a": "Uploading {{value0}} file{{value1}} to runtime‚Ä¶",
+                "0c77693641": "Worktree not ready ‚Äî try again in a moment.",
                 "ce8248b835": "Worktree path not available.",
                 "internalTooManyPaths": "Drop contains too many paths for a safe terminal paste.",
                 "internalPathsTooLarge": "Drop path list is too large for a safe terminal paste.",
@@ -2975,7 +2975,7 @@
             "connectingButton": "Connecting...",
             "connectButton": "Connect",
             "removedTitle": "SSH host removed",
-            "removedBody": "The SSH host for this workspace was removed, so it can no longer connect. Remove the workspace to clear it ó remote files are left untouched.",
+            "removedBody": "The SSH host for this workspace was removed, so it can no longer connect. Remove the workspace to clear it ‚Äî remote files are left untouched.",
             "removeWorkspaceButton": "Remove workspace"
           },
           "TerminalRemoteRuntimeReconnectBanner": {
@@ -2987,7 +2987,7 @@
           },
           "TerminalQuickCommandsSubmenu": {
             "3ccc7981bb": "Host unavailable",
-            "54f29b7c0d": "Loading hostÖ"
+            "54f29b7c0d": "Loading host‚Ä¶"
           }
         }
       },
@@ -3053,7 +3053,7 @@
             "8e9d603a09": "Unpin Tab"
           },
           "QuickLaunchButton": {
-            "348a04c1ad": "Agent settingsÖ",
+            "348a04c1ad": "Agent settings‚Ä¶",
             "ec2adf093e": "Launch {{value0}} in a new terminal",
             "465e432ef1": "Could not build launch command for {{value0}}.",
             "e518f544b1": "No agents detected",
@@ -3117,7 +3117,7 @@
             "25dc1cd653": "Open file",
             "7cdf8ee0c8": "Open URL",
             "b27864279e": "Launch agent",
-            "0e5b7a3f16": "Search open tabs, files, URLs, agentsÖ",
+            "0e5b7a3f16": "Search open tabs, files, URLs, agents‚Ä¶",
             "8f0a1c4d92": "Switch to tab",
             "2c38630a01": "Workspace no longer exists",
             "4f0d9a71c2": "Tab no longer exists",
@@ -3161,7 +3161,7 @@
                 "classifier": {
                   "42e6262ae9": "No action available.",
                   "097a982ee0": "Loading files...",
-                  "c41f8d20b7": "Search open tabs, files, URLs, agentsÖ",
+                  "c41f8d20b7": "Search open tabs, files, URLs, agents‚Ä¶",
                   "90eb94dc48": "Enter an http:// or https:// URL.",
                   "5553b283ce": "Enter a URL or file path.",
                   "queryTooLarge": "Search text is too large.",
@@ -3219,7 +3219,7 @@
           },
           "TabBarQuickCommandHostLoadStatus": {
             "82e294f3ca": "Host unavailable",
-            "7c129b08ff": "Loading hostÖ"
+            "7c129b08ff": "Loading host‚Ä¶"
           }
         }
       },
@@ -3227,9 +3227,9 @@
         "bar": {
           "PetStatusSegment": {
             "3668339495": "Remove {{value0}}",
-            "cd8c6c654c": "Pet settingsÖ",
-            "ed176ad68f": "Import .codex-pet bundleÖ",
-            "59b5955621": "Upload your ownÖ",
+            "cd8c6c654c": "Pet settings‚Ä¶",
+            "ed176ad68f": "Import .codex-pet bundle‚Ä¶",
+            "59b5955621": "Upload your own‚Ä¶",
             "0608ad02a2": "Choose pet",
             "b75484a01a": "Pet size",
             "c6aa805b1b": "px",
@@ -3247,18 +3247,18 @@
             "4ebf90c12e": "No external ports detected",
             "7dac3ecc9d": "External Ports",
             "95495019ed": "Port scan unavailable on {{value0}}: {{value1}}",
-            "a8e4bdb412": " ∑ {{value0}} external",
-            "9aa11005bf": "workspace ∑",
+            "a8e4bdb412": " ¬∑ {{value0}} external",
+            "9aa11005bf": "workspace ¬∑",
             "c22ea609fd": "Ports",
             "a11ed266ce": "workspace",
-            "ca41be2802": "Ports ó {{value0}} workspace {{value1}}{{value2}}",
+            "ca41be2802": "Ports ‚Äî {{value0}} workspace {{value1}}{{value2}}",
             "b8bc3e420a": "Ports, {{value0}} workspace {{value1}}",
             "3a87d54dfb": "No workspace ports detected",
             "c174bbbfed": "Scanning for workspace ports...",
             "8caaa86e9a": "ports",
             "45834a9ace": "port",
             "4ae65d871a": "external",
-            "2b84c4d11f": "{{value0}} workspace ∑ {{value1}} external"
+            "2b84c4d11f": "{{value0}} workspace ¬∑ {{value1}} external"
           },
           "ResourceUsageStatusSegment": {
             "946d9f94d0": "Cancel",
@@ -3282,7 +3282,7 @@
             "bd19fd7a59": "Kill all sessions",
             "c9382662bb": "Restart daemon",
             "59f178fe11": "{{value0}}, daemon unreachable",
-            "21cacb16d1": "∑ remote",
+            "21cacb16d1": "¬∑ remote",
             "73a3fd68a9": "Collapse repo",
             "b12e31dfcb": "Expand repo",
             "d659d71d2d": "Resume workspace {{value0}}",
@@ -3292,9 +3292,9 @@
             "288a4dd177": "Fabrica",
             "53dd5560ae": "Collapse Fabrica",
             "e419d27083": "Expand Fabrica",
-            "41ae4fa725": "KillingÖ",
+            "41ae4fa725": "Killing‚Ä¶",
             "138b99bd80": "this session",
-            "888dad8c55": "LoadingÖ",
+            "888dad8c55": "Loading‚Ä¶",
             "6d9793d4bc": "Resource Manager - Terminals",
             "ca95d077db": "Daemon unreachable",
             "a82253b458": "Delete workspace.",
@@ -3310,7 +3310,7 @@
             "e9a5d3c2b1f0": "Kill {{value0}}?"
           },
           "SshStatusSegment": {
-            "3ad70e0365": "Manage Remote HostsÖ",
+            "3ad70e0365": "Manage Remote Hosts‚Ä¶",
             "6e8a9a4242": "Remote Hosts",
             "d09ec41831": "Remote Hosts",
             "fdc57e9970": "Remote host connection status",
@@ -3336,7 +3336,7 @@
             "runtime_workspace_window_closed": "Workspace window closed",
             "connectedHostCount_one": "{{count}} host",
             "connectedHostCount_other": "{{count}} hosts",
-            "connecting": "ConnectingÖ",
+            "connecting": "Connecting‚Ä¶",
             "workspaceConflict": "Workspace conflict",
             "workspaceSyncError": "Workspace sync error"
           },
@@ -3350,13 +3350,13 @@
             "c0909c686e": "Codex Usage",
             "3885eb74d8": "Claude Usage",
             "c8857b40f7": "Refresh usage data",
-            "75ded02687": "Manage AccountsÖ",
+            "75ded02687": "Manage Accounts‚Ä¶",
             "ff0fbe9311": "Active",
             "7657e3db9c": "Codex Account",
             "38b5647724": "Codex usage runtime",
             "ba55303942": "Open Codex details and account switcher",
-            "4dff061aab": "∑",
-            "2483c60695": "∑∑∑",
+            "4dff061aab": "¬∑",
+            "2483c60695": "¬∑¬∑¬∑",
             "c35af53b73": "Sign in",
             "f19a63e7cd": "Sign in to see usage",
             "5c938d39ac": "wk",
@@ -3386,7 +3386,7 @@
             "605901a495": "1 Codex session is still on the old account",
             "5e5f9f5160": "1 rate-limit reset available",
             "5ecae9197c": "{{value0}} rate-limit resets available",
-            "25d8bbde69": "Using resetÖ",
+            "25d8bbde69": "Using reset‚Ä¶",
             "e159fc1fd7": "Reset now",
             "972a1ff497": "Reset Codex limits?",
             "6d1042aa6f": "This uses one Codex rate-limit reset credit for the active account and resets any eligible usage windows immediately.",
@@ -3411,26 +3411,26 @@
           },
           "SkillUpdateStatusSegment": {
             "runningLabel": "Updating skills",
-            "runningOne": "Updating {{value0}}Ö",
-            "runningMany": "Updating {{value0}} skillsÖ",
+            "runningOne": "Updating {{value0}}‚Ä¶",
+            "runningMany": "Updating {{value0}} skills‚Ä¶",
             "runningAria": "Skills updating. Click to open details.",
             "successLabel": "Skills updated",
             "successOne": "Updated {{value0}}",
             "successMany": "Updated {{value0}} skills",
             "successAria": "Skills updated. Click to open details.",
             "errorLabel": "Update failed",
-            "errorTooltip": "Skill update failed ó click to see details",
+            "errorTooltip": "Skill update failed ‚Äî click to see details",
             "errorAria": "Skill update failed. Click to open details.",
             "stoppingLabel": "Stopping update",
-            "stoppingTooltip": "Stopping the skill updateÖ",
+            "stoppingTooltip": "Stopping the skill update‚Ä¶",
             "stoppingAria": "Stopping the skill update. Click to open details."
           },
           "UpdateStatusSegment": {
             "5cd13105a3": "Update failed. Click to expand.",
-            "2201df6987": "Update failed ó click to see details",
+            "2201df6987": "Update failed ‚Äî click to see details",
             "8533c12c3c": "Update failed",
             "962404f68e": "Update ready to install. Click to expand.",
-            "248ee5d8ef": "Fabrica v{{value0}} downloadingÖ {{value1}}%",
+            "248ee5d8ef": "Fabrica v{{value0}} downloading‚Ä¶ {{value1}}%",
             "57a29c3b0e": "Update ready",
             "fd1d3b3a1d": "Update downloading, {{value0}} percent. Click to expand.",
             "9d13213a56": "Fabrica v{{value0}} ready to install"
@@ -3449,8 +3449,8 @@
             "2837dc7c72": "cancelling",
             "0583c806ac": "Workspace disk usage is not scanned.",
             "39786e3b73": "Scanning workspace sizes.",
-            "bef4dc0457": "{{value0}} reclaimable ∑ {{value1}} unavailable",
-            "3d8d47ce77": "{{value0}} ∑ last result kept"
+            "bef4dc0457": "{{value0}} reclaimable ¬∑ {{value1}} unavailable",
+            "3d8d47ce77": "{{value0}} ¬∑ last result kept"
           },
           "WorkspaceSpaceManagerPanel": {
             "2965415393": "Force delete failed",
@@ -3555,7 +3555,7 @@
             "2c35eca8d4": "Unable to fetch usage",
             "1292d4f2ee": "Unavailable",
             "7567cd1c6b": "Usage unavailable",
-            "a9a318b7a3": "Refresh failed ó showing cached data",
+            "a9a318b7a3": "Refresh failed ‚Äî showing cached data",
             "7ad719c4bf": "Limited",
             "e740f92596": "Refresh failed",
             "8418ec448d": "{{value0}} usage could not be refreshed. Agent sessions may still be signed in.",
@@ -3600,7 +3600,7 @@
             "notSignedIn": "not signed in",
             "allAgents": "all agents",
             "usageDetails": "Usage details & history",
-            "loadingUsage": "Loading usageÖ",
+            "loadingUsage": "Loading usage‚Ä¶",
             "usageUnavailable": "Usage unavailable",
             "noUsageData": "No usage data",
             "detailed": "Detailed",
@@ -3677,7 +3677,7 @@
           "abfc4a4943": "Cache reuse rate:",
           "7e76c84153": "Recent sessions",
           "32176e1d44": "turns",
-          "02a046792e": "sessions ï",
+          "02a046792e": "sessions ‚Ä¢",
           "f97435845c": "Top project:",
           "7dc9e5613b": "By project",
           "c3fdbc5474": "Top model:",
@@ -3705,7 +3705,7 @@
           "4f8368c272": "Fabrica worktrees only",
           "cfe2282ffa": "Unknown",
           "7765a4c3e1": "n/a",
-          "2d41fd45c6": " ï Last scan error: {{value0}}",
+          "2d41fd45c6": " ‚Ä¢ Last scan error: {{value0}}",
           "rangeLast7Days": "Last 7 days",
           "rangeLast30Days": "Last 30 days",
           "rangeLast90Days": "Last 90 days",
@@ -3731,7 +3731,7 @@
           "0bd8655475": "Most recent local Codex sessions in this scope.",
           "0cb0983c07": "Recent sessions",
           "79a69522a5": "events",
-          "bf1bf2f674": "sessions ï",
+          "bf1bf2f674": "sessions ‚Ä¢",
           "829ee743f2": "Top project:",
           "b98718aaab": "By project",
           "95d2d89285": "Top model:",
@@ -3757,8 +3757,8 @@
           "201766b754": "Fabrica worktrees only",
           "bf6cf2d4dd": "Unknown",
           "ae255c3dba": "n/a",
-          "247c93ca92": "ï inferred pricing",
-          "8a6655f7a2": " ï Last scan error: {{value0}}",
+          "247c93ca92": "‚Ä¢ inferred pricing",
+          "8a6655f7a2": " ‚Ä¢ Last scan error: {{value0}}",
           "rangeLast7Days": "Last 7 days",
           "rangeLast30Days": "Last 30 days",
           "rangeLast90Days": "Last 90 days",
@@ -3775,7 +3775,7 @@
           "81817a641a": "Most recent local OpenCode sessions in this scope.",
           "4799177b1c": "Recent sessions",
           "1e5d410df0": "events",
-          "bc0cb89901": "sessions ï",
+          "bc0cb89901": "sessions ‚Ä¢",
           "048ffe4d65": "Top project:",
           "0f0a1684bb": "By project",
           "a15206a63a": "Top model:",
@@ -3801,7 +3801,7 @@
           "e04c58327c": "Fabrica worktrees only",
           "362231082f": "Unknown",
           "8095a63426": "n/a",
-          "6cc7782458": " ï Last scan error: {{value0}}",
+          "6cc7782458": " ‚Ä¢ Last scan error: {{value0}}",
           "rangeLast7Days": "Last 7 days",
           "rangeLast30Days": "Last 30 days",
           "rangeLast90Days": "Last 90 days",
@@ -3815,7 +3815,7 @@
           "cecefa7c32": "Share"
         },
         "ShareUsageCard": {
-          "4a4c6c79a3": "sessions ∑",
+          "4a4c6c79a3": "sessions ¬∑",
           "66c83284cf": "Daily tokens",
           "b760c0b622": "Top model",
           "2d9eb39264": "Total tokens",
@@ -3937,10 +3937,10 @@
         },
         "UsageBreakdownSection": {
           "7765a4c3e1": "n/a",
-          "247c93ca92": "ï inferred pricing",
+          "247c93ca92": "‚Ä¢ inferred pricing",
           "32176e1d44": "turns",
           "79a69522a5": "events",
-          "02a046792e": "sessions ï"
+          "02a046792e": "sessions ‚Ä¢"
         },
         "UsageSessionsTable": {
           "1afc25eb06": "Turns",
@@ -3958,7 +3958,7 @@
           "g8h9i0j1k2": "Grok usage",
           "b2d3e4f5c6": "Weekly subscription credits from Grok CLI OAuth (~/.grok/auth.json). Same source as the status bar.",
           "c3e4f5a6b7": "Set up in Accounts",
-          "h9i0j1k2l3": " ï {{value0}}",
+          "h9i0j1k2l3": " ‚Ä¢ {{value0}}",
           "i0j1k2l3m4": "Refresh Grok usage",
           "d4f5a6b7c8": "Refresh",
           "e5a6b7c8d9": "Weekly credits used",
@@ -4035,13 +4035,13 @@
           "statusUpdateAvailable": "Update available",
           "statusCantUpdate": "Skipped",
           "cantUpdateReason": "Fabrica left this skill out of the update command.",
-          "skippedReasonUnrecognized": "The copy here doesnít match the official version ó it may be modified, or a different skill with the same name. Fabrica left it out of the update so it wonít overwrite it. Remove it if you want Fabrica to update this skill.",
+          "skippedReasonUnrecognized": "The copy here doesn‚Äôt match the official version ‚Äî it may be modified, or a different skill with the same name. Fabrica left it out of the update so it won‚Äôt overwrite it. Remove it if you want Fabrica to update this skill.",
           "skippedReasonReadOnly": "This copy is in a read-only location, so Fabrica left it out of the update. Change its permissions to let Fabrica update it.",
-          "skippedReasonInaccessible": "Fabrica couldnít read this copy, so it left the skill out of the update.",
-          "skippedReasonInRepo": "This is a project skill, not a global one ó Fabrica only updates your global skills, so it left this out of the update.",
-          "skippedReasonPluginCache": "A plugin manages this skill, so Fabrica left it out of the update ó update the plugin instead.",
-          "skippedReasonExternalLink": "This copy is a shortcut pointing outside Fabricaís skill folders, so Fabrica left it out of the update.",
-          "skippedReasonBrokenLink": "This copy is a shortcut to something that no longer exists, so Fabrica left it out ó you can safely delete it.",
+          "skippedReasonInaccessible": "Fabrica couldn‚Äôt read this copy, so it left the skill out of the update.",
+          "skippedReasonInRepo": "This is a project skill, not a global one ‚Äî Fabrica only updates your global skills, so it left this out of the update.",
+          "skippedReasonPluginCache": "A plugin manages this skill, so Fabrica left it out of the update ‚Äî update the plugin instead.",
+          "skippedReasonExternalLink": "This copy is a shortcut pointing outside Fabrica‚Äôs skill folders, so Fabrica left it out of the update.",
+          "skippedReasonBrokenLink": "This copy is a shortcut to something that no longer exists, so Fabrica left it out ‚Äî you can safely delete it.",
           "chipCurrent": "Current",
           "chipUnrecognized": "Unrecognized",
           "chipInaccessible": "Inaccessible",
@@ -4052,15 +4052,15 @@
           "chipInRepo": "In a repo",
           "chipPluginCache": "Plugin cache",
           "tipCurrent": "This copy matches the current official version.",
-          "tipUnrecognized": "This copy doesnít match any official version ó it may be modified, or a different skill with the same name.",
-          "tipInaccessible": "Fabrica couldnít read this copy (a permissions or file error).",
+          "tipUnrecognized": "This copy doesn‚Äôt match any official version ‚Äî it may be modified, or a different skill with the same name.",
+          "tipInaccessible": "Fabrica couldn‚Äôt read this copy (a permissions or file error).",
           "tipDuplicate": "A separate copy of this skill, installed apart from the main one.",
-          "tipExternalLink": "A shortcut pointing outside Fabricaís skill folders.",
+          "tipExternalLink": "A shortcut pointing outside Fabrica‚Äôs skill folders.",
           "tipBrokenLink": "A shortcut to something that no longer exists.",
           "tipReadOnly": "This copy is in a read-only location.",
           "tipInRepo": "This copy lives inside a project, not your global skills.",
           "tipPluginCache": "This copy is managed by a plugin.",
-          "skippedReasonDuplicate": "This is a separate copy, so the update wonít reach it ó the command only refreshes the main copy. Remove this copy, then reinstall the skill so this location follows the main one.",
+          "skippedReasonDuplicate": "This is a separate copy, so the update won‚Äôt reach it ‚Äî the command only refreshes the main copy. Remove this copy, then reinstall the skill so this location follows the main one.",
           "skippedReasonNewer": "This copy is a later version than the one this build of Fabrica ships, so Fabrica left it alone rather than roll it back. Updating Fabrica will bring the two back in line.",
           "skippedReasonStaleRecord": "The skills updater has no usable record of this copy, so it reports the skill as already up to date and changes nothing. Reinstall it to bring the record back in line: {{value0}}",
           "chipNewer": "Newer",
@@ -4068,7 +4068,7 @@
         },
         "SkillFreshnessUpdateDialog": {
           "title": "Update skills",
-          "checking": "Checking installed Fabrica skillsÖ",
+          "checking": "Checking installed Fabrica skills‚Ä¶",
           "none": "No installed Fabrica skills found.",
           "updateOne": "1 update available",
           "updateMany": "{{value0}} updates available",
@@ -4076,9 +4076,9 @@
           "blockedMany": "{{value0}} skills can't be updated automatically.",
           "success": "All installed Fabrica skills are up to date.",
           "attention": "Some installed Fabrica skills were left out of the update.",
-          "runningOne": "Updating 1 skillÖ",
-          "runningMany": "Updating {{value0}} skillsÖ",
-          "runningDescription": "You can close this window ó it keeps running in the background.",
+          "runningOne": "Updating 1 skill‚Ä¶",
+          "runningMany": "Updating {{value0}} skills‚Ä¶",
+          "runningDescription": "You can close this window ‚Äî it keeps running in the background.",
           "progressAria": "Updating skills",
           "updatedOne": "Updated 1 skill",
           "updatedMany": "Updated {{value0}} skills",
@@ -4088,15 +4088,15 @@
           "copyCommand": "Copy command",
           "copied": "Copied",
           "showLog": "Show log",
-          "updating": "UpdatingÖ",
+          "updating": "Updating‚Ä¶",
           "updateActionOne": "Update 1 skill",
           "updateActionMany": "Update {{value0}} skills",
           "checkNow": "Re-check",
           "done": "Done",
           "close": "Close",
           "stop": "Stop",
-          "stopping": "StoppingÖ",
-          "stoppingHeadline": "Stopping the updateÖ",
+          "stopping": "Stopping‚Ä¶",
+          "stoppingHeadline": "Stopping the update‚Ä¶",
           "scanIncomplete": "Fabrica could not finish checking plugin-managed skills.",
           "scanDepthLimit": "Fabrica reached its plugin scan depth limit before checking this folder.",
           "scanEntryLimit": "Fabrica reached its plugin scan entry limit before checking the rest of this cache.",
@@ -4134,7 +4134,7 @@
                   "84c62e4d7f": "Could not turn on {{value0}}",
                   "442552c656": "Open Settings and try again.",
                   "f15fd80989": "Your new worktree is current, but local {{value0}} is {{value1}} {{value2}} behind, so AI diffs may compare to stale history. Let Fabrica keep it up to date automatically. Change this anytime in",
-                  "3d260e1a5d": "Settings õ {{value0}}",
+                  "3d260e1a5d": "Settings ‚Ä∫ {{value0}}",
                   "34a03a6565": "Keep {{value0}} up to date",
                   "4a18052018": "Local {{value0}} is behind {{value1}}",
                   "commit": "commit",
@@ -4167,7 +4167,7 @@
           "875dda0995": "Enter a host parent path.",
           "ssh_parent_manual": "Enter an SSH parent path.",
           "45b7c26034": "Create project",
-          "85085d74d2": "CreatingÖ"
+          "85085d74d2": "Creating‚Ä¶"
         },
         "AddRepoHostSelector": {
           "host": "Host",
@@ -4195,7 +4195,7 @@
           "cf9d382ca1": "Import",
           "220dd32d83": "Scanning...",
           "fb33359f69": "Group these repositories?",
-          "d75170194e": "Choose this if these projects belong together ó a monorepo, or just a set of related repos. Fabrica will group them and let you work from the parent folder.",
+          "d75170194e": "Choose this if these projects belong together ‚Äî a monorepo, or just a set of related repos. Fabrica will group them and let you work from the parent folder.",
           "39d51212cc": "Group name",
           "aa0247680d": "No, import separately",
           "a0bc4d1f8e": "Yes, import as group",
@@ -4352,7 +4352,7 @@
           "95bf974a1a": "{{value0}} script",
           "9e52effffd": "New {{value0}} script",
           "e4a51dc4b3": "Run {{value0}} from {{value1}}?",
-          "02b0ede5ad": "{{value0}}'s {{value1}} changed ó run the new version?"
+          "02b0ede5ad": "{{value0}}'s {{value1}} changed ‚Äî run the new version?"
         },
         "PendingWorktreeRow": {
           "af21e953d1": "Cancel worktree creation",
@@ -4379,11 +4379,11 @@
           "4a64e78822": "Saving..."
         },
         "RemoteFileBrowser": {
-          "2300612806": "Type to filter or enter a pathÖ",
+          "2300612806": "Type to filter or enter a path‚Ä¶",
           "9e060f5815": "Select folder",
           "f8b1deb1a4": "Cancel",
           "51001182e3": "Empty directory",
-          "971d85cc84": "Opens as a project on this host ∑ {{value0}}",
+          "971d85cc84": "Opens as a project on this host ¬∑ {{value0}}",
           "00c4235c10": "No matches for '{{value0}}'",
           "largeInputNoMatches": "No matches for this long input"
         },
@@ -4391,7 +4391,7 @@
           "4dc5b5065b": "Remove",
           "d36883e046": "Cancel",
           "b79b39d865": "Remove Project",
-          "removeDescriptionSsh": "This only removes {{name}} from Fabrica. Its files stay on {{host}} ó re-add that SSH host to recover it.",
+          "removeDescriptionSsh": "This only removes {{name}} from Fabrica. Its files stay on {{host}} ‚Äî re-add that SSH host to recover it.",
           "removeDescriptionLocal": "This only removes {{name}} from Fabrica. It is still on your disk."
         },
         "ScrollToCurrentWorkspaceToolbarButton": {
@@ -4434,7 +4434,7 @@
         "SidebarFeedbackDialog": {
           "8bf619e4cf": "Cancel",
           "8de03e23c5": "Submit with your typed feedback only, or connect `gh` to include GitHub identity.",
-          "d20439c560": "Checking GitHub identityÖ",
+          "d20439c560": "Checking GitHub identity‚Ä¶",
           "5b120b9634": "Submit anonymously",
           "c9e5ea0791": "GitHub:",
           "d46ddd66fc": "What could we improve?",
@@ -4448,7 +4448,7 @@
           "7a46c228b8": "Thanks for the feedback.",
           "a2fd890d9e": "Please enter feedback before submitting.",
           "f2e42e1307": "Send",
-          "69969ba364": "SendingÖ",
+          "69969ba364": "Sending‚Ä¶",
           "imageReadFailed": "Could not read the attached images. Try attaching them again.",
           "attachWhileSending": "Wait for the current feedback to finish sending before attaching more images.",
           "imagesNotDelivered": "Feedback sent, but image delivery could not be confirmed."
@@ -4520,11 +4520,12 @@
           "a428c25998": "Settings",
           "2991a0106c": "Help",
           "4e8f5710d3": "Couldn't restart Fabrica.",
-          "5161eef55d": "Restarting FabricaÖ",
+          "5161eef55d": "Restarting Fabrica‚Ä¶",
           "d396773ef0": "checking",
           "f8a2c91d4e": "Milestones",
           "b7e4d2a19c": "Onboarding",
-          "c4f8e1b72a": "X"
+          "c4f8e1b72a": "X",
+          "website": "Website"
         },
         "SidebarToolbar": {
           "87d0064026": "Workspace board moved to the bottom bar",
@@ -4613,7 +4614,7 @@
           "cli": "Fabrica CLI"
         },
         "SshTargetRow": {
-          "4677394048": "ConnectingÖ",
+          "4677394048": "Connecting‚Ä¶",
           "75ad429b5d": "Connect"
         },
         "WorkspaceKanbanCard": {
@@ -4662,7 +4663,7 @@
           "4eba2ea99e": "Auto-name failed. Click to see details.",
           "74522ee457": "rename failed",
           "02e19349f4": "Auto-rename failed: view error",
-          "691ccfd622": "DeletingÖ",
+          "691ccfd622": "Deleting‚Ä¶",
           "35ccfe2475": "Project {{value0}}",
           "1d66d84f0b": "string",
           "57eaa61b55": "Hide child workspaces",
@@ -4763,7 +4764,7 @@
           "3350101edb": "Copy Path",
           "f4475537d8": "Delete",
           "f5ac91531d": "Remove Project from Fabrica",
-          "b42391d8bf": "DeletingÖ",
+          "b42391d8bf": "Deleting‚Ä¶",
           "0918b35e4f": "Close all active panels in this workspace to free up memory and CPU.",
           "7d190f7d2b": "Close all active panels in the selected workspaces to free up memory and CPU.",
           "84cdbb7e30": "Move to Status",
@@ -4776,11 +4777,11 @@
           "changeParentWorkspace": "Change Parent Worktree...",
           "setParentWorkspace": "Set Parent Worktree...",
           "workspaceSection": "Workspace",
-          "primaryDeleteDisabled": "Primary worktree ó can't be deleted. Remove the project instead.",
+          "primaryDeleteDisabled": "Primary worktree ‚Äî can't be deleted. Remove the project instead.",
           "deleteWorktree": "Delete Worktree",
           "sleepWithDescendants": "Sleep with Descendants ({{value0}})",
           "sleepWithDescendantsDescription": "Close active panels in this workspace and every nested descendant to free up memory and CPU.",
-          "deleteWithDescendants": "Delete with DescendantsÖ"
+          "deleteWithDescendants": "Delete with Descendants‚Ä¶"
         },
         "WorktreeList": {
           "7a8b9c0d1e": "Update required",
@@ -4793,7 +4794,7 @@
           "370c6a55dd": "Clear Filters",
           "b7acbf038b": "No workspaces found",
           "0c6ee14f23": "child",
-          "5fc9d1891b": "DeletingÖ",
+          "5fc9d1891b": "Deleting‚Ä¶",
           "c83968f87f": "Remove Project",
           "64e55f7f01": "Remove from group",
           "4a08fb55f2": "Move to group",
@@ -4829,7 +4830,7 @@
         "WorktreeMetaDialog": {
           "3db0a2a593": "Cancel",
           "b48c271d39": "to save, Shift+Enter for a new line.",
-          "7f0be5e9a6": "Supports **markdown** ó bold, lists, `code`, links. Press Enter or",
+          "7f0be5e9a6": "Supports **markdown** ‚Äî bold, lists, `code`, links. Press Enter or",
           "030d484fc0": "Notes about this worktree...",
           "9c1d1e9b71": "Comment",
           "5ae06f40fd": "Paste a pull request URL, or enter a number. Leave blank to remove the link.",
@@ -4839,7 +4840,7 @@
           "029ea5ec57": "Open GitHub issue",
           "741279e7b7": "Issue # or GitHub URL",
           "645fa4a0fd": "GH Issue",
-          "459ad7f650": "Only changes the name shown in the sidebar ó the folder on disk stays the same. Leave blank to use the branch or folder name.",
+          "459ad7f650": "Only changes the name shown in the sidebar ‚Äî the folder on disk stays the same. Leave blank to use the branch or folder name.",
           "7f21e0464f": "Custom display name...",
           "ad5e4e514f": "Display Name",
           "65770ad0f0": "Edit GitHub links and notes for this workspace.",
@@ -5073,10 +5074,10 @@
           "6f7a8b9c0d": "Cancel",
           "7a8b9c0d1e": "Open settings",
           "8b9c0d1e2f": "Remove host",
-          "workspacesFailed": "Could not remove {{count}} of this hostís workspaces. The host was kept so you can retry.",
+          "workspacesFailed": "Could not remove {{count}} of this host‚Äôs workspaces. The host was kept so you can retry.",
           "oneWorkspace": "1 workspace",
           "manyWorkspaces": "{{count}} workspaces",
-          "hostHasWorkspacesDefault": "Removes {{value0}} and its credentials from this computer. Its {{value1}} stay in Fabrica ó remote files are not touched.",
+          "hostHasWorkspacesDefault": "Removes {{value0}} and its credentials from this computer. Its {{value1}} stay in Fabrica ‚Äî remote files are not touched.",
           "alsoDeleteRemote": "Also delete these {{value0}} on {{value1}}",
           "alsoForgetLocal": "Also remove these {{value0}} from Fabrica",
           "advanced": "Advanced",
@@ -5099,12 +5100,12 @@
           "7f1a2b3c4d": "{{value0}} is reachable",
           "4f2c8a9b10": "Host actions for {{value0}}",
           "6b7c8d9e10": "Host actions",
-          "8d1e2f3a4b": "RenameÖ",
+          "8d1e2f3a4b": "Rename‚Ä¶",
           "63f36455cc": "Reconnect",
           "59b553e2aa": "Disconnect",
           "2d3e4f5a6b": "Check connection",
-          "3c4d5e6f7a": "Manage hostÖ",
-          "6e7f8a9b0c": "Remove hostÖ"
+          "3c4d5e6f7a": "Manage host‚Ä¶",
+          "6e7f8a9b0c": "Remove host‚Ä¶"
         },
         "LinearAgentSkillSetupPrompt": {
           "missingCliAndSkill": "Fabrica CLI and Linear agent skill are missing.",
@@ -5250,16 +5251,16 @@
           "linkDestination": "Link destination",
           "sshTunnel": "I am using an SSH tunnel",
           "sshTunnelHelp": "Otherwise, this link points back to this device and cannot identify the other computer.",
-          "loopbackBlocked": "Enable the SSH tunnel override or create a new link using the other hostís Tailscale or LAN address.",
+          "loopbackBlocked": "Enable the SSH tunnel override or create a new link using the other host‚Äôs Tailscale or LAN address.",
           "sshConfigPickerLoadFailed": "Failed to read ~/.ssh/config.",
           "sshConfigPickerResolveFailed": "Failed to resolve that SSH config host.",
           "sshConfigPickerRestartRequired": "Restart Fabrica to finish applying the SSH config picker update.",
           "sshConfigPickerFilled": "Filled from {{value0}}. Review and Save.",
           "sshConfigPickerTitle": "Choose from ~/.ssh/config",
           "sshConfigPickerDescription": "Pick a host to fill the form. Nothing is saved until you click Save.",
-          "sshConfigPickerFilter": "Filter hostsÖ",
+          "sshConfigPickerFilter": "Filter hosts‚Ä¶",
           "sshConfigPickerHostsLabel": "SSH config hosts",
-          "sshConfigPickerLoading": "Reading ~/.ssh/configÖ",
+          "sshConfigPickerLoading": "Reading ~/.ssh/config‚Ä¶",
           "sshConfigPickerEmpty": "No hosts in ~/.ssh/config",
           "sshConfigPickerNoMatch": "No matching hosts",
           "sshConfigPickerEmptyHint": "Add a Host entry there, or go back and type the details manually.",
@@ -5269,21 +5270,21 @@
           "sshConfigPickerPreviouslyRemoved": "Removed from Fabrica",
           "sshConfigPickerBulkHint": "Bulk sync stays in Settings ? SSH",
           "sshConfigPickerBack": "Back",
-          "fillFromSshConfig": "Fill from ~/.ssh/configÖ",
-          "sshConfigPickerAddingAll": "Adding hostsÖ",
+          "fillFromSshConfig": "Fill from ~/.ssh/config‚Ä¶",
+          "sshConfigPickerAddingAll": "Adding hosts‚Ä¶",
           "sshConfigPickerAddAll": "Add all {{value0}} to Fabrica",
           "sshConfigPickerNoNewHosts": "No new hosts to add",
           "sshConfigPickerAddAllEmpty": "Add all to Fabrica",
           "identityFileFromConfigHint": "Left empty on purpose: Fabrica uses every key ~/.ssh/config resolves for {{value0}}. Type a path to use just that key.",
           "sshConfigPickerRetry": "Try again",
-          "sshConfigPickerResolving": "ReadingÖ"
+          "sshConfigPickerResolving": "Reading‚Ä¶"
         },
         "ForgetSshWorkspaceDialog": {
           "reconnectFailed": "Reconnection failed",
           "forgetBody": "Removes this workspace from Fabrica only. Files, the Git worktree, and branches on {{host}} are left untouched.",
-          "title": "Delete ì{{name}}î?",
+          "title": "Delete ‚Äú{{name}}‚Äù?",
           "disconnectedBody": "The SSH host for this workspace is not connected. Reconnect to delete it on the remote too, or remove it from Fabrica only.",
-          "ghostBody": "{{host}} is no longer a saved SSH host, so this workspace is no longer connected to a live host. It can only be removed from Fabrica ó files and branches on the remote are left untouched.",
+          "ghostBody": "{{host}} is no longer a saved SSH host, so this workspace is no longer connected to a live host. It can only be removed from Fabrica ‚Äî files and branches on the remote are left untouched.",
           "cancel": "Cancel",
           "forget": "Remove from Fabrica",
           "reconnectAndDelete": "Reconnect & Delete"
@@ -5307,7 +5308,7 @@
           "4d96c209d6": "{{value0}} of {{value1}} workspaces match",
           "c0cd6bdf6c": "Search workspaces",
           "3b7ea51793": "Clear search",
-          "7f1c2e94a5": "Search text is too long ó the board is unfiltered",
+          "7f1c2e94a5": "Search text is too long ‚Äî the board is unfiltered",
           "9a4d0f6b21": "Too long"
         },
         "WorktreeIssueLinkField": {
@@ -5317,8 +5318,8 @@
           "d4785f9954": "Issue links are set when a folder workspace is created and can't be changed here yet.",
           "964d9bc00a": "Not a Linear issue key or linear.app issue URL.",
           "0a7a2c6efd": "Not a GitHub issue number or issue URL.",
-          "72486800ff": "Saving unlinks {{first}} and {{second}} ó a workspace tracks one issue.",
-          "2c245ac134": "Saving unlinks {{link}} ó a workspace tracks one issue.",
+          "72486800ff": "Saving unlinks {{first}} and {{second}} ‚Äî a workspace tracks one issue.",
+          "2c245ac134": "Saving unlinks {{link}} ‚Äî a workspace tracks one issue.",
           "d8c8a30d1f": "Couldn't open that issue. Check the identifier and your Linear connection.",
           "269198eeda": "Couldn't open that issue. Check the number and your GitHub connection.",
           "f047887705": "Paste a GitHub or Linear URL, or enter a number. Leave blank to remove the link.",
@@ -5332,16 +5333,16 @@
         },
         "WorktreeCardSshHostControl": {
           "connectFailed": "SSH connection failed",
-          "removedTooltip": "SSH host removed ó reconnect unavailable",
+          "removedTooltip": "SSH host removed ‚Äî reconnect unavailable",
           "removedName": "SSH host {{value0}} was removed",
           "connectedTooltip": "Project on SSH host",
           "connectedName": "Project on SSH host {{value0}}",
           "connectingName": "Connecting to SSH host {{value0}}",
-          "authFailedName": "Reconnect SSH host {{value0}} ó authentication failed",
+          "authFailedName": "Reconnect SSH host {{value0}} ‚Äî authentication failed",
           "retryName": "Retry SSH connection to {{value0}}",
           "connectName": "Connect to SSH host {{value0}}",
-          "authFailedTooltip": "{{value0}} ∑ authentication failed",
-          "failedTooltip": "{{value0}} ∑ connection failed"
+          "authFailedTooltip": "{{value0}} ¬∑ authentication failed",
+          "failedTooltip": "{{value0}} ¬∑ connection failed"
         },
         "preserved": {
           "branch": {
@@ -5390,12 +5391,12 @@
           "1bbea41a77": "Kill all terminal sessions?",
           "01d6b7c64e": "Kills every running terminal pane and restarts the daemon process. Panes show \"Process exited\" and can be reopened immediately. Legacy-protocol sessions from a previous app version are preserved. This can't be undone.",
           "922548bc66": "Restart the terminal daemon?",
-          "2b4efdc162": "Couldnít kill sessions.",
+          "2b4efdc162": "Couldn‚Äôt kill sessions.",
           "d18f3005c2": "{{value0}} session{{value1}} refused to exit.",
           "baad8cd651": "No sessions running.",
           "fe2ab66d45": "Killed {{value0}} of {{value1}} sessions. {{value2}} refused to exit.",
           "d762b41f41": "Restart failed.",
-          "b5954e12d3": "Restart failed ó check logs.",
+          "b5954e12d3": "Restart failed ‚Äî check logs.",
           "0e9da1b98e": "Daemon restarted.",
           "d6372cc797": "Killed {{value0}} session{{value1}}.",
           "87412c2a68": "Killed {{value0}} session.",
@@ -5410,7 +5411,7 @@
           "47cd2a50e9": "No sessions or terminal tabs were reported.",
           "c34fb1098d": "Terminal tabs closed and shutdown requested.",
           "d9657ac204": "Terminal session shutdown requested.",
-          "e8f25bd903": "Couldnít finish terminal cleanup.",
+          "e8f25bd903": "Couldn‚Äôt finish terminal cleanup.",
           "a702d4196e": "This closes every terminal tab across all workspaces and requests shutdown for its current terminal sessions. Any unsaved terminal work is lost. The daemon itself keeps running, and new terminals can be opened immediately. This can't be undone."
         }
       },
@@ -5450,20 +5451,20 @@
           "63843e37e2": "Remove Claude Account?",
           "380a7736cc": "Removing this account permanently deletes its managed Codex home, including all Codex session history and MCP logins stored inside. This cannot be undone. If the account is currently active, Fabrica falls back to the system default Codex login.",
           "0d47394635": "Remove Codex Account?",
-          "ae3b21eb6c": "opencode.ai/workspace/wrk_Ö/go",
+          "ae3b21eb6c": "opencode.ai/workspace/wrk_‚Ä¶/go",
           "51c9104e13": "Find this in the URL after logging into opencode.ai (e.g.",
           "b398b834c9": "Clear",
           "316ca4e610": "Forget cookie",
-          "a122332371": "wrk_Ö (leave blank for automatic lookup)",
+          "a122332371": "wrk_‚Ä¶ (leave blank for automatic lookup)",
           "dbdb0b0bd8": "Workspace ID override",
           "d70a5287a4": "Optional workspace ID override if the automatic lookup fails.",
           "02cb127710": "OpenCode Go Workspace ID",
           "7ce0e1907c": "). Find it in your browser's DevTools ? Network ? any opencode.ai request ? Cookie header. OpenCode Go auth is web-based and shared across Windows and WSL terminals.",
-          "8951c5309f": "auth=Fe26.2**Ö",
+          "8951c5309f": "auth=Fe26.2**‚Ä¶",
           "338820326a": ") or the full cookie header (e.g.",
-          "922b51e02d": "Fe26.2**Ö",
+          "922b51e02d": "Fe26.2**‚Ä¶",
           "0023cc336e": "Paste either the raw token value (e.g.",
-          "a7e38affcd": "Fe26.2**Ö token or auth=Fe26.2**Ö header",
+          "a7e38affcd": "Fe26.2**‚Ä¶ token or auth=Fe26.2**‚Ä¶ header",
           "67e3c33670": "OpenCode Go session cookie",
           "b2b1aa936d": "Paste your opencode.ai session cookie for rate limit fetching.",
           "36223200ac": "OpenCode Go Session Cookie",
@@ -5530,7 +5531,7 @@
           "33bba5ad83": "Paste your MiniMax session cookie for local rate-limit fetching.",
           "73ea15f24b": "Saved",
           "23afe8f226": "Not saved",
-          "566d9a99ab": "_token=Ö; minimax_group_id_v2=Ö",
+          "566d9a99ab": "_token=‚Ä¶; minimax_group_id_v2=‚Ä¶",
           "f38b9cc4bd": "Replace",
           "590a3130f9": "Save",
           "79418c782a": "Open platform.minimax.io/console/usage in your browser, sign in, then copy the Cookie request header from DevTools (Network ? any remains request ? Cookie).",
@@ -5569,7 +5570,7 @@
           "remoteScopeAuthContext": "Each account keeps its own sign-in context on {{value0}}.",
           "remoteEmptyClaudeAccounts": "No managed Claude accounts on {{value0}}. It uses its system default Claude login; add accounts on that server.",
           "remoteEmptyCodexAccounts": "No managed Codex accounts on {{value0}}. It uses its system default Codex login; add accounts on that server.",
-          "codexSystemDefaultCustomProvider": "Custom provider ó no usage tracked.",
+          "codexSystemDefaultCustomProvider": "Custom provider ‚Äî no usage tracked.",
           "codexSystemDefaultNeedsSignIn": "No Codex sign-in was found for {{value0}}.",
           "codexConfigSyncMissingSource": "Codex is still using the settings it last synced because {{value0}} is missing. Restore that file to resume syncing.",
           "codexConfigSyncBlankSource": "Codex is still using the settings it last synced because {{value0}} is empty. That is expected while a synced folder finishes downloading.",
@@ -5619,13 +5620,13 @@
           "retrySetup": "Retry"
         },
         "AgentsPane": {
-          "d83834f5e6": "Detecting installed agentsÖ",
+          "d83834f5e6": "Detecting installed agents‚Ä¶",
           "024bd95089": "agents",
           "e8da2af684": "Available to install",
           "ed3e110e61": "detected",
           "03e1a5081a": "on {{value0}}",
           "25a41a9aad": "Re-detect agents installed on the active server",
-          "remoteDetectionFailed": "Couldnít detect installed agents. Check the host connection and try again.",
+          "remoteDetectionFailed": "Couldn‚Äôt detect installed agents. Check the host connection and try again.",
           "retryDetection": "Retry",
           "02e0143be5": "Installed",
           "110b74b022": "No agent (blank terminal)",
@@ -5643,7 +5644,7 @@
           "d4d2a45d63": "Enabled",
           "1c9a9679ec": "{{value0}} availability",
           "0d9e293a02": "Refresh",
-          "c9b33eb5c0": "RefreshingÖ",
+          "c9b33eb5c0": "Refreshing‚Ä¶",
           "13647f9f80": "Re-read your shell PATH and re-detect installed agents",
           "dc4a2ffdc0": "Expand command override",
           "cea7d97be1": "Collapse command override",
@@ -5822,14 +5823,14 @@
           "0d9c987f21": "Default Search Engine",
           "7b225c78f5": "Search engine used when typing non-URL text in the address bar.",
           "64898ecdab": "Create",
-          "7b649a578a": "CreatingÖ",
+          "7b649a578a": "Creating‚Ä¶",
           "4399c77caa": "Default",
           "4af9a17947": "kagi"
         },
         "BrowserProfileRow": {
           "8e636cae25": "Profile \"{{value0}}\" removed.",
           "2d4bea7f35": "Default cookies cleared.",
-          "ebb78dfd6f": "From FileÖ",
+          "ebb78dfd6f": "From File‚Ä¶",
           "7df818977e": "From",
           "cdec84552f": "Import Cookies",
           "796d846483": "No cookies imported",
@@ -5855,12 +5856,12 @@
           "b84807f228": "\"",
           "59722f31b4": "\"",
           "c5325e91f6": "Paste any of these into Claude Code, Codex, or another agent in a project where the skill is installed.",
-          "2a180694f7": "Try it ó example prompts",
+          "2a180694f7": "Try it ‚Äî example prompts",
           "5ec620ccc4": "Failed to copy.",
           "a602d43069": "Copied {{value0}}."
         },
         "BrowserUsePane": {
-          "be6df68384": "From FileÖ",
+          "be6df68384": "From File‚Ä¶",
           "e44c5d681e": "From",
           "67d9a53f47": "Manage profiles for separate logins",
           "112f70adc4": "Last imported from {{value0}}",
@@ -5914,9 +5915,9 @@
           "7baec27029": "Failed to load CLI status.",
           "d00df2e397": "Register",
           "9a5f8a4568": "Remove",
-          "b0fca411a0": "RegisteringÖ",
+          "b0fca411a0": "Registering‚Ä¶",
           "4c7e3e4c5f": "install",
-          "068552b191": "RemovingÖ",
+          "068552b191": "Removing‚Ä¶",
           "8d96213669": "remove",
           "aa6536977e": "Fabrica will register {{value0}} so the command works from your terminal.",
           "a030816e3e": "This removes the shell command symlink. Fabrica itself remains installed.",
@@ -5924,7 +5925,7 @@
           "14444243ba": "Remove `{{value0}}` from PATH?",
           "5d432fe44d": "installed",
           "8a9b784c60": "stale",
-          "d363e5929b": "Checking CLI registrationÖ",
+          "d363e5929b": "Checking CLI registration‚Ä¶",
           "cliSkillTerminalTitle": "CLI skill setup",
           "cliSkillTerminalAria": "CLI skill install terminal"
         },
@@ -6077,7 +6078,7 @@
           "a20d5ea365": "Keeps a pane-level highlight visible after terminal bell or agent-completion events until you interact with that pane. Experimental while we tune the signal.",
           "ec897e8d89": "Terminal attention",
           "88b7613afb": "Persistent pane highlight for terminal bell and agent-completion events.",
-          "0277901cf7": "Adds an Agents entry to the left sidebar with a threaded worktree feed for completed agents, blocking questions, unread state, and worktree creation events. Experimental ó the event model and UI may change.",
+          "0277901cf7": "Adds an Agents entry to the left sidebar with a threaded worktree feed for completed agents, blocking questions, unread state, and worktree creation events. Experimental ‚Äî the event model and UI may change.",
           "a05bcdaf57": "Agents View",
           "f63ea281e3": "Threaded left-sidebar feed for agent completions and blocking states.",
           "agentHibernation": {
@@ -6233,7 +6234,7 @@
           "a0832ccdb1": "downloaded",
           "2a48034c4c": "Downloading v{{value0}}... {{value1}}%",
           "4c1c001813": "downloading",
-          "f40d88390d": "Youíre on the latest version.",
+          "f40d88390d": "You‚Äôre on the latest version.",
           "90eb7309d7": "not-available",
           "82465b2444": "available",
           "31fd7150cf": "Checking for updates...",
@@ -6267,10 +6268,10 @@
           "b7ddae600c": "Done",
           "e4bda7ce6f": "No Ghostty config found on this system.",
           "b58d4c9051": "Unsupported keys",
-          "674b5ccd6b": "No new settings to import ó your current settings already match.",
+          "674b5ccd6b": "No new settings to import ‚Äî your current settings already match.",
           "a4c5dec640": "Settings to update",
           "4466f4cdaa": "Import complete",
-          "023a52c1f7": "Loading previewÖ",
+          "023a52c1f7": "Loading preview‚Ä¶",
           "2763b0c045": "Review the settings that will be imported from your Ghostty config.",
           "d2f33670a9": "Import from Ghostty",
           "273e7e81fe": "Configs",
@@ -6379,7 +6380,7 @@
         },
         "IntegrationsPane": {
           "2122e15517": "Each connected Linear workspace has one key stored by the active runtime. Full-access keys can cover all teams the key owner can access; restricted keys can be replaced any time.",
-          "e7b2dd46f9": "TestingÖ",
+          "e7b2dd46f9": "Testing‚Ä¶",
           "fe4d378dc4": "Verified",
           "f5c5246514": "Add Linear access",
           "6432f6522e": "Connected",
@@ -6438,11 +6439,11 @@
           "e7a961e1c5": "Configured",
           "6bd148dcb5": "Pull requests and commit statuses via the Gitea REST API.",
           "6355fe585e": "Pull requests and commit statuses for detected repositories",
-          "1fac9b4910": "{{value0}} ∑ Pull requests and commit statuses",
+          "1fac9b4910": "{{value0}} ¬∑ Pull requests and commit statuses",
           "f92fbf11aa": "Not configured",
           "6791d7af95": "Pull requests and build statuses via Azure DevOps REST API tokens.",
           "e3d5a24979": "Pull requests and build statuses for detected Azure Repos",
-          "277fc23929": "{{value0}} ∑ Pull requests and build statuses",
+          "277fc23929": "{{value0}} ¬∑ Pull requests and build statuses",
           "295154e54e": "connected",
           "0879860c58": "Pull requests and build statuses via Bitbucket Cloud API tokens.",
           "9707523939": "Pull requests and build statuses",
@@ -6482,13 +6483,13 @@
           "8401328fed": "Force-quits",
           "87dcafc85c": "Kill this session?",
           "0b0db4c68c": "Kill session",
-          "d3dba51b15": "KillingÖ"
+          "d3dba51b15": "Killing‚Ä¶"
         },
         "ManageSessionsSection": {
           "33c2a1e1b4": "Kill session {{value0}}",
           "2896a50f50": "Go to terminal {{value0}}",
           "e26a60d9eb": "No sessions.",
-          "39c53d6d74": "LoadingÖ",
+          "39c53d6d74": "Loading‚Ä¶",
           "5ed15e778c": "Restart daemon",
           "3282db098c": "Kill all sessions",
           "b3b1cc5708": "Refresh",
@@ -6497,10 +6498,10 @@
           "d1b80fd5cd": "Manage Sessions",
           "9c940434af": "Switch back to the local runtime to restart or kill local daemon sessions.",
           "ad467eaadc": "Session management is unavailable while a remote runtime server is active.",
-          "8dbd96b463": "Couldnít kill session.",
-          "0735b7a586": "Couldnít kill session ó it may already be gone.",
+          "8dbd96b463": "Couldn‚Äôt kill session.",
+          "0735b7a586": "Couldn‚Äôt kill session ‚Äî it may already be gone.",
           "bfba05dccd": "Killed session.",
-          "c535cbdd09": "Couldnít load sessions.",
+          "c535cbdd09": "Couldn‚Äôt load sessions.",
           "e3d1fbe008": "restart",
           "a06ababda0": "killAll"
         },
@@ -6513,7 +6514,7 @@
           "4d16a0d9ac": "Checked",
           "b900cd6282": "No MCP config found. Add an empty workspace config when you want this repo to define its own MCP servers.",
           "3b224167ff": "server",
-          "251b96564a": "detected ∑",
+          "251b96564a": "detected ¬∑",
           "f34c152dc0": "Refresh MCP configs",
           "6bac9ddfc6": "SSH repos are read through the remote filesystem. Starter creation is limited to the workspace root config.",
           "96f5609b04": "Inspect MCP server definitions that agents can use while working in this repo.",
@@ -6545,7 +6546,7 @@
           "d151e25078": "\"",
           "b525ff2b12": "\"",
           "4daa95f25a": "Paste any of these into Claude Code, Codex, or another agent in a project where the Fabrica CLI skill is installed.",
-          "0820b3f84f": "Try it ó example prompts",
+          "0820b3f84f": "Try it ‚Äî example prompts",
           "1f608e7d60": "Failed to copy prompt.",
           "2b077b5544": "Copied prompt."
         },
@@ -6607,8 +6608,8 @@
           "6436e56546": "QR Code for mobile pairing",
           "1b1b70279a": "No devices paired yet.",
           "1592afcc7a": "No devices paired yet. Scan the QR code with the Fabrica mobile app.",
-          "relayDegradedNotice": "Relay couldnít be reached ó this code only works on your LAN or Tailscale. Regenerate to try again.",
-          "pairingQrError": "This pairing code couldnít be rendered as a QR code. Copy it into Fabrica Mobile instead.",
+          "relayDegradedNotice": "Relay couldn‚Äôt be reached ‚Äî this code only works on your LAN or Tailscale. Regenerate to try again.",
+          "pairingQrError": "This pairing code couldn‚Äôt be rendered as a QR code. Copy it into Fabrica Mobile instead.",
           "pairingCodeReady": "Pairing code ready",
           "copyPairingCode": "Copy pairing code",
           "diagnosticsCopied": "Diagnostics copied",
@@ -6713,7 +6714,7 @@
           "6dec5ce2d2": "Agent coverage",
           "ffe13e36fb": "Missing",
           "1e8f8d8fae": "Ready",
-          "checking": "Checking installed agents and skill pathsÖ",
+          "checking": "Checking installed agents and skill paths‚Ä¶",
           "noAgents": "No agent CLIs detected on PATH. Install agents in Settings ? Agents, then re-check.",
           "fullCoverage_one": "All 1 detected agent has the skill.",
           "fullCoverage_other": "All {{value0}} detected agents have the skill.",
@@ -6787,7 +6788,7 @@
           "d59bd333c3": "Update this Fabrica server to manage its quick commands.",
           "f2bf411640": "Could not load commands from this host.",
           "7ecfee5b8e": "Retry",
-          "601d6af51f": "Loading commandsÖ",
+          "601d6af51f": "Loading commands‚Ä¶",
           "923ba89646": "Could not refresh commands from this host. Showing the last loaded commands.",
           "8d525e5f15": "Copied",
           "53b17a4b1b": "Couldn't copy",
@@ -6895,7 +6896,7 @@
           "cc1286e263": "Favicon",
           "03ca1a4e9b": "example.com",
           "381b4844fd": "Upload PNG",
-          "7da623abcc": "Used by default ó GitHub always provides one, even when the owner hasn't set a custom image.",
+          "7da623abcc": "Used by default ‚Äî GitHub always provides one, even when the owner hasn't set a custom image.",
           "39da8a10bf": "Use GitHub Avatar",
           "c490787d24": "Emoji",
           "b2d7fd2116": "Icon",
@@ -7061,7 +7062,7 @@
           "86ed75bec8": "Update server",
           "62ac182a27": "Update client",
           "c8791efc45": "Status unavailable",
-          "5120beaac6": "CheckingÖ",
+          "5120beaac6": "Checking‚Ä¶",
           "84b9b2be05": "Create a revocable access grant so a browser or another Fabrica client can connect.",
           "6e1280ca55": "Share this Fabrica server",
           "9a3758d983": "No saved servers.",
@@ -7104,7 +7105,7 @@
           "3f67e8078a": "Use this computer by default. Choose a saved server only when you want supported projects, files, terminals, provider checks, and browser/mobile handoff to run through that server.",
           "2c85efb3e8": "Selecting a saved server makes this browser use that paired Fabrica runtime as its default Host.",
           "serverConnected": "Connected",
-          "serverChecking": "CheckingÖ",
+          "serverChecking": "Checking‚Ä¶",
           "serverDisconnected": "Disconnected",
           "disconnectedServer": "Disconnected from {{value0}}.",
           "connectToRemoteServers": "Connect to remote servers",
@@ -7122,7 +7123,7 @@
           "versionUnavailable": "Fabrica version unavailable",
           "updateServer": "Update",
           "reviewServerUpdates": "Check for Server Updates",
-          "updatingServers": "Updating serversÖ",
+          "updatingServers": "Updating servers‚Ä¶",
           "FABRICAVersion": "Fabrica v{{value0}}",
           "removeActiveServerBlocked": "Choose another Active Server in Advanced before removing this server.",
           "removeActiveServerDescription": "Choose another Active Server in Advanced before removing this server. Existing host sessions are left alone.",
@@ -7138,7 +7139,7 @@
           "troubleshootStepShare": "On the other computer, open Share this host.",
           "troubleshootStepAddress": "Choose Another device and select its Tailscale or LAN address.",
           "troubleshootStepRegenerate": "Generate a new access link and use only the newest link here.",
-          "troubleshootTunnel": "Using an SSH local forward? Return to Connect to a host, paste the loopback link, then enable ìI am using an SSH tunnelî under Advanced.",
+          "troubleshootTunnel": "Using an SSH local forward? Return to Connect to a host, paste the loopback link, then enable ‚ÄúI am using an SSH tunnel‚Äù under Advanced.",
           "cloudVmWorkflow": "Cloud VM",
           "cloudVmWorkflowHelp": "Manage recipe-created cloud machines"
         },
@@ -7174,9 +7175,9 @@
           "1b4e0bbcc5": "Failed to load shared access grants.",
           "b91e36a986": "web",
           "custom-option": "{{address}} (custom)",
-          "add-custom": "Add custom addressÖ",
+          "add-custom": "Add custom address‚Ä¶",
           "custom-title": "Custom connection address",
-          "custom-description": "Advertise an address another device can reach ó a LAN or Tailscale host, or a full ws(s):// URL.",
+          "custom-description": "Advertise an address another device can reach ‚Äî a LAN or Tailscale host, or a full ws(s):// URL.",
           "custom-hint": "Enter a host, host:port, or a ws(s):// URL.",
           "custom-cancel": "Cancel",
           "custom-use": "Use address",
@@ -7278,7 +7279,7 @@
           "c766f8ac75": "Toggle font suggestions",
           "74bcecd5ec": "Clear",
           "a4ff6143f8": "Clear font selection",
-          "b661b034ec": "∑ Default:",
+          "b661b034ec": "¬∑ Default:",
           "builtin_themes": "Built-in",
           "ceefb9d7f1": "No themes found.",
           "imported_from": "Imported from {{value0}}",
@@ -7583,9 +7584,9 @@
           "a4a352b1e9": "Font Size"
         },
         "TerminalPane": {
-          "4263e940e0": "Pressing the JIS Yen (•) key sends a backslash (\\\\) instead.",
-          "19f4935159": "JIS Yen (•) to Backslash (\\\\)",
-          "1c337bef4a": "Controls whether pressing the JIS Yen (•) key sends a backslash (\\\\) instead.",
+          "4263e940e0": "Pressing the JIS Yen (¬•) key sends a backslash (\\\\) instead.",
+          "19f4935159": "JIS Yen (¬•) to Backslash (\\\\)",
+          "1c337bef4a": "Controls whether pressing the JIS Yen (¬•) key sends a backslash (\\\\) instead.",
           "3fe1c5bfe0": "Off",
           "c73d510938": "Right",
           "e7aec1fd60": "Left",
@@ -7595,7 +7596,7 @@
           "ce3aadf0b2": "The {{value0}} Option key sends Alt/Esc; the other composes special characters.",
           "b62373091a": "Both Option keys send Alt/Esc sequences.",
           "d8998bb328": "Option composes special characters for your keyboard layout.",
-          "d21c493808": "Auto ó detected: {{value0}}.",
+          "d21c493808": "Auto ‚Äî detected: {{value0}}.",
           "2561d3fc1b": "Controls whether the macOS Option key sends Alt/Esc sequences or composes characters.",
           "96be03b8eb": "PowerShell 7+",
           "d26174e1dd": "Windows PowerShell",
@@ -7779,8 +7780,8 @@
           "79f6bfb76e": "Foreground",
           "cf37ff69f6": "Base",
           "8abdab9f7c": "Restart now",
-          "907131d741": "RestartingÖ",
-          "605a35d600": "Not applied by the terminal renderer yet ó xterm.js has no bold color slot. A saved value is preserved."
+          "907131d741": "Restarting‚Ä¶",
+          "605a35d600": "Not applied by the terminal renderer yet ‚Äî xterm.js has no bold color slot. A saved value is preserved."
         },
         "UIZoomControl": {
           "c2c64b24d0": "Reset"
@@ -7824,7 +7825,7 @@
           "ea06227efa": "added",
           "b2429aeb31": "Add",
           "ab40b8a5f1": "No matches. Keep typing to add a custom path.",
-          "4cd2a4c077": "Type a path (e.g. .env or node_modules)Ö",
+          "4cd2a4c077": "Type a path (e.g. .env or node_modules)‚Ä¶",
           "241325302c": "Add Path",
           "7ff265071d": "When a new worktree is created, each path listed here is APFS clone-copied on macOS when possible, otherwise symlinked from the primary checkout.",
           "4755f120b6": "Worktree Shared Paths",
@@ -8742,9 +8743,9 @@
               "8ff73fef62": "Jira tokens are encrypted by the active runtime and stored locally. Re-entering the same site URL and email replaces that site's API token.",
               "9046a20d4c": "Disconnect {{value0}}",
               "eaffa454e9": "Update",
-              "cec06a0f79": "TestingÖ",
+              "cec06a0f79": "Testing‚Ä¶",
               "ab350991b8": "Verified",
-              "d914d7ab70": "VerifyingÖ",
+              "d914d7ab70": "Verifying‚Ä¶",
               "5936977fcd": "Cancel",
               "1666f8d562": "Create an Atlassian API token",
               "1ab7f551f3": "Atlassian API token",
@@ -9309,8 +9310,8 @@
             "24f7977756": "japanese",
             "98059d0944": "backslash",
             "9c35f56625": "yen",
-            "063914c486": "Controls whether pressing the JIS Yen (•) key sends a backslash (\\) instead.",
-            "694b8764ac": "JIS Yen (•) to Backslash (\\)",
+            "063914c486": "Controls whether pressing the JIS Yen (¬•) key sends a backslash (\\) instead.",
+            "694b8764ac": "JIS Yen (¬•) to Backslash (\\)",
             "fae142a354": "readline",
             "b3b94cfcb5": "international",
             "dd4f6cb541": "german",
@@ -9613,7 +9614,7 @@
                   "0613928cb3": "Gitea status is not available in this runtime yet.",
                   "05863d2599": "Pull requests and commit statuses via the Gitea REST API.",
                   "52f75876be": "Pull requests and commit statuses for detected repositories",
-                  "0b5242f8a2": "{{value0}} ∑ Pull requests and commit statuses",
+                  "0b5242f8a2": "{{value0}} ¬∑ Pull requests and commit statuses",
                   "40f678df73": "Azure DevOps credentials are configured but could not authenticate. Check the token, API base URL, and repository permissions, then restart Fabrica if environment variables changed.",
                   "7bd345e3f6": "only when Fabrica cannot derive the API base URL from the git remote.",
                   "186a6689df": "FABRICA_AZURE_DEVOPS_API_BASE_URL",
@@ -9625,7 +9626,7 @@
                   "f3f47dc7de": "Azure DevOps status is not available in this runtime yet.",
                   "0eb50d5593": "Pull requests and build statuses via Azure DevOps REST API tokens.",
                   "54636c65d4": "Pull requests and build statuses for detected Azure Repos",
-                  "ea204f5e03": "{{value0}} ∑ Pull requests and build statuses",
+                  "ea204f5e03": "{{value0}} ¬∑ Pull requests and build statuses",
                   "6154b02093": "Bitbucket credentials are configured but could not authenticate. Check the token and repository permissions, then restart Fabrica if environment variables changed.",
                   "e63fe8f627": "FABRICA_BITBUCKET_ACCESS_TOKEN",
                   "19416c874c": "FABRICA_BITBUCKET_API_TOKEN",
@@ -9748,10 +9749,10 @@
           "applyRuntimeChange": "Apply runtime change"
         },
         "PrivacyDiagnosticsRows": {
-          "5a7cbe069a": "DO_NOT_TRACK=1 is set ó creating and sending diagnostic files is disabled.",
-          "63d03261d1": "FABRICA_TELEMETRY_DISABLED=1 is set ó creating and sending diagnostic files is disabled.",
-          "d37e92a06b": "FABRICA_DIAGNOSTICS_DISABLED=1 is set ó app diagnostics are off.",
-          "5ebb31e1fb": "Running in CI ó diagnostics are off.",
+          "5a7cbe069a": "DO_NOT_TRACK=1 is set ‚Äî creating and sending diagnostic files is disabled.",
+          "63d03261d1": "FABRICA_TELEMETRY_DISABLED=1 is set ‚Äî creating and sending diagnostic files is disabled.",
+          "d37e92a06b": "FABRICA_DIAGNOSTICS_DISABLED=1 is set ‚Äî app diagnostics are off.",
+          "5ebb31e1fb": "Running in CI ‚Äî diagnostics are off.",
           "e27c8d45bf": "Diagnostics are disabled by an environment variable."
         },
         "ShortcutCommandBlock": {
@@ -9778,7 +9779,7 @@
           "5d982a2a1f": "Listening for shortcut",
           "152e0bcd64": "Add shortcut",
           "5bd56445da": "Change shortcut",
-          "f5ed5dcbf6": "Press keysÖ"
+          "f5ed5dcbf6": "Press keys‚Ä¶"
         },
         "ShortcutRemoveButton": {
           "9e29aff18b": "Remove {{value0}} shortcut {{value1}}",
@@ -9862,28 +9863,28 @@
           "cleanupDisabled": "Cleanup disabled",
           "running": "Running",
           "failed": "Failed",
-          "loadFailed": "Couldnít load temporary VM runtimes.",
-          "cleanupFailedToast": "Couldnít clean up temporary VM runtime.",
+          "loadFailed": "Couldn‚Äôt load temporary VM runtimes.",
+          "cleanupFailedToast": "Couldn‚Äôt clean up temporary VM runtime.",
           "markedCleaned": "Marked temporary VM runtime as cleaned.",
           "cleaned": "Cleaned up temporary VM runtime.",
           "copiedCleanupCommand": "Copied cleanup command.",
           "copiedCleanupPayload": "Copied cleanup payload.",
-          "copyCleanupFailed": "Couldnít copy cleanup command.",
+          "copyCleanupFailed": "Couldn‚Äôt copy cleanup command.",
           "title": "Temporary VM runtimes",
           "description": "Recipe-created runtimes are workspace-owned. Clean up stale entries after crashes, failed creates, or manual recovery.",
           "refresh": "Refresh temporary VM runtimes",
-          "loading": "Checking temporary VM runtimesÖ",
+          "loading": "Checking temporary VM runtimes‚Ä¶",
           "empty": "No temporary VM runtimes need cleanup.",
           "copyCleanup": "Copy command",
           "retry": "Retry cleanup",
           "cleanup": "Cleanup",
-          "cloudVmLoadFailed": "Couldnít load Cloud VM runtimes.",
-          "cloudVmCleanupFailedToast": "Couldnít clean up Cloud VM runtime.",
+          "cloudVmLoadFailed": "Couldn‚Äôt load Cloud VM runtimes.",
+          "cloudVmCleanupFailedToast": "Couldn‚Äôt clean up Cloud VM runtime.",
           "cloudVmMarkedCleaned": "Marked Cloud VM runtime as cleaned.",
           "cloudVmCleaned": "Cleaned up Cloud VM runtime.",
           "cloudVmTitle": "Cloud VM runtimes",
           "cloudVmRefresh": "Refresh Cloud VM runtimes",
-          "cloudVmLoading": "Checking Cloud VM runtimesÖ",
+          "cloudVmLoading": "Checking Cloud VM runtimes‚Ä¶",
           "cloudVmEmptyWithSetup": "No Cloud VM runtimes yet. Create one from a workspace using an environment recipe."
         },
         "ephemeralVms": {
@@ -9897,7 +9898,7 @@
           "copyError": "Could not copy the prompt.",
           "skillDescription": "Sets up, builds, authenticates, and validates repo-owned environment recipes.",
           "whatTitle": "What the skill does, with you",
-          "whatScaffold": "Writes the recipe & scripts for your provider ó connected over an Fabrica server or SSH.",
+          "whatScaffold": "Writes the recipe & scripts for your provider ‚Äî connected over an Fabrica server or SSH.",
           "whatBuild": "Builds a reusable base image and signs your agent in.",
           "whatValidate": "Validates it so you can create a workspace on it.",
           "promptHint": "In any workspace, ask your agent:",
@@ -9956,10 +9957,10 @@
           "a1b2c3d4e5": "Grok (xAI)",
           "f6e5d4c3b2": "Shows weekly credit usage from your Grok CLI sign-in (session file ~/.grok/auth.json).",
           "0d8e77bc40": "Grok CLI docs",
-          "ad47a33f72": "LoadingÖ",
+          "ad47a33f72": "Loading‚Ä¶",
           "b2c3d4e5f6": "Signed in",
-          "c3d4e5f6a7": "Signed in. Fabrica only reads that file on disk ó run grok login again if usage fails.",
-          "d4e5f6a7b8": "Session expired ó run grok login in a terminal to refresh.",
+          "c3d4e5f6a7": "Signed in. Fabrica only reads that file on disk ‚Äî run grok login again if usage fails.",
+          "d4e5f6a7b8": "Session expired ‚Äî run grok login in a terminal to refresh.",
           "e5f6a7b8c9": "Not signed in to Grok CLI",
           "f6a7b8c9d0": "In a terminal, run grok login, then click Refresh usage here.",
           "3325d996cb": "Refresh usage",
@@ -9969,7 +9970,7 @@
           "e6dadc1e2b": "Monthly usage",
           "75e396bf42": "Included monthly usage for Grok unified-billing accounts.",
           "b36fa2c908": "Signed in. Fabrica reads the Grok CLI session stored on disk.",
-          "f08c41de73": "Session expired ó run grok on the computer running Fabrica and wait for it to start. If prompted, complete sign-in, then click Refresh usage. No chat message is needed."
+          "f08c41de73": "Session expired ‚Äî run grok on the computer running Fabrica and wait for it to start. If prompted, complete sign-in, then click Refresh usage. No chat message is needed."
         },
         "AppearanceWindowSidebarSection": {
           "usagePercentageDisplayUsed": "Used",
@@ -9991,7 +9992,7 @@
           "directNeedsNoAccount": "LAN and Tailscale pairing still work without an account.",
           "signIn": "Sign in",
           "unavailable": "Unavailable",
-          "standby": "Standby ó no relay devices"
+          "standby": "Standby ‚Äî no relay devices"
         },
         "MobilePairingConnectionOptions": {
           "ready": "Ready",
@@ -10002,8 +10003,8 @@
           "pathGroup": "How the phone reaches this computer",
           "anywhereTitle": "Fabrica Relay",
           "anywhereDescription": "Phone can be on cellular or any Wi-Fi. Sign-in required for Relay only.",
-          "signInRequired": "Relay only ó LAN does not need an account.",
-          "relayUnavailable": "Fabrica Relay isnít available in this build. Use LAN.",
+          "signInRequired": "Relay only ‚Äî LAN does not need an account.",
+          "relayUnavailable": "Fabrica Relay isn‚Äôt available in this build. Use LAN.",
           "signIn": "Sign in for Relay",
           "signInAgain": "Sign in again for Relay",
           "localTitle": "LAN",
@@ -10014,12 +10015,12 @@
           "title": "Pair a phone",
           "overview": "Generate a QR code, then scan it in Fabrica Mobile under Pair Desktop.",
           "step1Title": "Connection",
-          "step2Title": "This computerís address",
+          "step2Title": "This computer‚Äôs address",
           "step2LocalDescription": "The phone must be able to reach this address on Tailscale or Wi-Fi.",
           "regenerate": "Regenerate QR code",
           "generate": "Generate QR code",
           "refresh": "Refresh network interfaces",
-          "step2RelayDescription": "Optional. Pick the Wi-Fi or Tailscale address your phone should use when nearby ó usually faster than Relay. Relay still works when youíre away.",
+          "step2RelayDescription": "Optional. Pick the Wi-Fi or Tailscale address your phone should use when nearby ‚Äî usually faster than Relay. Relay still works when you‚Äôre away.",
           "step2RelayDisclosure": "Also use a faster local path"
         },
         "MobileRelayBetaAvailability": {
@@ -10063,7 +10064,7 @@
           "offlineCount": "{{value0}} offline",
           "title": "Remote Fabrica Servers",
           "description": "Check and update paired Fabrica servers from this client.",
-          "updating": "Updating serversÖ",
+          "updating": "Updating servers‚Ä¶",
           "reviewUpdates": "{{value0}} updates available",
           "reviewServers": "Check for Server Updates",
           "serverCountOne": "1 paired server",
@@ -10077,10 +10078,10 @@
           "title": "Update Remote Fabrica Servers",
           "description": "Review paired servers and update supported installs from this Fabrica client.",
           "restartWarning": "Updating restarts these servers. {{value0}} live tabs and {{value1}} terminal panes may briefly disconnect.",
-          "checking": "Checking paired serversÖ",
+          "checking": "Checking paired servers‚Ä¶",
           "empty": "No paired Remote Fabrica Servers.",
           "checkAgain": "Check for Server Updates",
-          "updating": "Updating serversÖ",
+          "updating": "Updating servers‚Ä¶",
           "updateAll": "Update all {{value0}} servers",
           "noUpdates": "All servers are up to date.",
           "updateOne": "Update server",
@@ -10091,15 +10092,15 @@
           "livePanes": "{{value0}} live panes"
         },
         "RemoteServerUpdateStatus": {
-          "checking": "CheckingÖ",
+          "checking": "Checking‚Ä¶",
           "available": "Update available",
           "current": "Up to date",
           "manual": "Manual update",
           "offline": "Offline",
           "queued": "Queued",
-          "checkingUpdate": "Checking updateÖ",
-          "downloading": "DownloadingÖ",
-          "restarting": "RestartingÖ",
+          "checkingUpdate": "Checking update‚Ä¶",
+          "downloading": "Downloading‚Ä¶",
+          "restarting": "Restarting‚Ä¶",
           "updated": "Updated",
           "failed": "Update failed",
           "serviceManagerHelp": "Update Fabrica through the service manager that starts this server.",
@@ -10107,8 +10108,8 @@
           "legacyHelp": "Update this server manually once to enable remote updates."
         },
         "BrowserLinkRoutingSetting": {
-          "description": "Open http(s) links in Fabrica's built-in browser ó from the terminal, markdown, and the editor. {{shortcut}} always uses your system browser.",
-          "descriptionBase": "Open http(s) links in Fabrica's built-in browser ó from the terminal, markdown, and the editor."
+          "description": "Open http(s) links in Fabrica's built-in browser ‚Äî from the terminal, markdown, and the editor. {{shortcut}} always uses your system browser.",
+          "descriptionBase": "Open http(s) links in Fabrica's built-in browser ‚Äî from the terminal, markdown, and the editor."
         },
         "BrowserLinkRoutingModifierSetting": {
           "titleSystem": "Hold Shift to open in your web browser",
@@ -10121,10 +10122,10 @@
           "description": "Show available actions when you click a terminal link. Turn this off to require {{modifier}}-click."
         },
         "PluginConsentDialog": {
-          "workerTrust": "Background worker ó runs its own process",
-          "instructionalTrust": "Instructional content ó runs later under user or agent authority",
-          "declarativeTrust": "Declarative content ó no plugin code",
-          "panelTrust": "Panel or host-integrated content ó no worker process",
+          "workerTrust": "Background worker ‚Äî runs its own process",
+          "instructionalTrust": "Instructional content ‚Äî runs later under user or agent authority",
+          "declarativeTrust": "Declarative content ‚Äî no plugin code",
+          "panelTrust": "Panel or host-integrated content ‚Äî no worker process",
           "trustShortWorker": "Worker",
           "trustShortInstructional": "Instructional",
           "trustShortPanel": "Panel",
@@ -10133,7 +10134,7 @@
           "title": "Review permissions",
           "mixedTitle": "Review access and content",
           "instructionalTitle": "Review plugin content",
-          "subtitle": "{{value0}} v{{value1}} ∑ {{value2}}",
+          "subtitle": "{{value0}} v{{value1}} ¬∑ {{value2}}",
           "reconsent": "Permissions, the worker trust tier, or instructional content changed since you last reviewed this plugin. Review it again before it can run.",
           "capabilities": "This plugin can",
           "warning": "These permissions limit how the plugin uses Fabrica's API. Its worker still runs as a normal process on your computer with full access to your files, network, and other processes.",
@@ -10161,7 +10162,7 @@
           "source": "Source",
           "sourceLabel": "Source",
           "commit": "Pinned commit",
-          "localCommit": "Local folder ó no commit",
+          "localCommit": "Local folder ‚Äî no commit",
           "indexCommit": "Index commit"
         },
         "PluginDevelopmentSection": {
@@ -10178,7 +10179,7 @@
           "localRequired": "Enter the plugin folder path.",
           "gitUrlRequired": "Enter a repository URL.",
           "gitUrlInvalid": "Use an HTTPS or SSH Git URL. Executable Git helper protocols are not allowed.",
-          "gitRefRequired": "Add an explicit #ref (tag or commit) so the install is pinned ó for example #v0.1.0.",
+          "gitRefRequired": "Add an explicit #ref (tag or commit) so the install is pinned ‚Äî for example #v0.1.0.",
           "title": "Install plugin",
           "description": "Installing copies the plugin into Fabrica and shows its permissions for review. No plugin code runs until you enable it.",
           "source": "Install source",
@@ -10189,9 +10190,9 @@
           "localHelp": "Full path to a folder containing FABRICA-plugin.json on this computer. The path is used exactly as entered.",
           "gitLabel": "Repository URL with #ref",
           "gitPlaceholder": "https://git.example/acme/FABRICA-notes#v0.1.0",
-          "gitHelp": "Append an explicit #ref ó a tag or commit ó so the install is pinned. Works with GitHub, GitLab, and any git host.",
+          "gitHelp": "Append an explicit #ref ‚Äî a tag or commit ‚Äî so the install is pinned. Works with GitHub, GitLab, and any git host.",
           "cancel": "Cancel",
-          "installing": "InstallingÖ",
+          "installing": "Installing‚Ä¶",
           "install": "Install",
           "installFailed": "Plugin installation failed. Check the source and try again."
         },
@@ -10207,11 +10208,11 @@
           "previewFailed": "Could not prepare this plugin for review. Refresh the marketplace and try again.",
           "installFailed": "Could not install this plugin. The reviewed source may have changed.",
           "manageSources": "Manage sources",
-          "refreshing": "RefreshingÖ",
+          "refreshing": "Refreshing‚Ä¶",
           "refresh": "Refresh",
           "noInstalledTitle": "No plugins installed",
           "noInstalled": "Plugins you install appear here.",
-          "loading": "Loading marketplace pluginsÖ",
+          "loading": "Loading marketplace plugins‚Ä¶",
           "tryAgain": "Try again",
           "noSourcesTitle": "No marketplaces configured",
           "noSources": "Add an official, community, or private Git marketplace to browse plugins.",
@@ -10245,7 +10246,7 @@
           "eventsOne": "1 event subscription",
           "events": "{{value0}} event subscriptions",
           "worker": "Background worker",
-          "versionLine": "v{{value0}} ∑ {{value1}}",
+          "versionLine": "v{{value0}} ¬∑ {{value1}}",
           "includes": "Includes",
           "noContributions": "Manifest metadata only",
           "capabilities": "Requested access",
@@ -10268,7 +10269,7 @@
           "urlPlaceholder": "https://git.example.com/team/plugins.git",
           "refLabel": "Git ref",
           "refDescription": "Choose a branch, tag, or commit. Every fetched index is recorded at an exact commit.",
-          "adding": "AddingÖ",
+          "adding": "Adding‚Ä¶",
           "add": "Add source",
           "configured": "Configured sources",
           "empty": "No marketplace sources configured.",
@@ -10296,7 +10297,7 @@
           "systemLabel": "Plugin system",
           "systemDescription": "Discovers installed plugins and lets you enable them individually. Nothing runs until you review and enable it. Workers always run on this computer; SSH workspace actions route through Fabrica.",
           "featureOff": "Turn on the plugin system to see and manage installed plugins. Anything already installed stays on disk and stays disabled while the system is off.",
-          "loading": "Loading pluginsÖ",
+          "loading": "Loading plugins‚Ä¶",
           "noInstalledResultsTitle": "No matching plugins",
           "noInstalledResults": "No installed plugins match this search.",
           "emptyTitle": "No plugins installed yet",
@@ -10319,7 +10320,7 @@
           "disabled": "Disabled",
           "running": "Running",
           "enabled": "Enabled",
-          "loadingLogs": "Loading logsÖ",
+          "loadingLogs": "Loading logs‚Ä¶",
           "noLogs": "No log lines recorded.",
           "logCount": "Last {{value0}} of up to 200 retained lines",
           "reviewAndEnable": "Review & enable",
@@ -10330,7 +10331,7 @@
           "killListMessage": "Fabrica's safety list disabled this plugin: {{value0}}",
           "viewAdvisory": "View advisory",
           "runtimeError": "The plugin stopped after an activation or worker error.",
-          "restartCount": " ∑ {{value0}} restarts",
+          "restartCount": " ¬∑ {{value0}} restarts",
           "moreActions": "More actions for {{value0}}",
           "hideLogs": "Hide logs",
           "viewLogs": "View logs",
@@ -10346,7 +10347,7 @@
           "resume": "Resume",
           "destroy": "Destroy",
           "heading": "VM recipe commands",
-          "commandLabel": "{{value0}} ∑ {{value1}} command"
+          "commandLabel": "{{value0}} ¬∑ {{value1}} command"
         },
         "pluginError": {
           "installManifestMissing": "No readable FABRICA-plugin.json was found. Choose the plugin's root folder.",
@@ -10394,7 +10395,7 @@
           "noteKeysBody": "API keys and workspaces are stored for the active runtime.",
           "noteVisibilityTitle": "Hiding ? disconnect",
           "noteVisibilityBody": "Hiding Linear in Task Sources only removes it from the picker. It does not remove your key or skill.",
-          "setupChecking": "CheckingÖ"
+          "setupChecking": "Checking‚Ä¶"
         },
         "TaskSourceLinearSetup": {
           "connectTitle": "Connect Linear",
@@ -10412,7 +10413,7 @@
           "showDescription": "Include Linear in the Tasks page source picker and sidebar shortcuts."
         },
         "TaskSourceProviderCard": {
-          "statusChecking": "CheckingÖ",
+          "statusChecking": "Checking‚Ä¶",
           "statusReady": "Ready",
           "statusConnectRequired": "Connect required",
           "statusSkillRequired": "Skill required",
@@ -10437,7 +10438,7 @@
           "getLink": "Get an access link from the other host",
           "stepOpenShare": "Open Settings ? Remote Fabrica Servers ? Share this host.",
           "stepChooseAddress": "Choose Another device and select a reachable address.",
-          "stepCopyLink": "Generate the link, then copy the ìPair another Fabrica clientî link.",
+          "stepCopyLink": "Generate the link, then copy the ‚ÄúPair another Fabrica client‚Äù link.",
           "name": "Name in Fabrica",
           "namePlaceholder": "Linux workstation",
           "nameHelp": "This only changes how the computer appears in Fabrica.",
@@ -10446,7 +10447,7 @@
           "accessLinkHelp": "Fabrica shows the destination before connecting. Credentials stay hidden.",
           "destination": "Link destination",
           "loopbackTitle": "This link points back to this device",
-          "loopbackDescription": "It uses {{endpoint}}, which points back to the device opening the linkónot the other computer that created it.",
+          "loopbackDescription": "It uses {{endpoint}}, which points back to the device opening the link‚Äînot the other computer that created it.",
           "loopbackRecovery": "On the other computer, create a new link using Another device and choose its Tailscale or LAN address.",
           "identityMismatch": "The reached Fabrica host does not match this access link",
           "identityMismatchHelp": "Fabrica reached {{endpoint}}, but that host does not match this link. Generate a new link on the other host.",
@@ -10487,8 +10488,8 @@
           "channelAriaLabel": "Update channel",
           "hourlyWarning": "Hourly builds are macOS-only and ship straight from main with no test gate. Keep a stable build handy.",
           "dailyWarning": "Daily builds are macOS-only and ship straight from main with no test gate. Keep a stable build handy.",
-          "adhocWarning": "Adhoc builds are macOS-only and come from a branch that has not landed. Whoever cut one may abandon it ó keep a stable build handy.",
-          "loadingBuilds": "Loading buildsÖ",
+          "adhocWarning": "Adhoc builds are macOS-only and come from a branch that has not landed. Whoever cut one may abandon it ‚Äî keep a stable build handy.",
+          "loadingBuilds": "Loading builds‚Ä¶",
           "noBuilds": "No builds found",
           "refresh": "Refresh build list",
           "switchTo": "Switch to build",
@@ -10507,9 +10508,9 @@
           "allowAccess": "Allow access"
         },
         "TerminalTccAttributionNotice": {
-          "body": "The terminal daemon was started by an Fabrica install that no longer exists, so macOS canít attribute its commands to Fabrica ó Accessibility and Automation grants are silently ignored (osascript fails with error -25211). Restarting the daemon fixes this; running terminal sessions will close.",
+          "body": "The terminal daemon was started by an Fabrica install that no longer exists, so macOS can‚Äôt attribute its commands to Fabrica ‚Äî Accessibility and Automation grants are silently ignored (osascript fails with error -25211). Restarting the daemon fixes this; running terminal sessions will close.",
           "openManageSessions": "Open Manage Sessions",
-          "title": "macOS permission grants arenít reaching terminals"
+          "title": "macOS permission grants aren‚Äôt reaching terminals"
         },
         "artifacts": {
           "enable": "Enable Artifacts",
@@ -10517,7 +10518,7 @@
           "account": "Fabrica account",
           "connected": "Connected",
           "signInRequired": "Sign in is required to upload and manage artifacts.",
-          "signingIn": "Signing inÖ",
+          "signingIn": "Signing in‚Ä¶",
           "signIn": "Sign in to Fabrica",
           "title": "Artifacts",
           "description": "Share HTML and Markdown files with your team and manage their public links.",
@@ -10539,7 +10540,7 @@
           "signInAgain": "Sign in again",
           "enableStepTitle": "Enable artifact sharing",
           "enableStepWebDescription": "Open Settings ? Artifacts in the Fabrica desktop app on the host device and enable publishing.",
-          "enableStepDescription": "Turn on ìAllow publishing public artifact linksî above.",
+          "enableStepDescription": "Turn on ‚ÄúAllow publishing public artifact links‚Äù above.",
           "allowPublishing": "Allow publishing public artifact links",
           "allowPublishingWebDescription": "Desktop only. Open Settings ? Artifacts on the host device to change this setting.",
           "allowPublishingDescription": "Publish HTML and Markdown files as links anyone with the URL can open. Existing links remain until you delete them from Artifacts.",
@@ -10551,10 +10552,10 @@
           "reconnectRequired": "Your session expired. Sign in again to use cloud features.",
           "unavailable": "Fabrica sign-in is unavailable in this build.",
           "signedOut": "Sign in to extend Fabrica with cloud features, including Artifacts and Fabrica Relay.",
-          "checking": "Checking account statusÖ",
+          "checking": "Checking account status‚Ä¶",
           "account": "Fabrica account",
           "signOut": "Sign out",
-          "signingIn": "Signing inÖ",
+          "signingIn": "Signing in‚Ä¶",
           "signInAgain": "Sign in again",
           "signIn": "Sign in to Fabrica",
           "title": "Fabrica Account",
@@ -10616,14 +10617,14 @@
             "7f4489f370": "Refresh",
             "5c88c6db07": "Open on {{value0}}",
             "7fad8509fe": "Fix With AI",
-            "71026ca2cb": "RefreshingÖ",
+            "71026ca2cb": "Refreshing‚Ä¶",
             "889cdfba04": "Create {{value0}}",
             "98f4c37b33": "Push & Create {{value0}}",
             "b6ce28da5b": "{{value0}} #{{value1}} is already open",
             "cf9e69f3be": "{{value0}} is already open",
             "192e686e57": "Open on {{value0}}",
             "6633c7a1fb": "Publish Branch",
-            "fdb27637f2": "PublishingÖ",
+            "fdb27637f2": "Publishing‚Ä¶",
             "e56c42122e": "destructive",
             "786e3c143f": "Delete",
             "653c105ecc": "More PR actions",
@@ -10640,7 +10641,7 @@
               "retry": "Retry"
             },
             "sync": {
-              "pending": "SyncingÖ",
+              "pending": "Syncing‚Ä¶",
               "branch": "Sync Branch"
             },
             "7e4b2a19c0": "Could not resolve the GitHub PR to reply on.",
@@ -10676,7 +10677,7 @@
             "d47fd63012": "Generating {{value0}} details. Click to stop.",
             "bdf83ccb15": "Generating {{value0}}",
             "f5513bdeb1": "Generating",
-            "a6ea6dc3aa": "GeneratingÖ",
+            "a6ea6dc3aa": "Generating‚Ä¶",
             "e61d7e7ad4": "Stop generating {{value0}} details",
             "e041998cad": "Stop generating"
           },
@@ -10766,8 +10767,8 @@
             "d2ca293f3d": "Working...",
             "ef064cb7c3": "default",
             "59b4dccf70": "destructive",
-            "9a41a687b7": "Queue through #{{pr}} ∑ {{count}} PR",
-            "38a1bccb14": "Queue through #{{pr}} ∑ {{count}} PRs",
+            "9a41a687b7": "Queue through #{{pr}} ¬∑ {{count}} PR",
+            "38a1bccb14": "Queue through #{{pr}} ¬∑ {{count}} PRs",
             "3de88351c5": "GitHub will add this pull request and every pull request below it to the merge queue.",
             "a32fe6dba6": "GitHub will merge this pull request and every pull request below it in the stack.",
             "73e0e1819d": "Queueing stack...",
@@ -10924,14 +10925,14 @@
             "e64a632456": "main",
             "6055949c50": "{{value0}} base branch",
             "1f7119f604": "Base",
-            "9484270f45": "Generating title & descriptionÖ",
+            "9484270f45": "Generating title & description‚Ä¶",
             "a0dc20fc93": "Description (optional)",
             "a8873e1d62": "{{value0}} description",
             "7d6a8f0082": "Title",
             "a6eda33521": "{{value0}} title",
             "02d8c04339": "Generate {{value0}} details with AI",
             "aee92f8684": "Generate",
-            "e868cec4e1": "GeneratingÖ",
+            "e868cec4e1": "Generating‚Ä¶",
             "b355e740b2": "Stop generating {{value0}} details",
             "527e130b6f": "Stop generating",
             "e1970d327d": "New {{value0}}",
@@ -10947,7 +10948,7 @@
             "48db37cca9": "View all",
             "78ce2d37ac": "Pushes to fork",
             "c05fe04839": "Pushes to the fork at {{value0}} (not origin)",
-            "c35baf2f1e": "Filter filesÖ",
+            "c35baf2f1e": "Filter files‚Ä¶",
             "2fe2a67580": "More note actions",
             "eae2d051af": "Copy all notes",
             "cc474e0b8c": "Notes",
@@ -10955,7 +10956,7 @@
             "c07b236287": "Select a workspace to view changes",
             "dc5a6465fc": "{{value0}} (e.g. {{value1}}{{value2}})",
             "8eb3782a0c": "Failed to discard {{value0}} file{{value1}}",
-            "a5e5a11090": "Discard all failed ó unable to unstage files before discard",
+            "a5e5a11090": "Discard all failed ‚Äî unable to unstage files before discard",
             "8a5ba6a988": "Failed to load commit diff",
             "fe5bd1a610": "Creating {{value0}}...",
             "812cb992ee": "Open on {{value0}}",
@@ -11045,10 +11046,10 @@
             "f394c6128a": "No agent available to explain this commit",
             "04a5d7239b": "This repository has no supported web remote",
             "15b6e834ac": "Failed to open commit in browser",
-            "d37e68f61d": "Preparing branch for reviewÖ",
-            "8d8f5c6c94": "Generating commit messageÖ",
+            "d37e68f61d": "Preparing branch for review‚Ä¶",
+            "8d8f5c6c94": "Generating commit message‚Ä¶",
             "fda060d6ce": "Review the commit message, then retry Create PR.",
-            "b75cb1fd0c": "Committing changesÖ",
+            "b75cb1fd0c": "Committing changes‚Ä¶",
             "995c5e67ec": "Review setup needs attention.",
             "d7492cafce": "Could not refresh Source Control. Retry Create PR.",
             "473f18758e": "Source Control AI settings",
@@ -11057,14 +11058,14 @@
             "createPrIntentCommitFailed": "Could not commit changes. Fix the issue, then retry Create PR.",
             "createPrIntentNeedsSync": "Sync this branch before creating a review.",
             "createPrIntentBranchNotReady": "Branch is not ready to create a review yet.",
-            "createPrIntentPublishing": "Publishing branchÖ",
-            "createPrIntentForcePushing": "Force pushing with leaseÖ",
-            "createPrIntentPushing": "Pushing commitsÖ",
-            "createPrIntentFastForwarding": "Updating branchÖ",
+            "createPrIntentPublishing": "Publishing branch‚Ä¶",
+            "createPrIntentForcePushing": "Force pushing with lease‚Ä¶",
+            "createPrIntentPushing": "Pushing commits‚Ä¶",
+            "createPrIntentFastForwarding": "Updating branch‚Ä¶",
             "createPrIntentRemoteFailed": "Could not update the remote branch. Retry Create PR.",
-            "createPrIntentGeneratingDetails": "Generating review detailsÖ",
+            "createPrIntentGeneratingDetails": "Generating review details‚Ä¶",
             "createPrIntentBranchChangedDuringDetails": "Branch changed while generating review details. Retry Create PR.",
-            "createPrIntentCreatingReview": "Creating reviewÖ",
+            "createPrIntentCreatingReview": "Creating review‚Ä¶",
             "a91f8e2b01": "View as list",
             "b82e9f3c12": "View as tree",
             "f71c4a8d90": "More source control actions",
@@ -11204,7 +11205,7 @@
                 "b8c4e2a1f7": "View full logs",
                 "a2fb3f4408": "Showing first 100 jobs",
                 "df137989b3": "Showing first 20 annotations",
-                "1f2b980522": "Loading check detailsÖ",
+                "1f2b980522": "Loading check details‚Ä¶",
                 "0c96cd25e5": "Resolve",
                 "3a71a6ed0b": "Resolve conflicts before checks and merge can complete.",
                 "60186d8498": "Conflicts block this",
@@ -11229,7 +11230,7 @@
                 "cdbfda4dec": "Annotation",
                 "066fedd446": "Failed jobs",
                 "ae8a04ef17": "Conflict file details are unavailable",
-                "73d0675356": "Refreshing conflict detailsÖ",
+                "73d0675356": "Refreshing conflict details‚Ä¶",
                 "f5bc5c4cf1": "The hosting provider reports conflicts, but local Git did not reproduce them. Refresh the review or push the branch to recalculate mergeability.",
                 "5bc9bda2af": "Run from this worktree",
                 "e87fb3d929": "Copy mergeability refresh commands",
@@ -11244,8 +11245,8 @@
                 "f8a2c91d04": "Queue for agent",
                 "b4e8a1c902": "Queued",
                 "7c1f0a2b11": "Open",
-                "e8b4c1a903": "Resolved ∑ {{value0}}",
-                "c3a8e5d710": "Needs review ∑ {{value0}}",
+                "e8b4c1a903": "Resolved ¬∑ {{value0}}",
+                "c3a8e5d710": "Needs review ¬∑ {{value0}}",
                 "a7f0c7e8d1": "Queue",
                 "8a621a2c4f": "Grouped",
                 "b13f85d75c": "Timeline",
@@ -11556,7 +11557,7 @@
               },
               "dropdown": {
                 "items": {
-                  "7aad2c0240": "Hosted review operation in progressÖ",
+                  "7aad2c0240": "Hosted review operation in progress‚Ä¶",
                   "9e779995dd": "Create {{value0}}",
                   "226b85a3a7": "Fetch",
                   "323bb614aa": "Commit & Sync",
@@ -11576,7 +11577,7 @@
                   "1884cf34af": "Publish this branch to origin",
                   "7b4d02e6b8": "Publish Branch",
                   "3d5dccef0b": "Nothing to commit. PR is already merged.",
-                  "41d4bcf157": "Checking PR statusÖ",
+                  "41d4bcf157": "Checking PR status‚Ä¶",
                   "acce237921": "Nothing to commit. Branch has no changes to publish.",
                   "fa3bd4f40c": "Stage at least one file to commit",
                   "5a477d80cb": "Stage all changes",
@@ -11585,16 +11586,16 @@
                   "ab41fb926b": "Commit staged changes",
                   "2d8f185fbc": "Stage all changes before committing partially staged files",
                   "a6457b46a7": "Resolve conflicts before committing",
-                  "484f45c439": "{{value0}} in progressÖ",
-                  "6f7a8b9c0d": "Remote operation in progressÖ",
-                  "7f8a9b0c1d": "Remote operation in progress ó try again once it finishes",
-                  "74fc171e99": "Force Push in progressÖ",
-                  "16aee3a5c1": "Commit in progressÖ",
+                  "484f45c439": "{{value0}} in progress‚Ä¶",
+                  "6f7a8b9c0d": "Remote operation in progress‚Ä¶",
+                  "7f8a9b0c1d": "Remote operation in progress ‚Äî try again once it finishes",
+                  "74fc171e99": "Force Push in progress‚Ä¶",
+                  "16aee3a5c1": "Commit in progress‚Ä¶",
                   "e61b0d7a3c": "Check out a branch before publishing commits.",
                   "1d47e850cf": "Push updates to the linked review branch",
                   "c39d0c75c3": "Linked review branch target is unavailable.",
                   "8c6d15a07d": "Create PR",
-                  "d37e68f61d": "Preparing branch for reviewÖ",
+                  "d37e68f61d": "Preparing branch for review‚Ä¶",
                   "c72e5e65d1": "Prepare this branch and create a {{value0}}",
                   "b8e4f2a901": "Wait for the remote operation to finish.",
                   "c9f3a1b802": "Resolve conflicts before creating a {{value0}}.",
@@ -11608,7 +11609,7 @@
                   "e9b5d1f470": "Check out a branch before creating a {{value0}}.",
                   "f0c6e2a581": "This branch is not ready for a {{value0}} yet.",
                   "8f9a0b1c2d": "Nothing to commit. Branch is up to date.",
-                  "h3i4j5k607": "Checking whether this branch can create a {{value0}}Ö"
+                  "h3i4j5k607": "Checking whether this branch can create a {{value0}}‚Ä¶"
                 }
               },
               "branch": {
@@ -11618,13 +11619,13 @@
                       "daa8e8e59b": "{{value0}} lines added, {{value1}} lines deleted",
                       "8a9b97b666": "{{value0}} lines added",
                       "52c366d88d": "{{value0}} lines deleted",
-                      "4c1f70ba92": "{{value0}} ó test code: {{value1}} lines added, {{value2}} lines deleted",
+                      "4c1f70ba92": "{{value0}} ‚Äî test code: {{value1}} lines added, {{value2}} lines deleted",
                       "6b2d0f14a7": "Tests",
                       "9e4a3c5081": "Non-test",
                       "3d7e9b1042": "Non-generated",
                       "a1b2c3d4e5": "Code breakdown",
                       "b2c3d4e5f6": "Lines of code",
-                      "7f3e1a9c24": "{{value0}} ó generated: {{value1}} lines added, {{value2}} lines deleted",
+                      "7f3e1a9c24": "{{value0}} ‚Äî generated: {{value1}} lines added, {{value2}} lines deleted",
                       "c8d5b21e07": "Source",
                       "7a04c6f8b3": "Generated"
                     }
@@ -11693,7 +11694,7 @@
             "agentSessionQueued": "{{value0}} session queued",
             "sessionHistory": "Agent Session History",
             "agents": "Agents",
-            "shownRecent": "{{value0}} shown ∑ {{value1}} recent",
+            "shownRecent": "{{value0}} shown ¬∑ {{value1}} recent",
             "sessionsShownCompact": "{{value0}} shown",
             "resumePastSessions": "Resume past sessions",
             "refreshSessionHistory": "Refresh Session History",
@@ -11767,7 +11768,7 @@
             "model": "Model",
             "usage": "Usage",
             "usageValue": "{{value0}} msgs{{value1}}",
-            "tokenSuffix": " ∑ {{value0}} tok",
+            "tokenSuffix": " ¬∑ {{value0}} tok",
             "session": "Session",
             "sessionId": "Session ID",
             "copyDetailValue": "Copy {{value0}}",
@@ -11816,7 +11817,7 @@
             "copied": "Copied",
             "copy": "Copy",
             "noFirstPromptAvailable": "No first prompt available",
-            "loadingFirstPrompt": "Loading first promptÖ"
+            "loadingFirstPrompt": "Loading first prompt‚Ä¶"
           },
           "AiVaultSessionRow": {
             "noPreviewAvailable": "No conversation preview available",
@@ -11867,7 +11868,7 @@
             "f8a2c4d1e0": "Explorer search mode"
           },
           "GitHistoryCommitFiles": {
-            "a1b2c3d4e5": "Loading filesÖ",
+            "a1b2c3d4e5": "Loading files‚Ä¶",
             "b2c3d4e5f6": "No file changes in this commit",
             "c3d4e5f6a7": "Open all changes together"
           },
@@ -11916,8 +11917,8 @@
             "viewLog": "View Log"
           },
           "aiVaultSessionLogOpen": {
-            "workspaceGone": "Couldn't open log ó workspace is no longer available.",
-            "notAuthorized": "Couldn't open log ó path not authorized.",
+            "workspaceGone": "Couldn't open log ‚Äî workspace is no longer available.",
+            "notAuthorized": "Couldn't open log ‚Äî path not authorized.",
             "alreadyEditable": "Log is already open for editing."
           },
           "github": {
@@ -11953,8 +11954,8 @@
                   "eb7051d268": "Merge {{count}} PRs"
                 },
                 "merge": {
-                  "55ae29b907": "Merge through #{{pr}} ∑ {{count}} PR",
-                  "b8446f6ec2": "Merge through #{{pr}} ∑ {{count}} PRs",
+                  "55ae29b907": "Merge through #{{pr}} ¬∑ {{count}} PR",
+                  "b8446f6ec2": "Merge through #{{pr}} ¬∑ {{count}} PRs",
                   "189d0ec614": "#{{pr}} is still a draft.",
                   "640fb50d9c": "#{{pr}} is closed.",
                   "46ffcbda75": "#{{pr}} has merge conflicts.",
@@ -11997,7 +11998,7 @@
             "7737bd66be": "Collapse stack #{{value0}}",
             "0c1645ebd0": "Expand stack #{{value0}}",
             "e3ee2daa32": "Stack #{{value0}}",
-            "cb440931b7": "{{value0}} of {{value1}} ∑ {{value2}}",
+            "cb440931b7": "{{value0}} of {{value1}} ¬∑ {{value2}}",
             "525259fa17": "Stack details are temporarily unavailable."
           }
         }
@@ -12020,7 +12021,7 @@
           "3639fd9da2": "SSH",
           "e7ed739236": "No projects/folders match your search.",
           "a0c48f5f29": "Search projects/folders...",
-          "116812151a": "Adding projectÖ"
+          "116812151a": "Adding project‚Ä¶"
         },
         "repo": {
           "icon": {
@@ -12087,7 +12088,7 @@
           "6d469169f2": "GitHub setup",
           "bd5d976fb2": "Install gh",
           "50db38cf4b": "Pull requests, issues, and check status.",
-          "c1547656f0": "CheckingÖ",
+          "c1547656f0": "Checking‚Ä¶",
           "8405043962": "Sign in needed",
           "5c115cb713": "CLI not installed",
           "217beb0658": "GitHub",
@@ -12108,12 +12109,12 @@
           "8124d085a6": "Open Mac Settings",
           "aa36281b00": "Open System Settings and make sure Fabrica is allowed to send notifications.",
           "d2dba86837": "Allow Fabrica in macOS",
-          "e52aacf380": "Loading notification settingsÖ",
+          "e52aacf380": "Loading notification settings‚Ä¶",
           "3cd5374e22": "Notification settings are still loading",
           "b6a994e36e": "Notification sound could not be played",
           "c0692baa52": "Choose Custom File",
           "ac80d97e02": "Change Custom File",
-          "56b836215c": "Checking notification permissionÖ",
+          "56b836215c": "Checking notification permission‚Ä¶",
           "fd84d3e9b8": "Notifications are enabled",
           "4f7bce5644": "macOS will alert you when agents finish or terminals need attention.",
           "95d99b52fa": "Allow notifications for Fabrica",
@@ -12167,7 +12168,7 @@
           "248c812283": "Import",
           "7ee9234e54": "Ghostty config detected.",
           "78b6386140": "Imported from Ghostty.",
-          "2c3aa538f8": "Looking for a Ghostty configÖ",
+          "2c3aa538f8": "Looking for a Ghostty config‚Ä¶",
           "94b9dc561d": "Settings ? Terminal",
           "dd5c16ad1b": "More terminal options, including font, cursor, and palette, in",
           "ad192706e6": "Light",
@@ -12175,7 +12176,7 @@
           "827ea7b4a2": "System",
           "699ddf83c2": "Failed to import Ghostty settings",
           "16a9f0446a": "No Ghostty settings found to import",
-          "ad19e5c916": "ImportingÖ",
+          "ad19e5c916": "Importing‚Ä¶",
           "906c4373fe": "settings"
         },
         "use": {
@@ -12271,18 +12272,18 @@
             "searchBranches": "Search branches",
             "searchLinear": "Search Linear issues",
             "workspaceName": "Workspace name",
-            "loadingJira": "Loading Jira issueÖ",
+            "loadingJira": "Loading Jira issue‚Ä¶",
             "jiraDisconnected": "Connect Jira in Settings to link this issue",
             "jiraSiteNotConnected": "This Jira site is not connected",
             "jiraRuntimeUpdate": "Update the remote runtime to link Jira",
-            "jiraReadFailed": "Couldnít load this Jira issue",
+            "jiraReadFailed": "Couldn‚Äôt load this Jira issue",
             "chooseJiraAccount": "Choose a Jira account",
             "jiraLoaded": "Jira issue loaded",
             "openSettings": "Settings",
             "retryJira": "Retry",
             "searchJira": "Search Jira issues or paste an issue URL",
             "jiraMode": "Jira",
-            "jiraSelectBindFailed": "Couldnít link this Jira issue. Pick the matching site or reconnect Jira, then try again.",
+            "jiraSelectBindFailed": "Couldn‚Äôt link this Jira issue. Pick the matching site or reconnect Jira, then try again.",
             "emoji": "Emoji"
           },
           "ProjectCombobox": {
@@ -12305,7 +12306,7 @@
           "a8fb43cf1c": "Continue",
           "3f90dbd274": "Done",
           "b622eba64d": "Back",
-          "65b3f2e8bc": "GeneratingÖ",
+          "65b3f2e8bc": "Generating‚Ä¶",
           "27735e5f4e": "Pairing QR",
           "bb0074ce11": "Pairing QR code",
           "010dddcf27": "Copy pairing code",
@@ -12346,19 +12347,19 @@
             "preview": "Preview",
             "stable": "Stable"
           },
-          "relayDegradedNotice": "Relay couldnít be reached ó this code only works on your LAN or Tailscale.",
-          "pairingQrError": "This pairing code couldnít be rendered as a QR code. Copy it into Fabrica Mobile instead.",
+          "relayDegradedNotice": "Relay couldn‚Äôt be reached ‚Äî this code only works on your LAN or Tailscale.",
+          "pairingQrError": "This pairing code couldn‚Äôt be rendered as a QR code. Copy it into Fabrica Mobile instead.",
           "noRelayCode": "No pairing code available",
           "noPairingCode": "No pairing code available",
           "qrSignInRequired": "Sign in to create a Relay pairing code",
-          "qrRenderFailed": "QR couldnít be rendered ó copy the code below",
+          "qrRenderFailed": "QR couldn‚Äôt be rendered ‚Äî copy the code below",
           "qrGeneratePrompt": "Generate a pairing code to continue",
           "pairingCodeReady": "Pairing code ready",
           "pairThisMac": "Pair this Mac.",
           "pairThisPc": "Pair this PC.",
           "pairThisComputer": "Pair this computer.",
           "directAddressDisclosure": "Also use a faster local path",
-          "directAddressHint": "Optional. Pick the Wi-Fi or Tailscale address your phone should use when nearby ó usually faster than Relay. Relay still works when youíre away."
+          "directAddressHint": "Optional. Pick the Wi-Fi or Tailscale address your phone should use when nearby ‚Äî usually faster than Relay. Relay still works when you‚Äôre away."
         },
         "MobilePage": {
           "e17393c6a3": "Phone preview",
@@ -12376,7 +12377,7 @@
           "diagnosticsCopyFailed": "Failed to copy diagnostics"
         },
         "MobilePageToolbar": {
-          "ad2284a9e2": "Close ∑ Esc",
+          "ad2284a9e2": "Close ¬∑ Esc",
           "9883b58693": "Close Fabrica Mobile",
           "fb5f28330e": "Show in sidebar",
           "c669abcf8f": "Hide from sidebar",
@@ -12413,14 +12414,14 @@
             "4405f3c440": "Pair Desktop",
             "0b00c98506": "Quick Actions",
             "0bad5b07c8": "GitHub and Linear",
-            "d047197480": "GitHub ∑ Linear",
+            "d047197480": "GitHub ¬∑ Linear",
             "a4c3f7b7aa": "Tasks",
-            "d33d7a9c29": "FABRICA  ∑  feat/mobile-page",
+            "d33d7a9c29": "FABRICA  ¬∑  feat/mobile-page",
             "25d6e8a491": "feat/mobile-page",
             "c791677f2f": "Resume",
             "cf3f98fa3f": "Disconnected",
-            "091355da3d": "M1 Mini ∑ home",
-            "0bc1881bc4": "Connected ∑ 40 worktrees ∑ 5 active",
+            "091355da3d": "M1 Mini ¬∑ home",
+            "0bc1881bc4": "Connected ¬∑ 40 worktrees ¬∑ 5 active",
             "19c212e25e": "MacBook Pro",
             "2f1a1d10c4": "Desktops",
             "156db8a68a": "PRs created",
@@ -12433,7 +12434,7 @@
           "TerminalSlide": {
             "0bb39f8fe6": "Send",
             "69334b4b10": "Voice dictation",
-            "29f2d13839": "Type a commandÖ",
+            "29f2d13839": "Type a command‚Ä¶",
             "817090af40": "Ctrl+C",
             "53ff909568": "Tab",
             "4930eaaae7": "Esc",
@@ -12460,7 +12461,7 @@
             "e4befee569": "shell",
             "606aa93192": "Files",
             "94febb0976": "Source control",
-            "8d6516312d": "2 terminals ∑ claude active",
+            "8d6516312d": "2 terminals ¬∑ claude active",
             "8432787c4e": "feat/mobile-page",
             "8fd998acd3": "Back"
           },
@@ -12477,7 +12478,7 @@
         },
         "CustomNetworkAddressDialog": {
           "title": "Custom network address",
-          "description": "Advertise an address your phone can reach ó for example a Tailscale hostname, IP address, or reverse-proxy URL.",
+          "description": "Advertise an address your phone can reach ‚Äî for example a Tailscale hostname, IP address, or reverse-proxy URL.",
           "label": "Address",
           "placeholder": "home.example.com:8443 or https://example.com/FABRICA",
           "hint": "Enter an IPv4/IPv6 address, hostname, or full HTTP(S)/WebSocket URL. Ports are optional.",
@@ -12489,7 +12490,7 @@
           "no-address-selected": "No address selected",
           "trigger-label": "Network address to advertise",
           "custom-option": "{{address}} (custom)",
-          "add-custom": "Add custom addressÖ",
+          "add-custom": "Add custom address‚Ä¶",
           "custom-section": "Custom",
           "remove-custom": "Remove {{address}}"
         },
@@ -12501,23 +12502,23 @@
           "public-description": "Change this trusted Wi-Fi network to Private before allowing Fabrica Mobile connections.",
           "missing-description": "Windows may block the pairing server. Add a rule for this Fabrica app and TCP port {{port}} on Private networks.",
           "open-settings": "Open network settings",
-          "waiting": "Waiting for WindowsÖ",
+          "waiting": "Waiting for Windows‚Ä¶",
           "allow": "Allow phone connections",
           "repair-unverified": "Windows Firewall access could not be verified",
           "blocked-title": "Windows may be blocking Fabrica Mobile",
           "blocked-description": "An existing inbound Block rule can override the pairing exception. Repair removes conflicting TCP rules for this Fabrica app, then allows port {{port}} on Private networks.",
           "repair": "Repair firewall access",
-          "relay-note": "Pairing still works over Fabrica Relay ó allowing this only adds the faster local connection."
+          "relay-note": "Pairing still works over Fabrica Relay ‚Äî allowing this only adds the faster local connection."
         },
         "MobileRelayMintFailureNotice": {
-          "retryingTitle": "Retrying Fabrica RelayÖ",
-          "unavailableTitle": "Fabrica Relay isnít available on this desktop.",
-          "title": "Couldnít create a Relay pairing code.",
+          "retryingTitle": "Retrying Fabrica Relay‚Ä¶",
+          "unavailableTitle": "Fabrica Relay isn‚Äôt available on this desktop.",
+          "title": "Couldn‚Äôt create a Relay pairing code.",
           "retryingBody": "Creating a new pairing code. This can take a moment over a remote connection.",
           "unavailableBody": "Use LAN to pair over Tailscale or the same Wi-Fi.",
           "body": "Retry, or use LAN to pair over Tailscale or the same Wi-Fi.",
           "useLan": "Use LAN",
-          "retrying": "RetryingÖ",
+          "retrying": "Retrying‚Ä¶",
           "retry": "Retry Relay",
           "copyDiagnostics": "Copy diagnostics"
         }
@@ -12631,16 +12632,16 @@
             "25f15c2219": "Pro",
             "59ae327405": "Starter",
             "9e0f530390": "Pricing",
-            "0ce7c24b4d": "WorkingÖ",
+            "0ce7c24b4d": "Working‚Ä¶",
             "f2034c4930": ">",
             "6e4616d039": "Claude",
             "0f8481e1a7": "Send to Claude",
-            "3d2352f94b": "Describe the changeÖ",
+            "3d2352f94b": "Describe the change‚Ä¶",
             "d8856b604a": "div.pricing-grid > div.card.starter:nth-of-type(1) > a.cta",
             "7da6eed7bf": "localhost:3000",
             "0a2bd01c02": "New Browser Tab",
             "04096318ab": "Terminal 1",
-            "eb88125c6f": "? Verified ó Try free still works.",
+            "eb88125c6f": "? Verified ‚Äî Try free still works.",
             "051c97d15a": ".pp-card[data-card=\"starter\"] .pp-cta",
             "4fa59ca545": "? Updated",
             "1bec24acc1": "@keyframes browserFlash { 0% { opacity: 0; } 20% { opacity: 0.85; } 100% { opacity: 0; } } @keyframes browserTabIn { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: none; } } @keyframes browserViewIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }",
@@ -12668,8 +12669,8 @@
           },
           "EditorAnimatedVisual": {
             "7a763daf2f": "italic",
-            "8521536429": "bold ∑",
-            "8341391520": "for blocks ∑",
+            "8521536429": "bold ¬∑",
+            "8341391520": "for blocks ¬∑",
             "3fe42a1da0": "Type",
             "8268b2376b": "Code Block",
             "37fa4948ce": "Bullet List",
@@ -12680,7 +12681,7 @@
             "1fb29ad710": "Headings",
             "4426aab46f": "Update the docs index once the new tile lands.",
             "95f0c3a46f": "Smoke-test the install flow on a fresh machine.",
-            "22ae7b4d9d": "A quick note for the team ó pulling together what's left before we ship.",
+            "22ae7b4d9d": "A quick note for the team ‚Äî pulling together what's left before we ship.",
             "5a55c00a81": "Launch plan",
             "218503f9f3": "autosaved",
             "cda56c5915": "notes / launch-plan.md",
@@ -12785,7 +12786,7 @@
             "61ffda7601": "Creating workspace"
           },
           "WorkbenchAnimatedVisual": {
-            "633a91e358": "ThinkingÖ",
+            "633a91e358": "Thinking‚Ä¶",
             "932c4b3a97": ">",
             "ca2cfbf188": "Split Terminal Down",
             "e370fa8c2b": "Split Terminal Right",
@@ -12798,15 +12799,15 @@
             "431ca9842a": "Claude Code session started",
             "000106adfe": "claude",
             "7d9f1d5f7d": "(0.8s)",
-            "944199e54a": "õ cart total updates",
+            "944199e54a": "‚Ä∫ cart total updates",
             "623881d72e": "checkout.spec.ts",
             "5c5cbd783f": "(1.2s)",
-            "3261c6853b": "õ can sign in",
+            "3261c6853b": "‚Ä∫ can sign in",
             "defe550fe2": "login.spec.ts",
             "0b20782e0f": "Running 12 tests using 4 workers",
             "4371cc9931": "pnpm playwright test",
             "16877e038d": "splits down",
-            "a2b114dad0": "splits right ∑",
+            "a2b114dad0": "splits right ¬∑",
             "0bc9ad0cd1": "Same pane:",
             "fc84f17fe7": "Codex session started"
           },
@@ -12831,8 +12832,8 @@
               "usage": {
                 "tracking": {
                   "b94ec70eda": "Tracking not set up",
-                  "cc39a87288": "Connected ∑ System default",
-                  "00087eecb2": "Connected ∑ {{value0}}"
+                  "cc39a87288": "Connected ¬∑ System default",
+                  "00087eecb2": "Connected ¬∑ {{value0}}"
                 }
               }
             }
@@ -12858,7 +12859,7 @@
                 },
                 "ship": {
                   "styles": {
-                    "90cdcd2ecc": ".ravs-ship-root { position: absolute; inset: 0; } .ravs-ship-stack { position: absolute; inset: 0; display: grid; grid-template-columns: 232px minmax(0,1fr); gap: 14px; padding: 4px 2px; /* Why: cards size to their content rather than stretch to the parent's full height, so the two cards don't show empty space below their content. */ align-items: start; } /* Source Control mini-sidebar ó ahead-count header, commit textarea + split Commit button, then a CHANGES section with file rows. The file rows are the surface the \"reading\" pulse animates over. */ .ravs-sc-card { display: flex; flex-direction: column; background: var(--card, #fff); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(24,24,27,0.04); } /* Both card headers share the same fixed height so the SC card and PR dialog align across the top edge regardless of header content. */ .ravs-sc-header, .ravs-pr-head { height: 36px; box-sizing: border-box; } .ravs-sc-header { display: flex; align-items: center; justify-content: space-between; padding: 0 10px; border-bottom: 1px solid var(--border); } .ravs-sc-ahead { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; color: var(--foreground, #18181b); } .ravs-sc-ahead svg { color: var(--muted-foreground, #71717a); } .ravs-sc-commit-area { display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; } .ravs-sc-textarea { position: relative; border: 1px solid var(--border); border-radius: 6px; background: var(--editor-surface, var(--card)); padding: 6px 26px 6px 8px; min-height: 56px; font-size: 12px; line-height: 1.45; color: var(--foreground, #18181b); white-space: pre-wrap; word-break: break-word; overflow: hidden; } .ravs-sc-textarea .ravs-placeholder { color: rgba(113,113,122,0.7); } .ravs-sc-sparkle { position: absolute; right: 6px; top: 6px; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: var(--muted-foreground, #71717a); background: transparent; transition: color 160ms ease, background 160ms ease; } .ravs-sc-sparkle.is-scanning { color: rgb(109 40 217); background: color-mix(in srgb, rgb(139 92 246) 18%, transparent); } .ravs-sc-split { display: flex; align-items: stretch; } /* Why: Commit + Create PR are surrounding chrome ó the violet AI affordances are the focal points. Render them as quiet secondary buttons so they don't compete with the sparkle/scan signals. */ .ravs-sc-split .ravs-primary { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 5px 10px; background: var(--secondary, #f5f5f5); color: var(--secondary-foreground, #171717); font-size: 11px; font-weight: 500; border-radius: 6px 0 0 6px; border: 1px solid var(--border); transition: background 240ms ease, border-color 240ms ease, color 240ms ease; } .ravs-sc-split .ravs-chev { display: inline-flex; align-items: center; justify-content: center; width: 22px; background: var(--secondary, #f5f5f5); color: var(--muted-foreground, #71717a); border-radius: 0 6px 6px 0; border: 1px solid var(--border); border-left: 1px solid var(--border); transition: background 240ms ease, border-color 240ms ease, color 240ms ease; } /* Why: when AI has filled the commit message, tint the Commit button green to signal \"ready to commit\". Uses the same success-green family as the PR flash so the two beats rhyme. Mix is intentionally strong (~28%) ó at 14% it disappeared next to the violet sparkle and PR flash, so users only saw the PR change color. */ .ravs-sc-split.is-ready .ravs-primary, .ravs-sc-split.is-ready .ravs-chev { background: color-mix(in srgb, rgb(34 197 94) 28%, var(--secondary, #f5f5f5)); border-color: rgb(34 197 94); color: rgb(21 128 61); transition: background 220ms ease, border-color 220ms ease, color 220ms ease; } .ravs-sc-split.is-ready .ravs-chev { border-left-color: rgba(34, 197, 94, 0.55); } .ravs-sc-changes-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground, #71717a); } .ravs-sc-changes-count { color: var(--foreground, #18181b); font-weight: 600; margin-left: 2px; } .ravs-sc-view-all { font-size: 10px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted-foreground, #71717a); } .ravs-sc-files { display: flex; flex-direction: column; padding: 2px 6px 8px; flex: 1; min-height: 0; overflow: hidden; } .ravs-sc-file { display: grid; grid-template-columns: 14px minmax(0,1fr) 12px; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 4px; font-size: 11px; line-height: 1.35; color: var(--foreground, #18181b); position: relative; transition: background 220ms ease; } .ravs-sc-ficon { color: rgb(180 83 9); display: inline-flex; } .ravs-sc-fname { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ravs-sc-fmark { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; text-align: right; color: rgb(180 83 9); } .ravs-sc-file.is-reading { background: color-mix(in srgb, rgb(139 92 246) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, rgb(139 92 246) 28%, transparent); } /* PR dialog ó matches the .ravs-sc-card chrome (same border, radius, elevation) so the two cards read as one design language. */ .ravs-pr-dialog { background: var(--card, #fff); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 1px 2px rgba(24,24,27,0.04); display: flex; flex-direction: column; min-width: 0; overflow: hidden; } .ravs-pr-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 0 10px; border-bottom: 1px solid var(--border); } .ravs-pr-title-text { font-size: 11px; font-weight: 500; color: var(--foreground, #18181b); } /* Icon-only AI-assist chip ó mirrors .ravs-sc-sparkle so the affordance reads identically across both cards. */ .ravs-pr-gen-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border-radius: 4px; color: var(--muted-foreground, #71717a); background: transparent; border: 0; cursor: pointer; transition: color 160ms ease, background 160ms ease; } .ravs-pr-gen-btn:hover { background: rgba(24,24,27,0.06); color: var(--foreground, #18181b); } .ravs-pr-gen-btn.is-scanning { color: rgb(109 40 217); background: color-mix(in srgb, rgb(139 92 246) 18%, transparent); } .ravs-pr-body { display: flex; flex-direction: column; gap: 8px; padding: 10px; } .ravs-pr-field { display: flex; flex-direction: column; gap: 4px; } .ravs-pr-field-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground, #71717a); } .ravs-pr-base { display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--foreground, #18181b); background: var(--editor-surface, var(--card)); align-self: flex-start; } .ravs-pr-base svg { color: var(--muted-foreground, #71717a); } .ravs-pr-input { position: relative; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--editor-surface, var(--card)); min-height: 28px; font-size: 12px; line-height: 1.45; color: var(--foreground, #18181b); white-space: pre-wrap; word-break: break-word; overflow: hidden; } .ravs-pr-input.is-body { min-height: 50px; font-size: 11px; line-height: 1.4; } .ravs-pr-input .ravs-placeholder { color: rgba(113,113,122,0.7); } .ravs-pr-footer { display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 2px; } .ravs-pr-btn { font-size: 11px; font-weight: 500; padding: 5px 10px; border-radius: 6px; line-height: 1; border: 1px solid transparent; outline: none; } .ravs-pr-btn:focus, .ravs-pr-btn:focus-visible { outline: none; } /* Cancel reads as a quiet ghost button so it doesn't compete with the affirmative Create PR action. */ .ravs-pr-btn.is-outline { background: transparent; color: var(--muted-foreground, #71717a); border-color: transparent; } .ravs-pr-btn.is-outline:hover { background: rgba(24,24,27,0.05); color: var(--foreground, #18181b); } /* Quiet secondary fill ó see the .ravs-sc-split note above. The flash ring still uses success-green so the \"PR created\" beat reads. The Create-PR button is slightly larger than Cancel so the affirmative action remains the bigger target. */ .ravs-pr-btn.is-solid { background: var(--secondary, #f5f5f5); color: var(--secondary-foreground, #171717); border-color: var(--border); font-size: 12px; padding: 7px 14px; transition: background 220ms ease, border-color 220ms ease, color 220ms ease, box-shadow 220ms ease; } .ravs-pr-btn.is-solid.is-ready { background: color-mix(in srgb, rgb(34 197 94) 28%, var(--secondary, #f5f5f5)); border-color: rgb(34 197 94); color: rgb(21 128 61); } .ravs-pr-btn.is-solid.is-flash { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.30); } .ravs-cursor { position: absolute; z-index: 40; pointer-events: none; transition: transform 600ms cubic-bezier(.45,.05,.2,1), opacity 200ms ease; transform: translate(-30px, 220px); opacity: 0; } .ravs-cursor.is-visible { opacity: 1; } .ravs-cursor .ravs-ripple { position: absolute; left: -6px; top: -6px; width: 28px; height: 28px; border-radius: 999px; border: 2px solid rgba(24,24,27,0.5); opacity: 0; } .ravs-cursor.is-clicking .ravs-ripple { animation: ravs-ripple 460ms ease-out forwards; } @keyframes ravs-ripple { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(1.4); opacity: 0; } } .ravs-caret { display: inline-block; width: 1.5px; height: 1em; background: currentColor; vertical-align: -2px; margin-left: 1px; animation: ravs-caret-blink 1.05s steps(1) infinite; } @keyframes ravs-caret-blink { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } }"
+                    "90cdcd2ecc": ".ravs-ship-root { position: absolute; inset: 0; } .ravs-ship-stack { position: absolute; inset: 0; display: grid; grid-template-columns: 232px minmax(0,1fr); gap: 14px; padding: 4px 2px; /* Why: cards size to their content rather than stretch to the parent's full height, so the two cards don't show empty space below their content. */ align-items: start; } /* Source Control mini-sidebar ‚Äî ahead-count header, commit textarea + split Commit button, then a CHANGES section with file rows. The file rows are the surface the \"reading\" pulse animates over. */ .ravs-sc-card { display: flex; flex-direction: column; background: var(--card, #fff); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(24,24,27,0.04); } /* Both card headers share the same fixed height so the SC card and PR dialog align across the top edge regardless of header content. */ .ravs-sc-header, .ravs-pr-head { height: 36px; box-sizing: border-box; } .ravs-sc-header { display: flex; align-items: center; justify-content: space-between; padding: 0 10px; border-bottom: 1px solid var(--border); } .ravs-sc-ahead { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; color: var(--foreground, #18181b); } .ravs-sc-ahead svg { color: var(--muted-foreground, #71717a); } .ravs-sc-commit-area { display: flex; flex-direction: column; gap: 6px; padding: 8px 10px; } .ravs-sc-textarea { position: relative; border: 1px solid var(--border); border-radius: 6px; background: var(--editor-surface, var(--card)); padding: 6px 26px 6px 8px; min-height: 56px; font-size: 12px; line-height: 1.45; color: var(--foreground, #18181b); white-space: pre-wrap; word-break: break-word; overflow: hidden; } .ravs-sc-textarea .ravs-placeholder { color: rgba(113,113,122,0.7); } .ravs-sc-sparkle { position: absolute; right: 6px; top: 6px; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: var(--muted-foreground, #71717a); background: transparent; transition: color 160ms ease, background 160ms ease; } .ravs-sc-sparkle.is-scanning { color: rgb(109 40 217); background: color-mix(in srgb, rgb(139 92 246) 18%, transparent); } .ravs-sc-split { display: flex; align-items: stretch; } /* Why: Commit + Create PR are surrounding chrome ‚Äî the violet AI affordances are the focal points. Render them as quiet secondary buttons so they don't compete with the sparkle/scan signals. */ .ravs-sc-split .ravs-primary { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 5px 10px; background: var(--secondary, #f5f5f5); color: var(--secondary-foreground, #171717); font-size: 11px; font-weight: 500; border-radius: 6px 0 0 6px; border: 1px solid var(--border); transition: background 240ms ease, border-color 240ms ease, color 240ms ease; } .ravs-sc-split .ravs-chev { display: inline-flex; align-items: center; justify-content: center; width: 22px; background: var(--secondary, #f5f5f5); color: var(--muted-foreground, #71717a); border-radius: 0 6px 6px 0; border: 1px solid var(--border); border-left: 1px solid var(--border); transition: background 240ms ease, border-color 240ms ease, color 240ms ease; } /* Why: when AI has filled the commit message, tint the Commit button green to signal \"ready to commit\". Uses the same success-green family as the PR flash so the two beats rhyme. Mix is intentionally strong (~28%) ‚Äî at 14% it disappeared next to the violet sparkle and PR flash, so users only saw the PR change color. */ .ravs-sc-split.is-ready .ravs-primary, .ravs-sc-split.is-ready .ravs-chev { background: color-mix(in srgb, rgb(34 197 94) 28%, var(--secondary, #f5f5f5)); border-color: rgb(34 197 94); color: rgb(21 128 61); transition: background 220ms ease, border-color 220ms ease, color 220ms ease; } .ravs-sc-split.is-ready .ravs-chev { border-left-color: rgba(34, 197, 94, 0.55); } .ravs-sc-changes-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground, #71717a); } .ravs-sc-changes-count { color: var(--foreground, #18181b); font-weight: 600; margin-left: 2px; } .ravs-sc-view-all { font-size: 10px; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted-foreground, #71717a); } .ravs-sc-files { display: flex; flex-direction: column; padding: 2px 6px 8px; flex: 1; min-height: 0; overflow: hidden; } .ravs-sc-file { display: grid; grid-template-columns: 14px minmax(0,1fr) 12px; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 4px; font-size: 11px; line-height: 1.35; color: var(--foreground, #18181b); position: relative; transition: background 220ms ease; } .ravs-sc-ficon { color: rgb(180 83 9); display: inline-flex; } .ravs-sc-fname { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ravs-sc-fmark { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; text-align: right; color: rgb(180 83 9); } .ravs-sc-file.is-reading { background: color-mix(in srgb, rgb(139 92 246) 14%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, rgb(139 92 246) 28%, transparent); } /* PR dialog ‚Äî matches the .ravs-sc-card chrome (same border, radius, elevation) so the two cards read as one design language. */ .ravs-pr-dialog { background: var(--card, #fff); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 1px 2px rgba(24,24,27,0.04); display: flex; flex-direction: column; min-width: 0; overflow: hidden; } .ravs-pr-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 0 10px; border-bottom: 1px solid var(--border); } .ravs-pr-title-text { font-size: 11px; font-weight: 500; color: var(--foreground, #18181b); } /* Icon-only AI-assist chip ‚Äî mirrors .ravs-sc-sparkle so the affordance reads identically across both cards. */ .ravs-pr-gen-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border-radius: 4px; color: var(--muted-foreground, #71717a); background: transparent; border: 0; cursor: pointer; transition: color 160ms ease, background 160ms ease; } .ravs-pr-gen-btn:hover { background: rgba(24,24,27,0.06); color: var(--foreground, #18181b); } .ravs-pr-gen-btn.is-scanning { color: rgb(109 40 217); background: color-mix(in srgb, rgb(139 92 246) 18%, transparent); } .ravs-pr-body { display: flex; flex-direction: column; gap: 8px; padding: 10px; } .ravs-pr-field { display: flex; flex-direction: column; gap: 4px; } .ravs-pr-field-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground, #71717a); } .ravs-pr-base { display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--foreground, #18181b); background: var(--editor-surface, var(--card)); align-self: flex-start; } .ravs-pr-base svg { color: var(--muted-foreground, #71717a); } .ravs-pr-input { position: relative; padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--editor-surface, var(--card)); min-height: 28px; font-size: 12px; line-height: 1.45; color: var(--foreground, #18181b); white-space: pre-wrap; word-break: break-word; overflow: hidden; } .ravs-pr-input.is-body { min-height: 50px; font-size: 11px; line-height: 1.4; } .ravs-pr-input .ravs-placeholder { color: rgba(113,113,122,0.7); } .ravs-pr-footer { display: flex; align-items: center; gap: 6px; justify-content: flex-end; margin-top: 2px; } .ravs-pr-btn { font-size: 11px; font-weight: 500; padding: 5px 10px; border-radius: 6px; line-height: 1; border: 1px solid transparent; outline: none; } .ravs-pr-btn:focus, .ravs-pr-btn:focus-visible { outline: none; } /* Cancel reads as a quiet ghost button so it doesn't compete with the affirmative Create PR action. */ .ravs-pr-btn.is-outline { background: transparent; color: var(--muted-foreground, #71717a); border-color: transparent; } .ravs-pr-btn.is-outline:hover { background: rgba(24,24,27,0.05); color: var(--foreground, #18181b); } /* Quiet secondary fill ‚Äî see the .ravs-sc-split note above. The flash ring still uses success-green so the \"PR created\" beat reads. The Create-PR button is slightly larger than Cancel so the affirmative action remains the bigger target. */ .ravs-pr-btn.is-solid { background: var(--secondary, #f5f5f5); color: var(--secondary-foreground, #171717); border-color: var(--border); font-size: 12px; padding: 7px 14px; transition: background 220ms ease, border-color 220ms ease, color 220ms ease, box-shadow 220ms ease; } .ravs-pr-btn.is-solid.is-ready { background: color-mix(in srgb, rgb(34 197 94) 28%, var(--secondary, #f5f5f5)); border-color: rgb(34 197 94); color: rgb(21 128 61); } .ravs-pr-btn.is-solid.is-flash { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.30); } .ravs-cursor { position: absolute; z-index: 40; pointer-events: none; transition: transform 600ms cubic-bezier(.45,.05,.2,1), opacity 200ms ease; transform: translate(-30px, 220px); opacity: 0; } .ravs-cursor.is-visible { opacity: 1; } .ravs-cursor .ravs-ripple { position: absolute; left: -6px; top: -6px; width: 28px; height: 28px; border-radius: 999px; border: 2px solid rgba(24,24,27,0.5); opacity: 0; } .ravs-cursor.is-clicking .ravs-ripple { animation: ravs-ripple 460ms ease-out forwards; } @keyframes ravs-ripple { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(1.4); opacity: 0; } } .ravs-caret { display: inline-block; width: 1.5px; height: 1em; background: currentColor; vertical-align: -2px; margin-left: 1px; animation: ravs-caret-blink 1.05s steps(1) infinite; } @keyframes ravs-caret-blink { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } }"
                   }
                 }
               }
@@ -12866,7 +12867,7 @@
             "notes": {
               "diff": {
                 "rows": {
-                  "f621c734f8": "Note ∑ line"
+                  "f621c734f8": "Note ¬∑ line"
                 }
               }
             }
@@ -12881,11 +12882,11 @@
                 "childPr2Name": "PR 2/2: withSession middleware"
               },
               "types": {
-                "coordinatorInitial": "Splitting auth rewrite into 2 PRsÖ",
-                "codexInitial": "Writing the users table migrationÖ",
-                "claudeInitial": "Sketching withSession middlewareÖ",
-                "codexBeat1": "Adding the email_verified columnÖ",
-                "claudeBeat1": "Wiring withSession middlewareÖ",
+                "coordinatorInitial": "Splitting auth rewrite into 2 PRs‚Ä¶",
+                "codexInitial": "Writing the users table migration‚Ä¶",
+                "claudeInitial": "Sketching withSession middleware‚Ä¶",
+                "codexBeat1": "Adding the email_verified column‚Ä¶",
+                "claudeBeat1": "Wiring withSession middleware‚Ä¶",
                 "coordinatorBeat1": "PR 1/2 ready",
                 "coordinatorBeat2": "PR 2/2 ready"
               },
@@ -12942,7 +12943,7 @@
             "d6d15077df": "Skill command copied and inserted below for review.",
             "78e65f19d9": "Browser setup failed",
             "b7345c18db": "An unexpected error occurred.",
-            "5f97caf76b": "InstallingÖ",
+            "5f97caf76b": "Installing‚Ä¶",
             "c2df599513": "Install CLI & Skill"
           },
           "ConnectIntegrationsList": {
@@ -12952,7 +12953,7 @@
             "list_end": ", and ",
             "list_pair": " and ",
             "list_mid": ", ",
-            "code_host_tasks_summary": "issues available as tasks ∑ add Linear or Jira if your team plans work there",
+            "code_host_tasks_summary": "issues available as tasks ¬∑ add Linear or Jira if your team plans work there",
             "code_host_tasks_caption": "Your code host's issues also work as tasks.",
             "review_step_title": "See PR status while agents work",
             "review_step_description": "Connect a review provider so Fabrica can show PR or MR status, checks, and reviews.",
@@ -13003,12 +13004,12 @@
           },
           "FeatureTipsModal": {
             "c169298e4d": "Done",
-            "3c6c478462": "X finishes, send it the review task.î",
+            "3c6c478462": "X finishes, send it the review task.‚Äù",
             "298301b7a0": "worktree",
-            "864e2db28f": "ìWhen the agent in",
-            "7fc6f02099": "and create PRs for each.î",
+            "864e2db28f": "‚ÄúWhen the agent in",
+            "7fc6f02099": "and create PRs for each.‚Äù",
             "27c567a89c": "worktrees",
-            "55846c7f95": "ìSplit this PR into two",
+            "55846c7f95": "‚ÄúSplit this PR into two",
             "4795ac2d4a": "Try asking:",
             "53905bd076": "Development preview: opening skills setup terminal.",
             "1da82af45b": "Fabrica CLI needs attention",
@@ -13052,7 +13053,7 @@
                 "6bd8dff42a": "Rotate",
                 "3d836b879c": "Choose emulator",
                 "81b3571a07": "Connect",
-                "868c0f2938": "WorkingÖ"
+                "868c0f2938": "Working‚Ä¶"
               }
             },
             "screen": {
@@ -13060,7 +13061,7 @@
                 "content": {
                   "8b1a0d8694": "Emulator preview",
                   "36841af608": "Stream disconnected",
-                  "5f818f12ab": "Connecting emulatorÖ",
+                  "5f818f12ab": "Connecting emulator‚Ä¶",
                   "5ee64cd44e": "Emulator screen"
                 }
               }
@@ -13143,7 +13144,7 @@
                 "toast": {
                   "e8f098a870": "Mobile Emulator hidden",
                   "c46c979c1d": "Re-enable Mobile Emulator anytime in",
-                  "600f9a745a": "Settings õ Mobile Emulator"
+                  "600f9a745a": "Settings ‚Ä∫ Mobile Emulator"
                 }
               }
             }
@@ -13227,7 +13228,7 @@
           "6e459867ad": "Session-local continuity state. Git is no longer reporting this file as unmerged.",
           "9c2901ef8a": "Next conflict",
           "41d9af2e7a": "Previous conflict",
-          "55d61a0ccd": "conflict ∑",
+          "55d61a0ccd": "conflict ¬∑",
           "da539359b6": "No working-tree file is available to edit for this conflict."
         },
         "ConflictReviewFileTree": {
@@ -13266,7 +13267,7 @@
           "9640d1d3db": "Previewing the modified version of this diff. Switch to source mode to inspect changes.",
           "78541e254e": "Binary file changed",
           "c88c73a0d3": "Loading diff...",
-          "b9de81ba52": "Binary file ó cannot display",
+          "b9de81ba52": "Binary file ‚Äî cannot display",
           "b2735221f5": "Loading...",
           "8608ce4cb1": "Markdown preview is unavailable for binary files.",
           "37a0e81fa6": "Loading preview...",
@@ -13378,7 +13379,7 @@
           "94b520a96a": "Copied note",
           "13f94d760c": "Add note",
           "ddf087d12e": "All unsent notes",
-          "d652c87c91": "SavingÖ",
+          "d652c87c91": "Saving‚Ä¶",
           "c5dc92cfe3": "No results",
           "6c043947ae": "File not found: {{value0}}",
           "759463a221": "Cannot open directory: {{value0}}"
@@ -13494,7 +13495,7 @@
           "1c99b726e0": "Remove link",
           "cdfe166f6f": "Edit link",
           "bfc813e909": "Open link",
-          "7b0b945fdc": "Paste or type a linkÖ",
+          "7b0b945fdc": "Paste or type a link‚Ä¶",
           "copyLink": "Copy link"
         },
         "RichMarkdownReviewNoteLayer": {
@@ -13686,7 +13687,7 @@
           "00e1c1658a": "Completed",
           "aa8494ae3c": "check #",
           "2dd5ddabc4": "workflow #",
-          "1f2b980522": "Loading check detailsÖ",
+          "1f2b980522": "Loading check details‚Ä¶",
           "d098e5529a": "Output",
           "f2fe8a4e8f": "Annotations",
           "cdbfda4dec": "Annotation",
@@ -13709,7 +13710,7 @@
           "2d3b8f1a55": "skipped",
           "3e6c9a2b71": "pending",
           "4f7d0c3e88": "steps failed",
-          "5a8e1d4f23": " ∑ "
+          "5a8e1d4f23": " ¬∑ "
         },
         "check": {
           "run": {
@@ -13744,7 +13745,7 @@
           "90cc31e4d7": "Disk version on the left, your unsaved edits on the right.",
           "8fe30ab254": "Reading file from disk...",
           "e2b1cd0393": "Could not read the file from disk: {{value0}}",
-          "b6cf20d514": "The file on disk is binary ó no text comparison available.",
+          "b6cf20d514": "The file on disk is binary ‚Äî no text comparison available.",
           "3fa2b8d417": "Reload from Disk",
           "a95d02c644": "Keep My Edits",
           "2c8f1e07b9": "Loading comparison..."
@@ -13795,7 +13796,7 @@
         "comments": {
           "DiffCommentCard": {
             "109a791e7b": "Save",
-            "bb0a55f856": "SavingÖ",
+            "bb0a55f856": "Saving‚Ä¶",
             "0203bed775": "Cancel",
             "6978871a3d": "Open",
             "cce596969e": "Delete note",
@@ -13854,7 +13855,7 @@
             "88fea8e84e": "Don't Send",
             "50b00dc327": "Copy Details",
             "6d3ebe216a": "Diagnostic text",
-            "835037edc9": "∑ Fabrica",
+            "835037edc9": "¬∑ Fabrica",
             "56a3dfa283": "Failed to send crash report.",
             "8e24fe4f75": "Crash report sent.",
             "8b8473c544": "Crash report copied.",
@@ -13990,9 +13991,9 @@
           "BrowserImportHintButton": {
             "05e675fe96": "Hide Hint",
             "77351d22f5": "Browser Settings",
-            "e0e125e074": "From FileÖ",
+            "e0e125e074": "From File‚Ä¶",
             "0c6d254eca": "From {{value0}}",
-            "244266c122": "ImportÖ",
+            "244266c122": "Import‚Ä¶",
             "e52a955e6f": "You can always find this in Settings > Browser.",
             "4f5ffaa6a1": "Import browser data",
             "b24fef25be": "Import",
@@ -14064,7 +14065,7 @@
             "499b31b84e": "Copy All",
             "e72dfa268a": "annotate",
             "168350ae6a": "Click or hover an element, then press C to copy or S to screenshot.",
-            "e852e20cea": "Copied ó press S to screenshot, or select another element",
+            "e852e20cea": "Copied ‚Äî press S to screenshot, or select another element",
             "a5dcd0fd1d": "confirming",
             "777b5bc4ec": "Click an element to add feedback for the agent.",
             "b733a91bd9": "Add feedback for the selected element.",
@@ -14101,20 +14102,20 @@
             "58f2c81542": "Switch",
             "a38f217b46": "Switching profiles will reload this page. Any unsaved form data will be lost.",
             "fe683eb3b4": "Switch Profile",
-            "a771c2b6c8": "Browser SettingsÖ",
+            "a771c2b6c8": "Browser Settings‚Ä¶",
             "ed8f54509d": "Default",
             "e5d31de1a9": "Viewport Size",
-            "56f94f4ffa": "From FileÖ",
+            "56f94f4ffa": "From File‚Ä¶",
             "eb280bfb11": "From {{value0}}",
             "2293adf620": "Import Cookies",
-            "cf7cdc67ef": "New ProfileÖ",
+            "cf7cdc67ef": "New Profile‚Ä¶",
             "7b838540c7": "Browser menu",
             "6aa42813e4": "Imported {{value0}} cookies from {{value1}}{{value2}}.",
             "a7a86702b3": "Created and switched to {{value0}} profile",
             "4d2f9f13a7": "Failed to create profile.",
             "3ccd29d771": "Switched to {{value0}} profile",
             "569bce8eb1": "Create",
-            "bf648471c5": "CreatingÖ",
+            "bf648471c5": "Creating‚Ä¶",
             "53bbe3dab4": "Imported {{value0}} cookies from file.",
             "c5f0e4d3b2a1": "Imported {{value0}} cookies from {{value1}} ({{value2}}).",
             "d6a1f5e4c3b2": "Imported {{value0}} cookies from {{value1}}."
@@ -14305,7 +14306,7 @@
           "19a6e30eae": "Refresh automations",
           "8d1afa8269": "Add automation",
           "77c2778945": "Automations",
-          "0329f9bef1": "Close ∑ Esc",
+          "0329f9bef1": "Close ¬∑ Esc",
           "67c7ff795b": "Close automations",
           "e1bf9b1512": "Workspace is not available.",
           "3e42a5cc1b": "SSH connection failed.",
@@ -14358,7 +14359,7 @@
           "projectDefaultBaseRef": "project default",
           "createFromBaseRef": "Create from {{baseRef}}",
           "missingWorkspace": "Missing workspace",
-          "runUsageSummary": "{{cost}} est. ∑ {{tokens}} tokens",
+          "runUsageSummary": "{{cost}} est. ¬∑ {{tokens}} tokens",
           "usageUnavailable": "Usage unavailable",
           "noRunUsageYet": "No run usage yet",
           "noWorkspace": "No workspace",
@@ -14478,16 +14479,16 @@
           "search": "Search projects/folders...",
           "empty": "No projects/folders match your search.",
           "chooseHost": "Choose automation host",
-          "adding": "Adding projectÖ",
+          "adding": "Adding project‚Ä¶",
           "addProject": "Add project"
         },
         "AutomationSetupDecisionField": {
           "5a7863909c": "Run setup for each new workspace",
           "18f000ad4e": "Advanced",
-          "874b72195b": "When this automation creates a workspace, prepare it the same way creating a worktree by hand does ó run the project's setup and open its terminal tabs."
+          "874b72195b": "When this automation creates a workspace, prepare it the same way creating a worktree by hand does ‚Äî run the project's setup and open its terminal tabs."
         },
         "AutomationListSearchField": {
-          "tooLong": "Search text is too long ó list is unfiltered",
+          "tooLong": "Search text is too long ‚Äî list is unfiltered",
           "label": "Search automations",
           "placeholder": "Search...",
           "tooLongShort": "Too long",
@@ -14564,7 +14565,7 @@
         "connect": {
           "dialog": {
             "63ce735809": "Connect",
-            "4a2ab52781": "VerifyingÖ",
+            "4a2ab52781": "Verifying‚Ä¶",
             "79e7aaed39": "Cancel",
             "fdd26d81cc": "Atlassian account settings",
             "8090504a3e": "Create a token in",
@@ -14613,7 +14614,7 @@
           "emptyCopy": "PR checks will appear here after worktrees are attached to this folder workspace.",
           "openChecksTab": "Open {{value0}} Checks tab",
           "openReviewExternally": "Open {{value0}} externally",
-          "summary": "{{value0}} attached ∑ {{value1}} with PR/MR ∑ {{value2}} attention ∑ {{value3}} pending ∑ {{value4}} passing ∑ {{value5}} no PR ∑ {{value6}} unknown",
+          "summary": "{{value0}} attached ¬∑ {{value1}} with PR/MR ¬∑ {{value2}} attention ¬∑ {{value3}} pending ¬∑ {{value4}} passing ¬∑ {{value5}} no PR ¬∑ {{value6}} unknown",
           "showDetails": "Show {{value0}} PR check details",
           "hideDetails": "Hide {{value0}} PR check details",
           "reviewChecks": "Review checks",
@@ -14641,7 +14642,7 @@
             "noPrLinked": "No PR linked",
             "detailsUnavailable": "Review details unavailable",
             "refreshFailed": "Refresh failed",
-            "checking": "Checking review statusÖ",
+            "checking": "Checking review status‚Ä¶",
             "notFetched": "Status not fetched yet",
             "unavailableWorktree": "Unavailable for this worktree"
           },
@@ -14736,14 +14737,14 @@
       "star": {
         "nag": {
           "StarNagToastHost": {
-            "starredThanks": "Starred ó thank you!",
+            "starredThanks": "Starred ‚Äî thank you!",
             "githubOpened": "GitHub opened",
-            "opening": "OpeningÖ",
-            "starring": "StarringÖ",
+            "opening": "Opening‚Ä¶",
+            "starring": "Starring‚Ä¶",
             "openGithub": "Open GitHub",
             "starOnGithub": "Star on GitHub",
             "onboardingCompleted": "Onboarding completed!",
-            "body": "If youíre enjoying Fabrica so far, a GitHub star helps other developers discover it.",
+            "body": "If you‚Äôre enjoying Fabrica so far, a GitHub star helps other developers discover it.",
             "dismiss": "Dismiss",
             "later": "Later"
           }
@@ -14783,17 +14784,17 @@
         "labels": "Labels",
         "countSelected": "{{count}} selected",
         "selected": "selected",
-        "searchPriority": "Filter priorityÖ",
-        "searchStatus": "Filter statusÖ",
-        "searchLabels": "Filter labelsÖ",
-        "searchAssignee": "Filter assigneeÖ",
+        "searchPriority": "Filter priority‚Ä¶",
+        "searchStatus": "Filter status‚Ä¶",
+        "searchLabels": "Filter labels‚Ä¶",
+        "searchAssignee": "Filter assignee‚Ä¶",
         "back": "Back"
       },
       "browser-pane": {
         "markup": {
           "cancel": "Cancel",
           "clear": "Clear all",
-          "copiedToast": "Markup copied ó paste it into your agent ({{value0}})",
+          "copiedToast": "Markup copied ‚Äî paste it into your agent ({{value0}})",
           "copy": "Copy Markup",
           "drawButton": "Draw on screenshot",
           "drawHint": "Draw on the page, then copy the markup to paste into your agent.",
@@ -14876,16 +14877,16 @@
           "signInAgain": "Sign in to Fabrica again to load artifacts.",
           "loadFailed": "Could not load artifacts.",
           "deleteTitle": "Delete artifact?",
-          "deleteDescription": "ì{{name}}î will no longer be available at its public link.",
+          "deleteDescription": "‚Äú{{name}}‚Äù will no longer be available at its public link.",
           "delete": "Delete",
           "deleteFailed": "Could not delete the artifact.",
           "closeArtifacts": "Close artifacts",
-          "closeTooltip": "Close ∑ Esc",
+          "closeTooltip": "Close ¬∑ Esc",
           "title": "Artifacts",
           "refresh": "Refresh",
           "signInHeading": "Sign in to Fabrica",
           "signInCopy": "Sign in to view and manage artifacts shared through your account.",
-          "signingIn": "Signing inÖ",
+          "signingIn": "Signing in‚Ä¶",
           "signIn": "Sign in to Fabrica",
           "empty": "No shared artifacts",
           "emptyCopy": "Open an HTML or Markdown file and select Share as artifact, or ask your agent to share it.",
@@ -14897,7 +14898,7 @@
           "publishingOff": "Publishing is turned off",
           "publishingOffCopy": "Nothing on this device can create a public artifact link yet. Allow publishing in Settings ? Artifacts, then share from an open HTML or Markdown file or ask your agent.",
           "openArtifactsSettings": "Open Settings ? Artifacts",
-          "loadedCountMore": "{{count}} loaded ∑ more available",
+          "loadedCountMore": "{{count}} loaded ¬∑ more available",
           "loadedCount": "{{count}} shared",
           "retry": "Retry",
           "reconnectHeading": "Sign in to Fabrica again",
@@ -14936,16 +14937,16 @@
           "confirmDescription": "This publishes the current file at a link anyone with the URL can view.",
           "accountTitle": "Fabrica account",
           "accountDescription": "Sign in to create and manage this link.",
-          "signingIn": "Signing inÖ",
+          "signingIn": "Signing in‚Ä¶",
           "signInAgain": "Sign in again",
           "signIn": "Sign in",
           "publishingOffTitle": "Artifact sharing is off",
           "publishingOffDescription": "Learn about public links and enable sharing in Settings.",
           "openSettings": "Open Artifacts settings",
-          "sharing": "SharingÖ",
+          "sharing": "Sharing‚Ä¶",
           "sharePublicLink": "Share public link",
           "publishedDescription": "Anyone with this link can view the shared file.",
-          "checkingLink": "Checking for an existing linkÖ",
+          "checkingLink": "Checking for an existing link‚Ä¶",
           "checkFailed": "Could not check for an existing link.",
           "tryAgain": "Try again"
         },
@@ -14965,7 +14966,7 @@
         "ArtifactPublishedLinkPanel": {
           "copyLink": "Copy link",
           "openLink": "Open link",
-          "updating": "UpdatingÖ",
+          "updating": "Updating‚Ä¶",
           "update": "Update shared content"
         }
       }
@@ -15013,7 +15014,7 @@
         "reconnect": "Reconnect",
         "retry": "Retry",
         "connect": "Connect",
-        "connecting": "ConnectingÖ"
+        "connecting": "Connecting‚Ä¶"
       }
     },
     "main": {
@@ -15036,9 +15037,9 @@
       "composer": {
         "imageUnsupported": "Image paste is not supported for this agent.",
         "send": "Send",
-        "noPty": "No live terminal ó toggle back to reconnect.",
+        "noPty": "No live terminal ‚Äî toggle back to reconnect.",
         "locked": "Input is held by another device.",
-        "placeholder": "Send a messageÖ",
+        "placeholder": "Send a message‚Ä¶",
         "mentionHint": "Referencing file:",
         "attach": "Attach file",
         "startDictation": "Start dictation",
@@ -15063,19 +15064,19 @@
         "removeAttachment": "Remove attachment",
         "pastedImageLabel": "Pasted image",
         "imagePasteFailed": "Image paste failed.",
-        "worktreeNotReady": "Worktree not ready ó try again in a moment.",
-        "uploadingAttachments": "Uploading {{value0}} file(s) to remoteÖ",
+        "worktreeNotReady": "Worktree not ready ‚Äî try again in a moment.",
+        "uploadingAttachments": "Uploading {{value0}} file(s) to remote‚Ä¶",
         "model": "Model",
         "effort": "Effort",
         "fastMode": "Fast mode",
         "thinking": "Thinking",
         "options": "Options",
         "sessionOptions": "Session options",
-        "chooseInAgentPicker": "Choose in agent pickerÖ",
+        "chooseInAgentPicker": "Choose in agent picker‚Ä¶",
         "toggleOption": "Toggle {{value0}}",
         "pillAccessibleName": "{{value0}} {{value1}}",
-        "valueUnknown": "Current value unknown ó pick On or Off",
-        "sentNotConfirmed": "Sent to the agent ó not confirmed",
+        "valueUnknown": "Current value unknown ‚Äî pick On or Off",
+        "sentNotConfirmed": "Sent to the agent ‚Äî not confirmed",
         "setWhenSessionStarts": "Set when the session starts.",
         "availableAfterSessionStarts": "Available after the session starts.",
         "optionUpdateFailed": "Could not update option",
@@ -15092,7 +15093,7 @@
         }
       },
       "tool": {
-        "running": "RunningÖ",
+        "running": "Running‚Ä¶",
         "result": "Result",
         "countOne": "1 tool call",
         "countN": "{{value0}} tool calls"
@@ -15107,7 +15108,7 @@
       },
       "state": {
         "loading": {
-          "title": "Loading conversationÖ",
+          "title": "Loading conversation‚Ä¶",
           "subtitle": "Reading the agent transcript."
         },
         "error": {
@@ -15130,24 +15131,24 @@
         "copy": "Copy message"
       },
       "scrollMessageToTop": "Scroll this message to top",
-      "loadingEarlier": "LoadingÖ",
+      "loadingEarlier": "Loading‚Ä¶",
       "loadEarlier": "Load earlier messages",
       "question": {
         "step": "Step {{value0}}",
-        "other": "OtherÖ",
+        "other": "Other‚Ä¶",
         "otherPlaceholder": "Type your answer",
         "cancel": "Cancel",
         "send": "Submit",
         "next": "Next",
         "skip": "Skip",
-        "sending": "SendingÖ"
+        "sending": "Sending‚Ä¶"
       },
       "approval": {
         "title": "Allow {{value0}}?",
         "allow": "Allow",
         "deny": "Deny"
       },
-      "launchPromptNotDelivered": "Not delivered ó check the terminal"
+      "launchPromptNotDelivered": "Not delivered ‚Äî check the terminal"
     },
     "tab": {
       "bar": {
@@ -15178,14 +15179,14 @@
       }
     },
     "agentSessionContinuation": {
-      "continueInNewSession": "Continue in New SessionÖ",
+      "continueInNewSession": "Continue in New Session‚Ä¶",
       "dialogTitle": "Continue in New Session",
       "dialogDescription": "Start a fresh Agent session from this stopping point. The original session stays unchanged.",
       "untitledSession": "Current session",
       "originalAgent": "Original Agent: {{agent}}",
       "agent": "Agent",
       "selectAgent": "Select an Agent",
-      "detectingAgents": "Detecting Agents on this workspace hostÖ",
+      "detectingAgents": "Detecting Agents on this workspace host‚Ä¶",
       "detectionFailed": "Could not detect Agents on this workspace host.",
       "noAgents": "No enabled Agents were detected on this workspace host.",
       "context": "Context",
@@ -15195,7 +15196,7 @@
       "modeFullDescription": "Asks the new Agent to read the complete saved session before continuing. This can take longer and use significant context, plan usage, or API credits.",
       "startsIn": "Starts in:",
       "startSession": "Start New Session",
-      "starting": "StartingÖ",
+      "starting": "Starting‚Ä¶",
       "noContext": "No session context is available to continue in a new session.",
       "agentDisabled": "{{agent}} is disabled in Agent settings.",
       "agentUnavailable": "{{agent}} was not detected on this workspace host.",
@@ -15234,14 +15235,14 @@
       "fit": "Fit",
       "openWorktree": "Open {{worktree}} worktree details",
       "openFolderWorkspace": "Open {{workspace}} folder workspace details",
-      "worktreeSummary": "{{total}} agents ∑ {{active}} active ∑ {{done}} done",
-      "worktreeSummary_one": "{{total}} agent ∑ {{active}} active ∑ {{done}} done",
-      "worktreeSummary_other": "{{total}} agents ∑ {{active}} active ∑ {{done}} done",
+      "worktreeSummary": "{{total}} agents ¬∑ {{active}} active ¬∑ {{done}} done",
+      "worktreeSummary_one": "{{total}} agent ¬∑ {{active}} active ¬∑ {{done}} done",
+      "worktreeSummary_other": "{{total}} agents ¬∑ {{active}} active ¬∑ {{done}} done",
       "runningAgents": "Agents",
       "spawnAgent": "Start a new agent",
       "noLaunchableAgents": "No enabled agents detected.",
       "sleepWorkspace": "Sleep",
-      "projectCount": "{{agents}} agents ∑ {{workspaces}} workspaces",
+      "projectCount": "{{agents}} agents ¬∑ {{workspaces}} workspaces",
       "agentCount": "{{count}} agents",
       "agentCount_one": "{{count}} agent",
       "agentCount_other": "{{count}} agents",
@@ -15288,7 +15289,7 @@
       "subagents_other": "{{count}} subagents"
     },
     "terminal": {
-      "closed": "No live terminal ó this agent's pane has closed.",
+      "closed": "No live terminal ‚Äî this agent's pane has closed.",
       "focusWorktree": "Open worktree",
       "close": "Close"
     },
@@ -15311,7 +15312,7 @@
       "clearAll": "Clear all filters"
     },
     "search": {
-      "placeholder": "Search worktree, project, or agentÖ",
+      "placeholder": "Search worktree, project, or agent‚Ä¶",
       "label": "Search agents",
       "clear": "Clear search",
       "results": "{{shown}} of {{total}} shown"

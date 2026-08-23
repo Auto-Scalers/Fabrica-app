@@ -130,11 +130,11 @@ let nudgeCheckTimer: ReturnType<typeof setTimeout> | null = null
 let pendingQuitAndInstallTimer: ReturnType<typeof setTimeout> | null = null
 let quitAndInstallInProgress = false
 // Why: the pre-install digest re-proof streams the whole package, so a second install request can
-// arrive while it runs — after the quit timer was cleared but before the handoff owns the process.
+// arrive while it runs â€” after the quit timer was cleared but before the handoff owns the process.
 let linuxPackageRevalidationInFlight = false
 let updateInstallMode: UpdateInstallMode = 'interactive'
 let lastInstallDeferralVersion = { download: null as string | null, install: null as string | null }
-// Why: once install has committed, late 'error' events must not clear quittingForUpdate — that would re-enable dock activate mid-installer.
+// Why: once install has committed, late 'error' events must not clear quittingForUpdate â€” that would re-enable dock activate mid-installer.
 let updateInstallCommitted = false
 // Why: recovery must only run after the native quitAndInstall call; pre-native errors must not clear quittingForUpdate or look like install recovery.
 let quitAndInstallNativeInvoked = false
@@ -185,7 +185,7 @@ let activeUpdateSource: 'release' | UpdateSource = 'release'
 let activeLocalBuildFeed: LocalBuildFeed | null = null
 let localBuildSelectionInProgress = false
 // Why: a dev channel/tag jump may target an older build, so it needs allowDowngrade
-// like local builds — but off a real release feed, not a loopback server.
+// like local builds â€” but off a real release feed, not a loopback server.
 let pinnedBuildSelectionInProgress = false
 // Why: a pinned jump to a stable/rc tag keeps the 'release' source but is still a
 // deliberate downgrade, so newer-only gates must yield to it too.
@@ -716,12 +716,12 @@ async function performQuitAndInstall(): Promise<void> {
     return
   }
   // Why: the retained .deb/.rpm sits on a user-writable path that a root package manager is about
-  // to read, and nothing re-checks it after download. Re-prove it here — before any teardown — so a
+  // to read, and nothing re-checks it after download. Re-prove it here â€” before any teardown â€” so a
   // swapped or vanished package aborts instead of being installed as root. The synchronous guard
   // keeps every non-Linux install on its existing timing.
   if (getTrackedLinuxPackageArtifact() && !(await proveRetainedLinuxPackage(pendingVersion))) {
     // Why: the renderer armed its restart before invoking, and it infers the abort from the error
-    // status — which a stale-cycle verdict deliberately withholds. Signal the abandon here, where
+    // status â€” which a stale-cycle verdict deliberately withholds. Signal the abandon here, where
     // it cannot depend on that decision, or the window keeps skipping its unsaved-work prompt.
     mainWindowRef?.webContents.send('updater:quitAndInstallAborted')
     return
@@ -774,7 +774,7 @@ async function performQuitAndInstall(): Promise<void> {
       recordUpdaterLifecycle('quit_and_install_invoking_native', {
         version: pendingVersion || null
       })
-      // Why: defensive — never call quitAndInstall if recovery/reset already cleared the handoff.
+      // Why: defensive â€” never call quitAndInstall if recovery/reset already cleared the handoff.
       if (!quitAndInstallInProgress) {
         return
       }
@@ -806,7 +806,7 @@ async function performQuitAndInstall(): Promise<void> {
 
       // Why: DebUpdater/RpmUpdater install through spawnSync, so a normal return already means the
       // package is installed. Commit here or a throw in the cleanup below is reported as an install
-      // failure — offering a recovery card, and stale stderr, for an update that actually succeeded.
+      // failure â€” offering a recovery card, and stale stderr, for an update that actually succeeded.
       if (getLinuxRootPackageType() !== null) {
         updateInstallCommitted = true
         armUpdateInstallExitWatchdog()
@@ -885,7 +885,7 @@ function resetQuitForUpdateState(): void {
 
 /**
  * On macOS a pre-commit failure means Squirrel rejected the staged update, and quitting does re-stage
- * it — so keep that advice there. Everywhere else a restart is not known to help.
+ * it â€” so keep that advice there. Everywhere else a restart is not known to help.
  */
 function getPreCommitInstallFailureMessage(): string {
   return process.platform === 'darwin'
@@ -906,7 +906,7 @@ const INSTALL_FAILURE_CAUSE_MAX_LENGTH = 200
 
 /**
  * Appends the updater's own text to the generic install-failure copy. Without it the only record of
- * why the install never started is destroyed — on Linux that text carries the exact `dpkg -i <path>`
+ * why the install never started is destroyed â€” on Linux that text carries the exact `dpkg -i <path>`
  * command the user has to run by hand, and remote clients get nothing but "it didn't come back".
  */
 function withInstallFailureCause(baseMessage: string, error: unknown): string {
@@ -945,7 +945,7 @@ function buildLinuxPackageInstallFailureStatus(error: unknown): UpdateStatus | n
   const diagnostic = getLinuxPackageInstallDiagnostic() ?? lastInstallAttemptDiagnostic
   // Why: the reason was classified from the original output, before redaction could rewrite a match.
   const reason = diagnostic?.reason ?? 'package-install-failed'
-  // Durable data carries classification only — never the package path, home path, command, or stderr.
+  // Durable data carries classification only â€” never the package path, home path, command, or stderr.
   const exitCode = parseLinuxPackageInstallExitCode(error)
   recordUpdaterLifecycle(
     'linux_package_install_failed',
@@ -984,7 +984,7 @@ function handleQuitAndInstallFailure(error?: unknown): boolean {
   const recoveryStatus = buildLinuxPackageInstallFailureStatus(error)
   failServeUpdateHandoff('The native updater rejected the install request.')
   resetQuitForUpdateState()
-  // Durable data carries classification only — the cause text stays on the status the user can read.
+  // Durable data carries classification only â€” the cause text stays on the status the user can read.
   recordUpdaterLifecycle(
     'quit_and_install_failed_via_event',
     { errorType: error instanceof Error ? error.name : typeof error },
@@ -1101,7 +1101,7 @@ async function sendCheckFailureStatus(
 
   const handleFailure = async (): Promise<void> => {
     if (isBenignCheckFailure(message) || isRetryableReleaseFeedPreflightFailure(sourceError)) {
-      // Why: benign failures (incomplete latest.yml, network blips) are transient — retry, and skip persisting the timestamp (would suppress the next startup check).
+      // Why: benign failures (incomplete latest.yml, network blips) are transient â€” retry, and skip persisting the timestamp (would suppress the next startup check).
       console.warn('[updater] benign check failure:', message)
       clearAvailableUpdateContext()
       scheduleAutomaticUpdateCheck(AUTO_UPDATE_RETRY_INTERVAL_MS)
@@ -1382,7 +1382,7 @@ async function pinDefaultReleaseFeed(
           retryLaunched: false
         }
       : null
-  // Why: console.info is captured by Console.app/--enable-logging — our only field visibility into the updater.
+  // Why: console.info is captured by Console.app/--enable-logging â€” our only field visibility into the updater.
   if (newerTag) {
     clearPublishingWindowLastGoodCheck()
     const url = getReleaseDownloadUrl(newerTag)
@@ -1531,7 +1531,7 @@ function runBackgroundUpdateCheck(
   backgroundCheckLaunchPending = true
   backgroundCheckPromotedToUserInitiated = false
   const attemptId = beginUpdateCheckAttempt()
-  // Don't send 'checking' here — the 'checking-for-update' handler does; sending from both dupes notifications (issue #35).
+  // Don't send 'checking' here â€” the 'checking-for-update' handler does; sending from both dupes notifications (issue #35).
   const autoUpdater = getAutoUpdater()
   const launch = (): Promise<unknown> | undefined => {
     if (!isActiveUpdateCheckAttempt(attemptId)) {
@@ -1579,7 +1579,7 @@ function enableIncludePrerelease(): void {
   includePrereleaseActive = true
 }
 
-/** Menu-triggered check — delegates feedback to renderer toasts via userInitiated flag */
+/** Menu-triggered check â€” delegates feedback to renderer toasts via userInitiated flag */
 export function checkForUpdatesFromMenu(options?: UpdateCheckOptions): void {
   if (!app.isPackaged || is.dev) {
     sendStatus({ state: 'not-available', userInitiated: true })
@@ -1725,7 +1725,7 @@ export async function listAvailableReleaseBuilds(channel: ReleaseChannel): Promi
 
 /**
  * Pins the updater at one exact release tag and checks it, so a dev can move to
- * any published build on any channel — including an older one.
+ * any published build on any channel â€” including an older one.
  *
  * Unlike a routine check this sets `allowDowngrade`, because "jump to yesterday's
  * hourly" is a downgrade by semver. The pin is torn down as soon as the attempt
@@ -1913,10 +1913,10 @@ async function revalidateRetainedLinuxPackage(
       { errorType: error instanceof Error ? error.name : typeof error },
       { level: 'warn', message: 'Could not re-verify the retained update package' }
     )
-    // Why: fail closed — bytes we could not read are bytes we cannot hand to a root installer.
+    // Why: fail closed â€” bytes we could not read are bytes we cannot hand to a root installer.
     return 'read-failed'
   } finally {
-    // Why: the invariant every install path depends on — a wedged flag would make quitAndInstall
+    // Why: the invariant every install path depends on â€” a wedged flag would make quitAndInstall
     // early-return for the rest of the session.
     linuxPackageRevalidationInFlight = false
   }
@@ -1949,7 +1949,7 @@ function reportLinuxPackageRevalidationFailure({
   if (clearsArtifact && getTrackedLinuxPackageArtifact() === artifact) {
     clearTrackedLinuxPackageArtifact()
   }
-  // Why: same reasoning as failLinuxPackageRecovery — a verdict from a cycle that has since been
+  // Why: same reasoning as failLinuxPackageRecovery â€” a verdict from a cycle that has since been
   // replaced must not clobber whatever card the user is looking at now.
   if (getInstallCycleSignature() !== cycle) {
     return
@@ -2126,7 +2126,7 @@ export function dismissAvailableUpdate(): void {
   if (localBuildSelectionInProgress || pinnedBuildSelectionInProgress) {
     return
   }
-  // Why: only an un-acted 'available' card is abandoned — 'downloading'/'downloaded' still need the pinned feed and allowDowngrade.
+  // Why: only an un-acted 'available' card is abandoned â€” 'downloading'/'downloaded' still need the pinned feed and allowDowngrade.
   if (currentStatus.state !== 'available') {
     return
   }
@@ -2196,7 +2196,7 @@ export function setupAutoUpdater(
   // The adapter also retains the redacted child stderr that BaseUpdater logs but drops from the 'error' event.
   autoUpdater.logger = createUpdaterDiagnosticLogger() as never
 
-  // Security: never re-add a verifyUpdateCodeSignature override — a no-op disables electron-updater's built-in Authenticode check and accepts any installer.
+  // Security: never re-add a verifyUpdateCodeSignature override â€” a no-op disables electron-updater's built-in Authenticode check and accepts any installer.
 
   // Why: generic provider avoids the native GitHub provider's RC-channel filtering; per-check repinning to a concrete /releases/download/<tag>/ URL avoids /latest redirect drift between check and download.
   if (activeUpdateSource === 'release') {

@@ -324,7 +324,7 @@ function computeVisibility(input: VisibilityInput): VisibilityResult {
   const { status, dismissedVersion, cachedVersion, hasStartedDownload } = input
   const isUserInitiated = 'userInitiated' in status && status.userInitiated
   const updateUserInitiatedCycle = input.updateUserInitiatedCycle ?? false
-  const shouldShowDetailedErrFABRICArd =
+  const shouldShowDetailedErrorCard =
     status.state === 'error' && (hasStartedDownload || cachedVersion !== null)
 
   if (status.state === 'checking' && !isUserInitiated) {
@@ -336,7 +336,7 @@ function computeVisibility(input: VisibilityInput): VisibilityResult {
   if (status.state === 'idle') {
     return 'hidden'
   }
-  if (status.state === 'error' && !shouldShowDetailedErrFABRICArd && !isUserInitiated) {
+  if (status.state === 'error' && !shouldShowDetailedErrorCard && !isUserInitiated) {
     return 'hidden'
   }
 

@@ -1120,7 +1120,7 @@ describe('Store', () => {
   })
 
   it('does not mutate gate fields for a consistent closed-onboarding existing user', async () => {
-    // Why: the gate must be idempotent — a closed+completed user round-trips unchanged, and the backfill must not stomp closedAt with a fresh Date.now().
+    // Why: the gate must be idempotent â€” a closed+completed user round-trips unchanged, and the backfill must not stomp closedAt with a fresh Date.now().
     const consistent = {
       onboarding: {
         flowVersion: ONBOARDING_FLOW_VERSION,
@@ -1590,7 +1590,7 @@ describe('Store', () => {
     expect(changed[0]?.port).toBe(2222)
     expect(changed[0]?.source).toBe('ssh-config')
 
-    // A third identical sync is a no-op — repeated auto-sync on every pane open writes nothing.
+    // A third identical sync is a no-op â€” repeated auto-sync on every pane open writes nothing.
     expect(sshStore.importFromSshConfig()).toHaveLength(0)
 
     // Exactly one cluster target on disk with the rotated port and source kept.
@@ -2913,7 +2913,7 @@ describe('Store', () => {
     // Why round-trip a store first: on a bare legacy profile ~30 other migrations also
     // set loadNeedsSave, so the save happens regardless and this migration's own dirty
     // flag goes untested. Re-loading a profile the new build already wrote leaves OSC 52
-    // as the only unmigrated key — which is exactly the upgrade case that matters.
+    // as the only unmigrated key â€” which is exactly the upgrade case that matters.
     // Why no flush(): flush() writes unconditionally, so only the debounced load-path
     // save proves this migration marked the state dirty by itself.
     writeDataFile({
@@ -3007,7 +3007,7 @@ describe('Store', () => {
 
   it('keeps the OSC 52 notice armed on disk until the renderer clears it', async () => {
     // Why the disk assertion: the flip happens during load, before any window exists, and
-    // once the settings stamp lands the arming predicate is false forever — so the on-disk
+    // once the settings stamp lands the arming predicate is false forever â€” so the on-disk
     // ui flag is the only thing that survives a crash before the toast renders.
     writeDataFile({
       schemaVersion: 1,
@@ -3483,7 +3483,7 @@ describe('Store', () => {
     const fetched = store.getRepo('r1')
     expect(fetched).toBeDefined()
     expect(fetched!.displayName).toBe('test')
-    // No username has been resolved yet — hydration must not probe git/gh.
+    // No username has been resolved yet â€” hydration must not probe git/gh.
     expect(fetched!.gitUsername).toBe('')
   })
 
@@ -4069,7 +4069,7 @@ describe('Store', () => {
 
   it('reassignSshTargetId persists a worktree-meta-only re-point (no matching repo)', async () => {
     const store = await createStore()
-    // A meta on the old SSH host with no repo row — the re-point must still be persisted, not memory-only.
+    // A meta on the old SSH host with no repo row â€” the re-point must still be persisted, not memory-only.
     store.setWorktreeMeta('r1::/remote/wt', { displayName: 'wt', hostId: 'ssh:ssh-old' })
 
     const repoIds = store.reassignSshTargetId('ssh-old', 'ssh-new')
@@ -4963,7 +4963,9 @@ describe('Store', () => {
 
     const store = await createStore()
 
-    expect(store.getWorktreeMeta('wt-malformed')?.linkedWorkItem?.jiraIdentifier).toBe('FABRICA-123')
+    expect(store.getWorktreeMeta('wt-malformed')?.linkedWorkItem?.jiraIdentifier).toBe(
+      'FABRICA-123'
+    )
     expect(store.getWorktreeMeta('wt-malformed')?.linkedTaskSourceContext).toBeNull()
   })
 
@@ -6195,7 +6197,7 @@ describe('Store', () => {
     expect(store.getWorktreeLineage(deadKey)).toBeUndefined()
   })
 
-  it('never GCs folder-workspace instance metas — the meta IS the workspace', async () => {
+  it('never GCs folder-workspace instance metas â€” the meta IS the workspace', async () => {
     const OLD = Date.now() - 40 * 24 * 60 * 60 * 1000
     const folderInstanceKey = `r1::${join(testState.dir, 'gone-folder')}::workspace:11111111-1111-4111-8111-111111111111`
     writeDataFile({
@@ -7227,7 +7229,7 @@ describe('Store', () => {
   // -- terminalMacOptionAsAlt migration (issue #903) -------------------
 
   it('migrates legacy "true" terminalMacOptionAsAlt to "auto" on first load', async () => {
-    // Why: legacy 'true' (old default) is indistinguishable from an explicit choice; flip un-migrated installs to 'auto' so non-US layouts keep @ / € / [ ].
+    // Why: legacy 'true' (old default) is indistinguishable from an explicit choice; flip un-migrated installs to 'auto' so non-US layouts keep @ / â‚¬ / [ ].
     writeDataFile({
       schemaVersion: 1,
       repos: [],
@@ -7348,7 +7350,7 @@ describe('Store', () => {
   })
 
   it('preserves explicit "false" terminalMacOptionAsAlt through migration', async () => {
-    // 'false' never matched the old default — it was an explicit choice.
+    // 'false' never matched the old default â€” it was an explicit choice.
     writeDataFile({
       schemaVersion: 1,
       repos: [],
@@ -11401,7 +11403,7 @@ describe('Store', () => {
   // Why: keys on `existsSync(dataFile)`, not the new `telemetry` field, so pre-telemetry installs aren't misclassified as fresh and flipped default-on.
 
   it('classifies a truly fresh install as new-user cohort (file absent ? optedIn=true)', async () => {
-    // No data file written — truly fresh install of the telemetry release.
+    // No data file written â€” truly fresh install of the telemetry release.
     const store = await createStore()
     const t = store.getSettings().telemetry
     expect(t).toBeDefined()
@@ -11524,7 +11526,7 @@ describe('Store.migrateTabSwitchKeybindings', () => {
       workspaceSession: {}
     })
     const store = await createStore()
-    // Existing file, cohort already 'done' — must not flip to 'pending' just because the file exists.
+    // Existing file, cohort already 'done' â€” must not flip to 'pending' just because the file exists.
     expect(store.getSettings().tabSwitchKeybindingSeed).toBe('done')
   })
 })
@@ -12253,7 +12255,7 @@ describe('Store host-partitioned workspace sessions', () => {
   }
 
   // Why: flush() writes whatever the state hash says is dirty, so it passes even
-  // when nothing scheduled a save — it cannot see the repair write at all. Loading
+  // when nothing scheduled a save â€” it cannot see the repair write at all. Loading
   // once first canonicalizes the profile (a second load of a canonical file
   // schedules nothing), so a later rewrite proves the salvage scheduled it.
   async function loadAndAwaitScheduledSave(): Promise<void> {
@@ -12272,7 +12274,7 @@ describe('Store host-partitioned workspace sessions', () => {
     await loadAndAwaitScheduledSave()
     const canonical = readFileSync(dataFile(), 'utf-8')
     // Why: the save assertions below are only meaningful if a clean load schedules
-    // nothing. Prove that here rather than assume it — a future migration that
+    // nothing. Prove that here rather than assume it â€” a future migration that
     // dirtied every load would otherwise leave those tests silently vacuous.
     await loadAndAwaitScheduledSave()
     expect(readFileSync(dataFile(), 'utf-8')).toBe(canonical)
@@ -12410,7 +12412,7 @@ describe('Store native-chat tab viewMode persistence', () => {
               viewMode: 'chat'
             },
             {
-              // Legacy tab persisted before viewMode existed — no field at all.
+              // Legacy tab persisted before viewMode existed â€” no field at all.
               id: 'legacy-tab',
               entityId: 'legacy-tab',
               groupId: 'g1',

@@ -98,7 +98,7 @@ afterEach(() => {
   useAppStore.setState(useAppStore.getInitialState(), true)
 })
 
-// Why: #12350 — a reachable remote server whose renderer graph is gone still
+// Why: #12350 â€” a reachable remote server whose renderer graph is gone still
 // answered status.get, so every setup it owned read "Ready".
 describe('RepositoryHostSetupsSection workspace window availability', () => {
   it('flags a reachable runtime owner whose workspace window is closed instead of Ready', () => {
@@ -113,14 +113,14 @@ describe('RepositoryHostSetupsSection workspace window availability', () => {
     const currentSetup = container.querySelector('[data-current="true"]')
     expect(currentSetup?.textContent).toContain('Workspace window closed')
     expect(currentSetup?.textContent).not.toContain('Ready')
-    // The host is reachable — this must not be reported as a lost connection.
+    // The host is reachable â€” this must not be reported as a lost connection.
     expect(container.textContent).not.toContain('Disconnected')
     expect(container.textContent).toContain('Open Fabrica on')
   })
 
   it('keeps a graph-ready runtime owner Ready when it reports no desktop window', () => {
     // Why: headless `FABRICA serve` (#6844) owns a ready graph with an openable
-    // desktop window — the degraded check must not widen into a renderer requirement.
+    // desktop window â€” the degraded check must not widen into a renderer requirement.
     renderWithOwnerStatus(makeStatus({ graphStatus: 'ready', desktopWindowStatus: 'openable' }))
 
     expect(container.textContent).toContain('Ready')

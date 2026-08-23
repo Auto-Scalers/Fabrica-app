@@ -6,7 +6,7 @@ import {
 
 describe('resolveArtifactCloudApiUrl', () => {
   it('uses the first-party production origin by default', () => {
-    expect(resolveArtifactCloudApiUrl(undefined, {}, true)).toBe('https://share.onFABRICA.dev')
+    expect(resolveArtifactCloudApiUrl(undefined, {}, true)).toBe('https://share.onfabrica.dev')
   })
 
   it('allows loopback HTTP only in development', () => {

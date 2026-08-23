@@ -233,7 +233,7 @@ describe('GitLab IPC handlers', () => {
       query: 'fix login'
     })
 
-    // Why (#6263): the trimmed query must land in the 6th positional arg —
+    // Why (#6263): the trimmed query must land in the 6th positional arg â€”
     // previously the slot was hardcoded to `undefined`, so search never worked.
     expect(listMergeRequestsMock).toHaveBeenCalledWith(
       '/local/FABRICA',

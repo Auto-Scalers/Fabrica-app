@@ -121,7 +121,7 @@ export function createDraftPasteReadyScanner(readySignal: DraftPasteReadySignal)
 } {
   let recent = ''
   let postAnchorRecent = ''
-  let anchFABRICArry = ''
+  let anchorCarry = ''
   let sawMarkerAnchor = false
   let sawQuietAnchor = false
 
@@ -178,8 +178,8 @@ export function createDraftPasteReadyScanner(readySignal: DraftPasteReadySignal)
         if (markerAnchorEnd !== null) {
           // Why: carry only the bytes an anchor could straddle, so already-scanned
           // output is never re-walked into a second enter/leave transition.
-          const window = anchFABRICArry + data
-          anchFABRICArry = window.slice(-ANCHOR_CARRY_CHARS)
+          const window = anchorCarry + data
+          anchorCarry = window.slice(-ANCHOR_CARRY_CHARS)
           if (scanRevocableAnchorSegments(window, markerAnchor, markerAnchorEnd)) {
             return { ready: true, armQuietTimer: false }
           }

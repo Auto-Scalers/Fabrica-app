@@ -910,11 +910,11 @@ function makeDeferred(): { promise: Promise<void>; resolve: () => void } {
 }
 
 function makeStatusFrame(index: number, first: boolean): string {
-  const pad = '·'.repeat(60)
+  const pad = 'Â·'.repeat(60)
   const rows = [
-    `? ?????… (esc to interrupt) [${index}] ${pad}`,
-    `  ? ??????????????,???… ${pad}`,
-    `  ? tokens: ${1000 + index * 137} · elapsed: ${index}s ${pad}`
+    `? ?????â€¦ (esc to interrupt) [${index}] ${pad}`,
+    `  ? ??????????????,???â€¦ ${pad}`,
+    `  ? tokens: ${1000 + index * 137} Â· elapsed: ${index}s ${pad}`
   ]
   return `${first ? '' : '\x1b[2A'}\r${rows.map((row) => `\x1b[K${row}`).join('\r\n')}\r`
 }
@@ -1025,7 +1025,7 @@ function cursorReadyScreen(): string {
     'Tip: Use /plan to plan execution and reach the right outcome faster.',
     '? Plan, search, build anything',
     'Composer 2.5 Fast                                          Run Everything',
-    '~/Documents/projects/AutoGenie · main'
+    '~/Documents/projects/AutoGenie Â· main'
   ].join('\n')
 }
 
@@ -1036,7 +1036,7 @@ function cursorBusyScreen(): string {
     '?? Thinking  28.61k tokens',
     '? Plan, search, build anything',
     'Composer 2.5 Fast                                          Run Everything',
-    '~/Documents/projects/AutoGenie · main'
+    '~/Documents/projects/AutoGenie Â· main'
   ].join('\n')
 }
 
@@ -1465,7 +1465,7 @@ function makeHeadlessTerminalLayout(
 function makeRuntimeStoreWithWorkspaceSession(
   initialSession: WorkspaceSessionState,
   // Why: sessions are partitioned by execution host, so the stub must answer for
-  // one partition only — a loose stub lets a hardcoded host id pass unnoticed.
+  // one partition only â€” a loose stub lets a hardcoded host id pass unnoticed.
   ownerHostId = 'local'
 ): {
   runtimeStore: typeof store & {
@@ -2006,14 +2006,14 @@ describe('FABRICARuntimeService', () => {
     expect(hasPty).toHaveBeenCalledWith(floatingPtyId)
     expect(listProcesses).not.toHaveBeenCalled()
     // Why: a floating tab's worktree id carries no repoId, so the hydrate repo gate
-    // must never resolve the inventory for it — #9343 made that read eager and
+    // must never resolve the inventory for it â€” #9343 made that read eager and
     // regressed this poll path. Keep both halves of the contract asserted.
     expect(getRepos).not.toHaveBeenCalled()
   })
 
   it('hydrates persisted tabs when the store cannot report repos', async () => {
     // Why: #9343 read the repo gate as `getRepos?.() ?? []`, so a store that cannot
-    // report its inventory looked like "every repo is gone" and hydrated nothing —
+    // report its inventory looked like "every repo is gone" and hydrated nothing â€”
     // every tab vanished. An unavailable list must fail open; only a list the store
     // actually returned may prune a dead repo's session key.
     const { runtimeStore } = makeRuntimeStoreWithWorkspaceSession(
@@ -2303,7 +2303,7 @@ describe('FABRICARuntimeService', () => {
     expect(runtime.getStatus().capabilities).not.toContain('browser.screencast.v1')
   })
 
-  it('closes a worktree’s offscreen browser pages when its metadata is removed (leak fix)', () => {
+  it('closes a worktreeâ€™s offscreen browser pages when its metadata is removed (leak fix)', () => {
     const runtime = createRuntime()
     const closeTab = vi.fn().mockResolvedValue(undefined)
     runtime.setOffscreenBrowserBackend({ createTab: vi.fn(), closeTab })
@@ -3018,7 +3018,7 @@ describe('FABRICARuntimeService', () => {
   it('drops a stale leaf when a woken agent PTY is re-keyed to a new leaf on renderer reload', async () => {
     const runtime = createRuntime()
     const tabId = 'tab-1'
-    // Why: the agent's pre-allocated FABRICA_TERMINAL_HANDLE gives its PTY a handleByPtyId entry — the condition the reload preservation loop keys on.
+    // Why: the agent's pre-allocated FABRICA_TERMINAL_HANDLE gives its PTY a handleByPtyId entry â€” the condition the reload preservation loop keys on.
     runtime.preAllocateHandleForPty('pty-agent')
     runtime.attachWindow(TEST_WINDOW_ID)
     runtime.syncWindowGraph(TEST_WINDOW_ID, {
@@ -3071,7 +3071,7 @@ describe('FABRICARuntimeService', () => {
     // Before the fix two leaves shared one PTY, so both adopted the same ptyId-keyed handle and paired clients crashed on a duplicate React key.
     expect(after.terminals).toHaveLength(1)
     expect(after.terminals[0].ptyId).toBe('pty-agent')
-    // The shared handle must NOT have been invalidated — it belongs to leaf-new now.
+    // The shared handle must NOT have been invalidated â€” it belongs to leaf-new now.
     await expect(runtime.showTerminal(after.terminals[0].handle)).resolves.toMatchObject({
       ptyId: 'pty-agent'
     })
@@ -3281,7 +3281,7 @@ describe('FABRICARuntimeService', () => {
       isActive: leafId === 'leaf-new'
     })
 
-    // Two records (stale headless leaf + live leaf) both resolve to the SAME live PTY — the renderer-graph origin the leaf fix can't reach.
+    // Two records (stale headless leaf + live leaf) both resolve to the SAME live PTY â€” the renderer-graph origin the leaf fix can't reach.
     internals.mobileSessionTabsByWorktree.set(TEST_WORKTREE_ID, {
       worktree: TEST_WORKTREE_ID,
       publicationEpoch: 'renderer:test:1',
@@ -5937,7 +5937,9 @@ describe('FABRICARuntimeService', () => {
       const initialEnv = (spawn.mock.calls[0]![0] as { env?: Record<string, string> }).env ?? {}
       const setupEnv = (spawn.mock.calls[1]![0] as { env?: Record<string, string> }).env ?? {}
       expect(setupEnv.FABRICA_TAB_ID).toBe(initialEnv.FABRICA_TAB_ID)
-      const initialLeafId = initialEnv.FABRICA_PANE_KEY!.slice(`${initialEnv.FABRICA_TAB_ID!}:`.length)
+      const initialLeafId = initialEnv.FABRICA_PANE_KEY!.slice(
+        `${initialEnv.FABRICA_TAB_ID!}:`.length
+      )
       expect(revealTerminalSession).toHaveBeenLastCalledWith(
         result.worktree.id,
         expect.objectContaining({
@@ -7751,7 +7753,7 @@ describe('FABRICARuntimeService', () => {
 
       const repo = await runtime.addRepo('/workspace', 'folder', importHostId)
 
-      // The matched repo is returned unchanged — no new repo, no executionHostId stamped.
+      // The matched repo is returned unchanged â€” no new repo, no executionHostId stamped.
       expect(repos).toHaveLength(1)
       expect(repo.id).toBe('repo-local-1')
       expect(repos[0]).not.toHaveProperty('executionHostId')
@@ -8572,7 +8574,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   // Why: this pins the mechanism the refusals below exist for. cursor-agent emits only the
-  // bare native title, and the tracker drops it on sight — so a pane can never hold it
+  // bare native title, and the tracker drops it on sight â€” so a pane can never hold it
   // because Cursor said so *now*. The one route into main's records is the stale-working
   // clear stripping the spinner off FABRICA's synthesized title after 3s of quiet output, and
   // that fires whether Cursor parked idle or exited and the shell took the pane back. That
@@ -8676,7 +8678,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   // Why: the refusals here must stay scoped to missing evidence. A working foreground read
-  // is what unlocks a live Cursor pane — and is the layer to fix if one is ever refused.
+  // is what unlocks a live Cursor pane â€” and is the layer to fix if one is ever refused.
   it('accepts a bare Cursor title when the foreground read confirms cursor-agent', async () => {
     vi.useFakeTimers()
     try {
@@ -8704,7 +8706,7 @@ describe('FABRICARuntimeService', () => {
     }
   })
 
-  // Why: pins the type-narrowing branch, not a reachable state — no caller detaches the
+  // Why: pins the type-narrowing branch, not a reachable state â€” no caller detaches the
   // controller. It is the runtime-owned pty path, which the window-graph leaf tests below
   // never reach, so nothing else would notice it being widened.
   it('refuses a bare Cursor title on a runtime pty with no controller attached', async () => {
@@ -9115,7 +9117,7 @@ describe('FABRICARuntimeService', () => {
       expect(batches).toHaveLength(1)
       expect(batches[0].facts).toEqual([
         { kind: 'title', normalizedTitle: '? Cursor Agent', rawTitle: '? Cursor Agent' },
-        // Synthesized spinner classifies as working — agent facts derive from synthetic frames the same as from real bytes.
+        // Synthesized spinner classifies as working â€” agent facts derive from synthetic frames the same as from real bytes.
         { kind: 'agent-working' }
       ])
       // Synthetic frames are fabricated by main, so they must not advance the metered output sequence the renderer ACK budget uses.
@@ -10074,7 +10076,7 @@ describe('FABRICARuntimeService', () => {
       expect(order).toEqual(['agentStatus:set', 'pty:sideEffect'])
     })
 
-    it('still emits a throwing chunk’s facts under its own seq, not the next chunk’s', () => {
+    it('still emits a throwing chunkâ€™s facts under its own seq, not the next chunkâ€™s', () => {
       const { runtime, batches } = createSideEffectRuntime()
       syncSinglePty(runtime)
       vi.spyOn(
@@ -10107,7 +10109,7 @@ describe('FABRICARuntimeService', () => {
       runtime.onPtyData('pty-1', '\x1b]0;split ti', 100)
       // An 80ms spinner tick lands between the two halves of the real OSC.
       runtime.ingestSyntheticTitleFrame('pty-1', '\x1b]0;? Cursor Agent\x07')
-      // Continuation: this BEL terminates the real OSC — it is NOT a bell.
+      // Continuation: this BEL terminates the real OSC â€” it is NOT a bell.
       runtime.onPtyData('pty-1', 'tle\x07', 101)
       // A later standalone BEL is a real bell and must not be swallowed.
       runtime.onPtyData('pty-1', 'ready\x07', 102)
@@ -10623,7 +10625,7 @@ describe('FABRICARuntimeService', () => {
     // A short first line of a >64KiB chunk loses only its `wrote ` prefix to
     // the pre-slice; the path itself stays in the retained window. The old
     // eager extractor recorded it from the intact original chunk, so it must
-    // stay authorized after the raw window scrolls — parity requires the
+    // stay authorized after the raw window scrolls â€” parity requires the
     // append-time extraction for oversized chunks, not backfill replay.
     const firstLine = `wrote ${artifactPath}\n`
     runtime.onPtyData('pty-1', `${firstLine}${'f'.repeat(64 * 1024 + 6 - firstLine.length)}`, 100)
@@ -13308,7 +13310,7 @@ describe('FABRICARuntimeService', () => {
     await runtime.createTerminal(`path:${TEST_WORKTREE_PATH}`, { startupAgent: 'cursor' })
 
     const spawnCall = spawn.mock.calls[0]?.[0] as { command?: string } | undefined
-    // Why: assert the cmd.exe double quoting too — a platform-insensitive prefix
+    // Why: assert the cmd.exe double quoting too â€” a platform-insensitive prefix
     // match would pass on any OS and prove nothing about the reported platform.
     expect(spawnCall?.command).toBe('cursor-agent "--force"')
   })
@@ -13379,7 +13381,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   // Why: with no selector the launch is never resolved, so a dropped startupAgent
-  // would reach the renderer as a bare shell — the failure this option prevents.
+  // would reach the renderer as a bare shell â€” the failure this option prevents.
   it('rejects a startupAgent create with no workspace selector', async () => {
     const runtime = new FABRICARuntimeService({
       ...store,
@@ -13429,7 +13431,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   // Why: silently returning the caller's opts would spawn a bare shell that can
-  // only time out at agent readiness — the failure startupAgent exists to stop.
+  // only time out at agent readiness â€” the failure startupAgent exists to stop.
   it('rejects a startupAgent create that also supplies its own launch', async () => {
     const spawn = vi.fn().mockResolvedValue({ id: 'pty-bg' })
     const runtime = new FABRICARuntimeService({
@@ -14409,7 +14411,7 @@ describe('FABRICARuntimeService', () => {
         persistHostSessionBinding: true
       })
     )
-    // Why: degrading the create must not silently drop the focus request — the
+    // Why: degrading the create must not silently drop the focus request â€” the
     // host still asks whatever surface exists to activate the new pane.
     expect(revealTerminalSession).toHaveBeenCalledWith(
       TEST_WORKTREE_ID,
@@ -14487,7 +14489,7 @@ describe('FABRICARuntimeService', () => {
     })
 
     // Why: with no renderer notifier on a serve host, the session-tab publish is
-    // the only channel a paired client learns about the terminal on — a degraded
+    // the only channel a paired client learns about the terminal on â€” a degraded
     // focused create must still land there selected, or focus is silently lost.
     const tabs = await runtime.listMobileSessionTabs(`id:${TEST_WORKTREE_ID}`)
     const published = tabs.tabs.find(
@@ -14820,7 +14822,9 @@ describe('FABRICARuntimeService', () => {
       const spawnCall = spawn.mock.calls[0]?.[0] as { env?: Record<string, string> } | undefined
       const spawnedEnv = spawnCall?.env ?? {}
       expectStablePaneKeyEnv(spawnedEnv)
-      const spawnedLeafId = spawnedEnv.FABRICA_PANE_KEY.slice(`${spawnedEnv.FABRICA_TAB_ID}:`.length)
+      const spawnedLeafId = spawnedEnv.FABRICA_PANE_KEY.slice(
+        `${spawnedEnv.FABRICA_TAB_ID}:`.length
+      )
       expect(revealTerminalSession).toHaveBeenCalledWith(TEST_WORKTREE_ID, {
         ptyId: 'pty-bg',
         title: null,
@@ -14997,7 +15001,11 @@ describe('FABRICARuntimeService', () => {
 
     const waiting = runtime.waitForSetupTerminalCompletion(handle)
     await Promise.resolve()
-    runtime.onPtyData('pty-uncertain-setup', '__FABRICA_SETUP_COMPLETE__:token-uncertain:0\r\n', 100)
+    runtime.onPtyData(
+      'pty-uncertain-setup',
+      '__FABRICA_SETUP_COMPLETE__:token-uncertain:0\r\n',
+      100
+    )
 
     await expect(waiting).resolves.toEqual({ exitCode: 0 })
   })
@@ -15695,7 +15703,7 @@ describe('FABRICARuntimeService', () => {
     runtime.onPtyData(
       'pty-bg',
       [
-        // Same earlier "Cursor Agent" hit as the idle case — banner must win.
+        // Same earlier "Cursor Agent" hit as the idle case â€” banner must win.
         'Cursor Agent\n',
         '? Workspace Trust Required\n',
         'Do you trust the contents of this directory?\n',
@@ -16055,7 +16063,7 @@ describe('FABRICARuntimeService', () => {
       getForegroundProcess: async () => null
     })
     const { handle } = await runtime.createTerminal(`path:${TEST_WORKTREE_PATH}`)
-    const text = 'é'.repeat(CLIPBOARD_TEXT_MEASURE_YIELD_CODE_UNITS + 1)
+    const text = 'Ã©'.repeat(CLIPBOARD_TEXT_MEASURE_YIELD_CODE_UNITS + 1)
 
     vi.useFakeTimers()
     try {
@@ -16397,7 +16405,7 @@ describe('FABRICARuntimeService', () => {
     const pB = runtime.focusTerminal(b.handle)
     const pC = runtime.focusTerminal(c.handle)
 
-    // B is superseded while A is in flight — identity only, never navigated.
+    // B is superseded while A is in flight â€” identity only, never navigated.
     await expect(pB).resolves.toMatchObject({
       handle: b.handle,
       navigated: false
@@ -17712,8 +17720,8 @@ describe('FABRICARuntimeService', () => {
     expect(
       recentTerminalOutputIncludesPath(
         '\x1b]8;;file:///tmp/caf%C3%A9.txt\x1b\\result\x1b]8;;\x1b\\',
-        '/tmp/café.txt',
-        '/tmp/café.txt'
+        '/tmp/cafÃ©.txt',
+        '/tmp/cafÃ©.txt'
       )
     ).toBe(true)
     expect(
@@ -17829,18 +17837,18 @@ describe('FABRICARuntimeService', () => {
     syncSinglePty(runtime)
 
     const [terminal] = (await runtime.listTerminals()).terminals
-    runtime.onPtyData('pty-1', '• Working', 100)
+    runtime.onPtyData('pty-1', 'â€¢ Working', 100)
     const initialPreview = await runtime.readTerminal(terminal.handle)
-    expect(initialPreview.tail).toEqual(['• Working'])
+    expect(initialPreview.tail).toEqual(['â€¢ Working'])
 
-    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1G• Working.', 101)
+    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1Gâ€¢ Working.', 101)
     const redrawPreview = await runtime.readTerminal(terminal.handle)
-    expect(redrawPreview.tail).toEqual(['• Working.'])
-    expect(redrawPreview.tail.join('\n')).not.toContain('• Working• Working')
+    expect(redrawPreview.tail).toEqual(['â€¢ Working.'])
+    expect(redrawPreview.tail.join('\n')).not.toContain('â€¢ Workingâ€¢ Working')
 
-    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1G• Working..', 102)
+    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1Gâ€¢ Working..', 102)
     const latestPreview = await runtime.readTerminal(terminal.handle)
-    expect(latestPreview.tail).toEqual(['• Working..'])
+    expect(latestPreview.tail).toEqual(['â€¢ Working..'])
     expect(latestPreview.latestCursor).toBe('0')
 
     const cursorReadBeforeNewline = await runtime.readTerminal(terminal.handle, { cursor: 0 })
@@ -17850,12 +17858,12 @@ describe('FABRICARuntimeService', () => {
     runtime.onPtyData('pty-1', '\n', 103)
 
     const read = await runtime.readTerminal(terminal.handle)
-    expect(read.tail).toEqual(['• Working..'])
+    expect(read.tail).toEqual(['â€¢ Working..'])
     expect(read.latestCursor).toBe('1')
-    expect(read.tail.join('\n')).not.toContain('• Working• Working')
+    expect(read.tail.join('\n')).not.toContain('â€¢ Workingâ€¢ Working')
 
     const cursorReadAfterNewline = await runtime.readTerminal(terminal.handle, { cursor: 0 })
-    expect(cursorReadAfterNewline.tail).toEqual(['• Working..'])
+    expect(cursorReadAfterNewline.tail).toEqual(['â€¢ Working..'])
     expect(cursorReadAfterNewline.nextCursor).toBe('1')
   })
 
@@ -17864,17 +17872,17 @@ describe('FABRICARuntimeService', () => {
     syncSinglePty(runtime)
 
     const [terminal] = (await runtime.listTerminals()).terminals
-    runtime.onPtyData('pty-1', '• Working\nTool call\n', 100)
+    runtime.onPtyData('pty-1', 'â€¢ Working\nTool call\n', 100)
     runtime.onPtyData(
       'pty-1',
-      '\x1b[2A\x1b[2K\x1b[1G• Working.\n\x1b[2K\x1b[1GTool call finished\n',
+      '\x1b[2A\x1b[2K\x1b[1Gâ€¢ Working.\n\x1b[2K\x1b[1GTool call finished\n',
       101
     )
 
     const read = await runtime.readTerminal(terminal.handle)
-    expect(read.tail).toEqual(['• Working.', 'Tool call finished'])
+    expect(read.tail).toEqual(['â€¢ Working.', 'Tool call finished'])
     expect(read.latestCursor).toBe('4')
-    expect(read.tail.join('\n')).not.toContain('• Working\nTool call\n• Working.')
+    expect(read.tail.join('\n')).not.toContain('â€¢ Working\nTool call\nâ€¢ Working.')
     expect(read.tail.join('\n')).not.toContain('2A')
     expect(read.tail.join('\n')).not.toContain('2K')
   })
@@ -17898,26 +17906,26 @@ describe('FABRICARuntimeService', () => {
     syncSinglePty(runtime)
 
     const [terminal] = (await runtime.listTerminals()).terminals
-    runtime.onPtyData('pty-1', '• Working\nTool call\n', 100)
+    runtime.onPtyData('pty-1', 'â€¢ Working\nTool call\n', 100)
     const beforeRedraw = await runtime.readTerminal(terminal.handle, { cursor: 0 })
-    expect(beforeRedraw.tail).toEqual(['• Working', 'Tool call'])
+    expect(beforeRedraw.tail).toEqual(['â€¢ Working', 'Tool call'])
     expect(beforeRedraw.nextCursor).toBe('2')
 
     runtime.onPtyData('pty-1', '\x1b[2A', 101)
     const betweenChunks = await runtime.readTerminal(terminal.handle)
-    expect(betweenChunks.tail).toEqual(['• Working'])
+    expect(betweenChunks.tail).toEqual(['â€¢ Working'])
     expect(betweenChunks.latestCursor).toBe('2')
 
-    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1G• Working.\n\x1b[2K\x1b[1GTool call finished\n', 102)
+    runtime.onPtyData('pty-1', '\x1b[2K\x1b[1Gâ€¢ Working.\n\x1b[2K\x1b[1GTool call finished\n', 102)
 
     const read = await runtime.readTerminal(terminal.handle)
-    expect(read.tail).toEqual(['• Working.', 'Tool call finished'])
+    expect(read.tail).toEqual(['â€¢ Working.', 'Tool call finished'])
     expect(read.latestCursor).toBe('4')
 
     const cursorRead = await runtime.readTerminal(terminal.handle, {
       cursor: Number(beforeRedraw.nextCursor)
     })
-    expect(cursorRead.tail).toEqual(['• Working.', 'Tool call finished'])
+    expect(cursorRead.tail).toEqual(['â€¢ Working.', 'Tool call finished'])
     expect(cursorRead.oldestCursor).toBe('0')
     expect(cursorRead.nextCursor).toBe('4')
   })
@@ -18026,24 +18034,24 @@ describe('FABRICARuntimeService', () => {
     syncSinglePty(runtime)
 
     const [terminal] = (await runtime.listTerminals()).terminals
-    runtime.onPtyData('pty-1', '• Working\nTool call\n', 100)
+    runtime.onPtyData('pty-1', 'â€¢ Working\nTool call\n', 100)
     const beforeRedraw = await runtime.readTerminal(terminal.handle, { cursor: 0 })
     expect(beforeRedraw.nextCursor).toBe('2')
 
     runtime.onPtyData(
       'pty-1',
-      '\x1b[2A\x1b[2K\x1b[1G• Working.\n\x1b[2K\x1b[1GTool call still running',
+      '\x1b[2A\x1b[2K\x1b[1Gâ€¢ Working.\n\x1b[2K\x1b[1GTool call still running',
       101
     )
 
     const read = await runtime.readTerminal(terminal.handle)
-    expect(read.tail).toEqual(['• Working.', 'Tool call still running'])
+    expect(read.tail).toEqual(['â€¢ Working.', 'Tool call still running'])
     expect(read.latestCursor).toBe('3')
 
     const cursorRead = await runtime.readTerminal(terminal.handle, {
       cursor: Number(beforeRedraw.nextCursor)
     })
-    expect(cursorRead.tail).toEqual(['• Working.'])
+    expect(cursorRead.tail).toEqual(['â€¢ Working.'])
     expect(cursorRead.oldestCursor).toBe('0')
     expect(cursorRead.nextCursor).toBe('3')
 
@@ -18239,10 +18247,10 @@ describe('FABRICARuntimeService', () => {
     syncSinglePty(runtime)
 
     const [terminal] = (await runtime.listTerminals()).terminals
-    runtime.onPtyData('pty-1', '\x1b[32mHéllo ??\x1b[0m\n', 100)
+    runtime.onPtyData('pty-1', '\x1b[32mHÃ©llo ??\x1b[0m\n', 100)
 
     const read = await runtime.readTerminal(terminal.handle)
-    expect(read.tail).toEqual(['Héllo ??'])
+    expect(read.tail).toEqual(['HÃ©llo ??'])
   })
 
   it('detects split OSC titles before retaining terminal previews', async () => {
@@ -18302,7 +18310,7 @@ describe('FABRICARuntimeService', () => {
     const runtime = new FABRICARuntimeService(store)
     syncSinglePty(runtime)
 
-    runtime.onPtyData('pty-1', '\x1b]0;? - Waiting for response… - grok\x07', 100)
+    runtime.onPtyData('pty-1', '\x1b]0;? - Waiting for responseâ€¦ - grok\x07', 100)
     const pty = (
       runtime as unknown as {
         ptysById: Map<string, { lastOscTitle: string | null; lastAgentStatus: string | null }>
@@ -18311,7 +18319,7 @@ describe('FABRICARuntimeService', () => {
     expect(pty?.lastOscTitle).toBe('? Grok')
     expect(pty?.lastAgentStatus).toBe('working')
 
-    // A different rotating frame must store an identical title — title equality is what stops per-frame session-tab and mobile-snapshot touch.
+    // A different rotating frame must store an identical title â€” title equality is what stops per-frame session-tab and mobile-snapshot touch.
     runtime.onPtyData('pty-1', '\x1b]0;? - Thinking - grok\x07', 101)
     expect(pty?.lastOscTitle).toBe('? Grok')
     expect(pty?.lastAgentStatus).toBe('working')
@@ -18335,7 +18343,7 @@ describe('FABRICARuntimeService', () => {
     })
     events.length = 0
 
-    runtime.onPtyData('laptop-created-pty', '\x1b]0;? - Waiting for response… - grok\x07', 100)
+    runtime.onPtyData('laptop-created-pty', '\x1b]0;? - Waiting for responseâ€¦ - grok\x07', 100)
     runtime.onPtyData('laptop-created-pty', '\x1b]0;? - Thinking - grok\x07', 101)
     runtime.onPtyData('laptop-created-pty', '\x1b]0;? - Responding - grok\x07', 102)
 
@@ -19267,13 +19275,17 @@ describe('FABRICARuntimeService', () => {
     }
     const { runtimeStore, getSession } = makeRuntimeStoreWithWorkspaceSession(session)
     const flushOrThrow = vi.fn()
-    const runtime = new FABRICARuntimeService({ ...runtimeStore, flushOrThrow } as never, undefined, {
-      canRecoverPersistentLocalPtys: () => true,
-      attestAgentHookCompatibilityAuthority: ({ paneKey, launchTokenHash }) =>
-        paneKey === workerPaneKey && launchTokenHash === RESTORED_AUTHORITY_TOKEN_HASH
-          ? { paneKey, source: 'hydrated_commitment' }
-          : null
-    })
+    const runtime = new FABRICARuntimeService(
+      { ...runtimeStore, flushOrThrow } as never,
+      undefined,
+      {
+        canRecoverPersistentLocalPtys: () => true,
+        attestAgentHookCompatibilityAuthority: ({ paneKey, launchTokenHash }) =>
+          paneKey === workerPaneKey && launchTokenHash === RESTORED_AUTHORITY_TOKEN_HASH
+            ? { paneKey, source: 'hydrated_commitment' }
+            : null
+      }
+    )
     runtime.setOrchestrationDb({
       getActiveDispatchForTerminal: () => undefined,
       listLegacyWorkerTerminalRecoveryRows: () => [
@@ -22426,7 +22438,7 @@ describe('FABRICARuntimeService', () => {
       kill: () => true,
       getForegroundProcess: async () => null
     })
-    // Why: the native title is identity, not liveness — Cursor never decorates it, so it
+    // Why: the native title is identity, not liveness â€” Cursor never decorates it, so it
     // reads the same whether cursor-agent is parked or long gone. Sends auto-submit Enter,
     // so identity alone must not unlock one.
     syncSinglePty(runtime, 'pty-1', { tabTitle: 'bash', paneTitle: 'Cursor Agent' })
@@ -22440,7 +22452,7 @@ describe('FABRICARuntimeService', () => {
     })
   })
 
-  // Why: a leaf with no PTY is the same no-evidence case as an unreadable foreground —
+  // Why: a leaf with no PTY is the same no-evidence case as an unreadable foreground â€”
   // nothing was even asked, so the bare title is all that is left. The corroborating
   // foreground here is deliberately unreachable: no ptyId means no read.
   it('does not treat a bare Cursor title as an agent on a leaf with no pty', async () => {
@@ -22458,7 +22470,7 @@ describe('FABRICARuntimeService', () => {
 
   // Why: a renderer can push the bare title straight onto the pane, skipping the stale
   // clear the other tests drive. Arriving that way it lands on top of a `working` status
-  // the spinner left behind, so the pane looks doubly like an agent — and is still just a
+  // the spinner left behind, so the pane looks doubly like an agent â€” and is still just a
   // shell. The tab is left untitled so the bare title is the only evidence in play: the
   // refusal is decided at the foreground, and the stale-status gate is held shut behind it.
   it('does not let a renderer-pushed bare Cursor title revive stale agent status', async () => {
@@ -22477,7 +22489,7 @@ describe('FABRICARuntimeService', () => {
     await expect(runtime.isTerminalRunningAgent(terminal.handle)).resolves.toBe(false)
   })
 
-  // Why: pins the outer catch, not a reachable state — the production controller
+  // Why: pins the outer catch, not a reachable state â€” the production controller
   // (src/main/ipc/pty.ts) already normalizes provider failures, a dropped SSH channel
   // included, to null before this sees them. Nothing else here makes the read throw.
   it('does not treat a bare Cursor title as an agent when the foreground read throws', async () => {
@@ -22496,7 +22508,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   // Why: cursor-agent is a node program, so `node` in the foreground plus a Cursor title
-  // looks like corroboration. It is not — the wrapper retry has to resolve a real agent
+  // looks like corroboration. It is not â€” the wrapper retry has to resolve a real agent
   // name, and timing out means it never did.
   it('does not treat a bare Cursor title as an agent behind a wrapper foreground', async () => {
     vi.useFakeTimers()
@@ -24441,7 +24453,7 @@ describe('FABRICARuntimeService', () => {
 
   it('reads one agent-status snapshot per projection, not one per terminal tab', async () => {
     // The getter rebuilds every known pane's payload on each call, so reading it
-    // inside the per-tab loop made a projection O(tabs x panes) of pure garbage —
+    // inside the per-tab loop made a projection O(tabs x panes) of pure garbage â€”
     // worst in headless serve, where every terminal tab takes the hook fallback.
     let snapshotReads = 0
     const runtime = new FABRICARuntimeService(store, undefined, {
@@ -24523,7 +24535,7 @@ describe('FABRICARuntimeService', () => {
 
   it('reads a resume-identity-only row the live-agent snapshot filters out', async () => {
     // Pi publishes its session separately from status, and the shared getter drops
-    // those rows so they can't read as running agents — leaving native chat with no
+    // those rows so they can't read as running agents â€” leaving native chat with no
     // transcript to address unless the unfiltered snapshot is consulted too.
     const paneKey = makePaneKey('pi-tab', HEADLESS_LEAF_ID)
     const providerSession = {
@@ -24618,7 +24630,7 @@ describe('FABRICARuntimeService', () => {
 
   it('does not claim a stale hook agent owns a pane whose agent has since exited', async () => {
     // `pty.lastAgentStatus` outlives the agent, so an unbounded hook read would keep
-    // offering mobile native chat for what is now a plain shell — and point it at a
+    // offering mobile native chat for what is now a plain shell â€” and point it at a
     // dead transcript. The session id may stay; the ownership claim must not.
     const paneKey = makePaneKey('exited-tab', HEADLESS_LEAF_ID)
     const staleReceivedAt = Date.now() - AGENT_STATUS_STALE_AFTER_MS - 1_000
@@ -28389,7 +28401,7 @@ describe('FABRICARuntimeService', () => {
     const rehydrated = await runtime.listMobileSessionTabs(`id:${TEST_WORKTREE_ID}`)
     expect(rehydrated.tabGroups).toHaveLength(2)
     expect(rehydrated.tabGroupLayout).toMatchObject({ type: 'split', direction: 'horizontal' })
-    // Each persisted group keeps its own tab — no coalescing.
+    // Each persisted group keeps its own tab â€” no coalescing.
     const left = rehydrated.tabGroups!.find((g) => g.id === 'group-left')!
     const right = rehydrated.tabGroups!.find((g) => g.id === 'group-right')!
     expect(left.tabOrder).toEqual(['host-tab'])
@@ -30215,7 +30227,7 @@ describe('FABRICARuntimeService', () => {
 
     // Why: opening the tab is the documented wake gesture for a slept pane
     // (#11598). These four cover every topology, because three of them never
-    // clear the record — the pane's own activation is the only thing that wakes it.
+    // clear the record â€” the pane's own activation is the only thing that wakes it.
     it('materializes a slept pane for a user tap under headless serve, which never wakes', async () => {
       const { runtimeStore, getSession } = makeParkedSessionStore('worktree-sleep')
       const resumeSleepingAgents = vi.fn()
@@ -30598,7 +30610,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   it('does not persist active server-side when an authoritative renderer is attached', async () => {
-    // Why: an authoritative renderer re-syncs the snapshot itself, so the headless persist must not fire — the renderer stays source of truth.
+    // Why: an authoritative renderer re-syncs the snapshot itself, so the headless persist must not fire â€” the renderer stays source of truth.
     let nextPty = 0
     const spawn = vi.fn().mockImplementation(async () => ({ id: `attached-pty-${++nextPty}` }))
     const runtime = new FABRICARuntimeService(store)
@@ -30627,7 +30639,7 @@ describe('FABRICARuntimeService', () => {
 
     await runtime.activateMobileSessionTab(`id:${TEST_WORKTREE_ID}`, 'tab-b')
 
-    // The headless persist is gated off by the authoritative window — nothing emitted.
+    // The headless persist is gated off by the authoritative window â€” nothing emitted.
     expect(events).toHaveLength(0)
   })
 
@@ -31022,13 +31034,13 @@ describe('FABRICARuntimeService', () => {
 
     expect(closeTerminal).toHaveBeenCalledWith('host-tab')
     expect(kill).not.toHaveBeenCalled()
-    // Not torn down by the runtime — left for the renderer's own close to prune.
+    // Not torn down by the runtime â€” left for the renderer's own close to prune.
     expect(getSession().tabsByWorktree[TEST_WORKTREE_ID]).toHaveLength(1)
     expect(getSession().terminalLayoutsByTabId['host-tab']).toBeDefined()
   })
 
   it('tears down a leaked daemon-session headless tab the renderer never published', async () => {
-    // Why: same <worktreeId>@@<uuid> id but absent from the renderer graph — a real leak that must be de-persisted so syncMobileSessionTabs can't resurrect it.
+    // Why: same <worktreeId>@@<uuid> id but absent from the renderer graph â€” a real leak that must be de-persisted so syncMobileSessionTabs can't resurrect it.
     const daemonPtyId = `${TEST_WORKTREE_ID}@@77e25ca0`
     const { runtimeStore, getSession } = makeRuntimeStoreWithWorkspaceSession(
       makeWorkspaceSessionWithHeadlessTerminal({
@@ -31621,7 +31633,7 @@ describe('FABRICARuntimeService', () => {
 
     it('refuses without republishing when the echoed leaf is dead but a sibling is live', async () => {
       // Why: the only reachable close path for a single leaf destroys the whole
-      // parent (live sibling included), so the close must be refused — but a
+      // parent (live sibling included), so the close must be refused â€” but a
       // republish would re-add the dead leaf on the echoing client and feed a
       // refuse?republish?re-echo loop.
       const { runtime, getSession, kill, closeTerminal } = makeSplitLeafRuntime()
@@ -31740,7 +31752,7 @@ describe('FABRICARuntimeService', () => {
 
     it('retires a dead headless tab whose exited PTY still has a retained record', async () => {
       // Why: onPtyExit keeps the disconnected record in ptysById for status and
-      // exit reads — the production state after a real exit. The gate must not
+      // exit reads â€” the production state after a real exit. The gate must not
       // read record presence as liveness or the dead tab never retires and the
       // client echo loops.
       const { runtimeStore, getSession } = makeRuntimeStoreWithWorkspaceSession(
@@ -32814,7 +32826,7 @@ describe('FABRICARuntimeService', () => {
     try {
       const pendingLeafId = '99999999-9999-4999-8999-999999999999'
       const closeTerminal = vi.fn()
-      // Why: #7587 rescue is gated on a live PTY, not on a mere surface — else this handle-less failed-spawn dead shell would resolve as success.
+      // Why: #7587 rescue is gated on a live PTY, not on a mere surface â€” else this handle-less failed-spawn dead shell would resolve as success.
       const spawn = vi.fn().mockRejectedValue(new Error('spawn failed'))
       const runtime = new FABRICARuntimeService(store)
       runtime.setPtyController({
@@ -33112,7 +33124,7 @@ describe('FABRICARuntimeService', () => {
       runtime.setNotifier(createMobileCreateTestNotifier(vi.fn()))
       const webContents = { send: vi.fn() }
       const send = vi.fn((_channel: string, payload: { requestId: string }) => {
-        // Why: mirrors the spawn IPC handler — a command-carrying spawn records
+        // Why: mirrors the spawn IPC handler â€” a command-carrying spawn records
         // its launch command right after registering the PTY.
         runtime.registerPty('pty-carried', TEST_WORKTREE_ID, null, { tabId: 'tab-carried', leafId })
         runtime.noteTerminalSpawnCommand('pty-carried', 'codex')
@@ -33192,7 +33204,7 @@ describe('FABRICARuntimeService', () => {
       })
       await vi.waitFor(() => expect(send).toHaveBeenCalledTimes(1))
 
-      // Renderer republishes with a stale (lower) version under the same epoch, so syncMobileSessionTabs rejects it — the reporter's stall variant (#7587).
+      // Renderer republishes with a stale (lower) version under the same epoch, so syncMobileSessionTabs rejects it â€” the reporter's stall variant (#7587).
       runtime.syncWindowGraph(1, {
         tabs: [],
         leaves: [],
@@ -33843,7 +33855,7 @@ describe('FABRICARuntimeService', () => {
 
       // Why no working frame: a resumed agent sitting at its prompt emits an
       // already-idle title first. The seed left lastAgentStatus 'idle', so there
-      // is no transition — only the liveness edge can release the row (#12536).
+      // is no transition â€” only the liveness edge can release the row (#12536).
       runtime.onPtyData('pty-1', '\x1b]0;Codex done\x07', 100)
 
       expect(write).toHaveBeenCalledWith(
@@ -33873,7 +33885,7 @@ describe('FABRICARuntimeService', () => {
       syncSinglePty(runtime)
 
       const [terminal] = (await runtime.listTerminals()).terminals
-      // Why: the persisted title is historical — the agent may have gone busy
+      // Why: the persisted title is historical â€” the agent may have gone busy
       // across the relaunch, so a seeded 'idle' must not authorize a PTY write.
       runtime.seedTerminalRestoreTail('pty-1', { lastTitle: 'Codex done' })
       const message = db.insertMessage({
@@ -33974,7 +33986,7 @@ describe('FABRICARuntimeService', () => {
 
       // Why: the push reads every pending row, not just the one that woke it. A
       // `status` notify is unclaimed and pushes, but the worker_done row landing
-      // in the same drain belongs to this waiter's check — injecting it too would
+      // in the same drain belongs to this waiter's check â€” injecting it too would
       // deliver that completion twice (pane + check return).
       const waitPromise = runtime.waitForMessage(terminal.handle, {
         typeFilter: ['worker_done'],
@@ -34038,7 +34050,7 @@ describe('FABRICARuntimeService', () => {
         subject: 'claimed late',
         type: 'status'
       })
-      // Why: the notify snapshot is empty — no waiter existed yet. A check that
+      // Why: the notify snapshot is empty â€” no waiter existed yet. A check that
       // blocks before the deferred push runs still owns this row, so only the
       // push-time read of live waiters can keep it out of the pane.
       runtime.notifyMessageArrived(terminal.handle, 'status')
@@ -34168,7 +34180,7 @@ describe('FABRICARuntimeService', () => {
 
       // Why: syncWindowGraph rebuilds every leaf record on any pane/tab change.
       // An idle agent emits no new title, so dropping the live-status carry here
-      // would strand mail until the next OSC frame — the #12536 symptom.
+      // would strand mail until the next OSC frame â€” the #12536 symptom.
       syncSinglePty(runtime)
 
       const [republished] = (await runtime.listTerminals()).terminals
@@ -34231,7 +34243,7 @@ describe('FABRICARuntimeService', () => {
       await vi.advanceTimersByTimeAsync(600)
       expect(message.delivered_at).toBeNull()
 
-      // The replacement's first live idle frame re-authorizes delivery — with no
+      // The replacement's first live idle frame re-authorizes delivery â€” with no
       // working frame, since exit keeps lastAgentStatus 'idle' for `ps` and the
       // replacement can come up straight at an idle prompt (no transition).
       runtime.onPtyData('pty-1', '\x1b]0;Codex done\x07', 200)
@@ -34267,7 +34279,7 @@ describe('FABRICARuntimeService', () => {
       await runtime.waitForTerminal(terminal.handle, { condition: 'tui-idle' })
 
       // Why: a `check --wait --types worker_done` waiter never returns a status
-      // row — check re-reads under the same filter — so it is not the consumer
+      // row â€” check re-reads under the same filter â€” so it is not the consumer
       // and treating it as one would strand the message (#12536).
       const waitPromise = runtime.waitForMessage(terminal.handle, {
         typeFilter: ['worker_done'],
@@ -34365,7 +34377,8 @@ describe('FABRICARuntimeService', () => {
       await Promise.resolve()
 
       const pointerWrites = write.mock.calls.filter(
-        ([, payload]) => typeof payload === 'string' && payload.includes('FABRICA orchestration check')
+        ([, payload]) =>
+          typeof payload === 'string' && payload.includes('FABRICA orchestration check')
       )
       expect(pointerWrites).toHaveLength(1)
 
@@ -34415,7 +34428,7 @@ describe('FABRICARuntimeService', () => {
       ).toHaveLength(1)
       expect(second.delivered_at).toBeNull()
 
-      // Why: release must not require another agent-status OSC — only the
+      // Why: release must not require another agent-status OSC â€” only the
       // delayed-Enter flight timer. Advancing 3s with no status output covers
       // timer-only settle (CodeRabbit settling-timeout gap, #12584).
       await vi.advanceTimersByTimeAsync(3_000)
@@ -36575,7 +36588,7 @@ describe('FABRICARuntimeService', () => {
     const working = await runtime.getWorktreePs()
     expect(working.worktrees[0].status).toBe('working')
 
-    // Agent exits, shell title takes over — mobile must flip to 'active' like desktop's getWorktreeStatus.
+    // Agent exits, shell title takes over â€” mobile must flip to 'active' like desktop's getWorktreeStatus.
     runtime.onPtyData('pty-1', '\x1b]0;bash\x07', 200)
     const afterExit = await runtime.getWorktreePs()
     expect(afterExit.worktrees[0].status).toBe('active')
@@ -36719,7 +36732,7 @@ describe('FABRICARuntimeService', () => {
     })
     syncSinglePty(runtime, null)
     // The store keeps one `repoId::path` per host, so deleting the SSH copy must leave the
-    // local copy's terminals running — the fence the destructive removal paths now supply.
+    // local copy's terminals running â€” the fence the destructive removal paths now supply.
     runtime.registerPty('pty-ssh', TEST_WORKTREE_ID, 'ssh-1')
     runtime.registerPty('pty-local', TEST_WORKTREE_ID, null)
 
@@ -39101,7 +39114,7 @@ describe('FABRICARuntimeService', () => {
 
   // Why (#10562): the renderer purges its state regardless of the sweep result, so
   // revalidating against a cached scan (30s TTL) that still lists an already-deleted
-  // directory would strand those PTYs permanently — nothing asks a second time.
+  // directory would strand those PTYs permanently â€” nothing asks a second time.
   it('revalidates against a fresh scan instead of a warm worktree-scan cache', async () => {
     const deletedId = `${TEST_REPO_ID}::/tmp/deleted`
     const localProvider = {
@@ -41608,8 +41621,10 @@ describe('FABRICARuntimeService', () => {
     const setupSpawnEnv =
       (spawn.mock.calls[1]?.[0] as { env?: Record<string, string> } | undefined)?.env ?? {}
     expectStablePaneKeyEnv(setupSpawnEnv)
-    const setupLeafId = setupSpawnEnv.FABRICA_PANE_KEY.slice(`${setupSpawnEnv.FABRICA_TAB_ID}:`.length)
-    // Why: a background CLI create adopts its tabs silently — surfaceOwner:false
+    const setupLeafId = setupSpawnEnv.FABRICA_PANE_KEY.slice(
+      `${setupSpawnEnv.FABRICA_TAB_ID}:`.length
+    )
+    // Why: a background CLI create adopts its tabs silently â€” surfaceOwner:false
     // keeps the sidebar from scrolling to a workspace the user never asked for.
     expect(revealTerminalSession).toHaveBeenLastCalledWith(result.worktree.id, {
       ptyId: 'pty-setup',
@@ -42488,7 +42503,7 @@ describe('FABRICARuntimeService', () => {
     })
 
     // Split launch modes reach the renderer through splitTerminal, not
-    // createTerminal — that path must suppress owner surfacing too.
+    // createTerminal â€” that path must suppress owner surfacing too.
     expect(activateWorktree).not.toHaveBeenCalled()
     await vi.waitFor(() => expect(spawn).toHaveBeenCalledTimes(2))
     const mainEnv = (spawn.mock.calls[0]![0] as { env?: Record<string, string> }).env ?? {}
@@ -42813,7 +42828,7 @@ describe('FABRICARuntimeService', () => {
     )
     expect(metaById[result.worktree.id]).toMatchObject({ createdWithAgent: 'codex' })
 
-    runtime.onPtyData('pty-startup-draft', '\x1b[?2004h›', Date.now())
+    runtime.onPtyData('pty-startup-draft', '\x1b[?2004hâ€º', Date.now())
     await vi.waitFor(() => {
       expect(write).toHaveBeenCalledWith('pty-startup-draft', `\x1b[200~${draftUrl}\x1b[201~`)
     })
@@ -43425,7 +43440,7 @@ describe('FABRICARuntimeService', () => {
     )
     expect(metaById[result.worktree.id]).toMatchObject({ createdWithAgent: 'codex' })
 
-    runtime.onPtyData('pty-explicit-draft', '\x1b[?2004h›', Date.now())
+    runtime.onPtyData('pty-explicit-draft', '\x1b[?2004hâ€º', Date.now())
     await vi.waitFor(() => {
       expect(write).toHaveBeenCalledWith('pty-explicit-draft', `\x1b[200~${draftUrl}\x1b[201~`)
     })
@@ -44519,7 +44534,7 @@ describe('FABRICARuntimeService', () => {
         wslDistro: 'Ubuntu'
       })
       // Why: the explicit origin preference must short-circuit before any
-      // identity probe, so no remote — not just upstream — gets a get-url.
+      // identity probe, so no remote â€” not just upstream â€” gets a get-url.
       expect(gitSpy).not.toHaveBeenCalledWith(
         ['remote', 'get-url', expect.anything()],
         expect.anything()
@@ -44657,7 +44672,11 @@ describe('FABRICARuntimeService', () => {
         { cwd: TEST_REPO_PATH }
       )
       expect(gitSpy).toHaveBeenCalledWith(
-        ['rev-parse', '--verify', `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`],
+        [
+          'rev-parse',
+          '--verify',
+          `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`
+        ],
         { cwd: TEST_REPO_PATH }
       )
     } finally {
@@ -44729,7 +44748,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   it('keeps the durable MR head when the head fetch fails but the local ref resolves', async () => {
-    // Why: mirror compare-base soft-keep — a transient fetch failure must not
+    // Why: mirror compare-base soft-keep â€” a transient fetch failure must not
     // fail the resolve when a prior fetch already pinned refs/FABRICA/merge-requests/<iid>.
     const localRepo = {
       id: TEST_REPO_ID,
@@ -44848,7 +44867,11 @@ describe('FABRICARuntimeService', () => {
         error: `Failed to fetch refs/merge-requests/42/head: ${message}`
       })
       expect(gitSpy).not.toHaveBeenCalledWith(
-        ['rev-parse', '--verify', `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`],
+        [
+          'rev-parse',
+          '--verify',
+          `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`
+        ],
         expect.anything()
       )
     } finally {
@@ -44935,7 +44958,11 @@ describe('FABRICARuntimeService', () => {
         { cwd: TEST_REPO_PATH, wslDistro: 'Ubuntu', timeout: REVIEW_HEAD_FETCH_TIMEOUT_MS }
       )
       expect(gitSpy).toHaveBeenCalledWith(
-        ['rev-parse', '--verify', `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`],
+        [
+          'rev-parse',
+          '--verify',
+          `refs/FABRICA/merge-requests/${ORIGIN_HEAD_COMPONENT}/42^{commit}`
+        ],
         { cwd: TEST_REPO_PATH, wslDistro: 'Ubuntu' }
       )
     } finally {
@@ -45194,7 +45221,7 @@ describe('FABRICARuntimeService', () => {
   })
 
   it('keeps a cross-repo fork MR compare base when the fetch fails but the local ref resolves', async () => {
-    // Why: mirror the GitHub fork soft-fail-keep — a transient compare-base fetch
+    // Why: mirror the GitHub fork soft-fail-keep â€” a transient compare-base fetch
     // failure must not drop a base we already have on disk onto the fork MR head SHA.
     const remoteRepo = {
       id: TEST_REPO_ID,
@@ -45828,7 +45855,7 @@ describe('FABRICARuntimeService', () => {
 
     await runtime.removeManagedWorktree(TEST_WORKTREE_ID)
 
-    // Regression: the gate must finish(false) — forgetting watchers would silently deafen a
+    // Regression: the gate must finish(false) â€” forgetting watchers would silently deafen a
     // folder workspace or File Explorer pane rooted at this still-present directory.
     expect(closeLocalWatcherForWorktreePathMock).toHaveBeenCalledWith(
       TEST_WORKTREE_PATH,
@@ -46014,7 +46041,7 @@ describe('FABRICARuntimeService', () => {
 
   it('proceeds when a wedged install never releases the removal fence', async () => {
     vi.useFakeTimers()
-    // Held across the whole acquire and never released — models a native subscribe that ignores abort
+    // Held across the whole acquire and never released â€” models a native subscribe that ignores abort
     // and never settles. The removal must abandon the fence slot rather than leak it into later suites.
     beginWatcherInstall(TEST_WORKTREE_PATH)
     try {
@@ -47590,7 +47617,7 @@ describe('FABRICARuntimeService', () => {
         switched: 0,
         browserPageId: 'page-1'
       })
-      // Bridge is unchanged — focus is delivered to the renderer via IPC, not threaded through bridge state.
+      // Bridge is unchanged â€” focus is delivered to the renderer via IPC, not threaded through bridge state.
       expect(tabSwitchMock).toHaveBeenCalledWith(undefined, undefined, 'page-1')
     })
 
@@ -47678,7 +47705,7 @@ describe('FABRICARuntimeService', () => {
     })
   })
 
-  describe('removeManagedWorktree PTY teardown (design §4.3)', () => {
+  describe('removeManagedWorktree PTY teardown (design Â§4.3)', () => {
     function createProviderStub(
       listProcesses: () => Promise<{ id: string; cwd: string; title: string }[]>
     ): {
@@ -47909,7 +47936,7 @@ describe('FABRICARuntimeService', () => {
         }
       }
 
-      // The unguarded resolver silently adopts the new PTY — the misroute.
+      // The unguarded resolver silently adopts the new PTY â€” the misroute.
       expect(runtime.resolveLeafForHandle(handle)).toEqual({ ptyId: 'pty-b' })
       // The guarded resolver surfaces the staleness so clients can re-derive.
       expect(() => runtime.resolveLiveLeafForHandle(handle)).toThrow('terminal_handle_stale')

@@ -49,7 +49,7 @@ function placement(name: string, status: SkillFreshnessStatus): SkillFreshnessIn
     currentPackageDigest: 'current',
     currentAppVersion: '2.0.0',
     observedPackageDigest: status === 'current' ? 'current' : 'other',
-    errFABRICAtegory: null
+    errCategory: null
   }
 }
 

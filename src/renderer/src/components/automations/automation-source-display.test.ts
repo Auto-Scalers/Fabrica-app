@@ -16,13 +16,14 @@ describe('automation source display', () => {
       providerIdentity: {
         provider: 'github',
         owner: 'Auto-Scalers',
-        repo: 'fabrica'
+        repo: 'Fabrica-app'
       }
     }
 
     expect(getAutomationSourceDisplay(sourceContext)).toEqual({
       label: 'GitHub · devbox · Auto-Scalers/Fabrica-app',
-      title: 'GitHub source · Host: devbox · Account: dev@example.com · Source: Auto-Scalers/Fabrica-app'
+      title:
+        'GitHub source · Host: devbox · Account: dev@example.com · Source: Auto-Scalers/Fabrica-app'
     })
   })
 
@@ -61,7 +62,7 @@ describe('automation source display', () => {
       providerIdentity: {
         provider: 'github',
         owner: 'Auto-Scalers',
-        repo: 'fabrica'
+        repo: 'Fabrica-app'
       }
     }
 

@@ -508,12 +508,7 @@ describe('LinearAgentSkillSetupPrompt', () => {
     expect(window.localStorage.getItem(HOST_DISMISS_STORAGE_KEY)).toBeNull()
     expect(document.body.textContent).not.toContain('Linear ticket access is ready')
 
-    await act(async () => {
-      root?.unmount()
-    })
-    root = null
-    container?.remove()
-    container = null
+    await unmountPrompt()
 
     mocks.getCliStatus.mockResolvedValue(
       cliStatus({ state: 'not_installed', pathConfigured: false })
@@ -536,12 +531,7 @@ describe('LinearAgentSkillSetupPrompt', () => {
     expect(window.localStorage.getItem(HOST_DISMISS_STORAGE_KEY)).toBeNull()
     expect(document.body.textContent).not.toContain('Linear ticket access is ready')
 
-    await act(async () => {
-      root?.unmount()
-    })
-    root = null
-    container?.remove()
-    container = null
+    await unmountPrompt()
 
     mocks.getCliStatus.mockResolvedValue(
       cliStatus({ state: 'not_installed', pathConfigured: false })

@@ -351,7 +351,10 @@ describe('filterAiVaultSessions', () => {
 
   it('matches repo: queries against resolved project labels before folder fallback', () => {
     const sessionProjectById = new Map([
-      [baseSession.id, { kind: 'repo' as const, key: 'project:FABRICA', label: 'Canonical Fabrica' }]
+      [
+        baseSession.id,
+        { kind: 'repo' as const, key: 'project:FABRICA', label: 'Canonical Fabrica' }
+      ]
     ])
     const projectLabelByKey = new Map([['project:FABRICA', 'Canonical Fabrica']])
 
@@ -379,7 +382,10 @@ describe('deriveAiVaultWorkspaceScopePaths', () => {
         path: '/Users/ada/workspaces/FABRICA/fix-agent-history',
         priorWorktreeIds: ['repo1::/Users/ada/workspaces/FABRICA/bream']
       })
-    ).toEqual(['/Users/ada/workspaces/FABRICA/fix-agent-history', '/Users/ada/workspaces/FABRICA/bream'])
+    ).toEqual([
+      '/Users/ada/workspaces/FABRICA/fix-agent-history',
+      '/Users/ada/workspaces/FABRICA/bream'
+    ])
   })
 
   it('strips folder-workspace instance suffixes from prior ids', () => {
@@ -704,7 +710,7 @@ describe('parseVaultQuery', () => {
   it('keeps quoted terms together', () => {
     expect(parseVaultQuery('"resume picker" repo:FABRICA path:src')).toEqual({
       terms: ['resume picker'],
-      repoTerms: ['FABRICA'],
+      repoTerms: ['fabrica'],
       pathTerms: ['src']
     })
   })

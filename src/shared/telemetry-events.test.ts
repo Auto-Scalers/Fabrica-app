@@ -289,7 +289,7 @@ describe('agent_error schema', () => {
   })
 
   // Core invariant: `.strict()` rejects raw error strings. If this test ever
-  // flips, the analytics lane is leaking UGC — revert the offending schema
+  // flips, the analytics lane is leaking UGC â€” revert the offending schema
   // change.
   it('rejects error_message via .strict()', () => {
     const parsed = eventSchemas.agent_error.safeParse({
@@ -309,7 +309,7 @@ describe('agent_error schema', () => {
     expect(parsed.success).toBe(false)
   })
 
-  it('rejects error_name (deferred — schema is enum-only)', () => {
+  it('rejects error_name (deferred â€” schema is enum-only)', () => {
     // `error_name` was part of an earlier draft. The trimmed schema is
     // enum-only; if a future PR re-introduces it as additive-optional,
     // this test should be replaced rather than relaxed silently.
@@ -358,7 +358,7 @@ describe('daemon_lifecycle schema', () => {
   })
 
   // Core privacy invariant: enum-only + bucketed counts. If this flips, the lane is leaking
-  // paths/versions/exact counts — revert the offending schema change (STA-2376).
+  // paths/versions/exact counts â€” revert the offending schema change (STA-2376).
   // Both union members, so neither can lose .strict() unnoticed.
   it('rejects raw paths, versions, and unbucketed counts via .strict()', () => {
     const bases = [
@@ -435,7 +435,7 @@ describe('workspace_created schema', () => {
     const parsed = eventSchemas.workspace_created.safeParse({
       source: 'command_palette',
       from_existing_branch: true,
-      branch: 'refs/heads/main' // raw branch name is UGC — rejected by .strict()
+      branch: 'refs/heads/main' // raw branch name is UGC â€” rejected by .strict()
     })
     expect(parsed.success).toBe(false)
   })
@@ -507,7 +507,7 @@ describe('add_repo_setup_step_action schema', () => {
   it('rejects extra keys via .strict()', () => {
     const parsed = eventSchemas.add_repo_setup_step_action.safeParse({
       action: 'skip',
-      repo_name: 'FABRICA' // raw repo names are UGC — must not cross the wire
+      repo_name: 'FABRICA' // raw repo names are UGC â€” must not cross the wire
     })
     expect(parsed.success).toBe(false)
   })
@@ -554,7 +554,7 @@ describe('workspace_create_failed schema', () => {
   })
 
   // Core invariant mirroring agent_error: raw error strings never cross the
-  // wire. If this test ever flips, the failure-rate lane is leaking UGC —
+  // wire. If this test ever flips, the failure-rate lane is leaking UGC â€”
   // revert the offending schema change.
   it('rejects error_message via .strict()', () => {
     const parsed = eventSchemas.workspace_create_failed.safeParse({

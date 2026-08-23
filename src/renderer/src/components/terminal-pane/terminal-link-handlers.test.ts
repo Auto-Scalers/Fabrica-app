@@ -259,7 +259,7 @@ describe('handleOscLink', () => {
     expect(openUrlMock).toHaveBeenCalledWith('https://example.com/')
     expect(createBrowserTabMock).not.toHaveBeenCalled()
     expect(preventDefault).toHaveBeenCalled()
-    // Why: we intentionally do NOT stopPropagation — xterm's SelectionService
+    // Why: we intentionally do NOT stopPropagation â€” xterm's SelectionService
     // relies on the mouseup bubbling to ownerDocument to detach its drag-select
     // mousemove listener. Stopping propagation was causing phantom selections
     // after Cmd+clicking a link and then moving the mouse back over the terminal.
@@ -2381,8 +2381,8 @@ describe('createFilePathLinkProvider range bounds', () => {
     const middlePath = middleStart + middleEnd
     const thirdPath = 'validation-screenshots/03-after-light-theme.png'
     const rows = [
-      makeBufferLine(`${firstPath} · ${middleStart}`),
-      makeBufferLine(`${middleEnd} · ${thirdPath}`)
+      makeBufferLine(`${firstPath} Â· ${middleStart}`),
+      makeBufferLine(`${middleEnd} Â· ${thirdPath}`)
     ]
     const completePaths = new Set([firstPath, middlePath, thirdPath].map((path) => `/repo/${path}`))
     vi.mocked(getConnectionId).mockReturnValue('ssh-wrapped')
@@ -2402,11 +2402,11 @@ describe('createFilePathLinkProvider range bounds', () => {
       new Set([firstPath, middlePath, thirdPath])
     )
     expect(firstMiddle?.range).toEqual({
-      start: { x: firstPath.length + ' · '.length + 1, y: 1 },
+      start: { x: firstPath.length + ' Â· '.length + 1, y: 1 },
       end: { x: middleEnd.length, y: 2 }
     })
     expect(secondMiddle?.range).toEqual(firstMiddle?.range)
-    expect([...firstRowLinks, ...secondRowLinks].every((link) => !link.text.includes(' · '))).toBe(
+    expect([...firstRowLinks, ...secondRowLinks].every((link) => !link.text.includes(' Â· '))).toBe(
       true
     )
     expect(fsPathExistsMock).toHaveBeenCalledWith({
@@ -2424,12 +2424,12 @@ describe('createFilePathLinkProvider range bounds', () => {
     const middlePath = middleStart + middleEnd
     const thirdPath = 'validation-screenshots/03-after-light-theme.png'
     const rows = [
-      makeBufferLine(`${firstPath} · ${middleStart}`),
-      makeBufferLine(`${middleEnd} · ${thirdPath}`)
+      makeBufferLine(`${firstPath} Â· ${middleStart}`),
+      makeBufferLine(`${middleEnd} Â· ${thirdPath}`)
     ]
     const pathExistsCache = new Map([[`active\0/repo/${middlePath}`, true]])
     const positions = [
-      { x: firstPath.length + ' · '.length + 2, y: 1 },
+      { x: firstPath.length + ' Â· '.length + 2, y: 1 },
       { x: 2, y: 2 }
     ]
 

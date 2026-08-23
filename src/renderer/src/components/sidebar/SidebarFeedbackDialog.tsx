@@ -91,7 +91,7 @@ export function SidebarFeedbackDialog({
   const imageCount = images.length
 
   // Why: committed state lags the in-flight reads, so batches still being read
-  // count against capacity — otherwise two quick pastes both see room for four.
+  // count against capacity â€” otherwise two quick pastes both see room for four.
   const pendingImageReadsRef = useRef(0)
 
   const handleAddFiles = React.useCallback(
@@ -126,7 +126,7 @@ export function SidebarFeedbackDialog({
             liveImageDraftsRef.current = [...liveImageDraftsRef.current, ...added]
             setImages((existing) => [...existing, ...added])
           }
-          // Why: never drop an attachment without telling the user — that
+          // Why: never drop an attachment without telling the user â€” that
           // silence is what made screenshots vanish in the first place.
           errors.forEach((error) => toast.warning(error))
         },
@@ -412,7 +412,7 @@ export function SidebarFeedbackDialog({
             <div className="text-xs text-muted-foreground">
               {translate(
                 'auto.components.sidebar.SidebarFeedbackDialog.d20439c560',
-                'Checking GitHub identity…'
+                'Checking GitHub identityâ€¦'
               )}
             </div>
           ) : (
@@ -433,7 +433,7 @@ export function SidebarFeedbackDialog({
             disabled={isSubmitting || pendingImageReadCount > 0 || !feedback.trim()}
           >
             {isSubmitting
-              ? translate('auto.components.sidebar.SidebarFeedbackDialog.69969ba364', 'Sending…')
+              ? translate('auto.components.sidebar.SidebarFeedbackDialog.69969ba364', 'Sendingâ€¦')
               : translate('auto.components.sidebar.SidebarFeedbackDialog.f2e42e1307', 'Send')}
           </Button>
         </DialogFooter>

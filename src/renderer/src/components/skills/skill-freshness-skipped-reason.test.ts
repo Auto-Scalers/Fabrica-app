@@ -28,14 +28,14 @@ describe('skippedReason', () => {
     // Why: an edited copy is the real cause; the duplicate is the lesser symptom, and
     // telling the user to remove the duplicate would not unblock the update.
     expect(skippedReason([row('duplicate'), row('unrecognized')])).toContain(
-      'doesn’t match the official version'
+      'doesnâ€™t match the official version'
     )
     expect(skippedReason([row('duplicate'), row('read-only')])).toContain('read-only location')
   })
 
   it('hands over the reinstall command when no location is at fault', () => {
     // Why: the only way to reach this with a bare out-of-date copy is the updater's own
-    // record, which `skills update` can never converge — so the sentence has to give the
+    // record, which `skills update` can never converge â€” so the sentence has to give the
     // one command that does, not report a skip the user cannot act on.
     const reason = skippedReason([row(null)], 'orchestration')
     expect(reason).toContain('reports the skill as already up to date')
@@ -53,7 +53,7 @@ describe('skippedReason', () => {
 
   it('keeps a placement blocker ahead of the record advice', () => {
     expect(skippedReason([row(null), row('unrecognized')], 'orchestration')).toContain(
-      'doesn’t match the official version'
+      'doesnâ€™t match the official version'
     )
   })
 

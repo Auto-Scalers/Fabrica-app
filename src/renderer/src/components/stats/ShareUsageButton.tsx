@@ -108,7 +108,7 @@ export function ShareUsageButton(props: ShareUsageButtonProps): React.JSX.Elemen
     const lines = [
       `My ${rangeLabel} ${providerName} usage via @FABRICA_build`,
       '',
-      `${fmtTokens(totalTokens)} tokens · ${costStr} est. cost`,
+      `${fmtTokens(totalTokens)} tokens Â· ${costStr} est. cost`,
       '',
       'github.com/Auto-Scalers/Fabrica-app'
     ]

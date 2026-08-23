@@ -99,7 +99,7 @@ describe('resolveLocalGitUsername', () => {
         return { stdout: `${currentBranch}\n`, stderr: '' }
       }
       if (args[0] === 'symbolic-ref') {
-        // origin/HEAD unset — resolveDefaultBaseRefViaExec falls through to probes.
+        // origin/HEAD unset â€” resolveDefaultBaseRefViaExec falls through to probes.
         throw makeExecError('no origin/HEAD')
       }
       if (args[0] === 'rev-parse') {
@@ -178,7 +178,7 @@ describe('resolveLocalGitUsername', () => {
 
   it('ignores a secondary GitHub mirror when the effective remote is GitLab', async () => {
     // Why: a GitLab-primary repo with a GitHub mirror must not pick up the
-    // GitHub account name as its branch prefix — only the effective remote
+    // GitHub account name as its branch prefix â€” only the effective remote
     // (branch remote / default base remote / origin / lone remote) counts.
     originRemoteUrl = 'https://gitlab.com/Auto-Scalers/Fabrica-app.git'
     remoteUrls['github-mirror'] = 'https://github.com/Auto-Scalers/Fabrica-app.git'
@@ -292,7 +292,7 @@ describe('resolveLocalGitUsername', () => {
   it('settles within the wall even when the gh child never exits', async () => {
     vi.useFakeTimers()
     originRemoteUrl = 'https://github.com/Auto-Scalers/Fabrica-app.git'
-    // A promise that never settles — models a killed gh whose grandchild
+    // A promise that never settles â€” models a killed gh whose grandchild
     // keeps the stdio pipes open past the exec timeout.
     ghExecFileAsyncMock.mockImplementation(() => new Promise(() => {}))
 

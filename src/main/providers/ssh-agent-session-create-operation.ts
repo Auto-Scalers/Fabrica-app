@@ -1,5 +1,8 @@
+import {
+  AGENT_SESSION_CREATE_OPERATION_PROTOCOL_VERSION,
+  SSH_AGENT_SESSION_CAPABILITY_PROBE_TIMEOUT_MS
+} from '../../shared/agent-session-host-authority'
 import type { SshChannelMultiplexer } from '../ssh/ssh-channel-multiplexer'
-import { AGENT_SESSION_CREATE_OPERATION_PROTOCOL_VERSION } from '../../shared/agent-session-host-authority'
 import { isPtyIncarnationId } from '../../shared/pty-incarnation'
 import type { PtySpawnResult } from './pty-spawn-result'
 import type { PtySpawnOptions } from './types'
@@ -10,8 +13,6 @@ import {
   type PtySourceReceivingActivation
 } from '../../shared/pty-source-receiving-activation'
 import { validateClaimedSshSpawn } from './ssh-agent-session-claim-validation'
-
-export const SSH_AGENT_SESSION_CAPABILITY_PROBE_TIMEOUT_MS = 5_000
 
 export function assertSshAgentSessionCreateResult(
   result: unknown

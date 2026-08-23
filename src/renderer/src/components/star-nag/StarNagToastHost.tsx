@@ -77,13 +77,13 @@ function StarNagToast({
 
   const actionLabel =
     status === 'starred'
-      ? translate('auto.components.star.nag.StarNagToastHost.starredThanks', 'Starred — thank you!')
+      ? translate('auto.components.star.nag.StarNagToastHost.starredThanks', 'Starred â€” thank you!')
       : status === 'opened'
         ? translate('auto.components.star.nag.StarNagToastHost.githubOpened', 'GitHub opened')
         : busy
           ? mode === 'web'
-            ? translate('auto.components.star.nag.StarNagToastHost.opening', 'Opening…')
-            : translate('auto.components.star.nag.StarNagToastHost.starring', 'Starring…')
+            ? translate('auto.components.star.nag.StarNagToastHost.opening', 'Openingâ€¦')
+            : translate('auto.components.star.nag.StarNagToastHost.starring', 'Starringâ€¦')
           : mode === 'web'
             ? translate('auto.components.star.nag.StarNagToastHost.openGithub', 'Open GitHub')
             : translate('auto.components.star.nag.StarNagToastHost.starOnGithub', 'Star on GitHub')
@@ -122,7 +122,7 @@ function StarNagToast({
           <p className="text-sm leading-5 text-muted-foreground">
             {translate(
               'auto.components.star.nag.StarNagToastHost.body',
-              'If you’re enjoying Fabrica so far, a GitHub star helps other developers discover it.'
+              'If youâ€™re enjoying Fabrica so far, a GitHub star helps other developers discover it.'
             )}
           </p>
         </div>

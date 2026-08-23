@@ -56,6 +56,7 @@ import { registerEmulatorVideoStreamHandlers } from './emulator-video-stream'
 import { registerSpeechHandlers } from './speech'
 import { registerTerminalRenderDesyncEvidenceHandler } from './terminal-render-desync-evidence'
 import { registerFABRICAProfileHandlers } from './fabrica-profiles'
+import { registerSupabaseAuthHandlers } from './supabase-auth'
 import { registerCodexAccountHandlers } from './codex-accounts'
 import { registerAgentHookHandlers } from './agent-hooks'
 import { registerCodexConfigSyncHandlers } from './codex-config-sync'
@@ -194,6 +195,7 @@ export function registerCoreHandlers(
     onAuthMutation: lifecycleOptions.onFABRICAProfileAuthMutation,
     onBeforeSignOut: lifecycleOptions.onBeforeFABRICAProfileSignOut
   })
+  registerSupabaseAuthHandlers()
   registerBrowserHandlers()
   registerShellHandlers(store)
   registerPetHandlers()

@@ -218,8 +218,8 @@ _パッケージマネージャーからもインストールできます:_
 # macOS (Homebrew)
 brew install --cask Auto-Scalers/Fabrica-app/fabrica
 
-# Arch Linux (AUR) — or stably-fabrica-git to build from source
-yay -S stably-fabrica-bin
+# Arch Linux (AUR) — or fabrica-git to build from source
+yay -S fabrica-bin
 ```
 
 ### モバイル Companion — iOS, Android

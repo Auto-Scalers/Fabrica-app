@@ -10,7 +10,8 @@ const MAX_MANIFEST_PROBE_CANDIDATES = 6
 // Why: GitHub's atom feed lists every release (prerelease or stable) in a
 // single flat list. Each entry has a /releases/tag/<tag> URL we can mine
 // without any channel filtering.
-const TAG_HREF_RE = /href="https:\/\/github\.com\/Auto-Scalers\/Fabrica\/releases\/tag\/([^"]+)"/g
+const TAG_HREF_RE =
+  /href="https:\/\/github\.com\/Auto-Scalers\/Fabrica-app\/releases\/tag\/([^"]+)"/g
 
 export function getReleaseDownloadUrl(tag: string): string {
   return `${RELEASES_DOWNLOAD_BASE}/${encodeURIComponent(tag)}`

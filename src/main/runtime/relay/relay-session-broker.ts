@@ -15,6 +15,7 @@ import {
   type RelayAssignment
 } from './relay-http-client'
 import { RelayOriginPool } from './relay-origin-pool'
+import { getRelayAuthToken } from './supabase-session'
 import type { RelayBrokerStatus, RelaySessionBrokerOptions } from './relay-session-broker-contract'
 
 export type { RelayBrokerStatus } from './relay-session-broker-contract'
@@ -216,7 +217,11 @@ export class RelaySessionBroker {
     })
     this.assertCurrent()
     try {
-      await this.originPool.openInitial(assignment, authorization.relayToken)
+      // Use the same Supabase-aware token the assignment was requested with so
+      // the relay cell accepts the control channel; falls back to the FABRICA
+      // Cloud relay token when no Supabase session is present.
+      const relayJwt = await getRelayAuthToken(authorization.relayToken)
+      await this.originPool.openInitial(assignment, relayJwt)
     } catch (error) {
       if (!this.isCurrent()) {
         throw new StaleRelayBrokerError()
@@ -257,7 +262,7 @@ export class RelaySessionBroker {
         fetch: this.options.fetch
       })
       this.assertCurrent()
-      this.originPool.refreshAuthorization(authorization.relayToken)
+      this.originPool.refreshAuthorization(await getRelayAuthToken(authorization.relayToken))
       this.authorization = authorization
       this.scheduleRefresh()
     } catch {

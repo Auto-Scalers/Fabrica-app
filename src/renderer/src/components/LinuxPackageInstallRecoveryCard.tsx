@@ -3,7 +3,7 @@ import type {
   LinuxPackageInstallInstructions,
   LinuxPackageInstallRecovery
 } from '../../../shared/types'
-import { UpdateErrFABRICArdContent } from './UpdateErrFABRICArdContent'
+import { UpdateErrorCardContent } from './UpdateErrorCardContent'
 import { translate } from '@/i18n/i18n'
 
 const COPY_CONFIRMATION_MS = 4_000
@@ -228,7 +228,7 @@ export function LinuxPackageInstallRecoveryCard({
       : undefined
 
   return (
-    <UpdateErrFABRICArdContent
+    <UpdateErrorCardContent
       title={TITLE}
       summary={SUMMARY}
       explainer={commandUnavailable ? undefined : EXPLAINER}

@@ -10,7 +10,7 @@ import { resolvePathEnvKey } from '../pty/windows-environment-path'
 const ATTRIBUTION_ROOT_DIR = 'FABRICA-terminal-attribution'
 const ATTRIBUTION_SHIM_VERSION = '7'
 const FABRICA_PRODUCT_URL = 'https://github.com/Auto-Scalers/Fabrica-app'
-const FABRICA_GH_FOOTER = `Made with [FABRICA](${FABRICA_PRODUCT_URL}) ??`
+const FABRICA_GH_FOOTER = `Made with [FABRICA](${FABRICA_PRODUCT_URL}) 🐋`
 const SHELL_DOLLAR = '$'
 const POWERSHELL_TICK = '`'
 const ATTRIBUTION_ENV_KEYS = [
@@ -147,7 +147,7 @@ function stripAttributionPathEntries(pathValue: string, pathDelimiter: string): 
     .split(pathDelimiter)
     .filter((entry) => {
       const normalized = entry.replace(/\\/g, '/').toLowerCase()
-      return !normalized.includes('/FABRICA-terminal-attribution/')
+      return !normalized.includes('/fabrica-terminal-attribution/')
     })
     .join(pathDelimiter)
 }
@@ -569,7 +569,7 @@ if [[ "\${FABRICA_ENABLE_GIT_ATTRIBUTION:-0}" != "1" || "\${FABRICA_ATTRIBUTION_
 fi
 
 if [[ "\${1:-}" == "pr" && "\${2:-}" == "create" ]]; then
-  footer="\${FABRICA_GH_PR_FOOTER:-Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) ??}"
+  footer="\${FABRICA_GH_PR_FOOTER:-Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋}"
   if has_passthrough_create_args "$@"; then
     PATH="$real_path" exec "$real_gh" "$@"
   fi
@@ -603,7 +603,7 @@ if [[ "\${1:-}" == "pr" && "\${2:-}" == "create" ]]; then
 fi
 
 if [[ "\${1:-}" == "issue" && "\${2:-}" == "create" ]]; then
-  footer="\${FABRICA_GH_ISSUE_FOOTER:-Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) ??}"
+  footer="\${FABRICA_GH_ISSUE_FOOTER:-Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋}"
   if has_passthrough_create_args "$@"; then
     PATH="$real_path" exec "$real_gh" "$@"
   fi
@@ -999,7 +999,7 @@ if ($isPrCreate) {
     if ($LASTEXITCODE -ne 0) {
       $body = $null
     }
-    $footer = if ($env:FABRICA_GH_PR_FOOTER) { $env:FABRICA_GH_PR_FOOTER } else { 'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) ??' }
+    $footer = if ($env:FABRICA_GH_PR_FOOTER) { $env:FABRICA_GH_PR_FOOTER } else { 'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋' }
     if ($null -ne $body -and $body -notmatch [Regex]::Escape($footer)) {
       $tmpFile = [System.IO.Path]::GetTempFileName()
       try {
@@ -1030,7 +1030,7 @@ if ($isIssueCreate) {
     if ($LASTEXITCODE -ne 0) {
       $body = $null
     }
-    $footer = if ($env:FABRICA_GH_ISSUE_FOOTER) { $env:FABRICA_GH_ISSUE_FOOTER } else { 'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) ??' }
+    $footer = if ($env:FABRICA_GH_ISSUE_FOOTER) { $env:FABRICA_GH_ISSUE_FOOTER } else { 'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋' }
     if ($null -ne $body -and $body -notmatch [Regex]::Escape($footer)) {
       $tmpFile = [System.IO.Path]::GetTempFileName()
       try {

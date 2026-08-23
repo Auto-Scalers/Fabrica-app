@@ -39,53 +39,53 @@ function placement(
     currentAppVersion: '2.0.0',
     observedPackageDigest: 'current',
     observedGitTreeSha,
-    errFABRICAtegory: null
+    errCategory: null
   }
 }
 
 describe('skillUpdateFailedNames', () => {
   it('treats a convergent copy that is now current as landed', () => {
     expect(
-      skillUpdateFailedNames(['FABRICA-cli'], [placement('FABRICA-cli', 'current')], noLocks)
+      skillUpdateFailedNames(['fabrica-cli'], [placement('fabrica-cli', 'current')], noLocks)
     ).toEqual([])
   })
 
   it('reports a copy the run left outdated', () => {
     expect(
-      skillUpdateFailedNames(['FABRICA-cli'], [placement('FABRICA-cli', 'outdated')], noLocks)
-    ).toEqual(['FABRICA-cli'])
+      skillUpdateFailedNames(['fabrica-cli'], [placement('fabrica-cli', 'outdated')], noLocks)
+    ).toEqual(['fabrica-cli'])
   })
 
   it('reports a half-written bundle instead of reading it as success', () => {
     // The old "still eligible?" test passed here: an unrecognized copy is not
     // eligible either, so a corrupt write looked identical to a clean update.
     expect(
-      skillUpdateFailedNames(['FABRICA-cli'], [placement('FABRICA-cli', 'unrecognized')], noLocks)
-    ).toEqual(['FABRICA-cli'])
+      skillUpdateFailedNames(['fabrica-cli'], [placement('fabrica-cli', 'unrecognized')], noLocks)
+    ).toEqual(['fabrica-cli'])
   })
 
   it('reports an unreadable copy', () => {
     expect(
-      skillUpdateFailedNames(['FABRICA-cli'], [placement('FABRICA-cli', 'inaccessible')], noLocks)
-    ).toEqual(['FABRICA-cli'])
+      skillUpdateFailedNames(['fabrica-cli'], [placement('fabrica-cli', 'inaccessible')], noLocks)
+    ).toEqual(['fabrica-cli'])
   })
 
   it('reports a skill the run removed outright', () => {
-    expect(skillUpdateFailedNames(['FABRICA-cli'], [], noLocks)).toEqual(['FABRICA-cli'])
+    expect(skillUpdateFailedNames(['fabrica-cli'], [], noLocks)).toEqual(['fabrica-cli'])
   })
 
   it('accepts a revision newer than this build ships', () => {
     // The CLI pulls from the source repo, which runs ahead of the bundled manifest.
     expect(
-      skillUpdateFailedNames(['FABRICA-cli'], [placement('FABRICA-cli', 'newer-known')], noLocks)
+      skillUpdateFailedNames(['fabrica-cli'], [placement('fabrica-cli', 'newer-known')], noLocks)
     ).toEqual([])
   })
 
   it('ignores placements the update command never writes to', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'current'), placement('FABRICA-cli', 'outdated', 'plugin-cache')],
+        ['fabrica-cli'],
+        [placement('fabrica-cli', 'current'), placement('fabrica-cli', 'outdated', 'plugin-cache')],
         noLocks
       )
     ).toEqual([])
@@ -94,18 +94,21 @@ describe('skillUpdateFailedNames', () => {
   it('fails the name when any convergent alias was left behind', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'current'), placement('FABRICA-cli', 'outdated', 'provider-alias')],
+        ['fabrica-cli'],
+        [
+          placement('fabrica-cli', 'current'),
+          placement('fabrica-cli', 'outdated', 'provider-alias')
+        ],
         noLocks
       )
-    ).toEqual(['FABRICA-cli'])
+    ).toEqual(['fabrica-cli'])
   })
 
   it('judges each requested name independently', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli', 'orchestration'],
-        [placement('FABRICA-cli', 'current'), placement('orchestration', 'outdated')],
+        ['fabrica-cli', 'orchestration'],
+        [placement('fabrica-cli', 'current'), placement('orchestration', 'outdated')],
         noLocks
       )
     ).toEqual(['orchestration'])
@@ -116,9 +119,9 @@ describe('skillUpdateFailedNames', () => {
     // the CLI's own record of what it wrote.
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle')],
-        new Map([['FABRICA-cli', 'ahead-of-bundle']])
+        ['fabrica-cli'],
+        [placement('fabrica-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle')],
+        new Map([['fabrica-cli', 'ahead-of-bundle']])
       )
     ).toEqual([])
   })
@@ -126,45 +129,45 @@ describe('skillUpdateFailedNames', () => {
   it('still reports unrecognized content whose bytes do not match the lock', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'unrecognized', 'canonical-copy', 'half-written-bytes')],
-        new Map([['FABRICA-cli', 'ahead-of-bundle']])
+        ['fabrica-cli'],
+        [placement('fabrica-cli', 'unrecognized', 'canonical-copy', 'half-written-bytes')],
+        new Map([['fabrica-cli', 'ahead-of-bundle']])
       )
-    ).toEqual(['FABRICA-cli'])
+    ).toEqual(['fabrica-cli'])
   })
 
   it('still reports unrecognized content when the skill has no lock entry', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle')],
+        ['fabrica-cli'],
+        [placement('fabrica-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle')],
         noLocks
       )
-    ).toEqual(['FABRICA-cli'])
+    ).toEqual(['fabrica-cli'])
   })
 
   it('never forgives an outdated copy, even at the lock hash', () => {
     // Lock == disk on an outdated copy means the command provably wrote nothing.
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
-        [placement('FABRICA-cli', 'outdated', 'canonical-copy', 'locked-revision')],
-        new Map([['FABRICA-cli', 'locked-revision']])
+        ['fabrica-cli'],
+        [placement('fabrica-cli', 'outdated', 'canonical-copy', 'locked-revision')],
+        new Map([['fabrica-cli', 'locked-revision']])
       )
-    ).toEqual(['FABRICA-cli'])
+    ).toEqual(['fabrica-cli'])
   })
 
   it('does not let a lock-matching canonical copy excuse a degraded alias', () => {
     expect(
       skillUpdateFailedNames(
-        ['FABRICA-cli'],
+        ['fabrica-cli'],
         [
-          placement('FABRICA-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle'),
-          placement('FABRICA-cli', 'inaccessible', 'provider-alias')
+          placement('fabrica-cli', 'unrecognized', 'canonical-copy', 'ahead-of-bundle'),
+          placement('fabrica-cli', 'inaccessible', 'provider-alias')
         ],
-        new Map([['FABRICA-cli', 'ahead-of-bundle']])
+        new Map([['fabrica-cli', 'ahead-of-bundle']])
       )
-    ).toEqual(['FABRICA-cli'])
+    ).toEqual(['fabrica-cli'])
   })
 })
 
@@ -182,12 +185,12 @@ describe('skillUpdateFailedNames over a real inventory', () => {
     const root = await mkdtemp(join(tmpdir(), 'FABRICA-skill-outcome-'))
     temporaryDirectories.push(root)
     const homeDir = join(root, 'home')
-    const skillDir = join(homeDir, '.agents', 'skills', 'FABRICA-cli')
+    const skillDir = join(homeDir, '.agents', 'skills', 'fabrica-cli')
     await mkdir(skillDir, { recursive: true })
     // Current bytes plus one upstream edit: content no snapshot in this build's
     // registry has ever seen, exactly what `skills update` installs after the
     // source repo moves past the release cut.
-    const current = await readFile(join(repoRoot, 'skills', 'FABRICA-cli', 'SKILL.md'))
+    const current = await readFile(join(repoRoot, 'skills', 'fabrica-cli', 'SKILL.md'))
     await writeFile(
       join(skillDir, 'SKILL.md'),
       Buffer.concat([current, Buffer.from('\nUpstream edit published after this build.\n')])
@@ -201,9 +204,9 @@ describe('skillUpdateFailedNames over a real inventory', () => {
       JSON.stringify({
         version: 3,
         skills: {
-          'FABRICA-cli': {
+          'fabrica-cli': {
             skillFolderHash,
-            skillPath: 'skills/FABRICA-cli',
+            skillPath: 'skills/fabrica-cli',
             source: 'github.com/Auto-Scalers/Fabrica-app'
           }
         }
@@ -224,16 +227,16 @@ describe('skillUpdateFailedNames over a real inventory', () => {
     const locks = await readGloballyUpdatableSkillLocks({ homeDir })
 
     // Guard the premise: no snapshot knows these bytes, so recognition can only
-    // come from the lock — the scan now reclassifies that match to 'newer-known'
+    // come from the lock â€” the scan now reclassifies that match to 'newer-known'
     // (the #11220 scan half), and the verdict accepts it either way.
     const canonical = inventory.installations.filter(
-      (entry) => entry.name === 'FABRICA-cli' && entry.topology === 'canonical-copy'
+      (entry) => entry.name === 'fabrica-cli' && entry.topology === 'canonical-copy'
     )
     expect(canonical).toHaveLength(1)
     expect(canonical[0].status).toBe('newer-known')
     expect(canonical[0].installedReleaseRevision).toBeNull()
 
-    expect(skillUpdateFailedNames(['FABRICA-cli'], inventory.installations, locks)).toEqual([])
+    expect(skillUpdateFailedNames(['fabrica-cli'], inventory.installations, locks)).toEqual([])
   })
 
   it('keeps failing the same content when the lock names different bytes', async () => {
@@ -248,8 +251,8 @@ describe('skillUpdateFailedNames over a real inventory', () => {
     })
     const locks = await readGloballyUpdatableSkillLocks({ homeDir })
 
-    expect(skillUpdateFailedNames(['FABRICA-cli'], inventory.installations, locks)).toEqual([
-      'FABRICA-cli'
+    expect(skillUpdateFailedNames(['fabrica-cli'], inventory.installations, locks)).toEqual([
+      'fabrica-cli'
     ])
   })
 })

@@ -8,7 +8,7 @@ import {
   getAllWorktreesFromState,
   getProjectHostSetupProjectionFromState,
   getWorktreeMapFromState,
-  resetFloatingVisibleTabCountSelectFABRICAcheForTest,
+  resetFloatingVisibleTabCountSelectCacheForTest,
   selectRepoByIdForActiveWorkspace,
   selectFloatingVisibleTabCount,
   selectFloatingWorkspaceHasUnread
@@ -61,7 +61,7 @@ function makeTerminalTab(args: { id: string; worktreeId: string; title: string }
 
 describe('store selectors', () => {
   beforeEach(() => {
-    resetFloatingVisibleTabCountSelectFABRICAcheForTest()
+    resetFloatingVisibleTabCountSelectCacheForTest()
   })
 
   it('deduplicates cached worktree snapshots without changing reference reuse', () => {
@@ -225,8 +225,8 @@ describe('store selectors', () => {
     const retitledState = {
       ...state,
       tabsByWorktree: {
-        'wt-1': [{ ...activeTab, title: 'Codex working · frame 2' }, secondTab],
-        'wt-2': [{ ...otherWorktreeTab, title: 'Background · frame 2' }]
+        'wt-1': [{ ...activeTab, title: 'Codex working Â· frame 2' }, secondTab],
+        'wt-2': [{ ...otherWorktreeTab, title: 'Background Â· frame 2' }]
       }
     } satisfies Parameters<typeof selectActiveTerminalChromeState>[0]
 
@@ -509,10 +509,15 @@ describe('store selectors', () => {
       projectHostSetups
     })
 
-    expect(projection.projects.map((project) => project.id)).toEqual(['github:Auto-Scalers/Fabrica-app'])
+    expect(projection.projects.map((project) => project.id)).toEqual([
+      'github:Auto-Scalers/Fabrica-app'
+    ])
     expect(projection.setups).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ id: 'local-setup', projectId: 'github:Auto-Scalers/Fabrica-app' }),
+        expect.objectContaining({
+          id: 'local-setup',
+          projectId: 'github:Auto-Scalers/Fabrica-app'
+        }),
         expect.objectContaining({ id: 'vm-setup', projectId: 'github:Auto-Scalers/Fabrica-app' })
       ])
     )
@@ -623,7 +628,7 @@ describe('selectFloatingWorkspaceHasUnread', () => {
     expect(selectFloatingWorkspaceHasUnread(makeState({}))).toBe(false)
   })
 
-  it('is true for a bell — an unread floating tab', () => {
+  it('is true for a bell â€” an unread floating tab', () => {
     const state = makeState({
       tabsByWorktree: { [FLOATING]: [floatingTab('ft1')] },
       unreadTerminalTabs: { ft1: true }
@@ -631,7 +636,7 @@ describe('selectFloatingWorkspaceHasUnread', () => {
     expect(selectFloatingWorkspaceHasUnread(state)).toBe(true)
   })
 
-  it('is true for an agent completion — an unread floating pane', () => {
+  it('is true for an agent completion â€” an unread floating pane', () => {
     const state = makeState({
       tabsByWorktree: { [FLOATING]: [floatingTab('ft1')] },
       unreadAgentCompletionPanes: { 'ft1:leaf-a': true }
@@ -658,7 +663,7 @@ describe('selectFloatingWorkspaceHasUnread', () => {
 
   it('does not light for a stale unread entry whose floating tab no longer exists', () => {
     // Mirrors closing a floating tab: the tab is gone from tabsByWorktree, so even
-    // a lingering map entry (there should be none — closeTab purges) cannot show.
+    // a lingering map entry (there should be none â€” closeTab purges) cannot show.
     const state = makeState({
       tabsByWorktree: { [FLOATING]: [floatingTab('ft-live')] },
       unreadTerminalTabs: { 'ft-closed': true },

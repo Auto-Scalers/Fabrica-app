@@ -22,7 +22,7 @@ const temporaryDirectories: string[] = []
 
 const execFileAsync = promisify(execFile)
 
-// Why: hashed with real git, not FABRICA's tree-sha port — the port validating
+// Why: hashed with real git, not FABRICA's tree-sha port â€” the port validating
 // itself here would prove nothing about matching the updater lock's hash.
 async function gitTreeShaOf(directory: string): Promise<string> {
   const gitDir = await mkdtemp(join(tmpdir(), 'FABRICA-skill-hash-'))
@@ -71,7 +71,8 @@ async function fixture() {
   const oldMarkdown = '---\nname: FABRICA-cli\ndescription: Old official guide.\n---\n\n# Old\n'
   const currentMarkdown =
     '---\nname: FABRICA-cli\ndescription: Current official guide.\n---\n\n# Current\n'
-  const newerMarkdown = '---\nname: FABRICA-cli\ndescription: Newer official guide.\n---\n\n# Newer\n'
+  const newerMarkdown =
+    '---\nname: FABRICA-cli\ndescription: Newer official guide.\n---\n\n# Newer\n'
   const snapshots = [
     snapshot(1, oldMarkdown),
     snapshot(2, currentMarkdown),
@@ -244,7 +245,7 @@ describe('read-only skill freshness inventory', () => {
     // Why: ahead of the bundle means there is nothing this build can update to.
     expect(inventory.eligibleUpdateNames).toEqual([])
     // The user-visible verdict, across both halves of the fix: the row must read
-    // up to date, not amber "may be modified… remove it" over the CLI's own install.
+    // up to date, not amber "may be modifiedâ€¦ remove it" over the CLI's own install.
     expect(getSkillFreshnessDisplayStatus(inventory, 'FABRICA-cli')).toBe('up-to-date')
   })
 
@@ -295,7 +296,7 @@ describe('read-only skill freshness inventory', () => {
       join(test.homeDir, '.agents', 'skills'),
       upstreamMarkdown
     )
-    // The lock records the source tree — SKILL.md alone, no leftover.
+    // The lock records the source tree â€” SKILL.md alone, no leftover.
     const sourceTree = await test.writeSkill(join(test.root, 'source'), upstreamMarkdown)
     await writeSkillLockHash(test.homeDir, await gitTreeShaOf(sourceTree))
     await mkdir(join(canonical, 'references'), { recursive: true })
@@ -318,7 +319,7 @@ describe('read-only skill freshness inventory', () => {
   it('trusts the updater lock for upstream bytes beside an agent CLI sidecar (#12694)', async () => {
     // The reported folder shape after a successful update: `skills update` wrote
     // source-repo HEAD no bundle knows yet, and Codex's own agents/openai.yaml sits
-    // beside it. The lock records the source tree — SKILL.md alone — so a folder hash
+    // beside it. The lock records the source tree â€” SKILL.md alone â€” so a folder hash
     // taken over the sidecar too can never match it, and the copy the command just
     // wrote would be reported as a failed update.
     const test = await fixture()
@@ -389,7 +390,7 @@ describe('read-only skill freshness inventory', () => {
     )
     await mkdir(join(canonical, 'agents'), { recursive: true })
     await writeFile(join(canonical, 'agents', 'openai.yaml'), 'display_name: test\n')
-    // The fixture's synthetic tree sha for revision 2 — the revision on disk is 1.
+    // The fixture's synthetic tree sha for revision 2 â€” the revision on disk is 1.
     await writeSkillLockHash(test.homeDir, (2).toString(16).padStart(40, '0'))
 
     const inventory = await inventorySkillFreshness({
@@ -620,8 +621,8 @@ describe('read-only skill freshness inventory', () => {
     }
   )
 
-  it('keeps another ecosystem’s same-name plugin skill unrecognized', async () => {
-    // Why: Codex ships its own `computer-use` plugin. Reported in #10633 — the copy is
+  it('keeps another ecosystemâ€™s same-name plugin skill unrecognized', async () => {
+    // Why: Codex ships its own `computer-use` plugin. Reported in #10633 â€” the copy is
     // not ours, not the user's to delete, and left amber with no action available.
     const test = await fixture()
     await test.writeSkill(join(test.homeDir, '.agents', 'skills'), test.currentMarkdown)
@@ -657,7 +658,7 @@ describe('read-only skill freshness inventory', () => {
 
   it('reads a plugin-cache copy with untouched official files as current', async () => {
     // The deliberate posture change behind #12694: an unlisted neighbour is not evidence
-    // of an edit, so the bytes FABRICA owns decide alone — here and in every scope, not just
+    // of an edit, so the bytes FABRICA owns decide alone â€” here and in every scope, not just
     // the canonical copy the updater writes. The drifted-SKILL.md case above still fails
     // closed, which is what keeps "unrecognized" meaningful.
     const test = await fixture()
@@ -695,7 +696,7 @@ describe('read-only skill freshness inventory', () => {
   it.each([
     ['.claude', 'skills'],
     ['.agents', 'skills']
-  ])('keeps an unrecognized copy under %s/%s the user’s to review', async (...segments) => {
+  ])('keeps an unrecognized copy under %s/%s the userâ€™s to review', async (...segments) => {
     const test = await fixture()
     await test.writeSkill(join(test.homeDir, '.agents', 'skills'), test.currentMarkdown)
     await test.writeSkill(
@@ -788,7 +789,7 @@ describe('read-only skill freshness inventory', () => {
 
     expect(inventory.installations).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ errFABRICAtegory: 'repository-scan-limit', status: 'inaccessible' })
+        expect.objectContaining({ errCategory: 'repository-scan-limit', status: 'inaccessible' })
       ])
     )
     // Why: unscanned repositories only ever hold project skills, which the global
@@ -822,7 +823,7 @@ describe('read-only skill freshness inventory', () => {
       resourceRoot: test.resourceRoot
     })
 
-    // The plugin copy is real and reported at its own path — never at a joined path,
+    // The plugin copy is real and reported at its own path â€” never at a joined path,
     // and never at the same-named plugin directory two levels above it.
     expect(inventory.scanIssues).toEqual([])
     expect(inventory.installations).toEqual(
@@ -858,7 +859,7 @@ describe('read-only skill freshness inventory', () => {
     })
     expect(inventory.installations).not.toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ errFABRICAtegory: 'plugin-cache-scan-incomplete' })
+        expect.objectContaining({ errCategory: 'plugin-cache-scan-incomplete' })
       ])
     )
     expect(inventory.scanIssues).toEqual([
@@ -876,7 +877,7 @@ describe('read-only skill freshness inventory', () => {
     await test.writeSkill(join(test.homeDir, '.agents', 'skills'), test.currentMarkdown)
     const pluginCache = join(test.homeDir, '.codex', 'plugins', 'cache')
     await mkdir(pluginCache, { recursive: true })
-    // Why: the production bound, not an injected one — #10918 is the real constant
+    // Why: the production bound, not an injected one â€” #10918 is the real constant
     // collapsing the scan to the cache root, and only a real cache proves that path.
     const entries = Array.from({ length: MAXIMUM_PLUGIN_SCAN_ENTRIES + 1 }, (_, index) =>
       join(pluginCache, `entry-${index}`)
@@ -892,7 +893,7 @@ describe('read-only skill freshness inventory', () => {
       resourceRoot: test.resourceRoot
     })
 
-    // Why: assert the bound actually tripped first — if the fixture stopped reaching it,
+    // Why: assert the bound actually tripped first â€” if the fixture stopped reaching it,
     // the placement assertion below would still pass and cover nothing.
     expect(inventory.scanIssues).toEqual([
       expect.objectContaining({
@@ -905,7 +906,11 @@ describe('read-only skill freshness inventory', () => {
     // Why: the truncated root is not evidence of a copy. Fabricating one per manifest name
     // is what pinned an unclearable "Needs attention" on every card in #10918.
     expect(inventory.installations).toEqual([
-      expect.objectContaining({ name: 'FABRICA-cli', status: 'current', topology: 'canonical-copy' })
+      expect.objectContaining({
+        name: 'FABRICA-cli',
+        status: 'current',
+        topology: 'canonical-copy'
+      })
     ])
   })
 })

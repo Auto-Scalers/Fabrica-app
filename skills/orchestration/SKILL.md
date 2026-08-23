@@ -10,8 +10,8 @@ description: >-
   supervise, monitor, wait for results, or coordinate a DAG. Use `fabrica-cli` for
   ordinary terminal control, lightweight terminal prompts, shell commands, Fabrica
   worktree management, reading or waiting on terminals, and automation of the
-browser embedded inside Fabrica. Use Computer Use for browser windows, webviews,
-Fabrica app UI, or desktop UI outside Fabrica's embedded browser.
+  browser embedded inside Fabrica. Use Computer Use for browser windows, webviews,
+  Fabrica app UI, or desktop UI outside Fabrica's embedded browser.
 ---
 
 # Fabrica Orchestration
@@ -36,9 +36,9 @@ Choose the executable once and reuse it for every later command:
 - If the `FABRICA_CLI_COMMAND` environment variable is set, use its value. Fabrica exports this
   for managed WSL sessions.
 - Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
-- Otherwise, on Linux outside a Fabrica-managed terminal, use `fabrica-ide`. Never run bare
+- Otherwise, on Linux outside an Fabrica-managed terminal, use `fabrica-ide`. Never run bare
   `fabrica` there — outside Fabrica's terminals it normally resolves to the
-  GNOME Orca screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
+  GNOME Fabrica screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
 - Otherwise, use `fabrica`.
 
 Below, `FABRICA` is a placeholder for the executable you resolved. Substitute it before

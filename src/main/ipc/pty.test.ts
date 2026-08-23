@@ -2495,7 +2495,9 @@ describe('registerPtyHandlers', () => {
           env: { FABRICA_SEQUENCED_STARTUP_COMMAND: sequenced }
         })
 
-        expect(daemonSpawn.mock.calls.at(-1)![0].env.FABRICA_SEQUENCED_STARTUP_COMMAND).toBe(sequenced)
+        expect(daemonSpawn.mock.calls.at(-1)![0].env.FABRICA_SEQUENCED_STARTUP_COMMAND).toBe(
+          sequenced
+        )
       })
 
       posixOnlyIt(
@@ -3050,7 +3052,8 @@ describe('registerPtyHandlers', () => {
         FABRICA_AGENT_HOOK_ENV: 'production',
         FABRICA_AGENT_HOOK_VERSION: 'stale-version',
         FABRICA_AGENT_HOOK_ENDPOINT: '/tmp/stale-endpoint.env',
-        FABRICA_CLAUDE_AGENT_STATUS_SETTINGS: '/tmp/FABRICA/agent-hooks/claude-agent-status-settings.json'
+        FABRICA_CLAUDE_AGENT_STATUS_SETTINGS:
+          '/tmp/FABRICA/agent-hooks/claude-agent-status-settings.json'
       })
 
       expect(env.FABRICA_AGENT_HOOK_PORT).toBe('5678')
@@ -3070,7 +3073,8 @@ describe('registerPtyHandlers', () => {
         FABRICA_AGENT_HOOK_ENV: 'production',
         FABRICA_AGENT_HOOK_VERSION: 'stale-version',
         FABRICA_AGENT_HOOK_ENDPOINT: '/tmp/stale-endpoint.env',
-        FABRICA_CLAUDE_AGENT_STATUS_SETTINGS: '/tmp/FABRICA/agent-hooks/claude-agent-status-settings.json'
+        FABRICA_CLAUDE_AGENT_STATUS_SETTINGS:
+          '/tmp/FABRICA/agent-hooks/claude-agent-status-settings.json'
       })
 
       expect(env.FABRICA_AGENT_HOOK_PORT).toBeUndefined()
@@ -3087,9 +3091,15 @@ describe('registerPtyHandlers', () => {
       }))
 
       expect(env.FABRICA_ENABLE_GIT_ATTRIBUTION).toBe('1')
-      expect(env.FABRICA_GIT_COMMIT_TRAILER).toBe('Co-authored-by: Fabrica <fabrica.studio.contact@gmail.com>')
-      expect(env.FABRICA_GH_PR_FOOTER).toBe('Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) 🐋')
-      expect(env.FABRICA_GH_ISSUE_FOOTER).toBe('Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica) 🐋')
+      expect(env.FABRICA_GIT_COMMIT_TRAILER).toBe(
+        'Co-authored-by: Fabrica <fabrica.studio.contact@gmail.com>'
+      )
+      expect(env.FABRICA_GH_PR_FOOTER).toBe(
+        'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋'
+      )
+      expect(env.FABRICA_GH_ISSUE_FOOTER).toBe(
+        'Made with [FABRICA](https://github.com/Auto-Scalers/Fabrica-app) 🐋'
+      )
       expect(env.PATH).toContain(expectedAttributionShimDir())
     })
 
@@ -4162,7 +4172,8 @@ describe('registerPtyHandlers', () => {
             undefined,
             {
               CODEX_HOME: 'C:\\Users\\test\\AppData\\Roaming\\FABRICA\\codex-runtime-home\\home',
-              FABRICA_CODEX_HOME: 'C:\\Users\\test\\AppData\\Roaming\\FABRICA\\codex-runtime-home\\home'
+              FABRICA_CODEX_HOME:
+                'C:\\Users\\test\\AppData\\Roaming\\FABRICA\\codex-runtime-home\\home'
             },
             {
               cwd: '\\\\wsl.localhost\\Ubuntu\\home\\test\\repo',
@@ -4196,7 +4207,8 @@ describe('registerPtyHandlers', () => {
             undefined,
             {
               CODEX_HOME: 'C:\\Users\\test\\.codex',
-              FABRICA_CODEX_HOME: 'C:\\Users\\test\\AppData\\Roaming\\FABRICA\\codex-runtime-home\\home'
+              FABRICA_CODEX_HOME:
+                'C:\\Users\\test\\AppData\\Roaming\\FABRICA\\codex-runtime-home\\home'
             },
             { shellOverride: 'wsl.exe' }
           )

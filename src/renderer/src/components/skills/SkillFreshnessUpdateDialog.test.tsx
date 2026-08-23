@@ -114,7 +114,7 @@ function placement(
     currentPackageDigest: 'current',
     currentAppVersion: '2.0.0',
     observedPackageDigest: 'old',
-    errFABRICAtegory: null,
+    errCategory: null,
     ...overrides
   }
 }
@@ -228,7 +228,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
     await emitRun({ state: 'running', names: ['FABRICA-cli'], startedAt: 1, output: '' })
 
-    expect(container?.textContent).toContain('Updating 1 skill…')
+    expect(container?.textContent).toContain('Updating 1 skillâ€¦')
     expect(container?.textContent).toContain('keeps running in the background')
     expect(container?.querySelector('[role="progressbar"]')).not.toBeNull()
     expect(
@@ -322,7 +322,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     expect(after?.getAttribute('data-state-label')).toBe('done')
   })
 
-  it('collapses each skill’s locations behind its own disclosure', async () => {
+  it('collapses each skillâ€™s locations behind its own disclosure', async () => {
     mocks.inventory = {
       schemaVersion: 1,
       installations: [
@@ -342,7 +342,7 @@ describe('SkillFreshnessUpdateDialog', () => {
 
     const row = container?.querySelector('[data-skill-row="FABRICA-cli"]')
     expect(row).not.toBeNull()
-    // Closed by default — the paths are behind the row's own trigger.
+    // Closed by default â€” the paths are behind the row's own trigger.
     expect(row?.getAttribute('data-collapsible-open')).toBe('false')
     expect(container?.textContent).toContain('2 locations')
   })
@@ -365,7 +365,7 @@ describe('SkillFreshnessUpdateDialog', () => {
         container?.querySelector('[data-skill-row="FABRICA-cli"]')?.getAttribute('data-state-label')
       ).toBe('done')
 
-      // Closing is what hands the run back — it must not be left stuck.
+      // Closing is what hands the run back â€” it must not be left stuck.
       await clickButton('Done')
       expect(skillsApi.acknowledgeUpdateRun).toHaveBeenCalledTimes(1)
     } finally {
@@ -434,7 +434,7 @@ describe('SkillFreshnessUpdateDialog', () => {
   it('shows why a skill was skipped without needing the disclosure', async () => {
     mocks.inventory = {
       schemaVersion: 1,
-      // Why: a read-only copy rather than a project one — a project-owned copy raises no
+      // Why: a read-only copy rather than a project one â€” a project-owned copy raises no
       // row at all now, so it cannot carry this assertion about how a row renders.
       installations: [placement('computer-use', { topology: 'read-only' })],
       eligibleUpdateNames: [],
@@ -448,7 +448,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     expect(container?.textContent).toContain('computer-use')
     expect(container?.textContent).toContain('Skipped')
     // The reason is the one thing a skipped row exists to say, so it lives
-    // outside the disclosure — visible with the row still collapsed, and not
+    // outside the disclosure â€” visible with the row still collapsed, and not
     // dependent on a mount-time `defaultOpen` a later re-scan could never re-fire.
     expect(row?.getAttribute('data-collapsible-open')).toBe('false')
     expect(container?.textContent).toContain('This copy is in a read-only location')
@@ -520,7 +520,7 @@ describe('SkillFreshnessUpdateDialog', () => {
 
   it('names the skill in the stale-record remedy so the command is runnable as-is', async () => {
     // Why: the reinstall advice only fires when the row hands its group name through
-    // to skippedReason — dropping that argument silently degrades every stale-record
+    // to skippedReason â€” dropping that argument silently degrades every stale-record
     // row to the generic sentence with no command to run.
     mocks.inventory = {
       schemaVersion: 1,
@@ -567,7 +567,7 @@ describe('SkillFreshnessUpdateDialog', () => {
       'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill orchestration --global'
     )
     expect(row?.textContent).not.toContain('This is a project skill, not a global one')
-    // Still listed, though — ownership silences the explanation, never the location.
+    // Still listed, though â€” ownership silences the explanation, never the location.
     expect(row?.textContent).toContain('/home/projects/work/.agents/skills/orchestration')
   })
 
@@ -576,14 +576,14 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
     // Re-check publishes {inventory: null, loading: true} synchronously. The rows
     // are retained, so the headline and the count must not be read off the live
-    // snapshot and the retained one at the same time — that pairs a "0 updates
+    // snapshot and the retained one at the same time â€” that pairs a "0 updates
     // available" headline with rows badged "Update available".
     mocks.inventory = null
     mocks.loading = true
     await rerender()
 
     expect(container?.textContent).not.toContain('0 updates available')
-    expect(container?.textContent).toContain('Checking installed Fabrica skills…')
+    expect(container?.textContent).toContain('Checking installed Fabrica skillsâ€¦')
     // The action keeps its place rather than reflowing the footer, but cannot
     // fire against bytes that are being re-read.
     const update = findButton('Update 1 skill')
@@ -599,8 +599,8 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
     await emitRun({ state: 'running', names: ['FABRICA-cli'], startedAt: 1, output: '' })
     await clickButton('Stop')
-    // Main holds the run `running` until the kill lands — that is what blocks a
-    // second writer — so the button must not sit enabled and inert meanwhile.
+    // Main holds the run `running` until the kill lands â€” that is what blocks a
+    // second writer â€” so the button must not sit enabled and inert meanwhile.
     await emitRun({
       state: 'running',
       names: ['FABRICA-cli'],
@@ -609,20 +609,20 @@ describe('SkillFreshnessUpdateDialog', () => {
       stopping: true
     })
 
-    const stopping = findButton('Stopping…')
+    const stopping = findButton('Stoppingâ€¦')
     expect(stopping).toBeDefined()
     expect(stopping?.disabled).toBe(true)
     expect(findButton('Stop')).toBeUndefined()
-    // The headline must not contradict the button — telling someone the update
+    // The headline must not contradict the button â€” telling someone the update
     // "keeps running in the background" is the opposite of what Stop just did.
-    expect(container?.textContent).toContain('Stopping the update…')
+    expect(container?.textContent).toContain('Stopping the updateâ€¦')
     expect(container?.textContent).not.toContain('keeps running in the background')
-    expect(container?.textContent).not.toContain('Updating 1 skill…')
-    // The primary button sits right next to "Stopping…" — it must not still be
-    // announcing "Updating…", visually or to a screen reader.
-    expect(findButton('Updating…')).toBeUndefined()
+    expect(container?.textContent).not.toContain('Updating 1 skillâ€¦')
+    // The primary button sits right next to "Stoppingâ€¦" â€” it must not still be
+    // announcing "Updatingâ€¦", visually or to a screen reader.
+    expect(findButton('Updatingâ€¦')).toBeUndefined()
     expect(container?.querySelector('[role="progressbar"]')?.getAttribute('aria-label')).toBe(
-      'Stopping the update…'
+      'Stopping the updateâ€¦'
     )
   })
 
@@ -691,7 +691,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     // Prime a good scan first: the retained inventory must not survive into the
     // error state. That invariant lives in useSkillFreshness (every publish that
     // sets `error` also clears `loading`), so pin it from the side that depends
-    // on it — otherwise a later "keep spinning while retrying" change would
+    // on it â€” otherwise a later "keep spinning while retrying" change would
     // silently start showing stale rows under an error.
     expect(container?.querySelector('[data-skill-row="FABRICA-cli"]')).not.toBeNull()
 
@@ -745,7 +745,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     expect(container?.textContent).toContain('/home/.codex/plugins/cache/vendor/locked')
     expect(container?.textContent).toContain('EACCES')
     expect(container?.textContent).not.toContain('All installed Fabrica skills are up to date.')
-    // Why: the fabricated per-skill path is exactly what this change removed — the
+    // Why: the fabricated per-skill path is exactly what this change removed â€” the
     // unreadable folder must never be rendered as a copy of a named skill.
     expect(container?.textContent).not.toContain(
       '/home/.codex/plugins/cache/vendor/locked/FABRICA-cli'
@@ -753,7 +753,7 @@ describe('SkillFreshnessUpdateDialog', () => {
   })
 
   // Why: the walk stopped early here, so claiming every copy is up to date would assert
-  // a completeness the scan did not reach — green dishonesty in place of amber.
+  // a completeness the scan did not reach â€” green dishonesty in place of amber.
   it.each(['entry-limit', 'candidate-limit'] as const)(
     'does not report all-clear when %s ended the scan early',
     async (reason) => {
@@ -789,7 +789,7 @@ describe('SkillFreshnessUpdateDialog', () => {
 
   // Why: FABRICA's own traversal bounds are not the user's to act on. Headlining them
   // would put a permanent warning on any ordinary large plugin cache while every
-  // skill badge stayed green — the same unclearable amber, moved into the dialog.
+  // skill badge stayed green â€” the same unclearable amber, moved into the dialog.
   it('lists a traversal bound without headlining it', async () => {
     mocks.inventory = {
       schemaVersion: 1,

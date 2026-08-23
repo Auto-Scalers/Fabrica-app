@@ -69,7 +69,7 @@ vi.mock('./runtime-client', async () => {
   // Why: re-export the REAL error classes rather than redefining them. format.ts
   // narrows with `instanceof` against ./runtime/types, so a look-alike class
   // here would make every CLI error fall through to the generic `runtime_error`
-  // shape — mirroring the barrel keeps the mock faithful to production.
+  // shape â€” mirroring the barrel keeps the mock faithful to production.
   const { RuntimeClientError, RuntimeRpcFailureError } = await import('./runtime/types.js')
 
   class RuntimeClient {
@@ -726,7 +726,7 @@ describe('FABRICA skills CLI', () => {
     child.emit('exit', 0, null)
     await resultPromise
 
-    // Why: assert the constructed value, not the ambient one — a dev PATH with a
+    // Why: assert the constructed value, not the ambient one â€” a dev PATH with a
     // trailing separator carries its own '' entry and would fake a failure here.
     expect(spawnMock.mock.calls[0]?.[2]?.env?.PATH).toBe(`/usr/bin${delimiter}/bin`)
   })
@@ -771,7 +771,7 @@ describe('FABRICA skills CLI', () => {
 
     await main(['skills', 'install', '--skill', 'alpha', '--dry-run'], '/tmp/repo')
 
-    // Why: `skills add` exits 1 on an unknown --agent, and the ids differ —
+    // Why: `skills add` exits 1 on an unknown --agent, and the ids differ â€”
     // FABRICA's `claude` is `claude-code` and its `rovo` is `rovodev`.
     expect(stdoutText(stdoutSpy)).toContain(
       '--agent claude-code --agent cursor --agent rovodev --agent universal'
@@ -805,7 +805,7 @@ describe('FABRICA skills CLI', () => {
     await main(argv, '/tmp/repo')
 
     // Why: an --agent that resolves to nothing must not fall back to detection or
-    // emit no --agent at all — the latter restores the ~75-agent install.
+    // emit no --agent at all â€” the latter restores the ~75-agent install.
     expect(spawnMock).not.toHaveBeenCalled()
     expect(process.exitCode).toBe(1)
     expect(String(errorSpy.mock.calls[0]?.[0])).toContain('Missing required --agent')
@@ -820,7 +820,7 @@ describe('FABRICA skills CLI', () => {
 
     await main(argv, '/tmp/repo')
 
-    // Why: the skills CLI drops such a value, leaving it with no target — the same
+    // Why: the skills CLI drops such a value, leaving it with no target â€” the same
     // all-agents install as omitting --agent entirely.
     expect(spawnMock).not.toHaveBeenCalled()
     expect(process.exitCode).toBe(1)

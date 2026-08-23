@@ -208,7 +208,7 @@ describe('RepositoryHostSetupsSection', () => {
       openButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }))
     })
 
-    // The single project pane switches host in place — no navigation.
+    // The single project pane switches host in place â€” no navigation.
     expect(setSettingsProjectHostSelection).toHaveBeenCalledWith(
       'github:Auto-Scalers/Fabrica-app',
       toSshExecutionHostId('openclaw 2'),
@@ -227,7 +227,9 @@ describe('RepositoryHostSetupsSection', () => {
     })
     useAppStore.setState({
       repos: [remoteRepo],
-      projects: [makeProject({ id: 'github:Auto-Scalers/Fabrica-app', sourceRepoIds: ['remote-repo'] })],
+      projects: [
+        makeProject({ id: 'github:Auto-Scalers/Fabrica-app', sourceRepoIds: ['remote-repo'] })
+      ],
       projectHostSetups: [
         makeSetup({
           id: 'direct-setup',
@@ -326,7 +328,9 @@ describe('RepositoryHostSetupsSection', () => {
     })
     useAppStore.setState({
       repos: [remoteRepo],
-      projects: [makeProject({ id: 'github:Auto-Scalers/Fabrica-app', sourceRepoIds: ['remote-repo'] })],
+      projects: [
+        makeProject({ id: 'github:Auto-Scalers/Fabrica-app', sourceRepoIds: ['remote-repo'] })
+      ],
       projectHostSetups: [
         makeSetup({
           id: 'hub-local-setup',
