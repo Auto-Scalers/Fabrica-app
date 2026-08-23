@@ -12,20 +12,58 @@
 3. **Ship-ready for Beta.** When rebrand + functionality verification is complete, the app is ready for the public Beta launch (Roadmap Phase B).
 4. **Preserve the migration path.** The appId/data-dir chain (APP-C4) ships only in lockstep so no user data is orphaned.
 
+## Scope Lock & Autonomous Verification Rounds
+
+> **SCOPE LOCK (PM mandate): the App-orchestrator does REBRAND VERIFICATION and TESTS ONLY.**
+>
+> WHAT THIS MEANS:
+> - Verify old words are gone; verify nothing broke; test builds, lint, tests, runtime behavior.
+> - Dispatch fixes for anything a verification step fails on — fixes must restore intended behavior, not add features.
+>
+> WHAT THIS DOES NOT DO:
+> - NO new features, NO new plugins, NO refactors beyond what a failing check requires.
+> - NO work outside Fabrica-app/ (cross-project issues go as notes to other task files).
+
+**HOW ROUNDS WORK (repeat loop):**
+
+One **Round** = execute ALL six steps below in order, then record results in the Round Log. When a round finishes clean, immediately start the next round — same checklist, fresh pass. Do NOT stop because a round was clean; loop until PM says stop or two consecutive rounds find zero new findings (then hold idle and re-run the checklist on each heartbeat kick anyway).
+
+| Step | Check | Pass evidence |
+|---|---|---|
+| 1 | **Old-word sweep:** grep `orca`, `stablyai`, `onorca.dev`, `stably.ai` across the repo excluding `node_modules/`, `.next/`, `dist/`, `out/`, `.backup/`, `_sources/`, and documented exceptions | 0 hits OR every hit is a known exception listed in Notes |
+| 2 | **Lint + typecheck:** `pnpm lint`, `pnpm typecheck` | both exit clean |
+| 3 | **Tests:** `pnpm test` (vitest) | all green, no skips introduced by rebrand |
+| 4 | **Build:** `pnpm build` (at least once every 3 rounds or after any fix) | compiles clean |
+| 5 | **Runtime spot-checks:** renamed identifiers behave — `fabrica://` deep link, CLI `fabrica` command, `FABRICA_*` env vars, `fabrica_server_ready` wire token, plugin `engines.fabrica` | each behaves as before rename |
+| 6 | **VERIFY backlog review:** review 👀 rows in groups A–D; promote to ✅ DONE with grep/read evidence or dispatch a fix worker | Rollup updated in same edit |
+
+**Round rules:**
+- One Round = one orchestrator cycle; workers may parallelize steps within a round (min fleet: 5).
+- Every finding = a dispatched fix + a re-check in the SAME round when possible.
+- Update the Checkpoint table at the end of every round (round number, findings, next).
+- Never mark DONE without evidence; never skip steps even if they passed last round.
+
+### Round Log
+
+> Append one row per completed round.
+
+| Round | Date | Findings (step) | Fixes dispatched | Result | Notes |
+|---|---|---|---|---|---|
+
 ## Rollup
 
 | Metric | Value |
 |---|---|
 | Total tasks | 21 |
 | ✅ DONE | 2 |
-| 🔶 IN_PROGRESS | 0 |
+| 🔶 IN_PROGRESS | 2 |
 | 👀 VERIFY | 15 |
-| ⬜ TODO | 4 |
+| ⬜ TODO | 3 |
 | 🚫 BLOCKED | 0 |
 | ❌ CANCELLED | 0 |
 | Completion | 10% |
 
-_Last recount: 2026-08-23. Scope: the 21 formally-ID'd tasks (APP-A/B/C/D/F tables). Sweep tables below (source renames, endpoints, READMEs, CI, casks, i18n) are tracked inline with the same emoji enum but not counted here._
+_Last recount: 2026-08-23 (fresh-start fleet activation: APP-F3 → IN_PROGRESS; APP-F1/F2 remain TODO). Scope: the 21 formally-ID'd tasks (APP-A/B/C/D/F tables). Sweep tables below (source renames, endpoints, READMEs, CI, casks, i18n) are tracked inline with the same emoji enum but not counted here._
 
 ---
 
@@ -216,7 +254,7 @@ How it works (from Orca backup):
 |---|------|--------|-------|
 | APP-F1 | Full rebrand audit — grep for `stablyai`, `orca`, `onorca.dev`, `autoskiller` | ⬜ | Run after all other tasks complete |
 | APP-F2 | Clean build verification | ⬜ | Build on all platforms after rebrand |
-| APP-F3 | Lint + test pass | ⬜ | `pnpm lint` + `vitest` after each group |
+| APP-F3 | Lint + test pass | 🔶 | CLAIMED Aug 23 fresh-start fleet — resuming `task_e88d00622ee7`; partial work preserved in commit 3f3d37c; tree clean at HEAD |
 
 ---
 
@@ -224,12 +262,12 @@ How it works (from Orca backup):
 
 | Field | Value |
 |---|---|
-| **Current Group** | Final Verification (APP-F2 / APP-F3) + Relay auth follow-ups |
-| **Current Task** | APP-F3 — lint+test final verification PAUSED (~213 files changed in tree); RELAY-AUTH Supabase login UI PAUSED (partial work uncommitted) |
-| **Last Action** | File restored from git on Aug 23 after an orchestrator encoding mishap; schema re-migration applied (IDs prefixed APP-, emoji statuses, Rollup, Checkpoint) |
-| **Next Action** | Resume the two PAUSED tasks per Session Ledger note (APP-F3 = `task_e88d00622ee7`, RELAY-AUTH = `task_d52a1cf64012`, run `run_effeaea830f9`); `git diff` first, keep partial work |
-| **Blockers** | ~213 uncommitted modified files — do NOT reset/clean; stray `NUL` file in repo root must be deleted before any `git add -A`; APP-C4 blocked on `appId` rename (APP-A1 dependency chain) |
-| **Last Checkpoint** | 2026-08-23 |
+| **Current Group** | Final Verification (APP-F2 / APP-F3) + Relay auth follow-ups + full-fleet sweeps |
+| **Current Task** | 5-worker fleet ACTIVE (see Aug 23 fleet ledger): APP-F3 resume, RELAY-AUTH resume, REBRAND-HUNT, BUILD-VERIFY, GROUP-VERIFY |
+| **Last Action** | Fresh-start activation: bound `run_effeaea830f9`, unblocked both paused tasks, dispatched 5 workers, delivered briefs via terminal send |
+| **Next Action** | Wait for worker_done; verify each with grep/read (never trust claims); dispatch fixes until clean; then close fleet with APP-F1 final audit |
+| **Blockers** | APP-C4 still blocked on `appId` rename (APP-A1 dependency chain); backend endpoints await Fabrica-web server work |
+| **Last Checkpoint** | 2026-08-23 (fresh-start fleet) |
 
 ---
 
@@ -282,9 +320,27 @@ How it works (from Orca backup):
 | `term_f6fc6cac-6485-47e2-9fd2-2da3426772e9` | worker | APP-F3: Lint+test (final) | `ctx_d7f4b48caad8` / task `task_e88d00622ee7` | PAUSED Aug 23 — ~213 files changed in tree, final lint/test verification pending | Aug 22 | `main` | — |
 
 **Paused-state warnings (Aug 23):**
-- Working tree has ~213 uncommitted modified files from paused APP-F3 + RELAY-AUTH work. Do NOT reset/clean before resuming.
-- Stray file named `NUL` exists in repo root — delete via `Remove-Item "\\?\...\Fabrica-app\NUL"` before any `git add -A`.
-- After both tasks land: run final rebrand audit (APP-F1) as the closing step.
+- RESOLVED Aug 23: partial work was committed/pushed as `3f3d37c`; tree clean at HEAD; stray `NUL` file confirmed gone.
+- After all fleet tasks land: run final rebrand audit (APP-F1) as the closing step.
+
+### Aug 23 fresh-start fleet (run `run_effeaea830f9`, coordinator `term_dbd03d2a`)
+
+> 5 workers dispatched per Parallelism Policy minimum. All in Fabrica-app worktree (`main`). Briefs delivered via `orca terminal send --enter`.
+
+| Session Handle | Type | Task/Group | Dispatch | Status | Created | Worktree Branch | Merged |
+|---------------|------|-----------|----------|--------|---------|----------------|--------|
+| `term_389399d8-5acf-4c8b-9a73-d33c9396e5bc` | worker | APP-F3: Lint+test resume | `ctx_a8e364e22424` / `task_e88d00622ee7` | 🔶 active | Aug 23 | `main` | — |
+| `term_16c744aa-b951-4daf-b071-78883dd96037` | worker | RELAY-AUTH: Supabase login UI resume | `ctx_2fbe91844f45` / `task_d52a1cf64012` | 🔶 active | Aug 23 | `main` | — |
+| `term_18638f42-f722-4ccc-a1b5-f4080a80619a` | worker | REBRAND-HUNT violation sweep | `ctx_82bc558c3bdc` / `task_8149959e9f2d` | 🔶 active | Aug 23 | `main` | — |
+| `term_56bde716-9422-405a-ad18-05786f094f50` | worker | BUILD-VERIFY typecheck+build | `ctx_5eb79bba7eca` / `task_9dffe5400ee0` | 🔶 active | Aug 23 | `main` | — |
+| `term_b4a37ec4-0567-49ac-bed3-1dd65075e75a` | worker | GROUP-VERIFY A–D evidence sweep | `ctx_4a662335e305` / `task_1639342a1349` | 🔶 active | Aug 23 | `main` | — |
+
+**Anti-overlap ownership map (live):**
+- W2 owns `src/main/runtime/relay/`, `src/main/ipc/`, `src/shared/supabase-auth.ts`, `electron.vite.config.ts`
+- W1 owns test files + lint/test fixes
+- W3 owns docs/comments/configs/non-test source strings (report-only on W1/W2 files)
+- W4 owns typecheck/build fixes (not W1/W2 files)
+- W5 is read-only
 
 **Rules:**
 - Only the main orchestrator creates sessions in this ledger
