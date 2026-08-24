@@ -17,7 +17,7 @@
 
 <p align="center">
   <strong>The AI Orchestrator for 100x builders.</strong><br/>
-  Run Codex, ClaudeCode, OpenCode or Pi side-by-side — each in its own worktree, tracked in one place.
+  Run Codex, Claude Code, OpenCode or Pi side-by-side — each in its own worktree, tracked in one place.
 </p>
 
 <h3 align="center"><a href="https://fabrica-ai.vercel.app/download"><ins>Download Fabrica</ins></a></h3>
@@ -152,7 +152,7 @@ Agents drive Fabrica too — script every workflow with `fabrica worktree create
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/cli/overview"><picture><source srcset="docs/assets/feature-wall/orca-cli.gif" type="image/gif"><img src="docs/assets/feature-wall/orca-cli.jpg" alt="Script Fabrica from the CLI" width="100%" /></picture></a>
+  <a href="https://www.fabrica-ai.vercel.app/docs/cli/overview"><picture><source srcset="docs/assets/feature-wall/fabrica-cli.gif" type="image/gif"><img src="docs/assets/feature-wall/fabrica-cli.jpg" alt="Script Fabrica from the CLI" width="100%" /></picture></a>
 </td>
 </tr>
 </table>
@@ -261,7 +261,7 @@ Want to contribute or run locally? See our [CONTRIBUTING.md](.github/CONTRIBUTIN
 </p>
 
 ## Signed Builds
-Windows code signing sponored/provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+Windows code signing sponsored/provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
 
 ## License
 

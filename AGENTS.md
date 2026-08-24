@@ -1,4 +1,4 @@
-﻿# Fabrica-app — Worker Instructions (AGENTS.md)
+# Fabrica-app — Worker Instructions (AGENTS.md)
 
 ## What This Folder Is
 
@@ -26,7 +26,7 @@ pnpm typecheck     # TypeScript check
 ## What You Should Know
 
 - This is a rebrand from Orca to Fabrica
-- App ID: `ai.autoscalers.fabrica`
+- App ID: `com.autoscalers.fabrica` (ACTUAL, shipping — `config/electron-builder.config.cjs:49`). PENDING-PM: canonical identity not yet confirmed; docs previously said `ai.autoscalers.fabrica`
 - Deep link: `fabrica://`
 - CLI command: `fabrica`
 - GitHub org: `Auto-Scalers` (was `stablyai`)
