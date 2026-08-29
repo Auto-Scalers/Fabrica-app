@@ -47,8 +47,8 @@ agent-device snapshot --platform android --serial R3CX105QXRH --json
 agent-device fill @e33 "ls" --platform android --serial R3CX105QXRH --json
 agent-device click @e34 --platform android --serial R3CX105QXRH --json
 agent-device screenshot /tmp/mobile-terminal.png --platform android --serial R3CX105QXRH --json
-orca terminal send --terminal term_926b8898-f843-461a-acd2-482f741327ad --text r --json
-orca terminal read --terminal term_926b8898-f843-461a-acd2-482f741327ad --json
+fabrica terminal send --terminal term_926b8898-f843-461a-acd2-482f741327ad --text r --json
+fabrica terminal read --terminal term_926b8898-f843-461a-acd2-482f741327ad --json
 ```
 
 ## Next Debug Boundary

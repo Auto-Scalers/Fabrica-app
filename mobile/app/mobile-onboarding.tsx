@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   AccessibilityInfo,
   Animated,
@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { FABRICALogo } from '../src/components/FABRICALogo'
+import { FabricaLogo } from '../src/components/FabricaLogo'
 import { ensureNotificationPermissions } from '../src/notifications/mobile-notifications'
 import {
   MobileOnboardingPage,
@@ -143,7 +143,7 @@ function MobileOnboardingFlow({
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.brandRow}>
-        <FABRICALogo size={22} />
+        <FabricaLogo size={22} />
         <Text style={styles.brandName}>FABRICA</Text>
         {steps.length > 1 ? (
           <View

@@ -147,9 +147,12 @@ describe('detectRepoIcon', () => {
   it('falls back to the GitHub owner avatar for GitHub repos', async () => {
     const repoPath = await makeTempRepoDir()
     await gitExecFileAsync(['init'], { cwd: repoPath })
-    await gitExecFileAsync(['remote', 'add', 'origin', 'git@github.com:Auto-Scalers/Fabrica-app.git'], {
-      cwd: repoPath
-    })
+    await gitExecFileAsync(
+      ['remote', 'add', 'origin', 'git@github.com:Auto-Scalers/Fabrica-app.git'],
+      {
+        cwd: repoPath
+      }
+    )
 
     await expect(detectRepoIcon({ repoPath, kind: 'git' })).resolves.toEqual({
       type: 'image',
@@ -166,9 +169,12 @@ describe('detectRepoIcon', () => {
       JSON.stringify({ homepage: 'https://github.com/Auto-Scalers/Fabrica-app' })
     )
     await gitExecFileAsync(['init'], { cwd: repoPath })
-    await gitExecFileAsync(['remote', 'add', 'origin', 'https://github.com/Auto-Scalers/Fabrica-app.git'], {
-      cwd: repoPath
-    })
+    await gitExecFileAsync(
+      ['remote', 'add', 'origin', 'https://github.com/Auto-Scalers/Fabrica-app.git'],
+      {
+        cwd: repoPath
+      }
+    )
 
     await expect(detectRepoIcon({ repoPath, kind: 'git' })).resolves.toEqual({
       type: 'image',
@@ -190,24 +196,27 @@ describe('detectRepoIcon', () => {
   it('uses the resolved fork upstream for both metadata and the GitHub avatar', async () => {
     const repoPath = await makeTempRepoDir()
     await gitExecFileAsync(['init'], { cwd: repoPath })
-    await gitExecFileAsync(['remote', 'add', 'origin', 'git@github.com:tmchow/FABRICA.git'], {
+    await gitExecFileAsync(['remote', 'add', 'origin', 'git@github.com:tmchow/fabrica.git'], {
       cwd: repoPath
     })
-    await gitExecFileAsync(['remote', 'add', 'upstream', 'git@github.com:Auto-Scalers/Fabrica-app.git'], {
-      cwd: repoPath
-    })
+    await gitExecFileAsync(
+      ['remote', 'add', 'upstream', 'git@github.com:Auto-Scalers/fabrica.git'],
+      {
+        cwd: repoPath
+      }
+    )
 
     await expect(detectRepoIconAndUpstream({ repoPath, kind: 'git' })).resolves.toEqual({
       gitRemoteIdentity: {
-        canonicalKey: 'github.com/Auto-Scalers/Fabrica-app',
+        canonicalKey: 'github.com/Auto-Scalers/fabrica',
         remoteName: 'upstream',
-        remoteUrl: 'git@github.com:Auto-Scalers/Fabrica-app.git'
+        remoteUrl: 'git@github.com:Auto-Scalers/fabrica.git'
       },
       repoIcon: {
         type: 'image',
         src: 'https://github.com/Auto-Scalers.png?size=64',
         source: 'github',
-        label: 'Auto-Scalers/Fabrica-app'
+        label: 'Auto-Scalers/fabrica'
       },
       // Why: fork parents resolve host-qualified so avatars/links stay on the fork's server.
       upstream: { owner: 'Auto-Scalers', repo: 'fabrica', host: 'github.com' }

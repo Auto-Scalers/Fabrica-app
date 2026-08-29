@@ -1,4 +1,4 @@
-﻿import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import nacl from 'tweetnacl'
 import { deriveSharedKey } from './e2ee-crypto'
 import { deriveMobileE2EEV2KeySchedule } from './mobile-e2ee-v2-key-schedule'
@@ -24,7 +24,7 @@ function hello(): MobileE2EEV2Hello {
     clientNonceB64: Buffer.from(new Uint8Array(32).fill(3)).toString('base64'),
     capabilities: { framing: [2], payloadKinds: ['text', 'binary'] },
     context: {
-      protocol: 'FABRICA-mobile-e2ee',
+      protocol: 'fabrica-mobile-e2ee',
       initiator: 'mobile',
       responder: 'desktop',
       transport: 'relay',

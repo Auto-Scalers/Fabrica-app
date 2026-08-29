@@ -522,13 +522,13 @@ describe('skill bundle manifest generator', () => {
   })
 
   it('computes the same Git tree identity as Git', async () => {
-    const packageRoot = path.resolve('skills', 'fabrica-cli')
+    const source = path.resolve('skills', 'fabrica-cli', 'SKILL.md')
+    const packageRoot = await createPackage()
+    await copyFile(source, path.join(packageRoot, 'SKILL.md'))
     const files = await collectPackageFiles(packageRoot)
-    const expected = execFileSync('git', ['ls-tree', 'HEAD:skills', 'fabrica-cli'], {
-      encoding: 'utf8'
-    })
-      .trim()
-      .split(/\s+/)[2]
+    execFileSync('git', ['init', '--quiet'], { cwd: packageRoot })
+    execFileSync('git', ['add', '-A'], { cwd: packageRoot })
+    const expected = execFileSync('git', ['write-tree'], { cwd: packageRoot, encoding: 'utf8' }).trim()
 
     expect(gitTreeSha(files)).toBe(expected)
   })

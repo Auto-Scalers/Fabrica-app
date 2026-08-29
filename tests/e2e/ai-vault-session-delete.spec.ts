@@ -1,13 +1,13 @@
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+﻿import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import type { AiVaultSession } from '../../src/shared/ai-vault-types'
 import type { AiVaultDeleteSessionResult } from '../../src/shared/ai-vault-session-deletion'
 
 // Exercises the real on-disk delete against an isolated, disposable HOME (the
 // E2E harness redirects os.homedir() there). The unit tests mock lstat/realpath/
-// trashItem; this proves the whole IPC path actually removes files — and, for a
+// trashItem; this proves the whole IPC path actually removes files â€” and, for a
 // directory-shaped agent, that the companion tree goes while the rewind buffer
 // stays. Runs on Linux CI.
 

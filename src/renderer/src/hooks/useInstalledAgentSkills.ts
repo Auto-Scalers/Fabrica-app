@@ -58,7 +58,7 @@ function normalizeSkillName(value: string): string {
 }
 
 function isOrchestrationSkillName(skillName: string): boolean {
-  return normalizeSkillName(skillName) === ORCHESTRATION_SKILL_NAME
+  return normalizeSkillName(skillName) === normalizeSkillName(ORCHESTRATION_SKILL_NAME)
 }
 
 function basenameFromPath(pathValue: string): string {

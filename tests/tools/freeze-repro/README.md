@@ -9,14 +9,14 @@ Two harnesses for bulk-open / reconnect freeze repros on large paired remotes:
 
 ## Prerequisites
 
-1. **Desktop Orca running** (`orca status --json`).
+1. **Desktop Fabrica running** (`Fabrica status --json`).
 2. A **large paired remote** (many worktrees / agent terminals). Lab fleets often have ~60 worktrees and 100+ terminals.
 3. Repo checkout with these scripts.
 
 ```bash
-orca environment list --json
-orca worktree list --environment <name> --json | head
-orca terminal list --environment <name> --json | head
+Fabrica environment list --json
+Fabrica worktree list --environment <name> --json | head
+Fabrica terminal list --environment <name> --json | head
 ```
 
 ---
@@ -42,7 +42,7 @@ FABRICA_FREEZE_IDLE_MS=60000 \
 FABRICA_FREEZE_OPEN_COUNT=40 \
 pnpm run repro:live-remote-realistic-freeze
 
-# Restart-proxy: idle + orca open + refresh storm + open (does not kill desktop)
+# Restart-proxy: idle + Fabrica open + refresh storm + open (does not kill desktop)
 FABRICA_FREEZE_ENV=paired-remote \
 FABRICA_FREEZE_SCENARIO=restart-proxy \
 FABRICA_FREEZE_CREATE=0 \
@@ -59,8 +59,8 @@ Or: `node config/scripts/live-remote-realistic-freeze-repro.mjs`
 | ----------------------------- | --------------------------------------------------------------------------------------------- |
 | `idle-backlog-open`           | User away while agents stream; returns and opens sessions                                     |
 | `idle-backlog-reconnect-open` | Same + parallel status/worktree/terminal refresh (wake/reconnect client storm)                |
-| `restart-proxy`               | `orca open` + refresh storm + open (post-restart discovery; no process kill)                  |
-| `lockup-storm`                | Idle + flood + reconnect + **concurrent** open fan-out + **mid-storm `orca status` watchdog** |
+| `restart-proxy`               | `Fabrica open` + refresh storm + open (post-restart discovery; no process kill)                  |
+| `lockup-storm`                | Idle + flood + reconnect + **concurrent** open fan-out + **mid-storm `Fabrica status` watchdog** |
 
 ### Realistic knobs
 
@@ -82,7 +82,7 @@ Or: `node config/scripts/live-remote-realistic-freeze-repro.mjs`
 | idle-backlog-open                                  | 6      | 45s    | 24             | **1.7s** max open                                    | none (&lt; soft)                                                          |
 | **idle-backlog-reconnect-open**                    | 10     | 60s    | 40             | **11.0s** max open; reconnect refresh **3.6s**       | **HARD (recovered)**                                                      |
 | **restart-proxy**                                  | 0      | 20s    | 30             | **11.2s** max open                                   | **HARD (recovered)**                                                      |
-| **lockup-storm** (parallel open + overlap refresh) | 12–16  | 45–60s | 64–80 @ p20–32 | **27–35s** batches; some `Terminal reveal timed out` | **HARD stalls + reveal timeouts; app still answers `orca status` ~150ms** |
+| **lockup-storm** (parallel open + overlap refresh) | 12–16  | 45–60s | 64–80 @ p20–32 | **27–35s** batches; some `Terminal reveal timed out` | **HARD stalls + reveal timeouts; app still answers `Fabrica status` ~150ms** |
 
 ### Full-app forever freeze?
 
@@ -96,10 +96,10 @@ Latest lockup-storm with watchdog (2026-07-31):
 | Mid-storm status samples    | **95**, max **~631ms**, **0 hangs** |
 | Peak open/batch             | **~34s** (recovered hard stall)     |
 | `Terminal reveal timed out` | yes (under fan-out)                 |
-| Post-storm `orca status`    | **~113ms**                          |
+| Post-storm `Fabrica status`    | **~113ms**                          |
 | Force Quit required         | **no**                              |
 
-Bar for full-app freeze in the harness: continuous **≥30s** window where `orca status` hangs/fails or stays ≥15s slow (`evaluateFullAppFreeze` / `foreverUiLockupObserved`).
+Bar for full-app freeze in the harness: continuous **≥30s** window where `Fabrica status` hangs/fails or stays ≥15s slow (`evaluateFullAppFreeze` / `foreverUiLockupObserved`).
 CLI spawn failures are reported as harness infrastructure errors, not product freezes.
 
 What we **do** reproduce: severe multi-second / multi-tens-of-seconds stalls + flaky reveal.
@@ -162,7 +162,7 @@ Generation-aware **latest-wins single-flight** for exclusive host focus:
 
 | Layer    | Module                                                                             |
 | -------- | ---------------------------------------------------------------------------------- |
-| Runtime  | `TerminalFocusNavigationCoalescer` via `OrcaRuntimeService.focusTerminal`          |
+| Runtime  | `TerminalFocusNavigationCoalescer` via `FabricaRuntimeService.focusTerminal`          |
 | Contract | `RuntimeTerminalFocus.navigated?: boolean` — `false` when superseded / nav skipped |
 
 **In scope:** concurrent `terminal.focus` / bulk-switch storms.
@@ -186,10 +186,10 @@ Generation-aware **latest-wins single-flight** for exclusive host focus:
 ## Safety
 
 - Both harnesses default to `FABRICA_FREEZE_CREATE=0`. A positive value creates persistent, high-output remote terminals; use it only on an isolated target you can clean up.
-- `restart-proxy` does **not** kill Orca; it runs `orca open` + refresh RPCs only.
-- Manual capture if UI fully freezes: `sample Orca 5 -file ~/Desktop/orca-freeze-sample.txt`
+- `restart-proxy` does **not** kill Fabrica; it runs `Fabrica open` + refresh RPCs only.
+- Manual capture if UI fully freezes: `sample Fabrica 5 -file ~/Desktop/Fabrica-freeze-sample.txt`
 
-The scripts honor `FABRICA_CLI_COMMAND`, then use `orca-dev` in a dev runtime, `orca-ide` on Linux, and `orca` elsewhere.
+The scripts honor `FABRICA_CLI_COMMAND`, then use `Fabrica-dev` in a dev runtime, `Fabrica-ide` on Linux, and `Fabrica` elsewhere.
 
 PowerShell equivalent for the first example:
 

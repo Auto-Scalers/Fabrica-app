@@ -1,9 +1,9 @@
-/**
+﻿/**
  * E2E regression test for the Resource Usage popover warm-reattach bug.
  *
  * Why this suite exists:
  *   PR #1667 fixed a bug where workspaces with daemon-backed terminals that
- *   had been running before app launch were rendered as `· REMOTE` with `—`
+ *   had been running before app launch were rendered as `Â· REMOTE` with `â€”`
  *   for CPU/Memory in the Resource Usage popover, even when no SSH targets
  *   were configured. The root cause was that the renderer's `pty-registry`
  *   was empty for warm-reattached sessions until the user clicked into each
@@ -21,13 +21,13 @@
  *     as `isRemote: false` and surfaces numeric CPU/memory.
  *
  * What it does NOT try to cover:
- *   - Multi-worktree warm-reattach. The hydrator iterates all repos ×
+ *   - Multi-worktree warm-reattach. The hydrator iterates all repos Ã—
  *     worktrees; one is sufficient to lock down the regression path.
  *   - SSH worktrees. Covered by unit tests in `mergeSnapshotAndSessions.test.ts`.
  */
 
 import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication } from '@stablyai/playwright-test'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -38,7 +38,7 @@ import {
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { attachRepoAndOpenTerminal, createRestartSession } from './helpers/fabrica-restart'
 
-// Why: this suite does a quit→relaunch cycle that depends on the daemon
+// Why: this suite does a quitâ†’relaunch cycle that depends on the daemon
 // surviving the first app close and the second launch reattaching to the
 // same daemon socket. Running tests in serial keeps the userDataDir from
 // competing with other concurrent Electron instances for the same lock.
@@ -58,7 +58,7 @@ test.describe('Resource Usage warm-reattach', () => {
     let secondApp: ElectronApplication | null = null
 
     try {
-      // ── First launch: seed a daemon-backed PTY ─────────────────────────
+      // â”€â”€ First launch: seed a daemon-backed PTY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const firstLaunch = await session.launch()
       firstApp = firstLaunch.app
       const worktreeId = await attachRepoAndOpenTerminal(firstLaunch.page, repoPath)
@@ -91,7 +91,7 @@ test.describe('Resource Usage warm-reattach', () => {
       await session.close(firstApp)
       firstApp = null
 
-      // ── Second launch: verify hydration restored coverage ──────────────
+      // â”€â”€ Second launch: verify hydration restored coverage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const secondLaunch = await session.launch()
       secondApp = secondLaunch.app
       await waitForSessionReady(secondLaunch.page)

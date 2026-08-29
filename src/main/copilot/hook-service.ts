@@ -305,7 +305,7 @@ export class CopilotHookService {
   async installRemote(sftp: SFTPWrapper, remoteHome: string): Promise<AgentHookInstallStatus> {
     const home = remoteHome.replace(/\/$/, '')
     const remoteConfigPath = `${home}/.copilot/hooks/FABRICA.json`
-    const remoteScriptPath = `${home}/.fabrica/agent-hooks/copilot-hook.sh`
+    const remoteScriptPath = `${home}/.fabrica-factory/agent-hooks/copilot-hook.sh`
 
     try {
       const config = await readHooksJsonRemote(sftp, remoteConfigPath)

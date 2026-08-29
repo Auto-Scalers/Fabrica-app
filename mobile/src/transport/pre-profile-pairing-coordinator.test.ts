@@ -1,4 +1,4 @@
-﻿import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import type { MobileRelayCredentialBundle } from './mobile-relay-credential-bundle'
 import type { MobileRelayPairingJournal } from './mobile-relay-pairing-journal'
 import { racePairingCandidates } from './pairing-candidate-race'
@@ -23,8 +23,8 @@ const relayOffer: PairingOffer = {
   ...directOffer,
   relay: {
     v: 1,
-    directorUrl: 'https://relay.onFABRICA.dev',
-    cellUrl: 'https://relay-c1.onFABRICA.dev',
+    directorUrl: 'https://relay.onfabrica.dev',
+    cellUrl: 'https://relay-c1.onfabrica.dev',
     assignmentEpoch: 7,
     relayHostId: 'AbCdEf0123_-xyZ9',
     inviteToken: 'abcdefghijklmnopqrstuvwxyzABCDEFGH012345678',
@@ -283,7 +283,7 @@ describe('pre-profile pairing coordinator', () => {
           {
             id: 'relay-primary',
             kind: 'relay',
-            url: `wss://relay-c1.onFABRICA.dev/v1/connect/${relayOffer.relay!.relayHostId}`
+            url: `wss://relay-c1.onfabrica.dev/v1/connect/${relayOffer.relay!.relayHostId}`
           }
         ]
       })
@@ -360,7 +360,7 @@ describe('pre-profile pairing coordinator', () => {
         ts: now,
         level: 'info',
         message: 'Relay: dialing cell',
-        detail: 'relay-c1.onFABRICA.dev'
+        detail: 'relay-c1.onfabrica.dev'
       })
       return relay
     })
@@ -378,7 +378,7 @@ describe('pre-profile pairing coordinator', () => {
       'Relay: dialing cell',
       'Pairing path selected'
     ])
-    expect(entries[0]!.detail).toBe('relay-c1.onFABRICA.dev')
+    expect(entries[0]!.detail).toBe('relay-c1.onfabrica.dev')
     expect(entries[2]).toMatchObject({ level: 'success', detail: 'winner: relay' })
   })
 

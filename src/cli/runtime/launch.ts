@@ -1,4 +1,4 @@
-﻿import { spawn as spawnProcess, type SpawnOptions } from 'node:child_process'
+import { spawn as spawnProcess, type SpawnOptions } from 'node:child_process'
 import { resolve } from 'node:path'
 import { StringDecoder } from 'node:string_decoder'
 import {
@@ -58,7 +58,7 @@ export function launchFABRICAApp(): void {
 
   throw new RuntimeClientError(
     'runtime_open_failed',
-    'Could not determine how to launch FABRICA. Start FABRICA manually and try again.'
+    'Could not determine how to launch Fabrica. Start Fabrica manually and try again.'
   )
 }
 
@@ -243,8 +243,8 @@ function waitForRecipeJson(child: ReturnType<typeof spawnProcess>): Promise<numb
         new RuntimeClientError(
           'runtime_serve_failed',
           typeof code === 'number'
-            ? `FABRICA serve exited before printing valid recipe JSON with code ${code}.`
-            : `FABRICA serve exited before printing valid recipe JSON via ${signal}.`
+            ? `Fabrica serve exited before printing valid recipe JSON with code ${code}.`
+            : `Fabrica serve exited before printing valid recipe JSON via ${signal}.`
         )
       )
     }
@@ -281,7 +281,7 @@ function resolveForegroundFABRICAExecutable(): string {
   }
   throw new RuntimeClientError(
     'runtime_serve_failed',
-    'Could not determine how to start FABRICA server. Set FABRICA_APP_EXECUTABLE to the FABRICA executable.'
+    'Could not determine how to start Fabrica server. Set FABRICA_APP_EXECUTABLE to the Fabrica executable.'
   )
 }
 

@@ -6518,12 +6518,12 @@ describe('Endpoint file lifecycle', () => {
     await server.start({
       env: 'development',
       userDataPath,
-      endpointNamespace: 'com.autoscalers.fabrica.dev.test123'
+      endpointNamespace: 'ai.autoscalers.fabrica.dev.test123'
     })
     try {
       const env = server.buildPtyEnv()
       expect(env.FABRICA_AGENT_HOOK_ENDPOINT).toBe(server.endpointFilePath)
-      expect(env.FABRICA_AGENT_HOOK_ENDPOINT).toContain('com.autoscalers.fabrica.dev.test123')
+      expect(env.FABRICA_AGENT_HOOK_ENDPOINT).toContain('ai.autoscalers.fabrica.dev.test123')
       expect(env.FABRICA_AGENT_HOOK_PORT).toBeTruthy()
       expect(env.FABRICA_AGENT_HOOK_TOKEN).toBeTruthy()
     } finally {

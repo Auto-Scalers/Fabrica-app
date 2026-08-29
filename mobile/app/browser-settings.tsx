@@ -13,7 +13,7 @@ import { colors, radii, spacing, typography } from '../src/theme/mobile-theme'
 
 const LINK_MODE_OPTIONS: PickerOption<MobileTerminalLinkOpenMode>[] = [
   {
-    value: 'FABRICA-browser',
+    value: 'fabrica-browser',
     label: 'FABRICA browser on desktop',
     subtitle: 'Open in the streamed browser from your paired desktop.'
   },
@@ -33,7 +33,7 @@ function linkModeLabel(mode: MobileTerminalLinkOpenMode): string {
 export default function BrowserSettingsScreen(): React.JSX.Element {
   const router = useRouter()
   const insets = useSafeAreaInsets()
-  const [linkMode, setLinkMode] = useState<MobileTerminalLinkOpenMode>('FABRICA-browser')
+  const [linkMode, setLinkMode] = useState<MobileTerminalLinkOpenMode>('fabrica-browser')
   const [pickerOpen, setPickerOpen] = useState(false)
 
   useEffect(() => {

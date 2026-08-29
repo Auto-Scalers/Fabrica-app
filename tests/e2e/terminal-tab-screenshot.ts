@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { expect } from './helpers/fabrica-app'
 
 function tabScreenLocator(page: Page, tabId: string): ReturnType<Page['locator']> {

@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { getActiveTabId, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -79,7 +79,7 @@ test.describe('cold worktree activation deferral', () => {
     await waitForActiveTerminalManager(page, 30_000)
 
     // Why a child worktree: deferral (like per-tab parking) requires
-    // snapshot-backed daemon PTYs, whose session ids embed `repoId::path` —
+    // snapshot-backed daemon PTYs, whose session ids embed `repoId::path` â€”
     // primary-worktree tabs are conservatively never deferred.
     const worktreeId = await page.evaluate(async (name) => {
       const store = window.__store
@@ -140,7 +140,7 @@ test.describe('cold worktree activation deferral', () => {
       .toBe(true)
 
     // Why reload: a fresh renderer against live daemon sessions is the field
-    // scenario — persisted tabs hydrate cold (unregistered, no pending spawn)
+    // scenario â€” persisted tabs hydrate cold (unregistered, no pending spawn)
     // and the activation must defer them instead of mounting all at once.
     await page.reload()
     await waitForSessionReady(page)
@@ -160,7 +160,7 @@ test.describe('cold worktree activation deferral', () => {
       expect(mountedAfterActivation).toContain(lastActiveTabId)
     }
 
-    // Why: unmounted tabs must not go silent — the parked byte watchers own
+    // Why: unmounted tabs must not go silent â€” the parked byte watchers own
     // their side effects while deferred. This also deterministically proves
     // the post-commit watcher effect flushed; no settle sleep is needed.
     let watcherCoveredTabIds: string[] = []

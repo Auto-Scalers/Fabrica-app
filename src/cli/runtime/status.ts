@@ -1,4 +1,4 @@
-﻿import type { CliStatusResult, RuntimeStatus } from '../../shared/runtime-types'
+import type { CliStatusResult, RuntimeStatus } from '../../shared/runtime-types'
 import { findTransport } from '../../shared/runtime-bootstrap'
 import { tryReadMetadata } from './metadata'
 import { sendRequest } from './transport'

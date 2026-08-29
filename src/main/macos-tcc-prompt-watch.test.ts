@@ -15,7 +15,7 @@ const REAL_PROMPT_LINE =
 
 // Same shape, but the #9756 case: an agent CLI accesses, FABRICA is held responsible.
 const FABRICA_APPDATA_LINE =
-  '2026-07-27 15:40:02.001 Df tccd[79149:c81551c] [com.apple.TCC:access] AUTHREQ_PROMPTING: msgID=80871.99, service=kTCCServiceSystemPolicyAppData, subject=Sub:{node-5555494487fbc7467d473fd8b0a397018cbf954b}Resp:{TCCDProcess: identifier=com.autoscalers.fabrica, pid=47548, auid=501, euid=501, binary_path=/opt/homebrew/Cellar/node/26.5.0/bin/node},'
+  '2026-07-27 15:40:02.001 Df tccd[79149:c81551c] [com.apple.TCC:access] AUTHREQ_PROMPTING: msgID=80871.99, service=kTCCServiceSystemPolicyAppData, subject=Sub:{node-5555494487fbc7467d473fd8b0a397018cbf954b}Resp:{TCCDProcess: identifier=ai.autoscalers.fabrica, pid=47548, auid=501, euid=501, binary_path=/opt/homebrew/Cellar/node/26.5.0/bin/node},'
 
 // Preflight checks dominate the TCC subsystem and must never count as a dialog.
 const PREFLIGHT_LINE =
@@ -34,7 +34,7 @@ describe('parseTccPromptEvent', () => {
   it('separates the accessing binary from the responsible app', () => {
     const event = parseTccPromptEvent(FABRICA_APPDATA_LINE)
     // The whole point of #9756: the dialog says FABRICA, but node did the access.
-    expect(event?.responsibleIdentifier).toBe('com.autoscalers.fabrica')
+    expect(event?.responsibleIdentifier).toBe('ai.autoscalers.fabrica')
     expect(event?.accessingIdentifier).toBe('node-5555494487fbc7467d473fd8b0a397018cbf954b')
     expect(event?.binaryPath).toBe('/opt/homebrew/Cellar/node/26.5.0/bin/node')
   })
@@ -51,12 +51,12 @@ describe('parseTccPromptEvent', () => {
 describe('isFABRICAAttributedPrompt', () => {
   it('accepts the app and detached terminal helper across FABRICA build identities', () => {
     for (const id of [
-      'com.autoscalers.fabrica',
-      'com.autoscalers.fabrica.helper',
-      'com.autoscalers.fabrica.dev',
-      'com.autoscalers.fabrica.dev.helper',
-      'com.autoscalers.fabrica.local',
-      'com.autoscalers.fabrica.local.helper'
+      'ai.autoscalers.fabrica',
+      'ai.autoscalers.fabrica.helper',
+      'ai.autoscalers.fabrica.dev',
+      'ai.autoscalers.fabrica.dev.helper',
+      'ai.autoscalers.fabrica.local',
+      'ai.autoscalers.fabrica.local.helper'
     ]) {
       expect(
         isFABRICAAttributedPrompt({
@@ -83,7 +83,7 @@ describe('isFABRICAAttributedPrompt', () => {
       isFABRICAAttributedPrompt({
         service: 'kTCCServiceMicrophone',
         accessingIdentifier: 'FABRICA',
-        responsibleIdentifier: 'com.autoscalers.fabrica'
+        responsibleIdentifier: 'ai.autoscalers.fabrica'
       })
     ).toBe(false)
   })
@@ -152,7 +152,7 @@ describe('MacosTccPromptWatch', () => {
     expect(onPrompt).toHaveBeenCalledTimes(1)
     expect(onPrompt.mock.calls[0][0]).toMatchObject({
       service: 'kTCCServiceSystemPolicyAppData',
-      responsibleIdentifier: 'com.autoscalers.fabrica'
+      responsibleIdentifier: 'ai.autoscalers.fabrica'
     })
     watch.stop()
   })

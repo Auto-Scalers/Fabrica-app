@@ -1,4 +1,4 @@
-﻿import { net } from 'electron'
+import { net } from 'electron'
 import { compareVersions, isValidVersion } from './updater-fallback'
 
 export type NudgeConfig = {
@@ -9,7 +9,7 @@ export type NudgeConfig = {
 
 export async function fetchNudge(): Promise<NudgeConfig | null> {
   try {
-    const res = await net.fetch('https://onFABRICA.dev/whats-new/nudge.json', {
+    const res = await net.fetch('https://fabrica-ai.vercel.app/whats-new/nudge.json', {
       signal: AbortSignal.timeout(5000)
     })
     if (!res.ok) {

@@ -1,4 +1,4 @@
-﻿import { EventEmitter } from 'node:events'
+import { EventEmitter } from 'node:events'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { serveSignalExitError } from './serve-signal-exit-diagnostic'
 import { superviseForegroundServe } from './serve-update-supervisor'
@@ -45,7 +45,7 @@ describe('serveSignalExitError', () => {
     expect(error.data).toMatchObject({
       nextSteps: [
         expect.stringContaining('macOS desktop login'),
-        expect.stringContaining('~/Library/Logs/DiagnosticReports/FABRICA-*.ips')
+        expect.stringContaining('~/Library/Logs/DiagnosticReports/Fabrica-*.ips')
       ]
     })
   })
@@ -54,7 +54,7 @@ describe('serveSignalExitError', () => {
     for (const platform of ['linux', 'win32'] as const) {
       const error = serveSignalExitError('SIGABRT', platform)
 
-      expect(error.message).toBe('FABRICA serve exited via SIGABRT.')
+      expect(error.message).toBe('Fabrica serve exited via SIGABRT.')
       expect(error.data).toBeUndefined()
     }
   })
@@ -62,13 +62,13 @@ describe('serveSignalExitError', () => {
   it('does not claim the macOS cause for other darwin signals', () => {
     const error = serveSignalExitError('SIGKILL', 'darwin')
 
-    expect(error.message).toBe('FABRICA serve exited via SIGKILL.')
+    expect(error.message).toBe('Fabrica serve exited via SIGKILL.')
     expect(error.data).toBeUndefined()
   })
 
   it('stays clear when neither a code nor a signal is reported', () => {
     expect(serveSignalExitError(null, 'darwin').message).toBe(
-      'FABRICA serve exited without reporting an exit code or signal.'
+      'Fabrica serve exited without reporting an exit code or signal.'
     )
   })
 })
@@ -86,7 +86,7 @@ describe('superviseForegroundServe signal exits', () => {
     setPlatform('linux')
 
     await expect(superviseUntilExit(null, 'SIGABRT')).rejects.toThrow(
-      'FABRICA serve exited via SIGABRT.'
+      'Fabrica serve exited via SIGABRT.'
     )
   })
 

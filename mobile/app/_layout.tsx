@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Stack, useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
@@ -6,7 +6,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import * as Notifications from 'expo-notifications'
 import * as Linking from 'expo-linking'
 import { colors } from '../src/theme/mobile-theme'
-import { FABRICALogo } from '../src/components/FABRICALogo'
+import { FabricaLogo } from '../src/components/FabricaLogo'
 import { RpcClientProvider } from '../src/transport/client-context'
 import { getNotificationNavigationTarget } from '../src/notifications/notification-routing'
 import { useOpenNotificationRoute } from '../src/notifications/use-open-notification-route'
@@ -179,7 +179,7 @@ export default function RootLayout() {
             name="index"
             options={{
               headerShown: false,
-              headerTitle: () => <FABRICALogo size={22} />
+              headerTitle: () => <FabricaLogo size={22} />
             }}
           />
           <Stack.Screen name="pair-scan" options={{ headerShown: false }} />

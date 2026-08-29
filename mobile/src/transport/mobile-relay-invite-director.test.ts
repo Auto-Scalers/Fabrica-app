@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { resolvePairingInviteThroughDirector } from './mobile-relay-invite-director'
 
 class FakeSocket {
@@ -15,8 +15,8 @@ class FakeSocket {
 
 const relay = {
   v: 1 as const,
-  directorUrl: 'https://relay.onFABRICA.dev',
-  cellUrl: 'https://relay-c1.onFABRICA.dev',
+  directorUrl: 'https://relay.onfabrica.dev',
+  cellUrl: 'https://relay-c1.onfabrica.dev',
   assignmentEpoch: 7,
   relayHostId: 'AbCdEf0123_-xyZ9',
   inviteToken: 'abcdefghijklmnopqrstuvwxyzABCDEFGH012345678',
@@ -36,7 +36,7 @@ describe('pairing invite director resolution', () => {
       }
     })
     socket.onopen?.()
-    expect(url).toBe('wss://relay.onFABRICA.dev/v1/connect/AbCdEf0123_-xyZ9')
+    expect(url).toBe('wss://relay.onfabrica.dev/v1/connect/AbCdEf0123_-xyZ9')
     expect(url).not.toContain('?')
     expect(JSON.parse(socket.sent[0]!)).toEqual({
       type: 'relay-auth',
@@ -48,13 +48,13 @@ describe('pairing invite director resolution', () => {
       data: JSON.stringify({
         type: 'relay-moved',
         v: 1,
-        cellUrl: 'https://relay-c2.onFABRICA.dev',
+        cellUrl: 'https://relay-c2.onfabrica.dev',
         assignmentEpoch: 8
       })
     })
 
     await expect(resolving).resolves.toMatchObject({
-      cellUrl: 'https://relay-c2.onFABRICA.dev',
+      cellUrl: 'https://relay-c2.onfabrica.dev',
       assignmentEpoch: 8
     })
   })
@@ -69,7 +69,7 @@ describe('pairing invite director resolution', () => {
       data: JSON.stringify({
         type: 'relay-moved',
         v: 1,
-        cellUrl: 'https://relay-c2.onFABRICA.dev',
+        cellUrl: 'https://relay-c2.onfabrica.dev',
         assignmentEpoch: 7,
         targetFromCell: true
       })

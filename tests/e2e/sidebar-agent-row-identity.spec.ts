@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -13,21 +13,21 @@ import { worktreeRow } from './worktree-row-locators'
 /**
  * Sidebar agent-row identity, driven by real OSC titles on real PTYs.
  *
- * #10258 — Cursor's only native OSC title is the literal `cursor agent`; it was
+ * #10258 â€” Cursor's only native OSC title is the literal `cursor agent`; it was
  * dropped unconditionally, so a hookless Cursor pane produced no sidebar row.
- * #8940 — an incidental `claude` token inside an OpenCode task title outranked
+ * #8940 â€” an incidental `claude` token inside an OpenCode task title outranked
  * the pane's known owner, flipping the row label + identity icon to Claude Code.
  */
 
-// The literal Cursor emits on every redraw — the pane's ONLY identity signal.
+// The literal Cursor emits on every redraw â€” the pane's ONLY identity signal.
 const CURSOR_NATIVE_OSC_TITLE = 'Cursor Agent'
 // An OpenCode task title that merely MENTIONS claude (see #8940).
-const OPENCODE_TASK_OSC_TITLE = '⠋ use Claude Sonnet'
+const OPENCODE_TASK_OSC_TITLE = 'â ‹ use Claude Sonnet'
 
 /** Printed banner that proves the emitter ran; the OSC title trails it in the same chunk. */
 const PANE_HOLD_MARKER = 'agent pane holding'
 
-// Why: the emitter must never exit — a returning shell prompt would repaint its own
+// Why: the emitter must never exit â€” a returning shell prompt would repaint its own
 // cwd title over the agent title, which a real TUI holding the pane never allows.
 // Why one write: a later title-less chunk arms the stale-title probe, which strips
 // the working frame the row depends on.
@@ -64,7 +64,7 @@ function paneTitles(page: Page, tabId: string): Promise<string[]> {
 
 /**
  * Opens a terminal tab launched as `launchAgent`, exactly like the tab-bar quick
- * launch, and proves the shell round-trips a command before returning — a cold
+ * launch, and proves the shell round-trips a command before returning â€” a cold
  * PTY silently swallows the emitter command otherwise.
  */
 async function openAgentTab(
@@ -101,7 +101,7 @@ async function openAgentTab(
 
 /**
  * Identity of each rendered sidebar agent row, read off the row's identity icon
- * tooltip (the first titled span in the row) — i.e. the glyph the user sees.
+ * tooltip (the first titled span in the row) â€” i.e. the glyph the user sees.
  * Read in one evaluate so a sidebar re-render cannot split the snapshot.
  */
 function sidebarAgentRowIdentities(page: Page, agentListSelector: string): Promise<string[]> {
@@ -159,7 +159,7 @@ test('sidebar keeps a Cursor pane visible and an OpenCode pane out of Claude Cod
   const openCodeScript = await runNodeScriptInTerminal(
     fabricaPage,
     openCode.ptyId,
-    // ⠋ is the braille spinner frame OpenCode paints ahead of its task text.
+    // â ‹ is the braille spinner frame OpenCode paints ahead of its task text.
     oscTitleHolderScript('\\u280b use Claude Sonnet')
   )
   await waitForTerminalOutput(fabricaPage, PANE_HOLD_MARKER, 15_000)
@@ -179,7 +179,7 @@ test('sidebar keeps a Cursor pane visible and an OpenCode pane out of Claude Cod
     oscTitleHolderScript(CURSOR_NATIVE_OSC_TITLE)
   )
   // Settle gate: the emitter has run, so the literal has been offered to the title
-  // pipeline — kept as Cursor identity on the fix, dropped on main.
+  // pipeline â€” kept as Cursor identity on the fix, dropped on main.
   await waitForTerminalOutput(fabricaPage, PANE_HOLD_MARKER, 15_000)
 
   // Only the active worktree's card has agents, so this resolves to one list.

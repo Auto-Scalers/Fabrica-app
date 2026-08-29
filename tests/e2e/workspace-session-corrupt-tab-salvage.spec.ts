@@ -1,6 +1,6 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+﻿import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { DEFAULT_LOCAL_FABRICA_PROFILE_ID } from '../../src/shared/FABRICA-profiles'
 import { test, expect } from './helpers/fabrica-app'
 import { attachRepoAndOpenTerminal, createRestartSession } from './helpers/fabrica-restart'

@@ -1,8 +1,8 @@
-import { execFileSync } from 'node:child_process'
+﻿import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import type { ChildProcess } from 'node:child_process'
-import type { ElectronApplication } from '@stablyai/playwright-test'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -168,7 +168,7 @@ test('resumes a live agent record after force-exit restart when pane PTY ownersh
     const worktreeId = await attachRepoAndOpenTerminal(page, repoPath)
     await waitForSessionReady(page)
     // Why: the session writer persists only once hydrationSucceeded flips (not
-    // just workspaceSessionReady) — see shouldPersistWorkspaceSession — so the
+    // just workspaceSessionReady) â€” see shouldPersistWorkspaceSession â€” so the
     // record write below is a silent no-op until hydration completes.
     await expect
       .poll(() => page.evaluate(() => window.__store?.getState().hydrationSucceeded === true), {
@@ -218,8 +218,8 @@ test('resumes a live agent record after force-exit restart when pane PTY ownersh
     await page.evaluate(() => window.__store?.getState().captureAllSleepingAgentSessions('quit'))
 
     // Why: the record reaches disk via the debounced session writer (150ms) plus
-    // the main-process scheduleSave (up to 5s). Under CI event-loop starvation —
-    // the same shard drifts renderer timers ~1s — both stages need headroom, so
+    // the main-process scheduleSave (up to 5s). Under CI event-loop starvation â€”
+    // the same shard drifts renderer timers ~1s â€” both stages need headroom, so
     // poll to 30s (this suite's other readiness budget). On a miss, surface store
     // vs disk state to separate a lost write from a merely slow flush.
     const persistDeadline = Date.now() + 30_000

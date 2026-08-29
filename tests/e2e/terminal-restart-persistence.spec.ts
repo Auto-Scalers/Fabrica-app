@@ -1,4 +1,4 @@
-/**
+﻿/**
  * E2E tests for terminal scrollback persistence across clean app restarts.
  *
  * Why this suite exists:
@@ -9,23 +9,23 @@
  *   input lag across the whole app. The periodic save was removed in favor
  *   of the out-of-process terminal daemon (PR #729), and local renderer
  *   scrollback buffers are pruned from persisted workspace sessions. This
- *   suite locks down daemon-backed clean quit → relaunch so we don't silently
- *   return to "quit → empty terminal on relaunch."
+ *   suite locks down daemon-backed clean quit â†’ relaunch so we don't silently
+ *   return to "quit â†’ empty terminal on relaunch."
  *
  * What it covers:
- *   - Scrollback survives clean quit → relaunch (primary regression test).
+ *   - Scrollback survives clean quit â†’ relaunch (primary regression test).
  *   - Tab layout (active worktree, terminal tab count) survives restart.
  *   - Idle session writes stay infrequent (catches a reintroduced frequent
  *     interval before it ships; weaker than asserting the 3-minute cadence
  *     is gone, but doesn't require a minutes-long test run).
  *
  * What it does NOT try to cover:
- *   - Main-thread input-lag improvement — machine-dependent and flaky.
- *   - Crash/SIGKILL recovery — that is covered by daemon history checkpoints.
+ *   - Main-thread input-lag improvement â€” machine-dependent and flaky.
+ *   - Crash/SIGKILL recovery â€” that is covered by daemon history checkpoints.
  */
 
 import { readFileSync, existsSync } from 'node:fs'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -52,7 +52,7 @@ const REQUIRE_WINDOWS_TERMINAL_RESTART_E2E =
   process.env.FABRICA_REQUIRE_WINDOWS_TERMINAL_RESTART_E2E === '1'
 const MISSING_SEEDED_REPO_MESSAGE = 'Global setup did not produce a seeded test repo'
 
-// Why: each test in this file does a full quit→relaunch cycle, which spawns
+// Why: each test in this file does a full quitâ†’relaunch cycle, which spawns
 // two Electron instances back-to-back. Running in serial keeps the isolated
 // userDataDirs from competing for the same Electron cache lock on cold start
 // and keeps the failure mode interpretable when something goes wrong.
@@ -129,7 +129,7 @@ async function setPaneTitleFromTerminalMenu(page: Page, title: string): Promise<
     .locator('.xterm:visible')
     .first()
     .click({ button: 'right', position: { x: 40, y: 40 }, modifiers })
-  await page.getByText('Set Title…', { exact: true }).click()
+  await page.getByText('Set Titleâ€¦', { exact: true }).click()
   const titleInput = page.locator('.pane-title-input').first()
   await expect(titleInput).toBeVisible()
   await titleInput.fill(title)
@@ -215,7 +215,7 @@ test.describe('Terminal restart persistence', () => {
     let secondApp: ElectronApplication | null = null
 
     try {
-      // ── First launch ────────────────────────────────────────────────
+      // â”€â”€ First launch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const firstLaunch = await session.launch()
       firstApp = firstLaunch.app
       const { worktreeId, ptyId } = await bootstrapFirstLaunch(firstLaunch.page, repoPath)
@@ -237,7 +237,7 @@ test.describe('Terminal restart persistence', () => {
       await session.close(firstApp)
       firstApp = null
 
-      // ── Second launch ───────────────────────────────────────────────
+      // â”€â”€ Second launch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const secondLaunch = await session.launch()
       secondApp = secondLaunch.app
       await bootstrapRestoredLaunch(secondLaunch.page, worktreeId)
@@ -337,7 +337,7 @@ test.describe('Terminal restart persistence', () => {
     let secondApp: ElectronApplication | null = null
 
     try {
-      // ── First launch ────────────────────────────────────────────────
+      // â”€â”€ First launch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const firstLaunch = await session.launch()
       firstApp = firstLaunch.app
       const { worktreeId } = await bootstrapFirstLaunch(firstLaunch.page, repoPath)
@@ -364,12 +364,12 @@ test.describe('Terminal restart persistence', () => {
       await session.close(firstApp)
       firstApp = null
 
-      // ── Second launch ───────────────────────────────────────────────
+      // â”€â”€ Second launch â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const secondLaunch = await session.launch()
       secondApp = secondLaunch.app
       await bootstrapRestoredLaunch(secondLaunch.page, worktreeId)
 
-      // Why: checking tab *count* (not ids) is the stable assertion — tab ids
+      // Why: checking tab *count* (not ids) is the stable assertion â€” tab ids
       // are regenerated on each launch because the renderer mints them fresh,
       // while the persisted layout only carries the tab positions. Count
       // survives; id identity does not.
@@ -427,7 +427,7 @@ test.describe('Terminal restart persistence', () => {
         .toBe(null)
       await expectSavedLayoutToContainTitle(secondLaunch.page, restoredTabId, title)
 
-      const runtimeTitle = '⠋ Codex restored working'
+      const runtimeTitle = 'â ‹ Codex restored working'
       await secondLaunch.page.evaluate(
         ({ targetTabId, title }) => {
           window.__store!.getState().updateTabTitle(targetTabId, title)

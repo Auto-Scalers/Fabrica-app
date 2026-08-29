@@ -1,15 +1,15 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 export const FILE_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['file', 'open'],
-    summary: 'Open a workspace file in the FABRICA editor',
+    summary: 'Open a workspace file in the Fabrica editor',
     usage: 'fabrica file open <path> [--worktree <selector>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'path', 'worktree'],
     positionalArgs: ['path'],
     notes: [
-      'The path may be relative to the selected worktree or an absolute path inside that worktree. When --worktree is omitted, local CLI calls infer the current FABRICA worktree from cwd.'
+      'The path may be relative to the selected worktree or an absolute path inside that worktree. When --worktree is omitted, local CLI calls infer the current Fabrica worktree from cwd.'
     ],
     examples: [
       'fabrica file open src/App.tsx',
@@ -18,7 +18,7 @@ export const FILE_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['file', 'diff'],
-    summary: 'Open a workspace file diff in the FABRICA editor',
+    summary: 'Open a workspace file diff in the Fabrica editor',
     usage: 'fabrica file diff <path> [--staged] [--worktree <selector>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'path', 'staged', 'worktree'],
     positionalArgs: ['path'],

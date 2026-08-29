@@ -1,27 +1,12 @@
-import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { describe, expect, it } from 'vitest'
 
-const source = readFileSync(new URL('./use-mobile-dictation.ts', import.meta.url), 'utf8')
-const audioChunkSource = readFileSync(
-  new URL('./mobile-dictation-audio-chunk.ts', import.meta.url),
-  'utf8'
-)
-const keepAwakeSource = readFileSync(
-  new URL('./mobile-dictation-keep-awake.ts', import.meta.url),
-  'utf8'
-)
-const desktopStartSource = readFileSync(
-  new URL('./mobile-dictation-desktop-start.ts', import.meta.url),
-  'utf8'
-)
-const sessionStateSource = readFileSync(
-  new URL('./mobile-dictation-session-state.ts', import.meta.url),
-  'utf8'
-)
-const foregroundKeepAwakeSource = readFileSync(
-  new URL('./mobile-dictation-foreground-keep-awake.ts', import.meta.url),
-  'utf8'
-)
+const source = readSourceText(new URL('./use-mobile-dictation.ts', import.meta.url))
+const audioChunkSource = readSourceText(new URL('./mobile-dictation-audio-chunk.ts', import.meta.url))
+const keepAwakeSource = readSourceText(new URL('./mobile-dictation-keep-awake.ts', import.meta.url))
+const desktopStartSource = readSourceText(new URL('./mobile-dictation-desktop-start.ts', import.meta.url))
+const sessionStateSource = readSourceText(new URL('./mobile-dictation-session-state.ts', import.meta.url))
+const foregroundKeepAwakeSource = readSourceText(new URL('./mobile-dictation-foreground-keep-awake.ts', import.meta.url))
 
 function sliceSource(sourceText: string, startPattern: string, endPattern: string): string {
   const start = sourceText.indexOf(startPattern)

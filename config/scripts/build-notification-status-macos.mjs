@@ -28,7 +28,7 @@ if (process.platform !== 'darwin') {
 }
 
 const args = process.argv.slice(2)
-const bundleId = readArg('--bundle-id') ?? 'com.autoscalers.fabrica'
+const bundleId = readArg('--bundle-id') ?? 'ai.autoscalers.fabrica'
 const outputPath = readArg('--output') ?? defaultOutputPath
 // Why: dev launches only need the host architecture; release builds ship a
 // universal binary matching the app's x64 + arm64 targets.

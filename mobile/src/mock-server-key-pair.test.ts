@@ -1,4 +1,4 @@
-﻿import { spawn } from 'node:child_process'
+import { spawn } from 'node:child_process'
 import { mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
@@ -29,7 +29,10 @@ function runConcurrentCreator(keyFile: string): ConcurrentCreator {
     join(import.meta.dirname, '../scripts/mock-server-key-pair.ts')
   ).href
   const script = `
-    const { loadOrCreateMockServerKeyPair } = await import(process.argv[1])
+    // Why: tsx treats scripts/*.ts as CJS (no type field), so the ESM namespace exposes only default.
+    const mod = await import(process.argv[1])
+    const loadOrCreateMockServerKeyPair =
+      mod.loadOrCreateMockServerKeyPair ?? mod.default?.loadOrCreateMockServerKeyPair
     process.stdout.write('READY\\n')
     await new Promise((resolve) => process.stdin.once('data', resolve))
     process.stdout.write('CALLING\\n')

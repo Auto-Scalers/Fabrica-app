@@ -51,11 +51,11 @@ describe('locale-translation-policy', () => {
     expect(
       repairTranslatedValue({
         key: 'auto.web.WebConnect.27393856e4',
-        enValue: 'orca://pair?code=...',
+        enValue: 'fabrica://pair?code=...',
         localeValue: '虎鲸://pair?code=...',
         locale: 'zh'
       })
-    ).toBe('orca://pair?code=...')
+    ).toBe('fabrica://pair?code=...')
   })
 
   it('skips machine translation for standalone brands', () => {

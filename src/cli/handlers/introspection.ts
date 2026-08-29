@@ -1,4 +1,4 @@
-﻿import type { CommandHandler } from '../dispatch'
+import type { CommandHandler } from '../dispatch'
 import { COMMAND_SPECS } from '../specs'
 import { buildAgentContext, formatAgentContextSummary } from '../agent-context'
 

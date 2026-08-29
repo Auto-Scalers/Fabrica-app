@@ -8,10 +8,10 @@ import { getOrchestrationUsageExamples } from '@/lib/orchestration-usage-example
 import { OrchestrationPane } from './OrchestrationPane'
 
 const INSTALL_COMMAND =
-  'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill orchestration --global'
+  'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill fabrica-orchestration --global'
 const UPDATE_COMMAND = INSTALL_COMMAND
 const WINDOWS_INSTALL_COMMAND =
-  'cmd.exe /d /s /c "where.exe npx >nul 2>nul & if errorlevel 1 (echo ERROR: npx was not found. Install Node.js LTS from https://nodejs.org/ to get npx. & echo Then close this terminal and start skill setup again - a new terminal picks up the updated PATH. & exit /b 1) else (npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill orchestration --global)"'
+  'cmd.exe /d /s /c "where.exe npx >nul 2>nul & if errorlevel 1 (echo ERROR: npx was not found. Install Node.js LTS from https://nodejs.org/ to get npx. & echo Then close this terminal and start skill setup again - a new terminal picks up the updated PATH. & exit /b 1) else (npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill fabrica-orchestration --global)"'
 
 const mocks = vi.hoisted(() => ({
   dialogProps: [] as Record<string, unknown>[],
@@ -59,14 +59,14 @@ vi.mock('@/hooks/useInstalledAgentSkills', () => ({
     skills: [
       {
         id: 'claude',
-        name: 'orchestration',
+        name: 'fabrica-orchestration',
         description: null,
         providers: ['claude'],
         sourceKind: 'home',
         sourceLabel: 'Claude home',
         rootPath: '/Users/test/.claude/skills',
-        directoryPath: '/Users/test/.claude/skills/orchestration',
-        skillFilePath: '/Users/test/.claude/skills/orchestration/SKILL.md',
+        directoryPath: '/Users/test/.claude/skills/fabrica-orchestration',
+        skillFilePath: '/Users/test/.claude/skills/fabrica-orchestration/SKILL.md',
         installed: true,
         fileCount: 1,
         updatedAt: null

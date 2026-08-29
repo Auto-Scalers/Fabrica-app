@@ -139,18 +139,18 @@ describe('ArtifactPublishButton', () => {
   it('shows and manages an existing public link', async () => {
     const user = userEvent.setup()
     const createRequest = vi.fn()
-    mocks.getPublishedLink.mockResolvedValue('https://share.onFABRICA.dev/a/artifact-a')
+    mocks.getPublishedLink.mockResolvedValue('https://fabrica-ai.vercel.app/a/artifact-a')
     mocks.publish.mockResolvedValue({
       change: 'updated',
-      item: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' }
+      item: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' }
     })
 
     render(<ArtifactPublishButton sourceKey="/repo/report.md" createRequest={createRequest} />)
 
     await user.click(screen.getByRole('button', { name: 'Share as artifact' }))
-    expect(await screen.findByText('https://share.onFABRICA.dev/a/artifact-a')).toBeInTheDocument()
+    expect(await screen.findByText('https://fabrica-ai.vercel.app/a/artifact-a')).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Copy link' }))
-    expect(mocks.copyLink).toHaveBeenCalledWith('https://share.onFABRICA.dev/a/artifact-a', {
+    expect(mocks.copyLink).toHaveBeenCalledWith('https://fabrica-ai.vercel.app/a/artifact-a', {
       showSuccessToast: false
     })
 
@@ -161,7 +161,7 @@ describe('ArtifactPublishButton', () => {
   it('keeps existing links available when publishing is disabled', async () => {
     const user = userEvent.setup()
     mocks.state.settings = { artifactSharingEnabled: false }
-    mocks.getPublishedLink.mockResolvedValue('https://share.onFABRICA.dev/a/artifact-a')
+    mocks.getPublishedLink.mockResolvedValue('https://fabrica-ai.vercel.app/a/artifact-a')
 
     render(<ArtifactPublishButton sourceKey="/repo/report.md" createRequest={vi.fn()} />)
 
@@ -184,7 +184,7 @@ describe('ArtifactPublishButton', () => {
   it('does not start copy feedback after the panel unmounts', async () => {
     const user = userEvent.setup()
     let finishCopy: ((copied: boolean) => void) | undefined
-    mocks.getPublishedLink.mockResolvedValue('https://share.onFABRICA.dev/a/artifact-a')
+    mocks.getPublishedLink.mockResolvedValue('https://fabrica-ai.vercel.app/a/artifact-a')
     mocks.copyLink.mockReturnValue(
       new Promise<boolean>((resolve) => {
         finishCopy = resolve

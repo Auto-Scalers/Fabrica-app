@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Zustand store inspection helpers for FABRICA E2E tests.
  *
  * Why: In dev mode, FABRICA exposes `window.__store` (the Zustand useAppStore).
@@ -6,8 +6,8 @@
  * fragile DOM scraping.
  */
 
-import type { Page } from '@stablyai/playwright-test'
-import { expect } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
+import { expect } from '@autoscalers/playwright-test'
 import type { BrowserTabSummary, ExplorerFileSummary, TerminalTabSummary } from './runtime-types'
 
 /** Read a value from the Zustand store. Returns the raw JS value. */
@@ -15,7 +15,7 @@ export async function getStoreState<T>(page: Page, selector: string): Promise<T>
   return page.evaluate((selector) => {
     const store = window.__store
     if (!store) {
-      throw new Error('window.__store is not available — is the app in dev mode?')
+      throw new Error('window.__store is not available â€” is the app in dev mode?')
     }
 
     const state = store.getState()

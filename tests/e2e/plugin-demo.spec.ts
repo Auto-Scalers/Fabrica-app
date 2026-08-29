@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Invariant: the documented hello-FABRICA plugin stays inert before visible
  * consent, then its panel, worker command, and event subscription all work.
  */
@@ -6,7 +6,7 @@
 import { cp, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 
 async function openPluginSettings(page: Page): Promise<void> {
@@ -36,7 +36,7 @@ async function openDemoPanel(page: Page): Promise<void> {
   await expect(panelButton).toBeVisible({ timeout: 15_000 })
   await panelButton.click()
   const frame = page.frameLocator('iframe[title="Hello FABRICA"]')
-  await expect(frame.getByRole('heading', { name: 'Hello FABRICA 👋' })).toBeVisible()
+  await expect(frame.getByRole('heading', { name: 'Hello FABRICA ðŸ‘‹' })).toBeVisible()
   await expect(frame.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute(
     'content',
     /default-src 'none'/
@@ -146,7 +146,7 @@ test('runs hello-FABRICA panel, command, and event behind visible consent', asyn
 
     const panelPath = join(pluginRoot, 'panel.html')
     const panelHtml = await readFile(panelPath, 'utf8')
-    await writeFile(panelPath, panelHtml.replace('Hello FABRICA 👋', 'Hello FABRICA reloaded'))
+    await writeFile(panelPath, panelHtml.replace('Hello FABRICA ðŸ‘‹', 'Hello FABRICA reloaded'))
     await expect(
       fabricaPage.frameLocator('iframe[title="Hello FABRICA"]').getByRole('heading', {
         name: 'Hello FABRICA reloaded'

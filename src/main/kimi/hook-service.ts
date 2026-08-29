@@ -203,7 +203,7 @@ export class KimiHookService {
     const remoteConfigPath = pathPosix.join(remoteHome, '.kimi-code', 'config.toml')
     const remoteScriptPath = pathPosix.join(
       remoteHome,
-      '.fabrica',
+      '.fabrica-factory',
       'agent-hooks',
       MANAGED_SCRIPT_FILE_NAME
     )

@@ -1,7 +1,7 @@
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+﻿import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import type {
   RuntimeMobileSessionTabsResult,
   RuntimeTerminalListResult,
@@ -281,7 +281,7 @@ async function runMaterializationJourney(
   expect(replacementHandle).not.toBeNull()
 
   // Why: parking the host PTY can clear this client's active-worktree selection, so reselect the
-  // pane before reading the PTY it rebound to — the rebind itself is what this journey asserts.
+  // pane before reading the PTY it rebound to â€” the rebind itself is what this journey asserts.
   await page.evaluate((id) => window.__store?.getState().setActiveWorktree(id), worktreeId)
   await expect(tab).toBeVisible({ timeout: 10_000 })
   await tab.click()

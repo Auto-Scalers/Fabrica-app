@@ -1,5 +1,5 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
-import { expect } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import { expect } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { rmSync } from 'node:fs'
 import path from 'node:path'

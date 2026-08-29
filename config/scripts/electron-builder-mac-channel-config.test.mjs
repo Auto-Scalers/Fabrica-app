@@ -46,12 +46,12 @@ const withAdhocEnv = (assert) => withEnv({ FABRICA_MAC_ADHOC: '1' }, assert)
 describe('electron-builder mac channel config', () => {
   // Why: Squirrel.Mac swaps the .app in place only when the replacement carries the
   // same bundle id and a valid Developer ID signature. A hourly built on the local
-  // (com.autoscalers.fabrica.local, ad-hoc) identity would be un-installable over a real
+  // (ai.autoscalers.fabrica.local, ad-hoc) identity would be un-installable over a real
   // Fabrica — the whole point of the channel.
   it('builds hourly artifacts with the release signing identity', () => {
     withHourlyEnv((config) => {
       expect(config.mac.appId).toBeUndefined()
-      expect(config.appId).toBe('com.autoscalers.fabrica')
+      expect(config.appId).toBe('ai.autoscalers.fabrica')
       expect(config.mac.hardenedRuntime).toBe(true)
       expect(config.forceCodeSigning).toBe(true)
     })
@@ -98,7 +98,7 @@ describe('electron-builder mac channel config', () => {
   // argument apply. Only the destination repo differs.
   it('builds adhoc artifacts with the release identity and its own repo', () => {
     withAdhocEnv((config) => {
-      expect(config.appId).toBe('com.autoscalers.fabrica')
+      expect(config.appId).toBe('ai.autoscalers.fabrica')
       expect(config.mac.hardenedRuntime).toBe(true)
       expect(config.mac.notarize).toBe(true)
       expect(config.forceCodeSigning).toBe(true)
@@ -117,7 +117,7 @@ describe('electron-builder mac channel config', () => {
 
   it('builds daily artifacts with the release identity and its own repo', () => {
     withDailyEnv((config) => {
-      expect(config.appId).toBe('com.autoscalers.fabrica')
+      expect(config.appId).toBe('ai.autoscalers.fabrica')
       expect(config.mac.hardenedRuntime).toBe(true)
       expect(config.mac.notarize).toBe(true)
       expect(config.forceCodeSigning).toBe(true)

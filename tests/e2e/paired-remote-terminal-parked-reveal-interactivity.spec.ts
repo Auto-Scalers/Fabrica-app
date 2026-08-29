@@ -1,16 +1,16 @@
-/**
+﻿/**
  * Paired remote server: a revealed remote terminal must stay interactive
  * without a tab flip.
  *
  * Topology: headed FABRICA desktop host (remote server) + a separate paired FABRICA
- * desktop client — the "connect to Windows 2, open an old workspace" shape.
+ * desktop client â€” the "connect to Windows 2, open an old workspace" shape.
  *
  * Oracle (the reported symptom verbatim): type into the revealed pane and see
  * the echo paint live. "Paints only after switching to another terminal and
  * back" is the failure, so each scenario records both.
  *
  * The decoy tabs are load-bearing, not scenery. Pre-fix, handleClose never runs,
- * so closeIfIdle is the only remaining release path and it needs zero streams —
+ * so closeIfIdle is the only remaining release path and it needs zero streams â€”
  * a sibling stream is what keeps the wedged multiplexer alive and the pre-fix
  * state red. Each scenario asserts its flip decoy is still mounted at the reveal
  * so that invariant cannot quietly lapse and turn this green.
@@ -24,7 +24,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { randomUUID } from 'node:crypto'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import {
   HOST_TERMINAL_SURFACE_SEPARATOR,
   toWebTerminalSurfaceTabId
@@ -387,7 +387,7 @@ test('paired client keeps revealed remote terminals interactive', async ({
       state?.setActiveWorktree(id)
     }, worktreeId)
 
-    // S1 — hidden tab that stays mounted, then revealed.
+    // S1 â€” hidden tab that stays mounted, then revealed.
     {
       const { target, decoys } = await seedScenario(client, worktreeId)
       createdTerminals.push(target.terminal, ...decoys.map((decoy) => decoy.terminal))
@@ -402,7 +402,7 @@ test('paired client keeps revealed remote terminals interactive', async ({
       )
     }
 
-    // S2 — cold-parked tab (renderer unmounted), then revealed.
+    // S2 â€” cold-parked tab (renderer unmounted), then revealed.
     {
       const { target, decoys } = await seedScenario(client, worktreeId)
       createdTerminals.push(target.terminal, ...decoys.map((decoy) => decoy.terminal))
@@ -418,7 +418,7 @@ test('paired client keeps revealed remote terminals interactive', async ({
       )
     }
 
-    // S3 — cold-parked tab whose runtime connection dropped and came back
+    // S3 â€” cold-parked tab whose runtime connection dropped and came back
     // while parked (the "returned after a while" report).
     {
       const { target, decoys } = await seedScenario(client, worktreeId)

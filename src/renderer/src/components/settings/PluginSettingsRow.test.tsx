@@ -37,7 +37,7 @@ const plugin: PluginHostListEntry = {
   restarts: 0,
   blockedByKillList: {
     reason: 'A vulnerable release was revoked',
-    advisoryUrl: 'https://onFABRICA.dev/advisories/FABRICA-skills'
+    advisoryUrl: 'https://fabrica-ai.vercel.app/advisories/FABRICA-skills'
   },
   source: {
     kind: 'bundled',

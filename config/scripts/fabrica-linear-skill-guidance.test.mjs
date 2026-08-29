@@ -7,9 +7,9 @@ const projectDir = resolve(import.meta.dirname, '../..')
 // their version-sensitive command guidance lives in the authoritative guide sources — assert
 // that content there. The installable stub projections are checked separately below.
 const canonicalGuidePath = join(projectDir, 'skill-guides', 'fabrica-linear.md')
-const legacyGuidePath = join(projectDir, 'skill-guides', 'linear-tickets.md')
+const legacyGuidePath = join(projectDir, 'skill-guides', 'fabrica-linear-tickets.md')
 const canonicalStubPath = join(projectDir, 'skills', 'fabrica-linear', 'SKILL.md')
-const legacyStubPath = join(projectDir, 'skills', 'linear-tickets', 'SKILL.md')
+const legacyStubPath = join(projectDir, 'skills', 'fabrica-linear-tickets', 'SKILL.md')
 const legacyIntro =
   '`linear-tickets` is the legacy bundled name for `fabrica-linear`. This copy remains complete; its CLI commands are identical to `fabrica-linear` and always use `fabrica linear ...`.'
 
@@ -30,7 +30,7 @@ describe('fabrica-linear skill guidance', () => {
     const legacy = readFileSync(legacyGuidePath, 'utf8')
 
     expect(canonical).toContain('name: fabrica-linear')
-    expect(legacy).toContain('name: linear-tickets')
+    expect(legacy).toContain('name: fabrica-linear-tickets')
     expect(legacy).toContain('Legacy bundled alias for')
     expect(normalizeLegacyBody(legacy)).toBe(skillBody(canonical))
   })
@@ -62,7 +62,7 @@ describe('fabrica-linear skill guidance', () => {
 describe('fabrica-linear install stubs', () => {
   const cases = [
     { name: 'fabrica-linear', stubPath: canonicalStubPath, guidePath: canonicalGuidePath },
-    { name: 'linear-tickets', stubPath: legacyStubPath, guidePath: legacyGuidePath }
+    { name: 'fabrica-linear-tickets', stubPath: legacyStubPath, guidePath: legacyGuidePath }
   ]
 
   for (const { name, stubPath, guidePath } of cases) {
@@ -75,7 +75,7 @@ describe('fabrica-linear install stubs', () => {
       expect(stub).toContain('FABRICA_CLI_COMMAND')
       expect(stub).toContain('fabrica-dev')
       expect(stub).toContain('fabrica-ide')
-      expect(stub).toContain('GNOME Fabrica screen reader')
+      expect(stub).toContain('GNOME Orca screen reader')
       expect(stub).not.toMatch(/^fabrica /mu)
     })
 

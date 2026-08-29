@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Regression for #10142: keyboard and mouse enforce the same running-process close
  * confirmation. Both halves run against one tab with a live `sleep 300` child:
  *   1. Cmd/Ctrl+W -> "Stop running command?" dialog (cancelled, tab survives).
  *   2. X click    -> the same dialog, and the tab is still there behind it.
  */
 import { test, expect } from './helpers/fabrica-app'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import {
   waitForSessionReady,
   waitForActiveWorktree,

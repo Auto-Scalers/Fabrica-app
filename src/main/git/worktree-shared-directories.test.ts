@@ -17,13 +17,15 @@ import { assertWorktreeCleanForRemoval } from './worktree'
 import { getStatus } from './status'
 
 const git = (args: string[], cwd: string): void => {
+  // Why: git rejects the Windows `\\.\nul` device path from os.devNull as a config path.
+  const nullConfig = process.platform === 'win32' ? 'NUL' : devNull
   execFileSync('git', args, {
     cwd,
     stdio: 'ignore',
     env: {
       ...process.env,
-      GIT_CONFIG_GLOBAL: devNull,
-      GIT_CONFIG_SYSTEM: devNull
+      GIT_CONFIG_GLOBAL: nullConfig,
+      GIT_CONFIG_SYSTEM: nullConfig
     }
   })
 }

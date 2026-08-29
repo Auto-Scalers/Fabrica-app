@@ -489,7 +489,7 @@ describe('Store', () => {
           id: 'local-repo',
           path: '/Users/alice/FABRICA',
           displayName: 'FABRICA',
-          upstream: { owner: 'StablyAI', repo: 'FABRICA' }
+          upstream: { owner: 'AUTO-SCALERS', repo: 'FABRICA' }
         }),
         makeRepo({
           id: 'remote-repo',
@@ -505,20 +505,20 @@ describe('Store', () => {
 
     expect(store.getProjects()).toEqual([
       expect.objectContaining({
-        id: 'github:Auto-Scalers/Fabrica-app',
+        id: 'github:auto-scalers/fabrica',
         sourceRepoIds: ['local-repo', 'remote-repo']
       })
     ])
     expect(store.getProjectHostSetups()).toEqual([
       expect.objectContaining({
         id: 'local-repo',
-        projectId: 'github:Auto-Scalers/Fabrica-app',
+        projectId: 'github:auto-scalers/fabrica',
         hostId: 'local',
         path: '/Users/alice/FABRICA'
       }),
       expect.objectContaining({
         id: 'remote-repo',
-        projectId: 'github:Auto-Scalers/Fabrica-app',
+        projectId: 'github:auto-scalers/fabrica',
         hostId: 'ssh:gpu-vm',
         path: '/home/alice/FABRICA'
       })
@@ -1886,7 +1886,7 @@ describe('Store', () => {
 
     expect(automation.runContext).toMatchObject({
       kind: 'workspace-run',
-      projectId: 'github:Auto-Scalers/Fabrica-app',
+      projectId: 'github:auto-scalers/fabrica',
       hostId: toSshExecutionHostId('builder'),
       projectHostSetupId: 'r1',
       repoId: 'r1',
@@ -1895,7 +1895,7 @@ describe('Store', () => {
     expect(automation.sourceContext).toMatchObject({
       kind: 'task-source',
       provider: 'github',
-      projectId: 'github:Auto-Scalers/Fabrica-app',
+      projectId: 'github:auto-scalers/fabrica',
       hostId: toSshExecutionHostId('builder'),
       projectHostSetupId: 'r1',
       repoId: 'r1',
@@ -1994,7 +1994,7 @@ describe('Store', () => {
 
     expect(migratedAutomation?.runContext).toMatchObject({
       kind: 'workspace-run',
-      projectId: 'github:Auto-Scalers/Fabrica-app',
+      projectId: 'github:auto-scalers/fabrica',
       hostId: toSshExecutionHostId('builder'),
       projectHostSetupId: 'r1',
       repoId: 'r1',
@@ -2003,7 +2003,7 @@ describe('Store', () => {
     expect(migratedAutomation?.sourceContext).toMatchObject({
       kind: 'task-source',
       provider: 'github',
-      projectId: 'github:Auto-Scalers/Fabrica-app',
+      projectId: 'github:auto-scalers/fabrica',
       hostId: toSshExecutionHostId('builder'),
       projectHostSetupId: 'r1',
       repoId: 'r1',
@@ -4173,7 +4173,7 @@ describe('Store', () => {
       upstream: { owner: 'Auto-Scalers', repo: 'cloud-project' }
     })
     store.createProjectHostSetup({
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'ssh:ssh-old',
       setupId: 'cloud-project::ssh-old',
       setupMethod: 'provisioned'
@@ -4194,13 +4194,13 @@ describe('Store', () => {
       upstream: { owner: 'Auto-Scalers', repo: 'cloud-project' }
     })
     store.createProjectHostSetup({
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'ssh:ssh-old',
       setupId: 'setup-old',
       setupMethod: 'provisioned'
     })
     store.createProjectHostSetup({
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'ssh:ssh-new',
       setupId: 'setup-new',
       setupMethod: 'provisioned'
@@ -4258,7 +4258,7 @@ describe('Store', () => {
 
     expect(store.getProjects()).toEqual([
       expect.objectContaining({
-        id: 'github:Auto-Scalers/Fabrica-app',
+        id: 'github:auto-scalers/fabrica',
         displayName: 'renamed',
         sourceRepoIds: ['r1']
       })
@@ -4266,7 +4266,7 @@ describe('Store', () => {
     expect(store.getProjectHostSetups()).toEqual([
       expect.objectContaining({
         id: 'r1',
-        projectId: 'github:Auto-Scalers/Fabrica-app',
+        projectId: 'github:auto-scalers/fabrica',
         displayName: 'renamed',
         worktreeBasePath: '../new-worktrees'
       })
@@ -4362,7 +4362,7 @@ describe('Store', () => {
     })
 
     const result = store.createProjectHostSetup({
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'runtime:gpu-vm',
       setupId: 'cloud-project::gpu-vm',
       displayName: 'GPU VM',
@@ -4371,12 +4371,12 @@ describe('Store', () => {
     })
 
     expect(result?.project).toMatchObject({
-      id: 'github:Auto-Scalers/cloud-project',
+      id: 'github:auto-scalers/cloud-project',
       displayName: 'Cloud Project'
     })
     expect(result?.setup).toMatchObject({
       id: 'cloud-project::gpu-vm',
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'runtime:gpu-vm',
       repoId: '',
       path: '',
@@ -4399,7 +4399,7 @@ describe('Store', () => {
     })
     const independentSetup = makeProjectHostSetup({
       id: 'cloud-project::gpu-vm',
-      projectId: 'github:Auto-Scalers/cloud-project',
+      projectId: 'github:auto-scalers/cloud-project',
       hostId: 'runtime:gpu-vm'
     })
     store.createProjectHostSetup({
@@ -4410,7 +4410,7 @@ describe('Store', () => {
 
     expect(() =>
       store.createProjectHostSetup({
-        projectId: 'github:Auto-Scalers/cloud-project',
+        projectId: 'github:auto-scalers/cloud-project',
         hostId: 'runtime:gpu-vm',
         setupId: 'duplicate'
       })
@@ -4578,7 +4578,7 @@ describe('Store', () => {
     const updated = store.updateRepo('r1', {
       upstream: { owner: ' Auto-Scalers ', repo: ' FABRICA ' }
     })
-    expect(updated!.upstream).toEqual({ owner: 'Auto-Scalers', repo: 'fabrica' })
+    expect(updated!.upstream).toEqual({ owner: 'Auto-Scalers', repo: 'FABRICA' })
 
     store.updateRepo('r1', { upstream: null })
     store.flush()

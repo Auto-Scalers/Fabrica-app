@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Invariant: a plugin panel cannot exfiltrate, navigate, or bypass the host bridge.
  * Oracle: a permissive loopback server receives zero requests while the real
  * sandboxed iframe reports CSP/navigation containment and a bounded bridge refusal.
@@ -11,7 +11,7 @@ import { createServer, type Server } from 'node:http'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { AddressInfo } from 'node:net'
-import type { ElectronApplication, FrameLocator, Page, TestInfo } from '@stablyai/playwright-test'
+import type { ElectronApplication, FrameLocator, Page, TestInfo } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import {
   readPanelNavigationObserver,

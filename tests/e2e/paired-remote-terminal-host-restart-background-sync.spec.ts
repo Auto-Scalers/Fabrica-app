@@ -1,7 +1,7 @@
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+﻿import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { PROTOCOL_VERSION } from '../../src/main/daemon/types'
 import {
   HOST_TERMINAL_SURFACE_SEPARATOR,

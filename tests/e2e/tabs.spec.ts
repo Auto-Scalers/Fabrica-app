@@ -1,4 +1,4 @@
-/**
+﻿/**
  * E2E tests for tab management: creating, switching, reordering, and closing tabs.
  *
  * User Prompt:
@@ -8,7 +8,7 @@
  * - double-click a tab to rename it inline
  *
  * Why these specs assert on the DOM: a prior version of this file drove every
- * flow through `window.__store` and read the same fields back — a tautology
+ * flow through `window.__store` and read the same fields back â€” a tautology
  * that would have passed even if the tab bar had stopped rendering (the same
  * pattern that let PR #1186's `StartFromField` render crash ship past the
  * E2E suite in #1193). The rule in tests/e2e/AGENTS.md is that the final
@@ -19,7 +19,7 @@
  */
 
 import { test, expect } from './helpers/fabrica-app'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import {
   waitForSessionReady,
   waitForActiveWorktree,
@@ -94,12 +94,12 @@ test.describe('Tabs', () => {
     await newTerminalMenuItem.click({ force: true })
     await expect(newTerminalMenuItem).toBeHidden({ timeout: 3_000 })
 
-    // Final assertion is on the rendered tab count — the tab bar itself must
+    // Final assertion is on the rendered tab count â€” the tab bar itself must
     // gain an element, not just the store.
     await expect
       .poll(() => countRenderedTabs(fabricaPage), {
         timeout: 5_000,
-        message: 'Clicking + → New Terminal did not render a new tab in the tab bar'
+        message: 'Clicking + â†’ New Terminal did not render a new tab in the tab bar'
       })
       .toBeGreaterThan(tabsBefore)
 
@@ -133,7 +133,7 @@ test.describe('Tabs', () => {
     await fabricaPage.evaluate(() => document.body.focus())
     await fabricaPage.keyboard.press(`${mod}+t`)
 
-    // DOM-level count increased — confirms a new tab actually rendered.
+    // DOM-level count increased â€” confirms a new tab actually rendered.
     await expect
       .poll(() => countRenderedTabs(fabricaPage), {
         timeout: 5_000,
@@ -143,13 +143,13 @@ test.describe('Tabs', () => {
 
     // The newly-rendered active tab must be a terminal (tab-type is visible as
     // the active surface behind the strip; we rely on the store flag here only
-    // to disambiguate terminal vs. editor vs. browser — the fact that *some*
+    // to disambiguate terminal vs. editor vs. browser â€” the fact that *some*
     // tab is active is already proved by the DOM assertion below).
     const activeType = await getActiveTabType(fabricaPage)
     expect(activeType).toBe('terminal')
 
     // The DOM must have exactly one active tab and it must match the store's
-    // activeTabId — this is the load-bearing check that the render layer and
+    // activeTabId â€” this is the load-bearing check that the render layer and
     // the state layer agree on what is selected.
     const storeActiveId = await getActiveTabId(fabricaPage)
     expect(storeActiveId).not.toBeNull()
@@ -169,7 +169,7 @@ test.describe('Tabs', () => {
   test('Cmd/Ctrl+Shift+] and Cmd/Ctrl+Shift+[ switch between tabs', async ({ fabricaPage }) => {
     const worktreeId = (await getActiveWorktreeId(fabricaPage))!
 
-    // Ensure we have at least 2 tabs — use the real "+" flow so a render
+    // Ensure we have at least 2 tabs â€” use the real "+" flow so a render
     // regression would fail setup before we even start the cycle check.
     if ((await countRenderedTabs(fabricaPage)) < 2) {
       await fabricaPage.getByRole('button', { name: 'New tab' }).click()
@@ -191,7 +191,7 @@ test.describe('Tabs', () => {
       window.__store?.getState().setActiveTab(tabId)
     }, secondTabId)
 
-    // DOM assertion — the second tab must actually show the active indicator.
+    // DOM assertion â€” the second tab must actually show the active indicator.
     await expect.poll(() => getDomActiveTabId(fabricaPage), { timeout: 3_000 }).toBe(secondTabId)
 
     // Switch back.
@@ -208,8 +208,8 @@ test.describe('Tabs', () => {
    * Why the reorder is still store-driven: real dnd-kit pointer events are
    * unreliable in the hidden-window Electron mode we run E2E in (pointer
    * capture + collision detection interact poorly with `window.show()` being
-   * suppressed). We seed the post-drag state via `reorderUnifiedTabs` — the
-   * same action dnd-kit calls on drop — and then assert the tab bar's DOM
+   * suppressed). We seed the post-drag state via `reorderUnifiedTabs` â€” the
+   * same action dnd-kit calls on drop â€” and then assert the tab bar's DOM
    * order matches the new sequence. That final DOM check is what makes this
    * a real test: a pure store round-trip would not catch a regression where
    * the tab strip stopped re-rendering in the store's new order.
@@ -350,10 +350,10 @@ test.describe('Tabs', () => {
    * Regression: after a drag-reorder, Cmd/Ctrl+Shift+[ must walk tabs in
    * the new visible order. The pre-fix bug read a stale legacy order
    * (`tabBarOrderByWorktree`), so pressing "left" three times cycled
-   * 3 → 1 → 2 instead of 3 → 2 → 1 once tabs had been rearranged.
+   * 3 â†’ 1 â†’ 2 instead of 3 â†’ 2 â†’ 1 once tabs had been rearranged.
    *
    * The DOM assertion (`data-active` matching the expected tab element) is
-   * the load-bearing check — it fails if the shortcut walks the right store
+   * the load-bearing check â€” it fails if the shortcut walks the right store
    * id but the tab bar stops painting the active indicator on that tab.
    */
   test('Cmd/Ctrl+Shift+[ walks tabs in drag-reordered order', async ({ fabricaPage }) => {
@@ -407,7 +407,7 @@ test.describe('Tabs', () => {
       .toEqual([b, c, a])
 
     // Activate the last tab in the new visible order, then walk left twice.
-    // Expected cycle: a → c → b (i.e. walks the *new* order in reverse).
+    // Expected cycle: a â†’ c â†’ b (i.e. walks the *new* order in reverse).
     await fabricaPage.evaluate((tabId) => {
       window.__store?.getState().setActiveTab(tabId)
     }, a)
@@ -473,7 +473,7 @@ test.describe('Tabs', () => {
    * - closing tabs works
    *
    * The DOM check (`data-active="true"` lands on a different element) proves
-   * the tab bar re-paints the active indicator after a close — a store-only
+   * the tab bar re-paints the active indicator after a close â€” a store-only
    * check would pass even if the indicator failed to shift.
    */
   test('closing the active tab activates a neighbor tab', async ({ fabricaPage }) => {

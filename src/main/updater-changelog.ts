@@ -1,4 +1,4 @@
-﻿import { net } from 'electron'
+import { net } from 'electron'
 import type { ChangelogData } from '../shared/types'
 import { compareVersions } from './updater-fallback'
 
@@ -10,7 +10,7 @@ type ChangelogEntry = {
   releaseNotesUrl: string
 }
 
-const CHANGELOG_URL = 'https://onFABRICA.dev/changelog'
+const CHANGELOG_URL = 'https://fabrica-ai.vercel.app/changelog'
 
 function isValidEntry(entry: ChangelogEntry): boolean {
   return (
@@ -42,7 +42,7 @@ export async function fetchChangelog(
   incomingVersion: string,
   localVersion: string
 ): Promise<ChangelogData | null> {
-  const res = await net.fetch('https://onFABRICA.dev/whats-new/changelog.json', {
+  const res = await net.fetch('https://fabrica-ai.vercel.app/whats-new/changelog.json', {
     signal: AbortSignal.timeout(5000)
   })
   if (!res.ok) {

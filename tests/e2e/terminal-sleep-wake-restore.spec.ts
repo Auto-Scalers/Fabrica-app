@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -147,15 +147,15 @@ function richSleepWakePayload(runId: string): string {
   return [
     '\x1b[?2026h',
     '\x1b[2J\x1b[H',
-    '╭────────────────────────────────────────────╮',
-    `│ sleep wake restore ${shortId} 😀             │`,
-    '├────────────┬───────────────┬───────────────┤',
-    '│ agent      │ status        │ output        │',
-    '├────────────┼───────────────┼───────────────┤',
-    `│ codex-${shortId.slice(0, 4)} │ thinking      │ box/table ok  │`,
-    '│ opencode   │ streaming     │ unicode ✓     │',
-    '│ shell      │ idle          │ prompt ready  │',
-    '╰────────────┴───────────────┴───────────────╯',
+    'â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®',
+    `â”‚ sleep wake restore ${shortId} ðŸ˜€             â”‚`,
+    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',
+    'â”‚ agent      â”‚ status        â”‚ output        â”‚',
+    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',
+    `â”‚ codex-${shortId.slice(0, 4)} â”‚ thinking      â”‚ box/table ok  â”‚`,
+    'â”‚ opencode   â”‚ streaming     â”‚ unicode âœ“     â”‚',
+    'â”‚ shell      â”‚ idle          â”‚ prompt ready  â”‚',
+    'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯',
     `SLEEP_WAKE_RESTORE_${runId}`,
     `SLEEP_WAKE_TABLE_${runId}`,
     '\x1b[?2026l'
@@ -167,7 +167,7 @@ function sleepWakeExpectedMarkers(runId: string): string[] {
     `SLEEP_WAKE_RESTORE_${runId}`,
     `SLEEP_WAKE_TABLE_${runId}`,
     'box/table ok',
-    'unicode ✓',
+    'unicode âœ“',
     'prompt ready'
   ]
 }

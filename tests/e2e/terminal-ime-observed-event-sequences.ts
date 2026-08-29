@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 
 async function dispatchObservedIbusHangulSequence(
   page: Page,
@@ -56,26 +56,26 @@ async function dispatchObservedIbusHangulSequence(
     }
 
     if (selectedVariant === 'mixed') {
-      let prefix = begin('한')
-      commit(prefix, '한')
+      let prefix = begin('í•œ')
+      commit(prefix, 'í•œ')
       for (const character of 'abc') {
         keydown(character, `Key${character.toUpperCase()}`, character.charCodeAt(0))
         replaceAndInput(`${textarea.value}${character}`, 'insertText', character)
       }
-      prefix = begin('글')
-      commit(prefix, '글')
+      prefix = begin('ê¸€')
+      commit(prefix, 'ê¸€')
       keydown('Enter', 'Enter', 13)
       return
     }
 
-    const prefix = begin('테')
-    composition('compositionend', '테')
+    const prefix = begin('í…Œ')
+    composition('compositionend', 'í…Œ')
     keydown('a', 'KeyA', 65)
     keydown('Process', 'KeyR', 229, true)
     textarea.setSelectionRange(prefix.length + 1, prefix.length + 1)
     composition('compositionstart')
-    update(`${prefix}테`, '스')
-    composition('compositionend', '스')
+    update(`${prefix}í…Œ`, 'ìŠ¤')
+    composition('compositionend', 'ìŠ¤')
     keydown('Enter', 'Enter', 13)
   }, variant)
 }

@@ -1,14 +1,14 @@
-/**
+﻿/**
  * E2E: linked work item behavior when switching the composer project.
  *
- * Why: Jira/Linear issues are workspace-scoped context — switching the
+ * Why: Jira/Linear issues are workspace-scoped context â€” switching the
  * implementation project must keep them attached. They used to be dropped,
  * leaving only the derived name in the smart field. GitHub/GitLab sources
  * are repo-scoped and must still clear on a project switch.
  *
  * Why E2E: the preservation logic lives in useComposerState behind the real
- * ProjectCombobox interaction and main-process repo resolution — a store
- * slice unit test cannot reach the combobox → handleProjectChange → smart
+ * ProjectCombobox interaction and main-process repo resolution â€” a store
+ * slice unit test cannot reach the combobox â†’ handleProjectChange â†’ smart
  * field pill re-render path.
  */
 
@@ -16,7 +16,7 @@ import { execFileSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import type { LinkedWorkItemSummary } from '../../src/renderer/src/lib/new-workspace'

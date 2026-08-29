@@ -37,7 +37,7 @@ describe('FABRICA cloud auth config', () => {
         orgEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/org',
         logoutEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/logout',
         relayTokenEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/relay-token',
-        relayDirectorUrl: 'https://relay.onFABRICA.dev',
+        relayDirectorUrl: 'https://fabrica-relay.fabrica-relay.workers.dev',
         clientId: 'desktop-client',
         scope: 'openid profile email offline_access'
       }
@@ -48,16 +48,16 @@ describe('FABRICA cloud auth config', () => {
     expect(getFABRICACloudAuthConfig({}, true)).toEqual({
       configured: true,
       config: {
-        apiBaseUrl: 'https://login.onFABRICA.dev',
-        authorizeEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/authorize',
-        sessionEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/session',
-        refreshEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/refresh',
-        capabilitiesEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/capabilities',
-        profileEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/profile',
-        orgEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/org',
-        logoutEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/logout',
-        relayTokenEndpoint: 'https://login.onfabrica.dev/v1/desktop/auth/relay-token',
-        relayDirectorUrl: 'https://relay.onFABRICA.dev',
+        apiBaseUrl: 'https://fabrica-ai.vercel.app',
+        authorizeEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/authorize',
+        sessionEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/session',
+        refreshEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/refresh',
+        capabilitiesEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/capabilities',
+        profileEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/profile',
+        orgEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/org',
+        logoutEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/logout',
+        relayTokenEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/relay-token',
+        relayDirectorUrl: 'https://fabrica-relay.fabrica-relay.workers.dev',
         clientId: 'FABRICA-desktop',
         scope: 'openid profile email offline_access'
       }

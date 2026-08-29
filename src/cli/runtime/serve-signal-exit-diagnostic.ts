@@ -1,6 +1,6 @@
-﻿import { RuntimeClientError } from './types'
+import { RuntimeClientError } from './types'
 
-export const MAC_CRASH_REPORT_GLOB = '~/Library/Logs/DiagnosticReports/FABRICA-*.ips'
+export const MAC_CRASH_REPORT_GLOB = '~/Library/Logs/DiagnosticReports/Fabrica-*.ips'
 
 export function serveSignalExitError(
   signal: NodeJS.Signals | null,
@@ -9,18 +9,18 @@ export function serveSignalExitError(
   if (!signal) {
     return new RuntimeClientError(
       'runtime_serve_failed',
-      'FABRICA serve exited without reporting an exit code or signal.'
+      'Fabrica serve exited without reporting an exit code or signal.'
     )
   }
   if (platform !== 'darwin' || signal !== 'SIGABRT') {
-    return new RuntimeClientError('runtime_serve_failed', `FABRICA serve exited via ${signal}.`)
+    return new RuntimeClientError('runtime_serve_failed', `Fabrica serve exited via ${signal}.`)
   }
   // Why: the startup abort happens inside +[NSApplication sharedApplication], before any of our JS
   // runs, so the parent CLI is the only place it can be explained. We only see the signal, never the
   // phase, so the cause is offered as the likely one rather than asserted.
   return new RuntimeClientError(
     'runtime_serve_failed',
-    'FABRICA serve aborted with SIGABRT on macOS. This most often happens at application startup, when the process cannot register with the macOS window server, which is common in restricted or sandboxed environments, SSH sessions without a GUI login, and CI.',
+    'Fabrica serve aborted with SIGABRT on macOS. This most often happens at application startup, when the process cannot register with the macOS window server, which is common in restricted or sandboxed environments, SSH sessions without a GUI login, and CI.',
     {
       nextSteps: [
         'Re-run `fabrica serve` outside a sandboxed or restricted environment, with a macOS desktop login active.',

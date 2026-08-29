@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -29,7 +29,7 @@ type ParkingDebugWindow = Window & {
 }
 
 // Why: production cold-park hysteresis is 30s with a multi-minute hot-retain
-// window. The fast-park override must be scoped to THIS spec's app launches —
+// window. The fast-park override must be scoped to THIS spec's app launches â€”
 // mutating process.env at module scope leaked into later specs when a worker
 // reloaded files without replaying this file's afterAll.
 const PARKING_DELAY_MS = Number(process.env.FABRICA_E2E_TERMINAL_PARKING_DELAY_MS) || 500
@@ -42,15 +42,15 @@ const PARKED_FRAME_SCRIPT_DELAY_MS = 750
 const PARKED_FRAME_COUNT = 25
 
 function parkedTuiFrame(runId: string, frame: number): string {
-  const progress = `${'█'.repeat((frame % 8) + 1)}${'░'.repeat(8 - ((frame % 8) + 1))}`
+  const progress = `${'â–ˆ'.repeat((frame % 8) + 1)}${'â–‘'.repeat(8 - ((frame % 8) + 1))}`
   const rows = [
-    '╭────────────────────────────────────────────────────────────────────╮',
-    `│ Parked view restore Frame ${String(frame).padStart(3, '0')} ${frame % 2 === 0 ? '🟢' : '🟡'} ${progress} │`,
-    '├──────────────┬──────────────────────┬──────────────────────────────┤',
-    `│ model        │ codex/opencode       │ ${runId.slice(0, 28).padEnd(28)} │`,
-    `│ status       │ ${frame % 2 === 0 ? 'thinking' : 'streaming'}            │ input ${'#'.repeat((frame % 18) + 1).padEnd(22)} │`,
-    `│ diff         │ +${String(frame * 3).padEnd(19)} │ -${String(frame).padEnd(27)} │`,
-    '╰──────────────┴──────────────────────┴──────────────────────────────╯',
+    'â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®',
+    `â”‚ Parked view restore Frame ${String(frame).padStart(3, '0')} ${frame % 2 === 0 ? 'ðŸŸ¢' : 'ðŸŸ¡'} ${progress} â”‚`,
+    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',
+    `â”‚ model        â”‚ codex/opencode       â”‚ ${runId.slice(0, 28).padEnd(28)} â”‚`,
+    `â”‚ status       â”‚ ${frame % 2 === 0 ? 'thinking' : 'streaming'}            â”‚ input ${'#'.repeat((frame % 18) + 1).padEnd(22)} â”‚`,
+    `â”‚ diff         â”‚ +${String(frame * 3).padEnd(19)} â”‚ -${String(frame).padEnd(27)} â”‚`,
+    'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯',
     `PARKED_RESTORE_FINAL_${runId}_${frame}`
   ]
   return [
@@ -78,16 +78,16 @@ function writeParkedFrameScript(scriptPath: string, runId: string): void {
 // Deterministic static alt-screen frame for the park/reveal cycle test: rich
 // styling (box drawing, SGR colors, wide glyphs) that exercises the snapshot
 // restore, painted once and held so the on-screen content is stable across
-// cycles. No spinner/progress churn — the frame must be byte-identical every
+// cycles. No spinner/progress churn â€” the frame must be byte-identical every
 // reveal so drift is detectable.
 function cycleReferenceFrame(runId: string): string {
   const rows = [
-    '╭──────────────────────────────────────────────────────────╮',
-    `│ Park/reveal cycle reference ${runId.slice(0, 8)} 🟢 你好世界 터미널  │`,
-    '├───────────────┬──────────────────────────────────────────┤',
-    `│ model         │ \x1b[1mcodex/opencode\x1b[22m stream +142 -37        │`,
-    `│ status        │ \x1b[38;5;204mrunning\x1b[0m\x1b[2;36m diff --git a/pty.ts esc↩     │`,
-    '╰───────────────┴──────────────────────────────────────────╯',
+    'â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®',
+    `â”‚ Park/reveal cycle reference ${runId.slice(0, 8)} ðŸŸ¢ ä½ å¥½ä¸–ç•Œ í„°ë¯¸ë„  â”‚`,
+    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',
+    `â”‚ model         â”‚ \x1b[1mcodex/opencode\x1b[22m stream +142 -37        â”‚`,
+    `â”‚ status        â”‚ \x1b[38;5;204mrunning\x1b[0m\x1b[2;36m diff --git a/pty.ts escâ†©     â”‚`,
+    'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯',
     `CYCLE_REFERENCE_${runId}`
   ]
   return [
@@ -110,8 +110,8 @@ function writeCycleReferenceScript(scriptPath: string, runId: string): void {
 }
 
 // Why: serialize() re-emits the buffer with cursor-restore trailer sequences
-// (ESC[…H, ESC[?25h) and the exact CSI form can differ run-to-run without any
-// visible change. Compare the CONTENT rows, not the trailer — strip trailing
+// (ESC[â€¦H, ESC[?25h) and the exact CSI form can differ run-to-run without any
+// visible change. Compare the CONTENT rows, not the trailer â€” strip trailing
 // control sequences and normalize whitespace-only tail lines.
 function terminalContentRows(serialized: string): string[] {
   // eslint-disable-next-line no-control-regex
@@ -253,7 +253,7 @@ type ParkableTabSetup = {
   tabAPtyId: string
 }
 
-// Why: every scenario starts from the same shape — tab A live in the active
+// Why: every scenario starts from the same shape â€” tab A live in the active
 // worktree; callers then create more tabs on top so tab A goes hidden.
 async function setUpParkableTabA(page: Page): Promise<ParkableTabSetup> {
   const worktreeId = await waitForActiveWorktree(page)
@@ -304,7 +304,7 @@ test.describe('Terminal hidden view parking', () => {
         description: `parkDelayMs=${wiring.parkDelayMs ?? PARKING_DELAY_MS} parkDetectedAfterMs=${parkDetectedAfterMs}`
       })
 
-      // Why: parking must be scoped to the parked tab — tab B (hidden more
+      // Why: parking must be scoped to the parked tab â€” tab B (hidden more
       // recently, so #8262 keeps it warm) still holds a live pane manager and
       // xterm while tab A tore down.
       const tabBState = await readTerminalTabViewState(fabricaPage, tabBId)
@@ -328,16 +328,16 @@ test.describe('Terminal hidden view parking', () => {
 
       const content = await getTerminalContent(fabricaPage, 12_000)
       expect(content).toContain(`Frame ${String(PARKED_FRAME_COUNT - 1).padStart(3, '0')}`)
-      expect(content).toContain('╭')
-      expect(content).toContain('├')
-      expect(content).toContain('█')
+      expect(content).toContain('â•­')
+      expect(content).toContain('â”œ')
+      expect(content).toContain('â–ˆ')
       expect(content).not.toContain('FABRICA skipped hidden terminal output')
 
       // Why: the typed marker only appears joined in command *output*, so this
       // proves the revealed terminal accepts input end-to-end, not just echo.
       const typedMarker = `PARKED_TYPED_OK_${runId}`
       const typedProbeScript = `console.log('PARKED_TYPED_OK_' + '${runId}')`
-      // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
+      // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
       await runNodeScriptInTerminal(fabricaPage, tabAPtyId, typedProbeScript, {
         prefix: 'FABRICA-parked-typed-probe'
       })
@@ -378,7 +378,7 @@ test.describe('Terminal hidden view parking', () => {
     // before the store assertion lands.
     const payload = `\x1b]0;${parkedTitle}\x07\x07${marker}\n`
     const sideEffectScript = `process.stdout.write(${JSON.stringify(payload)}); setTimeout(() => process.exit(0), 30000)`
-    // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
+    // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
     await runNodeScriptInTerminal(fabricaPage, tabAPtyId, sideEffectScript, {
       prefix: 'FABRICA-parked-side-effect'
     })
@@ -402,7 +402,7 @@ test.describe('Terminal hidden view parking', () => {
       })
       .toBe(true)
 
-    // Why: side effects must come from the pane-less watcher — the burst must
+    // Why: side effects must come from the pane-less watcher â€” the burst must
     // not have woken the parked view back up.
     expect((await readTerminalTabViewState(fabricaPage, tabAId)).hasManager).toBe(false)
 
@@ -458,12 +458,12 @@ test.describe('Terminal hidden view parking', () => {
     expect(tabCState.paneCount).toBeGreaterThan(0)
   })
 
-  // Drives 25 deterministic park→reveal cycles on a static rich TUI frame and
+  // Drives 25 deterministic parkâ†’reveal cycles on a static rich TUI frame and
   // asserts every reveal reproduces the SAME content the tab showed while it was
   // continuously visible (the never-parked reference). This is the field-garble
   // guard end-to-end: it exercises the real renderer teardown + HeadlessEmulator
   // snapshot restore + PTY reattach path the fuzz suites model in isolation, and
-  // fails if any single cycle — or accumulated drift across 25 — garbles a cell.
+  // fails if any single cycle â€” or accumulated drift across 25 â€” garbles a cell.
   test('reproduces a static frame byte-for-byte across 25 park/reveal cycles', async ({
     fabricaPage,
     testRepoPath
@@ -489,7 +489,7 @@ test.describe('Terminal hidden view parking', () => {
       // Tab B stays visible whenever tab A is parked; toggling the active tab
       // between them is the deterministic hide/reveal driver. The decoy tab
       // absorbs the #8262 last-active exemption each cycle (hidden after B) so
-      // tab A — not the just-hidden view — is the one that cold-parks.
+      // tab A â€” not the just-hidden view â€” is the one that cold-parks.
       const tabBId = await createActiveTerminalTab(fabricaPage, worktreeId)
       const decoyTabId = await createActiveTerminalTab(fabricaPage, worktreeId)
 
@@ -498,7 +498,7 @@ test.describe('Terminal hidden view parking', () => {
       // alt-screen restore deliberately drops the normal-buffer scrollback
       // (serializeHeadlessTerminalBuffer forces scrollback 0 under alt), so the
       // pre-park serialize carries the shell command echo the restore correctly
-      // omits — that is contract, not garble. Baselining after one reveal makes
+      // omits â€” that is contract, not garble. Baselining after one reveal makes
       // both sides pass through identical machinery, so any later diff is drift.
       const runOneParkRevealCycle = async (cycle: number): Promise<string[]> => {
         await activateTerminalTab(fabricaPage, tabBId)
@@ -523,10 +523,10 @@ test.describe('Terminal hidden view parking', () => {
 
       const referenceRows = await runOneParkRevealCycle(0)
       expect(referenceRows.join('\n')).toContain(marker)
-      expect(referenceRows.join('\n')).toContain('╭')
+      expect(referenceRows.join('\n')).toContain('â•­')
 
       // waitForTabParked (inside runOneParkRevealCycle) throws if the tab never
-      // parked, so reaching here means the machinery ran every cycle — no
+      // parked, so reaching here means the machinery ran every cycle â€” no
       // separate premise guard needed for a vacuous-green check.
       const CYCLES = 25
       const mismatches: string[] = []

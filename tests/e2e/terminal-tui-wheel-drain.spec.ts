@@ -1,7 +1,7 @@
-import fs from 'node:fs'
+﻿import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -24,7 +24,7 @@ const VISIBLE_TUI_FIXTURE_PATH = path.join(
 const MAX_ARRIVAL_LAG_MS = 900
 // Why: each event is a serial CDP mouse.wheel round-trip that competes with the
 // heavy TUI's per-report full-screen redraw, so under loaded CI a round-trip can
-// take ~2.7s — 120 of them overran even the tripled test.slow() budget (360s).
+// take ~2.7s â€” 120 of them overran even the tripled test.slow() budget (360s).
 // 60 back-to-back events (no inter-event sleep) is still a dense burst that
 // exercises the drain/coalesce path while keeping the dispatch loop well inside
 // the timeout.
@@ -103,7 +103,7 @@ async function terminalWheelTarget(
 
 /**
  * Drives real wheel input (CDP mouse events through the compositor input
- * pipeline — the same priority class as physical trackpad input) rather than
+ * pipeline â€” the same priority class as physical trackpad input) rather than
  * synthetic DOM dispatchEvent, so input can genuinely compete with the
  * renderer's timer-based PTY input drain the way a physical gesture does.
  */

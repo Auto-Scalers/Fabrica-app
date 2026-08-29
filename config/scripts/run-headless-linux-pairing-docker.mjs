@@ -320,7 +320,7 @@ function validateReady(logs, mode, expectedHost, options = {}) {
       logs.includes(`Advertised endpoint: ws://${expectedHost}:`),
       'human advertised endpoint is missing'
     )
-    assert(logs.includes('Pairing URL: orca://pair?code='), 'human pairing URL is missing')
+    assert(logs.includes('Pairing URL: fabrica://pair?code='), 'human pairing URL is missing')
     return
   }
   if (!options.allowStdoutNoise) {

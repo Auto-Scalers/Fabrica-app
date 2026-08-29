@@ -1,4 +1,4 @@
-﻿import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import {
   View,
   Text,
@@ -212,7 +212,7 @@ export default function SettingsScreen() {
         <View style={[styles.section, styles.sectionSpacer]}>
           <Pressable
             style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
-            onPress={() => void Linking.openURL('https://www.onFABRICA.dev/privacy')}
+            onPress={() => void Linking.openURL('https://fabrica-ai.vercel.app/privacy')}
           >
             <Shield size={16} color={colors.textSecondary} />
             <Text style={styles.rowLabel}>Privacy Policy</Text>

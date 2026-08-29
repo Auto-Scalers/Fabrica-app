@@ -1,8 +1,13 @@
 /**
  * Guards the source control "Push"/"Pull" button mistranslations so
  * bootstrap re-translation cannot silently regress them.
+ *
+ * APP-E5 (PM decision D8): ja.json is an English-fallback placeholder
+ * (corrupted pre-repo), so the guard asserts key presence at English
+ * fallback until professional translations land.
  */
 import { describe, expect, it } from 'vitest'
+import en from './locales/en.json'
 import ja from './locales/ja.json'
 
 function findByKey(node: unknown, key: string): string | undefined {
@@ -32,11 +37,11 @@ function findByKey(node: unknown, key: string): string | undefined {
 }
 
 describe('ja technical literal / sense fixes', () => {
-  it('translates the source control Push action as プッシュ, not 押す', () => {
-    expect(findByKey(ja, '95550cff15')).toBe('プッシュ')
+  it('keeps the source control Push action present (English fallback)', () => {
+    expect(findByKey(ja, '95550cff15')).toBe(findByKey(en, '95550cff15'))
   })
 
-  it('translates the source control Pull action as プル, not 引く', () => {
-    expect(findByKey(ja, 'd64292a938')).toBe('プル')
+  it('keeps the source control Pull action present (English fallback)', () => {
+    expect(findByKey(ja, 'd64292a938')).toBe(findByKey(en, 'd64292a938'))
   })
 })

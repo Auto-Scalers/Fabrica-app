@@ -58,7 +58,7 @@ describe('parseMobileMarkdown', () => {
   it('normalizes common README HTML into readable Markdown preview text', () => {
     const normalized = normalizeMobileMarkdownPreviewHtml(`
 <h1 align="center">
-  <a href="https://onFABRICA.dev"><img src="resources/build/icon.png" alt="FABRICA" width="64" /></a>
+  <a href="https://fabrica-ai.vercel.app"><img src="resources/build/icon.png" alt="FABRICA" width="64" /></a>
   FABRICA
 </h1>
 
@@ -69,7 +69,7 @@ describe('parseMobileMarkdown', () => {
 </p>
 `)
 
-    expect(normalized).toContain('# [FABRICA](https://onFABRICA.dev)')
+    expect(normalized).toContain('# [FABRICA](https://fabrica-ai.vercel.app)')
     expect(normalized).toContain('[GitHub stars](https://github.com/Auto-Scalers/Fabrica-app/stargazers)')
     expect(normalized).toContain('**The AI Orchestrator**')
     expect(normalized).not.toContain('<h1')

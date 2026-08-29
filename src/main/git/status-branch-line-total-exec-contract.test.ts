@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import * as path from 'node:path'
@@ -139,11 +139,29 @@ beforeEach(() => {
   resetGitReadCaches()
 })
 
+// Why: a git child spawned by the pass under test can still hold the fixture dir
+// as its CWD when teardown runs; Windows rmdir then fails transiently (EBUSY family).
+async function removeTempRoot(root: string): Promise<void> {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      await rm(root, { recursive: true, force: true })
+      return
+    } catch (error) {
+      const code = (error as NodeJS.ErrnoException).code
+      const retryable = code === 'EBUSY' || code === 'ENOTEMPTY' || code === 'EPERM'
+      if (!retryable || attempt >= 9) {
+        throw error
+      }
+      await new Promise((resolve) => setTimeout(resolve, 100 * (attempt + 1)))
+    }
+  }
+}
+
 afterEach(async () => {
   execHooks.beforeExec = undefined
   coalescerJoins.onJoin = undefined
   resetGitReadCaches()
-  await Promise.all(tempRoots.splice(0).map((root) => rm(root, { recursive: true, force: true })))
+  await Promise.all(tempRoots.splice(0).map((root) => removeTempRoot(root)))
 })
 
 describe('branch line total completeness', () => {

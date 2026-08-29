@@ -1,7 +1,7 @@
-import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+﻿import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 
 const ANCHOR_TOKEN = 'E2E_LIVE_LOG_STABLE_ANCHOR'

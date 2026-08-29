@@ -10,7 +10,7 @@ import type {
   ComputerUsePermissionStatusResult
 } from '../../shared/computer-use-permissions-types'
 
-const DEFAULT_COMPUTER_USE_BUNDLE_ID = 'com.autoscalers.fabrica.computer-use'
+const DEFAULT_COMPUTER_USE_BUNDLE_ID = 'ai.autoscalers.fabrica.computer-use'
 
 export { getComputerUsePermissionStatus } from './macos-computer-use-permission-status'
 

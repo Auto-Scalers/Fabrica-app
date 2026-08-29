@@ -1,4 +1,4 @@
-﻿import { join } from 'node:path'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import type { Worktree } from './workspace-list-sections'
 import {
@@ -540,7 +540,7 @@ describe('buildSections', () => {
       'repo',
       new Set(),
       new Map([
-        ['FABRICA', 'repo-1'],
+        ['fabrica', 'repo-1'],
         ['zoom-img', 'repo-missing']
       ])
     )
@@ -548,7 +548,7 @@ describe('buildSections', () => {
     expect(withoutSectionListKeys(sections)).toEqual([
       {
         key: 'repo:repo-1',
-        title: 'FABRICA',
+        title: 'fabrica',
         data: [worktree({ repoId: 'repo-1', repo: 'fabrica' })]
       },
       { key: 'repo:repo-missing', title: 'zoom-img', data: [] }

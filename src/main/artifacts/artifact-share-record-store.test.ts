@@ -18,7 +18,7 @@ const scopeA: ArtifactShareScope = {
   cloudUserId: 'user-a',
   cloudProfileId: 'cloud-a',
   cloudOrganizationId: 'org-a',
-  apiOrigin: 'https://share.onFABRICA.dev'
+  apiOrigin: 'https://fabrica-ai.vercel.app'
 }
 
 async function userDataPath(): Promise<string> {
@@ -40,7 +40,7 @@ describe('artifact share record store', () => {
       ...scopeA,
       slug: 'artifact-a',
       editToken: 'secret-a',
-      shareUrl: 'https://share.onFABRICA.dev/a/artifact-a'
+      shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a'
     })
 
     expect(
@@ -73,7 +73,7 @@ describe('artifact share record store', () => {
         ...scopeA,
         slug: 'artifact-a',
         editToken: 'secret-a',
-        shareUrl: 'https://share.onFABRICA.dev/a/artifact-a'
+        shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a'
       })
     }
 
@@ -97,7 +97,7 @@ describe('artifact share record store', () => {
           '/repo/report.html': {
             slug: 'artifact-a',
             editToken: 'legacy-secret',
-            shareUrl: 'https://share.onFABRICA.dev/a/artifact-a'
+            shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a'
           }
         }
       })
@@ -121,7 +121,7 @@ describe('artifact share record store', () => {
             ...scopeA,
             slug: 'artifact-a',
             editToken: 'expired-secret',
-            shareUrl: 'https://share.onFABRICA.dev/a/artifact-a',
+            shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a',
             expiresAt: '2020-01-01T00:00:00.000Z',
             savedAt: 1
           }
@@ -145,7 +145,7 @@ describe('artifact share record store', () => {
           ...scopeA,
           slug: `artifact-${index}`,
           editToken: `secret-${index}`,
-          shareUrl: `https://share.onFABRICA.dev/a/artifact-${index}`,
+          shareUrl: `https://fabrica-ai.vercel.app/a/artifact-${index}`,
           expiresAt: '2099-01-01T00:00:00.000Z',
           savedAt: index
         }
@@ -181,7 +181,7 @@ describe('artifact share record store', () => {
             apiOrigin: scopeA.apiOrigin,
             slug: 'legacy-artifact',
             editToken: 'legacy-secret',
-            shareUrl: 'https://share.onFABRICA.dev/a/legacy-artifact'
+            shareUrl: 'https://fabrica-ai.vercel.app/a/legacy-artifact'
           }
         }
       })
@@ -202,7 +202,7 @@ describe('artifact share record store', () => {
       ...scopeA,
       slug: 'new-artifact',
       editToken: 'new-secret',
-      shareUrl: 'https://share.onFABRICA.dev/a/new-artifact',
+      shareUrl: 'https://fabrica-ai.vercel.app/a/new-artifact',
       expiresAt: '2099-01-01T00:00:00.000Z'
     })
 
@@ -231,7 +231,7 @@ describe('artifact share record store', () => {
         ...scopeA,
         slug: 'new-artifact',
         editToken: 'new-secret',
-        shareUrl: 'https://share.onFABRICA.dev/a/new-artifact',
+        shareUrl: 'https://fabrica-ai.vercel.app/a/new-artifact',
         expiresAt: '2099-01-01T00:00:00.000Z'
       })
     ).toThrow(/could not be read safely/)

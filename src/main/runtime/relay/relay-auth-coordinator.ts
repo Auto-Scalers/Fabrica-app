@@ -252,6 +252,14 @@ export class RelayAuthCoordinator {
       return null
     }
     const epoch = this.authEpoch
+    // Why: when a Supabase session exists its access token is authoritative
+    // for relay auth; return before readContext() so the FABRICA Cloud
+    // session exchange is skipped entirely. Ownership fencing above still
+    // guarantees the broker asking for a refresh is the live one.
+    const supabaseToken = await getSupabaseAccessToken()
+    if (supabaseToken) {
+      return this.isEpochCurrent(epoch) ? supabaseToken : null
+    }
     const context = await this.options.readContext()
     if (
       !ownership.valid ||
@@ -261,9 +269,7 @@ export class RelayAuthCoordinator {
     ) {
       return null
     }
-    // Why: when a Supabase session exists its access token is authoritative
-    // for relay auth; the FABRICA Cloud token is only the fallback.
-    return (await getSupabaseAccessToken()) ?? context.accessToken
+    return context.accessToken
   }
 
   private invalidateOwnership(): void {

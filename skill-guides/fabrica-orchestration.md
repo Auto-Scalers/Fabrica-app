@@ -1,5 +1,5 @@
 ---
-name: orchestration
+name: fabrica-orchestration
 description: >-
   Use Fabrica orchestration for structured multi-agent coordination: threaded
   messages, blocking ask/reply flows, task dispatch, worker_done/escalation

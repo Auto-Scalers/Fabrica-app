@@ -14,7 +14,7 @@ export type { FeedbackImageAttachment }
 // endpoint rejects. Electron's net module runs in the main process and is not
 // subject to CORS, so we proxy the submission through IPC. This mirrors the
 // same pattern used by updater-changelog.ts and updater-nudge.ts.
-const FEEDBACK_API_URL = 'https://www.onFABRICA.dev/v1/feedback'
+const FEEDBACK_API_URL = 'https://fabrica-ai.vercel.app/v1/feedback'
 const FEEDBACK_REQUEST_TIMEOUT_MS = 10_000
 const FEEDBACK_ATTACHMENT_REQUEST_TIMEOUT_MS = 60_000
 const DIAGNOSTIC_BUNDLE_CONTENT_TYPE = 'application/x-ndjson'
@@ -329,7 +329,7 @@ export async function submitFeedback(
     if (res.ok) {
       return { ok: true }
     }
-    // Why: api.onFABRICA.dev serves a different product, so transient failures
+    // Why: the legacy API domain served a different product, so transient failures
     // retry the endpoint that owns feedback and crash delivery.
     if (res.status >= 500) {
       return retryFeedbackOnPrimary(body, new Error(`status ${res.status}`))

@@ -1,4 +1,4 @@
-﻿import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { RuntimeClient } from '../runtime-client'
 import { parseArgs } from '../args'
 import { printHelp } from '../help'
@@ -57,7 +57,7 @@ describe('terminal close CLI', () => {
     printHelp(COMMAND_SPECS, ['terminal', 'close'])
 
     const help = String(log.mock.calls[0]?.[0])
-    expect(help).toContain('FABRICA terminal close [--terminal <handle>] [--tab] [--json]')
+    expect(help).toContain('fabrica terminal close [--terminal <handle>] [--tab] [--json]')
     expect(help).toContain('durable persistence')
   })
 })

@@ -1,5 +1,5 @@
-import { randomUUID } from 'node:crypto'
-import type { Page } from '@stablyai/playwright-test'
+﻿import { randomUUID } from 'node:crypto'
+import type { Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { parkHiddenTabBehindDecoy } from './helpers/terminal-hidden-parking'
 import {

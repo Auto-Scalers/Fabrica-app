@@ -1,4 +1,4 @@
-import type { ElectronApplication } from '@stablyai/playwright-test'
+﻿import type { ElectronApplication } from '@autoscalers/playwright-test'
 import path from 'node:path'
 import { expect, test } from './helpers/fabrica-app'
 

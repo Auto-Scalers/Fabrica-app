@@ -1,4 +1,4 @@
-﻿import type {
+import type {
   RuntimeWorktreeListResult,
   RuntimeWorktreePsResult,
   RuntimeWorktreeRecord,
@@ -165,7 +165,7 @@ async function getCreateRepoSelector(
   }
   throw new RuntimeClientError(
     'invalid_argument',
-    'Missing repo selector. Pass --repo or run from inside an FABRICA-managed worktree.'
+    'Missing repo selector. Pass --repo or run from inside a Fabrica-managed worktree.'
   )
 }
 

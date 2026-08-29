@@ -152,7 +152,7 @@ function prepareMacDevElectronApp() {
   // once, macOS may route a notification click to the other instance —
   // Electron drops clicks for notification ids it didn't create, so the
   // click is lost, not misdirected.
-  const bundleId = 'com.autoscalers.fabrica.dev'
+  const bundleId = 'ai.autoscalers.fabrica.dev'
   const helperBundleId = `${bundleId}.helper`
   process.env.FABRICA_DEV_MACOS_BUNDLE_ID = bundleId
   const expectedMarker = JSON.stringify(

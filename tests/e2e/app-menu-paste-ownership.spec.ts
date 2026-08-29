@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,

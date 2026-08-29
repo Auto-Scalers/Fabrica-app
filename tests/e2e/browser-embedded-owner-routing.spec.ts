@@ -1,11 +1,11 @@
-import { execFile } from 'node:child_process'
+﻿import { execFile } from 'node:child_process'
 import { chmodSync, existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { createServer, type Server } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import os from 'node:os'
 import path from 'node:path'
 import { promisify } from 'node:util'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, getActiveWorktreeId, waitForActiveWorktree } from './helpers/store'
 

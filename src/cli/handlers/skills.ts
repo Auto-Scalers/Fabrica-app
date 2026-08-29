@@ -1,4 +1,4 @@
-﻿import { spawn } from 'node:child_process'
+import { spawn } from 'node:child_process'
 import type { CommandHandler } from '../dispatch'
 import { RuntimeClientError } from '../runtime-client'
 import { delimiter, dirname } from 'node:path'
@@ -223,7 +223,7 @@ function resolveInstallAgentKeys(flags: Map<string, string | boolean>): string[]
     'invalid_environment',
     'No coding agent detected on this host, so there is no install target. Pass ' +
       '--agent <name>[,<name>...] to choose targets explicitly — --agent universal ' +
-      'writes only the shared .agents/skills directory that FABRICA reads.'
+      'writes only the shared .agents/skills directory that Fabrica reads.'
   )
 }
 

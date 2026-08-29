@@ -1,4 +1,4 @@
-﻿import { resolve as resolvePath } from 'node:path'
+import { resolve as resolvePath } from 'node:path'
 import type {
   ComputerAppQuery,
   RuntimeWorktreeListResult,
@@ -70,7 +70,7 @@ export async function resolveCurrentWorktreeSelector(
   if (!enclosingWorktree) {
     throw new RuntimeClientError(
       'selector_not_found',
-      `No FABRICA-managed worktree contains the current directory: ${currentPath}`
+      `No Fabrica-managed worktree contains the current directory: ${currentPath}`
     )
   }
 
@@ -215,7 +215,7 @@ export async function getComputerCommandTarget(
 export type EmulatorCliTarget = {
   worktree?: string
   device?: string
-  emulator?: string // FABRICA id from list
+  emulator?: string // Fabrica id from list
 }
 
 export async function getEmulatorWorktreeSelector(

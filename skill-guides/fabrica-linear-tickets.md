@@ -1,5 +1,5 @@
 ---
-name: linear-tickets
+name: fabrica-linear-tickets
 description: >-
   Use Fabrica's Linear CLI through `fabrica linear ...` commands to read linked
   ticket context with `fabrica linear issue --current --full --json`, post

@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Repro spec for the "starts frozen right after an update" report
  * (Discord #performance, GitHub #2836 family).
  *
  * Field evidence: after an app update + relaunch the terminal pane shows
- * restored content but typing produces nothing — daemon output.log never
+ * restored content but typing produces nothing â€” daemon output.log never
  * grows. Restore paints the persisted buffer synchronously BEFORE the
- * deferred PTY reattach runs (use-terminal-pane-lifecycle.ts →
+ * deferred PTY reattach runs (use-terminal-pane-lifecycle.ts â†’
  * pty-connection.ts), and every reattach-failure branch swallows into null,
  * so a failed/stalled attach leaves a live-looking, input-dead pane.
  *
@@ -14,16 +14,16 @@
  * relaunch, but never that INPUT still works. These tests close that gap for
  * three real relaunch shapes:
  *   1. clean restart with a live daemon session (the update model)
- *   2. daemon wedged (SIGSTOP) across the relaunch — the attach stalls while
+ *   2. daemon wedged (SIGSTOP) across the relaunch â€” the attach stalls while
  *      restore has already painted; input must recover once the daemon does
- *   3. daemon killed between launches — cold-restore + fresh spawn must yield
+ *   3. daemon killed between launches â€” cold-restore + fresh spawn must yield
  *      a typeable pane
  */
 
 import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -233,7 +233,7 @@ test('restored pane recovers input after the daemon un-wedges', async (// oxlint
     firstApp = null
 
     // Wedge the daemon: it stays alive (socket exists, sessions retained) but
-    // cannot accept or answer — the shape of a busy/hung daemon during launch.
+    // cannot accept or answer â€” the shape of a busy/hung daemon during launch.
     process.kill(daemonPid, 'SIGSTOP')
     stoppedDaemonPid = daemonPid
 
@@ -247,7 +247,7 @@ test('restored pane recovers input after the daemon un-wedges', async (// oxlint
     const paintedWhileWedged = (await getTerminalContent(second.page)).includes(marker)
 
     // The relaunching app may classify the stopped daemon as unreachable and
-    // kill+replace it (daemon hardening) — then SIGCONT throws ESRCH and the
+    // kill+replace it (daemon hardening) â€” then SIGCONT throws ESRCH and the
     // old sessions are gone. Both shapes must leave the pane typeable, so
     // record which one we're in and keep probing.
     let daemonReplacedWhileWedged = false

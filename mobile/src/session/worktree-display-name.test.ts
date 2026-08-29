@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { getLiveWorktreeDisplayName } from './worktree-display-name'
 
 describe('getLiveWorktreeDisplayName', () => {
@@ -23,7 +23,7 @@ describe('getLiveWorktreeDisplayName', () => {
   it('falls back to repo only when the display name is blank', () => {
     expect(
       getLiveWorktreeDisplayName([{ worktreeId: 'wt-1', displayName: '  ', repo: 'fabrica' }], 'wt-1')
-    ).toBe('FABRICA')
+    ).toBe('fabrica')
   })
 
   it('ignores snapshots that do not contain the current worktree', () => {

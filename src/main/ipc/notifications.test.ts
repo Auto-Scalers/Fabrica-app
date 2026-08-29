@@ -218,7 +218,7 @@ describe('registerNotificationHandlers', () => {
     const originalPlatform = process.platform
     const originalBundleId = process.env.FABRICA_DEV_MACOS_BUNDLE_ID
     Object.defineProperty(process, 'platform', { value: 'darwin', configurable: true })
-    process.env.FABRICA_DEV_MACOS_BUNDLE_ID = 'com.autoscalers.fabrica.dev.fb5a47066f08'
+    process.env.FABRICA_DEV_MACOS_BUNDLE_ID = 'ai.autoscalers.fabrica.dev.fb5a47066f08'
     try {
       registerNotificationHandlers({
         getSettings: () => ({
@@ -235,7 +235,7 @@ describe('registerNotificationHandlers', () => {
       handler({})
 
       expect(shellOpenExternalMock).toHaveBeenCalledWith(
-        'x-apple.systempreferences:com.apple.Notifications-Settings.extension?id=com.autoscalers.fabrica.dev.fb5a47066f08'
+        'x-apple.systempreferences:com.apple.Notifications-Settings.extension?id=ai.autoscalers.fabrica.dev.fb5a47066f08'
       )
     } finally {
       Object.defineProperty(process, 'platform', { value: originalPlatform, configurable: true })

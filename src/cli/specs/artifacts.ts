@@ -1,4 +1,4 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 const CLOUD_FLAGS = ['api-url']
@@ -6,7 +6,7 @@ const CLOUD_FLAGS = ['api-url']
 export const ARTIFACT_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['artifacts', 'share'],
-    summary: 'Share an HTML or Markdown file with your FABRICA account',
+    summary: 'Share an HTML or Markdown file with your Fabrica account',
     usage: 'fabrica artifacts share <file> [--api-url <url>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, ...CLOUD_FLAGS, 'file'],
     positionalArgs: ['file'],
@@ -14,7 +14,7 @@ export const ARTIFACT_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['artifacts', 'update'],
-    summary: 'Update a file previously shared from this FABRICA profile',
+    summary: 'Update a file previously shared from this Fabrica profile',
     usage: 'fabrica artifacts update <file> [--api-url <url>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, ...CLOUD_FLAGS, 'file'],
     positionalArgs: ['file']
@@ -29,7 +29,7 @@ export const ARTIFACT_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['artifacts', 'list'],
-    summary: 'List artifacts owned by the signed-in FABRICA account',
+    summary: 'List artifacts owned by the signed-in Fabrica account',
     usage: 'fabrica artifacts list [--cursor <cursor>] [--api-url <url>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, ...CLOUD_FLAGS, 'cursor']
   },
@@ -37,7 +37,7 @@ export const ARTIFACT_COMMAND_SPECS: CommandSpec[] = [
     path: ['artifacts', 'delete'],
     aliases: [['artifacts', 'rm']],
     destructive: true,
-    summary: 'Delete an artifact owned by the signed-in FABRICA account',
+    summary: 'Delete an artifact owned by the signed-in Fabrica account',
     usage: 'fabrica artifacts delete <id> [--api-url <url>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, ...CLOUD_FLAGS, 'id'],
     positionalArgs: ['id']

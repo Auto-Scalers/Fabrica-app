@@ -1,9 +1,9 @@
-/**
- * E2E: Add SSH host → Fill from ~/.ssh/config picker (isolated HOME + real ssh -G).
+﻿/**
+ * E2E: Add SSH host â†’ Fill from ~/.ssh/config picker (isolated HOME + real ssh -G).
  * Plan cases: P1, P2, P3, P4, P8 (+ N3 with P3). Bulk/import: ssh-config-host-import.spec.ts.
  */
 
-import type { ElectronApplication } from '@stablyai/playwright-test'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import {
@@ -61,7 +61,7 @@ test.describe('SSH config host picker', () => {
     await removeSshTargetsByPrefix(fabricaPage, HOST_PREFIX).catch(() => undefined)
   })
 
-  // ── P1 ─────────────────────────────────────────────────────────────
+  // â”€â”€ P1 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   test('P1: empty config shows empty state; Back returns to blank form', async ({ fabricaPage }) => {
     // Isolated HOME has no ~/.ssh/config by default.
     const picker = await openSshConfigHostPicker(fabricaPage)
@@ -81,7 +81,7 @@ test.describe('SSH config host picker', () => {
     await expect(fields.label).toHaveValue('')
   })
 
-  // ── P2 ─────────────────────────────────────────────────────────────
+  // â”€â”€ P2 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   test('P2: seeded hosts list with summary lines and Add all enabled', async ({
     electronApp,
     fabricaPage
@@ -102,7 +102,7 @@ test.describe('SSH config host picker', () => {
     await expect(picker.getByRole('button', { name: 'Add all 2 to FABRICA' })).toBeEnabled()
   })
 
-  // ── P3 + N3 ────────────────────────────────────────────────────────
+  // â”€â”€ P3 + N3 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   test('P3: select host prefills form; Save persists; N3 identity hint', async ({
     electronApp,
     fabricaPage
@@ -144,7 +144,7 @@ test.describe('SSH config host picker', () => {
     await expectSshHostListedInSettings(sshSection, prod)
   })
 
-  // ── P4 ─────────────────────────────────────────────────────────────
+  // â”€â”€ P4 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   test('P4: filter narrows host list', async ({ electronApp, fabricaPage }) => {
     const hosts = await seedPairConfig(electronApp, HOST_PREFIX)
     const picker = await openSshConfigHostPicker(fabricaPage)
@@ -152,7 +152,7 @@ test.describe('SSH config host picker', () => {
     await expect(configHostRow(picker, hosts.alpha)).toBeVisible()
     await expect(configHostRow(picker, hosts.bravo)).toBeVisible()
 
-    const filter = picker.getByRole('textbox', { name: 'Filter hosts…' })
+    const filter = picker.getByRole('textbox', { name: 'Filter hostsâ€¦' })
     await filter.fill('bravo')
     // Why: picker debounces filter IPC ~200ms.
     await expect(configHostRow(picker, hosts.bravo)).toBeVisible({ timeout: 5_000 })
@@ -165,7 +165,7 @@ test.describe('SSH config host picker', () => {
     ).toBeVisible()
   })
 
-  // ── P8 ─────────────────────────────────────────────────────────────
+  // â”€â”€ P8 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   test('P8: Back without select leaves form empty', async ({ electronApp, fabricaPage }) => {
     const hosts = await seedPairConfig(electronApp, HOST_PREFIX)
     const picker = await openSshConfigHostPicker(fabricaPage)

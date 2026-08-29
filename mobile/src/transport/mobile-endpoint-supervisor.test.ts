@@ -1,4 +1,4 @@
-﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { MobileRelayCredentialBundle } from './mobile-relay-credential-bundle'
 import { hashMobileRelayCredential } from './mobile-relay-credential-hash'
 import { RelayOuterError } from './mobile-relay-e2ee-link'
@@ -118,7 +118,7 @@ describe('mobile endpoint supervisor', () => {
       .fn()
       .mockReturnValueOnce(new FakeRelaySession('disconnected', new RelayOuterError(4409)))
       .mockReturnValueOnce(new FakeRelaySession('connected'))
-    const resolved = { ...relay, cellUrl: 'https://relay-c2.onFABRICA.dev', assignmentEpoch: 8 }
+    const resolved = { ...relay, cellUrl: 'https://relay-c2.onfabrica.dev', assignmentEpoch: 8 }
     const deps = dependencies({
       openRelay,
       resolveRelay: vi.fn(async () => resolved)

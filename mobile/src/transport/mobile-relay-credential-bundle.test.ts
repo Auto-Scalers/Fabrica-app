@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const asyncStorage = vi.hoisted(() => ({
   getItem: vi.fn(),
@@ -41,8 +41,8 @@ const journal = {
     },
     relay: {
       v: 1,
-      directorUrl: 'https://relay.onFABRICA.dev',
-      cellUrl: 'https://relay-c1.onFABRICA.dev',
+      directorUrl: 'https://relay.onfabrica.dev',
+      cellUrl: 'https://relay-c1.onfabrica.dev',
       assignmentEpoch: 7,
       relayHostId: 'AbCdEf0123_-xyZ9',
       inviteExpiresAt: 10_000,

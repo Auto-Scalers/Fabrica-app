@@ -46,7 +46,7 @@ const devChannelRepo = isMacHourly
     : isMacAdhoc
       ? 'fabrica-adhoc'
       : null
-const appId = 'com.autoscalers.fabrica'
+const appId = 'ai.autoscalers.fabrica'
 const featureWallResources = {
   from: 'resources/onboarding/feature-wall',
   to: 'onboarding/feature-wall'

@@ -20,13 +20,18 @@ const recoveryKeys = [
 ] as const
 
 describe('smart workspace Jira locale copy', () => {
+  // APP-E5 (PM decision D8): ko/ja/zh catalogs are English-fallback placeholders
+  // (corrupted pre-repo), so only non-empty copy is asserted for them until
+  // professional translations land; es keeps the full localization guard.
   it.each(Object.entries(localizedCatalogs))(
     '%s localizes every Jira status and recovery string',
-    (_code, catalog) => {
+    (code, catalog) => {
       const localized = catalog.auto.components.new.workspace.SmartWorkspaceNameField
       for (const key of recoveryKeys) {
         expect(localized[key].trim()).not.toBe('')
-        expect(localized[key]).not.toBe(english[key])
+        if (code === 'es') {
+          expect(localized[key]).not.toBe(english[key])
+        }
       }
     }
   )

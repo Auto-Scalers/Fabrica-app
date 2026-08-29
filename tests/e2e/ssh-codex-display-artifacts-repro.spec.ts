@@ -1,4 +1,4 @@
-import type { TestInfo } from '@stablyai/playwright-test'
+﻿import type { TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,

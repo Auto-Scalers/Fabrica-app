@@ -1,4 +1,4 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 export const VM_COMMAND_SPECS: CommandSpec[] = [

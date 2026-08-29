@@ -219,7 +219,7 @@ export class CursorHookService {
   // Installs managed Cursor hooks on an SSH remote (POSIX-only). See docs/design/agent-status-over-ssh.md §8.
   async installRemote(sftp: SFTPWrapper, remoteHome: string): Promise<AgentHookInstallStatus> {
     const remoteConfigPath = `${remoteHome.replace(/\/$/, '')}/.cursor/hooks.json`
-    const remoteScriptPath = `${remoteHome.replace(/\/$/, '')}/.fabrica/agent-hooks/cursor-hook.sh`
+    const remoteScriptPath = `${remoteHome.replace(/\/$/, '')}/.fabrica-factory/agent-hooks/cursor-hook.sh`
     try {
       const config = await readHooksJsonRemote(sftp, remoteConfigPath)
       if (!config) {

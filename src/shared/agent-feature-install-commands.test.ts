@@ -122,16 +122,16 @@ describe('agent feature skill commands', () => {
   })
 
   it('exports single-skill update constants without changing install bundles', () => {
-    expect(FABRICA_CLI_SKILL_UPDATE_COMMAND).toBe('npx skills update FABRICA-cli --global')
-    expect(COMPUTER_USE_SKILL_UPDATE_COMMAND).toBe('npx skills update computer-use --global')
-    expect(ORCHESTRATION_SKILL_UPDATE_COMMAND).toBe('npx skills update orchestration --global')
+    expect(FABRICA_CLI_SKILL_UPDATE_COMMAND).toBe('npx skills update fabrica-cli --global')
+    expect(COMPUTER_USE_SKILL_UPDATE_COMMAND).toBe('npx skills update fabrica-computer-use --global')
+    expect(ORCHESTRATION_SKILL_UPDATE_COMMAND).toBe('npx skills update fabrica-orchestration --global')
     expect(EPHEMERAL_VMS_SKILL_UPDATE_COMMAND).toBe(
-      'npx skills update FABRICA-per-workspace-env --global'
+      'npx skills update fabrica-per-workspace-env --global'
     )
     expect(FABRICA_LINEAR_SKILL_UPDATE_COMMAND).toBe('npx skills update fabrica-linear --global')
-    expect(LINEAR_TICKETS_SKILL_UPDATE_COMMAND).toBe('npx skills update linear-tickets --global')
+    expect(LINEAR_TICKETS_SKILL_UPDATE_COMMAND).toBe('npx skills update fabrica-linear-tickets --global')
     expect(FABRICA_CLI_ORCHESTRATION_SKILL_INSTALL_COMMAND).toBe(
-      buildAgentFeatureSkillInstallCommand(['FABRICA-cli', 'orchestration'])
+      buildAgentFeatureSkillInstallCommand(['fabrica-cli', 'fabrica-orchestration'])
     )
   })
 })

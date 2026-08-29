@@ -1,4 +1,4 @@
-﻿import { spawn } from 'node:child_process'
+import { spawn } from 'node:child_process'
 import type { CommandHandler } from '../dispatch'
 import { formatCliStatus, formatStatus, printResult } from '../format'
 import { RuntimeClientError, serveFABRICAApp } from '../runtime-client'
@@ -69,7 +69,7 @@ export const CORE_HANDLERS: Record<string, CommandHandler> = {
     if (!paneKey) {
       throw new RuntimeClientError(
         'invalid_environment',
-        'fabrica claude-teams must be run inside an FABRICA terminal.'
+        'fabrica claude-teams must be run inside a Fabrica terminal.'
       )
     }
     const response = await client.call<{ launch: { env: Record<string, string> } }>(

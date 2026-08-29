@@ -1,6 +1,6 @@
 export const LOCAL_BUILD_COMPATIBILITY_CONTRACT = {
   formatVersion: 1,
-  appId: 'com.autoscalers.fabrica',
+  appId: 'ai.autoscalers.fabrica',
   stateSchemaVersion: 1,
   readableStateSchemaVersions: [1],
   daemonProtocolVersion: 32,

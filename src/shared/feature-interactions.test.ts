@@ -215,7 +215,8 @@ describe('feature interactions', () => {
     })
 
     expect(missingWriters).toEqual([])
-  }, 15_000)
+    // Why: this walks every production source file; cold Windows FS/AV scans can exceed 15s.
+  }, 60_000)
 })
 
 function collectProductionSourceText(): string {

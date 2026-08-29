@@ -1,11 +1,11 @@
-﻿import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
   addExpoTwoWayAudioEventListener,
   initialize,
   requestMicrophonePermissionsAsync,
   tearDown,
   toggleRecording
-} from '@FABRICA/expo-two-way-audio'
+} from '@fabrica/expo-two-way-audio'
 import { MobileDictationPendingAudioBudget } from './mobile-dictation-pending-audio-budget'
 import { enqueueMobileDictationAudioChunk } from './mobile-dictation-audio-chunk'
 import { createMobileDictationKeepAwakeOwner } from './mobile-dictation-keep-awake'

@@ -1,19 +1,10 @@
-import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { Script } from 'node:vm'
 import { describe, expect, it } from 'vitest'
 
-const terminalWebViewSource = readFileSync(
-  new URL('./TerminalWebView.tsx', import.meta.url),
-  'utf8'
-)
-const terminalHtmlSource = readFileSync(
-  new URL('./terminal-webview-html.ts', import.meta.url),
-  'utf8'
-)
-const terminalWebglRecoverySource = readFileSync(
-  new URL('./terminal-webview-webgl-recovery-injected.ts', import.meta.url),
-  'utf8'
-)
+const terminalWebViewSource = readSourceText(new URL('./TerminalWebView.tsx', import.meta.url))
+const terminalHtmlSource = readSourceText(new URL('./terminal-webview-html.ts', import.meta.url))
+const terminalWebglRecoverySource = readSourceText(new URL('./terminal-webview-webgl-recovery-injected.ts', import.meta.url))
 
 function extractStatusDotNormalizer() {
   const declarationStart = terminalHtmlSource.indexOf('  var CLAUDE_STATUS_DOT =')

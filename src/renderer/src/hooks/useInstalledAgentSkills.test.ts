@@ -161,10 +161,10 @@ describe('hasInstalledAgentSkill', () => {
 describe('isOrchestrationSkillName', () => {
   it('matches only the orchestration skill name', () => {
     expect(
-      _installedAgentSkillDiscoveryInternalsForTests.isOrchestrationSkillName('orchestration')
+      _installedAgentSkillDiscoveryInternalsForTests.isOrchestrationSkillName('fabrica-orchestration')
     ).toBe(true)
     expect(
-      _installedAgentSkillDiscoveryInternalsForTests.isOrchestrationSkillName(' Orchestration ')
+      _installedAgentSkillDiscoveryInternalsForTests.isOrchestrationSkillName(' fabrica-orchestration ')
     ).toBe(true)
     expect(
       _installedAgentSkillDiscoveryInternalsForTests.isOrchestrationSkillName('computer-use')

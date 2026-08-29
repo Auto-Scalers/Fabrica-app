@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 
@@ -35,9 +35,9 @@ test.describe('Workspace emoji picker', () => {
     await expect(inlineSuggestions.getByRole('option', { name: ':wink:' })).toBeVisible()
     await captureProof(fabricaPage, testInfo, 'sidebar-rename-picker.png')
     await inlineInput.press('Enter')
-    await expect(inlineInput).toHaveValue('Sidebar proof 😉 ')
+    await expect(inlineInput).toHaveValue('Sidebar proof ðŸ˜‰ ')
     await inlineInput.press('Enter')
-    await expect(fabricaPage.getByText('Sidebar proof 😉', { exact: true }).first()).toBeVisible()
+    await expect(fabricaPage.getByText('Sidebar proof ðŸ˜‰', { exact: true }).first()).toBeVisible()
 
     await fabricaPage.evaluate(() => {
       const state = window.__store!.getState()
@@ -66,7 +66,7 @@ test.describe('Workspace emoji picker', () => {
     await expect(detailsSuggestions.getByRole('option', { name: ':wink:' })).toBeVisible()
     await captureProof(fabricaPage, testInfo, 'worktree-details-picker.png')
     await displayNameInput.press('Enter')
-    await expect(displayNameInput).toHaveValue('Details proof 😉 ')
+    await expect(displayNameInput).toHaveValue('Details proof ðŸ˜‰ ')
     await detailsDialog.getByRole('button', { name: 'Cancel' }).click()
 
     await fabricaPage.evaluate(() => window.__store!.getState().openModal('worktree-palette'))
@@ -81,8 +81,8 @@ test.describe('Workspace emoji picker', () => {
     await expect(paletteSuggestions.getByRole('option', { name: ':wink:' })).toBeVisible()
     await captureProof(fabricaPage, testInfo, 'cmd-j-picker.png')
     await paletteInput.press('Enter')
-    await expect(paletteInput).toHaveValue('😉 ')
-    await expect(palette.getByText('Sidebar proof 😉', { exact: true }).first()).toBeVisible()
+    await expect(paletteInput).toHaveValue('ðŸ˜‰ ')
+    await expect(palette.getByText('Sidebar proof ðŸ˜‰', { exact: true }).first()).toBeVisible()
     await fabricaPage.waitForTimeout(750)
   })
 })

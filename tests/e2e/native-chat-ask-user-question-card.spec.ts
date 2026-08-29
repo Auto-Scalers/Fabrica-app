@@ -1,8 +1,8 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { waitForActivePaneHookDescriptor, waitForActiveTerminalManager } from './helpers/terminal'
@@ -17,7 +17,7 @@ async function enableNativeChatSetting(page: Page): Promise<void> {
   })
 }
 
-// Why (#11761): reproduces the paired-headless topology from the client's side —
+// Why (#11761): reproduces the paired-headless topology from the client's side â€”
 // live status arrives carrying agent identity and a working state, but with no
 // `interactivePrompt`/`toolName`, which is exactly what the host projection
 // dropped. The pending ask exists only in the transcript.

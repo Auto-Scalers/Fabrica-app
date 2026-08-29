@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import {
   launchHeadlessPairedRuntimeHost,
   type HeadlessPairedRuntimeHost
@@ -11,7 +11,7 @@ import {
 
 // What this proves: a paired client whose remote browser stream drops retries on a bounded budget,
 // then surfaces a Reconnect control instead of either giving up silently or retrying forever. The
-// failure is real, not injected — the runtime connection is dropped, so every restart genuinely
+// failure is real, not injected â€” the runtime connection is dropped, so every restart genuinely
 // fails while it is down.
 
 async function callEnvironment<TResult>(
@@ -149,7 +149,7 @@ test('bounds remote browser stream retries, then offers reconnect', async ({
     await expect(reconnectButton).toBeVisible()
 
     // Clicking the frozen frame is the natural reaction to a stuck pane, and the input handlers
-    // clear the error optimistically — so without a guard this exact gesture deletes the user's only
+    // clear the error optimistically â€” so without a guard this exact gesture deletes the user's only
     // way back, then repaints the raw transport string once the queued RPC fails.
     await remoteFrame.click({ position: { x: 40, y: 40 }, force: true })
     await page.waitForTimeout(1_000)

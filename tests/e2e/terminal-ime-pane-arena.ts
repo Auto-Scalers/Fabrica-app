@@ -1,4 +1,4 @@
-import type { CDPSession, Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { CDPSession, Page, TestInfo } from '@autoscalers/playwright-test'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
   focusActiveTerminalInput,

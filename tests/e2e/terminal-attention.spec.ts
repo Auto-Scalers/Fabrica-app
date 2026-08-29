@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   execInTerminal,
@@ -91,7 +91,7 @@ async function emitBellAndWaitForTitleFlush(
   await expect
     .poll(async () => (await getRendererTitleLog(page)).includes(markerTitle), {
       timeout: 10_000,
-      message: 'Marker title did not land — byte stream may not have been flushed'
+      message: 'Marker title did not land â€” byte stream may not have been flushed'
     })
     .toBe(true)
 }
@@ -208,7 +208,7 @@ test.describe('Terminal attention', () => {
       .first()
     await expect(secondTabBell).toBeVisible()
 
-    // Activating the tab counts as "the user saw it" — the indicator clears.
+    // Activating the tab counts as "the user saw it" â€” the indicator clears.
     await activateTerminalTab(fabricaPage, secondTabId)
 
     await expect
@@ -221,7 +221,7 @@ test.describe('Terminal attention', () => {
   })
 
   // Why (show-until-interact): ghostty's model fires the bell even on the
-  // currently-focused tab — the user only dismisses it by actually engaging
+  // currently-focused tab â€” the user only dismisses it by actually engaging
   // with the pane. This test proves the BEL on a focused tab is visible
   // until a pointerdown on the terminal container clears it.
   test('a BEL on the focused tab raises, then clears on click', async ({ fabricaPage }) => {
@@ -243,7 +243,7 @@ test.describe('Terminal attention', () => {
       `focused-tab-bell-marker-${Date.now()}`
     )
 
-    // The focused tab is now unread — the bell persists until the user
+    // The focused tab is now unread â€” the bell persists until the user
     // actually interacts with the pane.
     expect((await getUnreadTerminalTabIds(fabricaPage)).includes(activeTabId)).toBe(true)
     const activeTabBell = fabricaPage
@@ -359,7 +359,7 @@ test.describe('Terminal attention', () => {
   // the terminal, focus events should NOT be emitted back to the PTY.
   //
   // We drive xterm directly with the focus-enable escape (simulating what
-  // the replay would do) and then simulate focus changes — without the
+  // the replay would do) and then simulate focus changes â€” without the
   // reset, xterm would dutifully emit focus escapes; with the reset, mode
   // 1004 is off and nothing leaks to the shell, so no BELs fire.
   test('mode bits replayed into xterm do not leak focus escapes to the shell', async ({
@@ -381,11 +381,11 @@ test.describe('Terminal attention', () => {
     // secondTabId is already active after createTerminalTab. Simulate what
     // scrollback replay does: a DECSET 1004 byte landing in xterm. Then
     // install an onData spy so we can observe everything xterm emits from
-    // this point on — crucially, the focus escapes `\e[I` / `\e[O` that
+    // this point on â€” crucially, the focus escapes `\e[I` / `\e[O` that
     // leak when mode 1004 is still enabled. The POST_REPLAY_MODE_RESET
     // bundle should turn mode 1004 OFF; if it does, no focus escape is
     // emitted on the next blur and the spy's buffer stays empty.
-    // Why: xterm's parser is async — bytes passed to `write()` are queued and
+    // Why: xterm's parser is async â€” bytes passed to `write()` are queued and
     // consumed on a later tick. During the brief window when mode 1004 is
     // enabled, xterm emits a synchronous focus-IN (`\e[I`) because the
     // terminal is focused; that emission MUST NOT land in the spy or the
@@ -434,7 +434,7 @@ test.describe('Terminal attention', () => {
     // stale captured data and/or a dangling xterm onData subscription).
     try {
       // Trigger focus change away from secondTabId. If mode 1004 is still
-      // enabled, xterm will emit `\e[O` via onData — captured by the spy above.
+      // enabled, xterm will emit `\e[O` via onData â€” captured by the spy above.
       // Also explicitly blur the xterm instance so the DOM focus actually moves
       // (setActiveTab alone doesn't blur focus).
       await activateTerminalTab(fabricaPage, firstTabId)
@@ -453,7 +453,7 @@ test.describe('Terminal attention', () => {
       // task itself. Let that task settle, then inspect the captured bytes.
       await fabricaPage.waitForTimeout(100)
 
-      // Mode 1004 reset succeeded iff no focus escapes are emitted — we assert
+      // Mode 1004 reset succeeded iff no focus escapes are emitted â€” we assert
       // on the precise byte-level mechanism the fix guards against (`\e[I`
       // focus-in / `\e[O` focus-out), not tab unread state, because under the
       // show-until-interact model that state can be flipped by unrelated
@@ -464,7 +464,7 @@ test.describe('Terminal attention', () => {
             .__XTERM_ONDATA_SPY__ ?? []
       )
       // Join before matching: individual chunks could split an escape
-      // across onData calls (unlikely but possible — e.g. if xterm
+      // across onData calls (unlikely but possible â€” e.g. if xterm
       // flushes mid-escape).
       // eslint-disable-next-line no-control-regex -- intentional terminal escape sequence matching
       expect(emittedFromXterm.join('')).not.toMatch(/\x1b\[[IO]/)

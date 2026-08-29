@@ -1,4 +1,4 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 import { ORCHESTRATION_WORKER_COMMAND_SPECS } from './orchestration-worker-specs'
 
@@ -71,7 +71,7 @@ export const ORCHESTRATION_COMMAND_SPECS: CommandSpec[] = [
       "worker_done and heartbeat are exact-Dispatch signals and cannot target groups; omit --to to use the Dispatch's Run mailbox.",
       'worker_done requires --outcome succeeded or --outcome failed.',
       'From an active Dispatch, an omitted recipient defaults to its owning Run mailbox.',
-      'Use --to dispatch:<id> for attempt-specific coordinator guidance; FABRICA durably relays it to a connected worker server.',
+      'Use --to dispatch:<id> for attempt-specific coordinator guidance; Fabrica durably relays it to a connected worker server.',
       'A worker_done with the active task/dispatch IDs completes that task only from the dispatched pane. When stable pane identity is unavailable, the sender handle must exactly match the dispatch assignee; injected preambles include the correct --from value.',
       'Prefer --task-id/--dispatch-id/etc. over raw --payload JSON in worker commands; PowerShell strips JSON quotes easily.'
     ]
@@ -218,7 +218,7 @@ export const ORCHESTRATION_COMMAND_SPECS: CommandSpec[] = [
       'worktree'
     ],
     notes: [
-      'This command performs no effects and returns the exact `skills get orchestration --full` recovery action.',
+      'This command performs no effects and returns the exact `skills get fabrica-orchestration --full` recovery action.',
       'Use the lightweight Run, Task, and worker-start primitives described by the current skill.'
     ]
   },

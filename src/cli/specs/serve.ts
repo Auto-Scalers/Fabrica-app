@@ -1,10 +1,10 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 export const SERVE_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['serve'],
-    summary: 'Start an FABRICA runtime server without opening a desktop window',
+    summary: 'Start a Fabrica runtime server without opening a desktop window',
     usage:
       'fabrica serve [--port <port>] [--pairing-address <host>] [--mobile-pairing] [--no-pairing] [--project-root <path>] [--recipe-json] [--json]',
     allowedFlags: [

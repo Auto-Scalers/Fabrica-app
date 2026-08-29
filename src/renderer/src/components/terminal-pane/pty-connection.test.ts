@@ -743,7 +743,7 @@ function configureTerminalFocusMode(
 }
 
 const ANSI_POSITIONED_CURSOR_AGENT_REATTACH_SCREEN =
-  '\x1b[4;3HCursor Agent\x1b[5;3Hv2026.06.29\x1b[9;3H? Plan, search, build anything'
+  '\x1b[4;3HCursor Agent\x1b[5;3Hv2026.06.29\x1b[9;3H\u2192 Plan, search, build anything'
 
 // Why: activeRuntimeEnvironmentId exercises the remote-runtime path where the renderer still owns OSC 9999 status.
 function enableActiveRuntimeEnvironment(environmentId = 'env-1'): void {
@@ -2351,12 +2351,12 @@ describe('connectPanePty', () => {
     connectPanePty(createPane(1) as never, createManager(1) as never, createDeps() as never)
     await flushAsyncTicks()
 
-    capturedDataCallback.current?.('Created https://github.com/acme/FABRICA/pull/42\r\n')
+    capturedDataCallback.current?.('Created https://github.com/acme/fabrica/pull/42\r\n')
 
     expect(mockStoreState.observeTerminalGitHubPullRequestLink).toHaveBeenCalledWith(
       'wt-1',
       expect.objectContaining({
-        url: 'https://github.com/acme/FABRICA/pull/42',
+        url: 'https://github.com/acme/fabrica/pull/42',
         slug: { owner: 'acme', repo: 'fabrica', host: 'github.com' },
         number: 42
       })
@@ -4077,7 +4077,7 @@ describe('connectPanePty', () => {
     expect(capturedDataCallback.current).not.toBeNull()
 
     capturedDataCallback.current?.('# Command Code v0.27.2\r\n')
-    capturedDataCallback.current?.('? Fix the spinner\r\n\x1b[35m? Thinking...\x1b[0m')
+    capturedDataCallback.current?.('❯ Fix the spinner\r\n\x1b[35m✻ Thinking...\x1b[0m')
 
     expect(mockStoreState.setAgentStatus).toHaveBeenCalledWith(
       makePaneKey('tab-1', LEAF_1),
@@ -4147,7 +4147,7 @@ describe('connectPanePty', () => {
     await flushAsyncTicks()
     expect(capturedDataCallback.current).not.toBeNull()
 
-    capturedDataCallback.current?.('? say hi\r\n? Thinking...')
+    capturedDataCallback.current?.('❯ say hi\r\n✻ Thinking...')
     expect(mockStoreState.agentStatusByPaneKey[paneKey]).toMatchObject({
       state: 'working',
       prompt: 'say hi',
@@ -4155,7 +4155,7 @@ describe('connectPanePty', () => {
     })
 
     capturedDataCallback.current?.(
-      '\r\n? Thought for 1 second\r\n:: Hi! How can I help you today?\r\n? Ask your question...'
+      '\r\n? Thought for 1 second\r\n:: Hi! How can I help you today?\r\n❯ Ask your question...'
     )
     vi.advanceTimersByTime(1499)
     expect(mockStoreState.agentStatusByPaneKey[paneKey]).toMatchObject({
@@ -4197,10 +4197,10 @@ describe('connectPanePty', () => {
     await flushAsyncTicks()
     expect(capturedDataCallback.current).not.toBeNull()
 
-    capturedDataCallback.current?.('? Run a slow command\r\n? Thinking...')
-    capturedDataCallback.current?.('\r\n? Ask your question...')
+    capturedDataCallback.current?.('❯ Run a slow command\r\n✻ Thinking...')
+    capturedDataCallback.current?.('\r\n❯ Ask your question...')
     vi.advanceTimersByTime(1000)
-    capturedDataCallback.current?.('\r\n? Investigating... esc to interrupt')
+    capturedDataCallback.current?.('\r\n✻ Investigating... esc to interrupt')
     vi.advanceTimersByTime(500)
 
     expect(mockStoreState.agentStatusByPaneKey[paneKey]).toMatchObject({
@@ -4284,7 +4284,7 @@ describe('connectPanePty', () => {
     expect(capturedDataCallback.current).not.toBeNull()
 
     capturedDataCallback.current?.('# Command Code v0.27.2\r\n')
-    capturedDataCallback.current?.('? Fix the green done state\r\n\x1b[35m? Threading...\x1b[0m')
+    capturedDataCallback.current?.('❯ Fix the green done state\r\n\x1b[35m✻ Threading...\x1b[0m')
 
     expect(mockStoreState.setAgentStatus).toHaveBeenCalledWith(
       paneKey,
@@ -17019,7 +17019,7 @@ describe('connectPanePty', () => {
       await flushAsyncTicks(6)
 
       capturedReplayCallback.current?.(
-        '\x1b[4;3HCursor \x1b[1mAgent\x1b[0m\x1b[9;3H?\x1b[0m Plan, search, build anything'
+        '\x1b[4;3HCursor \x1b[1mAgent\x1b[0m\x1b[9;3H\u2192\x1b[0m Plan, search, build anything'
       )
       await flushAsyncTicks(12)
 
@@ -17485,7 +17485,7 @@ describe('connectPanePty', () => {
     connectPanePty(pane as never, createManager(1) as never, createDeps() as never)
     await flushAsyncTicks(6)
 
-    capturedDataCallback.current?.('????(???)\r\n')
+    capturedDataCallback.current?.('中文测试(宽字符)\r\n')
 
     expect(refresh).toHaveBeenCalledWith(0, 39, true)
   })
@@ -17514,7 +17514,7 @@ describe('connectPanePty', () => {
     connectPanePty(pane as never, createManager(1) as never, createDeps() as never)
     await flushAsyncTicks(6)
 
-    capturedDataCallback.current?.('????(???)\r\n')
+    capturedDataCallback.current?.('中文测试(宽字符)\r\n')
     expect(refresh).not.toHaveBeenCalled()
     parseCallback?.()
     expect(refresh).toHaveBeenCalledWith(0, 39, true)
@@ -17957,9 +17957,9 @@ describe('connectPanePty', () => {
 
       connectPanePty(pane as never, createManager(1) as never, createDeps() as never)
       await flushAsyncTicks(6)
-      sendTerminalInputThroughPane(pane, '??????,?????????')
+      sendTerminalInputThroughPane(pane, '中文输出测试,需要强制刷新渲染器')
 
-      capturedDataCallback.current?.('??????,?????????')
+      capturedDataCallback.current?.('中文输出测试,需要强制刷新渲染器')
 
       expect(refresh).toHaveBeenCalledWith(0, 39, true)
     } finally {
@@ -17996,7 +17996,7 @@ describe('connectPanePty', () => {
       connectPanePty(pane as never, createManager(1) as never, createDeps() as never)
       await flushAsyncTicks(6)
 
-      capturedDataCallback.current?.('??????,?????????')
+      capturedDataCallback.current?.('中文输出测试,需要强制刷新渲染器')
 
       expect(refresh).toHaveBeenCalledWith(0, 39, true)
     } finally {
@@ -18075,9 +18075,9 @@ describe('connectPanePty', () => {
 
       connectPanePty(pane as never, createManager(1) as never, createDeps() as never)
       await flushAsyncTicks(6)
-      sendTerminalInputThroughPane(pane, '??????,?????????')
+      sendTerminalInputThroughPane(pane, '中文输出测试,需要强制刷新渲染器')
 
-      capturedDataCallback.current?.('??????,?????????')
+      capturedDataCallback.current?.('中文输出测试,需要强制刷新渲染器')
 
       expect(refresh).toHaveBeenCalledWith(0, 39, true)
     } finally {
@@ -19890,7 +19890,7 @@ describe('connectPanePty', () => {
       expect(capturedDataCallback.current).not.toBeNull()
 
       capturedDataCallback.current?.('# Command Code v0.27.2\r\n')
-      capturedDataCallback.current?.('? Fix the spinner\r\n\x1b[35m? Thinking...\x1b[0m')
+      capturedDataCallback.current?.('❯ Fix the spinner\r\n\x1b[35m✻ Thinking...\x1b[0m')
 
       expect(mockStoreState.setAgentStatus).not.toHaveBeenCalled()
     })
@@ -20488,7 +20488,10 @@ describe('connectPanePty', () => {
       throw new Error('Expected onTitleChange to be registered')
     }
 
-    titleHandler('? experimental-agent-observability', '? experimental-agent-observability')
+    titleHandler(
+      '\u280b experimental-agent-observability',
+      '\u280b experimental-agent-observability'
+    )
     titleHandler('experimental-agent-observability', 'experimental-agent-observability')
     await flushAsyncTicks()
 
@@ -20779,7 +20782,7 @@ describe('connectPanePty', () => {
     titleHandler('\u280b Pi', '\u280b Pi')
     expect(deps.setRuntimePaneTitle).toHaveBeenCalledWith('tab-1', 1, '\u280b OMP')
     expect(deps.updateTabTitle).toHaveBeenCalledWith('tab-1', '\u280b OMP')
-    titleHandler('p: tmp', 'p: tmp')
+    titleHandler('\u03c0: tmp', '\u03c0: tmp')
     expect(deps.setRuntimePaneTitle).toHaveBeenLastCalledWith('tab-1', 1, 'OMP ready')
     expect(deps.updateTabTitle).toHaveBeenLastCalledWith('tab-1', 'OMP ready')
 
@@ -20855,7 +20858,7 @@ describe('connectPanePty', () => {
 
     manager.setPaneGpuRendering.mockClear()
 
-    titleHandler('\u280b Pi', '\u280b p: gemini')
+    titleHandler('\u280b Pi', '\u280b \u03c0: gemini')
 
     expect(manager.setPaneGpuRendering).toHaveBeenCalledTimes(1)
     expect(manager.setPaneGpuRendering).toHaveBeenCalledWith(1, true)

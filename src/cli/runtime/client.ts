@@ -1,4 +1,4 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import type { CliStatusResult, RuntimeStatus } from '../../shared/runtime-types'
 import type { RuntimeOrchestrationEnvelope } from '../../shared/runtime-rpc-envelope'
 import {
@@ -206,7 +206,7 @@ export class RuntimeClient {
     if (!response.result.capabilities?.includes(ORCHESTRATION_CONTRACT_RUNTIME_CAPABILITY)) {
       throw new RuntimeClientError(
         'orchestration_migration_required',
-        'The connected FABRICA runtime does not support the current orchestration contract. No effects were applied.',
+        'The connected Fabrica runtime does not support the current orchestration contract. No effects were applied.',
         orchestrationMigrationData('runtime_capability_missing')
       )
     }
@@ -242,7 +242,7 @@ export class RuntimeClient {
 
     throw new RuntimeClientError(
       'runtime_open_timeout',
-      'Timed out waiting for an FABRICA desktop window. The runtime may still be running headlessly.'
+      'Timed out waiting for a Fabrica desktop window. The runtime may still be running headlessly.'
     )
   }
 }
@@ -264,7 +264,7 @@ function attachMutationRecovery(error: unknown, requestId: string | undefined): 
 function throwDesktopActivationBlocked(): never {
   throw new RuntimeClientError(
     'desktop_activation_blocked',
-    'FABRICA is running headlessly, but it cannot open a desktop window safely because the persistent terminal provider is unavailable. Quit FABRICA normally and start the app again; do not use open -n.'
+    'Fabrica is running headlessly, but it cannot open a desktop window safely because the persistent terminal provider is unavailable. Quit Fabrica normally and start the app again; do not use open -n.'
   )
 }
 
@@ -289,7 +289,7 @@ function resolveRemotePairing(
   if (!pairing) {
     throw new RuntimeClientError(
       'invalid_argument',
-      'Invalid remote pairing code. Expected an FABRICA://pair?... URL or bare pairing payload.'
+      'Invalid remote pairing code. Expected a fabrica://pair?... URL or bare pairing payload.'
     )
   }
   return pairing

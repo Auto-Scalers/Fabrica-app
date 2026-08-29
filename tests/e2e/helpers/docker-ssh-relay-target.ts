@@ -1,11 +1,11 @@
-import { execFileSync, spawnSync } from 'node:child_process'
+﻿import { execFileSync, spawnSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { getDockerSshRelayImage } from './docker-ssh-relay-image'
 
-import type { TestInfo } from '@stablyai/playwright-test'
+import type { TestInfo } from '@autoscalers/playwright-test'
 
 export const DOCKER_SSH_RELAY_REMOTE_REPO_PATH = '/tmp/FABRICA-docker-relay-perf-repo'
 export const DOCKER_SSH_PROXY_JUMP_REMOTE_REPO_PATH = '/tmp/FABRICA-docker-proxy-jump-repo'

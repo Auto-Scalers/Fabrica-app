@@ -1,5 +1,5 @@
-/**
- * E2E regression for #8459 — Resource Manager force-killed live daemon sessions as "orphans".
+﻿/**
+ * E2E regression for #8459 â€” Resource Manager force-killed live daemon sessions as "orphans".
  *
  * The incident: a packaged `FABRICA serve` still owned live AI terminals after the GUI quit. On
  * relaunch the renderer's binding map had not caught up, so those sessions rendered as unbound.
@@ -16,7 +16,7 @@
  */
 
 import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -108,7 +108,7 @@ test.describe('Resource Manager unbound-session safety', () => {
       )
       expect(firstLaunchSessions.some((s) => s.id === ptyId)).toBe(true)
 
-      // The daemon is a detached fork, so this PTY outlives the GUI — the #8459 precondition.
+      // The daemon is a detached fork, so this PTY outlives the GUI â€” the #8459 precondition.
       await session.close(firstApp)
       firstApp = null
 
@@ -152,7 +152,7 @@ test.describe('Resource Manager unbound-session safety', () => {
 
       // Ownership evidence must survive the real IPC boundary, not just the unit-test mock: a
       // structured-clone drop or preload contract mismatch would surface here as undefined.
-      // Asserting the exact arm matters — a stub returning a constant would satisfy a typeof check.
+      // Asserting the exact arm matters â€” a stub returning a constant would satisfy a typeof check.
       const ownership = await secondLaunch.page.evaluate(async (expected: string) => {
         const sessions = await window.api.pty.listSessions()
         return sessions.filter((s) => s.id === expected).map((s) => s.agentOwnership)
@@ -166,7 +166,7 @@ test.describe('Resource Manager unbound-session safety', () => {
         'agentOwnership crossed IPC as an unrecognized value'
       ).toContain(ownership[0])
 
-      // A plain shell under the live local provider must be PROVEN unowned, not merely unknown —
+      // A plain shell under the live local provider must be PROVEN unowned, not merely unknown â€”
       // otherwise the tri-state would be reporting "unknown" for everything and proving nothing.
       expect(
         ownership[0],

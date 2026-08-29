@@ -1412,7 +1412,7 @@ export class CodexHookService {
       options?.codexHomeDir?.replace(/\/$/, '') ?? `${remoteHome.replace(/\/$/, '')}/.codex`
     const remoteConfigPath = `${codexHomeBase}/hooks.json`
     const remoteTomlPath = `${codexHomeBase}/config.toml`
-    const remoteScriptPath = `${remoteHome.replace(/\/$/, '')}/.fabrica/agent-hooks/codex-hook.sh`
+    const remoteScriptPath = `${remoteHome.replace(/\/$/, '')}/.fabrica-factory/agent-hooks/codex-hook.sh`
     try {
       const config = await readHooksJsonRemote(sftp, remoteConfigPath)
       if (!config) {

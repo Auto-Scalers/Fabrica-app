@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://onFabrica.dev"><img src="../../resources/build/icon.png" alt="Fabrica" width="64" valign="middle" /></a> Fabrica
+  <a href="https://fabrica-ai.vercel.app"><img src="../../resources/build/icon.png" alt="Fabrica" width="64" valign="middle" /></a> Fabrica
 </h1>
 
 <p align="center">
@@ -20,7 +20,7 @@
   Rode Codex, ClaudeCode, OpenCode ou Pi lado a lado — cada um em seu próprio worktree, acompanhado em um só lugar.
 </p>
 
-<h3 align="center"><a href="https://onfabrica.dev/download"><ins>Baixar o Fabrica</ins></a></h3>
+<h3 align="center"><a href="https://fabrica-ai.vercel.app/download"><ins>Baixar o Fabrica</ins></a></h3>
 
 <p align="center">
   <img src="../assets/readme-hero.jpg" alt="App desktop do Fabrica executando agentes em worktrees paralelos, com o app companion móvel do Fabrica no canto" width="960" />
@@ -36,11 +36,11 @@
 
 Monitore e conduza seus agentes pelo celular — receba uma notificação quando um agente terminar e envie instruções de acompanhamento de qualquer lugar.
 
-[App Store para iOS](https://apps.apple.com/us/app/fabrica-ide/id6766130217) · [TestFlight](https://testflight.apple.com/join/YjeGMQBA) · [APK Android 0.0.37](https://github.com/Auto-Scalers/Fabrica-app/releases/download/mobile-android-v0.0.37/app-release.apk) · [Docs →](https://www.onfabrica.dev/docs/mobile)
+[App Store para iOS](https://apps.apple.com/us/app/fabrica-ide/id6766130217) · [TestFlight](https://testflight.apple.com/join/YjeGMQBA) · [APK Android 0.0.37](https://github.com/Auto-Scalers/Fabrica-app/releases/download/mobile-android-v0.0.37/app-release.apk) · [Docs →](https://fabrica-ai.vercel.app/docs/mobile)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/mobile"><picture><source srcset="../assets/feature-wall/mobile-companion-app-showcase.gif" type="image/gif"><img src="../assets/feature-wall/mobile-companion-app-showcase.jpg" alt="Fabrica desktop com o app companion móvel" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/mobile"><picture><source srcset="../assets/feature-wall/mobile-companion-app-showcase.gif" type="image/gif"><img src="../assets/feature-wall/mobile-companion-app-showcase.jpg" alt="Fabrica desktop com o app companion móvel" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -50,11 +50,11 @@ Monitore e conduza seus agentes pelo celular — receba uma notificação quando
 
 Envie um mesmo prompt para cinco agentes, cada um em seu próprio worktree git isolado — compare os resultados e faça merge do vencedor.
 
-[Docs →](https://www.onfabrica.dev/docs/model/worktrees)
+[Docs →](https://fabrica-ai.vercel.app/docs/model/worktrees)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/model/worktrees"><picture><source srcset="../assets/feature-wall/parallel-worktrees.gif" type="image/gif"><img src="../assets/feature-wall/parallel-worktrees.jpg" alt="Orquestração de worktrees paralelos" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/model/worktrees"><picture><source srcset="../assets/feature-wall/parallel-worktrees.gif" type="image/gif"><img src="../assets/feature-wall/parallel-worktrees.jpg" alt="Orquestração de worktrees paralelos" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -64,11 +64,11 @@ Envie um mesmo prompt para cinco agentes, cada um em seu próprio worktree git i
 
 Terminais no nível do Ghostty com renderização WebGL, divisões infinitas e scrollback que sobrevive a reinicializações.
 
-[Docs →](https://www.onfabrica.dev/docs/terminal)
+[Docs →](https://fabrica-ai.vercel.app/docs/terminal)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/terminal"><picture><source srcset="../assets/feature-wall/terminal-splits.gif" type="image/gif"><img src="../assets/feature-wall/terminal-splits.jpg" alt="Terminais divididos" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/terminal"><picture><source srcset="../assets/feature-wall/terminal-splits.gif" type="image/gif"><img src="../assets/feature-wall/terminal-splits.jpg" alt="Terminais divididos" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -78,11 +78,11 @@ Terminais no nível do Ghostty com renderização WebGL, divisões infinitas e s
 
 Clique em qualquer elemento de UI em uma janela real do Chromium para enviar HTML, CSS e uma captura recortada direto para o prompt do seu agente.
 
-[Docs →](https://www.onfabrica.dev/docs/browser/design-mode)
+[Docs →](https://fabrica-ai.vercel.app/docs/browser/design-mode)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/browser/design-mode"><picture><source srcset="../assets/feature-wall/design-mode.gif" type="image/gif"><img src="../assets/feature-wall/design-mode.jpg" alt="Navegador integrado e Modo Design" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/browser/design-mode"><picture><source srcset="../assets/feature-wall/design-mode.gif" type="image/gif"><img src="../assets/feature-wall/design-mode.jpg" alt="Navegador integrado e Modo Design" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -92,11 +92,11 @@ Clique em qualquer elemento de UI em uma janela real do Chromium para enviar HTM
 
 Navegue por PRs, issues e quadros de projeto dentro do app — abra um worktree a partir de qualquer tarefa e revise sem trocar de contexto.
 
-[Docs →](https://www.onfabrica.dev/docs/review/linear)
+[Docs →](https://fabrica-ai.vercel.app/docs/review/linear)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/review/linear"><picture><source srcset="../assets/feature-wall/github-linear.gif" type="image/gif"><img src="../assets/feature-wall/github-linear.jpg" alt="Fluxos de trabalho de tarefas do GitHub e Linear no Fabrica" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/review/linear"><picture><source srcset="../assets/feature-wall/github-linear.gif" type="image/gif"><img src="../assets/feature-wall/github-linear.jpg" alt="Fluxos de trabalho de tarefas do GitHub e Linear no Fabrica" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -106,11 +106,11 @@ Navegue por PRs, issues e quadros de projeto dentro do app — abra um worktree 
 
 Execute agentes em uma máquina remota potente com edição completa de arquivos, git e terminais — com reconexão automática e encaminhamento de portas incluídos.
 
-[Docs →](https://www.onfabrica.dev/docs/ssh)
+[Docs →](https://fabrica-ai.vercel.app/docs/ssh)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/ssh"><picture><source srcset="../assets/feature-wall/ssh-worktrees.gif" type="image/gif"><img src="../assets/feature-wall/ssh-worktrees.jpg" alt="Worktrees remotos por SSH" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/ssh"><picture><source srcset="../assets/feature-wall/ssh-worktrees.gif" type="image/gif"><img src="../assets/feature-wall/ssh-worktrees.jpg" alt="Worktrees remotos por SSH" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -120,11 +120,11 @@ Execute agentes em uma máquina remota potente com edição completa de arquivos
 
 Deixe comentários em qualquer linha de diff e envie-os de volta ao agente — revise, edite e faça commit sem sair do Fabrica.
 
-[Docs →](https://www.onfabrica.dev/docs/review/annotate-ai-diff)
+[Docs →](https://fabrica-ai.vercel.app/docs/review/annotate-ai-diff)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/review/annotate-ai-diff"><picture><source srcset="../assets/feature-wall/annotate-diff.gif" type="image/gif"><img src="../assets/feature-wall/annotate-diff.jpg" alt="Anotar diffs gerados por IA" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/review/annotate-ai-diff"><picture><source srcset="../assets/feature-wall/annotate-diff.gif" type="image/gif"><img src="../assets/feature-wall/annotate-diff.jpg" alt="Anotar diffs gerados por IA" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -134,11 +134,11 @@ Deixe comentários em qualquer linha de diff e envie-os de volta ao agente — r
 
 O editor do VS Code com salvamento automático em todos os lugares — arraste arquivos ou imagens direto para o prompt de um agente.
 
-[Docs →](https://www.onfabrica.dev/docs/editing/file-explorer)
+[Docs →](https://fabrica-ai.vercel.app/docs/editing/file-explorer)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/editing/file-explorer"><picture><source srcset="../assets/feature-wall/file-drag.gif" type="image/gif"><img src="../assets/feature-wall/file-drag.jpg" alt="Arraste arquivos e imagens para o prompt de um agente" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/editing/file-explorer"><picture><source srcset="../assets/feature-wall/file-drag.gif" type="image/gif"><img src="../assets/feature-wall/file-drag.jpg" alt="Arraste arquivos e imagens para o prompt de um agente" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -148,22 +148,22 @@ O editor do VS Code com salvamento automático em todos os lugares — arraste a
 
 Agentes também controlam o Fabrica — automatize qualquer fluxo de trabalho com `fabrica worktree create`, `snapshot`, `click` e `fill`.
 
-[Docs →](https://www.onfabrica.dev/docs/cli/overview)
+[Docs →](https://fabrica-ai.vercel.app/docs/cli/overview)
 
 </td>
 <td width="50%">
-  <a href="https://www.onfabrica.dev/docs/cli/overview"><picture><source srcset="../assets/feature-wall/fabrica-cli.gif" type="image/gif"><img src="../assets/feature-wall/fabrica-cli.jpg" alt="Automatize o Fabrica pela CLI" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/cli/overview"><picture><source srcset="../assets/feature-wall/fabrica-cli.gif" type="image/gif"><img src="../assets/feature-wall/fabrica-cli.jpg" alt="Automatize o Fabrica pela CLI" width="100%" /></picture></a>
 </td>
 </tr>
 </table>
 
 **Também incluído:**
 
-- **[Abertura rápida](https://www.onfabrica.dev/docs/model/quick-open)** — Pesquise entre worktrees, arquivos, agentes, comandos e contexto do repositório sem sair do seu fluxo.
-- **[Troca de contas e acompanhamento de uso](https://www.onfabrica.dev/docs/agents/usage-tracking)** — Veja o uso de Claude e Codex, os reinícios de limites e troque contas instantaneamente sem fazer login de novo.
-- **[Prévias ricas do repositório](https://www.onfabrica.dev/docs/editing/markdown)** — Pré-visualize Markdown, imagens, PDFs e documentos do repositório no workspace.
-- **[Computer Use](https://www.onfabrica.dev/docs/cli/computer-use)** — Deixe agentes operarem apps de desktop e UI visível quando um fluxo de trabalho precisa de interação real.
-- **[Notificações e estado de não lido](https://www.onfabrica.dev/docs/notifications)** — Saiba quando um agente termina ou precisa de atenção, depois marque conversas como não lidas para voltar depois.
+- **[Abertura rápida](https://fabrica-ai.vercel.app/docs/model/quick-open)** — Pesquise entre worktrees, arquivos, agentes, comandos e contexto do repositório sem sair do seu fluxo.
+- **[Troca de contas e acompanhamento de uso](https://fabrica-ai.vercel.app/docs/agents/usage-tracking)** — Veja o uso de Claude e Codex, os reinícios de limites e troque contas instantaneamente sem fazer login de novo.
+- **[Prévias ricas do repositório](https://fabrica-ai.vercel.app/docs/editing/markdown)** — Pré-visualize Markdown, imagens, PDFs e documentos do repositório no workspace.
+- **[Computer Use](https://fabrica-ai.vercel.app/docs/cli/computer-use)** — Deixe agentes operarem apps de desktop e UI visível quando um fluxo de trabalho precisa de interação real.
+- **[Notificações e estado de não lido](https://fabrica-ai.vercel.app/docs/notifications)** — Saiba quando um agente termina ou precisa de atenção, depois marque conversas como não lidas para voltar depois.
 - **E muito, muito mais** — lançamos novidades todos os dias, então esta lista vive atrasada. O [changelog](https://github.com/Auto-Scalers/Fabrica-app/releases) é a lista real de recursos.
 
 ---
@@ -211,7 +211,7 @@ Funciona com **qualquer agente CLI** — se roda em um terminal, roda no Fabrica
 
 ### Desktop — macOS, Windows, Linux
 
-- **[Baixe em onFabrica.dev](https://onfabrica.dev/download)**
+- **[Baixe em Fabrica](https://fabrica-ai.vercel.app/download)**
 - Ou baixe um build diretamente: [macOS Apple Silicon](https://github.com/Auto-Scalers/Fabrica-app/releases/latest/download/fabrica-macos-arm64.dmg) · [macOS Intel](https://github.com/Auto-Scalers/Fabrica-app/releases/latest/download/fabrica-macos-x64.dmg) · [Windows (.exe)](https://github.com/Auto-Scalers/Fabrica-app/releases/latest/download/fabrica-windows-setup.exe) · [Linux AppImage](https://github.com/Auto-Scalers/Fabrica-app/releases/latest/download/fabrica-linux.AppImage) · [Todos os builds](https://github.com/Auto-Scalers/Fabrica-app/releases/latest)
 - Rodando `fabrica serve` em um servidor Linux headless? Veja o [guia de servidor Linux headless](../reference/headless-linux-server.md).
 
@@ -239,7 +239,7 @@ Conecte ao app desktop para monitorar e conduzir seus agentes pelo celular.
 - **Discord:** Entre na comunidade no **[Discord](https://discord.gg/fzjDKHxv8Q)**.
 - **Twitter / X:** Siga **[@fabrica_build](https://x.com/fabrica_build)** para atualizações e anúncios.
 - **Feedback e ideias:** Lançamos rápido. Sentiu falta de algo? [Peça um novo recurso](https://github.com/Auto-Scalers/Fabrica-app/issues).
-- **Privacidade:** Veja a [documentação de privacidade e telemetria](https://www.onfabrica.dev/docs/telemetry) para saber quais dados anônimos de uso o Fabrica coleta e como desativar.
+- **Privacidade:** Veja a [documentação de privacidade e telemetria](https://fabrica-ai.vercel.app/docs/telemetry) para saber quais dados anônimos de uso o Fabrica coleta e como desativar.
 - **Mostre apoio:** Dê uma [estrela](https://github.com/Auto-Scalers/Fabrica-app) neste repositório para acompanhar nossos lançamentos diários.
 
 ---

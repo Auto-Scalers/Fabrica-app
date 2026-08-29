@@ -45,7 +45,7 @@ const manifestSchema = z
     skills: z.array(
       z
         .object({
-          name: z.string().regex(/^[a-z0-9][a-z0-9._-]*$/),
+          name: z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/),
           sourcePath: z.string().min(1),
           ...snapshotShape
         })

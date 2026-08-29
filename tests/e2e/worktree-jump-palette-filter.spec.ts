@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 

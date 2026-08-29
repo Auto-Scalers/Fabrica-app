@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { waitForActivePanePtyId, waitForActiveTerminalManager } from './helpers/terminal'
@@ -45,7 +45,7 @@ test.describe('terminal window-wake stale grid repro', () => {
     expect(baseline.applied).toEqual(baseline.xterm)
     const staleGrid = chooseStaleGrid(baseline.xterm!)
 
-    // Why: model the field state directly—xterm is fitted, but the idle PTY
+    // Why: model the field state directlyâ€”xterm is fitted, but the idle PTY
     // still has an older grid and produces no output that could self-heal it.
     await fabricaPage.evaluate(({ id, grid }) => window.api.pty.resize(id, grid.cols, grid.rows), {
       id: ptyId,

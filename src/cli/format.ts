@@ -1,4 +1,4 @@
-﻿import type { CliStatusResult } from '../shared/runtime-types'
+import type { CliStatusResult } from '../shared/runtime-types'
 import { computerUseErrorRecoveryData } from '../shared/computer-use-error-recovery'
 import { prepareComputerCliJsonResult } from './computer-format'
 import type { RuntimeRpcFailure, RuntimeRpcSuccess } from './runtime-client'

@@ -1,4 +1,4 @@
-﻿import type { ChildProcess, SpawnOptions, spawn } from 'node:child_process'
+import type { ChildProcess, SpawnOptions, spawn } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { readFile, rename, unlink, writeFile } from 'node:fs/promises'
 import {
@@ -30,7 +30,7 @@ export async function resumeInterruptedServeUpdate(
     await recordServeUpdateHandoffFailure(
       args.handoffPath,
       args.handoff,
-      `Timed out waiting for FABRICA ${args.handoff.targetVersion} to be installed.`
+      `Timed out waiting for Fabrica ${args.handoff.targetVersion} to be installed.`
     )
   }
   const child = args.spawnChild(args.executable, args.childArgs, args.spawnOptions)
@@ -88,7 +88,7 @@ export async function superviseForegroundServe(
       await recordServeUpdateHandoffFailure(
         args.handoffPath!,
         handoff,
-        `Timed out waiting for FABRICA ${handoff.targetVersion} to be installed.`
+        `Timed out waiting for Fabrica ${handoff.targetVersion} to be installed.`
       )
       expectedHandoff = null
     } else {

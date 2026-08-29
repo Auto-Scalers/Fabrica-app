@@ -1,4 +1,4 @@
-import type { ElectronApplication } from '@stablyai/playwright-test'
+﻿import type { ElectronApplication } from '@autoscalers/playwright-test'
 
 export type PtyWriteLogEntry = { id: string; data: string }
 

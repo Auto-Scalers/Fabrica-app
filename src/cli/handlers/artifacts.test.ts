@@ -27,7 +27,7 @@ const item: ArtifactListItem = {
     byteSize: 12,
     deletedAt: null
   },
-  shareUrl: 'https://share.onFABRICA.dev/a/artifact-1'
+  shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-1'
 }
 
 afterEach(() => vi.restoreAllMocks())

@@ -1,4 +1,4 @@
-﻿/* eslint-disable max-lines -- Why: root and generated command help text live together so CLI discovery stays greppable. */
+/* eslint-disable max-lines -- Why: root and generated command help text live together so CLI discovery stays greppable. */
 import type { CommandSpec } from './args'
 import { findCommandSpec, isCommandGroup, supportsBrowserPageFlag } from './args'
 import { unknownCommandData } from './command-suggestion'
@@ -8,46 +8,46 @@ const ROOT_HELP_TEXT = `fabrica
 Usage: fabrica <command> [options]
 
 Startup:
-  open                      Launch FABRICA and wait for the runtime to be reachable
-  serve                     Start a headless FABRICA runtime server
+  open                      Launch Fabrica and wait for the runtime to be reachable
+  serve                     Start a headless Fabrica runtime server
   status                    Show app/runtime/graph readiness
 
 Diagnostics:
-  diagnostics memory        Collect a memory snapshot for FABRICA and managed terminals
+  diagnostics memory        Collect a memory snapshot for Fabrica and managed terminals
 
 Agent Discovery:
   agent-context             Print the machine-readable command schema for agents
 
 Accounts:
-  account add               Add a managed Claude or Codex account on this FABRICA host
-  account list              List managed Claude and Codex accounts on this FABRICA host
+  account add               Add a managed Claude or Codex account on this Fabrica host
+  account list              List managed Claude and Codex accounts on this Fabrica host
 
 Skills:
-  skills list               List version-matched skill guides bundled with this FABRICA CLI
+  skills list               List version-matched skill guides bundled with this Fabrica CLI
   skills get                Print a version-matched skill guide as Markdown
-  skills install            Install bundled FABRICA skills globally via the community skills CLI
-  skills update             Update already-installed FABRICA skills via the community skills CLI
+  skills install            Install bundled Fabrica skills globally via the community skills CLI
+  skills update             Update already-installed Fabrica skills via the community skills CLI
 
 Environments:
-  environment add           Save a remote FABRICA runtime from a pairing code
-  environment list          List saved remote FABRICA runtimes
-  environment show          Show one saved remote FABRICA runtime
-  environment rm            Remove a saved remote FABRICA runtime
+  environment add           Save a remote Fabrica runtime from a pairing code
+  environment list          List saved remote Fabrica runtimes
+  environment show          Show one saved remote Fabrica runtime
+  environment rm            Remove a saved remote Fabrica runtime
 
 Environment Recipes:
   vm recipe doctor          Validate a per-workspace environment recipe
 
 Automations:
-  automations list          List scheduled FABRICA automations
-  automations show          Show one FABRICA automation
-  automations create        Create a scheduled FABRICA automation
-  automations edit          Edit an FABRICA automation
-  automations remove        Remove an FABRICA automation and its run history
-  automations run           Run an FABRICA automation now
+  automations list          List scheduled Fabrica automations
+  automations show          Show one Fabrica automation
+  automations create        Create a scheduled Fabrica automation
+  automations edit          Edit a Fabrica automation
+  automations remove        Remove a Fabrica automation and its run history
+  automations run           Run a Fabrica automation now
   automations runs          List automation run history
 
 Projects:
-  project list              List durable projects known to FABRICA
+  project list              List durable projects known to Fabrica
   project setups            List project host setups
   project setup-existing-folder Make a project available on a host by importing an existing folder
   project setup-clone       Make a project available on a host by cloning a repository
@@ -56,28 +56,28 @@ Projects:
   project setup-delete      Remove a project host setup
 
 Repos:
-  repo list                 List repos registered in FABRICA
-  repo add                  Add a project to FABRICA by filesystem path
+  repo list                 List repos registered in Fabrica
+  repo add                  Add a project to Fabrica by filesystem path
   repo show                 Show one registered repo
   repo set-base-ref         Set the repo's default base ref for future worktrees
   repo search-refs          Search branch/tag refs within a repo
 
 Worktrees:
-  worktree list             List FABRICA-managed worktrees
+  worktree list             List Fabrica-managed worktrees
   worktree show             Show one worktree
-  worktree current          Show the FABRICA-managed worktree for the current directory
-  worktree create           Create a new FABRICA-managed worktree
-  worktree set              Update FABRICA metadata for a worktree
-  worktree rm               Remove a worktree from FABRICA and git
+  worktree current          Show the Fabrica-managed worktree for the current directory
+  worktree create           Create a new Fabrica-managed worktree
+  worktree set              Update Fabrica metadata for a worktree
+  worktree rm               Remove a worktree from Fabrica and git
   worktree ps               Show a compact orchestration summary across worktrees
 
 Files:
-  file open                 Open a workspace file in the FABRICA editor
-  file diff                 Open a workspace file diff in the FABRICA editor
+  file open                 Open a workspace file in the Fabrica editor
+  file diff                 Open a workspace file diff in the Fabrica editor
   file open-changed         Open all git-changed files for a workspace
 
 Terminals:
-  terminal list             List live FABRICA-managed terminals
+  terminal list             List live Fabrica-managed terminals
   terminal show             Show terminal metadata and preview
   terminal read             Read bounded terminal output
   terminal send             Send input to a live terminal
@@ -106,7 +106,7 @@ Orchestration:
   orchestration task-update Update a task status
   orchestration dispatch    Dispatch a task to a terminal
   orchestration dispatch-show Show dispatch context for a task
-  orchestration worker-start Start a supervised worker locally or on a connected FABRICA server
+  orchestration worker-start Start a supervised worker locally or on a connected Fabrica server
   orchestration worker-show Inspect one supervised worker
   orchestration worker-read Read bounded output from one supervised worker
   orchestration worker-stop Fence one Dispatch; stop only its supervised worker
@@ -141,7 +141,7 @@ Linear:
   linear                    Read Linear ticket context for agents
 
 Mobile Emulator (iOS Simulator):
-  emulator list             List available/running emulators (FABRICA-managed + raw serve-sim)
+  emulator list             List available/running emulators (Fabrica-managed + raw serve-sim)
   emulator attach <device>  Attach/start helper and make active for the worktree
   emulator tap <x> <y>      Tap at normalized 0..1 coords (preferred for single taps)
   emulator type <text>      Type text (US ASCII only)
@@ -281,12 +281,12 @@ Wait Options:
 
 Output Options:
   --json                    Emit machine-readable JSON instead of human text
-  --pairing-code <code>      Connect to a remote FABRICA runtime using an FABRICA://pair?... code
+  --pairing-code <code>      Connect to a remote Fabrica runtime using a fabrica://pair?... code
   --environment <selector>   Connect using a saved environment id or name
   --help                    Show this help message
 
 Behavior:
-  Most commands require a running FABRICA runtime. If FABRICA is not open yet, run \`fabrica open\` first.
+  Most commands require a running Fabrica runtime. If Fabrica is not open yet, run \`fabrica open\` first.
   Remote runtime access can also be supplied with FABRICA_PAIRING_CODE or FABRICA_ENVIRONMENT.
   Use selectors for discovery and handles for repeated live terminal operations.
 
@@ -335,8 +335,8 @@ Examples:
   $ fabrica diagnostics memory --json
   $ fabrica repo list
   $ fabrica worktree create --name agent-task --agent codex --prompt "hi"
-  $ fabrica worktree create --repo name:FABRICA --name cli-test-1 --issue 273
-  $ fabrica worktree create --repo name:FABRICA --name linear-task --linear-issue https://linear.app/stably/issue/STA-335/test-issue
+  $ fabrica worktree create --repo name:Fabrica --name cli-test-1 --issue 273
+  $ fabrica worktree create --repo name:Fabrica --name linear-task --linear-issue https://linear.app/stably/issue/STA-335/test-issue
   $ fabrica worktree create --name linear-task --linear-issue STA-335
   $ fabrica worktree show --worktree branch:Jinwoo-H/cli
   $ fabrica worktree current
@@ -346,7 +346,7 @@ Examples:
   $ fabrica file open-changed --mode diff
   $ fabrica file open src/App.tsx
   $ fabrica terminal create --worktree active --command "codex"
-  $ fabrica terminal list --worktree path:/Users/me/FABRICA/workspaces/FABRICA/cli-test-1 --json
+  $ fabrica terminal list --worktree path:/Users/me/Fabrica/workspaces/Fabrica/cli-test-1 --json
   $ fabrica terminal send --terminal term_123 --text "hi" --enter
   $ fabrica terminal wait --terminal term_123 --for exit --timeout-ms 60000 --json
   $ fabrica tab current --json
@@ -524,19 +524,19 @@ export function formatFlagHelp(flag: string): string {
     agent: '--agent <id>          Launch a known TUI agent in the first terminal',
     'base-branch': '--base-branch <ref>    Base branch/ref to create the worktree from',
     command: '--command <text>       Command to run in the terminal on startup',
-    comment: '--comment <text>       Comment stored in FABRICA metadata',
+    comment: '--comment <text>       Comment stored in Fabrica metadata',
     cursor: '--cursor <n>           Line cursor from a previous read (returns only new output)',
     action: '--action <name>       Secondary accessibility action name',
-    activate: '--activate             Reveal the new worktree in the FABRICA app',
+    activate: '--activate             Reveal the new worktree in the Fabrica app',
     app: '--app <app>            App name, bundle ID, or pid:N',
     direction:
       '--direction <dir>      Direction: up|down|left|right for scroll, horizontal|vertical for split',
-    'display-name': '--display-name <name>  Override the FABRICA display name',
+    'display-name': '--display-name <name>  Override the Fabrica display name',
     'element-index': '--element-index <n>   Element index from get-app-state',
     title: '--title <text>         Custom title for the terminal tab (omit to reset)',
     enter: '--enter                Append Enter after sending text',
     force: '--force                Force worktree removal when supported',
-    focus: '--focus                Reveal the created terminal session in FABRICA',
+    focus: '--focus                Reveal the created terminal session in Fabrica',
     for: '--for exit|tui-idle    Wait condition to satisfy',
     'from-element-index': '--from-element-index <n> Source element index from get-app-state',
     'from-x': '--from-x <x>           Source window-local x coordinate',
@@ -627,7 +627,7 @@ export function formatFlagHelp(flag: string): string {
   }
 
   if (flag === 'current') {
-    return '--current              Use the current FABRICA worktree linked Linear issue'
+    return '--current              Use the current Fabrica worktree linked Linear issue'
   }
   if (flag === 'comments') {
     return '--comments             Include threaded Linear comments'

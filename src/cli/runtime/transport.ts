@@ -1,4 +1,4 @@
-﻿import { createConnection } from 'node:net'
+import { createConnection } from 'node:net'
 import { randomUUID } from 'node:crypto'
 import { findTransport, type RuntimeMetadata } from '../../shared/runtime-bootstrap'
 import type { RuntimeOrchestrationEnvelope } from '../../shared/runtime-rpc-envelope'
@@ -25,7 +25,7 @@ export async function sendRequest<TResult>(
       reject(
         new RuntimeClientError(
           'runtime_unavailable',
-          'No compatible transport found in FABRICA runtime metadata.'
+          'No compatible transport found in Fabrica runtime metadata.'
         )
       )
       return
@@ -44,7 +44,7 @@ export async function sendRequest<TResult>(
       reject(
         new RuntimeClientError(
           'runtime_timeout',
-          'Timed out waiting for the FABRICA runtime to respond.'
+          'Timed out waiting for the Fabrica runtime to respond.'
         )
       )
     }, timeoutMs)
@@ -71,7 +71,7 @@ export async function sendRequest<TResult>(
         ok: false,
         error: new RuntimeClientError(
           'runtime_unavailable',
-          'Could not connect to the running FABRICA app. Restart FABRICA and try again.'
+          'Could not connect to the running Fabrica app. Restart Fabrica and try again.'
         )
       })
     })
@@ -84,7 +84,7 @@ export async function sendRequest<TResult>(
         ok: false,
         error: new RuntimeClientError(
           'runtime_unavailable',
-          'The FABRICA runtime closed the connection before responding. Restart FABRICA and try again.'
+          'The Fabrica runtime closed the connection before responding. Restart Fabrica and try again.'
         )
       })
     })
@@ -112,7 +112,7 @@ export async function sendRequest<TResult>(
             ok: false,
             error: new RuntimeClientError(
               'invalid_runtime_response',
-              'The FABRICA runtime returned an invalid response frame.'
+              'The Fabrica runtime returned an invalid response frame.'
             )
           })
           return
@@ -139,7 +139,7 @@ export async function sendRequest<TResult>(
             ok: false,
             error: new RuntimeClientError(
               'invalid_runtime_response',
-              'The FABRICA runtime returned an invalid response frame.'
+              'The Fabrica runtime returned an invalid response frame.'
             )
           })
           return
@@ -160,7 +160,7 @@ export async function sendRequest<TResult>(
             ok: false,
             error: new RuntimeClientError(
               'invalid_runtime_response',
-              'The FABRICA runtime returned a mismatched response id.'
+              'The Fabrica runtime returned a mismatched response id.'
             )
           })
           return
@@ -170,7 +170,7 @@ export async function sendRequest<TResult>(
             ok: false,
             error: new RuntimeClientError(
               'runtime_unavailable',
-              'The FABRICA runtime changed while the request was in flight. Retry the command.'
+              'The Fabrica runtime changed while the request was in flight. Retry the command.'
             )
           })
           return

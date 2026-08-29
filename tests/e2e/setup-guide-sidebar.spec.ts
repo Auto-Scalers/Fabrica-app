@@ -1,4 +1,4 @@
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+﻿import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import type { SkillDiscoveryResult } from '../../src/shared/skills'
 import { test, expect } from './helpers/fabrica-app'
 import { getStoreState, waitForActiveWorktree, waitForSessionReady } from './helpers/store'

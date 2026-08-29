@@ -109,7 +109,7 @@ import { WORKTREE_CREATE_TIMEOUT_MS } from '../../../src/tasks/workspace-create-
 import {
   isSetupHookTrusted,
   normalizeSetupHookTrust,
-  trustedFabricaHooksWithSetupApproval,
+  trustedFABRICAHooksWithSetupApproval,
   wasSetupHookPreviouslyApproved
 } from '../../../src/tasks/setup-hook-trust'
 import { colors, radii, spacing, typography } from '../../../src/theme/mobile-theme'
@@ -152,7 +152,7 @@ import type {
   BaseRefSearchResult,
   GitHubOwnerRepo,
   ProviderCheckSummary,
-  PersistedTrustedFabricaHooks,
+  PersistedTrustedFABRICAHooks,
   SparsePreset,
   TuiAgent
 } from '../../../../src/shared/types'
@@ -2274,7 +2274,7 @@ export default function MobileTasksScreen() {
   const [linearSubIssueTitle, setLinearSubIssueTitle] = useState('')
   const [taskStateHydrated, setTaskStateHydrated] = useState(false)
   const [runtimeTaskSettings, setRuntimeTaskSettings] = useState<RuntimeTaskSettings>({})
-  const [trustedFabricaHooks, setTrustedFabricaHooks] = useState<PersistedTrustedFabricaHooks>({})
+  const [trustedFabricaHooks, setTrustedFabricaHooks] = useState<PersistedTrustedFABRICAHooks>({})
   const [fabricaYamlTrustPrompt, setFabricaYamlTrustPrompt] = useState<FabricaYamlTrustPrompt | null>(null)
   const [githubProjectSettings, setGithubProjectSettings] = useState<GitHubProjectSettings>(
     EMPTY_GITHUB_PROJECT_SETTINGS
@@ -2750,7 +2750,7 @@ export default function MobileTasksScreen() {
       if (!client) {
         return
       }
-      const next = trustedFabricaHooksWithSetupApproval({
+      const next = trustedFABRICAHooksWithSetupApproval({
         trust: trustedFabricaHooks,
         repoId,
         contentHash,
@@ -2968,7 +2968,7 @@ export default function MobileTasksScreen() {
             uiResponse.result as {
               ui?: {
                 taskResumeState?: TaskResumeState
-                trustedFabricaHooks?: PersistedTrustedFabricaHooks
+                trustedFabricaHooks?: PersistedTrustedFABRICAHooks
               }
             }
           ).ui

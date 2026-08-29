@@ -9,7 +9,7 @@ describe('dev-instance-identity', () => {
       isDev: false,
       devLabel: null,
       dockBadgeLabel: null,
-      appUserModelId: 'com.autoscalers.fabrica'
+      appUserModelId: 'ai.autoscalers.fabrica'
     })
   })
 

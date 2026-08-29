@@ -1,21 +1,21 @@
-/**
+﻿/**
  * Repro spec for the frozen-terminal-after-renderer-recovery report
  * (Discord #performance, GitHub #2836 family).
  *
  * Field evidence: pane shows content, shell is alive, daemon output.log does
- * not grow while typing — i.e. keystrokes silently vanish somewhere between
- * xterm and the PTY. This spec forces the suspected trigger — renderer
+ * not grow while typing â€” i.e. keystrokes silently vanish somewhere between
+ * xterm and the PTY. This spec forces the suspected trigger â€” renderer
  * process death followed by the automatic recovery reload
- * (createMainWindow.ts scheduleRendererRecovery) — then discriminates which
+ * (createMainWindow.ts scheduleRendererRecovery) â€” then discriminates which
  * layer drops input via the probes in helpers/terminal-input-probes.ts.
  *
  * Post-crash phases are driven from the MAIN process: a crashed target
  * severs Playwright's CDP session even though the app recovers, so page.*
- * calls can never observe the recovered renderer (verified empirically —
+ * calls can never observe the recovered renderer (verified empirically â€”
  * main saw did-finish-load while every window handle stayed dead).
  */
 
-import type { ElectronApplication } from '@stablyai/playwright-test'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -84,7 +84,7 @@ async function waitForRendererRecovery(electronApp: ElectronApplication): Promis
     .poll(async () => (await readMainProcessCrashProbe(electronApp)).recoveredLoads, {
       timeout: RECOVERY_TIMEOUT_MS,
       message:
-        'Main process never observed a recovery reload (did-finish-load) after the forced crash — scheduleRendererRecovery did not fire'
+        'Main process never observed a recovery reload (did-finish-load) after the forced crash â€” scheduleRendererRecovery did not fire'
     })
     .toBeGreaterThan(0)
   await expect
@@ -139,7 +139,7 @@ test.describe('Renderer crash recovery keeps terminal input alive', () => {
       // should reattach to the same session rather than spawn a fresh shell.
       const postPtyIds = await mainGetStorePtyIds(electronApp)
 
-      // Why: the post-crash transport reattach is async — a single fire-and-forget
+      // Why: the post-crash transport reattach is async â€” a single fire-and-forget
       // probe can race the reconnect window. Poll over the recovery budget so a
       // transient unbound-transport window does not fail the test; a transport
       // still dead after the full budget is the real frozen-pane bug reported below.

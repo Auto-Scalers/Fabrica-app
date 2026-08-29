@@ -1,18 +1,9 @@
-﻿import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { describe, expect, it } from 'vitest'
 
-const source = readFileSync(
-  new URL('../../app/h/[hostId]/session/[worktreeId].tsx', import.meta.url),
-  'utf8'
-)
-const reconciliationHookSource = readFileSync(
-  new URL('./use-mobile-session-tabs-reconciliation.ts', import.meta.url),
-  'utf8'
-)
-const autoCreateHookSource = readFileSync(
-  new URL('./use-initial-session-terminal-autocreate.ts', import.meta.url),
-  'utf8'
-)
+const source = readSourceText(new URL('../../app/h/[hostId]/session/[worktreeId].tsx', import.meta.url))
+const reconciliationHookSource = readSourceText(new URL('./use-mobile-session-tabs-reconciliation.ts', import.meta.url))
+const autoCreateHookSource = readSourceText(new URL('./use-initial-session-terminal-autocreate.ts', import.meta.url))
 
 function sliceBetween(startPattern: string, endPattern: string): string {
   const start = source.indexOf(startPattern)
@@ -103,7 +94,7 @@ describe('mobile session startup', () => {
       startupEffect.indexOf('await ensureSessionTabs()')
     )
     expect(startupEffect).toContain('headlessActivationNeedsHostRenderer(response.result)')
-    expect(startupEffect).toContain("showToast('Open FABRICA on the host to wake sleeping agents.'")
+    expect(startupEffect).toContain("showToast('Open Fabrica on the host to wake sleeping agents.'")
   })
 
   it('fails runtime capability gates closed before probing a replacement client', () => {

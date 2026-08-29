@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { existsSync } from 'node:fs'
 import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
@@ -188,7 +188,7 @@ async function waitForCodexComposer(page: Page): Promise<string> {
     await page.waitForTimeout(250)
   }
   const reason = CODEX_SIGN_IN_RE.test(lastContent)
-    ? 'Codex stopped on the sign-in screen — CODEX_HOME auth was not visible to the TUI'
+    ? 'Codex stopped on the sign-in screen â€” CODEX_HOME auth was not visible to the TUI'
     : 'Codex never reached the composer'
   throw new Error(`${reason}\n--- terminal tail ---\n${lastContent.slice(-1_500)}\n--- end ---`)
 }

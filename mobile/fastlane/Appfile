@@ -1,2 +1,2 @@
-app_identifier(ENV["IOS_BUNDLE_IDENTIFIER"] || "com.stablyai.fabrica.mobile")
+app_identifier(ENV["IOS_BUNDLE_IDENTIFIER"] || "com.autoscalers.fabrica.mobile")
 team_id(ENV["APPLE_TEAM_ID"])

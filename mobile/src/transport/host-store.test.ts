@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { MobileRelayHostOverlay } from './mobile-relay-host-overlay'
 
 const asyncStorageMock = vi.hoisted(() => ({
@@ -387,14 +387,14 @@ describe('host-store list mutations', () => {
         {
           id: 'relay-primary',
           kind: 'relay',
-          url: 'wss://relay-c1.onFABRICA.dev/v1/connect/AbCdEf0123_-xyZ9'
+          url: 'wss://relay-c1.onfabrica.dev/v1/connect/AbCdEf0123_-xyZ9'
         }
       ],
       relayHostId: 'AbCdEf0123_-xyZ9',
       relay: {
         v: 1,
-        directorUrl: 'https://relay.onFABRICA.dev',
-        cellUrl: 'https://relay-c1.onFABRICA.dev',
+        directorUrl: 'https://relay.onfabrica.dev',
+        cellUrl: 'https://relay-c1.onfabrica.dev',
         assignmentEpoch: 7,
         relayHostId: 'AbCdEf0123_-xyZ9',
         e2eeFraming: 2
@@ -515,14 +515,14 @@ describe('host-store list mutations', () => {
         {
           id: 'relay-primary',
           kind: 'relay',
-          url: 'wss://relay-c1.onFABRICA.dev/v1/connect/AbCdEf0123_-xyZ9'
+          url: 'wss://relay-c1.onfabrica.dev/v1/connect/AbCdEf0123_-xyZ9'
         }
       ],
       relayHostId: 'AbCdEf0123_-xyZ9',
       relay: {
         v: 1,
-        directorUrl: 'https://relay.onFABRICA.dev',
-        cellUrl: 'https://relay-c1.onFABRICA.dev',
+        directorUrl: 'https://relay.onfabrica.dev',
+        cellUrl: 'https://relay-c1.onfabrica.dev',
         assignmentEpoch: 7,
         relayHostId: 'AbCdEf0123_-xyZ9',
         e2eeFraming: 2

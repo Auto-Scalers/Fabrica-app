@@ -26,7 +26,7 @@ pnpm typecheck     # TypeScript check
 ## What You Should Know
 
 - This is a rebrand from Orca to Fabrica
-- App ID: `com.autoscalers.fabrica` (ACTUAL, shipping — `config/electron-builder.config.cjs:49`). PENDING-PM: canonical identity not yet confirmed; docs previously said `ai.autoscalers.fabrica`
+- App ID: `ai.autoscalers.fabrica` (canonical — migrated from `com.autoscalers.fabrica` in APP-E1)
 - Deep link: `fabrica://`
 - CLI command: `fabrica`
 - GitHub org: `Auto-Scalers` (was `stablyai`)

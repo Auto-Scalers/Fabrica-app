@@ -759,11 +759,11 @@ describe('buildRows with pinned worktrees', () => {
     expect(headers).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          key: 'project:github:Auto-Scalers/Fabrica::setup:repo-1',
+          key: 'project:github:Auto-Scalers/Fabrica-app::setup:repo-1',
           label: 'FABRICA'
         }),
         expect.objectContaining({
-          key: 'project:github:Auto-Scalers/Fabrica::setup:repo-2',
+          key: 'project:github:Auto-Scalers/Fabrica-app::setup:repo-2',
           label: 'FABRICA-2'
         })
       ])
@@ -825,8 +825,8 @@ describe('buildRows with pinned worktrees', () => {
 
     const headers = rows.filter((row) => row.type === 'header')
     expect(headers.map((row) => row.key)).toEqual([
-      'project:github:Auto-Scalers/Fabrica::setup:repo-1',
-      'project:github:Auto-Scalers/Fabrica::setup:repo-local-b',
+      'project:github:Auto-Scalers/Fabrica-app::setup:repo-1',
+      'project:github:Auto-Scalers/Fabrica-app::setup:repo-local-b',
       'project:github:Auto-Scalers/Fabrica-app'
     ])
   })
@@ -1112,14 +1112,16 @@ describe('buildRows with pinned worktrees', () => {
     const headers = rows.filter((row) => row.type === 'header')
     expect(headers.map((row) => row.key).sort()).toEqual([
       'project:github:Auto-Scalers/Fabrica-app',
-      'project:github:Auto-Scalers/Fabrica::setup:repo-1',
-      'project:github:Auto-Scalers/Fabrica::setup:repo-local-b'
+      'project:github:Auto-Scalers/Fabrica-app::setup:repo-1',
+      'project:github:Auto-Scalers/Fabrica-app::setup:repo-local-b'
     ])
     // The provisioned copy nests under the plain project key with only its own
     // worktree; it never gets a path-scoped `::setup:` header like the real
     // checkouts do. (buildRows disambiguates its visible label to the repo name.)
     expect(
-      headers.some((row) => row.key === 'project:github:Auto-Scalers/Fabrica::setup:repo-runtime-b')
+      headers.some(
+        (row) => row.key === 'project:github:Auto-Scalers/Fabrica-app::setup:repo-runtime-b'
+      )
     ).toBe(false)
     expect(
       headers.find((row) => row.key === 'project:github:Auto-Scalers/Fabrica-app')

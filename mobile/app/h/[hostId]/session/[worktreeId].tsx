@@ -924,7 +924,7 @@ export default function SessionScreen() {
   // Why: terminal command-bar autocomplete opt-in, reloaded on focus so a Settings → Terminal toggle takes effect on return.
   const [autocompleteEnabled, setAutocompleteEnabled] = useState(false)
   const [terminalLinkOpenMode, setTerminalLinkOpenMode] =
-    useState<MobileTerminalLinkOpenMode>('orca-browser')
+    useState<MobileTerminalLinkOpenMode>('fabrica-browser')
   const [liveInputCapture, setLiveInputCapture] = useState('')
   const {
     clearTerminalLiveInputDefault,

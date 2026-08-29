@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 
@@ -33,7 +33,7 @@ test.describe('Reveal active workspace button', () => {
   })
 
   // Note: the "clipped in the production sidebar" pixel-containment test was
-  // removed — it forced a ~44px synthetic viewport and asserted ±1px scroll
+  // removed â€” it forced a ~44px synthetic viewport and asserted Â±1px scroll
   // precision, which the row virtualizer can't guarantee under CI saturation
   // (not a scenario real users hit). Reveal-into-view is covered robustly by
   // the "outside the virtualized window" test below.

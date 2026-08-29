@@ -8179,12 +8179,12 @@ describe('IssueSourceIndicator suppression', () => {
 
     // Same slug ? null (no information to convey)
     expect(sameGitHubOwnerRepo({ owner: 'o', repo: 'r' }, { owner: 'o', repo: 'r' })).toBe(true)
-    // Case-insensitive equality — the parent design doc calls out that `StablyAI/FABRICA`
-    // and `Auto-Scalers/Fabrica-app` resolve to the same repo and must suppress.
+    // Case-insensitive equality — `Auto-Scalers/FABRICA-APP`
+    // and `Auto-Scalers/fabrica-app` resolve to the same repo and must suppress.
     expect(
       sameGitHubOwnerRepo(
-        { owner: 'StablyAI', repo: 'Fabrica' },
-        { owner: 'Auto-Scalers', repo: 'fabrica' }
+        { owner: 'Auto-Scalers', repo: 'FABRICA-APP' },
+        { owner: 'Auto-Scalers', repo: 'fabrica-app' }
       )
     ).toBe(true)
     expect(

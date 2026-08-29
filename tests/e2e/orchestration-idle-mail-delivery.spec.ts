@@ -1,15 +1,15 @@
-/**
+﻿/**
  * Push-on-idle mail delivery, end to end (#12536).
  *
  * Orchestration hands a message to an agent one of two ways: a supervised agent
  * pulls with `orchestration.check --wait`, and an unsupervised one has the text
  * typed into its pane when the runtime sees it go idle. The push half was driven
- * only by a busy→idle transition, so mail that arrived while the recipient was
+ * only by a busyâ†’idle transition, so mail that arrived while the recipient was
  * ALREADY idle waited for a transition that never came and sat unread forever.
  *
  * These specs drive real PTYs: the recipient is a fake `codex` on PATH whose OSC
  * titles the test controls through a file, and which appends every stdin chunk
- * to a ledger. That ledger is the oracle — it proves the pointer and the
+ * to a ledger. That ledger is the oracle â€” it proves the pointer and the
  * synthesized Enter reached the agent process, which no store or DB read can.
  *
  * The ordering fixes on this path (microtask deferral, probe-window respawn,
@@ -18,7 +18,7 @@
  * behavior that needs a real process, a real title, or a real pane.
  */
 import { test, expect } from './helpers/fabrica-app'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { waitForSessionReady, waitForActiveWorktree, ensureTerminalVisible } from './helpers/store'
 import {
@@ -100,7 +100,7 @@ async function setUpMailFixture(
 
   // Why: the renderer publishes the active worktree before the runtime finishes
   // registering it, and terminal.create resolves its selector against the
-  // runtime — racing that yields selector_not_found, not a slow create.
+  // runtime â€” racing that yields selector_not_found, not a slow create.
   await expect
     .poll(
       async () => {
@@ -112,7 +112,7 @@ async function setUpMailFixture(
     .toBe(true)
 
   const openAgentPane = async (): Promise<AgentPane> => {
-    // The fixture's pane is already mounted, so its leaf exists — which is what
+    // The fixture's pane is already mounted, so its leaf exists â€” which is what
     // push delivery resolves the write target through.
     const ptyId = await waitForActivePanePtyId(fabricaPage)
     const { paneKey } = await waitForActivePaneHookDescriptor(fabricaPage)
@@ -189,7 +189,7 @@ async function expectPointed(pane: AgentPane, count = 1): Promise<void> {
 
 /**
  * The synthesized Enter is a separate write ~500ms after the pointer. The pointer
- * itself is `\n`-joined, so a `\r` anywhere in stdin can only be that submit —
+ * itself is `\n`-joined, so a `\r` anywhere in stdin can only be that submit â€”
  * which keeps the assertion independent of how the PTY chunks the two writes.
  */
 async function expectSubmitted(pane: AgentPane): Promise<void> {
@@ -234,7 +234,7 @@ test.describe('orchestration push-on-idle mail delivery', () => {
     const pane = await openAgentPane()
     await driveToLiveIdle(client, pane)
 
-    // The regression: no busy→idle edge follows this send, so before #12536 the
+    // The regression: no busyâ†’idle edge follows this send, so before #12536 the
     // row stayed pending until something unrelated made the agent transition.
     const subject = 'Already idle delivery'
     const messageId = await sendMail(client, pane.handle, { subject })
@@ -273,7 +273,7 @@ test.describe('orchestration push-on-idle mail delivery', () => {
       .toBe('pending')
   })
 
-  // Guards the null→idle path rather than reproducing #12536: a fresh pane has
+  // Guards the nullâ†’idle path rather than reproducing #12536: a fresh pane has
   // no status, so idle IS a transition here. The no-transition variant needs a
   // restore-seeded idle and lives in orchestration-idle-mail-restore.spec.ts.
   test('delivers mail queued before a fresh agent has reported any status', async ({
@@ -284,13 +284,13 @@ test.describe('orchestration push-on-idle mail delivery', () => {
     const { client, userDataDir, openAgentPane } = await setUpMailFixture(fabricaPage, electronApp)
     const pane = await openAgentPane()
 
-    // No title at all yet — the pane has no live agent status, which is where a
+    // No title at all yet â€” the pane has no live agent status, which is where a
     // resumed agent sits before it paints its prompt.
     const subject = 'First live idle frame'
     const messageId = await sendMail(client, pane.handle, { subject })
     await expectStaysPending(fabricaPage, userDataDir, pane, messageId)
 
-    // Idle is this pane's FIRST live status, so there is no busy→idle edge here
+    // Idle is this pane's FIRST live status, so there is no busyâ†’idle edge here
     // either; delivery has to hang off the liveness of the observation.
     pane.agent.setTitle(CODEX_IDLE_TITLE)
     await expectPointed(pane)
@@ -307,11 +307,11 @@ test.describe('orchestration push-on-idle mail delivery', () => {
     await driveToLiveIdle(client, pane)
 
     // A supervised agent is parked in a long-poll. Pushing as well would deliver
-    // the same row twice — check consumes by `read` and push stamps
+    // the same row twice â€” check consumes by `read` and push stamps
     // `delivered_at`, so neither marker hides the row from the other.
     // Why peek: this pane is bound to no Run, and that legacy mailbox refuses a
     // consuming read. Peek still registers the same unfiltered waiter, which is
-    // what suppresses the push — the pull's own bookkeeping is not under test.
+    // what suppresses the push â€” the pull's own bookkeeping is not under test.
     const waiting = client.call<{ messages: { subject: string }[] }>('orchestration.check', {
       terminal: pane.handle,
       peek: true,

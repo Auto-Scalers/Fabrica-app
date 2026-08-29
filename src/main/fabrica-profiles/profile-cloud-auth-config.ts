@@ -16,9 +16,9 @@ export type FABRICACloudAuthConfig = {
 }
 
 const DEFAULT_SCOPE = 'openid profile email offline_access'
-const PRODUCTION_API_BASE_URL = 'https://login.onFABRICA.dev'
+const PRODUCTION_API_BASE_URL = 'https://fabrica-ai.vercel.app'
 const PRODUCTION_CLIENT_ID = 'FABRICA-desktop'
-const PRODUCTION_RELAY_DIRECTOR_URL = 'https://relay.onFABRICA.dev'
+const PRODUCTION_RELAY_DIRECTOR_URL = 'https://fabrica-relay.fabrica-relay.workers.dev'
 
 // Why: packaged main bundles never define NODE_ENV, so packaged-ness is the
 // only reliable production signal for gating dev-only auth escape hatches.

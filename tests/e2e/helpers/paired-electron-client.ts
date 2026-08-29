@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+﻿import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { randomUUID } from 'node:crypto'
 import os from 'node:os'
 import path from 'node:path'
@@ -7,7 +7,7 @@ import {
   type ElectronApplication,
   type Page,
   type TestInfo
-} from '@stablyai/playwright-test'
+} from '@autoscalers/playwright-test'
 
 import { getE2ECompletedOnboardingProfile } from './e2e-completed-onboarding-profile'
 import { getFABRICAElectronLaunchArgs } from './electron-launch-args'

@@ -4,7 +4,7 @@ A throwaway probe that answers one empirical question for Phase 1 of the
 Windows update-survival work:
 
 > What is the **minimal set of files** that must be copied out of a packaged
-> `win-unpacked` build so that a **copied `Orca.exe`** — run with
+> `win-unpacked` build so that a **copied `Fabrica.exe`** — run with
 > `ELECTRON_RUN_AS_NODE=1` from a directory **outside** the install dir — can:
 > (a) start the terminal daemon and signal ready over IPC,
 > (b) spawn a real ConPTY `node-pty` session, write input, and read output back,
@@ -13,7 +13,7 @@ Windows update-survival work:
 
 ## Why this matters
 
-The daemon is `fork()`ed from the app's own Electron binary (`Orca.exe`) with
+The daemon is `fork()`ed from the app's own Electron binary (`Fabrica.exe`) with
 `ELECTRON_RUN_AS_NODE=1`, from the **install** directory. On a Windows update,
 electron-builder's NSIS installer (a) runs `uninstallOldVersion` (deletes the
 registered install's files) and (b) `CHECK_APP_RUNNING` force-closes every
@@ -45,12 +45,12 @@ node tests/tools/daemon-relocation-spike/spike.mjs --selftest
 ```
 
 Exit code is `0` only when the run **PASSES**: daemon ready, PTY echo
-round-trips the nonce, the daemon's main module is the copied `Orca.exe`, and
+round-trips the nonce, the daemon's main module is the copied `Fabrica.exe`, and
 **no** loaded module resolves under `--app-dir`.
 
 ## Tiers (defined as data in `tier-file-set.mjs`)
 
-Every tier includes the irreducible core: `Orca.exe`, `icudtl.dat`, both V8
+Every tier includes the irreducible core: `Fabrica.exe`, `icudtl.dat`, both V8
 snapshot blobs (`snapshot_blob.bin`, `v8_context_snapshot.bin`), the daemon
 bundle (`out/main/daemon-entry.js` + `chunks/` + `out/package.json`), and the
 whole `node-pty` package (native `conpty.node` + the sibling `conpty/` runtime
@@ -129,7 +129,7 @@ client never drifts from the daemon.
 `Get-Process -Id <pid>` and enumerates `.Modules[].FileName`. Any module path
 under `--app-dir` is a **lock risk** (the installer cannot replace a file a live
 process maps), so a passing relocation must show **zero**. It also asserts the
-process's **main module** is the copied `Orca.exe`, not the install-dir one.
+process's **main module** is the copied `Fabrica.exe`, not the install-dir one.
 
 Loaded DLLs are the lock-critical set. Data files (`icudtl.dat`, asar) are not
 memory-mapped as modules, so this probe does not enumerate them — the copy plan
@@ -141,7 +141,7 @@ This session has **no build**, so the launch path is unproven. Verified here:
 `node --check` on every `.mjs`, a green `--selftest`, and clean
 `pnpm exec oxlint`. Open questions the real CI run must answer:
 
-- Whether `TIER_MINIMAL` (no top-level DLLs) boots `Orca.exe` as node at all, or
+- Whether `TIER_MINIMAL` (no top-level DLLs) boots `Fabrica.exe` as node at all, or
   whether run-as-node still needs `ffmpeg.dll` / others — this is the core
   empirical result.
 - Whether the daemon bundle require-closure needs any **other** unpacked
@@ -156,5 +156,5 @@ initialize the GPU/render stack, so `libEGL` / `libGLESv2` / `vk_swiftshader` /
 `vulkan-1` / `d3dcompiler_47` are very unlikely to load, while `ffmpeg.dll` and
 the ICU/snapshot data are retained because the Electron bootstrap references
 them regardless of run-as-node. Run `--tier minimal` on CI first: if it PASSES,
-ship minimal; if `Orca.exe` fails to boot without the non-GPU DLLs, fall back to
+ship minimal; if `Fabrica.exe` fails to boot without the non-GPU DLLs, fall back to
 `no-gpu`. `full` is the always-works upper bound for comparison.

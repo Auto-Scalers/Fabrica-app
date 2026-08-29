@@ -3,7 +3,7 @@ import path from 'node:path'
 import type { AppIdentity } from '../../shared/app-identity'
 
 const BASE_APP_NAME = 'Fabrica'
-const BASE_APP_USER_MODEL_ID = 'com.autoscalers.fabrica'
+const BASE_APP_USER_MODEL_ID = 'ai.autoscalers.fabrica'
 const MAX_LABEL_LENGTH = 80
 
 export type DevInstanceIdentity = AppIdentity & {

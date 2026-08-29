@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -19,8 +19,8 @@ import {
 import { nodeTerminalCommand } from './terminal-node-command'
 import { waitForPtyShellEcho } from './terminal-pty-readiness'
 
-// A Codex-like agent: pre-fills scrollback, then keeps streaming — commits a
-// row and redraws a synchronized-output "Working…" status frame every tick.
+// A Codex-like agent: pre-fills scrollback, then keeps streaming â€” commits a
+// row and redraws a synchronized-output "Workingâ€¦" status frame every tick.
 // The stream continues while the pane is hidden, which is what routes the
 // return through the hidden-output snapshot restore.
 function streamingAgentFixtureScript(runId: string): string {
@@ -41,7 +41,7 @@ for (let tick = 0; tick < 800; tick += 1) {
     frame += '\\r\\x1b[2KSTREAMING_SWITCH_${runId}_ROW_' + String(row).padStart(4, '0') + '\\n'
     row += 1
   }
-  frame += '\\r\\x1b[2KWorking… ' + spinner[tick % 4] + ' tick=' + tick + '\\x1b[?2026l'
+  frame += '\\r\\x1b[2KWorkingâ€¦ ' + spinner[tick % 4] + ' tick=' + tick + '\\x1b[?2026l'
   await writeStdout(frame)
   await new Promise((resolve) => setTimeout(resolve, 50))
 }

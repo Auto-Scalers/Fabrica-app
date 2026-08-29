@@ -1,4 +1,4 @@
-import type { Locator, Page } from '@stablyai/playwright-test'
+﻿import type { Locator, Page } from '@autoscalers/playwright-test'
 
 import { expect, test } from './helpers/fabrica-app'
 import {
@@ -65,7 +65,7 @@ function browserSlot(page: Page, pageId: string) {
 }
 
 // Why: the toolbar reload button is also named "Retry" once a load fails, so match the
-// overlay's button by its visible label — the toolbar one is icon-only.
+// overlay's button by its visible label â€” the toolbar one is icon-only.
 function failureOverlayRetryButton(slot: Locator): Locator {
   return slot.getByRole('button', { name: 'Retry' }).filter({ hasText: 'Retry' })
 }

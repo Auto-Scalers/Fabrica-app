@@ -5,7 +5,7 @@ import { SERVE_COMMAND_SPECS } from './serve'
 export const CORE_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['open'],
-    summary: 'Launch FABRICA and wait for the runtime to be reachable',
+    summary: 'Launch Fabrica and wait for the runtime to be reachable',
     usage: 'fabrica open [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     examples: ['fabrica open', 'fabrica open --json']
@@ -21,24 +21,24 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['claude-teams'],
     argumentMode: 'passthrough',
-    summary: 'Start Claude Code Agent Teams in the current FABRICA terminal',
+    summary: 'Start Claude Code Agent Teams in the current Fabrica terminal',
     usage: 'fabrica claude-teams [claude args...]',
     allowedFlags: [...GLOBAL_FLAGS],
     notes: [
       'Passes all following arguments through to Claude Code after enabling Agent Teams native panes.',
-      'Must be run from inside an FABRICA terminal. Starts Claude Code Agent Teams in the current pane and opens teammates as native FABRICA splits.'
+      'Must be run from inside a Fabrica terminal. Starts Claude Code Agent Teams in the current pane and opens teammates as native Fabrica splits.'
     ],
     examples: ['fabrica claude-teams', 'fabrica claude-teams --resume <session-id>']
   },
   {
     path: ['repo', 'list'],
-    summary: 'List repos registered in FABRICA',
+    summary: 'List repos registered in Fabrica',
     usage: 'fabrica repo list [--json]',
     allowedFlags: [...GLOBAL_FLAGS]
   },
   {
     path: ['repo', 'add'],
-    summary: 'Add a project to FABRICA by filesystem path',
+    summary: 'Add a project to Fabrica by filesystem path',
     usage: 'fabrica repo add --path <path> [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'path']
   },
@@ -62,7 +62,7 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['worktree', 'list'],
-    summary: 'List FABRICA-managed worktrees',
+    summary: 'List Fabrica-managed worktrees',
     usage: 'fabrica worktree list [--repo <selector>] [--limit <n>] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'repo', 'limit']
   },
@@ -74,17 +74,17 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['worktree', 'current'],
-    summary: 'Show the FABRICA-managed worktree for the current directory',
+    summary: 'Show the Fabrica-managed worktree for the current directory',
     usage: 'fabrica worktree current [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     notes: [
-      'Resolves the current shell directory to a path: selector so agents can target the enclosing FABRICA worktree without spelling out $PWD.'
+      'Resolves the current shell directory to a path: selector so agents can target the enclosing Fabrica worktree without spelling out $PWD.'
     ],
     examples: ['fabrica worktree current', 'fabrica worktree current --json']
   },
   {
     path: ['worktree', 'create'],
-    summary: 'Create a new FABRICA-managed worktree',
+    summary: 'Create a new Fabrica-managed worktree',
     usage:
       'fabrica worktree create --name <name> [--repo <selector>|--project <id> [--host <host-id>]|--project-host-setup <id>] [--agent <id>] [--prompt <text>] [--setup run|skip|inherit] [--base-branch <ref>] [--issue <number>] [--linear-issue <identifier-or-url>] [--comment <text>] [--parent-worktree <selector>] [--no-parent] [--run-hooks] [--activate] [--json]',
     allowedFlags: [
@@ -108,13 +108,13 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
     ],
     notes: [
       'This creates a new checkout. For a fresh agent in an existing worktree, use `fabrica terminal create --worktree active --command "codex"` instead.',
-      'By default, FABRICA records the new worktree as a child of the caller context when it can infer one from the FABRICA terminal or current directory.',
-      'If --repo is omitted, FABRICA infers the repo from the current FABRICA-managed worktree.',
+      'By default, Fabrica records the new worktree as a child of the caller context when it can infer one from the Fabrica terminal or current directory.',
+      'If --repo is omitted, Fabrica infers the repo from the current Fabrica-managed worktree.',
       'Use --project with --host to create on a ready project host setup without spelling the backing repo id.',
       'For related work, use the inferred parent or pass --parent-worktree active, folder:<id>, or worktree:<worktreeId> to make the relationship explicit. Worktree ids are the full <repo-id>::<path> values returned by `fabrica worktree list --json`.',
       'Use --no-parent when the new worktree should be independent of the current context.',
-      '--no-parent only affects FABRICA lineage; omit --base-branch to use the repo default base, or pass the default base ref explicitly for independent top-level work.',
-      'By default this creates the worktree and its first terminal without switching the active FABRICA view.',
+      '--no-parent only affects Fabrica lineage; omit --base-branch to use the repo default base, or pass the default base ref explicitly for independent top-level work.',
+      'By default this creates the worktree and its first terminal without switching the active Fabrica view.',
       'Pass --agent to launch an agent in the first terminal; --prompt sends initial work to that agent.',
       'With --agent --json, read the new agent handle from result.agentTerminalHandle; older runtimes return only result.startupTerminal.handle, and may return neither for folder-based repos.',
       'Repo-defined setup hooks follow the repository setup policy; pass --setup run to force them.',
@@ -134,7 +134,7 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['worktree', 'set'],
-    summary: 'Update FABRICA metadata for a worktree',
+    summary: 'Update Fabrica metadata for a worktree',
     usage:
       'fabrica worktree set --worktree <selector> [--display-name <name>] [--issue <number|null>] [--linear-issue <identifier-or-url|null>] [--comment <text>] [--workspace-status <id>] [--parent-worktree <selector>|--no-parent] [--json]',
     allowedFlags: [
@@ -166,7 +166,7 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
       ['worktree', 'delete']
     ],
     destructive: true,
-    summary: 'Remove a worktree from FABRICA and git',
+    summary: 'Remove a worktree from Fabrica and git',
     usage: 'fabrica worktree rm --worktree <selector> [--force] [--run-hooks] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'worktree', 'force', 'run-hooks'],
     notes: ['Repo-defined FABRICA.yaml archive hooks are skipped unless --run-hooks is passed.']
@@ -179,7 +179,7 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['terminal', 'list'],
-    summary: 'List live FABRICA-managed terminals',
+    summary: 'List live Fabrica-managed terminals',
     usage:
       'fabrica terminal list [--worktree <selector>] [--limit <n>] [--include-visual-layouts] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'worktree', 'limit', 'include-visual-layouts'],

@@ -1,10 +1,10 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 export const DIAGNOSTICS_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['diagnostics', 'memory'],
-    summary: 'Collect a memory snapshot for FABRICA and managed terminals',
+    summary: 'Collect a memory snapshot for Fabrica and managed terminals',
     usage: 'fabrica diagnostics memory [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     notes: [

@@ -1,9 +1,9 @@
-/**
+﻿/**
  * Benchmark + repro suite for issue #8013: repos with ~10,000+ files make the
  * renderer's memory grow and the UI unresponsive.
  *
  * Each scenario builds an isolated on-disk repo at a controlled scale, drives
- * the real status pipeline (git scan → line stats → IPC → store → Source
+ * the real status pipeline (git scan â†’ line stats â†’ IPC â†’ store â†’ Source
  * Control rows), and measures:
  *   - scanMs           main-process `git status` + line-stat duration
  *   - payloadBytes     serialized status payload size crossing IPC
@@ -17,7 +17,7 @@
  *     tests/e2e/source-control-large-file-count.spec.ts \
  *     --config tests/playwright.config.ts --project electron-headless
  */
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import {
@@ -30,7 +30,7 @@ import { DEFAULT_GIT_STATUS_LIMIT } from '../../src/shared/git-status-limit'
 // Matches the large-diff freeze budget: a blocking stall past 1s is the
 // "UI becomes unresponsive" symptom reported in #8013.
 const MAX_EVENT_LOOP_LAG_MS = 1_000
-// A second full status→store→render cycle with identical data must not leak
+// A second full statusâ†’storeâ†’render cycle with identical data must not leak
 // unbounded memory; allow generous headroom for GC timing noise.
 const MAX_HEAP_GROWTH_PER_CYCLE_MB = 75
 
@@ -138,9 +138,9 @@ async function unregisterLargeFileCountRepos(
 }
 
 /**
- * Drives the exact pipeline the panel's poll uses (api.git.status →
+ * Drives the exact pipeline the panel's poll uses (api.git.status â†’
  * setGitStatus) so results are deterministic even while the built-in 3s poll
- * runs concurrently — the poll produces identical entries, which the store
+ * runs concurrently â€” the poll produces identical entries, which the store
  * dedupes.
  */
 async function measureSourceControlLoad(
@@ -193,7 +193,7 @@ async function measureSourceControlLoad(
       renderedRows = document.querySelectorAll('[data-testid="source-control-entry"]').length
       const heapUsedMbAfterRender = readHeapMb()
 
-      // Why: #8013 reports memory that keeps growing — replay the poll cycle
+      // Why: #8013 reports memory that keeps growing â€” replay the poll cycle
       // (fresh scan, fresh entry array, store update) and track heap + lag.
       const heapUsedMbPerCycle: number[] = []
       const cycleMaxLagMs: number[] = []
@@ -261,7 +261,7 @@ async function readRendererWorkingSetMb(electronApp: ElectronApplication): Promi
 
 test.describe('Source Control large file count (#8013)', () => {
   // Why: each scenario gets its own Electron app + isolated fixture repo, so a
-  // failing scale must not skip the others — every scenario is a data point.
+  // failing scale must not skip the others â€” every scenario is a data point.
   test.use({ seedTestRepo: false })
 
   test('a large untracked set under the status cap stays responsive', async ({

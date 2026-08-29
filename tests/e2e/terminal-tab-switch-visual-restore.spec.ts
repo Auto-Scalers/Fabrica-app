@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   buildAltScreenFrame,
@@ -367,7 +367,7 @@ async function startHiddenPtyOutputBurst(page: Page, ptyId: string, runId: strin
     '},1);',
     '},30);'
   ].join('')
-  // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
+  // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
   await runNodeScriptInTerminal(page, ptyId, script, { prefix: 'FABRICA-tab-switch-burst' })
 }
 
@@ -418,10 +418,10 @@ async function injectHiddenStreamingBurst(page: Page, tabId: string, runId: stri
       // Why: Grok sessions can emit large formatted bursts while the tab is
       // hidden; stress the visibility-resume flush path beyond a few lines.
       const burst = Array.from({ length: 400 }, (_, frame) => {
-        const progress = `${'█'.repeat((frame % 16) + 1)}${'░'.repeat(16 - ((frame % 16) + 1))}`
+        const progress = `${'â–ˆ'.repeat((frame % 16) + 1)}${'â–‘'.repeat(16 - ((frame % 16) + 1))}`
         return [
           `hidden_stream frame=${String(frame).padStart(3, '0')} ${marker}`,
-          `Dimension              │ Rating                                              │`,
+          `Dimension              â”‚ Rating                                              â”‚`,
           `status ${frame % 2 === 0 ? 'thinking' : 'streaming'} ${progress}`,
           `abcdefghijklmnopqrstuvwxyz 0123456789 []{}<>/\\#@%&*+=~`
         ].join('\r\n')
@@ -566,7 +566,7 @@ test.describe('Terminal tab switch visual restore', () => {
         await activateTerminalTab(fabricaPage, firstTabId)
       }
 
-      // Sample immediately — bug often shows before the 50ms overlay refit retry.
+      // Sample immediately â€” bug often shows before the 50ms overlay refit retry.
       const immediate = await readTabTerminalGeometry(fabricaPage, firstTabId, runId)
       const immediateIssue = geometryLooksCorrupted(immediate)
       if (immediateIssue) {
@@ -636,7 +636,7 @@ test.describe('Terminal tab switch visual restore', () => {
       const redraw = buildAltScreenFrame(finalMarker, liveFrame)
       // Why: this frame never transits the PTY, so a reveal restore would
       // repaint main's model over it. Publish an equivalent frame as the
-      // snapshot so either path leaves a valid screen — numbered one higher so
+      // snapshot so either path leaves a valid screen â€” numbered one higher so
       // the readback still reports which one painted. Identity is re-read per
       // cycle because a reattach would re-key the override.
       const { ptyId, cols, rows } = await readPaneIdentityOnTab(fabricaPage, firstTabId)
@@ -675,7 +675,7 @@ test.describe('Terminal tab switch visual restore', () => {
     }
 
     // Why: which cycles latched a restore is load-dependent, so it is recorded
-    // rather than asserted — without it a "both paths agree" run is opaque.
+    // rather than asserted â€” without it a "both paths agree" run is opaque.
     // Logged as well because the list reporter omits annotations.
     testInfo.annotations.push({
       type: 'alt-screen-render-path',
@@ -838,7 +838,7 @@ test.describe('Terminal tab switch visual restore', () => {
     const screenshotMismatches: string[] = []
     for (let cycle = 0; cycle < 8; cycle += 1) {
       await activateTerminalTab(fabricaPage, secondTabId)
-      // Why: do not write into the hidden tab here — new bytes would change the
+      // Why: do not write into the hidden tab here â€” new bytes would change the
       // screenshot even when rendering is healthy. This cycle only exercises the
       // suspend/resume + atlas reset path on unchanged content.
       await activateTerminalTab(fabricaPage, firstTabId)

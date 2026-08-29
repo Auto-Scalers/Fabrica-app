@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import type { RuntimeMobileSessionTabsResult } from '../../src/shared/runtime-types'
 import { toWebTerminalSurfaceTabId } from '../../src/shared/terminal-surface-id'
 import type { TerminalLayoutSnapshot } from '../../src/shared/types'
@@ -96,7 +96,7 @@ async function setPaneTitle(page: Page, title: string): Promise<void> {
       position: { x: 40, y: 40 },
       modifiers: isMac ? ['Control'] : []
     })
-  await page.getByText('Set Title…', { exact: true }).click()
+  await page.getByText('Set Titleâ€¦', { exact: true }).click()
   const titleInput = page.getByRole('textbox', { name: 'Pane title' })
   await expect(titleInput).toBeVisible()
   await titleInput.fill(title)

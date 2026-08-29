@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -44,20 +44,20 @@ function emojiTableScript(marker: string): string {
   const table = [
     '| Emoji | Name | Age | Occupation | City | Favorite Color | Pet | Hobby |',
     '| --- | --- | ---: | --- | --- | --- | --- | --- |',
-    '| 😀 | Alice Johnson | 28 | Engineer | New York | Blue | 🐕 Dog | 🎸 Guitar |',
-    '| 😂 | Bob Smith | 34 | Designer | London | Green | 🐱 Cat | 📚 Reading |',
-    '| 🥰 | Carol Davis | 22 | Student | Paris | Pink | 🐰 Rabbit | 🎨 Painting |',
-    '| 😎 | Dave Wilson | 45 | Architect | Tokyo | Black | 🐢 Turtle | 🏃 Running |',
-    '| 🤩 | Eve Martinez | 31 | Writer | Berlin | Purple | 🐦 Bird | ✈️ Traveling |',
-    '| 😜 | Frank Brown | 27 | Developer | Sydney | Red | 🐹 Hamster | 🎮 Gaming |',
-    '| 🥳 | Grace Lee | 39 | Teacher | Seoul | Yellow | 🐟 Fish | 🌱 Gardening |',
-    '| 🤔 | Henry Taylor | 41 | Doctor | Toronto | White | 🐕 Dog | 🍳 Cooking |',
-    '| 😴 | Ivy Anderson | 26 | Nurse | Chicago | Orange | 🐱 Cat | 🧘 Yoga |',
-    '| 🤗 | Jack Thomas | 33 | Lawyer | Boston | Navy | 🐢 Turtle | 📸 Photography |',
-    '| 😈 | Karen White | 29 | Artist | Miami | Teal | 🐹 Hamster | 🧶 Knitting |',
-    '| 😮 | Leo Harris | 37 | Pilot | Dubai | Gold | 🐦 Bird | 🚁 Drones |',
-    '| 🤠 | Mia Clark | 24 | Barista | Seattle | Coral | 🐰 Rabbit | 🎤 Singing |',
-    '| 😍 | Olivia Hall | 30 | Marketer | Austin | Pink | 🐱 Cat | 🏄 Surfing |'
+    '| ðŸ˜€ | Alice Johnson | 28 | Engineer | New York | Blue | ðŸ• Dog | ðŸŽ¸ Guitar |',
+    '| ðŸ˜‚ | Bob Smith | 34 | Designer | London | Green | ðŸ± Cat | ðŸ“š Reading |',
+    '| ðŸ¥° | Carol Davis | 22 | Student | Paris | Pink | ðŸ° Rabbit | ðŸŽ¨ Painting |',
+    '| ðŸ˜Ž | Dave Wilson | 45 | Architect | Tokyo | Black | ðŸ¢ Turtle | ðŸƒ Running |',
+    '| ðŸ¤© | Eve Martinez | 31 | Writer | Berlin | Purple | ðŸ¦ Bird | âœˆï¸ Traveling |',
+    '| ðŸ˜œ | Frank Brown | 27 | Developer | Sydney | Red | ðŸ¹ Hamster | ðŸŽ® Gaming |',
+    '| ðŸ¥³ | Grace Lee | 39 | Teacher | Seoul | Yellow | ðŸŸ Fish | ðŸŒ± Gardening |',
+    '| ðŸ¤” | Henry Taylor | 41 | Doctor | Toronto | White | ðŸ• Dog | ðŸ³ Cooking |',
+    '| ðŸ˜´ | Ivy Anderson | 26 | Nurse | Chicago | Orange | ðŸ± Cat | ðŸ§˜ Yoga |',
+    '| ðŸ¤— | Jack Thomas | 33 | Lawyer | Boston | Navy | ðŸ¢ Turtle | ðŸ“¸ Photography |',
+    '| ðŸ˜ˆ | Karen White | 29 | Artist | Miami | Teal | ðŸ¹ Hamster | ðŸ§¶ Knitting |',
+    '| ðŸ˜® | Leo Harris | 37 | Pilot | Dubai | Gold | ðŸ¦ Bird | ðŸš Drones |',
+    '| ðŸ¤  | Mia Clark | 24 | Barista | Seattle | Coral | ðŸ° Rabbit | ðŸŽ¤ Singing |',
+    '| ðŸ˜ | Olivia Hall | 30 | Marketer | Austin | Pink | ðŸ± Cat | ðŸ„ Surfing |'
   ].join('\r\n')
 
   return `

@@ -126,7 +126,7 @@ land" remains open until the first CI release run.
 
 ---
 
-## D4 — npm scopes `@orca/expo-two-way-audio` and `@stablyai/playwright-test`
+## D4 — npm scopes `@orca/expo-two-way-audio` and `@autoscalers/playwright-test`
 
 **Evidence:**
 - The vendored audio module is ALREADY renamed locally: package name
@@ -136,14 +136,14 @@ land" remains open until the first CI release run.
   (`mobile/packages/expo-two-way-audio/README.md:16,24`). Its homepage field still
   points at `github.com/Auto-Scalers/FABRICA` — broken-case repo slug
   (package.json:12).
-- `@stablyai/playwright-test` is an EXTERNAL published npm package
+- `@autoscalers/playwright-test` is an EXTERNAL published npm package
   (`package.json:163`, lock entries `pnpm-lock.yaml:125,2538`, sole consumer
   `config/scripts/run-idle-cpu-benchmark.mjs:2`). Renaming requires publishing a fork
   under a new scope or switching to upstream `@playwright/test`.
 
 **Options (audio module):** (a) done-as-is, just fix README examples → `@fabrica/...`;
 (b) keep vendored path-only naming.
-**Options (playwright):** (a) keep `@stablyai/playwright-test` (external dep, brand
+**Options (playwright):** (a) keep `@autoscalers/playwright-test` (external dep, brand
 visible only in dev tooling); (b) switch benchmark script to stock `@playwright/test`;
 (c) fork+publish under `@auto-scalers/`.
 

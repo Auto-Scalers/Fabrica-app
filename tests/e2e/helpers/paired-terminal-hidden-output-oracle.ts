@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import type { RuntimeTerminalRead } from '../../../src/shared/runtime-types'
 import { startRendererLagProbe } from '../paired-runtime-retention-metrics'
 import { expect } from './FABRICA-app'

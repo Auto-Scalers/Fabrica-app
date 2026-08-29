@@ -1,5 +1,5 @@
-import { rmSync, writeFileSync } from 'node:fs'
-import type { Page } from '@stablyai/playwright-test'
+﻿import { rmSync, writeFileSync } from 'node:fs'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import { getLargeDiffRenderLimit } from '../../src/shared/large-diff-render-limit'

@@ -1,4 +1,4 @@
-import type { CDPSession } from '@stablyai/playwright-test'
+﻿import type { CDPSession } from '@autoscalers/playwright-test'
 
 /**
  * Dispatches the key shapes an input source or a system text substitution produces, through CDP.
@@ -15,7 +15,7 @@ export type ImeKeyIdentity = {
 
 /**
  * A printable keydown whose `key` the input source has already rewritten to the glyph it will
- * commit — the shape a CJK source produces for punctuation and full-width digits, which arrive
+ * commit â€” the shape a CJK source produces for punctuation and full-width digits, which arrive
  * with no composition session at all.
  */
 export async function dispatchImeRewrittenPrintableKey(

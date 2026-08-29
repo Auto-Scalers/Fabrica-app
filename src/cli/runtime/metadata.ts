@@ -1,4 +1,4 @@
-﻿import { homedir } from 'node:os'
+import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { readFileSync } from 'node:fs'
 import {
@@ -15,7 +15,7 @@ export function readMetadata(userDataPath: string): RuntimeMetadata {
     if (!metadata || !findTransport(metadata, 'unix', 'named-pipe') || !metadata.authToken) {
       throw new RuntimeClientError(
         'runtime_unavailable',
-        `FABRICA runtime metadata is incomplete at ${metadataPath}`
+        `Fabrica runtime metadata is incomplete at ${metadataPath}`
       )
     }
     return metadata
@@ -25,7 +25,7 @@ export function readMetadata(userDataPath: string): RuntimeMetadata {
     }
     throw new RuntimeClientError(
       'runtime_unavailable',
-      `Could not read FABRICA runtime metadata at ${metadataPath}. Start the FABRICA app first.`
+      `Could not read Fabrica runtime metadata at ${metadataPath}. Start the Fabrica app first.`
     )
   }
 }

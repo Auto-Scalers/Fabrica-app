@@ -1,5 +1,5 @@
-#!/usr/bin/env node
-import { _electron as electron } from '@stablyai/playwright-test'
+﻿#!/usr/bin/env node
+import { _electron as electron } from '@autoscalers/playwright-test'
 import { execFileSync } from 'node:child_process'
 import { createHash, randomUUID } from 'node:crypto'
 import { existsSync } from 'node:fs'
@@ -88,7 +88,7 @@ export async function createValidationLayout(options = {}) {
   const primaryHome = path.resolve(options.primaryHome ?? os.homedir())
   const envTempParent = process.env.FABRICA_CODEX_VALIDATION_TEMP_PARENT?.trim()
   const tempParent = path.resolve(options.tempParent ?? (envTempParent || os.tmpdir()))
-  // Why: guards must compare canonical paths — a symlinked temp parent must
+  // Why: guards must compare canonical paths â€” a symlinked temp parent must
   // not smuggle the disposable root inside the primary home.
   const [primaryHomeReal, tempParentReal] = await Promise.all([
     resolveRealPath(primaryHome),

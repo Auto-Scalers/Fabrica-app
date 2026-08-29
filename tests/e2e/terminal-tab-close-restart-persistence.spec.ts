@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication } from '@stablyai/playwright-test'
+﻿import { existsSync, readFileSync } from 'node:fs'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import { waitForActiveTerminalManager, waitForPaneCount } from './helpers/terminal'
@@ -124,12 +124,12 @@ test('durable whole-tab close removes a split tab across restart', async (// oxl
     await secondLaunch.page.waitForTimeout(1_000)
     // Why: reattaching to an emptied worktree intentionally spawns a fresh
     // "Terminal 1" tab (Terminal.tsx's shouldAutoCreateInitialTerminal
-    // fallback fires whenever the active worktree has zero renderable tabs —
+    // fallback fires whenever the active worktree has zero renderable tabs â€”
     // true for a durably-closed worktree just like a brand-new one). That
     // fallback is unrelated to this test and reproduces even mid-session with
     // no restart at all, so asserting an eternally-empty tab list here is
     // wrong. What "durable" actually promises is that the specific closed
-    // split tab never comes back — assert on its identity, not on tab count.
+    // split tab never comes back â€” assert on its identity, not on tab count.
     const restoredTabs = await getWorktreeTabs(secondLaunch.page, worktreeId)
     expect(restoredTabs.some((tab) => tab.id === closedTabId)).toBe(false)
 

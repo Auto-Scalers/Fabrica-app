@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 
 import {
   DOCKER_SSH_PROXY_JUMP_REMOTE_REPO_PATH,

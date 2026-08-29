@@ -263,7 +263,7 @@ export class GrokHookService {
     // Why: only a guest-resolved path can describe remote Grok; never apply the
     // host process's GROK_HOME to SFTP paths.
     const remoteConfigPath = `${getRemoteGrokHome(home, remoteGrokHome)}/hooks/FABRICA-status.json`
-    const remoteScriptPath = `${home}/.fabrica/agent-hooks/grok-hook.sh`
+    const remoteScriptPath = `${home}/.fabrica-factory/agent-hooks/grok-hook.sh`
     try {
       const config = await readHooksJsonRemote(sftp, remoteConfigPath)
       if (!config) {

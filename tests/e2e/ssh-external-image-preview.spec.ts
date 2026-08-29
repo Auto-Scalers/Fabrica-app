@@ -1,5 +1,5 @@
-import { createHash } from 'node:crypto'
-import type { Page } from '@stablyai/playwright-test'
+﻿import { createHash } from 'node:crypto'
+import type { Page } from '@autoscalers/playwright-test'
 import { connectDockerSshRelayTarget } from './helpers/docker-ssh-relay-connection'
 import {
   cleanupDockerSshRelayTarget,

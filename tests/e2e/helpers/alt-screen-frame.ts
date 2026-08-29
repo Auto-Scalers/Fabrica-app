@@ -1,18 +1,18 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 
 // Boxed alt-screen TUI frame: enters the alternate buffer, clears it, and paints
 // a marker line carrying a zero-padded frame number.
 export function buildAltScreenFrame(marker: string, frame: number): string {
-  const progress = `${'█'.repeat((frame % 8) + 1)}${'░'.repeat(8 - ((frame % 8) + 1))}`
+  const progress = `${'â–ˆ'.repeat((frame % 8) + 1)}${'â–‘'.repeat(8 - ((frame % 8) + 1))}`
   return [
     '\x1b[?2026h',
     '\x1b[?1049h',
     '\x1b[2J\x1b[H',
     '\x1b[?25l',
-    `╭────────────────────────────────────────────────────────────────────╮`,
-    `│ ${marker} frame ${String(frame).padStart(3, '0')} ${progress}                     │`,
-    `│ Dimension              │ Rating                                      │`,
-    `╰────────────────────────────────────────────────────────────────────╯`,
+    `â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®`,
+    `â”‚ ${marker} frame ${String(frame).padStart(3, '0')} ${progress}                     â”‚`,
+    `â”‚ Dimension              â”‚ Rating                                      â”‚`,
+    `â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯`,
     '\x1b[?2026l'
   ].join('\r\n')
 }

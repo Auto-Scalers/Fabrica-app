@@ -1,4 +1,4 @@
-﻿import { ClaudeIcon, OpenAIIcon } from '../../status-bar/icons'
+import { ClaudeIcon, OpenAIIcon } from '../../status-bar/icons'
 import { cn } from '../../../lib/utils'
 import { translate } from '@/i18n/i18n'
 
@@ -180,13 +180,13 @@ export function HomeSlide({ tapping }: { tapping: boolean }): React.JSX.Element 
         <div className="mp-accounts-card">
           <AccountRow
             icon={<ClaudeIcon size={18} />}
-            email="claude@stably.ai"
+            email="claude@fabrica.studio"
             sessionPct={42}
             weekPct={18}
           />
           <AccountRow
             icon={<OpenAIIcon size={18} />}
-            email="codex@stably.ai"
+            email="codex@fabrica.studio"
             sessionPct={67}
             weekPct={31}
           />

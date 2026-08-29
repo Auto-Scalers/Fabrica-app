@@ -192,15 +192,29 @@ export async function saveHostDockWidth(width: number): Promise<void> {
   await AsyncStorage.setItem(DOCK_WIDTH_KEY, String(clampHostDockWidth(width)))
 }
 
-export type MobileTerminalLinkOpenMode = 'FABRICA-browser' | 'phone-browser'
+export type MobileTerminalLinkOpenMode = 'fabrica-browser' | 'phone-browser'
 
 const TERMINAL_LINK_OPEN_MODE_KEY = 'FABRICA:terminalLinkOpenMode'
-export const DEFAULT_TERMINAL_LINK_OPEN_MODE: MobileTerminalLinkOpenMode = 'FABRICA-browser'
+export const DEFAULT_TERMINAL_LINK_OPEN_MODE: MobileTerminalLinkOpenMode = 'fabrica-browser'
+
+// Migrate legacy stored values: pre-rebrand 'orca-browser' and broken-case 'FABRICA-browser'.
+function normalizeTerminalLinkOpenMode(raw: string): MobileTerminalLinkOpenMode {
+  if (raw === 'phone-browser') {
+    return 'phone-browser'
+  }
+  if (raw === 'fabrica-browser' || raw === 'FABRICA-browser' || raw === 'orca-browser') {
+    return 'fabrica-browser'
+  }
+  return DEFAULT_TERMINAL_LINK_OPEN_MODE
+}
 
 export async function loadTerminalLinkOpenMode(): Promise<MobileTerminalLinkOpenMode> {
   try {
     const raw = await AsyncStorage.getItem(TERMINAL_LINK_OPEN_MODE_KEY)
-    return raw === 'phone-browser' || raw === 'FABRICA-browser' ? raw : DEFAULT_TERMINAL_LINK_OPEN_MODE
+    if (raw === null) {
+      return DEFAULT_TERMINAL_LINK_OPEN_MODE
+    }
+    return normalizeTerminalLinkOpenMode(raw)
   } catch {
     return DEFAULT_TERMINAL_LINK_OPEN_MODE
   }

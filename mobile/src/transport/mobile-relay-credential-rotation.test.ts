@@ -1,4 +1,4 @@
-﻿import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import type { RpcClient } from './rpc-client'
 import {
   applyResumeConfirmation,
@@ -15,8 +15,8 @@ vi.mock('expo-crypto', () => ({ getRandomBytes: (length: number) => new Uint8Arr
 
 const relay = {
   v: 1 as const,
-  directorUrl: 'https://relay.onFABRICA.dev',
-  cellUrl: 'https://relay-c1.onFABRICA.dev',
+  directorUrl: 'https://relay.onfabrica.dev',
+  cellUrl: 'https://relay-c1.onfabrica.dev',
   assignmentEpoch: 7,
   relayHostId: 'AbCdEf0123_-xyZ9',
   e2eeFraming: 2 as const

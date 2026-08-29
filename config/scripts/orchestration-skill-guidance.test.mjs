@@ -6,8 +6,8 @@ const projectDir = resolve(import.meta.dirname, '../..')
 // Why: orchestration now ships a hybrid discovery stub, so its version-sensitive command
 // guidance lives in the authoritative guide source — assert that content there. The
 // installable stub projection is checked separately below.
-const guidePath = join(projectDir, 'skill-guides', 'orchestration.md')
-const stubPath = join(projectDir, 'skills', 'orchestration', 'SKILL.md')
+const guidePath = join(projectDir, 'skill-guides', 'fabrica-orchestration.md')
+const stubPath = join(projectDir, 'skills', 'fabrica-orchestration', 'SKILL.md')
 
 function readSkill() {
   return readFileSync(guidePath, 'utf8')
@@ -359,12 +359,12 @@ describe('orchestration install stub', () => {
     const stub = readFileSync(stubPath, 'utf8')
 
     expect(stub).toContain('discovery stub')
-    expect(stub).toContain('FABRICA skills get orchestration')
+    expect(stub).toContain('FABRICA skills get fabrica-orchestration')
     // The safe CLI-resolution contract must survive in the stub, never a bare `fabrica`.
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Fabrica screen reader')
+    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

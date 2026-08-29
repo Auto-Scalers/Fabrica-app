@@ -44,7 +44,7 @@ Download and make the AppImage executable:
 
 ```bash
 sudo mkdir -p /opt/fabrica
-sudo curl -L https://github.com/stablyai/orca/releases/latest/download/fabrica-linux.AppImage \
+sudo curl -L https://github.com/Auto-Scalers/Fabrica-app/releases/latest/download/fabrica-linux.AppImage \
   -o /opt/fabrica/fabrica-linux.AppImage
 sudo chmod +x /opt/fabrica/fabrica-linux.AppImage
 ```
@@ -446,7 +446,7 @@ recover_failed_upgrade() {
 trap recover_failed_upgrade EXIT
 
 # 1. Stage and verify the new build while the server stays online
-sudo curl -fL --retry 3 "https://github.com/stablyai/orca/releases/download/${FABRICA_VERSION}/${FABRICA_ASSET}" \
+sudo curl -fL --retry 3 "https://github.com/Auto-Scalers/Fabrica-app/releases/download/${FABRICA_VERSION}/${FABRICA_ASSET}" \
   -o /opt/fabrica/fabrica-linux.AppImage.new
 sudo chown root:root /opt/fabrica/fabrica-linux.AppImage.new
 sudo chmod 755 /opt/fabrica/fabrica-linux.AppImage.new
@@ -765,8 +765,8 @@ use `fabrica skills install` instead:
 
 ```bash
 fabrica skills install                                      # list installable skills
-fabrica skills install --skill orca-cli --skill orchestration # install globally (default)
-fabrica skills install --skill orca-cli --local              # install into the current project only
+fabrica skills install --skill fabrica-cli --skill fabrica-orchestration # install globally (default)
+fabrica skills install --skill fabrica-cli --local              # install into the current project only
 fabrica skills install --all                                 # install every bundled skill
 fabrica skills install --all --dry-run                       # print the npx command without running it
 ```
@@ -790,8 +790,8 @@ CLI installs into all ~75 agents it knows and leaves a config directory for each
 Override the targets yourself, or narrow to the shared directory alone:
 
 ```bash
-fabrica skills install --skill orca-cli --agent claude-code,codex
-fabrica skills install --skill orca-cli --agent universal
+fabrica skills install --skill fabrica-cli --agent claude-code,codex
+fabrica skills install --skill fabrica-cli --agent universal
 ```
 
 If Fabrica detects no agent at all, `fabrica skills install` stops and asks for
@@ -804,7 +804,7 @@ selection flags (`--skill`, `--all`, `--local`, `--dry-run`) and resolves to
 
 ```bash
 fabrica skills update --all                                  # update every bundled skill globally
-fabrica skills update --skill orca-cli --dry-run             # print the npx command without running it
+fabrica skills update --skill fabrica-cli --dry-run             # print the npx command without running it
 ```
 
 `fabrica skills update` only refreshes skills that are already installed — it exits

@@ -1,4 +1,4 @@
-﻿import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import type { PairingCandidateClient } from './mobile-relay-physical-client'
 import { RelayOuterError } from './mobile-relay-physical-client'
 import { createRecoveringPairingRelayCandidate } from './pairing-relay-candidate'
@@ -24,8 +24,8 @@ const journal = {
     },
     relay: {
       v: 1,
-      directorUrl: 'https://relay.onFABRICA.dev',
-      cellUrl: 'https://relay-c1.onFABRICA.dev',
+      directorUrl: 'https://relay.onfabrica.dev',
+      cellUrl: 'https://relay-c1.onfabrica.dev',
       assignmentEpoch: 7,
       relayHostId: 'AbCdEf0123_-xyZ9',
       inviteExpiresAt: 10_000,
@@ -73,7 +73,7 @@ describe('recovering pairing relay candidate', () => {
       },
       resolveDirector: async (relay) => ({
         ...relay,
-        cellUrl: 'https://relay-c2.onFABRICA.dev',
+        cellUrl: 'https://relay-c2.onfabrica.dev',
         assignmentEpoch: 8
       }),
       persistMove: async (relay) => {
@@ -117,7 +117,7 @@ describe('recovering pairing relay candidate', () => {
     const target = client(Promise.resolve(success()))
     const resolveDirector = vi.fn(async (relay) => ({
       ...relay,
-      cellUrl: 'https://relay-c2.onFABRICA.dev',
+      cellUrl: 'https://relay-c2.onfabrica.dev',
       assignmentEpoch: 8
     }))
     let connects = 0
@@ -144,7 +144,7 @@ describe('recovering pairing relay candidate', () => {
       .mockRejectedValueOnce(new RelayOuterError(1006))
       .mockImplementationOnce(async (relay) => ({
         ...relay,
-        cellUrl: 'https://relay-c2.onFABRICA.dev',
+        cellUrl: 'https://relay-c2.onfabrica.dev',
         assignmentEpoch: 8
       }))
     const sleep = vi.fn(async () => {})
@@ -174,7 +174,7 @@ describe('recovering pairing relay candidate', () => {
       .mockRejectedValueOnce(new Error('HTTP 504'))
       .mockImplementationOnce(async (relay) => ({
         ...relay,
-        cellUrl: 'https://relay-c2.onFABRICA.dev',
+        cellUrl: 'https://relay-c2.onfabrica.dev',
         assignmentEpoch: 8
       }))
     let connects = 0
@@ -200,9 +200,9 @@ describe('recovering pairing relay candidate', () => {
       'info|Relay: backing off 100ms'
     ])
     expect(entries[0]!.detail).toBe('Error: HTTP 503')
-    expect(entries[1]!.detail).toBe('relay.onFABRICA.dev')
+    expect(entries[1]!.detail).toBe('relay.onfabrica.dev')
     expect(entries[2]!.detail).toBe('Error: HTTP 504')
-    expect(entries[5]!.detail).toBe('relay-c1.onFABRICA.dev → relay-c2.onFABRICA.dev')
+    expect(entries[5]!.detail).toBe('relay-c1.onfabrica.dev → relay-c2.onfabrica.dev')
     expect(new Set(entries.map((entry) => entry.id)).size).toBe(entries.length)
   })
 

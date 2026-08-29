@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { TerminalWebViewCommand } from './terminal-webview-messages'
 import { createTerminalWebViewPendingMessages } from './terminal-webview-pending-messages'
@@ -7,7 +7,7 @@ import {
   TERMINAL_WRITE_FLUSH_WINDOW_MS
 } from './terminal-write-coalescer'
 
-const webViewSource = readFileSync(new URL('./TerminalWebView.tsx', import.meta.url), 'utf8')
+const webViewSource = readSourceText(new URL('./TerminalWebView.tsx', import.meta.url))
 
 // Simulates TerminalWebView's postMessage: ready → deliver, not ready → queue.
 // There is no React render harness in the node environment, so the boundary

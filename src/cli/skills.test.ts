@@ -220,10 +220,10 @@ describe('FABRICA skills CLI', () => {
       'get                Print a version-matched skill guide'
     )
     expect(String(logSpy.mock.calls[1]?.[0])).toContain(
-      'install            Install bundled FABRICA skills'
+      'install            Install bundled Fabrica skills'
     )
     expect(String(logSpy.mock.calls[1]?.[0])).toContain(
-      'update             Update already-installed FABRICA skills'
+      'update             Update already-installed Fabrica skills'
     )
     expect(String(logSpy.mock.calls[2]?.[0])).toContain('Skills:\n  skills list')
     expect(String(logSpy.mock.calls[2]?.[0])).toContain('skills update')

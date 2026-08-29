@@ -1,9 +1,9 @@
-import { execFileSync } from 'node:child_process'
+﻿import { execFileSync } from 'node:child_process'
 import { mkdirSync, realpathSync, writeFileSync } from 'node:fs'
 import { mkdtemp } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import type { AppState } from '../../src/renderer/src/store/types'
 import { expect } from './helpers/fabrica-app'
 

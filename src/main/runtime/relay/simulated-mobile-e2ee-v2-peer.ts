@@ -1,4 +1,4 @@
-﻿import nacl from 'tweetnacl'
+import nacl from 'tweetnacl'
 import {
   encodeMobileE2EEV2Transcript,
   validateMobileE2EEV2Handshake,
@@ -33,7 +33,7 @@ export class SimulatedMobileE2EEV2Peer {
       clientNonceB64: Buffer.from(clientNonce).toString('base64'),
       capabilities: { framing: [2], payloadKinds: ['text', 'binary'] },
       context: {
-        protocol: 'FABRICA-mobile-e2ee',
+        protocol: 'fabrica-mobile-e2ee',
         initiator: 'mobile',
         responder: 'desktop',
         transport: 'relay',

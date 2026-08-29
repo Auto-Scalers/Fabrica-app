@@ -6,7 +6,7 @@ import {
 
 describe('resolveArtifactCloudApiUrl', () => {
   it('uses the first-party production origin by default', () => {
-    expect(resolveArtifactCloudApiUrl(undefined, {}, true)).toBe('https://share.onfabrica.dev')
+    expect(resolveArtifactCloudApiUrl(undefined, {}, true)).toBe('https://fabrica-ai.vercel.app')
   })
 
   it('allows loopback HTTP only in development', () => {
@@ -22,11 +22,11 @@ describe('resolveArtifactCloudApiUrl', () => {
 
   it('rejects origins that could receive an FABRICA access token', () => {
     expect(() => resolveArtifactCloudApiUrl('https://example.com', {}, false)).toThrow(
-      /onFABRICA\.dev/
+      /fabrica-ai\.vercel\.app/
     )
-    expect(() => resolveArtifactCloudApiUrl('https://share.onFABRICA.dev/path', {}, false)).toThrow(
-      /origin/
-    )
+    expect(
+      () => resolveArtifactCloudApiUrl('https://fabrica-ai.vercel.app/path', {}, false)
+    ).toThrow(/origin/)
   })
 
   it('allows auth token overrides only in non-production development builds', () => {

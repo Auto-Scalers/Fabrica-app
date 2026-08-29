@@ -85,7 +85,7 @@ rg -i 'StablyAI|orca://' src/main/github/client.test.ts \
   src/renderer/src/store/slices/github.test.ts \
   config/scripts/locale-translation-policy.test.mjs || echo "D-category OK"
 
-#     E-category (@stablyai/playwright-test external dep): exclude the import
+#     E-category (@autoscalers/playwright-test external dep): exclude the import
 #     lines wholesale; only NEW uses of stablyai outside this dep are findings:
 rg -i 'stablyai' . -g '!node_modules' -g '!pnpm-lock.yaml' -g '!.backup' -g '!_sources' \
   | rg -v "@stablyai/playwright" || echo "E-category OK"
@@ -159,7 +159,7 @@ See `.Fabrica-app-board/PM-Decisions-Request.md` — as of this runbook:
 D1 canonical App ID (`com.autoscalers.fabrica` actual), D2 production domain
 (`onfabrica.dev` family is dead DNS; `fabrica-ai.vercel.app` serves whats-new +
 kill-list 200 OK — updater/auth/relay/share URLs affected), D3 publish-repo casing
-(case-folds to Fabrica-app, hygiene only), D4 npm scopes (`@stablyai/playwright-test`
+(case-folds to Fabrica-app, hygiene only), D4 npm scopes (`@autoscalers/playwright-test`
 external; audio module already renamed), D5 `'FABRICA-browser'` enum casing,
 D6 E2EE label case (lockstep-only). The final audit must NOT pre-empt these
 decisions — flag, don't fix.
@@ -175,7 +175,7 @@ decisions — flag, don't fix.
 ### Sweep (runbook section 1)
 
 Primary word-boundary sweep: 319 raw hits → after subtracting manifest classes:
-- 282 × `@stablyai/playwright-test` imports — ALLOWED (cat E)
+- 282 × `@autoscalers/playwright-test` imports — ALLOWED (cat E)
 - 18 × GNOME screen-reader refs (`/usr/bin/orca`) — ALLOWED (cat A)
 - AGENTS.md:5,28,32,48,112,117 — ALLOWED (cat F, exact 6 rows)
 - docs/reference/linux-glibc-compatibility.md:23; mobile/issue-5049-...md:4 — ALLOWED (cat B)

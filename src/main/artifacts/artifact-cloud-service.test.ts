@@ -59,7 +59,7 @@ function createResponse(slug = 'artifact-a', expiresAt = '2026-09-06T00:00:00.00
         byteSize: 12,
         deletedAt: null
       },
-      shareUrl: `https://share.onFABRICA.dev/a/${slug}`,
+      shareUrl: `https://fabrica-ai.vercel.app/a/${slug}`,
       editToken: 'edit-secret'
     }),
     { status: 200, headers: { 'content-type': 'application/json' } }
@@ -153,11 +153,11 @@ describe('ArtifactCloudService record authorization', () => {
 
     await expect(service.publish(writeRequest)).resolves.toMatchObject({
       status: 'ok',
-      value: { change: 'created', item: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' } }
+      value: { change: 'created', item: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' } }
     })
     await expect(service.publish(writeRequest)).resolves.toMatchObject({
       status: 'ok',
-      value: { change: 'updated', item: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' } }
+      value: { change: 'updated', item: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' } }
     })
 
     expect(fetchMock.mock.calls[0]?.[1]).toMatchObject({ method: 'POST' })
@@ -176,7 +176,7 @@ describe('ArtifactCloudService record authorization', () => {
       service.getPublishedLink({ sourceKey: writeRequest.sourceKey, apiUrl, authToken: 'token-a' })
     ).resolves.toEqual({
       status: 'ok',
-      value: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' }
+      value: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' }
     })
     await expect(
       service.getPublishedLink({ sourceKey: '/repo/other.html', apiUrl, authToken: 'token-a' })
@@ -237,7 +237,7 @@ describe('ArtifactCloudService record authorization', () => {
 
     await expect(Promise.all([publish, share])).resolves.toMatchObject([
       { status: 'ok', value: { change: 'created' } },
-      { status: 'ok', value: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-b' } }
+      { status: 'ok', value: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-b' } }
     ])
     expect(fetchMock).toHaveBeenCalledTimes(2)
   })
@@ -287,11 +287,11 @@ describe('ArtifactCloudService record authorization', () => {
     await service.publish(writeRequest)
     await expect(service.publish(writeRequest)).resolves.toMatchObject({
       status: 'ok',
-      value: { change: 'created', item: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-b' } }
+      value: { change: 'created', item: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-b' } }
     })
     await expect(service.publish(writeRequest)).resolves.toMatchObject({
       status: 'ok',
-      value: { change: 'updated', item: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-b' } }
+      value: { change: 'updated', item: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-b' } }
     })
 
     expect(fetchMock.mock.calls.map(([, options]) => options?.method)).toEqual([
@@ -545,7 +545,7 @@ describe('ArtifactCloudService publish capability gate', () => {
       service.getPublishedLink({ sourceKey: writeRequest.sourceKey, apiUrl, authToken: 'token-a' })
     ).resolves.toEqual({
       status: 'ok',
-      value: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' }
+      value: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' }
     })
     await expect(
       service.unshare({ sourceKey: writeRequest.sourceKey, apiUrl, authToken: 'token-a' })

@@ -4,7 +4,7 @@ import { GLOBAL_FLAGS } from '../args'
 export const PROJECT_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['project', 'list'],
-    summary: 'List durable projects known to FABRICA',
+    summary: 'List durable projects known to Fabrica',
     usage: 'fabrica project list [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     examples: ['fabrica project list', 'fabrica project list --json']
@@ -32,8 +32,8 @@ export const PROJECT_COMMAND_SPECS: CommandSpec[] = [
       'SSH targets are set up through the desktop UI because the desktop client owns SSH connections.'
     ],
     examples: [
-      'fabrica project setup-existing-folder --project github:Auto-Scalers/Fabrica-app --host local --path ~/FABRICA',
-      'fabrica project setup-existing-folder --project github:Auto-Scalers/Fabrica-app --host runtime:gpu --path /home/me/FABRICA --kind git --json'
+      'fabrica project setup-existing-folder --project github:Auto-Scalers/Fabrica-app --host local --path ~/Fabrica',
+      'fabrica project setup-existing-folder --project github:Auto-Scalers/Fabrica-app --host runtime:gpu --path /home/me/Fabrica --kind git --json'
     ]
   },
   {
@@ -71,7 +71,7 @@ export const PROJECT_COMMAND_SPECS: CommandSpec[] = [
     ],
     notes: [
       'Creates setup metadata without registering a repo compatibility record.',
-      'Use setup-existing-folder when FABRICA should import and manage an actual checkout path now.'
+      'Use setup-existing-folder when Fabrica should import and manage an actual checkout path now.'
     ],
     examples: [
       'fabrica project setup-create --project github:Auto-Scalers/Fabrica-app --host runtime:gpu --state setting-up --method provisioned --json'
@@ -99,7 +99,7 @@ export const PROJECT_COMMAND_SPECS: CommandSpec[] = [
     ],
     examples: [
       'fabrica project setup-update --setup github:Auto-Scalers/Fabrica::gpu --display-name "GPU VM"',
-      'fabrica project setup-update --setup github:Auto-Scalers/Fabrica::gpu --path /srv/FABRICA --state ready --json'
+      'fabrica project setup-update --setup github:Auto-Scalers/Fabrica::gpu --path /srv/Fabrica --state ready --json'
     ]
   },
   {

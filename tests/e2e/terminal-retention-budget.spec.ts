@@ -1,4 +1,4 @@
-import type { TestInfo } from '@stablyai/playwright-test'
+﻿import type { TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { getActiveTabId, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -20,13 +20,13 @@ const RUN_DOCKER_SSH = process.env.FABRICA_E2E_SSH_DOCKER === '1'
 const PARKING_DELAY_MS = Number(process.env.FABRICA_E2E_TERMINAL_PARKING_DELAY_MS) || 500
 
 test.use({
-  // Why no seeded local repo: matching every green Docker SSH spec — the same
+  // Why no seeded local repo: matching every green Docker SSH spec â€” the same
   // mid-session repo-add misroute hits a remote repo added beside a local one.
   seedTestRepo: false,
   FABRICAAppExtraEnv: {
     FABRICA_E2E_TERMINAL_PARKING_DELAY_MS: String(PARKING_DELAY_MS),
     // Why limit=1: two hidden un-parkable worktrees then exceed the budget while
-    // the last-active exemption still spares exactly one — the smallest live proof.
+    // the last-active exemption still spares exactly one â€” the smallest live proof.
     FABRICA_E2E_TERMINAL_RETENTION_LIMIT: '1'
   }
 })
@@ -95,7 +95,7 @@ test.describe('terminal hidden-worktree retention budget', () => {
         throw new Error('newer SSH terminal tab did not become active')
       }
 
-      // Third context: activating it hides BOTH earlier worktrees — two hidden
+      // Third context: activating it hides BOTH earlier worktrees â€” two hidden
       // un-parkable worktrees against a budget of one. It stays visible, so it
       // is never a retention candidate itself.
       const third = await createAndActivateDockerSshRelayWorktree(
@@ -108,9 +108,9 @@ test.describe('terminal hidden-worktree retention budget', () => {
         .toBe(third.worktreeId)
       await waitForActiveTerminalManager(fabricaPage, 60_000)
 
-      // The older worktree must force-park (its pane managers unmount)…
+      // The older worktree must force-park (its pane managers unmount)â€¦
       await waitForTabParked(fabricaPage, olderTabId, { parkDelayMs: PARKING_DELAY_MS })
-      // …while the newest hidden worktree keeps its mounted panes (last-active exemption).
+      // â€¦while the newest hidden worktree keeps its mounted panes (last-active exemption).
       const newerStillMounted = await fabricaPage.evaluate(
         (tabId) => window.__paneManagers?.get(tabId) !== undefined,
         newerTabId
@@ -118,7 +118,7 @@ test.describe('terminal hidden-worktree retention budget', () => {
       expect(newerStillMounted).toBe(true)
 
       // Reveal the evicted worktree: with SSH parking disabled the model paint is
-      // off, so the relay replay must restore the marker tail — never a blank pane.
+      // off, so the relay replay must restore the marker tail â€” never a blank pane.
       await fabricaPage.evaluate(
         ({ worktreeId, tabId }) => {
           const state = window.__store?.getState()

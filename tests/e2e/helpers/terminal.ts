@@ -1,6 +1,6 @@
-/* eslint-disable max-lines -- Terminal E2E helpers share one PaneManager-backed path for PTY IO, split actions, and stable pane identity snapshots. */
-import type { Page } from '@stablyai/playwright-test'
-import { expect } from '@stablyai/playwright-test'
+﻿/* eslint-disable max-lines -- Terminal E2E helpers share one PaneManager-backed path for PTY IO, split actions, and stable pane identity snapshots. */
+import type { Page } from '@autoscalers/playwright-test'
+import { expect } from '@autoscalers/playwright-test'
 import { buildFreshShellProbeInputSequence } from '../terminal-probe-input-sequence'
 
 export const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
@@ -24,7 +24,7 @@ export type ActivePaneHookDescriptor = {
 }
 
 // Why: typing-latency specs must type into xterm's helper textarea, not the
-// page body — keyboard.type only reaches the PTY when that textarea has focus.
+// page body â€” keyboard.type only reaches the PTY when that textarea has focus.
 export async function focusActiveTerminalInput(page: Page): Promise<void> {
   await page.evaluate(() => {
     const state = window.__store?.getState()

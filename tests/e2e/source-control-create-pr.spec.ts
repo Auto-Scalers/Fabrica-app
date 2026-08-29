@@ -1,4 +1,4 @@
-import type { Locator, Page } from '@stablyai/playwright-test'
+﻿import type { Locator, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import type { CreateHostedReviewResult } from '../../src/shared/hosted-review'

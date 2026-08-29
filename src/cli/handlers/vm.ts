@@ -1,4 +1,4 @@
-﻿import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { CommandHandler } from '../dispatch'
 import { RuntimeClientError } from '../runtime-client'
@@ -65,7 +65,7 @@ function doctorRecipe(repoPath: string, recipeId: string): DoctorResult {
   const parseCheck: EphemeralVmRecipeDoctorCheck = {
     id: 'FABRICA_yaml.parse',
     status: hooks ? 'pass' : 'fail',
-    message: hooks ? 'FABRICA.yaml parsed successfully.' : 'FABRICA.yaml has no supported FABRICA config.',
+    message: hooks ? 'FABRICA.yaml parsed successfully.' : 'FABRICA.yaml has no supported Fabrica config.',
     ...(hooks ? {} : { remediation: 'Add an environmentRecipes entry to FABRICA.yaml.' })
   }
   const result = doctorEphemeralVmRecipe({

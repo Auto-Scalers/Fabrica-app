@@ -1,6 +1,12 @@
-﻿import { spawnSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
 import { describe, expect, it } from 'vitest'
 import { buildDispatchPreamble } from './preamble'
+
+// Why: on some Windows setups `bash` resolves to the WSL stub with no distro
+// installed, which exits 1 for ANY input. Probe once; skip bash -n checks only
+// when bash itself cannot parse a trivially valid script.
+const BASH_USABLE =
+  spawnSync('bash', ['-n'], { input: 'echo ok\n', encoding: 'utf8' }).status === 0
 
 function baseParams(overrides: Partial<Parameters<typeof buildDispatchPreamble>[0]> = {}) {
   return {
@@ -53,7 +59,7 @@ describe('buildDispatchPreamble', () => {
     expect(result).not.toContain('orchestration send --to term_coord')
   })
 
-  it(
+  it.skipIf(!BASH_USABLE)(
     'CLI examples parse as valid shell (bash -n on the extracted block)',
     { timeout: 15_000 },
     () => {
@@ -168,7 +174,7 @@ describe('buildDispatchPreamble', () => {
   })
 
   it('uses FABRICA-dev CLI when devMode is true', () => {
-    const result = buildDispatchPreamble(baseParams({ devMode: true, cliCommand: 'FABRICA-ide' }))
+    const result = buildDispatchPreamble(baseParams({ devMode: true, cliCommand: 'fabrica' }))
     expect(result).toContain('FABRICA-dev orchestration send')
     expect(result).toContain('FABRICA-dev orchestration check')
     expect(result).toContain('FABRICA-dev orchestration ask')
@@ -184,12 +190,12 @@ describe('buildDispatchPreamble', () => {
     expect(result).toContain('FABRICA orchestration check')
   })
 
-  it('uses the exact FABRICA-ide command for packaged WSL workers', () => {
-    const result = buildDispatchPreamble(baseParams({ cliCommand: 'FABRICA-ide' }))
+  it('uses the exact fabrica command for packaged WSL workers', () => {
+    const result = buildDispatchPreamble(baseParams({ cliCommand: 'fabrica' }))
 
-    expect(result).toContain('FABRICA-ide orchestration send')
-    expect(result).toContain('FABRICA-ide orchestration check')
-    expect(result).toContain('FABRICA-ide orchestration ask')
+    expect(result).toContain('fabrica orchestration send')
+    expect(result).toContain('fabrica orchestration check')
+    expect(result).toContain('fabrica orchestration ask')
     expect(result).not.toMatch(/(^|\s)FABRICA orchestration/m)
   })
 

@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import type { PairedElectronClient } from './paired-electron-client'
 import type { DockerSshRelayTarget } from './docker-ssh-relay-target'
 import {

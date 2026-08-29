@@ -1,4 +1,4 @@
-/* eslint-disable max-lines -- Terminal pane E2E is a serial coverage matrix for split, close, remake, move, resize, and retention flows. */
+﻿/* eslint-disable max-lines -- Terminal pane E2E is a serial coverage matrix for split, close, remake, move, resize, and retention flows. */
 /**
  * E2E tests for terminal pane splitting, state retention, resizing, and closing.
  *
@@ -9,7 +9,7 @@
  * - closing panes works
  */
 
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   UUID_RE,
@@ -45,7 +45,7 @@ import { pressShortcut } from './helpers/shortcuts'
 
 async function setPaneTitleFromTerminalMenu(page: Page, title: string): Promise<void> {
   await openTerminalContextMenu(page)
-  await page.getByText('Set Title…', { exact: true }).click()
+  await page.getByText('Set Titleâ€¦', { exact: true }).click()
   const titleInput = page.locator('.pane-title-input').first()
   await expect(titleInput).toBeVisible()
   await titleInput.fill(title)
@@ -75,7 +75,7 @@ async function openTerminalContextMenu(page: Page): Promise<void> {
       position: { x: 40, y: 40 },
       modifiers: isMac ? ['Control'] : modifiers
     })
-  await expect(page.getByText('Set Title…', { exact: true })).toBeVisible()
+  await expect(page.getByText('Set Titleâ€¦', { exact: true })).toBeVisible()
 }
 
 async function openPaneTitleContextMenu(page: Page, title: string): Promise<void> {
@@ -92,7 +92,7 @@ async function openPaneTitleContextMenu(page: Page, title: string): Promise<void
     position: { x: 20, y: 10 },
     modifiers: isMac ? ['Control'] : modifiers
   })
-  await expect(page.getByText('Set Title…', { exact: true })).toBeVisible()
+  await expect(page.getByText('Set Titleâ€¦', { exact: true })).toBeVisible()
 }
 
 async function installDelayedTerminalFocusSteals(
@@ -241,7 +241,7 @@ async function readVisiblePaneContents(page: Page): Promise<string[]> {
 // Why: only the pointer-drag resize test needs a visible window (pointer
 // capture requires a real pointer id). Every other pane operation here is
 // driven through the exposed PaneManager API and runs fine headless, so the
-// suite itself is not tagged — just the one test that needs it.
+// suite itself is not tagged â€” just the one test that needs it.
 // Why: keep the suite serial so when the headful test does run, Playwright
 // does not try to open multiple visible Electron windows at once.
 test.describe.configure({ mode: 'serial' })
@@ -251,7 +251,7 @@ test.describe('Terminal Panes', () => {
     await waitForActiveWorktree(fabricaPage)
     await ensureTerminalVisible(fabricaPage)
     // Why: each test launches a fresh Electron instance. The React tree needs
-    // to render Terminal → TabGroupPanel → TerminalPane → useTerminalPaneLifecycle
+    // to render Terminal â†’ TabGroupPanel â†’ TerminalPane â†’ useTerminalPaneLifecycle
     // before the PaneManager registers on window.__paneManagers. On cold starts
     // this easily exceeds 5s, so allow up to 30s (well within the 120s test budget)
     // to distinguish "slow cold start" from "environment can't mount panes at all."
@@ -360,7 +360,7 @@ test.describe('Terminal Panes', () => {
     const title = `First menu title ${Date.now()}`
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -383,12 +383,12 @@ test.describe('Terminal Panes', () => {
     const terminalBoxBefore = await readVisibleXtermContainerBox(fabricaPage)
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-overlay-layer .pane-title-input').first()
     await expect(titleInput).toBeVisible()
     await expect(titleInput).toBeFocused()
-    await expect(fabricaPage.getByText('Set Title…', { exact: true })).toBeHidden()
+    await expect(fabricaPage.getByText('Set Titleâ€¦', { exact: true })).toBeHidden()
     await expect(fabricaPage.locator('.pane .pane-title-input')).toHaveCount(0)
     await expect(fabricaPage.locator('.pane[data-has-title]')).toHaveCount(1)
     await expect
@@ -418,7 +418,7 @@ test.describe('Terminal Panes', () => {
 
     await setPaneTitleFromTerminalMenu(fabricaPage, title)
     await openPaneTitleContextMenu(fabricaPage, title)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -634,7 +634,7 @@ test.describe('Terminal Panes', () => {
     await waitForPaneCount(fabricaPage, 3)
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -682,7 +682,7 @@ test.describe('Terminal Panes', () => {
       }
       document.addEventListener('focusin', blurOnFirstTitleFocus, true)
     })
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -695,7 +695,7 @@ test.describe('Terminal Panes', () => {
   test('Set Title survives delayed terminal focus handoffs', async ({ fabricaPage }) => {
     await openTerminalContextMenu(fabricaPage)
     await installDelayedTerminalFocusSteals(fabricaPage, [50, 150, 300])
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -713,7 +713,7 @@ test.describe('Terminal Panes', () => {
 
     await openTerminalContextMenu(fabricaPage)
     await installDelayedTerminalFocusSteals(fabricaPage, [50, 150, 300])
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -727,7 +727,7 @@ test.describe('Terminal Panes', () => {
     const draftTitle = `Draft title ${Date.now()}`
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -748,7 +748,7 @@ test.describe('Terminal Panes', () => {
     const draftTitle = `Blocked focus title ${Date.now()}`
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -775,7 +775,7 @@ test.describe('Terminal Panes', () => {
 
     await openTerminalContextMenu(fabricaPage)
     await installDelayedTerminalFocusSteals(fabricaPage, [50, 150])
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -795,7 +795,7 @@ test.describe('Terminal Panes', () => {
     const title = `Tab commit title ${Date.now()}`
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -828,7 +828,7 @@ test.describe('Terminal Panes', () => {
     const title = `Blur commit title ${Date.now()}`
 
     await openTerminalContextMenu(fabricaPage)
-    await fabricaPage.getByText('Set Title…', { exact: true }).click()
+    await fabricaPage.getByText('Set Titleâ€¦', { exact: true }).click()
 
     const titleInput = fabricaPage.locator('.pane-title-input').first()
     await expect(titleInput).toBeVisible()
@@ -867,7 +867,7 @@ test.describe('Terminal Panes', () => {
     const paneTitle = `Codex pane ${Date.now()}`
     const removeButtonTitle = `Remove button label ${Date.now()}`
     const splitTitle = `Split label ${Date.now()}`
-    const runtimeTitle = '⠋ Codex working'
+    const runtimeTitle = 'â ‹ Codex working'
 
     await setPaneTitleFromTerminalMenu(fabricaPage, paneTitle)
     await expect(fabricaPage.locator('.pane-title-text', { hasText: paneTitle })).toBeVisible()

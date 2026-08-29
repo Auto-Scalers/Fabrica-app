@@ -21,8 +21,8 @@ const RICH_CHANGELOG: ChangelogData = {
   release: {
     title: 'Inline Diffs',
     description: 'Review diffs without leaving the terminal.',
-    mediaUrl: 'https://onFABRICA.dev/media/inline-diffs.png',
-    releaseNotesUrl: 'https://onFABRICA.dev/changelog/1.2.0'
+    mediaUrl: 'https://fabrica-ai.vercel.app/media/inline-diffs.png',
+    releaseNotesUrl: 'https://fabrica-ai.vercel.app/changelog/1.2.0'
   },
   releasesBehind: 3
 }

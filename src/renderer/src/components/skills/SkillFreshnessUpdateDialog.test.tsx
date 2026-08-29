@@ -268,8 +268,8 @@ describe('SkillFreshnessUpdateDialog', () => {
   it('attributes failures to the names the re-scan says are still outdated', async () => {
     mocks.inventory = {
       schemaVersion: 1,
-      installations: [placement('FABRICA-cli'), placement('orchestration')],
-      eligibleUpdateNames: ['FABRICA-cli', 'orchestration'],
+      installations: [placement('FABRICA-cli'), placement('fabrica-orchestration')],
+      eligibleUpdateNames: ['FABRICA-cli', 'fabrica-orchestration'],
       scanIssues: [],
       scannedAt: 1
     }
@@ -277,10 +277,10 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
     await emitRun({
       state: 'error',
-      names: ['FABRICA-cli', 'orchestration'],
-      failedNames: ['orchestration'],
+      names: ['FABRICA-cli', 'fabrica-orchestration'],
+      failedNames: ['fabrica-orchestration'],
       finishedAt: 3,
-      output: '? Failed to update orchestration',
+      output: '? Failed to update fabrica-orchestration',
       message: 'skills update exited with code 1'
     })
 
@@ -289,7 +289,7 @@ describe('SkillFreshnessUpdateDialog', () => {
       container?.querySelector('[data-skill-row="FABRICA-cli"]')?.getAttribute('data-state-label')
     ).toBe('done')
     expect(
-      container?.querySelector('[data-skill-row="orchestration"]')?.getAttribute('data-state-label')
+      container?.querySelector('[data-skill-row="fabrica-orchestration"]')?.getAttribute('data-state-label')
     ).toBe('failed')
     expect(container?.textContent).toContain('skills update exited with code 1')
     expect(findButton('Retry')).toBeDefined()
@@ -436,7 +436,7 @@ describe('SkillFreshnessUpdateDialog', () => {
       schemaVersion: 1,
       // Why: a read-only copy rather than a project one — a project-owned copy raises no
       // row at all now, so it cannot carry this assertion about how a row renders.
-      installations: [placement('computer-use', { topology: 'read-only' })],
+      installations: [placement('fabrica-computer-use', { topology: 'read-only' })],
       eligibleUpdateNames: [],
       scanIssues: [],
       scannedAt: 3
@@ -444,8 +444,8 @@ describe('SkillFreshnessUpdateDialog', () => {
     await renderDialog()
     await openViaRequest()
 
-    const row = container?.querySelector('[data-skill-row="computer-use"]')
-    expect(container?.textContent).toContain('computer-use')
+    const row = container?.querySelector('[data-skill-row="fabrica-computer-use"]')
+    expect(container?.textContent).toContain('fabrica-computer-use')
     expect(container?.textContent).toContain('Skipped')
     // The reason is the one thing a skipped row exists to say, so it lives
     // outside the disclosure — visible with the row still collapsed, and not
@@ -466,15 +466,15 @@ describe('SkillFreshnessUpdateDialog', () => {
     mocks.inventory = {
       schemaVersion: 1,
       installations: [
-        placement('computer-use', { status: 'current' }),
-        placement('computer-use', {
+        placement('fabrica-computer-use', { status: 'current' }),
+        placement('fabrica-computer-use', {
           rootId: 'repo-work',
           sourceKind: 'repo',
           topology: 'repo-scope',
           status: 'unrecognized',
-          unresolvedPath: '/home/projects/work/.agents/skills/computer-use',
-          resolvedPath: '/home/projects/work/.agents/skills/computer-use',
-          physicalIdentity: 'physical-repo-computer-use'
+          unresolvedPath: '/home/projects/work/.agents/skills/fabrica-computer-use',
+          resolvedPath: '/home/projects/work/.agents/skills/fabrica-computer-use',
+          physicalIdentity: 'physical-repo-fabrica-computer-use'
         })
       ],
       eligibleUpdateNames: [],
@@ -485,7 +485,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
 
     expect(container?.textContent).toContain('All installed Fabrica skills are up to date.')
-    expect(container?.querySelector('[data-skill-row="computer-use"]')).toBeNull()
+    expect(container?.querySelector('[data-skill-row="fabrica-computer-use"]')).toBeNull()
   })
 
   it('still lists a project copy when another placement earns the group', async () => {
@@ -495,15 +495,15 @@ describe('SkillFreshnessUpdateDialog', () => {
     mocks.inventory = {
       schemaVersion: 1,
       installations: [
-        placement('computer-use', { topology: 'read-only' }),
-        placement('computer-use', {
+        placement('fabrica-computer-use', { topology: 'read-only' }),
+        placement('fabrica-computer-use', {
           rootId: 'repo-work',
           sourceKind: 'repo',
           topology: 'repo-scope',
           status: 'unrecognized',
-          unresolvedPath: '/home/projects/work/.agents/skills/computer-use',
-          resolvedPath: '/home/projects/work/.agents/skills/computer-use',
-          physicalIdentity: 'physical-repo-computer-use'
+          unresolvedPath: '/home/projects/work/.agents/skills/fabrica-computer-use',
+          resolvedPath: '/home/projects/work/.agents/skills/fabrica-computer-use',
+          physicalIdentity: 'physical-repo-fabrica-computer-use'
         })
       ],
       eligibleUpdateNames: [],
@@ -513,9 +513,9 @@ describe('SkillFreshnessUpdateDialog', () => {
     await renderDialog()
     await openViaRequest()
 
-    const row = container?.querySelector('[data-skill-row="computer-use"]')
+    const row = container?.querySelector('[data-skill-row="fabrica-computer-use"]')
     expect(row).not.toBeNull()
-    expect(row?.textContent).toContain('/home/projects/work/.agents/skills/computer-use')
+    expect(row?.textContent).toContain('/home/projects/work/.agents/skills/fabrica-computer-use')
   })
 
   it('names the skill in the stale-record remedy so the command is runnable as-is', async () => {
@@ -524,7 +524,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     // row to the generic sentence with no command to run.
     mocks.inventory = {
       schemaVersion: 1,
-      installations: [placement('orchestration')],
+      installations: [placement('fabrica-orchestration')],
       eligibleUpdateNames: [],
       scanIssues: [],
       scannedAt: 3
@@ -533,7 +533,7 @@ describe('SkillFreshnessUpdateDialog', () => {
     await openViaRequest()
 
     expect(container?.textContent).toContain(
-      'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill orchestration --global'
+      'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill fabrica-orchestration --global'
     )
   })
 
@@ -544,15 +544,15 @@ describe('SkillFreshnessUpdateDialog', () => {
     mocks.inventory = {
       schemaVersion: 1,
       installations: [
-        placement('orchestration'),
-        placement('orchestration', {
+        placement('fabrica-orchestration'),
+        placement('fabrica-orchestration', {
           rootId: 'repo-work',
           sourceKind: 'repo',
           topology: 'repo-scope',
           status: 'unrecognized',
-          unresolvedPath: '/home/projects/work/.agents/skills/orchestration',
-          resolvedPath: '/home/projects/work/.agents/skills/orchestration',
-          physicalIdentity: 'physical-repo-orchestration'
+          unresolvedPath: '/home/projects/work/.agents/skills/fabrica-orchestration',
+          resolvedPath: '/home/projects/work/.agents/skills/fabrica-orchestration',
+          physicalIdentity: 'physical-repo-fabrica-orchestration'
         })
       ],
       eligibleUpdateNames: [],
@@ -562,13 +562,13 @@ describe('SkillFreshnessUpdateDialog', () => {
     await renderDialog()
     await openViaRequest()
 
-    const row = container?.querySelector('[data-skill-row="orchestration"]')
+    const row = container?.querySelector('[data-skill-row="fabrica-orchestration"]')
     expect(row?.textContent).toContain(
-      'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill orchestration --global'
+      'npx skills add https://github.com/Auto-Scalers/Fabrica-app --skill fabrica-orchestration --global'
     )
     expect(row?.textContent).not.toContain('This is a project skill, not a global one')
     // Still listed, though — ownership silences the explanation, never the location.
-    expect(row?.textContent).toContain('/home/projects/work/.agents/skills/orchestration')
+    expect(row?.textContent).toContain('/home/projects/work/.agents/skills/fabrica-orchestration')
   })
 
   it('stays coherent while an idle re-scan is in flight', async () => {

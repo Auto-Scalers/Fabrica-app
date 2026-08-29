@@ -36,11 +36,11 @@
 
 Monitor and steer your agents from your phone — get notified when an agent finishes and send follow-ups from anywhere.
 
-[iOS App Store](https://apps.apple.com/us/app/fabrica/id6766130217) · [TestFlight](https://testflight.apple.com/join/YjeGMQBA) · [Android APK 0.0.42](https://github.com/Auto-Scalers/Fabrica-app/releases/download/mobile-android-v0.0.42/app-release.apk) · [Docs →](https://www.fabrica-ai.vercel.app/docs/mobile)
+[iOS App Store](https://apps.apple.com/us/app/fabrica/id6766130217) · [TestFlight](https://testflight.apple.com/join/YjeGMQBA) · [Android APK 0.0.42](https://github.com/Auto-Scalers/Fabrica-app/releases/download/mobile-android-v0.0.42/app-release.apk) · [Docs →](https://fabrica-ai.vercel.app/docs/mobile)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/mobile"><picture><source srcset="docs/assets/feature-wall/mobile-companion-app-showcase.gif" type="image/gif"><img src="docs/assets/feature-wall/mobile-companion-app-showcase.jpg" alt="Fabrica desktop with the mobile companion app" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/mobile"><picture><source srcset="docs/assets/feature-wall/mobile-companion-app-showcase.gif" type="image/gif"><img src="docs/assets/feature-wall/mobile-companion-app-showcase.jpg" alt="Fabrica desktop with the mobile companion app" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -50,11 +50,11 @@ Monitor and steer your agents from your phone — get notified when an agent fin
 
 Fan one prompt across five agents, each in its own isolated git worktree — compare the results and merge the winner.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/model/worktrees)
+[Docs →](https://fabrica-ai.vercel.app/docs/model/worktrees)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/model/worktrees"><picture><source srcset="docs/assets/feature-wall/parallel-worktrees.gif" type="image/gif"><img src="docs/assets/feature-wall/parallel-worktrees.jpg" alt="Parallel worktree orchestration" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/model/worktrees"><picture><source srcset="docs/assets/feature-wall/parallel-worktrees.gif" type="image/gif"><img src="docs/assets/feature-wall/parallel-worktrees.jpg" alt="Parallel worktree orchestration" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -64,11 +64,11 @@ Fan one prompt across five agents, each in its own isolated git worktree — com
 
 Ghostty-class terminals with WebGL rendering, infinite splits, and scrollback that survives restarts.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/terminal)
+[Docs →](https://fabrica-ai.vercel.app/docs/terminal)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/terminal"><picture><source srcset="docs/assets/feature-wall/terminal-splits.gif" type="image/gif"><img src="docs/assets/feature-wall/terminal-splits.jpg" alt="Terminal splits" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/terminal"><picture><source srcset="docs/assets/feature-wall/terminal-splits.gif" type="image/gif"><img src="docs/assets/feature-wall/terminal-splits.jpg" alt="Terminal splits" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -78,11 +78,11 @@ Ghostty-class terminals with WebGL rendering, infinite splits, and scrollback th
 
 Click any UI element in a real Chromium window to send its HTML, CSS, and a cropped screenshot straight into your agent's prompt.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/browser/design-mode)
+[Docs →](https://fabrica-ai.vercel.app/docs/browser/design-mode)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/browser/design-mode"><picture><source srcset="docs/assets/feature-wall/design-mode.gif" type="image/gif"><img src="docs/assets/feature-wall/design-mode.jpg" alt="Embedded browser and Design Mode" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/browser/design-mode"><picture><source srcset="docs/assets/feature-wall/design-mode.gif" type="image/gif"><img src="docs/assets/feature-wall/design-mode.jpg" alt="Embedded browser and Design Mode" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -92,11 +92,11 @@ Click any UI element in a real Chromium window to send its HTML, CSS, and a crop
 
 Browse PRs, issues, and project boards in-app — open a worktree from any task and review without a context switch.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/review/linear)
+[Docs →](https://fabrica-ai.vercel.app/docs/review/linear)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/review/linear"><picture><source srcset="docs/assets/feature-wall/github-linear.gif" type="image/gif"><img src="docs/assets/feature-wall/github-linear.jpg" alt="GitHub and Linear task workflows in Fabrica" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/review/linear"><picture><source srcset="docs/assets/feature-wall/github-linear.gif" type="image/gif"><img src="docs/assets/feature-wall/github-linear.jpg" alt="GitHub and Linear task workflows in Fabrica" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -106,11 +106,11 @@ Browse PRs, issues, and project boards in-app — open a worktree from any task 
 
 Run agents on a beefy remote box with full file editing, git, and terminals — auto-reconnect and port forwarding included.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/ssh)
+[Docs →](https://fabrica-ai.vercel.app/docs/ssh)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/ssh"><picture><source srcset="docs/assets/feature-wall/ssh-worktrees.gif" type="image/gif"><img src="docs/assets/feature-wall/ssh-worktrees.jpg" alt="Remote worktrees over SSH" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/ssh"><picture><source srcset="docs/assets/feature-wall/ssh-worktrees.gif" type="image/gif"><img src="docs/assets/feature-wall/ssh-worktrees.jpg" alt="Remote worktrees over SSH" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -120,11 +120,11 @@ Run agents on a beefy remote box with full file editing, git, and terminals — 
 
 Drop comments on any diff line and ship them back to the agent — review, edit, and commit without leaving Fabrica.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/review/annotate-ai-diff)
+[Docs →](https://fabrica-ai.vercel.app/docs/review/annotate-ai-diff)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/review/annotate-ai-diff"><picture><source srcset="docs/assets/feature-wall/annotate-diff.gif" type="image/gif"><img src="docs/assets/feature-wall/annotate-diff.jpg" alt="Annotate AI-generated diffs" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/review/annotate-ai-diff"><picture><source srcset="docs/assets/feature-wall/annotate-diff.gif" type="image/gif"><img src="docs/assets/feature-wall/annotate-diff.jpg" alt="Annotate AI-generated diffs" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -134,11 +134,11 @@ Drop comments on any diff line and ship them back to the agent — review, edit,
 
 VS Code's editor with autosave everywhere — drag files or images straight into an agent prompt.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/editing/file-explorer)
+[Docs →](https://fabrica-ai.vercel.app/docs/editing/file-explorer)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/editing/file-explorer"><picture><source srcset="docs/assets/feature-wall/file-drag.gif" type="image/gif"><img src="docs/assets/feature-wall/file-drag.jpg" alt="Drag files and images into an agent prompt" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/editing/file-explorer"><picture><source srcset="docs/assets/feature-wall/file-drag.gif" type="image/gif"><img src="docs/assets/feature-wall/file-drag.jpg" alt="Drag files and images into an agent prompt" width="100%" /></picture></a>
 </td>
 </tr>
 <tr>
@@ -148,22 +148,22 @@ VS Code's editor with autosave everywhere — drag files or images straight into
 
 Agents drive Fabrica too — script every workflow with `fabrica worktree create`, `snapshot`, `click`, and `fill`.
 
-[Docs →](https://www.fabrica-ai.vercel.app/docs/cli/overview)
+[Docs →](https://fabrica-ai.vercel.app/docs/cli/overview)
 
 </td>
 <td width="50%">
-  <a href="https://www.fabrica-ai.vercel.app/docs/cli/overview"><picture><source srcset="docs/assets/feature-wall/fabrica-cli.gif" type="image/gif"><img src="docs/assets/feature-wall/fabrica-cli.jpg" alt="Script Fabrica from the CLI" width="100%" /></picture></a>
+  <a href="https://fabrica-ai.vercel.app/docs/cli/overview"><picture><source srcset="docs/assets/feature-wall/fabrica-cli.gif" type="image/gif"><img src="docs/assets/feature-wall/fabrica-cli.jpg" alt="Script Fabrica from the CLI" width="100%" /></picture></a>
 </td>
 </tr>
 </table>
 
 **Also in the box:**
 
-- **[Quick open](https://www.fabrica-ai.vercel.app/docs/model/quick-open)** — Search across worktrees, files, agents, commands, and repo context without leaving your flow.
-- **[Account switcher &amp; usage tracking](https://www.fabrica-ai.vercel.app/docs/agents/usage-tracking)** — See Claude and Codex usage and rate-limit resets, and hot-swap accounts without re-logging in.
-- **[Rich repo previews](https://www.fabrica-ai.vercel.app/docs/editing/markdown)** — Preview Markdown, images, PDFs, and repo docs in the workspace.
-- **[Computer Use](https://www.fabrica-ai.vercel.app/docs/cli/computer-use)** — Let agents operate desktop apps and visible UI when a workflow needs real interaction.
-- **[Notifications and unread state](https://www.fabrica-ai.vercel.app/docs/notifications)** — Know when an agent finishes or needs attention, then mark threads unread to come back later.
+- **[Quick open](https://fabrica-ai.vercel.app/docs/model/quick-open)** — Search across worktrees, files, agents, commands, and repo context without leaving your flow.
+- **[Account switcher &amp; usage tracking](https://fabrica-ai.vercel.app/docs/agents/usage-tracking)** — See Claude and Codex usage and rate-limit resets, and hot-swap accounts without re-logging in.
+- **[Rich repo previews](https://fabrica-ai.vercel.app/docs/editing/markdown)** — Preview Markdown, images, PDFs, and repo docs in the workspace.
+- **[Computer Use](https://fabrica-ai.vercel.app/docs/cli/computer-use)** — Let agents operate desktop apps and visible UI when a workflow needs real interaction.
+- **[Notifications and unread state](https://fabrica-ai.vercel.app/docs/notifications)** — Know when an agent finishes or needs attention, then mark threads unread to come back later.
 - **And many, many more** — we ship daily, so this list is perpetually behind. The [changelog](https://github.com/Auto-Scalers/Fabrica-app/releases) is the real feature list.
 
 ---
@@ -243,7 +243,7 @@ Pair with your desktop app to monitor and steer your agents from your phone.
   <img src="docs/assets/wechat-qr-group7.jpg" alt="WeChat group 7 QR code for the Fabrica community" width="160" />
 
 - **Feedback &amp; Ideas:** We ship fast. Missing something? [Request a new feature](https://github.com/Auto-Scalers/Fabrica-app/issues).
-- **Privacy:** See the [privacy &amp; telemetry docs](https://www.fabrica-ai.vercel.app/docs/telemetry) for what anonymous usage data Fabrica collects and how to opt out.
+- **Privacy:** See the [privacy &amp; telemetry docs](https://fabrica-ai.vercel.app/docs/telemetry) for what anonymous usage data Fabrica collects and how to opt out.
 - **Show Support:** [Star](https://github.com/Auto-Scalers/Fabrica-app) this repo to follow along with our daily ships.
 
 ---

@@ -1,7 +1,6 @@
 ﻿import { beforeEach, describe, expect, it } from 'vitest'
 
 import {
-  UI_LANGUAGE_CHINESE,
   UI_LANGUAGE_ENGLISH,
   UI_LANGUAGE_SPANISH
 } from '../../../shared/ui-language'
@@ -32,8 +31,10 @@ describe('renderer i18n lazy locale loading', () => {
     expect(i18n.t('menu.file', { defaultValue: 'File' })).toBe('Archivo')
   })
 
+  // APP-E5 (PM decision D8): ko/ja/zh catalogs are English-fallback placeholders,
+  // so Spanish is the shipped non-English catalog that proves lazy loading here.
   it('lazy-loads a catalog through a direct changeLanguage call', async () => {
-    await i18n.changeLanguage(UI_LANGUAGE_CHINESE)
+    await i18n.changeLanguage(UI_LANGUAGE_SPANISH)
     expect(i18n.t('menu.file', { defaultValue: 'File' })).not.toBe('File')
   })
 

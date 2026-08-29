@@ -1,6 +1,6 @@
-import { request } from 'node:http'
+﻿import { request } from 'node:http'
 
-import { expect, type ElectronApplication, type Page } from '@stablyai/playwright-test'
+import { expect, type ElectronApplication, type Page } from '@autoscalers/playwright-test'
 import {
   execDockerSshRelayTargetCommand,
   shellQuote,

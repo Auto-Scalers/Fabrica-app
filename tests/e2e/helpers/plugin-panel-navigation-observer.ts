@@ -1,4 +1,4 @@
-import type { ElectronApplication } from '@stablyai/playwright-test'
+﻿import type { ElectronApplication } from '@autoscalers/playwright-test'
 import type { Event as ElectronEvent, WebContentsWillFrameNavigateEventParams } from 'electron'
 
 export type PanelNavigationObservation = {

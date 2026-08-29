@@ -1,5 +1,6 @@
-﻿import * as ExpoCrypto from 'expo-crypto'
+import * as ExpoCrypto from 'expo-crypto'
 import {
+  MOBILE_E2EE_V2_PROTOCOL,
   encodeMobileE2EEV2Transcript,
   validateMobileE2EEV2Handshake,
   type MobileE2EETransport,
@@ -49,7 +50,7 @@ export class MobileE2EEV2ClientSession {
         clientNonceB64: encodeBase64(clientNonce),
         capabilities: { framing: [2], payloadKinds: ['text', 'binary'] },
         context: {
-          protocol: 'FABRICA-mobile-e2ee',
+          protocol: MOBILE_E2EE_V2_PROTOCOL,
           initiator: 'mobile',
           responder: 'desktop',
           transport: args.transport,

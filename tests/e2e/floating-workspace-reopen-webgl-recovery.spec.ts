@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { sendToTerminal } from './helpers/terminal'
@@ -97,7 +97,7 @@ async function toggleFloatingPanel(page: Page, open: boolean): Promise<void> {
 
 async function waitForFloatingWebglPane(page: Page): Promise<boolean> {
   // Why: a pane that mounted before the GPU setting landed needs the manager
-  // call too — mirrors forceWebgl in terminal-image-paste-webgl-recovery.spec.
+  // call too â€” mirrors forceWebgl in terminal-image-paste-webgl-recovery.spec.
   await page
     .waitForFunction(
       (worktreeId) => {
@@ -380,7 +380,7 @@ test.describe('floating workspace reopen WebGL recovery @headful', () => {
     expect(await instrumentRecoveryCounters(fabricaPage)).toBe(true)
 
     await toggleFloatingPanel(fabricaPage, false)
-    // Why: the prevention invariant — closing the panel suspends rendering,
+    // Why: the prevention invariant â€” closing the panel suspends rendering,
     // so no live WebGL context (or corruptible glyph atlas) exists while the
     // floating terminal is hidden.
     const webglAttachedWhileClosed = await fabricaPage.evaluate((worktreeId) => {
@@ -424,7 +424,7 @@ test.describe('floating workspace reopen WebGL recovery @headful', () => {
     fabricaPage
   }) => {
     // Why: control proving the injected corruption is exactly the class the
-    // existing recovery machinery heals — isolating the reopen gap above as a
+    // existing recovery machinery heals â€” isolating the reopen gap above as a
     // missing trigger rather than a broken harness or unrecoverable state.
     const shots = await setUpCorruptedFloatingTerminal(fabricaPage, 'CONTROL')
     test.skip(!shots, 'WebGL was not active or atlas corruption could not be injected')

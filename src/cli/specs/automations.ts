@@ -1,4 +1,4 @@
-﻿import type { CommandSpec } from '../args'
+import type { CommandSpec } from '../args'
 import { GLOBAL_FLAGS } from '../args'
 
 const AUTOMATION_TARGET_FLAGS = [
@@ -24,14 +24,14 @@ const AUTOMATION_STATE_FLAGS = [
 export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['automations', 'list'],
-    summary: 'List scheduled FABRICA automations',
+    summary: 'List scheduled Fabrica automations',
     usage: 'fabrica automations list [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     examples: ['fabrica automations list', 'fabrica automations list --json']
   },
   {
     path: ['automations', 'show'],
-    summary: 'Show one FABRICA automation',
+    summary: 'Show one Fabrica automation',
     usage: 'fabrica automations show <id> [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'id'],
     positionalArgs: ['id'],
@@ -39,7 +39,7 @@ export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['automations', 'create'],
-    summary: 'Create a scheduled FABRICA automation',
+    summary: 'Create a scheduled Fabrica automation',
     usage:
       'fabrica automations create --name <name> --trigger <preset|cron|rrule> --prompt <text> --provider <agent> [--precheck <command>] [--repo <selector>|--workspace <selector>|--project <id> [--host <id>]|--project-host-setup <id>] [--json]',
     allowedFlags: [
@@ -54,7 +54,7 @@ export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
     ],
     notes: [
       'Trigger accepts hourly, daily, weekdays, weekly, a 5-field cron expression, or an RRULE string.',
-      'When --repo is omitted, the CLI uses the enclosing FABRICA worktree when one can be resolved from cwd.',
+      'When --repo is omitted, the CLI uses the enclosing Fabrica worktree when one can be resolved from cwd.',
       'Use --project with --host, or --project-host-setup, to run on a specific project host setup.',
       'Use --source-context with a JSON TaskSourceContext when task/provider data should come from a specific host/account; pass null on edit to clear it.',
       'Use --workspace to run in an existing worktree; otherwise the automation creates a new worktree per run.',
@@ -69,7 +69,7 @@ export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['automations', 'edit'],
-    summary: 'Edit an FABRICA automation',
+    summary: 'Edit a Fabrica automation',
     usage: 'fabrica automations edit <id> [--name <name>] [--trigger <preset|cron|rrule>] [--json]',
     allowedFlags: [
       ...GLOBAL_FLAGS,
@@ -91,7 +91,7 @@ export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['automations', 'remove'],
     destructive: true,
-    summary: 'Remove an FABRICA automation and its run history',
+    summary: 'Remove a Fabrica automation and its run history',
     usage: 'fabrica automations remove <id> [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'id'],
     positionalArgs: ['id'],
@@ -99,7 +99,7 @@ export const AUTOMATION_COMMAND_SPECS: CommandSpec[] = [
   },
   {
     path: ['automations', 'run'],
-    summary: 'Run an FABRICA automation now',
+    summary: 'Run a Fabrica automation now',
     usage: 'fabrica automations run <id> [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'id'],
     positionalArgs: ['id'],

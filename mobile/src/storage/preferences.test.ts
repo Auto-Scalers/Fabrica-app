@@ -462,11 +462,22 @@ describe('terminal link open mode preference', () => {
     vi.mocked(AsyncStorage.setItem).mockReset()
   })
 
-  it('defaults to FABRICA browser when unset', async () => {
+  it('defaults to fabrica browser when unset', async () => {
     vi.mocked(AsyncStorage.getItem).mockResolvedValue(null)
 
-    await expect(loadTerminalLinkOpenMode()).resolves.toBe('FABRICA-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
     expect(AsyncStorage.getItem).toHaveBeenCalledWith('FABRICA:terminalLinkOpenMode')
+  })
+
+  it('migrates legacy stored values to fabrica-browser', async () => {
+    vi.mocked(AsyncStorage.getItem).mockResolvedValue('FABRICA-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
+
+    vi.mocked(AsyncStorage.getItem).mockResolvedValue('orca-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
+
+    vi.mocked(AsyncStorage.getItem).mockResolvedValue('fabrica-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
   })
 
   it('loads only known modes', async () => {
@@ -474,13 +485,13 @@ describe('terminal link open mode preference', () => {
     await expect(loadTerminalLinkOpenMode()).resolves.toBe('phone-browser')
 
     vi.mocked(AsyncStorage.getItem).mockResolvedValue('external')
-    await expect(loadTerminalLinkOpenMode()).resolves.toBe('FABRICA-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
   })
 
-  it('falls back to FABRICA browser when storage cannot be read', async () => {
+  it('falls back to fabrica browser when storage cannot be read', async () => {
     vi.mocked(AsyncStorage.getItem).mockRejectedValue(new Error('storage unavailable'))
 
-    await expect(loadTerminalLinkOpenMode()).resolves.toBe('FABRICA-browser')
+    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
   })
 
   it('persists the selected mode', async () => {

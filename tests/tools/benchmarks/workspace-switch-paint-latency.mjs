@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Measures how long a workspace-card click takes to become VISIBLE.
  *
@@ -20,7 +20,7 @@
 
 import { writeFileSync, mkdirSync } from 'node:fs'
 import path from 'node:path'
-import { chromium } from '@stablyai/playwright-test'
+import { chromium } from '@autoscalers/playwright-test'
 
 function parseArgs(argv) {
   const args = {
@@ -259,7 +259,7 @@ async function main() {
   }
 
   // Alternate between two cards, neither of which is the one already active at
-  // start — clicking the active card short-circuits and measures nothing.
+  // start â€” clicking the active card short-circuits and measures nothing.
   const activeAtStart = await page.evaluate(() => window.__store.getState().activeWorktreeId)
   const pair = worktreeIds.filter((id) => id !== activeAtStart).slice(0, 2)
   if (pair.length < 2) {
@@ -323,7 +323,7 @@ async function main() {
     // silently make every commit look good during a bisect.
     if (sample.attrFlipMs === null && sample.renderedCommitMs === null) {
       throw new Error(
-        `switch ${i + 1} clicked card ${targetId} but it never became active — the measurement is not valid`
+        `switch ${i + 1} clicked card ${targetId} but it never became active â€” the measurement is not valid`
       )
     }
     samples.push(sample)

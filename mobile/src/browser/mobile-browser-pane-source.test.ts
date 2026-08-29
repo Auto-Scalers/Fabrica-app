@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { describe, expect, it } from 'vitest'
 
-const source = readFileSync(new URL('./MobileBrowserPane.tsx', import.meta.url), 'utf8')
+const source = readSourceText(new URL('./MobileBrowserPane.tsx', import.meta.url))
 
 function sliceBetween(startPattern: string, endPattern: string): string {
   const start = source.indexOf(startPattern)

@@ -1,4 +1,4 @@
-﻿import { spawn } from 'node:child_process'
+import { spawn } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -275,7 +275,7 @@ async function assertAccountImportSupported({ client }: HandlerContext): Promise
   if (!status.result.capabilities?.includes(ACCOUNT_IMPORT_RUNTIME_CAPABILITY)) {
     throw new RuntimeClientError(
       'incompatible_runtime',
-      'The running FABRICA runtime is too old to add accounts from the CLI. Update or restart FABRICA and try again.'
+      'The running Fabrica runtime is too old to add accounts from the CLI. Update or restart Fabrica and try again.'
     )
   }
 }

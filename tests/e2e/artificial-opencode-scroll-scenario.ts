@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import {
   dispatchActiveTerminalWheelEvent,
   readActiveTerminalScrollState,
@@ -51,7 +51,7 @@ export async function seedActiveTerminalScrollback(
     `for (let i = 0; i < 420; i++) console.log('OPENCODE_SCROLL_${runId}_' + i)`,
     `console.log('${marker}')`
   ].join(';')
-  // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
+  // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
   const staged = await runNodeScriptInTerminal(page, ptyId, script, {
     prefix: 'FABRICA-opencode-scroll-seed'
   })
@@ -113,7 +113,7 @@ export async function measureActiveTerminalWheelScroll(page: Page): Promise<Scro
     // Why: on shared two-worker CI shards a single OS-scheduler starvation can
     // spike one tick's drift without any real event-loop regression. Report the
     // second-worst drift so a lone spike is tolerated, while sustained blocking
-    // (two or more over-budget ticks — the actual regression) still trips the
+    // (two or more over-budget ticks â€” the actual regression) still trips the
     // gate. A plain Math.max makes this a CPU lottery on loaded runners.
     let worstDriftMs = 0
     let secondWorstDriftMs = 0

@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const callMock = vi.fn()
 
@@ -102,7 +102,7 @@ describe('FABRICA computer action CLI routing', () => {
 
     const output = vi.mocked(console.log).mock.calls[0][0]
     expect(output).toContain(
-      'Use `FABRICA computer get-app-state --app com.apple.finder --session manual --window-index 1 --restore-window`'
+      'Use `fabrica computer get-app-state --app com.apple.finder --session manual --window-index 1 --restore-window`'
     )
   })
 

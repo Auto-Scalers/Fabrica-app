@@ -1,6 +1,6 @@
-import { existsSync, readFileSync } from 'node:fs'
+﻿import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { waitForActivePaneHookDescriptor, waitForActiveTerminalManager } from './helpers/terminal'
@@ -103,7 +103,7 @@ async function measureRendererDuringRewriteBurst(
   paneKey: string
 ): Promise<BurstMeasurement> {
   const frames = Array.from({ length: REWRITE_REDRAW_FRAME_COUNT }, (_, frame) => {
-    const text = `• Working ${String(frame).padStart(4, '0')}`
+    const text = `â€¢ Working ${String(frame).padStart(4, '0')}`
     const payload = 'x'.repeat(REWRITE_REDRAW_PAYLOAD_CHARS)
     return `\r\x1b[2K${text} ${payload}`
   })

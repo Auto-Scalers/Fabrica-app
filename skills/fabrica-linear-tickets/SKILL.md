@@ -1,5 +1,5 @@
 ---
-name: linear-tickets
+name: fabrica-linear-tickets
 description: >-
   Use Fabrica's Linear CLI through `fabrica linear ...` commands to read linked
   ticket context with `fabrica linear issue --current --full --json`, post
@@ -36,7 +36,7 @@ Choose the executable once and reuse it for every later command:
 - Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
 - Otherwise, on Linux outside an Fabrica-managed terminal, use `fabrica-ide`. Never run bare
   `fabrica` there — outside Fabrica's terminals it normally resolves to the
-  GNOME Fabrica screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
+  GNOME Orca screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
 - Otherwise, use `fabrica`.
 
 Below, `FABRICA` is a placeholder for the executable you resolved. Substitute it before
@@ -49,7 +49,7 @@ to another executable, which could silently target a different Fabrica build.
 ## Load the full guide before running Fabrica commands
 
 ```text
-FABRICA skills get linear-tickets
+FABRICA skills get fabrica-linear-tickets
 ```
 
 That prints the complete, version-matched guide for the exact binary that will handle your
@@ -76,5 +76,5 @@ FABRICA linear issue --current --full --json
 ```
 
 Then tell the user that updating Fabrica restores the full, version-matched guide via
-`FABRICA skills get linear-tickets`. Beyond these commands, ask the user rather than guessing a
+`FABRICA skills get fabrica-linear-tickets`. Beyond these commands, ask the user rather than guessing a
 command surface this older binary may not support.

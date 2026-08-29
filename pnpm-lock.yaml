@@ -101,6 +101,9 @@ importers:
         specifier: ~4.4.3
         version: 4.4.3
     devDependencies:
+      '@autoscalers/playwright-test':
+        specifier: ^2.1.14
+        version: 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -122,9 +125,6 @@ importers:
       '@sanity/diff-match-patch':
         specifier: ^3.2.0
         version: 3.2.0
-      '@stablyai/playwright-test':
-        specifier: ^2.1.14
-        version: 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
       '@tailwindcss/vite':
         specifier: ^4.2.4
         version: 4.2.4(rolldown-vite@7.3.1(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2)(@types/node@25.9.5)(esbuild@0.25.12)(jiti@2.7.0)(yaml@2.8.4))
@@ -431,6 +431,26 @@ packages:
 
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
+
+  '@autoscalers/playwright-base@2.1.14':
+    resolution: {integrity: sha512-pEk5Lpro8b7AiJrKtDdC2R3iSAca/LoYGZLXKuUE2st7tnZG4Dlh7yhqG8uAGYqcrBlGjUptjdTjQWf1zGjuNw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@playwright/test': ^1.52.0
+      zod: ^3.25.0 || ^4.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+
+  '@autoscalers/playwright-test@2.1.14':
+    resolution: {integrity: sha512-h/4P3Z/uUY7zh1ZnLcnokS/kWGXLq5yhC3OOecniqiumbeJHD5MWzRgk/ChRu4jn5gafIxV5i0oXHCSHZkqNlg==}
+    peerDependencies:
+      '@playwright/test': ^1.52.0
+
+  '@autoscalers/playwright@2.1.14':
+    resolution: {integrity: sha512-7cG4Lw727aFYQRnCT2Nf1PVNX2GWSAuFTJpReHkVgGDUjsuPlB+Xj3Gh+yYgv9vhsvyapdMCORHr0OpAl9rLDw==}
+    peerDependencies:
+      '@playwright/test': ^1.52.0
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -2524,26 +2544,6 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
-
-  '@stablyai/playwright-base@2.1.14':
-    resolution: {integrity: sha512-/iAgMW5tC0ETDo3mFyTzszRrD7rGFIT4fgDgtZxqa9vPhiTLix/1+GeOOBNY0uS+XRLFY0Uc/irsC3XProL47g==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@playwright/test': ^1.52.0
-      zod: ^3.25.0 || ^4.0.0
-    peerDependenciesMeta:
-      zod:
-        optional: true
-
-  '@stablyai/playwright-test@2.1.14':
-    resolution: {integrity: sha512-CAyVVnRdsyJg9pbK3Yq5L9lcvEabilFLb2RWeTQybKv7sDkEEqE2t1boXqBt3X6wQO6lsyhUHB9pc10wSwuc4Q==}
-    peerDependencies:
-      '@playwright/test': ^1.52.0
-
-  '@stablyai/playwright@2.1.14':
-    resolution: {integrity: sha512-+SkphioOf+o2VWiM3KPm/fFTTjwNHUV5b2ZRPrLMTsW6bwmEvjo2FbVOUobNBqbopQBnntNLd8ZCG2gvw7rwtg==}
-    peerDependencies:
-      '@playwright/test': ^1.52.0
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
@@ -6913,6 +6913,30 @@ snapshots:
       package-manager-detector: 1.6.0
       tinyexec: 1.1.2
 
+  '@autoscalers/playwright-base@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
+    dependencies:
+      '@playwright/test': 1.59.1
+      jpeg-js: 0.4.4
+      p-retry: 4.6.2
+      pngjs: 7.0.0
+    optionalDependencies:
+      zod: 4.4.3
+
+  '@autoscalers/playwright-test@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
+    dependencies:
+      '@autoscalers/playwright': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
+      '@autoscalers/playwright-base': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
+      '@playwright/test': 1.59.1
+    transitivePeerDependencies:
+      - zod
+
+  '@autoscalers/playwright@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
+    dependencies:
+      '@autoscalers/playwright-base': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
+      '@playwright/test': 1.59.1
+    transitivePeerDependencies:
+      - zod
+
   '@babel/code-frame@7.29.7':
     dependencies:
       '@babel/helper-validator-identifier': 7.29.7
@@ -8813,30 +8837,6 @@ snapshots:
   '@sindresorhus/is@4.6.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
-
-  '@stablyai/playwright-base@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
-    dependencies:
-      '@playwright/test': 1.59.1
-      jpeg-js: 0.4.4
-      p-retry: 4.6.2
-      pngjs: 7.0.0
-    optionalDependencies:
-      zod: 4.4.3
-
-  '@stablyai/playwright-test@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
-    dependencies:
-      '@playwright/test': 1.59.1
-      '@stablyai/playwright': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
-      '@stablyai/playwright-base': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
-    transitivePeerDependencies:
-      - zod
-
-  '@stablyai/playwright@2.1.14(@playwright/test@1.59.1)(zod@4.4.3)':
-    dependencies:
-      '@playwright/test': 1.59.1
-      '@stablyai/playwright-base': 2.1.14(@playwright/test@1.59.1)(zod@4.4.3)
-    transitivePeerDependencies:
-      - zod
 
   '@standard-schema/spec@1.1.0': {}
 

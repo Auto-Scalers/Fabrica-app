@@ -1,19 +1,3 @@
----
-name: orchestration
-description: >-
-  Use Fabrica orchestration for structured multi-agent coordination: threaded
-  messages, blocking ask/reply flows, task dispatch, worker_done/escalation
-  waits, task DAGs, decision gates, coordinator loops, or decomposing work
-  across agents. Use `fabrica-cli` instead for full ownership handoffs, including
-  requests phrased as "hand off", "handoff", "handover", "give this to another
-  agent", or "another worktree" when the user did not explicitly ask to
-  supervise, monitor, wait for results, or coordinate a DAG. Use `fabrica-cli` for
-  ordinary terminal control, lightweight terminal prompts, shell commands, Fabrica
-  worktree management, reading or waiting on terminals, and automation of the
-  browser embedded inside Fabrica. Use Computer Use for browser windows, webviews,
-  Fabrica app UI, or desktop UI outside Fabrica's embedded browser.
----
-
 # Fabrica Orchestration
 
 This file is a discovery stub, not the usage guide. The full, version-matched Fabrica
@@ -38,7 +22,7 @@ Choose the executable once and reuse it for every later command:
 - Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
 - Otherwise, on Linux outside an Fabrica-managed terminal, use `fabrica-ide`. Never run bare
   `fabrica` there — outside Fabrica's terminals it normally resolves to the
-  GNOME Fabrica screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
+  GNOME Orca screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
 - Otherwise, use `fabrica`.
 
 Below, `FABRICA` is a placeholder for the executable you resolved. Substitute it before
@@ -51,7 +35,7 @@ to another executable, which could silently target a different Fabrica build.
 ## Load the full guide before running Fabrica commands
 
 ```text
-FABRICA skills get orchestration
+FABRICA skills get fabrica-orchestration
 ```
 
 That prints the complete, version-matched guide for the exact binary that will handle your
@@ -78,5 +62,5 @@ FABRICA terminal list --json
 ```
 
 Then tell the user that updating Fabrica restores the full, version-matched guide via
-`FABRICA skills get orchestration`. Beyond these commands, ask the user rather than guessing a
+`FABRICA skills get fabrica-orchestration`. Beyond these commands, ask the user rather than guessing a
 command surface this older binary may not support.

@@ -16,7 +16,7 @@ const execFileAsync = promisify(execFile)
 function compatibility(): LocalBuildCompatibility {
   return {
     formatVersion: 1,
-    appId: 'com.autoscalers.fabrica',
+    appId: 'ai.autoscalers.fabrica',
     buildId: '1.2.3-local.1-abc-arm64',
     version: '1.2.3-local.1',
     commit: 'abc',

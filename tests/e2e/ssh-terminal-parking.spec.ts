@@ -1,4 +1,4 @@
-import type { TestInfo } from '@stablyai/playwright-test'
+﻿import type { TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady, getActiveTabId } from './helpers/store'
 import {
@@ -65,9 +65,9 @@ test.describe('SSH terminal hidden view parking', () => {
           message: 'SSH marker output did not render before parking'
         })
         .toContain(`${marker}_200:`)
-      // Why the pad: ~3000 × ~60B ≈ 180KB pushes the early markers past the
+      // Why the pad: ~3000 Ã— ~60B â‰ˆ 180KB pushes the early markers past the
       // relay's 100KiB rolling replay buffer while staying inside main's
-      // ~5k-row headless model — so a revealed `${marker}_1:` can only have
+      // ~5k-row headless model â€” so a revealed `${marker}_1:` can only have
       // come from the model paint, never the relay fallback.
       await sendToTerminal(
         fabricaPage,
@@ -86,7 +86,7 @@ test.describe('SSH terminal hidden view parking', () => {
       })
 
       // Reveal: reattach must paint from main's headless model (or relay
-      // replay when the model is unavailable) — never a blank pane.
+      // replay when the model is unavailable) â€” never a blank pane.
       await fabricaPage.evaluate((tabId) => {
         const state = window.__store?.getState()
         state?.setActiveTab(tabId)

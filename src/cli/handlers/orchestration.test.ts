@@ -478,7 +478,7 @@ describe('orchestration dispatch coordinator handle', () => {
       data: {
         reason: 'command_retired',
         effectsApplied: false,
-        nextCommandArgs: ['skills', 'get', 'orchestration', '--full']
+        nextCommandArgs: ['skills', 'get', 'fabrica-orchestration', '--full']
       }
     })
     expect(callMock).not.toHaveBeenCalled()

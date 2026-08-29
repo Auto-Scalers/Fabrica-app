@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
   dropFailedGitHubRepoSlugEntries,
   filterGitHubProjectRowsForRepos,
@@ -13,7 +13,7 @@ const repos = [
 
 describe('GitHub project repo matching', () => {
   it('normalizes owner/repo slugs case-insensitively', () => {
-    expect(normalizeGitHubRepositorySlug(' Auto-Scalers/FABRICA ')).toBe('Auto-Scalers/FABRICA')
+    expect(normalizeGitHubRepositorySlug(' Auto-Scalers/FABRICA ')).toBe('auto-scalers/fabrica')
     expect(normalizeGitHubRepositorySlug('FABRICA')).toBeNull()
     expect(normalizeGitHubRepositorySlug('Auto-Scalers/FABRICA/extra')).toBeNull()
   })

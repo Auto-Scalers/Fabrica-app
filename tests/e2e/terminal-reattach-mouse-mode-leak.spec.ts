@@ -1,4 +1,4 @@
-/**
+﻿/**
  * E2E regression test for the reattach mouse-mode leak fixed alongside #7329.
  *
  * Why this suite exists:
@@ -20,7 +20,7 @@
  *     does observe reports, so the "zero reports" assertion cannot pass vacuously.
  *
  * What it does NOT cover:
- *   - That the daemon's buildRehydrateSequences re-arms the mode on reattach —
+ *   - That the daemon's buildRehydrateSequences re-arms the mode on reattach â€”
  *     locked by repro-7329-remote-snapshot-corruption.test.ts against the real
  *     serializer + xterm. This suite proves the reset half end to end.
  *   - Live-agent panes keeping mouse via POST_REPLAY_LIVE_AGENT_REATTACH_RESET
@@ -28,7 +28,7 @@
  */
 
 import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication } from '@stablyai/playwright-test'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -41,7 +41,7 @@ import {
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { attachRepoAndOpenTerminal, createRestartSession } from './helpers/fabrica-restart'
 
-// Why: quit→relaunch against the same userDataDir relies on the daemon
+// Why: quitâ†’relaunch against the same userDataDir relies on the daemon
 // surviving the first close; serial keeps the shared profile from competing
 // with other Electron instances for the same lock.
 test.describe.configure({ mode: 'serial' })
@@ -64,7 +64,7 @@ test.describe('reattach mouse-mode leak', () => {
     let secondApp: ElectronApplication | null = null
 
     try {
-      // ── First launch: arm the leak through the real daemon ─────────────
+      // â”€â”€ First launch: arm the leak through the real daemon â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const firstLaunch = await session.launch()
       firstApp = firstLaunch.app
       await attachRepoAndOpenTerminal(firstLaunch.page, repoPath)
@@ -86,7 +86,7 @@ test.describe('reattach mouse-mode leak', () => {
       // only appears if the shell evaluated it (the echoed command text shows
       // the expression, not `42`). Some sandboxed CI/dev runners spawn a PTY
       // that echoes input but never execs a shell; skip there rather than fail,
-      // matching the pane-manager guard above — there is nothing to arm.
+      // matching the pane-manager guard above â€” there is nothing to arm.
       await execInTerminal(firstLaunch.page, ptyId, 'echo FABRICA_MOUSE_READY_$((21+21))')
       const shellExecutes = await waitForTerminalOutput(
         firstLaunch.page,
@@ -98,7 +98,7 @@ test.describe('reattach mouse-mode leak', () => {
       test.skip(!shellExecutes, 'PTY shell does not execute commands in this environment')
 
       // Arm mouse tracking exactly as a TUI would, then let the shell foreground
-      // return — the disable is never sent, so the daemon's tracker keeps the
+      // return â€” the disable is never sent, so the daemon's tracker keeps the
       // mode and re-arms it on reattach. printf is a shell builtin (no external
       // binary), and its typed argument is literal backslashes, so only real
       // execution emits the ESC bytes that arm xterm below.
@@ -107,7 +107,7 @@ test.describe('reattach mouse-mode leak', () => {
       // Precondition: the printf armed real mouse reporting in the live
       // pane (proving the leak's byte flow reached the terminal). The daemon's
       // tracker sees the same output stream and re-arms this mode on every
-      // reattach — the rehydrate half is locked by the repro-7329 unit test; this
+      // reattach â€” the rehydrate half is locked by the repro-7329 unit test; this
       // suite proves the reattach reset disarms it end to end.
       await expect
         .poll(
@@ -138,7 +138,7 @@ test.describe('reattach mouse-mode leak', () => {
       await session.close(firstApp)
       firstApp = null
 
-      // ── Second launch: reattach must disarm the leaked modes ────────────
+      // â”€â”€ Second launch: reattach must disarm the leaked modes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const secondLaunch = await session.launch()
       secondApp = secondLaunch.app
       await waitForSessionReady(secondLaunch.page)
@@ -175,7 +175,7 @@ test.describe('reattach mouse-mode leak', () => {
 
       // Behavioral proof + positive control: real pointer motion must produce
       // no reports post-reattach, but the same probe DOES observe reports once
-      // mouse mode is re-armed — so the "zero reports" result is not vacuous.
+      // mouse mode is re-armed â€” so the "zero reports" result is not vacuous.
       const probe = await secondLaunch.page.evaluate(async () => {
         // An SGR mouse report is `ESC [ < params (M|m)`; the `ESC [ <` prefix is
         // unambiguous, so substring matching avoids a control-char regex.
@@ -217,7 +217,7 @@ test.describe('reattach mouse-mode leak', () => {
         const motionReports = (): string[] => reports.filter(isMouseReport)
 
         try {
-          // Phase A: post-reattach, mouse must be disarmed → no reports.
+          // Phase A: post-reattach, mouse must be disarmed â†’ no reports.
           await dispatchMotion()
           const afterReattach = {
             mode: pane.terminal.modes.mouseTrackingMode,
@@ -225,14 +225,14 @@ test.describe('reattach mouse-mode leak', () => {
             reports: motionReports().length
           }
 
-          // Phase B: positive control — re-arm and confirm the probe sees reports.
+          // Phase B: positive control â€” re-arm and confirm the probe sees reports.
           reports.length = 0
           await new Promise<void>((resolve) =>
             pane.terminal.write('\x1b[?1003h\x1b[?1006h', () => resolve())
           )
           // Why: xterm binds the enable-mouse-events class AND the motion
           // listener together in one _handleProtocolChange pass, so poll a bounded
-          // number of frames — dispatching motion each round — until arming takes
+          // number of frames â€” dispatching motion each round â€” until arming takes
           // rather than reading a single frame that can precede the binding.
           let classAfterArm = false
           let armedReports = 0
@@ -249,7 +249,7 @@ test.describe('reattach mouse-mode leak', () => {
             classAfterArm,
             armedReports,
             // Whether the reattached pane dynamically bound xterm mouse reporting
-            // at all — class and listener attach together, so either signal proves it.
+            // at all â€” class and listener attach together, so either signal proves it.
             armedMouseReporting: classAfterArm || armedReports > 0
           }
         } finally {
@@ -263,8 +263,8 @@ test.describe('reattach mouse-mode leak', () => {
       expect(probe.afterReattach.reports).toBe(0)
       // Why: the positive control needs the reattached pane to dynamically bind
       // xterm's browser MouseService. Some headless CI renderers never do on a warm
-      // reattach — the core mouseTrackingMode still flips but no DOM class/listener
-      // attaches — so arming is impossible and the probe can't run. Skip there,
+      // reattach â€” the core mouseTrackingMode still flips but no DOM class/listener
+      // attaches â€” so arming is impossible and the probe can't run. Skip there,
       // matching the pane-manager/shell guards above; the reset invariant stays
       // covered by repro-7329 + pty-connection unit tests and this suite on macOS.
       test.skip(

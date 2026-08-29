@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import type { RuntimeTerminalFocus } from '../../../src/shared/runtime-types'
 import { expect } from './FABRICA-app'
 import { createRemoteSessionBulkOpenFixture } from './remote-session-bulk-open-fixture'

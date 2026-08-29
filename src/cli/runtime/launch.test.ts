@@ -1,4 +1,4 @@
-﻿import { EventEmitter } from 'node:events'
+import { EventEmitter } from 'node:events'
 import { mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
@@ -537,7 +537,7 @@ describe('serveFABRICAApp', () => {
 
     await expect(result).rejects.toMatchObject({
       code: 'runtime_serve_failed',
-      message: 'FABRICA serve exited before printing valid recipe JSON with code 0.'
+      message: 'Fabrica serve exited before printing valid recipe JSON with code 0.'
     })
     expect(stdoutSpy).not.toHaveBeenCalled()
     expect(stderrSpy).toHaveBeenCalledTimes(5)

@@ -1,4 +1,4 @@
-﻿import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import type { MobileRelayEndpoint } from '../../../src/shared/mobile-relay-credential-contract'
 import { MobileRelayUpgradeHostRemovedError } from './host-store'
 import {
@@ -15,8 +15,8 @@ vi.mock('expo-crypto', () => ({ getRandomBytes: (length: number) => new Uint8Arr
 
 const relay: MobileRelayEndpoint = {
   v: 1,
-  directorUrl: 'https://relay-staging.onFABRICA.dev',
-  cellUrl: 'https://c1.relay-staging.onFABRICA.dev',
+  directorUrl: 'https://relay-staging.onfabrica.dev',
+  cellUrl: 'https://c1.relay-staging.onfabrica.dev',
   assignmentEpoch: 4,
   relayHostId: 'AbCdEf0123_-xyZ9',
   e2eeFraming: 2

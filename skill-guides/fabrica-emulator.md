@@ -19,8 +19,7 @@ The underlying serve-sim helper captures the real simulator framebuffer (via pri
 Choose the Fabrica executable once: use the `FABRICA_CLI_COMMAND` environment value when set;
 otherwise use `fabrica-dev` in a dev session exposing `FABRICA_DEV_REPO_ROOT`, `fabrica-ide`
 on Linux outside a Fabrica-managed terminal, and `fabrica`
-everywhere else. Never try bare
-`fabrica` on unmanaged Linux because it normally resolves to the GNOME screen reader.
+everywhere else.
 
 In every command example — fenced blocks, tables, and prose — `FABRICA` is a documentation
 placeholder. Replace it with the chosen executable before running the command; do not

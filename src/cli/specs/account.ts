@@ -1,4 +1,4 @@
-﻿import { GLOBAL_FLAGS, type CommandSpec } from '../args'
+import { GLOBAL_FLAGS, type CommandSpec } from '../args'
 
 // Why: the desktop "Add account" button is disabled when the UI drives a remote
 // runtime (a headless server). These commands run the interactive agent login
@@ -8,20 +8,20 @@
 export const ACCOUNT_COMMAND_SPECS: CommandSpec[] = [
   {
     path: ['account', 'add'],
-    summary: 'Add a managed Claude or Codex account by signing in on this FABRICA host',
+    summary: 'Add a managed Claude or Codex account by signing in on this Fabrica host',
     usage: 'fabrica account add [--agent claude|codex] [--json]',
     allowedFlags: [...GLOBAL_FLAGS, 'agent'],
     notes: [
-      'Runs the agent login (`claude login` / `codex login`) in this terminal, then registers the account with the local FABRICA runtime.',
+      'Runs the agent login (`claude login` / `codex login`) in this terminal, then registers the account with the local Fabrica runtime.',
       'Codex uses device authorization so the browser can complete sign-in from a different machine.',
       'Sign in with the account you want to add (e.g. use a private/incognito browser window for a second account).',
-      '--agent defaults to claude. Requires the FABRICA runtime to be running on this machine.'
+      '--agent defaults to claude. Requires the Fabrica runtime to be running on this machine.'
     ],
     examples: ['fabrica account add', 'fabrica account add --agent codex']
   },
   {
     path: ['account', 'list'],
-    summary: 'List managed Claude and Codex accounts on this FABRICA host',
+    summary: 'List managed Claude and Codex accounts on this Fabrica host',
     usage: 'fabrica account list [--json]',
     allowedFlags: [...GLOBAL_FLAGS],
     notes: [

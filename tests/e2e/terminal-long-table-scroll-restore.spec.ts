@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -251,7 +251,7 @@ async function readTerminalBoxTableWrapDiagnostics(page: Page): Promise<{
       }
     })
     const wrappedBoxLines = lines
-      .filter((line) => line.isWrapped && /[┌┬┐├┼┤└┴┘│─]/.test(line.text))
+      .filter((line) => line.isWrapped && /[â”Œâ”¬â”â”œâ”¼â”¤â””â”´â”˜â”‚â”€]/.test(line.text))
       .slice(0, 20)
     const singerIndex = lines.findIndex((line) => line.text.includes('Singer'))
     const nearSinger =

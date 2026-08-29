@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -32,19 +32,19 @@ test.use({
 })
 
 // Why: 8 hidden tabs is below the 12-tab hot-retain limit, but that limit
-// never retains anything here — the FABRICA_E2E_TERMINAL_PARKING_DELAY_MS
+// never retains anything here â€” the FABRICA_E2E_TERMINAL_PARKING_DELAY_MS
 // collapse (terminal-parking-e2e-overrides.ts) shrinks hotRetainMs to the
 // same delay as coldParkDelayMs, and the policy cold-parks any tab hidden
 // past hotRetainMs before the retain-count limit is even consulted. The one
 // exception is the last-active (most-recently-hidden) tab, which is exempt
-// from parking so returning to it is instant — so 7 of the 8 park.
+// from parking so returning to it is instant â€” so 7 of the 8 park.
 const SCROLLBACK_TAB_COUNT = 8
 const SCROLLBACK_LINE_COUNT = 3000
 const PARK_SETTLE_MS = 2_000
 const HEAP_SAMPLE_COUNT = 5
 const HEAP_SAMPLE_INTERVAL_MS = 250
 // Why: each test launches a fresh app, fills 8 terminals with ~3000 lines of
-// scrollback each, then waits out the parking window — well past the default
+// scrollback each, then waits out the parking window â€” well past the default
 // 120s per-test budget.
 const PARKED_MEMORY_TEST_TIMEOUT_MS = 300_000
 
@@ -58,12 +58,12 @@ function writeScrollbackFillScript(
 ): void {
   const script = [
     `const tabIndex = process.argv[2] ?? '0'`,
-    `const wide = '統合端末記憶計測'`,
-    `const emoji = ['🟢', '🟡', '🔵', '🟣']`,
+    `const wide = 'çµ±åˆç«¯æœ«è¨˜æ†¶è¨ˆæ¸¬'`,
+    `const emoji = ['ðŸŸ¢', 'ðŸŸ¡', 'ðŸ”µ', 'ðŸŸ£']`,
     `const lines = []`,
     `for (let i = 0; i < ${lineCount}; i += 1) {`,
     `  const ascii = ('tab ' + tabIndex + ' line ' + String(i).padStart(4, '0') + ' ').padEnd(48, 'abcdefghijklmnopqrstuvwxyz')`,
-    `  const box = '│' + '─'.repeat(8 + (i % 24)) + '│'`,
+    `  const box = 'â”‚' + 'â”€'.repeat(8 + (i % 24)) + 'â”‚'`,
     `  lines.push(ascii + ' ' + wide.repeat(1 + (i % 3)) + ' ' + emoji[i % 4] + ' ' + box)`,
     `}`,
     `process.stdout.write(lines.join('\\n') + '\\n')`,
@@ -114,8 +114,8 @@ async function countMountedPaneManagers(page: Page, tabIds: string[]): Promise<n
 
 // Why: the last-active tab per worktree is exempt from parking so returning to
 // it is instant, so one of the hidden scrollback tabs stays mounted. The
-// exempt one is the most-recently-hidden — here the last scrollback tab filled
-// before the visible tab was created — so we expect exactly one still mounted.
+// exempt one is the most-recently-hidden â€” here the last scrollback tab filled
+// before the visible tab was created â€” so we expect exactly one still mounted.
 async function waitForTabsParkedExceptLastActive(page: Page, tabIds: string[]): Promise<void> {
   await expect
     .poll(() => countMountedPaneManagers(page, tabIds), {
@@ -180,7 +180,7 @@ type ScrollbackTabSetup = {
 }
 
 // Why: each tab generates its scrollback while visible, so every xterm holds
-// the full buffer before going hidden — the hidden-delivery gate never gets a
+// the full buffer before going hidden â€” the hidden-delivery gate never gets a
 // chance to drop the output the memory comparison depends on.
 async function setUpScrollbackTabs(
   page: Page,
@@ -214,7 +214,7 @@ type ParkedMemoryMetrics = {
 }
 
 // Why: usedJSHeapSize only drops after a GC, so force one over CDP (best
-// effort) and take the min of several settled samples — the min reflects
+// effort) and take the min of several settled samples â€” the min reflects
 // retained heap instead of allocation noise between collections. Note xterm
 // buffer rows are typed-array backing stores outside the V8 heap, so the
 // liveTerminals/livePaneManagers counts are the strong release signal and the
@@ -304,7 +304,7 @@ test.describe('Terminal parked memory', () => {
       const visibleState = await readTerminalTabViewState(fabricaPage, visibleTab.tabId)
       expect(visibleState.hasManager).toBe(true)
       expect(visibleState.paneCount).toBeGreaterThan(0)
-      // Why: design invariant 5 — renderer terminal views scale with mounted
+      // Why: design invariant 5 â€” renderer terminal views scale with mounted
       // panes; only the visible tab and the exempt last-active tab keep an
       // xterm and pane manager, everything else parks.
       expect(metrics.livePaneManagers).toBe(2)
@@ -322,7 +322,7 @@ test.describe('Terminal parked memory', () => {
 
     // Why: settings.terminalHiddenViewParking === false is the design-doc
     // kill switch. updateSettings persists it through window.api.settings.set
-    // and updates the store slice the cold-park hook subscribes to — the same
+    // and updates the store slice the cold-park hook subscribes to â€” the same
     // mutation path dead-terminal-repro.spec.ts uses, so no extra launch-env
     // wiring is needed.
     await fabricaPage.evaluate(async () => {
@@ -376,7 +376,7 @@ test.describe('Terminal parked memory', () => {
   })
 })
 
-// ─────────────────────── C1 retention budget outcome ───────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ C1 retention budget outcome â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // The tests above assert the parking MECHANISM. This one asserts the OUTCOME
 // the retention budget exists for: hidden worktrees ordinary parking can never
 // evict actually release their buffers once the budget engages, with the
@@ -386,7 +386,7 @@ test.describe('Terminal parked memory', () => {
 //  - The un-parkable class is staged by rewriting tabsByWorktree[*].ptyId to a
 //    remote-runtime-shaped id. That is a fidelity proxy: park-restorability and
 //    eviction-exemption are decided from that field alone, but the transports
-//    underneath stay real LOCAL PTYs — this is not a live remote runtime.
+//    underneath stay real LOCAL PTYs â€” this is not a live remote runtime.
 //  - The primary gate is retained xterm buffer CELLS (deterministic), not RSS.
 //    xterm rows are typed arrays outside the V8 heap, so usedJSHeapSize misses
 //    most of what is released; renderer RSS is recorded and only gated as
@@ -601,7 +601,7 @@ test.describe('Terminal hidden worktree retention budget', () => {
       // the parking-delay override deliberately no longer shrinks it, so the
       // COUNT CAP is the only knob a test can drive. With a budget of 1 the
       // newest hidden un-parkable worktree takes the last-active exemption and
-      // the older one force-parks — cap and exemption proven in one run.
+      // the older one force-parks â€” cap and exemption proven in one run.
       FABRICA_E2E_TERMINAL_RETENTION_LIMIT: '1'
     },
     FABRICAAppExtraArgs: ['--enable-precise-memory-info']
@@ -761,12 +761,12 @@ test.describe('Terminal hidden worktree retention budget', () => {
 
       // Primary gate: the staged buffers are gone, not merely hidden.
       expect(after.buffers.cells).toBeLessThan(before.buffers.cells * MAX_RETAINED_CELL_FRACTION)
-      // The decoy holds the cap's last-active exemption, so it stays mounted —
+      // The decoy holds the cap's last-active exemption, so it stays mounted â€”
       // this is the same run proving the cap did not simply evict everything.
       expect(await countMountedPaneManagers(fabricaPage, decoyTabIds)).toBe(decoyTabIds.length)
       // Secondary only: freed typed arrays return to the allocator's free lists,
       // not the OS, so RSS fell just 0.7-3.0 MB locally while 87 MB of buffer was
-      // released — a strict non-growth assertion would be reading sampling noise.
+      // released â€” a strict non-growth assertion would be reading sampling noise.
       // What this CAN catch is the inverse regression the capture path risks:
       // force-park planting serialized scrollback in the store as it evicts.
       if (before.rendererMb !== null && after.rendererMb !== null) {

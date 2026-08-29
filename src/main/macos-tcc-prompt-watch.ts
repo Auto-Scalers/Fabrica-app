@@ -19,12 +19,12 @@ export type LogStreamChild = ChildProcessByStdio<null, Readable, Readable>
 
 /** Why: terminals run from the detached helper, which TCC can hold responsible independently. */
 const FABRICA_RESPONSIBLE_IDENTIFIERS = new Set([
-  'com.autoscalers.fabrica',
-  'com.autoscalers.fabrica.helper',
-  'com.autoscalers.fabrica.dev',
-  'com.autoscalers.fabrica.dev.helper',
-  'com.autoscalers.fabrica.local',
-  'com.autoscalers.fabrica.local.helper'
+  'ai.autoscalers.fabrica',
+  'ai.autoscalers.fabrica.helper',
+  'ai.autoscalers.fabrica.dev',
+  'ai.autoscalers.fabrica.dev.helper',
+  'ai.autoscalers.fabrica.local',
+  'ai.autoscalers.fabrica.local.helper'
 ])
 
 /** Why: the prompt classes #9756 is about — other-apps' data plus the protected home folders agents sweep. */

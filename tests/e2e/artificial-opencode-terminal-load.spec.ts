@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -56,7 +56,7 @@ type SyntheticOpenCodeWindow = Window & {
   }
 }
 
-// Why: the renderer hidden-skip grammar is deleted — hidden bytes are dropped
+// Why: the renderer hidden-skip grammar is deleted â€” hidden bytes are dropped
 // in main (gate) or ride the background queue. Only the mode-2031 fact-reply
 // counter still has a renderer-side producer.
 type TerminalPtyOutputDebugSnapshot = {
@@ -720,7 +720,7 @@ test.describe('Artificial OpenCode terminal load', () => {
       hiddenPaneCount,
       pressureOutputChars: PRESSURE_OUTPUT_CHARS,
       pressureOutputMode,
-      // Why: the 10s codex startup renderer-query window is deleted — every
+      // Why: the 10s codex startup renderer-query window is deleted â€” every
       // pressure mode measures steady-state model restore with one delay.
       pressureStartDelayMs: HIDDEN_PRESSURE_START_DELAY_MS,
       testInfo,
@@ -733,7 +733,7 @@ test.describe('Artificial OpenCode terminal load', () => {
     mode?: HiddenPressureOutputMode
   }[] = [
     { title: 'keeps typing responsive while hidden real PTYs are ACK-backpressured' },
-    // Why: "withholds renderer delivery" — hidden bytes are dropped in main by
+    // Why: "withholds renderer delivery" â€” hidden bytes are dropped in main by
     // the delivery gate; the renderer no longer skip-scans chunks (Phase 6).
     {
       title: 'withholds renderer delivery for plain hidden PTY output while preserving restore',

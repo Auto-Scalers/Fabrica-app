@@ -48,10 +48,10 @@ cask "fabrica@rc" do
   zap trash: [
     "~/.fabrica",
     "~/Library/Application Support/Fabrica",
-    "~/Library/Caches/com.autoscalers.fabrica",
-    "~/Library/Caches/com.autoscalers.fabrica.ShipIt",
-    "~/Library/HTTPStorages/com.autoscalers.fabrica",
-    "~/Library/Preferences/com.autoscalers.fabrica.plist",
-    "~/Library/Saved Application State/com.autoscalers.fabrica.savedState",
+    "~/Library/Caches/ai.autoscalers.fabrica",
+    "~/Library/Caches/ai.autoscalers.fabrica.ShipIt",
+    "~/Library/HTTPStorages/ai.autoscalers.fabrica",
+    "~/Library/Preferences/ai.autoscalers.fabrica.plist",
+    "~/Library/Saved Application State/ai.autoscalers.fabrica.savedState",
   ]
 end

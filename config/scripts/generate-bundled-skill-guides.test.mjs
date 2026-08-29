@@ -71,13 +71,13 @@ describe('bundled skill guide generator', () => {
 
   it('keeps pre-guide fallback useful and read-only for every converted domain', async () => {
     const expectedFallbackCommands = {
-      'computer-use': ['FABRICA computer capabilities --json', 'FABRICA computer list-apps --json'],
-      'linear-tickets': ['FABRICA linear --help', 'FABRICA linear issue --current --full --json'],
+      'fabrica-computer-use': ['FABRICA computer capabilities --json', 'FABRICA computer list-apps --json'],
+      'fabrica-linear-tickets': ['FABRICA linear --help', 'FABRICA linear issue --current --full --json'],
       'fabrica-emulator': ['FABRICA emulator list --json'],
       'fabrica-emulator-android': ['FABRICA emulator devices --json'],
       'fabrica-linear': ['FABRICA linear --help', 'FABRICA linear issue --current --full --json'],
       'fabrica-per-workspace-env': ['FABRICA vm recipe doctor <recipe-id> --repo-path <repo> --json'],
-      orchestration: ['FABRICA orchestration task-list --json', 'FABRICA terminal list --json']
+      'fabrica-orchestration': ['FABRICA orchestration task-list --json', 'FABRICA terminal list --json']
     }
 
     for (const [name, commands] of Object.entries(expectedFallbackCommands)) {
@@ -106,12 +106,12 @@ describe('bundled skill guide generator', () => {
       expect(guide.description).toBe(frontmatter.description)
       expect(guide.markdown).toBe(source)
       expect(guide.fullMarkdown).toBe(source)
-      expect(guide.aliases).toEqual(GUIDE_ALIASES[guide.name])
+      expect(guide.aliases).toEqual(GUIDE_ALIASES[guide.name] ?? [])
     }
   })
 
   it('keeps CLI guide examples safe across shells and Linux command names', async () => {
-    for (const name of ['fabrica-cli', 'computer-use', 'fabrica-emulator', 'fabrica-emulator-android']) {
+    for (const name of ['fabrica-cli', 'fabrica-computer-use', 'fabrica-emulator', 'fabrica-emulator-android']) {
       const source = await readFile(path.join(projectDir, 'skill-guides', `${name}.md`), 'utf8')
 
       expect(source).toContain('FABRICA_CLI_COMMAND')
@@ -175,14 +175,14 @@ describe('bundled skill guide generator', () => {
     await writeArtifacts(artifacts)
     await expect(verifyArtifacts(artifacts, root)).resolves.toBeUndefined()
 
-    await writeFile(path.join(root, 'skills', 'computer-use', 'SKILL.md'), 'stale\n')
-    await expect(verifyArtifacts(artifacts, root)).rejects.toThrow('skills/computer-use/SKILL.md')
+    await writeFile(path.join(root, 'skills', 'fabrica-computer-use', 'SKILL.md'), 'stale\n')
+    await expect(verifyArtifacts(artifacts, root)).rejects.toThrow('skills/fabrica-computer-use/SKILL.md')
   })
 
   it('rejects mismatched source names and ambiguous aliases', async () => {
     const root = await createFixture()
     await writeFile(
-      path.join(root, 'skill-guides', 'computer-use.md'),
+      path.join(root, 'skill-guides', 'fabrica-computer-use.md'),
       '---\nname: wrong\ndescription: present\n---\n'
     )
     await expect(buildArtifacts(root)).rejects.toThrow('declares mismatched name wrong')

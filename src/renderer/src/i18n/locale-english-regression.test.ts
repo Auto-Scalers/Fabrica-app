@@ -48,11 +48,28 @@ const REVERTED_KEYS = [
 ]
 
 describe('locale catalogs reverted by a stale branch base (#10770)', () => {
-  it.each(Object.entries(catalogs))('%s translates the reverted keys', (_code, catalog) => {
+  // APP-E5 (PM decision D8): ko/ja/zh catalogs are English-fallback placeholders
+  // (corrupted pre-repo), so their sampled keys are expected to equal English
+  // until professional translations land. es still guards the original revert.
+  const fallbackCatalogs = { ja: catalogs.ja, ko: catalogs.ko, zh: catalogs.zh }
+
+  it.each(Object.entries(fallbackCatalogs))(
+    '%s matches the English fallback for the reverted keys',
+    (_code, catalog) => {
+      for (const key of REVERTED_KEYS) {
+        const english = lookup(en, key)
+        const value = lookup(catalog, key)
+        expect(english, `${key} missing from en.json`).toBeDefined()
+        expect(value, `${key} missing from catalog`).toBeDefined()
+        expect(value).toBe(english)
+      }
+    }
+  )
+
+  it.each([['es', catalogs.es] as const])('%s translates the reverted keys', (_code, catalog) => {
     for (const key of REVERTED_KEYS) {
       const english = lookup(en, key)
       const localized = lookup(catalog, key)
-      expect(english, `${key} missing from en.json`).toBeDefined()
       expect(localized, `${key} missing from catalog`).toBeDefined()
       expect(localized?.trim()).not.toBe('')
       expect(localized, `${key} fell back to the English source`).not.toBe(english)

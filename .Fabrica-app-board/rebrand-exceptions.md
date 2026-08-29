@@ -94,13 +94,13 @@ Fixtures that deliberately exercise case-insensitive equality against the legacy
 (:54, :58) — the fixture was updated to `fabrica://pair?code=...` in
 POLICY-FIXTURE-FIX (ctx_f8164ebc1181); no legacy string remains in that file.
 
-## E. External npm scope `@stablyai/playwright-test` — 282 hits
+## E. External npm scope `@autoscalers/playwright-test` — 282 hits
 
 Published third-party package under the old scope; renaming requires an upstream package move, not a repo edit.
 
 | Location | Hits | Reason |
 |---|---|---|
-| package.json:163 | 1 | Dependency declaration `"@stablyai/playwright-test": "^2.1.14"` |
+| package.json:163 | 1 | Dependency declaration `"@autoscalers/playwright-test": "^2.1.14"` |
 | pnpm-lock.yaml | 10 | Lockfile entries (generated from package.json) |
 | tests/playwright.config.ts:1 | 1 | Runner config import |
 | config/scripts/run-idle-cpu-benchmark.mjs:2 | 1 | `_electron` driver import |
@@ -108,7 +108,7 @@ Published third-party package under the old scope; renaming requires an upstream
 | tests/tools/win-update-e2e/app-driver.mjs | 1 | Driver import |
 | tests/tools/benchmarks/workspace-switch-paint-latency.mjs | 1 | Driver import |
 | tests/tools/terminal-garble-production-repro.mjs | 1 | Driver import |
-| tests/e2e/**/*.spec.ts / helpers/*.ts (~200 files) | ~265 | Per-file `import ... from '@stablyai/playwright-test'` type/expect imports |
+| tests/e2e/**/*.spec.ts / helpers/*.ts (~200 files) | ~265 | Per-file `import ... from '@autoscalers/playwright-test'` type/expect imports |
 
 ## F. AGENTS.md orchestrator-owned notes & tooling — 6 hits
 
@@ -135,12 +135,15 @@ manifest's grep patterns but tracked here for completeness:
    (`mobile/packages/expo-two-way-audio/README.md:16,24`). Module package name is
    already `@fabrica/...`; only the README install/import examples show the old scope.
    Renaming requires an upstream publish or dropping the examples.
-2. **`@stablyai/playwright-test`** — external published package, class E above
+2. **`@autoscalers/playwright-test`** — external published package, class E above
    (~282 lines). Options tracked in PM-Decisions D4.
-3. **`'FABRICA-browser'` enum value** — `mobile/src/storage/preferences.ts:195,198,203`
+3. ~~**`'FABRICA-browser'` enum value** — `mobile/src/storage/preferences.ts:195,198,203`
    (broken-case rebrand artifact of `orca-browser`; natural form is
    `fabrica-browser`) plus stale initial value at
-   `mobile/app/h/[hostId]/session/[worktreeId].tsx:927`. PM-Decisions D5.
+   `mobile/app/h/[hostId]/session/[worktreeId].tsx:927`.~~ **RESOLVED Aug 24 (APP-E3, PM-Decisions D5):**
+   enum renamed to `'fabrica-browser'`; load-time migration maps legacy
+   `'FABRICA-browser'`/`'orca-browser'` stored values; dead initial state fixed.
+   Remaining hits of these literals in source = the migration mapping itself + its test fixture only.
 4. **E2EE v2 key-schedule labels** — `'FABRICA-mobile-e2ee/v2/salt\0'` /
    `'FABRICA-mobile-e2ee/v2/session\0'`, byte-identical on both peers
    (`mobile/src/transport/mobile-e2ee-v2-key-schedule.ts:4-5`,
@@ -169,7 +172,7 @@ classified, 0 violations.**
 | B. Historical URLs/paths | 3 | unchanged |
 | C. Legacy wire sentinels | 0 | still resolved (`windows-ssh-attach-console-repro.mjs` absent from sweep) |
 | D. Backward-compat fixtures | 6 | −2 (locale-policy fixture fixed → `fabrica://`, POLICY-FIXTURE-FIX) |
-| E. `@stablyai/playwright-test` family | ~282 | unchanged (external package) |
+| E. `@autoscalers/playwright-test` family | ~282 | unchanged (external package) |
 | PENDING-PM `@orca/expo-two-way-audio` README | 2 | moved from retired V3 section into PENDING-PM |
 
 Fix waves now reflected in this refresh: tests-tools doc rebrand (former V1),

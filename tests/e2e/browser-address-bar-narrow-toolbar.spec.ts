@@ -1,4 +1,4 @@
-/**
+﻿/**
  * E2E regression for issue #11090: in a narrow browser pane every toolbar
  * button stays shrink-0, so the address bar absorbed the whole squeeze and
  * became an unusable globe icon with a zero-width input. Focusing it must now
@@ -8,7 +8,7 @@
 import { createServer } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { expect, test } from './helpers/fabrica-app'
-import type { ElectronApplication, Locator, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Locator, Page } from '@autoscalers/playwright-test'
 import {
   ensureTerminalVisible,
   getActiveTabType,
@@ -19,7 +19,7 @@ import {
 } from './helpers/store'
 import { BROWSER_ADDRESS_BAR_MIN_INLINE_WIDTH } from '../../src/renderer/src/components/browser-pane/browser-address-bar-expansion'
 
-// Why: the toolbar must land in a band — squeezed enough that the inline field
+// Why: the toolbar must land in a band â€” squeezed enough that the inline field
 // collapses, roomy enough that the overlay itself has somewhere to go. Target
 // the middle of that band rather than a fixed window width, because how much
 // chrome flanks the pane (left sidebar, and a right sidebar that other startup

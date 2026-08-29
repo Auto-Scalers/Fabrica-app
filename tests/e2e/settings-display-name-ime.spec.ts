@@ -1,13 +1,13 @@
-/**
+﻿/**
  * Regression test for Hangul IME composition in the repository Display Name
- * setting (jamo decomposition: typing 가나다 produced ㄱㅏㄴㅏㄷㅏ).
+ * setting (jamo decomposition: typing ê°€ë‚˜ë‹¤ produced ã„±ã…ã„´ã…ã„·ã…).
  *
  * Why CDP: Playwright's keyboard API cannot drive IME composition. The CDP
  * `Input.imeSetComposition` command goes through Blink's real composition
  * pipeline, so a controlled-input value reset mid-composition cancels the
  * composition exactly like a real OS IME session.
  */
-import type { CDPSession, Locator, Page } from '@stablyai/playwright-test'
+import type { CDPSession, Locator, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { getStoreState, waitForSessionReady } from './helpers/store'
 import type { Repo } from '../../src/shared/types'
@@ -27,19 +27,19 @@ async function openRepoSettings(page: Page, repoId: string): Promise<void> {
 }
 
 /**
- * Minimal 2-set Korean IME combination table for the key sequence ㄱㅏㄴㅏㄷㅏ.
+ * Minimal 2-set Korean IME combination table for the key sequence ã„±ã…ã„´ã…ã„·ã….
  * Returns the next composition text, plus the syllable to commit when the new
- * key cannot join the pending composition (간 + ㅏ → commit 가, compose 나).
+ * key cannot join the pending composition (ê°„ + ã… â†’ commit ê°€, compose ë‚˜).
  */
 function combineJamo(pending: string, key: string): { commit?: string; compose: string } {
   const joins: Record<string, { commit?: string; compose: string }> = {
-    'ㄱ+ㅏ': { compose: '가' },
-    'ㄴ+ㅏ': { compose: '나' },
-    'ㄷ+ㅏ': { compose: '다' },
-    '가+ㄴ': { compose: '간' },
-    '간+ㅏ': { commit: '가', compose: '나' },
-    '나+ㄷ': { compose: '낟' },
-    '낟+ㅏ': { commit: '나', compose: '다' }
+    'ã„±+ã…': { compose: 'ê°€' },
+    'ã„´+ã…': { compose: 'ë‚˜' },
+    'ã„·+ã…': { compose: 'ë‹¤' },
+    'ê°€+ã„´': { compose: 'ê°„' },
+    'ê°„+ã…': { commit: 'ê°€', compose: 'ë‚˜' },
+    'ë‚˜+ã„·': { compose: 'ë‚Ÿ' },
+    'ë‚Ÿ+ã…': { commit: 'ë‚˜', compose: 'ë‹¤' }
   }
   if (!pending) {
     return { compose: key }
@@ -50,15 +50,15 @@ function combineJamo(pending: string, key: string): { commit?: string; compose: 
 }
 
 /**
- * Emulates a real 2-set Korean IME typing 가나다 slowly (keys: ㄱㅏㄴㅏㄷㅏ).
+ * Emulates a real 2-set Korean IME typing ê°€ë‚˜ë‹¤ slowly (keys: ã„±ã…ã„´ã…ã„·ã…).
  *
  * Adaptive on purpose: a real OS IME is cancelled (ImeCancelComposition) when
- * the page rewrites the text backing its composition — exactly what a
- * controlled React input does when its store echo is async. That browser→IME
+ * the page rewrites the text backing its composition â€” exactly what a
+ * controlled React input does when its store echo is async. That browserâ†’IME
  * channel is not observable from page JS (no compositionend fires), so the
  * emulator detects the same condition directly: an input event whose value the
  * page clobbered right afterwards. After a clobber the IME restarts from an
- * empty state on the next key, which is what turned 가나다 into ㄱㅏㄴㅏㄷㅏ.
+ * empty state on the next key, which is what turned ê°€ë‚˜ë‹¤ into ã„±ã…ã„´ã…ã„·ã….
  *
  * The per-key delay models slow human typing: it gives the async updateRepo
  * store echo time to land between keystrokes, which is exactly the condition
@@ -93,7 +93,7 @@ async function typeHangulGanadaSlowly(
 
   let committed = ''
   let pending = ''
-  for (const key of ['ㄱ', 'ㅏ', 'ㄴ', 'ㅏ', 'ㄷ', 'ㅏ']) {
+  for (const key of ['ã„±', 'ã…', 'ã„´', 'ã…', 'ã„·', 'ã…']) {
     if (await takeClobbered()) {
       committed = await input.inputValue()
       pending = ''
@@ -145,8 +145,8 @@ test.describe('Repository Display Name IME composition', () => {
 
     // Why: with the store-bound controlled input, the async updateRepo echo
     // reset the field mid-composition, aborting the IME session per keystroke
-    // and committing bare jamo (ㄱㅏㄴㅏㄷㅏ) instead of syllables.
-    await expect(displayNameInput).toHaveValue('가나다')
+    // and committing bare jamo (ã„±ã…ã„´ã…ã„·ã…) instead of syllables.
+    await expect(displayNameInput).toHaveValue('ê°€ë‚˜ë‹¤')
 
     // The per-keystroke persist still reaches the store.
     await expect
@@ -157,6 +157,6 @@ test.describe('Repository Display Name IME composition', () => {
         },
         { timeout: 5_000, message: 'display name did not persist to the store' }
       )
-      .toBe('가나다')
+      .toBe('ê°€ë‚˜ë‹¤')
   })
 })

@@ -1,9 +1,9 @@
-﻿import {
+import {
   MOBILE_DICTATION_CONNECTION_SLOW_ERROR_MESSAGE,
   MOBILE_DICTATION_PCM_SAMPLE_RATE
 } from './mobile-dictation-pending-audio-budget'
 import { bytesToBase64 } from './mobile-dictation-session-state'
-import type { MicrophoneDataEvent } from '@FABRICA/expo-two-way-audio'
+import type { MicrophoneDataEvent } from '@fabrica/expo-two-way-audio'
 import type { MobileDictationPendingAudioBudget } from './mobile-dictation-pending-audio-budget'
 import type { RpcClient } from '../transport/rpc-client'
 

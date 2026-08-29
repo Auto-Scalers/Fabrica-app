@@ -1,10 +1,10 @@
-﻿import { View, Text, StyleSheet, Pressable, Linking, Platform } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Linking, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useRouter } from 'expo-router'
 import { ChevronLeft, Globe } from 'lucide-react-native'
 import Svg, { Path } from 'react-native-svg'
 import Constants from 'expo-constants'
-import { FABRICALogo } from '../src/components/FABRICALogo'
+import { FabricaLogo } from '../src/components/FabricaLogo'
 import { colors, spacing, typography } from '../src/theme/mobile-theme'
 
 // Why: read version + native build identifier from expo-constants at
@@ -50,7 +50,7 @@ export default function AboutScreen() {
       </View>
 
       <View style={styles.brand}>
-        <FABRICALogo size={28} />
+        <FabricaLogo size={28} />
         <Text style={styles.brandName}>FABRICA</Text>
         <Text style={styles.brandSub}>Open-source agent IDE for 100x builders</Text>
       </View>
@@ -58,10 +58,10 @@ export default function AboutScreen() {
       <View style={styles.section}>
         <Pressable
           style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
-          onPress={() => void Linking.openURL('https://onFABRICA.dev')}
+          onPress={() => void Linking.openURL('https://fabrica-ai.vercel.app')}
         >
           <Globe size={16} color={colors.textSecondary} />
-          <Text style={styles.rowValue}>onFABRICA.dev</Text>
+          <Text style={styles.rowValue}>fabrica-ai.vercel.app</Text>
         </Pressable>
         <View style={styles.separator} />
         <Pressable

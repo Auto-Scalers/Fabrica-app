@@ -1,4 +1,4 @@
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+﻿import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { expect } from './helpers/fabrica-app'
 import { switchToOtherWorktree, switchToWorktree } from './helpers/store'
 

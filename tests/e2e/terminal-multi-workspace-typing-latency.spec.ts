@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Deterministic reproduction + benchmark for "typing lags while multiple
  * workspaces run agents" (the multi-workspace typing-latency complaint).
  *
@@ -17,7 +17,7 @@
  * config/scripts/run-multi-workspace-typing-bench.mjs for knobs). Results are
  * written as JSON to tests/tools/benchmarks/results/ for A/B comparison.
  */
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { type ChildProcess, spawn } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
@@ -508,7 +508,7 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
 
       await resetDeliveryDebug(fabricaPage)
       // Load is flowing when the hidden-delivery gate starts dropping the
-      // background worktree's bytes — the topology the complaint describes.
+      // background worktree's bytes â€” the topology the complaint describes.
       await expect
         .poll(
           async () => (await readMainDeliveryDebug(fabricaPage))?.hiddenDeliveryDroppedChars ?? 0,
@@ -525,7 +525,7 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
         await readSchedulerDebug(fabricaPage),
         await readMainDeliveryDebug(fabricaPage)
       )
-      // Hang detector only — the JSON report is the benchmark output. A
+      // Hang detector only â€” the JSON report is the benchmark output. A
       // reproduced regression shows up as large percentiles, not a hard fail.
       expect(measurement.missingEchoCount).toBe(0)
 
@@ -567,7 +567,7 @@ test.describe('Multi-workspace sustained typing latency bench', () => {
     const cpuWorkers = spawnCpuPressureWorkers()
     let panes: TerminalLoadPane[] = []
     try {
-      // Pane 0 types; the rest replay the agent stream side by side — the
+      // Pane 0 types; the rest replay the agent stream side by side â€” the
       // "Claude Code running in a visible split" shape.
       panes = await ensureActiveWorktreePaneLoad(fabricaPage, 2)
       const [typingPane, ...loadPanes] = panes

@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path'
 
 const projectDir = resolve(import.meta.dirname, '..', '..')
 const relayBuildDir = join(projectDir, 'out', 'relay', 'win32-x64')
-const SENTINEL = Buffer.from('ORCA-RELAY v0.1.0 READY\n')
+const SENTINEL = Buffer.from('FABRICA-RELAY v0.1.0 READY\n')
 const HEADER_LENGTH = 13
 const REGRESSION_TIMEOUT_MS = 15_000
 const NODE_PTY_PATCH_FILENAME = 'node-pty-1.1.0-console-list-agent-patch.cjs'

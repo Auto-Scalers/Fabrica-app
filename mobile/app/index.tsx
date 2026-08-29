@@ -1,4 +1,4 @@
-﻿import { useState, useCallback, useEffect, useMemo, useRef } from 'react'
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import { View, Text, StyleSheet, Pressable, FlatList, Alert } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useRouter, useFocusEffect } from 'expo-router'
@@ -39,7 +39,7 @@ import {
 } from '../src/onboarding/mobile-onboarding-plan'
 import type { ConnectionState, HostCatalogEntry, HostProfile } from '../src/transport/types'
 import { triggerMediumImpact } from '../src/platform/haptics'
-import { FABRICALogo } from '../src/components/FABRICALogo'
+import { FabricaLogo } from '../src/components/FabricaLogo'
 import { MobileHostCard } from '../src/components/MobileHostCard'
 import { MobileHomeQuickActions } from '../src/components/MobileHomeQuickActions'
 import { TaskProviderLogo } from '../src/components/TaskProviderLogo'
@@ -659,7 +659,7 @@ export default function HomeScreen() {
       <View style={styles.topBar}>
         <View style={styles.brandLockup}>
           <View style={styles.logoMark}>
-            <FABRICALogo size={18} />
+            <FabricaLogo size={18} />
           </View>
           <Text style={styles.brandName}>FABRICA</Text>
         </View>

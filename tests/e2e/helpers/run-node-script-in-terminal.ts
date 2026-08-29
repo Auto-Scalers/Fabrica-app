@@ -1,8 +1,8 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import type { Page } from '@stablyai/playwright-test'
+import type { Page } from '@autoscalers/playwright-test'
 import { sendToTerminal } from './terminal'
 
 export type StagedTerminalNodeScript = {
@@ -16,7 +16,7 @@ export type StagedTerminalNodeScript = {
 }
 
 // Why: `node -e ${JSON.stringify(script)}` breaks under PowerShell PTYs on
-// Windows — PowerShell does not honor \" escapes, so it re-splits the program
+// Windows â€” PowerShell does not honor \" escapes, so it re-splits the program
 // on `;` and node throws before emitting the payload (#8521). Staging the
 // program in a temp .cjs file removes shell quoting from the picture entirely
 // while emitting byte-identical output on every shell.

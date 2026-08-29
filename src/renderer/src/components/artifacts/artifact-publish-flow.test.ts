@@ -33,7 +33,7 @@ const published = {
   change: 'created' as const,
   item: {
     artifact: { slug: 'artifact-a' },
-    shareUrl: 'https://share.onFABRICA.dev/a/artifact-a'
+    shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a'
   }
 }
 

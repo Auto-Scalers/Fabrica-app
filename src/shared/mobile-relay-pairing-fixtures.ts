@@ -1,4 +1,4 @@
-﻿import type { PairingOffer } from './pairing'
+import type { PairingOffer } from './pairing'
 
 const PUBLIC_KEY_B64 = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 const INVITE_TOKEN = 'abcdefghijklmnopqrstuvwxyzABCDEFGH012345678'
@@ -18,8 +18,8 @@ export function createMobileRelayPairingFixtures(now: number): PairingFixture[] 
   }
   const relay = {
     v: 1 as const,
-    directorUrl: 'https://relay.onFABRICA.dev',
-    cellUrl: 'https://relay-c1.onFABRICA.dev',
+    directorUrl: 'https://relay.onfabrica.dev',
+    cellUrl: 'https://relay-c1.onfabrica.dev',
     assignmentEpoch: 7,
     relayHostId: 'AbCdEf0123_-xyZ9',
     inviteToken: INVITE_TOKEN,
@@ -65,12 +65,12 @@ export function createMobileRelayPairingFixtures(now: number): PairingFixture[] 
     },
     {
       name: 'non-canonical director origin is invalid',
-      payload: { ...directOffer, relay: { ...relay, directorUrl: 'https://relay.onFABRICA.dev/' } },
+      payload: { ...directOffer, relay: { ...relay, directorUrl: 'https://relay.onfabrica.dev/' } },
       expected: null
     },
     {
       name: 'non-HTTPS cell origin is invalid',
-      payload: { ...directOffer, relay: { ...relay, cellUrl: 'http://relay-c1.onFABRICA.dev' } },
+      payload: { ...directOffer, relay: { ...relay, cellUrl: 'http://relay-c1.onfabrica.dev' } },
       expected: null
     },
     {

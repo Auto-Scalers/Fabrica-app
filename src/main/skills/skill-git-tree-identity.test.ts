@@ -50,7 +50,9 @@ describe('observed skill git tree identity', () => {
     await chmod(join(work, 'nested', 'deep', 'tool.sh'), 0o755)
     await writeFile(join(work, 'blob.bin'), Buffer.from([0, 1, 2, 253, 254, 255]))
 
-    const env = { ...process.env, GIT_CONFIG_GLOBAL: devNull, GIT_CONFIG_SYSTEM: devNull }
+    // Why: git rejects the Windows `\\.\nul` device path from os.devNull as a config path.
+    const nullConfig = process.platform === 'win32' ? 'NUL' : devNull
+    const env = { ...process.env, GIT_CONFIG_GLOBAL: nullConfig, GIT_CONFIG_SYSTEM: nullConfig }
     execFileSync('git', ['init', '--quiet', repoShell], { env })
     const gitDirArgs = ['--git-dir', join(repoShell, '.git'), '--work-tree', work]
     execFileSync('git', [...gitDirArgs, '-c', 'core.autocrlf=false', 'add', '-A'], {

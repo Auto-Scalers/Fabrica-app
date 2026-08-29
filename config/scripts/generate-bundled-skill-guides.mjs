@@ -8,27 +8,25 @@ const SCRIPT_DIR = import.meta.dirname
 const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..')
 
 const CANONICAL_GUIDE_NAMES = [
-  'computer-use',
-  'linear-tickets',
+  'fabrica-computer-use',
+  'fabrica-linear-tickets',
   'fabrica-cli',
   'fabrica-emulator',
   'fabrica-emulator-android',
   'fabrica-linear',
   'fabrica-per-workspace-env',
-  'orchestration'
+  'fabrica-orchestration'
 ]
 
 // Why: old discovery stubs can outlive a rename indefinitely, so aliases are
 // a compatibility ledger: add entries for renames, but never remove them.
+// Each Fabrica-prefixed skill keeps its former bare name as an alias so
+// `fabrica skills get <old-name>` still resolves after the install-folder
+// rename that isolates Fabrica's skills from the legacy Orca app's.
 const GUIDE_ALIASES = {
-  'computer-use': [],
-  'linear-tickets': [],
-  'fabrica-cli': [],
-  'fabrica-emulator': [],
-  'fabrica-emulator-android': [],
-  'fabrica-linear': [],
-  'fabrica-per-workspace-env': [],
-  orchestration: []
+  'fabrica-computer-use': ['computer-use'],
+  'fabrica-linear-tickets': ['linear-tickets'],
+  'fabrica-orchestration': ['orchestration']
 }
 
 // Why: a stubbed topic ships a hybrid discovery stub as its installable projection while
@@ -37,14 +35,14 @@ const GUIDE_ALIASES = {
 // landing to converge — so entries are added as skills convert, never removed. The stub
 // body lives in skill-stubs/<topic>.md; the projection reuses the guide's own frontmatter.
 const STUB_TOPICS = [
-  'computer-use',
-  'linear-tickets',
+  'fabrica-computer-use',
+  'fabrica-linear-tickets',
   'fabrica-cli',
   'fabrica-emulator',
   'fabrica-emulator-android',
   'fabrica-linear',
   'fabrica-per-workspace-env',
-  'orchestration'
+  'fabrica-orchestration'
 ]
 
 function normalizeMarkdown(markdown) {
@@ -197,7 +195,7 @@ async function buildArtifacts(repoRoot = REPO_ROOT) {
     if (frontmatter.name !== name) {
       throw new Error(`Guide source ${name}.md declares mismatched name ${frontmatter.name}`)
     }
-    const aliases = GUIDE_ALIASES[name]
+    const aliases = GUIDE_ALIASES[name] ?? []
     // Why: the embedded table always carries the full guide (served by `skills get`);
     // only the installable projection thins to a stub once a topic is in STUB_TOPICS.
     guides.push({ name, description: frontmatter.description, markdown, aliases })

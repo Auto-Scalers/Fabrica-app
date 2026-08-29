@@ -1,7 +1,7 @@
-import { randomUUID } from 'node:crypto'
+﻿import { randomUUID } from 'node:crypto'
 import { readFileSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -68,11 +68,11 @@ function rawEmojiFixtureBoxTableScript(table: string, runId: string): string {
 const table = ${JSON.stringify(table)}
 const widths = ${JSON.stringify(RAW_EMOJI_BOX_TABLE_COLUMN_WIDTHS)}
 const border = {
-  top: ['┌', '┬', '┐'],
-  middle: ['├', '┼', '┤'],
-  bottom: ['└', '┴', '┘'],
-  vertical: '│',
-  horizontal: '─'
+  top: ['â”Œ', 'â”¬', 'â”'],
+  middle: ['â”œ', 'â”¼', 'â”¤'],
+  bottom: ['â””', 'â”´', 'â”˜'],
+  vertical: 'â”‚',
+  horizontal: 'â”€'
 }
 const segmenter =
   typeof Intl.Segmenter === 'function'
@@ -244,7 +244,7 @@ async function readTerminalBoxTableWrapDiagnostics(page: Page): Promise<{
       }
     })
     const wrappedBoxLines = lines
-      .filter((line) => line.isWrapped && /[┌┬┐├┼┤└┴┘│─]/.test(line.text))
+      .filter((line) => line.isWrapped && /[â”Œâ”¬â”â”œâ”¼â”¤â””â”´â”˜â”‚â”€]/.test(line.text))
       .slice(0, 20)
     const wrappedSingerContinuationLines = lines
       .filter((line) => line.isWrapped && /U\\+1F3A4|A stage performer|Talented/.test(line.text))

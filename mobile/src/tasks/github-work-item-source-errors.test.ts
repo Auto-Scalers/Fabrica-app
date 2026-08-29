@@ -1,4 +1,4 @@
-﻿import { describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
   extractGitHubIssueSourceError,
   extractGitHubIssueSourceFallback
@@ -62,7 +62,7 @@ describe('extractGitHubIssueSourceFallback', () => {
     ).toEqual({
       repoId: 'repo-1',
       repoPath: '/work/FABRICA',
-      repoLabel: 'Auto-Scalers/FABRICA'
+      repoLabel: 'Auto-Scalers/fabrica'
     })
   })
 

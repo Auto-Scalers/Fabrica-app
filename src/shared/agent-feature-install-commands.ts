@@ -2,12 +2,12 @@ import { isSkillsCliAgentKeyShaped } from './skills-cli-agent-keys'
 
 export const FABRICA_SKILLS_REPOSITORY_URL = 'https://github.com/Auto-Scalers/Fabrica-app'
 
-export const FABRICA_CLI_SKILL_NAME = 'FABRICA-cli'
-export const COMPUTER_USE_SKILL_NAME = 'computer-use'
-export const ORCHESTRATION_SKILL_NAME = 'orchestration'
-export const EPHEMERAL_VMS_SKILL_NAME = 'FABRICA-per-workspace-env'
+export const FABRICA_CLI_SKILL_NAME = 'fabrica-cli'
+export const COMPUTER_USE_SKILL_NAME = 'fabrica-computer-use'
+export const ORCHESTRATION_SKILL_NAME = 'fabrica-orchestration'
+export const EPHEMERAL_VMS_SKILL_NAME = 'fabrica-per-workspace-env'
 export const FABRICA_LINEAR_SKILL_NAME = 'fabrica-linear'
-export const LINEAR_TICKETS_SKILL_NAME = 'linear-tickets'
+export const LINEAR_TICKETS_SKILL_NAME = 'fabrica-linear-tickets'
 export const LINEAR_AGENT_SKILL_NAMES = [FABRICA_LINEAR_SKILL_NAME, LINEAR_TICKETS_SKILL_NAME] as const
 
 // Why: `yes` and `agents` default off so every Settings/onboarding string a human

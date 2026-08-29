@@ -3819,11 +3819,11 @@ describe('getPRForBranch', () => {
   })
 
   it('does not treat a same-repository upstream remote as a fork', async () => {
-    getOwnerRepoMock.mockResolvedValue({ owner: 'StablyAI', repo: 'FABRICA' })
+    getOwnerRepoMock.mockResolvedValue({ owner: 'Auto-Scalers', repo: 'FABRICA-APP' })
     getOwnerRepoForRemoteMock.mockImplementation(async (_repoPath: string, remoteName: string) =>
       remoteName === 'origin'
-        ? { owner: 'StablyAI', repo: 'FABRICA' }
-        : { owner: 'StablyAI', repo: 'FABRICA' }
+        ? { owner: 'Auto-Scalers', repo: 'FABRICA-APP' }
+        : { owner: 'Auto-Scalers', repo: 'FABRICA-APP' }
     )
     ghExecFileAsyncMock.mockResolvedValueOnce({
       stdout: JSON.stringify({ isFork: false, parent: null })
@@ -3834,7 +3834,7 @@ describe('getPRForBranch', () => {
     expect(ghExecFileAsyncMock).toHaveBeenCalledWith(
       // Why: positional slugs are explicit about github.com too, so GH_HOST
       // cannot redirect them.
-      ['repo', 'view', 'github.com/StablyAI/FABRICA', '--json', 'isFork,parent'],
+      ['repo', 'view', 'github.com/Auto-Scalers/FABRICA-APP', '--json', 'isFork,parent'],
       { cwd: '/repo-root', host: 'github.com', timeout: 10_000 }
     )
   })

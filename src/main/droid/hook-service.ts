@@ -248,14 +248,14 @@ export class DroidHookService {
   }
 
   // Why: SSH remotes run the Droid CLI on the remote host, so its hook config
-  // and managed script must be written into the remote ~/.factory + ~/.fabrica via
+  // and managed script must be written into the remote ~/.fabrica-factory via
   // SFTP. Without this, Droid never fires the managed hook over SSH and its
   // status row is absent from the task tree (issue #7253). Mirrors the local
   // install() but always emits POSIX script/paths — even from a Windows host.
   async installRemote(sftp: SFTPWrapper, remoteHome: string): Promise<AgentHookInstallStatus> {
     const home = remoteHome.replace(/\/$/, '')
-    const remoteConfigPath = `${home}/.factory/settings.json`
-    const remoteScriptPath = `${home}/.fabrica/agent-hooks/droid-hook.sh`
+    const remoteConfigPath = `${home}/.fabrica-factory/settings.json`
+    const remoteScriptPath = `${home}/.fabrica-factory/agent-hooks/droid-hook.sh`
     try {
       const config = await readHooksJsonRemote(sftp, remoteConfigPath)
       if (!config) {

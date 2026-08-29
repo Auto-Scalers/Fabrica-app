@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Layer-discriminating input probes for frozen-terminal repro specs.
  *
  * The field failure (Discord #performance / GitHub #2836 family) is a pane
@@ -10,24 +10,24 @@
  *     lookup fails (src/main/ipc/pty.ts writePtyInput)
  *
  * Direct `window.api.pty.write` bypasses the renderer transport, so:
- *   direct dead                 → MAIN-side drop (ownership/provider routing)
- *   direct alive, renderer dead → RENDERER input path (replay, focus, binding)
+ *   direct dead                 â†’ MAIN-side drop (ownership/provider routing)
+ *   direct alive, renderer dead â†’ RENDERER input path (replay, focus, binding)
  * The ownership-rebuild probe invokes pty:listSessions, which repopulates
- * `ptyOwnership` as a side effect — input reviving after it is a smoking gun
+ * `ptyOwnership` as a side effect â€” input reviving after it is a smoking gun
  * for the missing-ownership drop path.
  *
  * Two probe families:
  *   - Page-based (Playwright CDP): for specs whose renderer never crashes.
  *   - Main-process-based (webContents.executeJavaScript): for post-crash
- *     phases — a crashed target severs Playwright's CDP session even though
+ *     phases â€” a crashed target severs Playwright's CDP session even though
  *     the app recovers, so the harness must drive the renderer from main.
  */
 
-import { expect, type ElectronApplication, type Page } from '@stablyai/playwright-test'
+import { expect, type ElectronApplication, type Page } from '@autoscalers/playwright-test'
 import { sendToTerminal, waitForTerminalOutput } from './terminal'
 import { buildSettledShellProbeInputSequence } from '../terminal-probe-input-sequence'
 
-// ─── Page-based probes (healthy CDP session) ────────────────────────
+// â”€â”€â”€ Page-based probes (healthy CDP session) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function probeDirectWrite(
   page: Page,
@@ -86,7 +86,7 @@ export async function getStorePtyIds(page: Page): Promise<string[]> {
   })
 }
 
-// ─── Main-process-based probes (post-renderer-crash) ────────────────
+// â”€â”€â”€ Main-process-based probes (post-renderer-crash) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 async function mainRendererEval<T>(
   electronApp: ElectronApplication,
@@ -198,8 +198,8 @@ async function mainWaitForMarker(
 }
 
 /**
- * Full-chain probe without CDP: xterm's input() feeds terminal.onData →
- * transport.sendInput → pty:write, the identical path keystrokes take past
+ * Full-chain probe without CDP: xterm's input() feeds terminal.onData â†’
+ * transport.sendInput â†’ pty:write, the identical path keystrokes take past
  * the DOM keyboard layer (which the pre-crash Playwright baseline covers).
  * Why input() and not paste(): bracketed paste mode would wrap the payload
  * and make the shell insert the control chars literally instead of executing.
@@ -268,7 +268,7 @@ export async function mainProbeOwnershipRebuildRevival(
   return mainProbeDirectWrite(electronApp, ptyId, marker)
 }
 
-// ─── Failure report ─────────────────────────────────────────────────
+// â”€â”€â”€ Failure report â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Assemble the failure report for a reproduced frozen pane. Kept in one place
@@ -291,8 +291,8 @@ export function buildFrozenPaneReport(
     ...(probes.readinessAlive === undefined
       ? []
       : [`  replay + transport readiness probe alive: ${probes.readinessAlive}`]),
-    `  direct pty:write probe alive: ${probes.directAlive} (false ⇒ MAIN-side drop: ptyOwnership/provider)`,
-    `  renderer input-path probe alive: ${probes.transportAlive} (false with direct alive ⇒ replay, focus, or renderer binding failure)`,
+    `  direct pty:write probe alive: ${probes.directAlive} (false â‡’ MAIN-side drop: ptyOwnership/provider)`,
+    `  renderer input-path probe alive: ${probes.transportAlive} (false with direct alive â‡’ replay, focus, or renderer binding failure)`,
     `  ownership rebuild attempted: ${probes.ownershipRebuildAttempted ?? true}`,
     `  revived by pty:listSessions ownership rebuild: ${probes.revivedByOwnershipRebuild}`,
     `  pane ptyIds: ${JSON.stringify(probes.ptyIds)}`,

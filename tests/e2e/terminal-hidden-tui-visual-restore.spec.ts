@@ -1,4 +1,4 @@
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { randomUUID } from 'node:crypto'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -23,7 +23,7 @@ type HiddenTuiWindow = Window & {
   __terminalPtyDataInjection?: {
     inject: (paneKey: string, data: string, meta?: { seq?: number; rawLength?: number }) => boolean
   }
-  // Why: only the mode-2031 fact-reply counter survives Phase 6 — the
+  // Why: only the mode-2031 fact-reply counter survives Phase 6 â€” the
   // hidden-skip counters were deleted with the renderer skip grammar.
   __terminalPtyOutputDebug?: {
     reset: () => void
@@ -41,15 +41,15 @@ type TuiCursorState = {
 const HIDDEN_FRAME_SCRIPT_DELAY_MS = 750
 
 function tuiFrame(runId: string, frame: number): string {
-  const progress = `${'█'.repeat((frame % 8) + 1)}${'░'.repeat(8 - ((frame % 8) + 1))}`
+  const progress = `${'â–ˆ'.repeat((frame % 8) + 1)}${'â–‘'.repeat(8 - ((frame % 8) + 1))}`
   const rows = [
-    '╭────────────────────────────────────────────────────────────────────╮',
-    `│ OpenCode visual restore Frame ${String(frame).padStart(3, '0')} ${frame % 2 === 0 ? '🟢' : '🟡'} ${progress} │`,
-    '├──────────────┬──────────────────────┬──────────────────────────────┤',
-    `│ model        │ codex/opencode       │ ${runId.slice(0, 28).padEnd(28)} │`,
-    `│ status       │ ${frame % 2 === 0 ? 'thinking' : 'streaming'}            │ input ${'#'.repeat((frame % 18) + 1).padEnd(22)} │`,
-    `│ diff         │ +${String(frame * 3).padEnd(19)} │ -${String(frame).padEnd(27)} │`,
-    '╰──────────────┴──────────────────────┴──────────────────────────────╯',
+    'â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®',
+    `â”‚ OpenCode visual restore Frame ${String(frame).padStart(3, '0')} ${frame % 2 === 0 ? 'ðŸŸ¢' : 'ðŸŸ¡'} ${progress} â”‚`,
+    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',
+    `â”‚ model        â”‚ codex/opencode       â”‚ ${runId.slice(0, 28).padEnd(28)} â”‚`,
+    `â”‚ status       â”‚ ${frame % 2 === 0 ? 'thinking' : 'streaming'}            â”‚ input ${'#'.repeat((frame % 18) + 1).padEnd(22)} â”‚`,
+    `â”‚ diff         â”‚ +${String(frame * 3).padEnd(19)} â”‚ -${String(frame).padEnd(27)} â”‚`,
+    'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯',
     `VISUAL_RESTORE_FINAL_${runId}_${frame}`
   ]
   return [
@@ -103,7 +103,7 @@ async function writeHiddenFrames(page: Page, ptyId: string, scriptPath: string):
   await sendToTerminal(page, ptyId, `node ${JSON.stringify(scriptPath)}\r`)
 }
 
-// Why: Phase-4 hidden-delivery gate contract — hidden PTY bytes are dropped
+// Why: Phase-4 hidden-delivery gate contract â€” hidden PTY bytes are dropped
 // in main after model ingestion and never reach the renderer, so "hidden
 // output was withheld" is observed via main's dropped-chars counter instead
 // of the old renderer hidden-skip counters.
@@ -206,7 +206,7 @@ async function writeHiddenSideEffectBurst(
 ): Promise<void> {
   const payload = `\x07\x1b]0;${title}\x07${marker}\n`
   const script = `process.stdout.write(${JSON.stringify(payload)}); setTimeout(() => process.exit(0), 30000)`
-  // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
+  // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
   await runNodeScriptInTerminal(page, ptyId, script, { prefix: 'FABRICA-hidden-side-effect' })
 }
 
@@ -249,7 +249,7 @@ test.describe('Hidden terminal TUI visual restore', () => {
     await writeHiddenFrames(fabricaPage, hiddenPane.ptyId, scriptPath)
     await resetHiddenDebug(fabricaPage)
 
-    // Why: hidden-delivery gate contract — the bulk TUI frames must be
+    // Why: hidden-delivery gate contract â€” the bulk TUI frames must be
     // withheld in main (dropped after model ingestion), not delivered and
     // skipped renderer-side.
     await expect
@@ -278,9 +278,9 @@ test.describe('Hidden terminal TUI visual restore', () => {
 
     const content = await getTerminalContent(fabricaPage, 12_000)
     expect(content).toContain(`Frame 024`)
-    expect(content).toContain('╭')
-    expect(content).toContain('├')
-    expect(content).toContain('█')
+    expect(content).toContain('â•­')
+    expect(content).toContain('â”œ')
+    expect(content).toContain('â–ˆ')
     expect(content).not.toContain('FABRICA skipped hidden terminal output')
     await expect
       .poll(() => readTuiCursorState(fabricaPage), {
@@ -343,7 +343,7 @@ test.describe('Hidden terminal TUI visual restore', () => {
     await sendToTerminal(fabricaPage, hiddenPane.ptyId, `node ${JSON.stringify(scriptPath)}\r`)
     await resetHiddenDebug(fabricaPage)
 
-    // Why: hidden-delivery gate contract — even plain hidden output is
+    // Why: hidden-delivery gate contract â€” even plain hidden output is
     // dropped in main, so the withheld signal is main's dropped counter.
     await expect
       .poll(() => readMainHiddenDeliveryDroppedChars(fabricaPage), {
@@ -431,7 +431,7 @@ test.describe('Hidden terminal TUI visual restore', () => {
       await writeHiddenFrames(fabricaPage, hiddenPane.ptyId, scriptPath)
       await resetHiddenDebug(fabricaPage)
 
-      // Why: hidden-delivery gate contract — synchronized rich frames are
+      // Why: hidden-delivery gate contract â€” synchronized rich frames are
       // withheld in main; the headless model snapshot is the restore source.
       await expect
         .poll(() => readMainHiddenDeliveryDroppedChars(fabricaPage), {
@@ -459,9 +459,9 @@ test.describe('Hidden terminal TUI visual restore', () => {
 
       const content = await getTerminalContent(fabricaPage, 12_000)
       expect(content).toContain(`Frame 024`)
-      expect(content).toContain('╭')
-      expect(content).toContain('├')
-      expect(content).toContain('█')
+      expect(content).toContain('â•­')
+      expect(content).toContain('â”œ')
+      expect(content).toContain('â–ˆ')
       expect(content).not.toContain('FABRICA skipped hidden terminal output')
       await expect
         .poll(() => readTuiCursorState(fabricaPage), {

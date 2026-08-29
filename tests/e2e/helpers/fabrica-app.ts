@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Shared Electron fixture for FABRICA E2E tests.
  *
  * Why: Playwright's native _electron.launch() is used instead of CDP.
@@ -7,7 +7,7 @@
  * No need to manually start the app or pass --remote-debugging-port.
  *
  * Why: the fixture adds a dedicated test repo to the app so tests are
- * idempotent — they don't depend on whatever the user has open.
+ * idempotent â€” they don't depend on whatever the user has open.
  *
  * Prerequisites:
  *   electron-vite build must have run first (globalSetup handles this).
@@ -20,7 +20,7 @@ import {
   type Page,
   type ElectronApplication,
   type TestInfo
-} from '@stablyai/playwright-test'
+} from '@autoscalers/playwright-test'
 import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -132,7 +132,7 @@ export function forwardElectronProcessLogs(app: ElectronApplication, testInfo: T
 /**
  * Extended Playwright test with FABRICA-specific fixtures.
  *
- * `fabricaPage` — the main FABRICA renderer window.
+ * `fabricaPage` â€” the main FABRICA renderer window.
  *
  * Test-scoped: each test gets a fresh Electron instance and isolated
  * userData directory so state cannot leak across specs through persistence.
@@ -215,7 +215,7 @@ export const test = base.extend<FABRICATestFixtures, FABRICAWorkerFixtures>({
     // the test does. Defaults to 0 (no slowdown) for normal runs.
     const slowMo = FABRICA_E2E_SLOWMO_MS
     // Why: FABRICA_E2E_RECORD_VIDEO=1 captures a webm of the renderer so a
-    // developer can replay the run later — Electron's Playwright trace viewer
+    // developer can replay the run later â€” Electron's Playwright trace viewer
     // does not produce DOM snapshots, so video is the only reliable replay.
     // Why: testInfo.outputDir is created lazily by Playwright; on Windows the
     // dir may not exist when the fixture initializes, and Electron silently
@@ -441,4 +441,4 @@ export const test = base.extend<FABRICATestFixtures, FABRICAWorkerFixtures>({
   }
 })
 
-export { expect } from '@stablyai/playwright-test'
+export { expect } from '@autoscalers/playwright-test'

@@ -152,15 +152,15 @@ describe('LinearAgentSkillInstallCta', () => {
     mocks.skillState.installed = true
     mocks.skillState.skills = [
       discoveredSkill({
-        name: 'linear-tickets',
-        directoryPath: '/Users/test/.agents/skills/linear-tickets',
-        skillFilePath: '/Users/test/.agents/skills/linear-tickets/SKILL.md'
+        name: 'fabrica-linear-tickets',
+        directoryPath: '/Users/test/.agents/skills/fabrica-linear-tickets',
+        skillFilePath: '/Users/test/.agents/skills/fabrica-linear-tickets/SKILL.md'
       })
     ]
 
     const rendered = await renderCta()
 
-    expect(rendered.textContent).toContain('npx skills update linear-tickets --global')
+    expect(rendered.textContent).toContain('npx skills update fabrica-linear-tickets --global')
   })
 
   it('notes that remote agent environments need their own setup', async () => {

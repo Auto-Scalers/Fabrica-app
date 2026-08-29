@@ -4041,8 +4041,8 @@ private func isTrustedFabricaApplication(_ pid: pid_t) -> Bool {
     }
     // Why: dev validation runs from per-worktree wrapper apps with stable
     // Fabrica-owned bundle ids; the sidecar peer check must still authorize them.
-    return bundleId == "com.autoscalers.fabrica" ||
-        bundleId.hasPrefix("com.autoscalers.fabrica.dev.") ||
+    return bundleId == "ai.autoscalers.fabrica" ||
+        bundleId.hasPrefix("ai.autoscalers.fabrica.dev.") ||
         bundleId == "com.github.Electron"
 }
 

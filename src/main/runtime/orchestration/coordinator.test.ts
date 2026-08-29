@@ -1,4 +1,4 @@
-﻿import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { OrchestrationDb } from './db'
 import { reconcileLifecycleMessage } from './lifecycle-reconciliation'
 import {
@@ -21,7 +21,7 @@ function createMockRuntime(): CoordinatorRuntime & {
   createdTerminalOptions: { title?: string }[]
   probeDriftCalls: string[]
   probeDriftResult: DriftResult
-  cliCommand: 'FABRICA' | 'FABRICA-ide'
+  cliCommand: 'fabrica'
   setProbeDrift(result: DriftResult): void
   throwProbeDrift: Error | null
 } {
@@ -37,7 +37,7 @@ function createMockRuntime(): CoordinatorRuntime & {
     createdTerminalOptions: [] as { title?: string }[],
     probeDriftCalls: [] as string[],
     probeDriftResult: null as DriftResult,
-    cliCommand: 'FABRICA' as 'FABRICA' | 'FABRICA-ide',
+    cliCommand: 'fabrica' as const,
     throwProbeDrift: null as Error | null,
     setProbeDrift(result: DriftResult): void {
       mock.probeDriftResult = result
@@ -127,7 +127,7 @@ describe('Coordinator', () => {
   it('dispatches a ready task to an available terminal', async () => {
     db = new OrchestrationDb(':memory:')
     const runtime = createMockRuntime()
-    runtime.cliCommand = 'FABRICA-ide'
+    runtime.cliCommand = 'fabrica'
     runtime.terminals = [{ handle: 'term_a', worktreeId: 'wt1', connected: true, writable: true }]
 
     const task = db.createTask({ spec: 'implement feature' })
@@ -154,7 +154,7 @@ describe('Coordinator', () => {
     expect(result.status).toBe('completed')
     expect(result.completedTasks).toContain(task.id)
     expect(runtime.sentMessages.length).toBeGreaterThan(0)
-    expect(runtime.sentMessages[0].text).toContain('FABRICA-ide orchestration send')
+    expect(runtime.sentMessages[0].text).toContain('fabrica orchestration send')
   })
 
   it('records the assignee pane key when the runtime can resolve one', async () => {

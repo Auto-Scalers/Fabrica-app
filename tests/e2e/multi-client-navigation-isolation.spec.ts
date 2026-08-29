@@ -1,7 +1,7 @@
-import { execFileSync } from 'node:child_process'
+﻿import { execFileSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@stablyai/playwright-test'
+import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { worktreeRow, worktreeRowSurface } from './worktree-row-locators'
 

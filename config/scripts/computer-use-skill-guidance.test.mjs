@@ -7,9 +7,9 @@ const projectDir = resolve(import.meta.dirname, '../..')
 // Why: computer-use now ships a hybrid discovery stub, so its version-sensitive command
 // guidance lives in the authoritative guide source — assert that content there. The
 // installable stub projection is checked separately below.
-const guidePath = join(projectDir, 'skill-guides', 'computer-use.md')
-const stubPath = join(projectDir, 'skills', 'computer-use', 'SKILL.md')
-const bundledGuide = BUNDLED_SKILL_GUIDES.find((guide) => guide.name === 'computer-use')?.markdown
+const guidePath = join(projectDir, 'skill-guides', 'fabrica-computer-use.md')
+const stubPath = join(projectDir, 'skills', 'fabrica-computer-use', 'SKILL.md')
+const bundledGuide = BUNDLED_SKILL_GUIDES.find((guide) => guide.name === 'fabrica-computer-use')?.markdown
 
 describe('computer-use skill guidance', () => {
   it('keeps web-app targeting on the computer-use surface', () => {
@@ -62,12 +62,12 @@ describe('computer-use install stub', () => {
     const stub = readFileSync(stubPath, 'utf8')
 
     expect(stub).toContain('discovery stub')
-    expect(stub).toContain('FABRICA skills get computer-use')
+    expect(stub).toContain('FABRICA skills get fabrica-computer-use')
     // The safe CLI-resolution contract must survive in the stub, never a bare `fabrica`.
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Fabrica screen reader')
+    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

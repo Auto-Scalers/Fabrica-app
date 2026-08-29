@@ -1,5 +1,5 @@
-import { randomUUID } from 'node:crypto'
-import type { ElectronApplication } from '@stablyai/playwright-test'
+﻿import { randomUUID } from 'node:crypto'
+import type { ElectronApplication } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import { readHookEndpoint } from './helpers/agent-hook-endpoint'
@@ -34,7 +34,7 @@ test('shows Caffeinate mode and Auto activity in the status bar', async ({
 }) => {
   await waitForSessionReady(fabricaPage)
 
-  const offStatus = fabricaPage.getByRole('button', { name: 'Caffeinate, Off · Inactive' })
+  const offStatus = fabricaPage.getByRole('button', { name: 'Caffeinate, Off Â· Inactive' })
   await expect(offStatus).toBeVisible()
   await expect(offStatus).toHaveText('Off')
   await offStatus.click()
@@ -48,14 +48,14 @@ test('shows Caffeinate mode and Auto activity in the status bar', async ({
   await fabricaPage.getByRole('menuitemradio', { name: /^Auto/ }).click()
 
   const autoInactiveStatus = fabricaPage.getByRole('button', {
-    name: 'Caffeinate, Auto · Inactive'
+    name: 'Caffeinate, Auto Â· Inactive'
   })
   await expect(autoInactiveStatus).toBeVisible()
 
   const paneKey = `e2e-caffeinate-tab:${randomUUID()}`
   await postCodexHookEvent(electronApp, paneKey, 'UserPromptSubmit')
   const autoActiveStatus = fabricaPage.getByRole('button', {
-    name: 'Caffeinate, Auto · Active'
+    name: 'Caffeinate, Auto Â· Active'
   })
   await expect(autoActiveStatus).toBeVisible()
   await expect(autoActiveStatus).toHaveText('Auto')

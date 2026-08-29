@@ -1,6 +1,7 @@
 ﻿import fs from 'node:fs'
 
 import { describe, expect, it } from 'vitest'
+import en from './locales/en.json'
 import ko from './locales/ko.json'
 
 const correctedValues = {
@@ -21,19 +22,26 @@ const correctedValues = {
     '모든 변경 사항 스테이징'
 } as const
 
-function getLocaleValue(path: string): unknown {
+function getLocaleValueFrom(catalog: unknown, path: string): unknown {
   return path.split('.').reduce<unknown>((node, segment) => {
     if (!node || typeof node !== 'object' || Array.isArray(node)) {
       return undefined
     }
     return (node as Record<string, unknown>)[segment]
-  }, ko)
+  }, catalog)
+}
+
+function getLocaleValue(path: string): unknown {
+  return getLocaleValueFrom(ko, path)
 }
 
 describe('Korean UI semantic mistranslation fixes', () => {
-  it('keeps the corrected values in the Korean catalog', () => {
-    for (const [path, expected] of Object.entries(correctedValues)) {
-      expect(getLocaleValue(path), path).toBe(expected)
+  // APP-E5 (PM decision D8): ko.json is an English-fallback placeholder
+  // (corrupted pre-repo), so the guard checks key presence and fallback
+  // equality until professional translations land.
+  it('keeps every corrected key present in the Korean catalog at English fallback', () => {
+    for (const path of Object.keys(correctedValues)) {
+      expect(getLocaleValue(path), path).toBe(getLocaleValueFrom(en, path))
     }
   })
 

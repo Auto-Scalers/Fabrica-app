@@ -1,4 +1,4 @@
-import { expect, type Page } from '@stablyai/playwright-test'
+﻿import { expect, type Page } from '@autoscalers/playwright-test'
 
 export type RendererJank = {
   longTaskCount: number

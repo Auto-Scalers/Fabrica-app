@@ -1,4 +1,4 @@
-﻿import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const fakes = vi.hoisted(() => ({
   channelOptions: null as null | {
@@ -52,8 +52,8 @@ class FakeSocket {
 
 const relay = {
   v: 1 as const,
-  directorUrl: 'https://relay.onFABRICA.dev',
-  cellUrl: 'https://relay-c1.onFABRICA.dev',
+  directorUrl: 'https://relay.onfabrica.dev',
+  cellUrl: 'https://relay-c1.onfabrica.dev',
   assignmentEpoch: 7,
   relayHostId: 'AbCdEf0123_-xyZ9',
   inviteToken: 'abcdefghijklmnopqrstuvwxyzABCDEFGH012345678',
@@ -81,7 +81,7 @@ describe('mobile relay physical pairing client', () => {
       }
     })
     socket.onopen?.()
-    expect(openedUrl).toBe('wss://relay-c1.onFABRICA.dev/v1/connect/AbCdEf0123_-xyZ9')
+    expect(openedUrl).toBe('wss://relay-c1.onfabrica.dev/v1/connect/AbCdEf0123_-xyZ9')
     expect(openedUrl).not.toContain('?')
     expect(JSON.parse(socket.sent[0] as string)).toEqual({
       type: 'relay-auth',
@@ -158,11 +158,11 @@ describe('mobile relay physical pairing client', () => {
     client.close()
 
     expect(entries.map((entry) => `${entry.level}|${entry.message}|${entry.detail}`)).toEqual([
-      'info|Relay: dialing cell|relay-c1.onFABRICA.dev',
+      'info|Relay: dialing cell|relay-c1.onfabrica.dev',
       'info|Relay: cell socket open|Sending relay credential',
       'info|Relay: cell accepted credential|Starting E2EE handshake',
       'success|Relay: authenticated|Channel ready for RPC',
-      'info|Relay: pairing socket closed|relay-c1.onFABRICA.dev'
+      'info|Relay: pairing socket closed|relay-c1.onfabrica.dev'
     ])
     expect(JSON.stringify(entries)).not.toContain(relay.inviteToken)
   })

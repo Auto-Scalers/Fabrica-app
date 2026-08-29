@@ -1,5 +1,5 @@
 ---
-name: computer-use
+name: fabrica-computer-use
 description: >-
   Use Fabrica's computer-use CLI to inspect and operate local desktop app windows
   through accessibility trees, screenshots, and safe UI actions. Use for
@@ -20,8 +20,7 @@ Use this skill for desktop UI through `fabrica computer`. When the requested tar
 - Choose the Fabrica executable once: use the `FABRICA_CLI_COMMAND` environment value when set;
   otherwise use `fabrica-dev` in a dev session exposing `FABRICA_DEV_REPO_ROOT`, `fabrica-ide`
   on Linux outside a Fabrica-managed terminal, and `fabrica`
-  everywhere else. Never try bare `fabrica` on unmanaged Linux because it normally resolves to the
-  GNOME screen reader.
+  everywhere else.
 - In every command example, `FABRICA` is a documentation placeholder — including examples that
   name a specific shell. Replace it with that chosen executable before running the command;
   do not create a shell variable or run `FABRICA` literally. Blocks that name no shell are

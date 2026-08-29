@@ -10,7 +10,7 @@ const guidePath = join(projectDir, 'skill-guides', 'fabrica-cli.md')
 const stubPath = join(projectDir, 'skills', 'fabrica-cli', 'SKILL.md')
 // Why: orchestration and fabrica-emulator also ship hybrid stubs now, so their version-sensitive
 // command guidance lives in the guide sources — read the cross-guide worktree-id contract there.
-const orchestrationSkillPath = join(projectDir, 'skill-guides', 'orchestration.md')
+const orchestrationSkillPath = join(projectDir, 'skill-guides', 'fabrica-orchestration.md')
 const emulatorSkillPath = join(projectDir, 'skill-guides', 'fabrica-emulator.md')
 
 function readSkill(path = guidePath) {
@@ -133,7 +133,7 @@ describe('fabrica CLI install stub', () => {
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Fabrica screen reader')
+    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

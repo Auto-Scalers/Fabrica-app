@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   splitActiveTerminalPane,
@@ -309,8 +309,8 @@ test.describe('Activity Agent Pane Isolation', () => {
     // Why: useAutoAckViewedAgent (App.tsx) auto-acknowledges the agent on the
     // store's *active* visible terminal leaf the instant its status lands, which
     // clears the unread badge before we can assert it (flaky on focused xvfb CI
-    // windows). Seed on the non-active split pane — auto-ack only ever targets the
-    // active leaf — so the badge stays unread until the explicit acknowledgeAgents()
+    // windows). Seed on the non-active split pane â€” auto-ack only ever targets the
+    // active leaf â€” so the badge stays unread until the explicit acknowledgeAgents()
     // call under test.
     const activeLeafId = await fabricaPage.evaluate(
       (tabId) => window.__store?.getState().terminalLayoutsByTabId[tabId]?.activeLeafId ?? null,

@@ -1,38 +1,38 @@
-/**
+﻿/**
  * Headless end-to-end coverage for a macOS system-wide key remap reaching the terminal.
  *
  * macOS lets a user rewrite what a physical key inserts by declaring it in
  * `~/Library/KeyBindings/DefaultKeyBinding.dict`. The reported case is a Korean-source user who
- * remaps the ₩ key back to a backquote:
+ * remaps the â‚© key back to a backquote:
  *
- *     { "₩" = ("insertText:", "`"); "~₩" = ("insertText:", "₩"); }
+ *     { "â‚©" = ("insertText:", "`"); "~â‚©" = ("insertText:", "â‚©"); }
  *
- * The remap is honoured by every other app on the system — browsers, native apps, and this app's
- * own text inputs — and ignored only inside the terminal, which delivers the raw layout character
+ * The remap is honoured by every other app on the system â€” browsers, native apps, and this app's
+ * own text inputs â€” and ignored only inside the terminal, which delivers the raw layout character
  * to the PTY. The cause is the same one the rest of this suite is about: the substitution lives in
  * the text system's `insertText:` callback, so a terminal that produces its byte from the
  * **keydown** and then calls `preventDefault()` cancels the pipeline before the substitution can
  * arrive.
  *
- * Byte-wise this is the full-width-punctuation shape with a different producer — a keydown still
+ * Byte-wise this is the full-width-punctuation shape with a different producer â€” a keydown still
  * carrying the physical layout character, no composition session anywhere, and the real character
- * arriving only in the following `insertText` input event — so it is dispatched through the same
+ * arriving only in the following `insertText` input event â€” so it is dispatched through the same
  * helper and pinned to the same macOS ownership policy.
  *
  * Two layout variants of the same physical key are covered, and the second is why this spec is not
- * redundant. Korean layouts disagree about what the backquote position produces: 두벌식 and
- * 세벌식 390 put ₩ there, 세벌식 최종 puts `*`. A character allowlist can only honour the remap for
- * the characters someone remembered to list, so it fixes the reported ₩ and silently drops the
- * identical remap for a 세벌식 최종 user. Deciding on the event's shape instead of on the character
+ * redundant. Korean layouts disagree about what the backquote position produces: ë‘ë²Œì‹ and
+ * ì„¸ë²Œì‹ 390 put â‚© there, ì„¸ë²Œì‹ ìµœì¢… puts `*`. A character allowlist can only honour the remap for
+ * the characters someone remembered to list, so it fixes the reported â‚© and silently drops the
+ * identical remap for a ì„¸ë²Œì‹ ìµœì¢… user. Deciding on the event's shape instead of on the character
  * covers both, which is what the variant arm pins.
  *
  * The paired control matters as much as the positive case. A "fix" that special-cased the layout
  * character into a backquote would satisfy the remap arm and be wrong for every Korean user who has
- * no remap, so the unremapped key is asserted to still deliver its own character — once in the
+ * no remap, so the unremapped key is asserted to still deliver its own character â€” once in the
  * shape macOS produces with no remap at all (the keydown carries the glyph), and once through the
  * remap path with the substitution set to that character itself, which is the config's second line.
  */
-import type { CDPSession } from '@stablyai/playwright-test'
+import type { CDPSession } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { closeTerminalImePaneArena, openTerminalImePaneArena } from './terminal-ime-pane-arena'
 import { readTerminalImeBoundaryTrace } from './terminal-ime-boundary-probe'
@@ -54,8 +54,8 @@ const BACKQUOTE = '`'
 
 /** What the physical backquote position inserts, per Korean layout, before any remap. */
 const LAYOUT_VARIANTS = [
-  { label: '두벌식', character: '₩' },
-  { label: '세벌식 최종', character: '*' }
+  { label: 'ë‘ë²Œì‹', character: 'â‚©' },
+  { label: 'ì„¸ë²Œì‹ ìµœì¢…', character: '*' }
 ] as const
 
 type RemapArm = {
@@ -100,7 +100,7 @@ const REMAP_ARMS: readonly RemapArm[] = [
 test.describe('Terminal macOS system key remap', () => {
   for (const layout of LAYOUT_VARIANTS) {
     // keyCode 192 is the backquote position itself, unchanged by which character the layout puts
-    // on it — the remap targets the key, not the character.
+    // on it â€” the remap targets the key, not the character.
     const layoutKey: ImeKeyIdentity = { key: layout.character, code: 'Backquote', keyCode: 192 }
 
     for (const arm of REMAP_ARMS) {

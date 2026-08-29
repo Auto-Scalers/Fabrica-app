@@ -343,7 +343,7 @@ export function getTuiAgentLaunchCommand(
   platform: NodeJS.Platform,
   opts?: { isRemote?: boolean }
 ): string {
-  // Why: local-only FABRICA-ide rename (avoids GNOME FABRICA clash) must not leak to Linux remotes, whose relay shim is always `FABRICA`.
+  // Why: local-only FABRICA-ide rename must not leak to Linux remotes, whose relay shim is always `FABRICA`.
   if (opts?.isRemote && platform === 'linux') {
     return config.launchCmd
   }

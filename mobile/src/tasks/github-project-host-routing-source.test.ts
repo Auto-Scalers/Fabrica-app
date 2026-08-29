@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs'
+import { readSourceText } from '../test-support/source-text'
 import { describe, expect, it } from 'vitest'
 
-const source = readFileSync(new URL('../../app/h/[hostId]/tasks.tsx', import.meta.url), 'utf8')
+const source = readSourceText(new URL('../../app/h/[hostId]/tasks.tsx', import.meta.url))
 
 describe('mobile GitHub Project host routing boundary', () => {
   it('host-qualifies every Project RPC request', () => {

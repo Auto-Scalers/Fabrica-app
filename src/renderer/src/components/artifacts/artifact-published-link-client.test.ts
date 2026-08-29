@@ -13,11 +13,11 @@ describe('published artifact link client', () => {
   it('returns the locally persisted public link', async () => {
     mocks.callRuntimeRpc.mockResolvedValue({
       status: 'ok',
-      value: { shareUrl: 'https://share.onFABRICA.dev/a/artifact-a' }
+      value: { shareUrl: 'https://fabrica-ai.vercel.app/a/artifact-a' }
     })
 
     await expect(getPublishedArtifactLink('/repo/report.md')).resolves.toBe(
-      'https://share.onFABRICA.dev/a/artifact-a'
+      'https://fabrica-ai.vercel.app/a/artifact-a'
     )
     expect(mocks.callRuntimeRpc).toHaveBeenCalledWith(
       { kind: 'local' },

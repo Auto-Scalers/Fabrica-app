@@ -14,7 +14,7 @@ const entitlementsPath = path.join(
   'build',
   'entitlements.computer-use.mac.plist'
 )
-const bundleId = process.env.FABRICA_COMPUTER_MACOS_BUNDLE_ID ?? 'com.autoscalers.fabrica.computer-use'
+const bundleId = process.env.FABRICA_COMPUTER_MACOS_BUNDLE_ID ?? 'ai.autoscalers.fabrica.computer-use'
 const displayName = 'Fabrica Computer Use'
 const signingIdentity = resolveSigningIdentity()
 const universalTriples = ['arm64-apple-macosx', 'x86_64-apple-macosx']

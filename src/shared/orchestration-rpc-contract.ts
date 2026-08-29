@@ -9,7 +9,7 @@ export type OrchestrationMigrationReason =
 export const ORCHESTRATION_SKILL_COMMAND_ARGS = [
   'skills',
   'get',
-  'orchestration',
+  'fabrica-orchestration',
   '--full'
 ] as const
 
@@ -71,7 +71,7 @@ export function orchestrationSkillRecoveryData(): {
     guide: { topic: 'orchestration', full: true },
     nextCommandArgs: ORCHESTRATION_SKILL_COMMAND_ARGS,
     nextSteps: [
-      'Using this same FABRICA CLI executable, run: skills get orchestration --full',
+      'Using this same FABRICA CLI executable, run: skills get fabrica-orchestration --full',
       'Read the returned guide completely and do not retry the previous command unchanged.'
     ]
   }

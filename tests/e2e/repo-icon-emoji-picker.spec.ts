@@ -1,10 +1,10 @@
-/**
+﻿/**
  * Coverage for the full native emoji picker that replaced the hardcoded
  * 12-emoji grid in the repo icon settings (RepositoryIconTabs "Emoji" tab).
  * Verifies search + selection persist through the existing RepoIcon
  * contract, and captures the new picker for the PR screenshot record.
  */
-import type { Page, TestInfo } from '@stablyai/playwright-test'
+import type { Page, TestInfo } from '@autoscalers/playwright-test'
 import { expect, test } from './helpers/fabrica-app'
 import { getStoreState, waitForSessionReady } from './helpers/store'
 import type { Repo } from '../../src/shared/types'
@@ -51,7 +51,7 @@ test.describe('Repository icon emoji picker', () => {
     const picker = repoSection.locator('.repo-icon-emoji-picker')
     await expect(picker).toBeVisible({ timeout: 10_000 })
 
-    // Full catalog with search — the removed grid only ever offered 12 fixed emoji.
+    // Full catalog with search â€” the removed grid only ever offered 12 fixed emoji.
     const searchInput = picker.getByPlaceholder('Search emoji')
     await expect(searchInput).toBeVisible()
     await searchInput.fill('rocket')
@@ -70,10 +70,10 @@ test.describe('Repository icon emoji picker', () => {
         },
         { timeout: 5_000, message: 'repo icon did not persist the picked emoji' }
       )
-      .toEqual({ type: 'emoji', emoji: '🚀' })
+      .toEqual({ type: 'emoji', emoji: 'ðŸš€' })
 
     // The store round-trip alone would pass even if the panel rendered nothing.
-    await expect(repoSection.getByText('Current: 🚀')).toBeVisible()
+    await expect(repoSection.getByText('Current: ðŸš€')).toBeVisible()
 
     await attachScreenshot(fabricaPage, testInfo, 'repo-icon-emoji-picker-selected')
   })

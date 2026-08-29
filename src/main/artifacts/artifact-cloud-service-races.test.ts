@@ -37,7 +37,7 @@ function createResponse(slug: string): Response {
         byteSize: 12,
         deletedAt: null
       },
-      shareUrl: `https://share.onFABRICA.dev/a/${slug}`,
+      shareUrl: `https://fabrica-ai.vercel.app/a/${slug}`,
       editToken: `edit-${slug}`
     }),
     { status: 200, headers: { 'content-type': 'application/json' } }

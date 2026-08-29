@@ -213,7 +213,7 @@ async function generatePosixScripts(): Promise<Map<string, string>> {
     const status = await entry.install(memory.sftp)
     expect(status.state, `${entry.agent} install status`).toBe('installed')
     const generated = [...memory.fs.files.entries()].filter(
-      ([path]) => path.includes('/.fabrica/agent-hooks/') && path.endsWith('.sh')
+      ([path]) => path.includes('/.fabrica-factory/agent-hooks/') && path.endsWith('.sh')
     )
     // Why: Claude ships a second managed script (the statusline usage feed); the stdin lifecycle contract applies to every generated script.
     expect(generated.length, `${entry.agent} generated scripts`).toBeGreaterThan(0)

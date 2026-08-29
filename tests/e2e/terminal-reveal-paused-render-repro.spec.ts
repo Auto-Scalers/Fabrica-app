@@ -1,4 +1,4 @@
-import type { Page } from '@stablyai/playwright-test'
+﻿import type { Page } from '@autoscalers/playwright-test'
 import { test, expect } from './helpers/fabrica-app'
 import { getActiveTabId, waitForSessionReady } from './helpers/store'
 import {
@@ -83,7 +83,7 @@ async function installRevealRenderProbe(page: Page, tabId: string): Promise<void
     const terminal = pane.terminal as unknown as TerminalInternals
     const service = terminal._core?._renderService
     if (!service || typeof service._renderRows !== 'function') {
-      throw new Error('Real RenderService._renderRows unavailable — cannot probe')
+      throw new Error('Real RenderService._renderRows unavailable â€” cannot probe')
     }
 
     const debug: RevealRenderDebug = {
@@ -108,7 +108,7 @@ async function installRevealRenderProbe(page: Page, tabId: string): Promise<void
       dirtyModelLikeReveal: () => {
         // Why: reveal clears the WebGL render model so a full rebuild is forced.
         // clearTextureAtlas() routes through RenderService and, crucially, also
-        // requests a redraw — which is exactly what the paused gate then eats.
+        // requests a redraw â€” which is exactly what the paused gate then eats.
         const withAtlas = pane as unknown as {
           webglAddon?: { clearTextureAtlas?: () => void }
         }
@@ -120,7 +120,7 @@ async function installRevealRenderProbe(page: Page, tabId: string): Promise<void
         terminal.refresh?.(0, Math.max(0, rows - 1))
       },
       runRealRevealRepaint: () => {
-        // The real production reveal path — contains the fix under test.
+        // The real production reveal path â€” contains the fix under test.
         manager.resetWebglTextureAtlases()
       },
       read: () => ({
@@ -228,7 +228,7 @@ test.describe('terminal reveal paused-render recovery', () => {
     expect(afterPlainRefresh.paused, 'terminal is in the paused-render state').toBe(true)
     expect(
       afterPlainRefresh.renderedRanges,
-      'BUG REPRODUCED: while paused, plain refresh() is swallowed by the gate — no render fires'
+      'BUG REPRODUCED: while paused, plain refresh() is swallowed by the gate â€” no render fires'
     ).toHaveLength(0)
 
     // ---- Fix: the real reveal repaint must force a full render through the gate.

@@ -16,7 +16,7 @@ description: >-
 
 # Fabrica CLI
 
-Use `fabrica` when Fabrica's running editor/runtime is the source of truth. Inside Fabrica-managed terminals, `fabrica` always resolves to the Fabrica CLI on every platform. In any other shell on Linux, use `fabrica` too — outside Fabrica's terminals, bare `fabrica` on Linux is the GNOME Fabrica screen reader (`/usr/bin/orca`), and running it starts speech on the user's machine, so never invoke it. The legacy `fabrica` shim still exists on macOS and Windows as insurance against stale references.
+Use `fabrica` when Fabrica's running editor/runtime is the source of truth. Inside Fabrica-managed terminals, `fabrica` always resolves to the Fabrica CLI on every platform. In any other shell on Linux, use `fabrica` too. The legacy `fabrica` shim still exists on macOS and Windows as insurance against stale references.
 
 **Dev builds (`pnpm dev`):** after `pnpm build:cli`, the dev CLI is exposed as `fabrica-dev` (the global shim points at this checkout's wrapper + out/cli). Inside a dev Fabrica's terminals use `fabrica-dev emulator ...` (or `./config/scripts/fabrica-dev.mjs emulator ...` for worktree-local invocation that does not depend on the /usr/local/bin symlink). Plain `fabrica` targets any installed production Fabrica. The app's own agent preambles use `fabrica-dev` automatically in dev mode.
 
@@ -29,10 +29,8 @@ Choose the executable once for the current session:
 - If the `FABRICA_CLI_COMMAND` environment variable is set, use its value. Fabrica exports this
   for managed WSL sessions.
 - Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
-- Otherwise, on Linux outside a Fabrica-managed terminal, use `fabrica-ide`. Never run bare
-  `fabrica` there.
-- Otherwise, use `fabrica`. Never use bare `fabrica` on Linux because it normally resolves to the
-  GNOME screen reader.
+- Otherwise, on Linux outside a Fabrica-managed terminal, use `fabrica-ide`.
+- Otherwise, use `fabrica`.
 
 In every command block, `FABRICA` is a documentation placeholder. Replace it with the chosen
 executable before running the command; do not create a shell variable or run `FABRICA`
@@ -45,7 +43,7 @@ FABRICA terminal list --json
 ```
 
 Keep using that same executable for every later command so dev sessions do not reach a
-production CLI and Linux never falls through to the GNOME screen reader.
+production CLI.
 
 If Fabrica is not running, start it:
 
