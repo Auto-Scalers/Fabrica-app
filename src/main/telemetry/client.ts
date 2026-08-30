@@ -25,11 +25,13 @@ const TELEMETRY_ENABLED = true
 const BUILD_IDENTITY: 'stable' | 'rc' | null =
   typeof FABRICA_BUILD_IDENTITY !== 'undefined'
     ? FABRICA_BUILD_IDENTITY
-    : ((globalThis as { FABRICA_BUILD_IDENTITY?: 'stable' | 'rc' | null }).FABRICA_BUILD_IDENTITY ?? null)
+    : ((globalThis as { FABRICA_BUILD_IDENTITY?: 'stable' | 'rc' | null }).FABRICA_BUILD_IDENTITY ??
+      null)
 const WRITE_KEY: string | null =
   typeof FABRICA_POSTHOG_WRITE_KEY !== 'undefined'
     ? FABRICA_POSTHOG_WRITE_KEY
-    : ((globalThis as { FABRICA_POSTHOG_WRITE_KEY?: string | null }).FABRICA_POSTHOG_WRITE_KEY ?? null)
+    : ((globalThis as { FABRICA_POSTHOG_WRITE_KEY?: string | null }).FABRICA_POSTHOG_WRITE_KEY ??
+      null)
 const IS_OFFICIAL_BUILD: boolean =
   (BUILD_IDENTITY === 'stable' || BUILD_IDENTITY === 'rc') &&
   typeof WRITE_KEY === 'string' &&
@@ -127,7 +129,7 @@ export function shouldOptOutSdkAtInit(consent: ConsentState): boolean {
   return consent.effective === 'disabled'
 }
 
-function waitFFABRICAptureEnqueue(client: PostHog, event: EventName, uuid: string): Promise<boolean> {
+function waitForCaptureEnqueue(client: PostHog, event: EventName, uuid: string): Promise<boolean> {
   return new Promise((resolve) => {
     let settled = false
     let stopListening: (() => void) | null = null
@@ -240,7 +242,7 @@ export async function setOptIn(via: OptInVia, optedIn: boolean): Promise<void> {
         const validated = validate('telemetry_opted_out', { via })
         if (validated.ok) {
           const uuid = randomUUID()
-          const enqueued = waitFFABRICAptureEnqueue(client, 'telemetry_opted_out', uuid)
+          const enqueued = waitForCaptureEnqueue(client, 'telemetry_opted_out', uuid)
           client.capture({
             distinctId: commonProps.install_id,
             event: 'telemetry_opted_out',

@@ -80,7 +80,7 @@ describe('resolveConsent', () => {
     })
   })
 
-  it('returns FABRICA_disabled when FABRICA_TELEMETRY_DISABLED=1', () => {
+  it('returns fabrica_disabled when FABRICA_TELEMETRY_DISABLED=1', () => {
     process.env.FABRICA_TELEMETRY_DISABLED = '1'
     expect(
       resolveConsent(
@@ -92,11 +92,11 @@ describe('resolveConsent', () => {
       )
     ).toEqual({
       effective: 'disabled',
-      reason: 'FABRICA_disabled'
+      reason: 'fabrica_disabled'
     })
   })
 
-  it('prefers do_not_track over FABRICA_disabled when both are set', () => {
+  it('prefers do_not_track over fabrica_disabled when both are set', () => {
     process.env.DO_NOT_TRACK = '1'
     process.env.FABRICA_TELEMETRY_DISABLED = '1'
     expect(
@@ -263,6 +263,6 @@ describe('resolveConsent', () => {
           existedBeforeTelemetryRelease: true
         })
       )
-    ).toEqual({ effective: 'disabled', reason: 'FABRICA_disabled' })
+    ).toEqual({ effective: 'disabled', reason: 'fabrica_disabled' })
   })
 })

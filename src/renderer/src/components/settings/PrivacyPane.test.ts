@@ -92,7 +92,7 @@ describe('PrivacyPane — isEnvBlocked', () => {
   })
 
   it('returns true for FABRICA_TELEMETRY_DISABLED', () => {
-    expect(isEnvBlocked({ effective: 'disabled', reason: 'FABRICA_disabled' })).toBe(true)
+    expect(isEnvBlocked({ effective: 'disabled', reason: 'fabrica_disabled' })).toBe(true)
   })
 
   it('returns true for CI', () => {
@@ -124,8 +124,8 @@ describe('PrivacyPane — envVarNameForReason', () => {
     expect(envVarNameForReason('do_not_track')).toBe('DO_NOT_TRACK')
   })
 
-  it('maps FABRICA_disabled to FABRICA_TELEMETRY_DISABLED', () => {
-    expect(envVarNameForReason('FABRICA_disabled')).toBe('FABRICA_TELEMETRY_DISABLED')
+  it('maps fabrica_disabled to FABRICA_TELEMETRY_DISABLED', () => {
+    expect(envVarNameForReason('fabrica_disabled')).toBe('FABRICA_TELEMETRY_DISABLED')
   })
 
   it('maps ci to CI', () => {
@@ -155,8 +155,8 @@ describe('PrivacyPane — computeBlockedReason', () => {
   })
 
   it('names FABRICA_TELEMETRY_DISABLED as the env reason when set', () => {
-    const result = computeBlockedReason({ effective: 'disabled', reason: 'FABRICA_disabled' })
-    expect(result).toEqual({ kind: 'env', reason: 'FABRICA_disabled' })
+    const result = computeBlockedReason({ effective: 'disabled', reason: 'fabrica_disabled' })
+    expect(result).toEqual({ kind: 'env', reason: 'fabrica_disabled' })
   })
 
   it('names CI as the env reason when set', () => {

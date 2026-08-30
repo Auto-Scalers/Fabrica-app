@@ -80,7 +80,7 @@ export function resolveConsent(settings: GlobalSettings): ConsentState {
   }
   // Precedence 2: product-specific kill switch.
   if (isEnvVarTruthy('FABRICA_TELEMETRY_DISABLED')) {
-    return { effective: 'disabled', reason: 'FABRICA_disabled' }
+    return { effective: 'disabled', reason: 'fabrica_disabled' }
   }
   // Precedence 3: CI detection. Any presence (not just truthy) counts — many
   // CI systems set `CI=true` but some legacy ones just set it to an empty

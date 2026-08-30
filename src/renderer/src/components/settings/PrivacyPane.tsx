@@ -10,7 +10,7 @@ import { useAppStore } from '../../store'
 import { PrivacyDiagnosticsSection } from './PrivacyDiagnosticsSection'
 import { translate } from '@/i18n/i18n'
 
-export type EnvBlockedReason = 'do_not_track' | 'FABRICA_disabled' | 'ci'
+export type EnvBlockedReason = 'do_not_track' | 'fabrica_disabled' | 'ci'
 export type BlockedReason = { kind: 'env'; reason: EnvBlockedReason }
 
 type PrivacyPaneProps = {
@@ -26,7 +26,7 @@ export function isEnvBlocked(consent: TelemetryConsentState | null): consent is 
   return (
     consent?.effective === 'disabled' &&
     (consent.reason === 'do_not_track' ||
-      consent.reason === 'FABRICA_disabled' ||
+      consent.reason === 'fabrica_disabled' ||
       consent.reason === 'ci')
   )
 }
@@ -35,7 +35,7 @@ export function envVarNameForReason(reason: EnvBlockedReason): string {
   if (reason === 'do_not_track') {
     return 'DO_NOT_TRACK'
   }
-  if (reason === 'FABRICA_disabled') {
+  if (reason === 'fabrica_disabled') {
     return 'FABRICA_TELEMETRY_DISABLED'
   }
   return 'CI'
