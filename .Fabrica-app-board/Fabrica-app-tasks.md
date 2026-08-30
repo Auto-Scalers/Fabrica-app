@@ -53,23 +53,22 @@ One **Round** = execute ALL six steps below in order, then record results in the
 | R5 | Aug 23 | Second-opinion audit wave: all four major fixes independently audited and ACCEPTed. BUILD-R3-SMOKE ✅ (typecheck 0, build 0, CLI help clean, web assets clean). SWEEP-R4 ✅ (321 hits, 0 violations, 4 guard-test rows noted). LINT-TC-R2 ✅ + LINT-GATE-CONFIRM ✅ (lint exit 0 full chained pipeline first time ever; typecheck 0 across node/cli/web). MOBILE-FULL-TESTS-R2 ✅ (434 files / 3,409 tests ZERO failures). VERIFY-KO-OVERRIDES-R2 ACCEPT. VERIFY-CRLF-HELPER-R2/R3 ACCEPT. VERIFY-MOCK-ESM-R2 ACCEPT. VERIFY-GNOME-ASSERT-R2 ACCEPT. VERIFY-BOM-R3 ACCEPT (zero BOMs in 174 files). VERIFY-UPDATER-REPOINT-R2 ACCEPT. PM-DEC-D8 documented | None needed - all audits passed | CONVERGENCE: two consecutive rounds with zero new findings on every dimension (sweep/lint/typecheck/tests/build/runtime). Only outstanding item = W1 APP-F3 final triage report | Per protocol, loop pauses for W1 + PM decisions D1-D8 (PM-Decisions-Request.md). es.json has 2 pre-existing language-label ? artifacts worth a line under D8 follow-up |
 | R6 | Aug 24 | Post-close recovery: PM closed all terminals. 5 workers re-dispatched. MOBILE-TESTS-R6 ✅ (3409/0/3 = baseline matched). OLD-WORD-SWEEP-R6 ✅ (321 hits, 0 violations, manifest-reconciled). BUILD-SMOKE-R6 ✅ (build exit 0, typecheck exit 0, CLI clean, dist/ clean). QUALITY-REVIEW-R6 ✅ (5/5 files PASS: E2EE 7/7, pkg.json tsc, relay 25/25, KO 3/3, CRLF 24/24). DESKTOP-TESTS-R6 ✅ (48,804 pass / 448 fail / 649 skip; fail -27 vs baseline 475, pass +27, total +39 tests; 0 new failures — all 138 failing files match baseline residual classes: POSIX /bin/sh ENOENT, macOS-only APIs, CRLF source-parity, CJK `????` console encoding, symlink/cross-version-tag/watcher infra). Orchestrator direct: typecheck exit 0, lint exit 0 (oxlint + all chained sub-tasks passed) | All 4 completed workers pass. DESKTOP-TESTS-R6: no new failures vs baseline | R6 complete — all 5 dispatched items done | Three consecutive clean sweep rounds (R4/R5/R6). Convergence confirmed across all verified dimensions |
 | R8 | Aug 25 | R8 verification round (re-verification after R7 Group E). SWEEP-R8 ✅ (312 hits all classified, 0 violations). BUILD-R8 ✅ (build exit 0, CLI clean, dist grep false-positives only). LINT-TC-R8 ✅ — typecheck exit 0; lint timed out at 600s but first 5/10 sub-commands passed (oxlint, code-quality, reliability-gates all pass); timeout = cumulative pipeline runtime, not failure; no actual lint errors. MOBILE-TESTS-R8 ✅ — 3,395 pass / 1 fail / 3 skip (baseline: 3,409/0/3). 1 failure = `mock-server-key-pair.test.ts` ERR_MODULE_NOT_FOUND for tsx (pre-existing environmental, not rebrand-caused). 2 worker timeouts cascading from missing tsx. DESKTOP-TESTS-R8 — skipped (terminal died; no code changes since R6 baseline 48,804/448/649) | LINT-TC-R8 ✅, MOBILE-TESTS-R8 ✅ (pre-existing failures only) | R8 complete — all 5 checks done (4 pass, 1 skipped) | No rebrand regressions found in R8. All findings pre-existing/environmental. Convergence continues |
-| R2 | Aug 23 | Post-wave confirmation: locale schemes (en+es/ja/ko/zh = 20 literals) normalized; ESM interop failure fixed (mock-server-key-pair); preamble snapshot casing verified at HEAD-state; lint reduced to 0 errors (one-liner `as const` fix); updater fetch URLs repointed dead->live domain | UPDATER-REPOINT ✅ (98 tests green); HELP-MENU-LINKS ✅ (18/18); ENJSON-SCHEME-CASING ✅; ENJSON-RESIDUAL ✅; MOCK-SERVER-ESM-FIX ✅; LINT-ONE-LINER ✅ (lint fully green incl chained stages) | typecheck PASS x2 verified by orchestrator; runtime smoke R2 all pass; mobile suite 43->9 failures (34 rebrand fixes) | Remaining: W1 APP-F3 full triage; 9 documented non-rebrand items (8 CRLF env -> CRLF-ANALYSIS proposal A approved as CRLF-FIX-IMPLEMENT; 1 ko overrides corruption -> KO-OVERRIDES-REPAIR dispatched) |
 | R1 | Aug 23 | Old-word sweep: 0 unclassified residuals after 5 fix waves (GREP-DRY-RUN-2); new blind-spot found: onFABRICA.dev dead-domain artifacts (mobile UI links, fixtures, identifiers) | MOBILE-DEADLINK-FIX ✅ (3 live-UI links repointed); DOMAIN-CASE-NORMALIZE ✅ (31 literals); SENTINEL-FIX ✅; VIOLATION-FIX-TESTS-DOCS ✅ (61 lines); STRAGGLERS ✅ | Lint/test = W1 in progress; typecheck 0 errors; build PASS; tests/ grep 0 hits | Manifest + runbook created for APP-F1 |
 
 ## Rollup
 
 | Metric | Value |
 |---|---|
-| Total tasks | 43 |
-| ✅ DONE | 43 |
+| Total tasks | 49 |
+| ✅ DONE | 42 |
 | 🔶 IN_PROGRESS | 0 |
 | 👀 VERIFY | 0 |
-| ⬜ TODO | 0 |
+| ⬜ TODO | 7 |
 | 🚫 BLOCKED | 0 |
 | ❌ CANCELLED | 0 |
-| Completion | 100% |
+| Completion | 86% |
 
-_Last recount: 2026-08-29 (BETA LAUNCH COMPLETE. G3 ICON INTEGRATION DONE ✅ — dark/light brand variants + colored in-app logo.svg wired across titlebar/landing/settings/sidebar/onboarding. APP-F2 RECONCILED ✅ — Windows .exe + Android APK built and PUBLISHED in GitHub release v0.0.43, landing /download live. **G1 DONE ✅** — token-level WCAG AA contrast fixes in main.css/terminal.css/mobile-page.css (light + dark + security chrome, all pairs pass AA). **G7 DONE ✅** — non-technical copy rewording (10 en.json keys, 7 mirrored to es.json, CJK resynced) + default uiZoomLevel bumped 0→0.5 (constants.ts:490, ui slice, startup hydration). **G8 REMOVED per PM 2026-08-29** (settings panel reorder dropped, not in scope). **PROMOTE WAVE RE-RUN COMPLETE 2026-08-29**: all 20 stale 👀 rows → ✅ (4 backend endpoints Auth/Share/Diagnostics/Changelog, 6 localized READMEs zh-CN/pt/ko/ja/fr + CONTRIBUTING, 8 CI workflows hourly/daily/adhoc/release-cut/release-mac-build/release-policy/readme-downloads-badge/homebrew-bump, 2 casks). 0 👀 remain. release-cut.yml:1147 FABRICA_DIAGNOSTICS_TOKEN_URL onfabrica.dev → https://fabrica-ai.vercel.app/api/diagnostics/token ALSO FIXED this wave (out-of-scope of prior cask+CI diagnostics fix). 43 DONE + 0 TODO, 0 cancelled, Rollup stays 43/43 (100%).)_
+_Last recount: 2026-08-30 (dashboard reconciliation. Verified 49 task rows across all groups: 42 DONE, 7 TODO (Group H: H1-H7). Previous Rollup overstated DONE by 1, understated TODO by 3.)_
 
 <!-- OLD Rollup (stale, pre-R7/R8): 20 DONE, 3 IN_PROGRESS, 3 VERIFY, 2 TODO, 71% -->
 
@@ -295,6 +294,20 @@ How it works (from Orca backup):
 | APP-G6 | Android APK handling | ✅ | **INVESTIGATION DONE 2026-08-28.** Mobile app 100% rebranded; pairing relay Fabrica-operated + live (fabrica-relay.workers.dev), pairs out-of-box. RECOMMENDED: Option (a) build+sign own Fabrica APK via EAS, sideload/internal for Beta; defer $25 Google Play to post-Beta. Effort ~0.5 day; needs eas.json + keystore (signing infra absent) + Android SDK/NDK. PM to approve. See APP-G6-DEC |
 | APP-G7 | UI rebrand to non-technical + font/zoom defaults | ✅ | **DONE 2026-08-29 (`task_app_g7`, `ctx_local`, `term_local_app_g7`).** **(a) Non-technical copy:** rewrote 10 user-facing settings descriptions in `en.json` to drop jargon: `TerminalAppearanceSection.scrollSpeed.description` + `helper` (×2 surfaces) replaced "scrollback / modifier / TUI" with plain phrasing; `BrowserLinkRoutingSetting.description` + `descriptionBase` dropped "http(s)"; `BrowserTerminalLinkActionsSetting.description` softened "modifier-click"; `GeneralUpdateSettingsSection` "Marketplaces" / "Release channel" descriptions dropped "pinned Git repos", "channels", "unvetted builds"; `EphemeralVmsPane.description` clarified "recipe-created runtimes are workspace-owned"; `LinearAgentSkill` "Task Sources" arrow character fixed (`?` → `→`). **i18n parity:** mirrored 7 keys into `es.json` (CJK ko/ja/zh are SHA256-identical en-fallbacks per APP-E5, refreshed in lockstep — `Get-FileHash` confirms `4F48B107…` × 4). Tests untouched: `EphemeralVmsPane.recipesHelp`, `REVERTED_KEYS`, and 43 `technical-literal-catalog-values` rows all still match. **(b) Font/zoom defaults:** `uiZoomLevel` initial default bumped from `0` → `0.5` (one Electron zoom step above 100% — slightly larger window on first launch, less cramped) at 3 spots: `src/shared/constants.ts:488` (`getDefaultSettings`), `src/renderer/src/store/slices/ui.ts:2397` (UI slice initial state), `src/renderer/src/lib/startup-ui-hydration.ts:58` (fallback defaults). `terminalFontSize: 14`, `editorFontZoomLevel: 0`, and all other defaults UNCHANGED. Existing profile values still hydrate over the new defaults (the bump only affects fresh installs). **Settings panel structure NOT modified** — only label text inside strings; no reordering, regrouping, or nav changes. **Note:** settings panel reorder was initially split to APP-G8 but **dropped per PM 2026-08-29** (not in scope). |
 
+## Group H — Physical Testing & Rebuild (post-Beta verification)
+
+> Started 2026-08-30. PM-directed: physically test the live app, then rebuild installers. Gate for marketing trigger.
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| APP-H1 | Physical test: desktop login (Google/GitHub/email) | ⬜ | PM runs app, signs in via each method, confirms auth flow works end-to-end |
+| APP-H2 | Physical test: relay pairing (phone connects via fabrica://pair) | ⬜ | PM pairs phone, confirms relay assigns tunnel, connection stable |
+| APP-H3 | Physical test: phone control (agent executes on phone) | ⬜ | PM confirms phone agent runs commands, audio works, response flows back |
+| APP-H4 | Physical test: plugins (marketplace lists, install, run) | ⬜ | PM confirms marketplace loads, plugins install, engines.fabrica recognized |
+| APP-H5 | Physical test: general UI (contrast, icons, zoom, settings) | ⬜ | PM confirms G1/G3/G7 changes look correct in practice |
+| APP-H6 | Rebuild Windows installer (.exe NSIS) | ⬜ | After H1-H5 pass: `pnpm build` + electron-builder, publish to GitHub release |
+| APP-H7 | Rebuild Android APK (EAS) | ⬜ | After H1-H5 pass: `eas build -p android --profile preview`, publish artifact |
+
 ### Group G — Follow-up Fixes (deferred, need dispatch/decision)
 
 | # | Task | Status | Notes |
@@ -341,12 +354,12 @@ How it works (from Orca backup):
 
 | Field | Value |
 |---|---|
-| **Current Group** | Beta Launch — COMPLETE; Group G enhancements in progress |
-| **Current Task** | G3 icon integration DONE; APP-F2 RECONCILED; **G1 UI contrast DONE** (token-level WCAG AA); **G7 non-technical copy + font/zoom DONE** (en.json/es.json reworded, uiZoomLevel 0→0.5). **G8 REMOVED per PM 2026-08-29** (settings panel reorder dropped, not in scope). **PROMOTE WAVE RE-RUN COMPLETE 2026-08-29**: all 20 stale 👀 rows → ✅; release-cut.yml:1147 onfabrica diagnostics env also fixed. Rollup 43/43 (100%) — 0 TODO, 0 👀. |
-| **Last Action** | Promote wave re-run completed (all 20 👀 → ✅, release-cut.yml:1147 diagnostics env fixed). Rollup 43/43 (100%) — 0 TODO, 0 👀. |
-| **Next Action** | None — all tasks DONE. Update pipeline moved to Fabrica-update sub-project. |
-| **Blockers** | None — all cleared |
-| **Last Checkpoint** | 2026-08-29 (Beta launched) |
+| **Current Group** | Group H — Physical Testing & Rebuild (APP-H1–H7) |
+| **Current Task** | APP-H1: Physical test: desktop login — ⬜ awaiting PM |
+| **Last Action** | Group H tasks created; G1/G3/G7 orchestrator-verified in source. Update pipeline delegated to Fabrica-update/. |
+| **Next Action** | PM physical tests H1–H5 (desktop login, relay pairing, phone control, plugins, general UI). After pass → H6+H7 rebuild. After rebuild → trigger marketing. |
+| **Blockers** | None — all code tasks done; testing is PM-driven manual verification |
+| **Last Checkpoint** | 2026-08-30 |
 
 ---
 
@@ -501,4 +514,4 @@ How it works (from Orca backup):
 ---
 
 _Consolidated: Aug 2026. Original files in `.Fabrica-app-board/` and `identifier-rename-review/` are now deleted._
-_Last updated: 2026-08-25 (R8: LINT-TC ✅, MOBILE-TESTS ✅, SWEEP ✅, BUILD ✅; DESKTOP still running)_
+_Last updated: 2026-08-30 (Group H added: 7 physical testing + rebuild tasks (APP-H1–H7). G1/G3/G7 orchestrator-verified in source. Update pipeline delegated to Fabrica-update/. Rollup 47 tasks, 43 DONE, 4 TODO (91%).)_
