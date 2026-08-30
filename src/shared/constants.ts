@@ -485,7 +485,10 @@ export function getDefaultUIState(): PersistedUIState {
     showDotfilesByWorktree: {},
     filterRepoIds: [],
     collapsedGroups: [],
-    uiZoomLevel: 0,
+    // Why: APP-G7 — fresh installs land on a slightly larger UI by default so the
+    // window doesn't feel cramped. Existing profiles still hydrate their stored value.
+    uiZoomLevel: 0.5,
+    // Why: editor font defaults to neutral so Cmd+0 reliably resets; zoom-in starts from there.
     editorFontZoomLevel: 0,
     worktreeCardProperties: [...DEFAULT_WORKTREE_CARD_PROPERTIES],
     _worktreeCardModeDefaulted: true,

@@ -7670,8 +7670,8 @@
           "ask_before_closing_running_terminals_description": "Show a confirmation before closing a terminal that has a running command or agent.",
           "scrollSpeed": {
             "title": "Scroll Speed",
-            "description": "Tune normal terminal scrollback, fast modifier scrolling, and full-screen TUI wheel speed.",
-            "helper": "Adjust how wheel input feels in scrollback and in mouse-aware terminal apps.",
+            "description": "Adjust how fast the terminal scrolls — both normally and while holding a modifier key, including for full-screen terminal apps.",
+            "helper": "Tune how the mouse wheel feels when scrolling, including inside full-screen terminal apps.",
             "reset": "Reset",
             "normal": "Normal",
             "normalDescription": "Scrollback wheel multiplier.",
@@ -7999,8 +7999,8 @@
           "search": {
             "9a115966d3": "Minimize to Tray on Close",
             "4d5b9427b5": "When enabled, closing the window keeps Fabrica running in the system tray instead of quitting.",
-            "468448bba4": "watercolor",
-            "f586abfa35": "blue",
+            "468448bba4": "dark",
+            "f586abfa35": "light",
             "651f35b2c6": "switcher",
             "e5bc35d59e": "window",
             "d18b54ca90": "dock",
@@ -9408,7 +9408,7 @@
             "ask_before_closing_running_terminals_description": "Show a confirmation before closing a terminal that has a running command or agent.",
             "scrollSpeed": {
               "title": "Scroll Speed",
-              "description": "Tune normal terminal scrollback, fast modifier scrolling, and full-screen TUI wheel speed."
+              "description": "Adjust how fast the terminal scrolls — both normally and while holding a modifier key, including for full-screen terminal apps."
             },
             "theme_target": {
               "title": "Theme Mode",
@@ -9871,7 +9871,7 @@
           "copiedCleanupPayload": "Copied cleanup payload.",
           "copyCleanupFailed": "Couldn’t copy cleanup command.",
           "title": "Temporary VM runtimes",
-          "description": "Recipe-created runtimes are workspace-owned. Clean up stale entries after crashes, failed creates, or manual recovery.",
+          "description": "Each workspace gets its own short-lived VM from a recipe. Clean up stale entries if a workspace crashed, failed to start, or you recovered it manually.",
           "refresh": "Refresh temporary VM runtimes",
           "loading": "Checking temporary VM runtimes…",
           "empty": "No temporary VM runtimes need cleanup.",
@@ -9942,7 +9942,7 @@
                   "notInstalled": "Not installed",
                   "recheck": "Re-check",
                   "installedDescription": "Agent skill installed. To update it, run:",
-                  "description": "Let agents read and edit Linear tasks. Full guided setup (connect + skill + visibility) is under Settings ? Task Sources.",
+                  "description": "Let agents read and edit Linear tasks for you. Full guided setup (connect + skill + visibility) lives under Settings → Task Sources.",
                   "copyCommand": "Copy command"
                 }
               },
@@ -10108,8 +10108,8 @@
           "legacyHelp": "Update this server manually once to enable remote updates."
         },
         "BrowserLinkRoutingSetting": {
-          "description": "Open http(s) links in Fabrica's built-in browser — from the terminal, markdown, and the editor. {{shortcut}} always uses your system browser.",
-          "descriptionBase": "Open http(s) links in Fabrica's built-in browser — from the terminal, markdown, and the editor."
+          "description": "Open web links in Fabrica's built-in browser — from the terminal, markdown, and the editor. Pressing {{shortcut}} always opens them in your system browser instead.",
+          "descriptionBase": "Open web links in Fabrica's built-in browser — from the terminal, markdown, and the editor."
         },
         "BrowserLinkRoutingModifierSetting": {
           "titleSystem": "Hold Shift to open in your web browser",
@@ -10119,7 +10119,7 @@
         },
         "BrowserTerminalLinkActionsSetting": {
           "title": "Show terminal link actions",
-          "description": "Show available actions when you click a terminal link. Turn this off to require {{modifier}}-click."
+          "description": "Show a small menu of actions when you click a link in the terminal. Turn this off so links only open when you hold {{modifier}}."
         },
         "PluginConsentDialog": {
           "workerTrust": "Background worker — runs its own process",
@@ -10263,7 +10263,7 @@
           "refreshFailed": "Could not refresh this marketplace. Its last valid cached index is still available.",
           "removeFailed": "Could not remove this marketplace.",
           "title": "Marketplace sources",
-          "description": "Marketplaces are pinned Git repositories. Fabrica uses your existing system Git credentials for private repositories.",
+          "description": "Each marketplace is a Git repo that Fabrica keeps in sync. Private repos use your system's existing Git credentials, so you don't have to add them again.",
           "urlLabel": "Git URL",
           "urlDescription": "Use an HTTPS or SSH repository URL containing FABRICA-marketplace.json.",
           "urlPlaceholder": "https://git.example.com/team/plugins.git",
@@ -10483,7 +10483,7 @@
         "ReleaseChannelSection": {
           "switchFailed": "Could not switch to that build.",
           "title": "Release channel",
-          "description": "Switch update channels or jump to any published build, including older ones. Downgrades are allowed and unvetted builds can be broken.",
+          "description": "Pick how Fabrica updates — stable, beta, or nightly — or jump to a specific version, even an older one. You can downgrade freely, but newer pre-release versions may be unstable.",
           "devOnly": "Dev only",
           "channelAriaLabel": "Update channel",
           "hourlyWarning": "Hourly builds are macOS-only and ship straight from main with no test gate. Keep a stable build handy.",

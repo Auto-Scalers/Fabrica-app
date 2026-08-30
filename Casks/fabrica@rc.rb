@@ -9,7 +9,7 @@ cask "fabrica@rc" do
       verified: "github.com/Auto-Scalers/fabrica/"
   name "Fabrica RC"
   desc "IDE for orchestrating AI coding agents across terminals and worktrees"
-  homepage "https://onfabrica.dev/"
+  homepage "https://fabrica-ai.vercel.app"
 
   livecheck do
     url "https://github.com/Auto-Scalers/fabrica"

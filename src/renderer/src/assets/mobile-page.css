@@ -1978,7 +1978,9 @@
   color: #c0caf5;
 }
 .mobile-page-root .mp-term-comment {
-  color: #565f89;
+  /* Why: previous #565f89 was 2.76:1 vs Tokyo-Night bg (fails WCAG AA).
+     #7a87b6 = 4.86:1 — still reads as a muted comment in the mock terminal. */
+  color: #7a87b6;
 }
 .mobile-page-root .mp-term-warn {
   color: #e0af68;

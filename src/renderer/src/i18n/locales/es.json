@@ -7301,8 +7301,8 @@
           "ask_before_closing_running_terminals_description": "Show a confirmation before closing a terminal that has a running command or agent.",
           "scrollSpeed": {
             "title": "Velocidad de desplazamiento",
-            "description": "Ajusta el desplazamiento normal del terminal, el desplazamiento rápido con modificador y la velocidad de rueda en TUI de pantalla completa.",
-            "helper": "Ajusta cómo se siente la entrada de la rueda en el historial y en apps de terminal compatibles con mouse.",
+            "description": "Ajusta la velocidad de desplazamiento del terminal — tanto normal como al mantener una tecla modificadora, incluso en apps de terminal a pantalla completa.",
+            "helper": "Ajusta cómo se siente la rueda del ratón al hacer scroll, incluso dentro de apps de terminal a pantalla completa.",
             "reset": "Restablecer",
             "normal": "Normal",
             "normalDescription": "Multiplicador de rueda del historial.",
@@ -9028,7 +9028,7 @@
             "ask_before_closing_running_terminals_description": "Muestra una confirmación antes de cerrar un terminal que tiene un comando o agente en ejecución.",
             "scrollSpeed": {
               "title": "Velocidad de desplazamiento",
-              "description": "Ajusta el desplazamiento normal del terminal, el desplazamiento rápido con modificador y la velocidad de rueda en TUI de pantalla completa."
+              "description": "Ajusta la velocidad de desplazamiento del terminal — tanto normal como al mantener una tecla modificadora, incluso en apps de terminal a pantalla completa."
             },
             "theme_target": {
               "title": "Modo del tema",
@@ -9505,7 +9505,7 @@
           "copiedCleanupPayload": "Payload de limpieza copiado.",
           "copyCleanupFailed": "No se pudo copiar el comando de limpieza.",
           "title": "Runtimes de VM temporales",
-          "description": "Los runtimes creados por recetas pertenecen al espacio de trabajo. Limpia entradas obsoletas después de cierres inesperados, creaciones fallidas o recuperación manual.",
+          "description": "Cada espacio de trabajo obtiene su propia VM de corta duración a partir de una receta. Limpia las entradas obsoletas si un espacio de trabajo se bloqueó, no arrancó, o lo recuperaste manualmente.",
           "refresh": "Actualizar runtimes de VM temporales",
           "loading": "Comprobando runtimes de VM temporales…",
           "empty": "No hay runtimes de VM temporales que limpiar.",
@@ -9576,7 +9576,7 @@
                   "notInstalled": "No instalado",
                   "recheck": "Reverificar",
                   "installedDescription": "Habilidad del agente instalada. Para actualizarla, ejecuta:",
-                  "description": "Permite que los agentes lean y editen tareas de Linear. La configuración guiada completa (conexión + habilidad + visibilidad) está en Ajustes ? Fuentes de tareas.",
+                  "description": "Permite que los agentes lean y editen tareas de Linear por ti. La configuración guiada completa (conexión + habilidad + visibilidad) está en Ajustes → Fuentes de tareas.",
                   "copyCommand": "Copiar comando"
                 }
               },
@@ -9741,8 +9741,8 @@
           "legacyHelp": "Update this server manually once to enable remote updates."
         },
         "BrowserLinkRoutingSetting": {
-          "description": "Abre los enlaces http(s) del terminal, Markdown y el editor en el navegador integrado de Fabrica. {{shortcut}} siempre usa el navegador del sistema.",
-          "descriptionBase": "Abre los enlaces http(s) del terminal, Markdown y el editor en el navegador integrado de Fabrica."
+          "description": "Abre los enlaces web del terminal, Markdown y el editor en el navegador integrado de Fabrica. Al pulsar {{shortcut}} siempre se abren en el navegador del sistema.",
+          "descriptionBase": "Abre los enlaces web del terminal, Markdown y el editor en el navegador integrado de Fabrica."
         },
         "BrowserLinkRoutingModifierSetting": {
           "titleSystem": "Hold Shift to open in your web browser",
@@ -9892,7 +9892,7 @@
           "refreshFailed": "No se pudo actualizar este marketplace. Su último índice válido en caché sigue disponible.",
           "removeFailed": "No se pudo eliminar este marketplace.",
           "title": "Fuentes de marketplace",
-          "description": "Los marketplaces son repositorios de Git fijados. Fabrica usa tus credenciales existentes del Git del sistema para los repositorios privados.",
+          "description": "Cada marketplace es un repositorio de Git que Fabrica mantiene sincronizado. Los repos privados usan las credenciales de Git ya configuradas en tu sistema, así que no tienes que añadirlas de nuevo.",
           "urlLabel": "Git URL",
           "urlDescription": "Usa la URL HTTPS o SSH de un repositorio que contenga FABRICA-marketplace.json.",
           "urlPlaceholder": "https://git.example.com/team/plugins.git",

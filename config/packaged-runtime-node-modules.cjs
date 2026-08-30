@@ -22,6 +22,10 @@ const PACKAGED_RUNTIME_PACKAGE_ROOTS = [
   'jsonc-parser',
   'node-pty',
   'posthog-node',
+  // Why: the main bundle's session-scanner path imports @supabase/supabase-js at
+  // runtime; package it (and its dependency closure) so the bare require resolves
+  // from app.asar.unpacked/node_modules in the packaged app.
+  '@supabase/supabase-js',
   // serve-sim (for CLI JS entry + closure + state/middleware + to make packaged require('serve-sim') + its internal relatives work; mirrors other runtime JS like ws/yaml/zod. Natives/dylibs still via extraResources + the node_modules/serve-sim copy in resources from builder. Client if added too.
   'serve-sim',
   'qrcode',
@@ -57,7 +61,12 @@ const VERSIONED_ONNXRUNTIME_DYLIB_RE = /^libonnxruntime\.\d[\d.]*\.dylib$/
 
 const NODE_BUILTINS = new Set([
   ...builtinModules,
-  ...builtinModules.map((moduleName) => `node:${moduleName}`)
+  ...builtinModules.map((moduleName) => `node:${moduleName}`),
+  // Why: the build-host Node (e.g. 22.23) may not list node:sqlite in
+  // builtinModules even though the packaged Electron runtime (Node 22.x) exposes
+  // it as a core module. Treat it as a builtin so the main-bundle require does
+  // not force a node_modules copy that cannot exist for a core module.
+  'node:sqlite'
 ])
 
 function packageNameFromSpecifier(specifier) {

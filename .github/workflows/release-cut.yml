@@ -1144,7 +1144,7 @@ jobs:
           # the macOS release runner, leaving v1.4.2-rc.8 as an incomplete draft.
           NODE_OPTIONS: --max-old-space-size=4096
           FABRICA_BUILD_IDENTITY: ${{ steps.tag-classify.outputs.identity }}
-          FABRICA_DIAGNOSTICS_TOKEN_URL: https://www.onfabrica.dev/diagnostics/token
+          FABRICA_DIAGNOSTICS_TOKEN_URL: https://fabrica-ai.vercel.app/api/diagnostics/token
           FABRICA_POSTHOG_WRITE_KEY: ${{ secrets.FABRICA_POSTHOG_WRITE_KEY }}
 
       - name: Gate runtime file-watcher process isolation

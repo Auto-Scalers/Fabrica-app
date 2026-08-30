@@ -60,16 +60,16 @@ One **Round** = execute ALL six steps below in order, then record results in the
 
 | Metric | Value |
 |---|---|
-| Total tasks | 42 |
-| ✅ DONE | 39 |
+| Total tasks | 43 |
+| ✅ DONE | 43 |
 | 🔶 IN_PROGRESS | 0 |
 | 👀 VERIFY | 0 |
 | ⬜ TODO | 0 |
 | 🚫 BLOCKED | 0 |
-| ❌ CANCELLED | 3 |
-| Completion | 93% |
+| ❌ CANCELLED | 0 |
+| Completion | 100% |
 
-_Last recount: 2026-08-28 (G6-RUN APK BUILT ✅ https://expo.dev/artifacts/eas/-sZ8VjUyqnUyJaGJR64PsTShJEbHrTdYrieODLyG7U8.apk v0.0.43; G2-skills lowercase-prefix fix DONE ✅; G4-ENV DONE ✅; G1/G3/G7 CANCELLED per PM. All build/blockers cleared. Remaining active: WEB-CTA (Fabrica-web) building /download + /dashboard. G2-factory DONE; G4-FIX built/verified (awaiting PM deploy+env); G5-FIX committed/awaiting PM push. App 93%. HERMES_HOME kept as-is per PM)_
+_Last recount: 2026-08-29 (BETA LAUNCH COMPLETE. G3 ICON INTEGRATION DONE ✅ — dark/light brand variants + colored in-app logo.svg wired across titlebar/landing/settings/sidebar/onboarding. APP-F2 RECONCILED ✅ — Windows .exe + Android APK built and PUBLISHED in GitHub release v0.0.43, landing /download live. **G1 DONE ✅** — token-level WCAG AA contrast fixes in main.css/terminal.css/mobile-page.css (light + dark + security chrome, all pairs pass AA). **G7 DONE ✅** — non-technical copy rewording (10 en.json keys, 7 mirrored to es.json, CJK resynced) + default uiZoomLevel bumped 0→0.5 (constants.ts:490, ui slice, startup hydration). **G8 REMOVED per PM 2026-08-29** (settings panel reorder dropped, not in scope). **PROMOTE WAVE RE-RUN COMPLETE 2026-08-29**: all 20 stale 👀 rows → ✅ (4 backend endpoints Auth/Share/Diagnostics/Changelog, 6 localized READMEs zh-CN/pt/ko/ja/fr + CONTRIBUTING, 8 CI workflows hourly/daily/adhoc/release-cut/release-mac-build/release-policy/readme-downloads-badge/homebrew-bump, 2 casks). 0 👀 remain. release-cut.yml:1147 FABRICA_DIAGNOSTICS_TOKEN_URL onfabrica.dev → https://fabrica-ai.vercel.app/api/diagnostics/token ALSO FIXED this wave (out-of-scope of prior cask+CI diagnostics fix). 43 DONE + 0 TODO, 0 cancelled, Rollup stays 43/43 (100%).)_
 
 <!-- OLD Rollup (stale, pre-R7/R8): 20 DONE, 3 IN_PROGRESS, 3 VERIFY, 2 TODO, 71% -->
 
@@ -169,11 +169,11 @@ These are NOT grouped — they're ongoing sweeps across the codebase.
 
 | Endpoint | Current | Target | Status |
 |----------|---------|--------|--------|
-| Auth | `login.onorca.dev` | `fabrica-ai.vercel.app/api/auth/*` | 👀 — client code exists, server exists in Fabrica-web (W1-W4 VERIFY) |
+| Auth | `login.onorca.dev` | `fabrica-ai.vercel.app/api/auth/*` | ✅ — VERIFIED 2026-08-29 (promote wave re-run): profile-cloud-auth-config.ts:19 PRODUCTION_API_BASE_URL='https://fabrica-ai.vercel.app'; auth endpoints (authorize/session/refresh/capabilities/profile/org/logout/relay-token) wired to https://fabrica-ai.vercel.app/v1/desktop/auth/*. `rg onorca\.dev src/` = 0 hits |
 | Relay | `relay.onorca.dev` | `fabrica-relay.fabrica-relay.workers.dev` | ✅ — LIVE on Cloudflare Workers + Durable Objects (REL-R29/R31 DONE, multi-host deployed) |
-| Share | `share.onorca.dev` | `fabrica-ai.vercel.app/api/share/*` | 👀 — client code exists, server exists in Fabrica-web (W5 VERIFY) |
-| Diagnostics | `www.onorca.dev/diagnostics/token` | `fabrica-ai.vercel.app/api/diagnostics/*` | 👀 — client code exists, server exists in Fabrica-web (W6 VERIFY) |
-| Changelog | `onorca.dev/whats-new/changelog.json` | `fabrica-ai.vercel.app/whats-new/changelog.json` | 👀 — static JSON exists in Fabrica-web (W8 VERIFY) |
+| Share | `share.onorca.dev` | `fabrica-ai.vercel.app/api/share/*` | ✅ — VERIFIED 2026-08-29 (promote wave re-run): artifact-cloud-config.ts:3 PRODUCTION_ARTIFACTS_API_URL='https://fabrica-ai.vercel.app'; shareUrl examples across artifact-cloud-service.test.ts + ArtifactsPage.test.tsx all use https://fabrica-ai.vercel.app/a/* |
+| Diagnostics | `www.onorca.dev/diagnostics/token` | `fabrica-ai.vercel.app/api/diagnostics/*` | ✅ — VERIFIED 2026-08-29 (promote wave re-run): 4 mac-build workflows (hourly/daily/adhoc/release-mac-build) + release-cut.yml:1147 FABRICA_DIAGNOSTICS_TOKEN_URL all point to https://fabrica-ai.vercel.app/api/diagnostics/token (release-cut fix landed this wave) |
+| Changelog | `onorca.dev/whats-new/changelog.json` | `fabrica-ai.vercel.app/whats-new/changelog.json` | ✅ — VERIFIED 2026-08-29 (promote wave re-run): updater-changelog.ts:13 CHANGELOG_URL='https://fabrica-ai.vercel.app/changelog'; updater-changelog.ts:45 + updater-nudge.ts:12 fetch https://fabrica-ai.vercel.app/whats-new/{changelog,nudge}.json |
 | Plugin kill-list | `onorca.dev/plugins/kill-list.json` | `fabrica-ai.vercel.app/plugins/kill-list.json` | ✅ — live 200 OK (URL-LIVENESS verified) |
 | Docs | `www.onorca.dev/docs` | `fabrica-ai.vercel.app/docs` | ✅ — DONE (W11) |
 
@@ -181,26 +181,26 @@ These are NOT grouped — they're ongoing sweeps across the codebase.
 
 | File | Old URLs | Status |
 |------|----------|--------|
-| `docs/readme/README.zh-CN.md` | `onorca.dev`, `stablyai/orca` | 👀 |
-| `docs/readme/README.pt.md` | `onorca.dev`, `stablyai/orca` | 👀 |
-| `docs/readme/README.ko.md` | `onorca.dev`, `stablyai/orca` | 👀 |
-| `docs/readme/README.ja.md` | `onorca.dev`, `stablyai/orca` | 👀 |
-| `docs/readme/README.fr.md` | `onorca.dev`, `stablyai/orca` | 👀 |
-| `.github/CONTRIBUTING.md` | `stablyai/orca` | 👀 |
+| `docs/readme/README.zh-CN.md` | `onorca.dev`, `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' README.zh-CN.md` = 0 hits |
+| `docs/readme/README.pt.md` | `onorca.dev`, `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' README.pt.md` = 0 hits |
+| `docs/readme/README.ko.md` | `onorca.dev`, `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' README.ko.md` = 0 hits |
+| `docs/readme/README.ja.md` | `onorca.dev`, `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' README.ja.md` = 0 hits |
+| `docs/readme/README.fr.md` | `onorca.dev`, `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' README.fr.md` = 0 hits |
+| `.github/CONTRIBUTING.md` | `stablyai/orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): `rg -i -e 'orca|stablyai|onorca' CONTRIBUTING.md` = 0 hits |
 | `WINDOWS_SETUP_GUIDE.md` | Orca references | ✅ | Rebranded, zero orca/stablyai refs remaining |
 
 ### CI/CD Workflows (`.github/workflows/`)
 
 | File | Old Reference | Status |
 |------|--------------|--------|
-| `hourly-mac-build.yml` | `stablyai/fabrica-hourly` | 👀 |
-| `daily-mac-build.yml` | `stablyai/fabrica-daily` | 👀 |
-| `adhoc-mac-build.yml` | `stablyai/fabrica-adhoc` | 👀 |
-| `release-cut.yml` | `stablyai/fabrica`, SignPath slug `orca` | 👀 |
-| `release-mac-build.yml` | `stablyai/fabrica` | 👀 |
-| `release-policy.yml` | `stablyai/fabrica` | 👀 |
-| `readme-downloads-badge.yml` | `stablyai/fabrica` | 👀 |
-| `homebrew-bump.yml` | `stablyai/fabrica`, `stablyai/homebrew-orca` | 👀 |
+| `hourly-mac-build.yml` | `stablyai/fabrica-hourly` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (HOURLY_REPO=Auto-Scalers/fabrica-hourly, github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `daily-mac-build.yml` | `stablyai/fabrica-daily` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (DAILY_REPO=Auto-Scalers/fabrica-daily, github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `adhoc-mac-build.yml` | `stablyai/fabrica-adhoc` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (ADHOC_REPO=Auto-Scalers/fabrica-adhoc, github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `release-cut.yml` | `stablyai/fabrica`, SignPath slug `orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (github.repository='Auto-Scalers/fabrica'); slug-orca=0; **also fixed in this wave**: line 1147 FABRICA_DIAGNOSTICS_TOKEN_URL onfabrica.dev → https://fabrica-ai.vercel.app/api/diagnostics/token (out-of-scope of prior cask+CI diagnostics fix) |
+| `release-mac-build.yml` | `stablyai/fabrica` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `release-policy.yml` | `stablyai/fabrica` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `readme-downloads-badge.yml` | `stablyai/fabrica` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 (github.repository='Auto-Scalers/fabrica'); slug-orca=0 |
+| `homebrew-bump.yml` | `stablyai/fabrica`, `stablyai/homebrew-orca` | ✅ | VERIFIED 2026-08-29 (promote wave re-run): stablyai=0; Auto-Scalers/Fabrica refs≥1 ("Automated bump from Auto-Scalers/fabrica release"); slug-orca=0 |
 
 ### i18n Locale Files
 
@@ -211,8 +211,8 @@ These are NOT grouped — they're ongoing sweeps across the codebase.
 
 | File | What | Status |
 |------|------|--------|
-| `Casks/fabrica.rb` | Homepage `onfabrica.dev`, artifact names | 👀 |
-| `Casks/fabrica@rc.rb` | Same | 👀 |
+| `Casks/fabrica.rb` | Homepage `onfabrica.dev`, artifact names | ✅ | VERIFIED 2026-08-29 (promote wave re-run): homepage='https://fabrica-ai.vercel.app' (line 12); name='Fabrica'; `rg -i 'orca|onfabrica' Casks/fabrica.rb` = 0 hits |
+| `Casks/fabrica@rc.rb` | Same | ✅ | VERIFIED 2026-08-29 (promote wave re-run): homepage='https://fabrica-ai.vercel.app' (line 12); name='Fabrica'; `rg -i 'orca|onfabrica' Casks/fabrica@rc.rb` = 0 hits |
 
 ---
 
@@ -276,7 +276,7 @@ How it works (from Orca backup):
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | APP-F1 | Full rebrand audit — grep for `stablyai`, `orca`, `onorca.dev`, `autoskiller` | ✅ | CLOSURE EVIDENCE COMPLETE Aug 23: F1-FINAL-SWEEP (321 hits, 0 unclassified after manifest subtraction, onFABRICA fully clear incl former relay-pairing fixtures); F1-GROUP-EVIDENCE (all Group A-D rows PASS fresh file:line); F1-MANIFEST-RECONCILE (321 = 282+22+6+3+8 exact). Runbook pre-exec results appended. Formal sign-off note: W1/APP-F3 full-suite green remains the final prerequisite per runbook step 1 |
-| APP-F2 | Build installers | ⬜ | **PM DECIDED: skip macOS/Linux for now.** Build Windows .exe installer (electron-builder NSIS). Unsigned OK for Beta — SmartScreen warning acceptable. Add installer to landing page download. |
+| APP-F2 | Build installers | ✅ | **DONE 2026-08-28/29 (reconciled).** Windows `.exe` installer (electron-builder NSIS) + Android APK built and **PUBLISHED** in GitHub release v0.0.43. Landing page `/download` wired and pushed (live). macOS/Linux skipped per PM (no macOS builds for Beta). SmartScreen warning accepted (unsigned OK for Beta). |
 | APP-F3 | Lint + test pass | ✅ | VERIFIED Aug 23-24: lint exit 0 full chained pipeline; typecheck exit 0 (node+cli+web). Brand-casualty test failures fixed in 7 files. R6 re-confirmation: desktop suite 48,804 pass / 448 fail / 649 skip (fail -27 vs baseline, 0 new failures); mobile suite 3,409 pass / 0 fail / 3 skip (baseline matched). Old-word sweep R6: 321 hits, all exceptions, 0 violations. Build R6: exit 0, CLI clean, dist/ clean. Quality review R6: 5/5 key files PASS. Residual 448 desktop failures = Windows-env (POSIX spawns, macOS-only APIs, CRLF, CJK encoding, watcher infra) |
 
 ---
@@ -287,21 +287,21 @@ How it works (from Orca backup):
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| APP-G1 | UI color contrast audit — fix unreadable text | ❌ | **CANCELLED 2026-08-28 (PM deferred — "forget for now").** Worker released. Reopen later if needed. |
+| APP-G1 | UI color contrast audit — fix unreadable text | ✅ | **DONE 2026-08-29 (g1-contrast, ctx_local).** Token-level WCAG AA fixes in `:root` + `.dark` + `.plugin-security-chrome` blocks of `src/renderer/src/assets/main.css`; the `.pane-link-tooltip` rule in `src/renderer/src/assets/terminal.css`; the `.window-controls-close:hover` rule in main.css; and the `.mp-term-comment` rule in `src/renderer/src/assets/mobile-page.css`. **Tokens adjusted (light + dark mirrors):** `--primary` 0.62→0.46 0.20 42 (deep forge copper; white-fg contrast now 7.52:1 / 5.30:1 light/dark); `--accent` 0.55→0.30 0.13 250 (blue; white-fg 13.0:1); `--destructive` 0.60→0.52 0.22 25 (white-fg 6.0:1); `--ring` 0.62→0.46 light / 0.65 dark (focus ring clears 7.29:1 light, 5.73:1 dark); `--muted-foreground` 0.48→0.28 light / 0.64→0.70 dark (bg/card/muted 11.9-14.2:1 light, 6.9-7.6:1 dark); `--border` alpha-75%-0.88→0.30 solid / dark 0.25→0.55 alpha-75% (3.05-12.71:1 vs bg/card/sidebar/worktree); `--input` 0.90→0.30 light / 0.22→0.55 dark (4.17-12.71:1); `--sidebar-border` / `--worktree-sidebar-border` mirror `--border`; `--tab-group-split-divider` / `-strong` 0.58/0.50→0.30 light (card 13.26:1); `--status-success/warn/error` darkened in light to match new primary chroma scale; `--ai-action-accent` + `--chart-1` mirror new primary; `--terminal-pane-title-on-light-{fg,input-fg}` alpha-blended rgb(24,24,27/0.64|0.82)→oklch(0.20 0 0) (16.84:1 on light canvas); `--terminal-pane-title-on-light-placeholder` rgb(.../0.48)→oklch(0.40 0 0) (8.57:1, AA 4.5:1 met). **Security chrome (`--fabrica-security-*`):** light `--muted-foreground` 0.50→0.28 (4.75-4.94:1), light `--border`/`--input`/`--ring` 0.90/0.90/0.65→0.40 (8.95:1 all); dark `--border` 7%→15% alpha (3.80:1), dark `--input` 15%→20% (4.73:1), dark `--accent` 0.32→0.28 (white-fg 4.88:1). **Three non-token hot fixes:** `.pane-link-tooltip` color `#a1a1aa` → `#e4e4e7` + bg `rgba(24,24,27,0.85)` → `rgb(0 0 0 / 0.92)` (20.05:1 on real dark terminal canvas). `.window-controls-close:hover` bg `#c42b1c` → `#900000` (white-X now 6.10:1, still recognisable close-red). `.mp-term-comment` color `#565f89` → `#7a87b6` (now 5.37:1 on Tokyo-Night mobile bg `#111111`). **Audit script:** kept pre-existing `contrast-audit.js`; ephemeral contrast scripts were used to verify and deleted. **Surfaces covered:** sidebar/navbar titles & muted text, settings panes, dialog body text, button labels (primary/accent/destructive), disabled/secondary text, focus rings, borders/inputs/tab-group dividers, terminal/code-block panes (dark + light surface variants), popovers/tooltips, security chrome for plugin provenance UI, terminal link tooltip overlay, window close button, mobile landing-page mock terminal comment text. **Verification:** final token audit — all pairs now PASS (light + dark + security chrome). **`pnpm typecheck` exit 0** (clean). **`pnpm lint` exit 1** but the 26 failures are all pre-existing (`contrast-audit.js`, `electron.vite.config.1787972008048.mjs`, four `*.mjs` with `!` shebangs) — zero new failures introduced from this change. |
 | APP-G2 | Orca/Fabrica isolation audit | ✅ | **DIAGNOSIS DONE 2026-08-28.** Isolation sound on app-id, data dir, CLI, deep-link, keychain managed-creds, IPC. REAL RISKS: (1) MED shared agent-skill names — Fabrica skills install into agent skills root alongside Orca's; fix prefix folder names (fabrica-computer-use, etc) or install under `fabrica/` subdir. (2) MED shared `~/.hermes` (HERMES_HOME default) with Orca; fix default `~/.fabrica-hermes`. (3) MED remote `~/.factory` agent-hook scripts — generic; fix namespace `~/.fabrica-factory`. (4) LOW read-only Claude Code keychain entry (not Orca). See APP-G2-FIX |
-| APP-G3 | Enhance icon/logo — colored icon visible in-app | ❌ | **CANCELLED 2026-08-28 (PM deferred — "forget for now").** Worker released. Reopen later if needed. |
+| APP-G3 | Enhance icon/logo — colored icon visible in-app | ✅ | **DONE 2026-08-29 (icon integration).** DEFAULT APP ICON NOW = LIGHT brand variant: `DEFAULT_APP_ICON_ID='light'` in `src/shared/app-icon.ts` (was `'classic'`); default wiring in `src/shared/constants.ts` already references the constant so the change propagates to window/EXE/tray defaults. Build/installer master icons regenerated from `app_icon_light.png` (copied over `resources/icon-source/fabrica-logo_icon.png`, then ran `node config/scripts/build-fabrica-icons.mjs` WITHOUT `FABRICA_REGEN_PICKER_ICONS`, so `fabrica-dark.png`/`fabrica-light.png` PM custom art was left untouched — still 157842/234456 bytes). Regenerated masters: `resources/icon.png`, `resources/icon-dev.png`, `resources/build/icon.png` (1024), `resources/build/icon.ico` (Windows EXE), `resources/build/icon.icns` (mac/Linux), `resources/tray/fabrica-menu-barTemplate.png` + `@2x`. The `dark` picker variant is preserved as-is (do NOT change). App-icon picker now has `dark`/`light` brand variants (PM `app_icon_dark.png`/`app_icon_light.png` copied to `resources/app-icons/fabrica-dark.png`/`fabrica-light.png`, replacing the auto-generated monochrome emblems). In-app `resources/logo.svg` rewritten as a self-contained base64-embedded SVG wrapping `app_icon_dark.png` → colored brand mark now renders in titlebar (App.tsx), Landing.tsx, OnboardingFlow.tsx, fabrica-logo-settings-icon.tsx, SidebarSettingsHelpMenu.tsx. All old `watercolor`/`blue` filenames removed; option ids = classic/dark/light. **FULL ICON-SURFACE SWEEP (task_icon_fullreplace, 2026-08-29):** every remaining old-emblem raster replaced with `app_icon_dark.png` — `resources/icon.png`, `resources/icon-dev.png`, `resources/build/icon.png` (1024 master), `resources/build/icon.ico` (Windows EXE, regenerated via pngjs — no ImageMagick needed), `resources/build/icon.icns` (mac/Linux, regenerated via pngjs hand-built icns), `resources/tray/fabrica-menu-barTemplate.png` + `@2x` (monochrome black silhouette via the generator's pngjs pipeline — NOT a full-color icon), `resources/icon-source/icon.icon/Assets/logo.svg` (macOS IconComposer source — old white emblem path replaced with the embedded new-brand raster), `resources/openclaude-logo.png` (old in-app brand logo imported by `agent-catalog.tsx` — content replaced with new brand art; filename kept so translated docs links still resolve), and mobile `assets/icon.png` / `splash-icon.png` / `adaptive-icon.png` / `favicon.png` (downscaled 48×48 for favicon). `config/scripts/build-fabrica-icons.mjs` source pointer fixed from the missing `../STRATEGY/Assets/fabrica-logo_icon.png` → committed `resources/icon-source/fabrica-logo_icon.png` (copy of `app_icon_dark.png`), and its `fabrica-dark.png`/`fabrica-light.png` writes GUARDED behind `FABRICA_REGEN_PICKER_ICONS=1` so the PM's custom picker art is never clobbered. FOLLOW-UP (optional): macOS IconComposer `logo.svg` now embeds a raster rather than a true vector emblem — committed `resources/build/icon.icns` already carries the new art, so shipped mac icon is correct; a proper vector emblem there is a nice-to-have. |
 | APP-G4 | Investigate unavailable features (sign-in, etc.) | ✅ | **DIAGNOSIS DONE 2026-08-28.** ROOT CAUSE: `/v1/desktop/*` backend API not deployed — `fabrica-ai.vercel.app` doesn't resolve (DNS fail); desktop calls `/v1/desktop/auth/authorize`, `/v1/artifacts`, `/v1/desktop/auth/relay-token` which don't exist on web backend (Fabrica-web only has `/api/auth/*` Supabase web login, different contract). `getFABRICACloudAuthConfig()` returns configured:false → UI disables sign-in. BROKEN: cloud sign-in/profiles, artifact share/publish, mobile relay pairing, diagnostics. See APP-G4-FIX (cross-project: Fabrica-web backend) |
 | APP-G5 | Investigate plugins not listing | ✅ | **DIAGNOSIS DONE 2026-08-28.** ROOT CAUSE: owner-string mismatch in provenance validation. `OFFICIAL_MARKETPLACE_OWNER='auto-scalers'` (plugin-marketplace.ts:11) vs `fabrica-marketplace.json:3` `"owner":"autoscalers"`. plugin-marketplace-provenance.ts:14-19 throws "unexpected owner" → seed stores no snapshot → `listPlugins()` returns []. FIX: change `owner` → `"auto-scalers"` in Fabrica-plugins/fabrica-marketplace.json AND push to main (loader git-clones remote). See APP-G5-FIX |
 | APP-G6 | Android APK handling | ✅ | **INVESTIGATION DONE 2026-08-28.** Mobile app 100% rebranded; pairing relay Fabrica-operated + live (fabrica-relay.workers.dev), pairs out-of-box. RECOMMENDED: Option (a) build+sign own Fabrica APK via EAS, sideload/internal for Beta; defer $25 Google Play to post-Beta. Effort ~0.5 day; needs eas.json + keystore (signing infra absent) + Android SDK/NDK. PM to approve. See APP-G6-DEC |
-| APP-G7 | UI rebrand to non-technical + settings reorder + font/zoom defaults | ❌ | **CANCELLED 2026-08-28 (PM deferred — "forget for now").** Worker released. Reopen later if needed. |
+| APP-G7 | UI rebrand to non-technical + font/zoom defaults | ✅ | **DONE 2026-08-29 (`task_app_g7`, `ctx_local`, `term_local_app_g7`).** **(a) Non-technical copy:** rewrote 10 user-facing settings descriptions in `en.json` to drop jargon: `TerminalAppearanceSection.scrollSpeed.description` + `helper` (×2 surfaces) replaced "scrollback / modifier / TUI" with plain phrasing; `BrowserLinkRoutingSetting.description` + `descriptionBase` dropped "http(s)"; `BrowserTerminalLinkActionsSetting.description` softened "modifier-click"; `GeneralUpdateSettingsSection` "Marketplaces" / "Release channel" descriptions dropped "pinned Git repos", "channels", "unvetted builds"; `EphemeralVmsPane.description` clarified "recipe-created runtimes are workspace-owned"; `LinearAgentSkill` "Task Sources" arrow character fixed (`?` → `→`). **i18n parity:** mirrored 7 keys into `es.json` (CJK ko/ja/zh are SHA256-identical en-fallbacks per APP-E5, refreshed in lockstep — `Get-FileHash` confirms `4F48B107…` × 4). Tests untouched: `EphemeralVmsPane.recipesHelp`, `REVERTED_KEYS`, and 43 `technical-literal-catalog-values` rows all still match. **(b) Font/zoom defaults:** `uiZoomLevel` initial default bumped from `0` → `0.5` (one Electron zoom step above 100% — slightly larger window on first launch, less cramped) at 3 spots: `src/shared/constants.ts:488` (`getDefaultSettings`), `src/renderer/src/store/slices/ui.ts:2397` (UI slice initial state), `src/renderer/src/lib/startup-ui-hydration.ts:58` (fallback defaults). `terminalFontSize: 14`, `editorFontZoomLevel: 0`, and all other defaults UNCHANGED. Existing profile values still hydrate over the new defaults (the bump only affects fresh installs). **Settings panel structure NOT modified** — only label text inside strings; no reordering, regrouping, or nav changes. **Note:** settings panel reorder was initially split to APP-G8 but **dropped per PM 2026-08-29** (not in scope). |
 
 ### Group G — Follow-up Fixes (deferred, need dispatch/decision)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | APP-G2-FIX | Isolate shared namespaces from Orca | ✅ | (skills) **FIXING per PM decision 2026-08-28** — add LOWERCASE `fabrica-` prefix ONLY to skills that don't already start with `fabrica-`; never `Fabrica-`, never `fabrica-fabrica` double. Revert the capital/double renames; keep slash commands lowercase (`/fabrica-linear`). (HERMES_HOME) KEEP AS-IS per PM. (remote `~/.factory`) → `~/.fabrica-factory` across 11 hook-service.ts files (DONE, remote-install tests pass; 1 pre-existing Windows .cmd failure unrelated). Not committed (PM does) |
-| APP-G4-FIX | Deploy /v1/desktop/* backend (Fabrica-web) | ✅ | **DONE + build verified 2026-08-28** (`npm run build` compiles, all 10 routes present). Routes: `app/api/v1/desktop/auth/{authorize,session,refresh,capabilities,profile,org,logout,relay-token}` + `app/api/v1/artifacts/{route,[id]}`, backed by Supabase, relay-token mints JWT for Fabrica-relay. **PM MUST: deploy to Vercel + set env (Supabase keys, FABRICA_RELAY_JWT_SECRET).** Not committed (PM does) |
-| APP-G5-FIX | Fix marketplace owner mismatch | ✅ | **DONE 2026-08-28.** Committed locally in Fabrica-plugins as `bca1b85` (owner → auto-scalers) + regression test. OFFICIAL_MARKETPLACE_OWNER in Fabrica-app already matches. **PM MUST PUSH Fabrica-plugins to origin/main** (app git-clones remote main) |
+| APP-G4-FIX | Deploy /v1/desktop/* backend (Fabrica-web) | ✅ | **DONE + build verified 2026-08-28 + DEPLOYED to Vercel by PM.** Routes: `app/api/v1/desktop/auth/{authorize,session,refresh,capabilities,profile,org,logout,relay-token}` + `app/api/v1/artifacts/{route,[id]}`, backed by Supabase, relay-token mints JWT for Fabrica-relay. Vercel env (Supabase keys + FABRICA_RELAY_JWT_SECRET) applied |
+| APP-G5-FIX | Fix marketplace owner mismatch | ✅ | **DONE 2026-08-28 + PUSHED to origin/main by PM.** Committed in Fabrica-plugins as `bca1b85` (owner → auto-scalers) + regression test. OFFICIAL_MARKETPLACE_OWNER in Fabrica-app already matches. App git-clones remote main — plugins now list correctly |
 | APP-G6-DEC | Build+sign Fabrica APK (Option a) | ✅ | Prep DONE 2026-08-28: `mobile/eas.json` (internal sideload APK profile) + `mobile/SIGNING.md` created, bundle id `com.autoscalers.fabrica.mobile` confirmed. **BUILD BLOCKED by env** (no eas CLI / EXPO_TOKEN / Android SDK / keystore / network in sandbox). PM must run `eas build -p android --profile preview` on a machine with EAS+SDK. |
 | APP-G4-ENV | Set Vercel env (Supabase keys + FABRICA_RELAY_JWT_SECRET) | ✅ | **DONE 2026-08-28 (PM confirmed).** Worker generated FABRICA_RELAY_JWT_SECRET + exact env-var list, persisted to .Fabrica-web-board/Fabrica-web-tasks.md. Could not `vercel env add` (not authed) — PM applies via `vercel login`/VERCEL_TOKEN or Vercel dashboard. supabase/ folder kept (defines artifacts table). |
 | APP-G6-BUILD | Actually run the Fabrica APK `eas build` | ✅ | **BLOCKED on EAS auth 2026-08-28.** Worker installed eas-cli 23.0.0 (network OK), confirmed keystore+SDK NOT needed (EAS auto-generates for preview). Build cannot start: `EXPO_TOKEN` unset, `eas whoami` = Not logged in. PM must `eas login` OR set `EXPO_TOKEN`, then `cd mobile && eas build -p android --profile preview --non-interactive`. Worker stopped per instructions. |
@@ -317,17 +317,23 @@ How it works (from Orca backup):
 | G4 sign-in | g4-signin-diag | task_d1578d24026e | ctx_d3853317813c | term_c23b1474-8a5d-4e14-ad67-5425535f1d79 | ✅ done (root cause found) |
 | G6 android | g6-android-apk | task_394c445816fc | ctx_0a53877e1f4c | term_0527c01b-ed69-4d01-863a-e2e215d2846c | ✅ done (recommendation given) |
 | G2 isolation | g2-isolation-audit | task_dc661529fd62 | ctx_4d2dba08255e | term_f9745394-bce4-4d36-aa09-54e82fa31a86 | ✅ done (report delivered) |
-| G5-FIX | g5-marketplace-owner | task_277795566bdf | ctx_4679ed7ad631 | term_6d9ce3ab-ef0f-4b35-8fd6-e9d7cfdcbfc8 | ✅ done (committed bca1b85, PM push needed) |
+| G5-FIX | g5-marketplace-owner | task_277795566bdf | ctx_4679ed7ad631 | term_6d9ce3ab-ef0f-4b35-8fd6-e9d7cfdcbfc8 | ✅ done (committed bca1b85; PUSHED to Fabrica-plugins origin/main by PM) |
 | G6-APK | g6-android-build | task_87fccc3d9c87 | ctx_ac93e2e15b3d | term_8ab229a4-2d8b-47ba-b1df-62ac9129497f | ✅ released — APK built via G6-RUN: https://expo.dev/artifacts/eas/-sZ8VjUyqnUyJaGJR64PsTShJEbHrTdYrieODLyG7U8.apk (v0.0.43, versionCode 12) |
 | G2-skills | g2-skills-prefix | task_ba75c9d27293 | ctx_7a334c984dc6 | term_ed7a7bac-1cc3-4397-9a09-573e7a8c9cb5 | ✅ released — lowercase `fabrica-` prefix applied to 8 skill dirs + constants + guides + manifest; lint/test warnings pre-existing (untouched files) |
 | G2-factory | g2-remote-factory | task_0fd417520161 | ctx_fc0ec7b1ff9d | term_2b9b0d11-3fce-4c04-aca4-a18df8b3deb4 | ✅ released — remote agent-hook scripts dir namespaced `.fabrica/agent-hooks` + droid `.factory/settings.json` → `.fabrica-factory` across all remote hook-services (droid, copilot, grok, antigravity, claude, devin, cursor, gemini, command-code, codex, kimi). lint+typecheck pass; remote-install tests pass |
-| G4-FIX | g4-cloud-backend | task_2741aeb5334a | ctx_d79127f5599f | term_ab6de54f-67ef-4317-8a16-eac5c7629eb8 | ✅ released — 10 routes built, `npm run build` verified (all routes compile); PM deploys + Vercel env |
-| G1 | g1-contrast | task_21a3e9886873 | ctx_89a3273252c5 | term_fe367b5d-ff3f-4669-85de-3d4bdb9cc4d2 | ❌ released — CANCELLED (PM deferred 2026-08-28) |
-| G3 | g3-icon | task_595e5b1c74d3 | ctx_4c144916ded9 | term_e9605f9b-c6c5-481f-8e81-9dfc9eed794b | ❌ released — CANCELLED (PM deferred 2026-08-28) |
-| G7 | g7-nontechnical | task_43eddf491ff1 | ctx_216300cd603e | term_dfc5a95f-7499-45d7-9c21-1c99e1a5d0e0 | ❌ released — CANCELLED (PM deferred 2026-08-28) |
-| G4-ENV | g4-env-vars | task_e214e115ff0d | ctx_733c8c633032 | term_d5e7db7a-e3ab-41dc-8d54-8a0a469a717b | ✅ released — env list + secret generated/persisted; PM applies via vercel login/dashboard |
+| G4-FIX | g4-cloud-backend | task_2741aeb5334a | ctx_d79127f5599f | term_ab6de54f-67ef-4317-8a16-eac5c7629eb8 | ✅ released — 10 routes built, `npm run build` verified; DEPLOYED to Vercel + env (Supabase keys + FABRICA_RELAY_JWT_SECRET) set by PM |
+| G1 | g1-contrast | task_21a3e9886873 | ctx_89a3273252c5 | term_fe367b5d-ff3f-4669-85de-3d4bdb9cc4d2 | ⬜ reopened 2026-08-29 (PM wants done) — no active worker, awaiting dispatch |
+| G1 (this pass) | g1-contrast-aa | task_app_g1 | ctx_local | term_local_app_g1 | ✅ done 2026-08-29 — token-level WCAG AA fixes in main.css + terminal.css; all pairs PASS in light + dark + security chrome; typecheck exit 0; lint pre-existing only |
+| G3 default | g3-icon-lightdefault | task_icon_lightdefault | ctx_local | term_local_worker3 | ✅ done — DEFAULT_APP_ICON_ID='light'; build/installer masters regenerated from app_icon_light.png; dark picker variant preserved |
+| G3 | g3-icon | task_595e5b1c74d3 | ctx_4c144916ded9 | term_e9605f9b-c6c5-481f-8e81-9dfc9eed794b | ✅ done (reopened + completed via G3 icon integration + full icon sweep + light-default workers; all old-emblem rasters replaced, ico/icns/tray regenerated in-repo, colored in-app logo.svg wired, default app icon = light) |
+| G3 icon integration | icon-brand-png | task_icon_integration | ctx_local | term_local_worker | ✅ done (dark/light variants added + colored in-app logo.svg wired) |
+| G3 full icon sweep | icon-full-replace | task_icon_fullreplace | ctx_local | term_local_worker2 | ✅ done (all old-emblem rasters replaced; ico/icns/tray regenerated in-repo via pngjs pipeline; PM picker art guarded) |
+| G7 | g7-nontechnical | task_app_g7 | ctx_local | term_local_app_g7 | ✅ done 2026-08-29 (reopened + completed; copy rewording + font/zoom defaults landed) |
+| G4-ENV | g4-env-vars | task_e214e115ff0d | ctx_733c8c633032 | term_d5e7db7a-e3ab-41dc-8d54-8a0a469a717b | ✅ released — env list + secret generated/persisted; APPLIED by PM via vercel login/dashboard |
 | G6-BUILD | g6-apk-build | task_5f477c6bddfb | ctx_448d640a3193 | term_0dc02f3c-87f6-434a-94b4-adf8bc02c967 | 🚫 released — BLOCKED on EAS auth (PM runs eas login / sets EXPO_TOKEN, then eas build) |
 | G6-RUN | g6-apk-run | task_6b5f084cef83 | ctx_dc6df36d4d48 | term_623f9dba-b0f7-4e71-aa7e-830ea78562ac | ✅ released — APK build finished, URL reported: https://expo.dev/artifacts/eas/-sZ8VjUyqnUyJaGJR64PsTShJEbHrTdYrieODLyG7U8.apk |
+| G-promote-fix | cask+ci-diagnostics | task_app_cask_diagnostics_fix | ctx_local | term_local_app_cask_fix | ✅ done 2026-08-29 — FIXED: Casks/fabrica.rb + Casks/fabrica@rc.rb homepage onfabrica.dev → fabrica-ai.vercel.app; 4 CI workflows (hourly/daily/adhoc/release-mac-build) FABRICA_DIAGNOSTICS_TOKEN_URL onfabrica.dev → fabrica-ai.vercel.app/api/diagnostics/token. grep clean on the 6 specified files. Promote wave to re-run. NOTE: separate `.github/workflows/release-cut.yml:1147` also has `https://www.onfabrica.dev/diagnostics/token` — NOT in scope of this fix (brief listed only the 4 mac-build files); flagging to orchestrator. |
+| G-promote-rerun | promote-wave-rerun | task_app_promote_wave_rerun | ctx_local | term_local_app_promote_wave_rerun | ✅ done 2026-08-29 — Re-ran all 20 👀 rows after cask+CI diagnostics fix. (1) Fixed release-cut.yml:1147 FABRICA_DIAGNOSTICS_TOKEN_URL onfabrica.dev → https://fabrica-ai.vercel.app/api/diagnostics/token (single-line edit; `rg -n 'onfabrica' release-cut.yml` = 0 hits). (2) Verified all 20 rows PASS with fresh evidence; flipped all 👀 → ✅ in 4 grouped edits. (3) Updated _Last recount note; Rollup stays 43/43 (100%). |
 
 ---
 
@@ -335,12 +341,12 @@ How it works (from Orca backup):
 
 | Field | Value |
 |---|---|
-| **Current Group** | Group G — UI/UX Enhancement & Launch Feedback |
-| **Current Task** | G2/G4/G5/G6 diagnosis DONE. Await PM decision on G4-FIX (backend) + G6-DEC (APK). Then dispatch G2-FIX, G5-FIX, G1, G3, G7 |
-| **Last Action** | Dispatched 4 diagnosis workers (G5/G4/G6/G2) via orchestration; all returned root cause. worker_done sent, workers released. Findings recorded |
-| **Next Action** | Get PM decision on G4-FIX (deploy /v1/desktop/* backend?) and G6-DEC (APK option a/b/c). Then dispatch fix workers for G5 (owner), G2 (namespace), and start G1/G3/G7 |
-| **Blockers** | G4-FIX needs Fabrica-web backend deploy (cross-project). G6-DEC needs PM. G5-FIX needs Fabrica-plugins repo push |
-| **Last Checkpoint** | 2026-08-28 (Group G diagnosis complete; follow-up fixes queued) |
+| **Current Group** | Beta Launch — COMPLETE; Group G enhancements in progress |
+| **Current Task** | G3 icon integration DONE; APP-F2 RECONCILED; **G1 UI contrast DONE** (token-level WCAG AA); **G7 non-technical copy + font/zoom DONE** (en.json/es.json reworded, uiZoomLevel 0→0.5). **G8 REMOVED per PM 2026-08-29** (settings panel reorder dropped, not in scope). **PROMOTE WAVE RE-RUN COMPLETE 2026-08-29**: all 20 stale 👀 rows → ✅; release-cut.yml:1147 onfabrica diagnostics env also fixed. Rollup 43/43 (100%) — 0 TODO, 0 👀. |
+| **Last Action** | Promote wave re-run completed (all 20 👀 → ✅, release-cut.yml:1147 diagnostics env fixed). Rollup 43/43 (100%) — 0 TODO, 0 👀. |
+| **Next Action** | None — all tasks DONE. Update pipeline moved to Fabrica-update sub-project. |
+| **Blockers** | None — all cleared |
+| **Last Checkpoint** | 2026-08-29 (Beta launched) |
 
 ---
 

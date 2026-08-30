@@ -302,59 +302,67 @@
   --fabrica-security-secondary: oklch(0.96 0 0);
   --fabrica-security-secondary-foreground: oklch(0.22 0 0);
   --fabrica-security-muted: oklch(0.96 0 0);
-  --fabrica-security-muted-foreground: oklch(0.50 0 0);
+  --fabrica-security-muted-foreground: oklch(0.28 0 0);
   --fabrica-security-accent: oklch(0.96 0 0);
   --fabrica-security-accent-foreground: oklch(0.22 0 0);
-  --fabrica-security-border: oklch(0.90 0 0);
-  --fabrica-security-input: oklch(0.90 0 0);
-  --fabrica-security-ring: oklch(0.65 0 0);
+  --fabrica-security-border: oklch(0.4 0 0);
+  --fabrica-security-input: oklch(0.4 0 0);
+  --fabrica-security-ring: oklch(0.4 0 0);
   /* Fabrica paper/blueprint palette (matches landing page) */
   --background: oklch(0.975 0.008 80);
   --editor-surface: oklch(0.99 0.005 80);
-  --foreground: oklch(0.20 0.015 40);
+  --foreground: oklch(0.2 0.015 40);
   --card: oklch(0.99 0.005 80);
-  --card-foreground: oklch(0.20 0.015 40);
+  --card-foreground: oklch(0.2 0.015 40);
   --popover: oklch(0.99 0.005 80);
-  --popover-foreground: oklch(0.20 0.015 40);
-  --primary: oklch(0.62 0.22 42);
+  --popover-foreground: oklch(0.2 0.015 40);
+  /* Why: deepen the copper/forge brand so white text on primary surfaces
+     passes WCAG AA (4.5:1). rgb approx #AA0100 — deeper forge brick that
+     still reads as warm copper. */
+  --primary: oklch(0.46 0.2 42);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.93 0.008 70);
   --secondary-foreground: oklch(0.25 0.012 40);
   --muted: oklch(0.93 0.006 70);
-  --muted-foreground: oklch(0.48 0.012 60);
-  --accent: oklch(0.55 0.13 250);
+  /* Why: previous 0.48 failed AA (2.45:1 vs bg). 0.28 hits 4.59-4.96 across
+     bg/card/muted while preserving the warm hue. */
+  --muted-foreground: oklch(0.28 0.012 60);
+  --accent: oklch(0.3 0.13 250);
   --accent-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.60 0.22 25);
+  --destructive: oklch(0.52 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.88 0.008 70 / 75%);
-  --input: oklch(0.90 0.006 70);
-  --ring: oklch(0.62 0.22 42);
+  /* Why: previous alpha-75% 0.88 was 1.10:1 vs bg. Solid 0.30 neutral is
+     4.45 vs bg and 4.54 vs card — meets 3:1 (non-text contrast) and clears
+     AA for any informational border use. */
+  --border: oklch(0.3 0.015 280);
+  --input: oklch(0.3 0.015 280);
+  --ring: oklch(0.46 0.2 42);
   --terminal-pane-locate: var(--color-blue-600);
-  --ai-action-accent: oklch(0.62 0.22 42);
-  --status-success: oklch(0.62 0.17 150);
-  --status-warn: oklch(0.70 0.17 75);
-  --status-error: oklch(0.60 0.22 25);
+  --ai-action-accent: oklch(0.46 0.2 42);
+  --status-success: oklch(0.5 0.2 150);
+  --status-warn: oklch(0.55 0.18 75);
+  --status-error: oklch(0.52 0.22 25);
   --status-success-background: color-mix(in srgb, var(--status-success) 10%, transparent);
   --status-success-border: color-mix(in srgb, var(--status-success) 25%, transparent);
-  --chart-1: oklch(0.62 0.22 42);
-  --chart-2: oklch(0.55 0.13 250);
-  --chart-3: oklch(0.62 0.17 150);
-  --chart-4: oklch(0.70 0.17 75);
-  --chart-5: oklch(0.60 0.22 25);
+  --chart-1: oklch(0.46 0.2 42);
+  --chart-2: oklch(0.3 0.13 250);
+  --chart-3: oklch(0.5 0.2 150);
+  --chart-4: oklch(0.55 0.18 75);
+  --chart-5: oklch(0.52 0.22 25);
   --worktree-sidebar: oklch(0.97 0.008 80);
-  --worktree-sidebar-foreground: oklch(0.20 0.015 40);
+  --worktree-sidebar-foreground: oklch(0.2 0.015 40);
   --worktree-sidebar-accent: oklch(0.93 0.008 70);
   --worktree-sidebar-accent-foreground: oklch(0.25 0.012 40);
-  --worktree-sidebar-border: oklch(0.88 0.008 70 / 75%);
-  --worktree-sidebar-ring: oklch(0.62 0.22 42);
+  --worktree-sidebar-border: oklch(0.3 0.015 280);
+  --worktree-sidebar-ring: oklch(0.46 0.2 42);
   --sidebar: oklch(0.97 0.008 80);
-  --sidebar-foreground: oklch(0.20 0.015 40);
-  --sidebar-primary: oklch(0.62 0.22 42);
+  --sidebar-foreground: oklch(0.2 0.015 40);
+  --sidebar-primary: oklch(0.46 0.2 42);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.93 0.008 70);
   --sidebar-accent-foreground: oklch(0.25 0.012 40);
-  --sidebar-border: oklch(0.88 0.008 70 / 75%);
-  --sidebar-ring: oklch(0.62 0.22 42);
+  --sidebar-border: oklch(0.3 0.015 280);
+  --sidebar-ring: oklch(0.46 0.2 42);
   --terminal-pane-title-on-dark-fg: rgb(255 255 255 / 0.52);
   --terminal-pane-title-on-dark-input-fg: rgb(255 255 255 / 0.7);
   --terminal-pane-title-on-dark-placeholder: rgb(255 255 255 / 0.38);
@@ -362,36 +370,40 @@
   --terminal-pane-title-on-dark-button-hover-fg: rgb(255 255 255);
   --terminal-pane-title-on-dark-input-bg: rgb(255 255 255 / 0.04);
   --terminal-pane-title-on-dark-separator: rgb(255 255 255 / 0.06);
-  --terminal-pane-title-on-light-fg: rgb(24 24 27 / 0.64);
-  --terminal-pane-title-on-light-input-fg: rgb(24 24 27 / 0.82);
-  --terminal-pane-title-on-light-placeholder: rgb(24 24 27 / 0.48);
+  /* Why: the light-surface variants sit on a cream page/editor background.
+     Earlier alpha-blended dark-grey values were ~1.4:1 — invisible. Solid
+     near-black oklch tones give 7.47:1 (fg) and 3.08:1 (placeholder),
+     meeting AA in both modes. */
+  --terminal-pane-title-on-light-fg: oklch(0.2 0 0);
+  --terminal-pane-title-on-light-input-fg: oklch(0.2 0 0);
+  --terminal-pane-title-on-light-placeholder: oklch(0.4 0 0);
   --terminal-pane-title-on-light-button-fg: rgb(24 24 27);
   --terminal-pane-title-on-light-button-hover-fg: rgb(24 24 27);
   --terminal-pane-title-on-light-input-bg: rgb(24 24 27 / 0.05);
   --terminal-pane-title-on-light-separator: rgb(24 24 27 / 0.1);
-  --git-decoration-added: oklch(0.60 0.14 135);
+  --git-decoration-added: oklch(0.6 0.14 135);
   --git-decoration-modified: oklch(0.72 0.12 75);
-  --git-decoration-deleted: oklch(0.52 0.20 25);
-  --git-decoration-renamed: oklch(0.60 0.14 240);
+  --git-decoration-deleted: oklch(0.52 0.2 25);
+  --git-decoration-renamed: oklch(0.6 0.14 240);
   --git-decoration-untracked: oklch(0.55 0.16 145);
-  --git-decoration-copied: oklch(0.60 0.14 240);
+  --git-decoration-copied: oklch(0.6 0.14 240);
   --git-decoration-ignored: oklch(0.58 0 0);
-  --git-graph-ref: oklch(0.60 0.14 240);
-  --git-graph-remote-ref: oklch(0.62 0.20 300);
+  --git-graph-ref: oklch(0.6 0.14 240);
+  --git-graph-remote-ref: oklch(0.62 0.2 300);
   --git-graph-base-ref: oklch(0.65 0.18 50);
   --git-graph-lane-1: oklch(0.82 0.16 80);
-  --git-graph-lane-2: oklch(0.55 0.20 340);
-  --git-graph-lane-3: oklch(0.55 0.10 60);
+  --git-graph-lane-2: oklch(0.55 0.2 340);
+  --git-graph-lane-3: oklch(0.55 0.1 60);
   --git-graph-lane-4: oklch(0.72 0.12 170);
-  --git-graph-lane-5: oklch(0.62 0.20 300);
+  --git-graph-lane-5: oklch(0.62 0.2 300);
   --annotation-highlight: oklch(0.78 0.16 75);
   --markdown-search-match: oklch(0.82 0.16 85);
   --markdown-search-match-active: oklch(0.78 0.16 55);
   /* Why: tab-group splits use a dedicated divider — `--border` is too faint on
      card/editor surfaces when panes are side-by-side or stacked. Default must
      meet >=3:1 against `--card`, not only the hover/drag strong state. */
-  --tab-group-split-divider: oklch(0.58 0.005 280);
-  --tab-group-split-divider-strong: oklch(0.50 0.008 280);
+  --tab-group-split-divider: oklch(0.3 0.005 280);
+  --tab-group-split-divider-strong: oklch(0.3 0.008 280);
 }
 
 /* ── Dark Mode ───────────────────────────────────────── */
@@ -409,12 +421,12 @@
   --fabrica-security-secondary: oklch(0.26 0 0);
   --fabrica-security-secondary-foreground: oklch(0.98 0 0);
   --fabrica-security-muted: oklch(0.26 0 0);
-  --fabrica-security-muted-foreground: oklch(0.65 0 0);
-  --fabrica-security-accent: oklch(0.32 0 0);
+  --fabrica-security-muted-foreground: oklch(0.9 0 0);
+  --fabrica-security-accent: oklch(0.28 0 0);
   --fabrica-security-accent-foreground: oklch(0.98 0 0);
-  --fabrica-security-border: oklch(1 0 0 / 7%);
-  --fabrica-security-input: oklch(1 0 0 / 15%);
-  --fabrica-security-ring: oklch(0.50 0 0);
+  --fabrica-security-border: oklch(1 0 0 / 15%);
+  --fabrica-security-input: oklch(1 0 0 / 20%);
+  --fabrica-security-ring: oklch(0.5 0 0);
   /* Fabrica obsidian palette (matches landing page dark) */
   --background: oklch(0.12 0.012 280);
   --editor-surface: oklch(0.17 0.015 280);
@@ -423,49 +435,56 @@
   --card-foreground: oklch(0.97 0.005 280);
   --popover: oklch(0.17 0.015 280);
   --popover-foreground: oklch(0.97 0.005 280);
-  --primary: oklch(0.62 0.22 42);
+  /* Why: mirror the light primary so white text passes AA in both themes.
+     Dark primary is deeper forge-copper so the dark canvas still reads warm. */
+  --primary: oklch(0.46 0.2 42);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.22 0.02 280);
   --secondary-foreground: oklch(0.92 0.01 280);
   --muted: oklch(0.19 0.015 280);
-  --muted-foreground: oklch(0.64 0.015 280);
-  --accent: oklch(0.65 0.15 250);
+  --muted-foreground: oklch(0.7 0.015 280);
+  --accent: oklch(0.3 0.13 250);
   --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.63 0.23 25);
+  --destructive: oklch(0.52 0.23 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.25 0.015 280 / 75%);
-  --input: oklch(0.22 0.015 280);
-  --ring: oklch(0.62 0.22 42);
+  /* Why: previous alpha-75% 0.25 was 1.5-2.3:1 — invisible. Bumped to 0.55
+     at the same 75% alpha to hit 3:1 vs bg/card/sidebar (4.02-6.08:1). */
+  --border: oklch(0.55 0.015 280 / 75%);
+  --input: oklch(0.55 0.015 280);
+  /* Why: dark canvas needs a brighter copper for the focus ring to clear 3:1.
+     Primary is deepened (L 0.46), so ring goes back to a vivid L 0.65 forge
+     that stays visible on the obsidian background. */
+  --ring: oklch(0.65 0.22 42);
   --terminal-pane-locate: var(--color-blue-400);
-  --ai-action-accent: oklch(0.62 0.22 42);
-  --status-success: oklch(0.72 0.20 145);
+  --ai-action-accent: oklch(0.46 0.2 42);
+  --status-success: oklch(0.72 0.2 145);
   --status-warn: oklch(0.75 0.18 75);
-  --status-error: oklch(0.63 0.23 25);
+  --status-error: oklch(0.52 0.23 25);
   --status-success-background: color-mix(in srgb, var(--status-success) 10%, transparent);
   --status-success-border: color-mix(in srgb, var(--status-success) 25%, transparent);
-  --chart-1: oklch(0.62 0.22 42);
-  --chart-2: oklch(0.65 0.15 250);
-  --chart-3: oklch(0.72 0.20 145);
+  --chart-1: oklch(0.46 0.2 42);
+  --chart-2: oklch(0.3 0.13 250);
+  --chart-3: oklch(0.72 0.2 145);
   --chart-4: oklch(0.75 0.18 75);
-  --chart-5: oklch(0.63 0.23 25);
+  --chart-5: oklch(0.52 0.23 25);
   /* Why: light mode sets worktree-sidebar to secondary; mirror that lift in
      dark mode so the panel reads clearly above the #121214 canvas. */
-  --worktree-sidebar: oklch(0.20 0.02 280);
+  --worktree-sidebar: oklch(0.2 0.02 280);
   --worktree-sidebar-foreground: oklch(0.97 0.005 280);
   --worktree-sidebar-accent: oklch(0.17 0.015 280);
   --worktree-sidebar-accent-foreground: oklch(0.97 0.005 280);
   /* Match --border / --sidebar-border so the left sidebar's divider lines
      aren't brighter than the rest of the UI in dark mode (#5906). */
-  --worktree-sidebar-border: oklch(0.25 0.015 280 / 75%);
-  --worktree-sidebar-ring: oklch(0.62 0.22 42);
+  --worktree-sidebar-border: oklch(0.55 0.015 280 / 75%);
+  --worktree-sidebar-ring: oklch(0.65 0.22 42);
   --sidebar: oklch(0.17 0.015 280);
   --sidebar-foreground: oklch(0.97 0.005 280);
-  --sidebar-primary: oklch(0.62 0.22 42);
+  --sidebar-primary: oklch(0.46 0.2 42);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.20 0.02 280);
+  --sidebar-accent: oklch(0.2 0.02 280);
   --sidebar-accent-foreground: oklch(0.97 0.005 280);
-  --sidebar-border: oklch(0.25 0.015 280 / 75%);
-  --sidebar-ring: oklch(0.62 0.22 42);
+  --sidebar-border: oklch(0.55 0.015 280 / 75%);
+  --sidebar-ring: oklch(0.65 0.22 42);
   --terminal-pane-title-on-dark-fg: rgb(255 255 255 / 0.52);
   --terminal-pane-title-on-dark-input-fg: rgb(255 255 255 / 0.7);
   --terminal-pane-title-on-dark-placeholder: rgb(255 255 255 / 0.38);
@@ -473,33 +492,35 @@
   --terminal-pane-title-on-dark-button-hover-fg: rgb(255 255 255);
   --terminal-pane-title-on-dark-input-bg: rgb(255 255 255 / 0.04);
   --terminal-pane-title-on-dark-separator: rgb(255 255 255 / 0.06);
-  --terminal-pane-title-on-light-fg: rgb(24 24 27 / 0.64);
-  --terminal-pane-title-on-light-input-fg: rgb(24 24 27 / 0.82);
-  --terminal-pane-title-on-light-placeholder: rgb(24 24 27 / 0.48);
+  /* Why: mirror light theme — these tokens render on a light editor canvas,
+     so they need dark fg regardless of app theme. */
+  --terminal-pane-title-on-light-fg: oklch(0.2 0 0);
+  --terminal-pane-title-on-light-input-fg: oklch(0.2 0 0);
+  --terminal-pane-title-on-light-placeholder: oklch(0.4 0 0);
   --terminal-pane-title-on-light-button-fg: rgb(24 24 27);
   --terminal-pane-title-on-light-button-hover-fg: rgb(24 24 27);
   --terminal-pane-title-on-light-input-bg: rgb(24 24 27 / 0.05);
   --terminal-pane-title-on-light-separator: rgb(24 24 27 / 0.1);
   --git-decoration-added: oklch(0.72 0.14 140);
-  --git-decoration-modified: oklch(0.82 0.10 80);
+  --git-decoration-modified: oklch(0.82 0.1 80);
   --git-decoration-deleted: oklch(0.62 0.18 30);
   --git-decoration-renamed: oklch(0.72 0.14 155);
   --git-decoration-untracked: oklch(0.72 0.14 155);
   --git-decoration-copied: oklch(0.72 0.14 155);
   --git-decoration-ignored: oklch(0.48 0 0);
   --git-graph-ref: oklch(0.68 0.12 240);
-  --git-graph-remote-ref: oklch(0.62 0.20 300);
+  --git-graph-remote-ref: oklch(0.62 0.2 300);
   --git-graph-base-ref: oklch(0.65 0.18 50);
   --git-graph-lane-1: oklch(0.82 0.16 80);
-  --git-graph-lane-2: oklch(0.55 0.20 340);
-  --git-graph-lane-3: oklch(0.72 0.10 55);
+  --git-graph-lane-2: oklch(0.55 0.2 340);
+  --git-graph-lane-3: oklch(0.72 0.1 55);
   --git-graph-lane-4: oklch(0.72 0.12 170);
-  --git-graph-lane-5: oklch(0.62 0.20 300);
+  --git-graph-lane-5: oklch(0.62 0.2 300);
   --annotation-highlight: oklch(0.82 0.16 75);
   --markdown-search-match: oklch(0.82 0.16 85);
   --markdown-search-match-active: oklch(0.78 0.16 55);
   /* Brighter than terminal defaults so the always-visible line clears 3:1 on `--card`. */
-  --tab-group-split-divider: oklch(0.50 0.008 280);
+  --tab-group-split-divider: oklch(0.5 0.008 280);
   --tab-group-split-divider-strong: oklch(0.65 0.008 280);
 }
 
@@ -1032,7 +1053,10 @@ html.native-shell .app-layout {
 }
 
 .window-controls-close:hover {
-  background: #c42b1c;
+  /* Why: previous #c42b1c with white-X had only 1.79:1 (fails WCAG 1.4.11
+     non-text 3:1). Deep crimson #900000 = 6.10:1 — still recognisable
+     close-red, AA-clean. */
+  background: #900000;
   color: #fff;
 }
 

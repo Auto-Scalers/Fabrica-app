@@ -8,21 +8,21 @@ import { app, BrowserWindow, nativeImage } from 'electron'
 import { is } from '@electron-toolkit/utils'
 import classicIcon from '../../resources/icon.png?asset'
 import classicDevIcon from '../../resources/icon-dev.png?asset'
-import watercolorIcon from '../../resources/app-icons/FABRICA-watercolor.png?asset'
-import watercolorMacDockIcon from '../../resources/app-icons/FABRICA-watercolor.png?asset&asarUnpack'
-import blueIcon from '../../resources/app-icons/FABRICA-blue.png?asset'
-import blueMacDockIcon from '../../resources/app-icons/FABRICA-blue.png?asset&asarUnpack'
+import darkIcon from '../../resources/app-icons/fabrica-dark.png?asset'
+import darkMacDockIcon from '../../resources/app-icons/fabrica-dark.png?asset&asarUnpack'
+import lightIcon from '../../resources/app-icons/fabrica-light.png?asset'
+import lightMacDockIcon from '../../resources/app-icons/fabrica-light.png?asset&asarUnpack'
 import { normalizeAppIconId, type AppIconId } from '../shared/app-icon'
 
 const APP_ICON_PATHS = {
   classic: is.dev ? classicDevIcon : classicIcon,
-  watercolor: watercolorIcon,
-  blue: blueIcon
+  dark: darkIcon,
+  light: lightIcon
 } satisfies Record<AppIconId, string>
 
 const MAC_DOCK_ICON_PATHS = {
-  watercolor: watercolorMacDockIcon,
-  blue: blueMacDockIcon
+  dark: darkMacDockIcon,
+  light: lightMacDockIcon
 } satisfies Record<Exclude<AppIconId, 'classic'>, string>
 
 type ExecFile = (

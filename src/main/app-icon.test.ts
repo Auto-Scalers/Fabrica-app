@@ -33,20 +33,20 @@ vi.mock('../../resources/icon-dev.png?asset', () => ({
   default: 'classic-dev-icon'
 }))
 
-vi.mock('../../resources/app-icons/FABRICA-watercolor.png?asset', () => ({
-  default: 'watercolor-icon'
+vi.mock('../../resources/app-icons/fabrica-dark.png?asset', () => ({
+  default: 'dark-icon'
 }))
 
-vi.mock('../../resources/app-icons/FABRICA-watercolor.png?asset&asarUnpack', () => ({
-  default: 'watercolor-icon-unpacked'
+vi.mock('../../resources/app-icons/fabrica-dark.png?asset&asarUnpack', () => ({
+  default: 'dark-icon-unpacked'
 }))
 
-vi.mock('../../resources/app-icons/FABRICA-blue.png?asset', () => ({
-  default: 'blue-icon'
+vi.mock('../../resources/app-icons/fabrica-light.png?asset', () => ({
+  default: 'light-icon'
 }))
 
-vi.mock('../../resources/app-icons/FABRICA-blue.png?asset&asarUnpack', () => ({
-  default: 'blue-icon-unpacked'
+vi.mock('../../resources/app-icons/fabrica-light.png?asset&asarUnpack', () => ({
+  default: 'light-icon-unpacked'
 }))
 
 import { applyAppIcon, getAppIconPath, persistMacDockIcon } from './app-icon'
@@ -82,10 +82,10 @@ describe('app icon selection', () => {
     vi.useRealTimers()
   })
 
-  it('resolves classic, watercolor, blue, and invalid icon ids', () => {
+  it('resolves classic, dark, light, and invalid icon ids', () => {
     expect(getAppIconPath('classic')).toBe('classic-icon')
-    expect(getAppIconPath('watercolor')).toBe('watercolor-icon')
-    expect(getAppIconPath('blue')).toBe('blue-icon')
+    expect(getAppIconPath('dark')).toBe('dark-icon')
+    expect(getAppIconPath('light')).toBe('light-icon')
     expect(getAppIconPath('missing')).toBe('classic-icon')
   })
 
@@ -97,9 +97,9 @@ describe('app icon selection', () => {
       { isDestroyed: () => true, setIcon: vi.fn() }
     ])
 
-    applyAppIcon('watercolor')
+    applyAppIcon('dark')
 
-    expect(createFromPathMock).toHaveBeenCalledWith('watercolor-icon')
+    expect(createFromPathMock).toHaveBeenCalledWith('dark-icon')
     if (process.platform === 'darwin') {
       expect(dockSetIconMock).toHaveBeenCalledWith(image)
     } else {
@@ -124,7 +124,7 @@ describe('app icon selection', () => {
       }
     )
 
-    persistMacDockIcon('watercolor', {
+    persistMacDockIcon('dark', {
       appBundlePath: '/Applications/FABRICA.app',
       execFile,
       isDevApp: false,
@@ -138,7 +138,7 @@ describe('app icon selection', () => {
       expect.objectContaining({
         env: expect.objectContaining({
           FABRICA_APP_BUNDLE_PATH: '/Applications/FABRICA.app',
-          FABRICA_APP_ICON_PATH: 'watercolor-icon-unpacked'
+          FABRICA_APP_ICON_PATH: 'dark-icon-unpacked'
         })
       }),
       expect.any(Function)
@@ -290,7 +290,7 @@ describe('app icon selection', () => {
       }
     )
 
-    persistMacDockIcon('watercolor', {
+    persistMacDockIcon('dark', {
       appBundlePath: '/Applications/FABRICA.app',
       execFile,
       isDevApp: false,
@@ -298,7 +298,7 @@ describe('app icon selection', () => {
     })
     await waitForQueuedPersistence()
 
-    persistMacDockIcon('blue', {
+    persistMacDockIcon('light', {
       appBundlePath: '/Applications/FABRICA.app',
       execFile,
       isDevApp: false,
@@ -317,7 +317,7 @@ describe('app icon selection', () => {
       expect.any(Array),
       expect.objectContaining({
         env: expect.objectContaining({
-          FABRICA_APP_ICON_PATH: 'watercolor-icon-unpacked'
+          FABRICA_APP_ICON_PATH: 'dark-icon-unpacked'
         })
       }),
       expect.any(Function)
@@ -332,7 +332,7 @@ describe('app icon selection', () => {
       expect.any(Array),
       expect.objectContaining({
         env: expect.objectContaining({
-          FABRICA_APP_ICON_PATH: 'blue-icon-unpacked'
+          FABRICA_APP_ICON_PATH: 'light-icon-unpacked'
         })
       }),
       expect.any(Function)
@@ -404,7 +404,7 @@ describe('app icon selection', () => {
       }
     )
 
-    persistMacDockIcon('watercolor', {
+    persistMacDockIcon('dark', {
       appBundlePath: '/Applications/FABRICA.app',
       execFile,
       isDevApp: false,
@@ -412,7 +412,7 @@ describe('app icon selection', () => {
     })
     await waitForQueuedPersistenceMicrotasks()
 
-    persistMacDockIcon('blue', {
+    persistMacDockIcon('light', {
       appBundlePath: '/Applications/FABRICA.app',
       execFile,
       isDevApp: false,
@@ -439,7 +439,7 @@ describe('app icon selection', () => {
       expect.any(Array),
       expect.objectContaining({
         env: expect.objectContaining({
-          FABRICA_APP_ICON_PATH: 'blue-icon-unpacked'
+          FABRICA_APP_ICON_PATH: 'light-icon-unpacked'
         }),
         timeout: 10_000
       }),

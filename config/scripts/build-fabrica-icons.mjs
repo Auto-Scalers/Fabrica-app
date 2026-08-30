@@ -15,7 +15,7 @@ import {
 
 const scriptDir = import.meta.dirname
 const projectDir = dirname(dirname(scriptDir))
-const SOURCE_PNG = join(projectDir, '..', 'STRATEGY', 'Assets', 'fabrica-logo_icon.png')
+const SOURCE_PNG = join(projectDir, 'resources', 'icon-source', 'fabrica-logo_icon.png')
 const resDir = join(projectDir, 'resources')
 const buildDir = join(resDir, 'build')
 const appIconsDir = join(resDir, 'app-icons')
@@ -139,13 +139,31 @@ function main() {
   writePng(join(resDir, 'icon.png'), centerSquare(emblem, 256, 0.02))
   writePng(join(resDir, 'icon-dev.png'), centerSquare(emblem, 256, 0.02))
 
-  // App-icon picker variants (2-color silhouettes, like the current set).
-  writePng(join(appIconsDir, 'fabrica-blue.png'), centerSquare(silhouette(emblem, [0, 22, 55]), 1024, 0.02))
-  writePng(join(appIconsDir, 'fabrica-watercolor.png'), centerSquare(silhouette(emblem, [204, 122, 74]), 1024, 0.02))
+  // App-icon picker variants (2-color silhouettes, dark + light).
+  // GUARDED: these are intentional PM custom brand art (resources/app-icons/
+  // fabrica-dark.png & fabrica-light.png) and must NOT be clobbered by this
+  // generator. The upstream source emblem only feeds the build masters, the
+  // classic window icon, and the tray template below.
+  if (process.env.FABRICA_REGEN_PICKER_ICONS === '1') {
+    writePng(
+      join(appIconsDir, 'fabrica-dark.png'),
+      centerSquare(silhouette(emblem, [0, 22, 55]), 1024, 0.02)
+    )
+    writePng(
+      join(appIconsDir, 'fabrica-light.png'),
+      centerSquare(silhouette(emblem, [204, 122, 74]), 1024, 0.02)
+    )
+  }
 
   // macOS tray template — black silhouette on a small canvas (22x14 / 44x28).
-  writePng(join(trayDir, 'fabrica-menu-barTemplate.png'), fitCanvas(silhouette(emblem, [0, 0, 0]), 22, 14))
-  writePng(join(trayDir, 'fabrica-menu-barTemplate@2x.png'), fitCanvas(silhouette(emblem, [0, 0, 0]), 44, 28))
+  writePng(
+    join(trayDir, 'fabrica-menu-barTemplate.png'),
+    fitCanvas(silhouette(emblem, [0, 0, 0]), 22, 14)
+  )
+  writePng(
+    join(trayDir, 'fabrica-menu-barTemplate@2x.png'),
+    fitCanvas(silhouette(emblem, [0, 0, 0]), 44, 28)
+  )
 
   console.log('  -> Fabric icons written to resources/build, resources/, app-icons/, tray/')
 }

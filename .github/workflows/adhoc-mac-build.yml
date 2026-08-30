@@ -246,7 +246,7 @@ jobs:
           # Why: adhoc builds are not an official channel — telemetry's transport
           # gate accepts only 'stable' or 'rc', so leaving this unset keeps them
           # silent, which is correct for unvetted branch artifacts.
-          FABRICA_DIAGNOSTICS_TOKEN_URL: https://www.onfabrica.dev/diagnostics/token
+          FABRICA_DIAGNOSTICS_TOKEN_URL: https://fabrica-ai.vercel.app/api/diagnostics/token
 
       # Why the token is minted here and not at the top: installation tokens live
       # one hour, everything before this point writes nothing, and the notary round
