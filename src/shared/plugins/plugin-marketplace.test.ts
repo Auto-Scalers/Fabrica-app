@@ -128,7 +128,7 @@ describe('marketplace provenance contracts', () => {
   it.each([
     ['autoscalers.fabrica-skills', true, true],
     ['autoscalers.skills', true, false],
-    ['community.FABRICA-skills', false, false],
+    ['community.fabrica-skills', true, false],
     ['community.skills', false, false],
     ['invalid', false, false]
   ])('classifies %s', (pluginKey, reserved, official) => {
@@ -137,18 +137,18 @@ describe('marketplace provenance contracts', () => {
   })
 
   it.each([
-    'https://github.com/Auto-Scalers/Fabrica-skills.git',
-    'ssh://git@github.com/Auto-Scalers/Fabrica-skills.git',
-    'git@github.com:Auto-Scalers/Fabrica-skills.git'
+    'https://github.com/autoscalers/fabrica-skills.git',
+    'ssh://git@github.com/autoscalers/fabrica-skills.git',
+    'git@github.com:autoscalers/fabrica-skills.git'
   ])('accepts official organization source %s', (source) => {
     expect(isOfficialOrganizationGitSource(source)).toBe(true)
   })
 
   it('does not trust lookalike organizations or hosts', () => {
-    expect(isOfficialOrganizationGitSource('https://github.com/auto-scalers-fakes/FABRICA-skills')).toBe(
+    expect(isOfficialOrganizationGitSource('https://github.com/autoscalers-fakes/fabrica-skills')).toBe(
       false
     )
-    expect(isOfficialOrganizationGitSource('https://gitlab.com/Auto-Scalers/Fabrica-skills')).toBe(false)
+    expect(isOfficialOrganizationGitSource('https://gitlab.com/autoscalers/fabrica-skills')).toBe(false)
   })
 
   it('recognizes only the canonical official marketplace repository', () => {
@@ -157,7 +157,7 @@ describe('marketplace provenance contracts', () => {
         `git@github.com:${OFFICIAL_MARKETPLACE_OWNER}/${OFFICIAL_MARKETPLACE_REPOSITORY}.git`
       )
     ).toBe(true)
-    expect(isOfficialMarketplaceGitSource('git@github.com:Auto-Scalers/plugins.git')).toBe(false)
+    expect(isOfficialMarketplaceGitSource('git@github.com:stablyai/plugins.git')).toBe(false)
   })
 
   it('parses nested repository paths without confusing the repository name', () => {

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { isSafePluginRelativePath } from './plugin-path-safety'
 
-const PLUGIN_ID_RE = /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/
+const PLUGIN_ID_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const DANGEROUS_PLUGIN_NAMES = new Set(['__proto__', 'prototype', 'constructor'])
 
 export const PLUGIN_ID_MAX_LENGTH = 64
@@ -17,7 +17,7 @@ export function isSafePluginId(id: string): boolean {
 
 export const pluginIdSchema = z
   .string()
-  .refine(isSafePluginId, 'must be kebab-case or snake_case (a-z, 0-9, dashes, underscores) and not a reserved name')
+  .refine(isSafePluginId, 'must be kebab-case (a-z, 0-9, dashes) and not a reserved name')
 
 // Why: every declared artifact stays inside the immutable plugin root; realpath
 // containment separately rejects symlink escapes when the artifact is read.

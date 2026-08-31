@@ -11,11 +11,21 @@ export const OFFICIAL_PLUGIN_ID_PREFIX = 'fabrica-'
 export const OFFICIAL_MARKETPLACE_OWNER = 'auto-scalers'
 export const OFFICIAL_MARKETPLACE_REPOSITORY = 'fabrica-plugins'
 
-// Why: all categories are supported — show every plugin in the marketplace.
-export const UNSUPPORTED_MARKETPLACE_CATEGORIES: readonly string[] = []
+// Why: theme/icon/skill contributions were deferred, so `contributes` now
+// rejects them and any plugin declaring one fails to install wholesale. The
+// shared marketplace index (which this build does not control) still advertises
+// such packs; hide listings that carry these categories so users never hit a
+// dead "install" path until the marketplace catches up.
+export const UNSUPPORTED_MARKETPLACE_CATEGORIES: readonly string[] = [
+  'themes',
+  'icons',
+  'icon-themes',
+  'terminal-themes',
+  'skills'
+]
 
-export function isMarketplaceListingSupported(_categories: readonly string[]): boolean {
-  return true
+export function isMarketplaceListingSupported(categories: readonly string[]): boolean {
+  return !categories.some((category) => UNSUPPORTED_MARKETPLACE_CATEGORIES.includes(category))
 }
 
 const marketplaceOwnerSchema = z
@@ -184,7 +194,7 @@ function repositoryIdentity(host: string, repositoryPath: string): GitRepository
 
 export function isOfficialOrganizationGitSource(url: string): boolean {
   const source = parseGitRepositoryIdentity(url)
-  return source?.host === 'github.com' && source.owner.toLowerCase() === OFFICIAL_MARKETPLACE_OWNER
+  return source?.host === 'github.com' && source.owner.toLowerCase() === OFFICIAL_PLUGIN_PUBLISHER
 }
 
 export function isOfficialMarketplaceGitSource(url: string): boolean {
