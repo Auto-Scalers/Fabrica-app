@@ -57,14 +57,14 @@ class IdentityFilteredAgent extends BaseAgent<ParsedKey | Buffer | string> {
   sign(
     pubKey: ParsedKey | Buffer | string,
     data: Buffer,
-    optionsCallback?: SigningRequestOptions | SignCallback,
+    optionsOrCallback?: SigningRequestOptions | SignCallback,
     callback?: SignCallback
   ): void {
-    if (typeof optionsCallback === 'function') {
-      this.agent.sign(pubKey, data, optionsCallback)
+    if (typeof optionsOrCallback === 'function') {
+      this.agent.sign(pubKey, data, optionsOrCallback)
       return
     }
-    this.agent.sign(pubKey, data, optionsCallback ?? {}, callback)
+    this.agent.sign(pubKey, data, optionsOrCallback ?? {}, callback)
   }
 }
 
