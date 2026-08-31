@@ -5,12 +5,14 @@ const {
   browserWindowGetAllWindowsMock,
   createFromPathMock,
   dockSetIconMock,
+  existsSyncMock,
   isMock,
   windowSetIconMock
 } = vi.hoisted(() => ({
   browserWindowGetAllWindowsMock: vi.fn(),
   createFromPathMock: vi.fn(),
   dockSetIconMock: vi.fn(),
+  existsSyncMock: vi.fn(() => true),
   isMock: { dev: false },
   windowSetIconMock: vi.fn()
 }))
@@ -23,6 +25,10 @@ vi.mock('electron', () => ({
 
 vi.mock('@electron-toolkit/utils', () => ({
   is: isMock
+}))
+
+vi.mock('node:fs', () => ({
+  existsSync: existsSyncMock
 }))
 
 vi.mock('../../resources/icon.png?asset', () => ({
@@ -86,7 +92,7 @@ describe('app icon selection', () => {
     expect(getAppIconPath('classic')).toBe('classic-icon')
     expect(getAppIconPath('dark')).toBe('dark-icon')
     expect(getAppIconPath('light')).toBe('light-icon')
-    expect(getAppIconPath('missing')).toBe('classic-icon')
+    expect(getAppIconPath('missing')).toBe('light-icon')
   })
 
   it('applies the selected icon to the dock and live windows', () => {

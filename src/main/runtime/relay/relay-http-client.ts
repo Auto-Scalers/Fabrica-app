@@ -2,7 +2,6 @@ import { createHash } from 'node:crypto'
 import { z } from 'zod'
 import type { E2EEKeypair } from '../e2ee-keypair'
 import { cancelUnreadResponseBody } from '../../lib/unread-response-body'
-import { getRelayAuthToken } from './supabase-session'
 
 const RELAY_HTTP_REQUEST_DEADLINE_MS = 15_000
 const RELAY_RETRY_AFTER_MAX_MS = 5 * 60_000
@@ -124,13 +123,10 @@ export async function requestRelayAssignment(input: {
   if (!isAllowedRelayOrigin(input.directorUrl)) {
     throw new RelayHttpError('assignment', 400)
   }
-  // Prefer a Supabase session token when present; otherwise fall back to the
-  // FABRICA Cloud relay token so existing behavior is preserved.
-  const bearerToken = await getRelayAuthToken(input.relayToken)
   const response = await (input.fetch ?? globalThis.fetch)(`${input.directorUrl}/v1/assign`, {
     method: 'POST',
     headers: {
-      authorization: `Bearer ${bearerToken}`,
+      authorization: `Bearer ${input.relayToken}`,
       'content-type': 'application/json'
     },
     signal: AbortSignal.timeout(input.requestDeadlineMs ?? RELAY_HTTP_REQUEST_DEADLINE_MS),

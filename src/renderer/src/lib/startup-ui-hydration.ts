@@ -55,8 +55,8 @@ export function getStartupErrorFallbackUI(uiHydrated: boolean): PersistedUIState
     hideAutomationGeneratedWorkspaces: false,
     filterRepoIds: [],
     collapsedGroups: [],
-    // Why: APP-G7 — fresh installs start at one Electron zoom step above 100%.
-    uiZoomLevel: 0.5,
+    // Why: APP-G7 — fresh installs start at 83% UI zoom (level -1).
+    uiZoomLevel: -1,
     editorFontZoomLevel: 0,
     worktreeCardProperties: [...DEFAULT_WORKTREE_CARD_PROPERTIES],
     _worktreeCardModeDefaulted: true,

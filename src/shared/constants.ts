@@ -203,7 +203,7 @@ export function getDefaultSettings(homedir: string): GlobalSettings {
       typeof process !== 'undefined' && process.platform === 'linux',
     primarySelectionMiddleClickPasteDefaultedForTerminalDefaults:
       getDefaultPrimarySelectionMiddleClickPaste(),
-    terminalFontSize: 14,
+    terminalFontSize: 12,
     terminalFontFamily: defaultTerminalFontFamily(),
     terminalFontWeight: DEFAULT_TERMINAL_FONT_WEIGHT,
     terminalLineHeight: 1,
@@ -485,9 +485,9 @@ export function getDefaultUIState(): PersistedUIState {
     showDotfilesByWorktree: {},
     filterRepoIds: [],
     collapsedGroups: [],
-    // Why: APP-G7 — fresh installs land on a slightly larger UI by default so the
-    // window doesn't feel cramped. Existing profiles still hydrate their stored value.
-    uiZoomLevel: 0.5,
+    // Why: APP-G7 — fresh installs land at 83% UI zoom (level -1) so the
+    // window feels spacious. Existing profiles still hydrate their stored value.
+    uiZoomLevel: -1,
     // Why: editor font defaults to neutral so Cmd+0 reliably resets; zoom-in starts from there.
     editorFontZoomLevel: 0,
     worktreeCardProperties: [...DEFAULT_WORKTREE_CARD_PROPERTIES],

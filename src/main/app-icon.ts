@@ -3,7 +3,8 @@
   type ChildProcess,
   type ExecFileOptions
 } from 'node:child_process'
-import { dirname, resolve } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
+import { existsSync } from 'node:fs'
 import { app, BrowserWindow, nativeImage } from 'electron'
 import { is } from '@electron-toolkit/utils'
 import classicIcon from '../../resources/icon.png?asset'
@@ -14,15 +15,30 @@ import lightIcon from '../../resources/app-icons/fabrica-light.png?asset'
 import lightMacDockIcon from '../../resources/app-icons/fabrica-light.png?asset&asarUnpack'
 import { normalizeAppIconId, type AppIconId } from '../shared/app-icon'
 
+const PROJECT_ROOT = resolve(__dirname, '..', '..', '..')
+
+function resolveIconPath(assetPath: string, fallbackRelative: string): string {
+  if (existsSync(assetPath)) {
+    return assetPath
+  }
+  const fallback = join(PROJECT_ROOT, fallbackRelative)
+  if (existsSync(fallback)) {
+    return fallback
+  }
+  return assetPath
+}
+
 const APP_ICON_PATHS = {
-  classic: is.dev ? classicDevIcon : classicIcon,
-  dark: darkIcon,
-  light: lightIcon
+  classic: is.dev
+    ? resolveIconPath(classicDevIcon, 'resources/icon-dev.png')
+    : resolveIconPath(classicIcon, 'resources/icon.png'),
+  dark: resolveIconPath(darkIcon, 'resources/app-icons/fabrica-dark.png'),
+  light: resolveIconPath(lightIcon, 'resources/app-icons/fabrica-light.png')
 } satisfies Record<AppIconId, string>
 
 const MAC_DOCK_ICON_PATHS = {
-  dark: darkMacDockIcon,
-  light: lightMacDockIcon
+  dark: resolveIconPath(darkMacDockIcon, 'resources/app-icons/fabrica-dark.png'),
+  light: resolveIconPath(lightMacDockIcon, 'resources/app-icons/fabrica-light.png')
 } satisfies Record<Exclude<AppIconId, 'classic'>, string>
 
 type ExecFile = (

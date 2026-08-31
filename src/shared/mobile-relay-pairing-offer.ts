@@ -25,7 +25,7 @@ function isCanonicalHttpsOrigin(value: string): boolean {
   }
   try {
     const parsed = new URL(value)
-    return parsed.protocol === 'https:' && value.toLowerCase() === parsed.origin
+    return parsed.protocol === 'https:' && value === parsed.origin
   } catch {
     return false
   }

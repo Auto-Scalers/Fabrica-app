@@ -2394,10 +2394,9 @@ export const createUISlice: StateCreator<AppState, [], [], UISlice> = (set, get)
   scrollToDiffCommentId: null,
   setScrollToDiffCommentId: (id) => set({ scrollToDiffCommentId: id }),
   persistedUIReady: false,
-  // Why: APP-G7 — fresh installs start at one Electron zoom step above 100% so
-  // the window doesn't feel cramped; stored values still hydrate over this on
-  // profile load.
-  uiZoomLevel: 0.5,
+  // Why: APP-G7 — fresh installs start at 83% UI zoom (level -1) so the
+  // window feels spacious; stored values still hydrate over this on profile load.
+  uiZoomLevel: -1,
   setUIZoomLevel: (level) => set({ uiZoomLevel: level }),
   editorFontZoomLevel: 0,
   setEditorFontZoomLevel: (level) => set({ editorFontZoomLevel: level }),

@@ -59,16 +59,16 @@ One **Round** = execute ALL six steps below in order, then record results in the
 
 | Metric | Value |
 |---|---|
-| Total tasks | 49 |
+| Total tasks | 56 |
 | ✅ DONE | 42 |
 | 🔶 IN_PROGRESS | 0 |
 | 👀 VERIFY | 0 |
-| ⬜ TODO | 7 |
+| ⬜ TODO | 14 |
 | 🚫 BLOCKED | 0 |
 | ❌ CANCELLED | 0 |
-| Completion | 86% |
+| Completion | 75% |
 
-_Last recount: 2026-08-30 (dashboard reconciliation. Verified 49 task rows across all groups: 42 DONE, 7 TODO (Group H: H1-H7). Previous Rollup overstated DONE by 1, understated TODO by 3.)_
+_Last recount: 2026-08-30 (dashboard reconciliation + Group I feedback: 56 tasks total: 42 DONE, 14 TODO — 7 Group H physical testing + 7 Group I PM-feedback investigation items. Previous Rollup: 49 tasks, 42 DONE, 7 TODO at 86%.)_
 
 <!-- OLD Rollup (stale, pre-R7/R8): 20 DONE, 3 IN_PROGRESS, 3 VERIFY, 2 TODO, 71% -->
 
@@ -515,3 +515,51 @@ How it works (from Orca backup):
 
 _Consolidated: Aug 2026. Original files in `.Fabrica-app-board/` and `identifier-rename-review/` are now deleted._
 _Last updated: 2026-08-30 (Group H added: 7 physical testing + rebuild tasks (APP-H1–H7). G1/G3/G7 orchestrator-verified in source. Update pipeline delegated to Fabrica-update/. Rollup 47 tasks, 43 DONE, 4 TODO (91%).)_
+
+---
+
+## Group I — PM Physical-Testing Feedback (post-Beta verification, 2026-08-30)
+
+> New items captured during live app run. Each must be investigated individually before any rebuild/re-release.
+
+| # | Feedback | Status | Notes / Next Action |
+|---|----------|--------|---------------------|
+| APP-I1 | CLI PATH registry — "Fabrica CLI registration needs attention" + "Fabrica could not read the Windows user PATH registry value." notification when installing skills (Computer Use, Orchestration, etc.) | ⬜ | Investigate whether real device gap or sandbox-only. Check `src/main/cli/` and registry-read code. May need Windows PATH fix or registry read fallback. |
+| APP-I2 | Account sign-in button not clickable | ⬜ | Check `AppIconSelector` / auth button click handlers in settings / landing page. Verify `fabrica://` deep-link and `fabrica` CLI command work. |
+| APP-I3 | "Support Fabrica" links — replace GitHub start link with support email, Discord, Telegram, WhatsApp, YouTube, Instagram, landing page | ⬜ | Find reference (likely `src/renderer/src/components/settings/` or landing page footer). Update all URLs. |
+| APP-I4 | Mobile relay unavailable | ⬜ | Relay `fabrica-relay.fabrica-relay.workers.dev` should be live. Check pairing flow (`fabrica://pair`), mobile pairing settings, and relay auth (JWT). |
+| APP-I5 | Artifacts unavailable | ⬜ | Check artifact-cloud service (`fabrica-ai.vercel.app/api/artifacts/*`). May need Vercel env or Supabase table access. |
+| APP-I6 | Skill name conflicts — Browser Use / Fabrica CLI skills vs Orca names; dir/name conflicts? | ⬜ | Audit skill bundle manifest (`skills/`), `skills/` folder naming (`fabrica-computer-use`, `fabrica-cli`), and `skills/` guide names. Check for `orca` or `stablyai` residuals. |
+| APP-I7 | Plugin install error — "Could not prepare this plugin for review. Refresh the marketplace and try again." | ⬜ | Check plugin-marketplace provenance validation (`plugin-marketplace-provenance.ts`), `fabrica-marketplace.json`, owner string (`auto-scalers` vs `autoscalers`), and git-clone snapshot integrity. |
+
+---
+
+## Phase P — Payment, Trial, Lock & Login Flow (NEW PHASE — 2026-08-30)
+
+> **Scope:** Trial activation, payment verification, subscription lock, migration grace, and startup login gate. Payment processing handled by `Fabrica-web/` (see cross-note below). Auto-resubscribing OFF by default; user must opt-in.
+>
+> **Trial spec (locked by PM):** 3-day initial trial + 5-day extension = 8 days total. Trial activation requires a valid payment-method verification (card verified, not charged until trial ends). When trial or active plan expires, app becomes COMPLETELY LOCKED until user pays. One-time "migration free day" option offered on lock screen so user can export/migrate data before full lock.
+>
+> **Plan:** Monthly subscription only. Redirect to web payment section in user's dashboard (`Fabrica-web/`). Login flow and dashboard are already handled by other work — this phase connects the app-side lock, trial tracking, and redirect logic.
+>
+> **Cross-project note for Fabrica-web/:** All payment processing (checkout, billing portal, subscription status, plan selection) lives in `Fabrica-web/`. This app only reads subscription state from the web backend (via existing auth/session contract) and enforces the lock/redirect behavior.
+
+### Task List
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| APP-P1 | Trial system: 3-day initial + 5-day extension = 8-day total; requires valid payment-method verification on activation | ⬜ | Trial clock starts at activation, not account creation. Verify payment method (card token/check) before granting trial days. Track `trial_start`, `trial_end`, `extended_until` in user session/profile. |
+| APP-P2 | Lock behavior: when trial or plan ends, app becomes completely locked until user pays | ⬜ | Lock all app functionality. Show lock screen with clear message: trial/plan expired. No partial access — full lock per PM mandate. |
+| APP-P3 | Migration free-day option: on lock screen, offer user one extra free day to migrate/export data | ⬜ | Button: "Get 1 free migration day". Once used, user gets 24h access to export/download, then full lock returns. Log usage so it cannot be reused. |
+| APP-P4 | Auto-resubscribing: OFF by default; user can activate it from dashboard/web settings | ⬜ | Default `auto_renew = false` in user profile/subscription state. User toggles ON via web dashboard redirect. App reads state and shows status in settings. |
+| APP-P5 | Monthly subscription plans — redirect user to web payment section in their dashboard (`Fabrica-web/`) | ⬜ | In-app link/button → opens browser to `https://fabrica-ai.vercel.app/dashboard/payment` (or web-defined URL). App does NOT embed checkout; it relies on web backend. Note: handle in `Fabrica-web/`. |
+| APP-P6 | Payment method verification at trial activation — integrate with web auth/session contract | ⬜ | Call existing auth endpoint (or new `verify-payment-method` endpoint handled by `Fabrica-web/`) to confirm card/payment token is valid before granting trial. If verification fails, deny trial activation. |
+| APP-P7 | Payment processor selection — must be halal-compliant, fully verified (no settlement pool or verified non-interest settlement), and work with available account (personal Wise IBAN, no business docs) | ⬜ | **CANCELLED — Wise Business rejected (cannot open).** Must find option meeting: halal-certified/non-interest settlement, individual-level verification (no business entity required), subscription/webhook support. Previous candidates (Stripe, Paddle, LemonSqueezy, PayTabs, HyperPay, Fawry) either require business verification or have unverified Shariah compliance. PayPal Individual = low riba risk (brief named-account hold, cards work, no docs needed). Open for PM decision. See full analysis 2026-08-30 (riba laws, card architecture, settlement pools, verification results). |
+| APP-P8 | App startup lock + LOGIN button: if user is not logged in, show lock screen with LOGIN button; once logged in, screen goes away (Antigravity-style flow) | ⬜ | On app start: check auth/session state. If not authenticated or session invalid → render lock screen with single LOGIN action. If authenticated → proceed to main app. Login flow already handled; this connects the gate. |
+| APP-P9 | Login flow setup / connection: wire the existing auth/session contract to the startup gate and trial-state checks | ⬜ | Ensure `fabrica://` deep-link, auth callbacks, and session refresh work with the lock screen. Trial/plan state read from web backend after login. Update checkpoint after login success. |
+
+### Cross-Project Note for Fabrica-web/
+
+> **Fabrica-web/ must handle:** checkout page (`/dashboard/payment`), subscription plans (monthly), billing portal, auto-renew toggle, trial state tracking (`trial_start`, `trial_end`, `extended_until`, `auto_renew`), payment-method verification endpoint, and the "1 free migration day" grant endpoint. The app (`Fabrica-app`) only reads these states via the existing auth/session contract (`/v1/desktop/auth/*` routes deployed by APP-G4-FIX) and enforces the lock/redirect behavior.
+>
+> **Reference:** `Fabrica-web/.Fabrica-web-board/Fabrica-web-tasks.md` should be updated with a payment/subscription task block referencing APP-P5, APP-P6, APP-P7.

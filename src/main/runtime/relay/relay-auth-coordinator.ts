@@ -1,6 +1,5 @@
 import type { RelayBrokerStatus } from './relay-session-broker'
 import { RelayHttpError, shouldRetryRelayConnectionError } from './relay-http-client'
-import { getSupabaseAccessToken } from './supabase-session'
 
 export type RelayAuthIdentity = {
   userId: string
@@ -252,14 +251,6 @@ export class RelayAuthCoordinator {
       return null
     }
     const epoch = this.authEpoch
-    // Why: when a Supabase session exists its access token is authoritative
-    // for relay auth; return before readContext() so the FABRICA Cloud
-    // session exchange is skipped entirely. Ownership fencing above still
-    // guarantees the broker asking for a refresh is the live one.
-    const supabaseToken = await getSupabaseAccessToken()
-    if (supabaseToken) {
-      return this.isEpochCurrent(epoch) ? supabaseToken : null
-    }
     const context = await this.options.readContext()
     if (
       !ownership.valid ||
