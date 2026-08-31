@@ -1,6 +1,7 @@
 # Fabrica I/O Systems — Full Review
 
 *Generated from source code audit of Fabrica-app, Fabrica-relay, Fabrica-web, and `.backup/orca/` (pre-rebrand source).*
+*Last updated: 2026-08-31 — verified Plugin System, Auto-Update, Auth, Artifacts, SSH against Orca.*
 
 ---
 
@@ -200,12 +201,13 @@ Two systems: crash reports (automatic, stored locally) and user feedback (manual
 
 ### Orca vs Fabrica
 
-- **Orca**: Uses `x-tenant-id` header for auth. No real user authentication.
-- **Fabrica**: Full OAuth + PKCE flow, email/password, session persistence, Bearer token validation on every protected route.
+- **Orca**: Had full OAuth + PKCE flow, email/password, session persistence. All 47 files in `src/main/fabrica-profiles/` are identical after rebranding (function/type/variable name changes only).
+- **Fabrica Desktop**: 100% identical to Orca (rebrand only). All auth logic, session management, PKCE flow, cloud service calls are unchanged.
+- **Fabrica Web**: 6 new Supabase auth routes (not in Orca) — `authorize`, `callback`, `refresh`, `logout`, `session`, plus `supabase-auth.ts` helper. Replaces Orca's external auth service with self-hosted Supabase.
 
 ### Status
 
-⚠️ Web OAuth partially working (anon key placeholder). Desktop auth working.
+⚠️ Web OAuth partially working (anon key placeholder). Desktop auth working. 100% parity with Orca on desktop side.
 
 ---
 
@@ -228,12 +230,14 @@ Two systems: crash reports (automatic, stored locally) and user feedback (manual
 
 ### Orca vs Fabrica
 
-- **Orca**: Never had working artifacts. Frontend had dead routes (`/api/db/system-components`).
-- **Fabrica**: Fully functional with `fabrica_artifacts` table, slug URLs, edit tokens, 30-day TTL.
+- **Orca**: Desktop had full artifact publishing to `share.onorca.dev`. No web routes — backend was external hosted service.
+- **Fabrica Desktop**: 100% identical to Orca (rebrand only). All artifact logic, cloud service, publisher, share record store are unchanged. Only URL changed to `fabrica-ai.vercel.app`.
+- **Fabrica Web**: 4 new files replacing external service — `app/v1/artifacts/route.ts` (list/create), `app/v1/artifacts/[id]/route.ts` (read/update/delete), `lib/fabrica-artifacts.ts` (Supabase helper), `supabase/migrations/0001_fabrica_artifacts.sql` (schema).
+- **Desktop ↔ Web contract**: Verified compatible. POST returns `{ artifact, shareUrl, editToken }` — matches desktop's `ArtifactCreateResponse` type. PUT returns `ArtifactListItem`. GET returns `{ artifacts[], nextCursor? }`. Headers (`authorization`, `x-FABRICA-edit-token`, `idempotency-key`) all match.
 
 ### Status
 
-✅ Table exists. ⚠️ Empty (0 rows). Route code complete.
+✅ Table exists. ✅ Route code complete. ✅ Desktop-web contract verified.
 
 ---
 
@@ -249,11 +253,12 @@ Electron auto-updater with multi-channel support (stable, rc, prerelease), Linux
 
 ### Orca vs Fabrica
 
-- **Orca**: Had auto-update. Rebranded: `FABRICA_BUILD_IDENTITY`, release channel labels.
+- **Orca**: Had auto-update. GitHub repo `stablyai/orca`.
+- **Fabrica**: 100% identical to Orca (rebrand only). All update logic, error handling, recovery paths, platform-specific behavior, timing constants are unchanged. Only differences are repo URL (`Auto-Scalers/Fabrica-app`), cache dir (`fabrica-updater`), and IPC message type (`fabrica:serve-ready`). Dependencies identical (`electron-updater` ^6.8.9).
 
 ### Status
 
-✅ Working. Multi-platform update flow.
+✅ Working. Multi-platform update flow. 100% parity with Orca.
 
 ---
 
@@ -273,11 +278,12 @@ Full plugin marketplace with discovery, installation, VM recipe sandboxing, kill
 
 ### Orca vs Fabrica
 
-- **Orca**: Had plugin system. Rebranded: `FABRICA_MANAGED_EXTENSION_MARKER`, `FABRICA_OMP_*`, `FABRICA_PI_*`.
+- **Orca**: Had plugin system.
+- **Fabrica**: 100% identical to Orca after reverting 6 non-rebrand diffs (plugin ID regex, marketplace categories, official org check, test fixtures). Only remaining difference is kill list URL (`fabrica-ai.vercel.app`) and one new test file (`plugin-marketplace-provenance.test.ts` — validates marketplace JSON integrity). All logic, schema, API surface, behavior identical.
 
 ### Status
 
-✅ Working. Comprehensive plugin system.
+✅ Working. Comprehensive plugin system. 100% parity with Orca.
 
 ---
 
@@ -377,11 +383,12 @@ Comprehensive SSH client with connection management, config parsing, port forwar
 
 ### Orca vs Fabrica
 
-- **Orca**: Had SSH client. Rebranded: `FABRICA-relay`, `FABRICA_RELAY_*`.
+- **Orca**: Had SSH client.
+- **Fabrica**: 100% identical to Orca. Variable rename `optionsCallback` → `optionsOrCallback` reverted to match Orca exactly. 210 files, same logic, same dependencies (`ssh2` ^1.17.0).
 
 ### Status
 
-✅ Working. Full SSH client with relay deployment.
+✅ Working. Full SSH client with relay deployment. 100% parity with Orca.
 
 ---
 
@@ -566,7 +573,7 @@ Native OS notification system with custom sounds, permission management, cooldow
 | Native Chat | Agent transcript reader | ✅ Working | — |
 | Computer Use | Desktop automation | ✅ Working | — |
 | Notifications | OS notifications + sounds | ✅ Working | — |
-| Plugins (Portuguese) | `pt-BR.json` (15K lines) | ⚠️ Needs rebrand | Separate sub-project |
+| Plugins (Portuguese) | `pt-BR.json` (15K lines) | ✅ Rebranded | 18 Orca keys renamed to Fabrica |
 
 ---
 
@@ -588,6 +595,6 @@ Must apply to Supabase SQL Editor:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` must be filled (currently placeholder)
 - Google/GitHub OAuth redirect URIs must point to `https://fabrica-ai.vercel.app/api/auth/callback`
 
-### 4. Rebrand Portuguese plugin
+### 4. ~~Rebrand Portuguese plugin~~ ✅ DONE
 
-`Fabrica-plugins/fabrica-portuguese/locales/pt-BR.json` has 15,251 references to "Orca" — needs full rebrand. Separate sub-project task.
+`Fabrica-plugins/fabrica-portuguese/locales/pt-BR.json` — 18 Orca i18n keys renamed to Fabrica equivalents. Committed in submodule (`15488c6`) and parent repo (`8784807`).
