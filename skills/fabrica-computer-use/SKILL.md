@@ -30,9 +30,7 @@ Choose the executable once and reuse it for every later command:
 - If the `FABRICA_CLI_COMMAND` environment variable is set, use its value. Fabrica exports this
   for managed WSL sessions.
 - Otherwise, in a dev checkout whose session exposes `FABRICA_DEV_REPO_ROOT`, use `fabrica-dev`.
-- Otherwise, on Linux outside an Fabrica-managed terminal, use `fabrica-ide`. Never run bare
-  `fabrica` there — outside Fabrica's terminals it normally resolves to the
-  GNOME Orca screen reader (`/usr/bin/orca`) and starts speech on the user's machine.
+- Otherwise, on Linux outside an Fabrica-managed terminal, use `fabrica-ide`.
 - Otherwise, use `fabrica`.
 
 Below, `FABRICA` is a placeholder for the executable you resolved. Substitute it before
