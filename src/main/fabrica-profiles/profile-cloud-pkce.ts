@@ -8,12 +8,22 @@ import {
 } from './profile-cloud-callback-page'
 
 export type FABRICACloudAuthorizationCode = {
+  kind: 'code'
   code: string
   codeVerifier: string
   nonce: string
   redirectUri: string
   state: string
 }
+
+export type FABRICACloudTokenCallback = {
+  kind: 'tokens'
+  accessToken: string
+  refreshToken: string
+  state: string
+}
+
+export type FABRICACloudPkceResult = FABRICACloudAuthorizationCode | FABRICACloudTokenCallback
 
 const AUTH_TIMEOUT_MS = 5 * 60 * 1000
 
@@ -43,7 +53,7 @@ function closeServer(server: Server): void {
 export function beginFABRICACloudPkceFlow(
   config: FABRICACloudAuthConfig,
   localProfileId: string
-): Promise<FABRICACloudAuthorizationCode> {
+): Promise<FABRICACloudPkceResult> {
   const codeVerifier = createCodeVerifier()
   const nonce = base64Url(randomBytes(32))
   const state = base64Url(randomBytes(32))
@@ -61,16 +71,31 @@ export function beginFABRICACloudPkceFlow(
       closeServer(server)
     }
 
-    function resolveFlow(code: string): void {
+    function resolveFlowCode(code: string): void {
       if (settled) {
         return
       }
       settled = true
       resolve({
+        kind: 'code',
         code,
         codeVerifier,
         nonce,
         redirectUri,
+        state
+      })
+      closeServer(server)
+    }
+
+    function resolveFlowTokens(accessToken: string, refreshToken: string): void {
+      if (settled) {
+        return
+      }
+      settled = true
+      resolve({
+        kind: 'tokens',
+        accessToken,
+        refreshToken,
         state
       })
       closeServer(server)
@@ -89,7 +114,6 @@ export function beginFABRICACloudPkceFlow(
           response.end('Not found')
           return
         }
-        const code = url.searchParams.get('code')
         const returnedState = url.searchParams.get('state')
         if (returnedState !== state) {
           // Why: stray loopback probes must not be able to cancel the user's login.
@@ -102,13 +126,24 @@ export function beginFABRICACloudPkceFlow(
           rejectFlow(new Error('FABRICA_cloud_auth_denied'))
           return
         }
+        // Email/password flow: tokens arrive directly as query params.
+        const accessToken = url.searchParams.get('access_token')
+        const refreshToken = url.searchParams.get('refresh_token')
+        if (accessToken && refreshToken) {
+          response.writeHead(200, FABRICA_CLOUD_CALLBACK_RESPONSE_HEADERS)
+          response.end(FABRICA_CLOUD_CALLBACK_SUCCESS_PAGE)
+          resolveFlowTokens(accessToken, refreshToken)
+          return
+        }
+        // OAuth PKCE flow: authorization code arrives as query param.
+        const code = url.searchParams.get('code')
         if (!code) {
           writeInvalidCallback(response)
           return
         }
         response.writeHead(200, FABRICA_CLOUD_CALLBACK_RESPONSE_HEADERS)
         response.end(FABRICA_CLOUD_CALLBACK_SUCCESS_PAGE)
-        resolveFlow(code)
+        resolveFlowCode(code)
       } catch (error) {
         rejectFlow(error instanceof Error ? error : new Error('FABRICA_cloud_auth_callback_failed'))
       }

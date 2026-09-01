@@ -7,7 +7,10 @@
   SignOutCurrentFABRICAProfileResult
 } from '../../shared/fabrica-profiles'
 import { ensureActiveFABRICAProfile } from './profile-index-store'
-import { getFABRICACloudAuthConfig, isFABRICACloudDevAuthEnabled } from './profile-cloud-auth-config'
+import {
+  getFABRICACloudAuthConfig,
+  isFABRICACloudDevAuthEnabled
+} from './profile-cloud-auth-config'
 import {
   clearFABRICACloudSession,
   readFABRICACloudSession,
@@ -17,6 +20,7 @@ import { cloudSessionIdentity, tombstoneCloudSession } from './profile-cloud-ses
 import {
   createFABRICACloudProfile,
   exchangeFABRICACloudAuthCode,
+  exchangeFABRICACloudTokens,
   revokeFABRICACloudSession
 } from './profile-cloud-client'
 import { beginFABRICACloudPkceFlow } from './profile-cloud-pkce'
@@ -48,7 +52,10 @@ function activeAuth(
 }
 
 export function getCurrentFABRICAProfileAuthStatus(userDataPath: string): FABRICAProfileAuthStatus {
-  return getFABRICAProfileAuthStatusFromProfile(ensureActiveFABRICAProfile(userDataPath), userDataPath)
+  return getFABRICAProfileAuthStatusFromProfile(
+    ensureActiveFABRICAProfile(userDataPath),
+    userDataPath
+  )
 }
 
 export async function connectCurrentFABRICAProfile(
@@ -74,11 +81,17 @@ export async function connectCurrentFABRICAProfile(
   }
 
   try {
-    const code = await beginFABRICACloudPkceFlow(configState.config, active.profile.id)
-    const exchange = await exchangeFABRICACloudAuthCode(configState.config, {
-      ...code,
-      localProfileId: active.profile.id
-    })
+    const pkceResult = await beginFABRICACloudPkceFlow(configState.config, active.profile.id)
+    const exchange =
+      pkceResult.kind === 'code'
+        ? await exchangeFABRICACloudAuthCode(configState.config, {
+            ...pkceResult,
+            localProfileId: active.profile.id
+          })
+        : await exchangeFABRICACloudTokens(configState.config, {
+            accessToken: pkceResult.accessToken,
+            refreshToken: pkceResult.refreshToken
+          })
     saveFABRICACloudSessionExchange(active.profile.id, userDataPath, exchange)
     const list = linkFABRICAProfileToCloud(active.profile.id, exchange.cloud, userDataPath)
     return {

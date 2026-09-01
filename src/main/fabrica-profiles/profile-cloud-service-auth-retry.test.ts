@@ -98,6 +98,7 @@ function configureCloudEnv(): void {
 
 function mockSuccessfulConnect(): void {
   beginFABRICACloudPkceFlowMock.mockResolvedValue({
+    kind: 'code',
     code: 'auth-code',
     codeVerifier: 'code-verifier',
     nonce: 'nonce',
@@ -185,7 +186,10 @@ describe('FABRICA cloud profile auth-failure retry', () => {
     refreshFABRICACloudCapabilitiesMock
       .mockRejectedValueOnce(new FABRICACloudRequestErrorMock(403))
       .mockResolvedValue({
-        capabilities: { flags: { share: false }, refreshedAt: 26 } satisfies FABRICACloudCapabilities
+        capabilities: {
+          flags: { share: false },
+          refreshedAt: 26
+        } satisfies FABRICACloudCapabilities
       })
 
     const result = await refreshCurrentFABRICAProfileAuth(userDataPath)

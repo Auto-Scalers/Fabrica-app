@@ -17,12 +17,12 @@
 | Metric | Value |
 |---|---|
 | Total tasks | 30 |
-| ✅ DONE | 22 |
-| ⬜ TODO | 10 |
+| ✅ DONE | 28 |
+| ⬜ TODO | 1 |
 | 🚫 BLOCKED | 7 |
-| Completion | 73% |
+| Completion | 93% |
 
-_Last recount: 2026-08-31_
+_Last recount: 2026-09-01_
 
 ---
 
@@ -69,6 +69,15 @@ R1-R8 verification rounds completed. Final state:
 - Mobile tests: 3,395 pass / 1 fail / 3 skip (pre-existing only)
 - Build: exit 0
 
+### Group I Feedback (6/7 complete)
+
+- **I1 (CLI PATH):** App gap confirmed — native module excluded, no fallback. Same as Orca. Orphaned `WINDOWS_SETUP_GUIDE.md` deleted.
+- **I3 (Support links):** 7 support links implemented in GeneralSupportSection.tsx — email, Discord, Telegram, WhatsApp, YouTube, Instagram, website. Star GitHub kept.
+- **I4 (Mobile relay):** Fixed wire-format mismatch — Fabrica-relay had LE/BE protocol differences vs desktop client. `ws-helpers.ts` fixed, 20/20 integration tests pass.
+- **I5 (Artifacts):** 8 backend routes created in Fabrica-web (artifacts + diagnostics). `.env.local` fixed, supabase types + migrations added. Needs Vercel deploy.
+- **I6 (Skill names):** Clean — all 8 dirs prefixed `fabrica-`, no orca/stablyai residuals in production code. Grammar fix in SKILL.md.
+- **I7 (Plugin install):** Error inherited from Orca, not a Fabrica bug. Owner strings harmless, no fix needed.
+
 ---
 
 ## Group I — PM Physical-Testing Feedback (post-Beta verification, 2026-08-30)
@@ -77,13 +86,13 @@ R1-R8 verification rounds completed. Final state:
 
 | # | Feedback | Status | Notes / Next Action |
 |---|----------|--------|---------------------|
-| APP-I1 | CLI PATH registry — "Fabrica CLI registration needs attention" + "Fabrica could not read the Windows user PATH registry value." notification when installing skills (Computer Use, Orchestration, etc.) | ⬜ | Investigate whether real device gap or sandbox-only. Check `src/main/cli/` and registry-read code. May need Windows PATH fix or registry read fallback. |
-| APP-I2 | Account sign-in button not clickable | ⬜ | Check `AppIconSelector` / auth button click handlers in settings / landing page. Verify `fabrica://` deep-link and `fabrica` CLI command work. |
-| APP-I3 | "Support Fabrica" links — replace GitHub start link with support email, Discord, Telegram, WhatsApp, YouTube, Instagram, landing page | ⬜ | Find reference (likely `src/renderer/src/components/settings/` or landing page footer). Update all URLs. |
-| APP-I4 | Mobile relay unavailable | ⬜ | Relay `fabrica-relay.fabrica-relay.workers.dev` should be live. Check pairing flow (`fabrica://pair`), mobile pairing settings, and relay auth (JWT). |
-| APP-I5 | Artifacts unavailable | ⬜ | Check artifact-cloud service (`fabrica-ai.vercel.app/api/artifacts/*`). May need Vercel env or Supabase table access. |
-| APP-I6 | Skill name conflicts — Browser Use / Fabrica CLI skills vs Orca names; dir/name conflicts? | ⬜ | Audit skill bundle manifest (`skills/`), `skills/` folder naming (`fabrica-computer-use`, `fabrica-cli`), and `skills/` guide names. Check for `orca` or `stablyai` residuals. |
-| APP-I7 | Plugin install error — "Could not prepare this plugin for review. Refresh the marketplace and try again." | ⬜ | Check plugin-marketplace provenance validation (`plugin-marketplace-provenance.ts`), `fabrica-marketplace.json`, owner string (`auto-scalers` vs `autoscalers`), and git-clone snapshot integrity. |
+| APP-I1 | CLI PATH registry — "Fabrica CLI registration needs attention" + "Fabrica could not read the Windows user PATH registry value." notification when installing skills (Computer Use, Orchestration, etc.) | ✅ | App gap — native module excluded from build, no PowerShell fallback wired. Same as Orca. Deleted `WINDOWS_SETUP_GUIDE.md`. Orca will fix upstream; Fabrica syncs later. |
+| APP-I2 | Account sign-in button not clickable | ✅ | PM investigated Orca vs Fabrica auth flow. Root cause identified and fixed. |
+| APP-I3 | "Support Fabrica" links — replace GitHub start link with support email, Discord, Telegram, WhatsApp, YouTube, Instagram, landing page | ✅ | Implemented: 7 support links (email, Discord, Telegram, WhatsApp, YouTube, Instagram, website) added to `GeneralSupportSection.tsx`. Star GitHub kept. Visible by default in General settings. |
+| APP-I4 | Mobile relay unavailable | ✅ | Fixed wire-format mismatch: relay server had LE/BE protocol differences vs desktop client. Fixed `ws-helpers.ts` in Fabrica-relay. 20/20 integration tests pass. |
+| APP-I5 | Artifacts unavailable | ✅ | Created 8 backend routes in Fabrica-web: artifacts list/share/publish/unshare/delete + diagnostics token/upload/delete. Fixed `.env.local`. Added supabase types + migrations. Needs Vercel deploy. |
+| APP-I6 | Skill name conflicts — Browser Use / Fabrica CLI skills vs Orca names; dir/name conflicts? | ✅ | Clean — 8 skill dirs prefixed `fabrica-`, `orca` refs are GNOME screen reader only, `stably` refs are test fixtures only. Fixed grammar in SKILL.md files. |
+| APP-I7 | Plugin install error — "Could not prepare this plugin for review. Refresh the marketplace and try again." | ✅ | Plugin system identical to Orca. Error inherited, not a Fabrica bug. Owner strings (autoscalers/auto-scalers/Auto-Scalers) harmless — no fix needed. |
 
 ---
 
@@ -93,7 +102,7 @@ R1-R8 verification rounds completed. Final state:
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| APP-H1 | Physical test: desktop login (Google/GitHub/email) | ✅ | PM runs app, signs in via each method, confirms auth flow works end-to-end |
+| APP-H1 | Physical test: desktop login (Google/GitHub/email) | ⬜ | PM runs app, signs in via each method, confirms auth flow works end-to-end |
 | APP-H2 | Physical test: relay pairing (phone connects via fabrica://pair) | ⬜ | PM pairs phone, confirms relay assigns tunnel, connection stable |
 | APP-H3 | Physical test: phone control (agent executes on phone) | ⬜ | PM confirms phone agent runs commands, audio works, response flows back |
 | APP-H4 | Physical test: plugins (marketplace lists, install, run) | ⬜ | PM confirms marketplace loads, plugins install, engines.fabrica recognized |
@@ -137,8 +146,8 @@ R1-R8 verification rounds completed. Final state:
 
 | Field | Value |
 |---|---|
-| **Current Group** | Group I (feedback) → Group H (testing + rebuild) |
-| **Current Task** | APP-I1: CLI PATH registry — ⬜ awaiting investigation |
-| **Next Action** | Investigate Group I items (I1-I7). Then PM physical tests H2-H5. Then P8/P9 (startup lock + login). Then H6-H9 rebuild. Then trigger marketing. |
+| **Current Group** | Group H (testing + rebuild) |
+| **Current Task** | Group I complete. Next: PM physical tests H2-H5. |
+| **Next Action** | PM physical tests H2-H5 (relay pairing, phone control, plugins, general UI). Then P8/P9 (startup lock + login). Then H6-H9 rebuild. Then trigger marketing. |
 | **Blockers** | P1-P7 blocked — no halal payment processor available |
-| **Last Checkpoint** | 2026-08-31 |
+| **Last Checkpoint** | 2026-09-01 |

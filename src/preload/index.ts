@@ -566,12 +566,6 @@ const api = {
     orgMemberRemove: (args) => ipcRenderer.invoke('FABRICAProfiles:orgMemberRemove', args)
   } satisfies PreloadApi['FABRICAProfiles'],
 
-  supabaseAuth: {
-    getStatus: () => ipcRenderer.invoke('supabaseAuth:getStatus'),
-    signIn: (args) => ipcRenderer.invoke('supabaseAuth:signIn', args),
-    signOut: () => ipcRenderer.invoke('supabaseAuth:signOut')
-  } satisfies PreloadApi['supabaseAuth'],
-
   platform: {
     get: () => ({
       platform: process.platform,

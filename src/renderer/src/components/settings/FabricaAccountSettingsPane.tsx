@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button'
 import { translate } from '@/i18n/i18n'
 import { useAppStore } from '@/store'
 import { FABRICAProfileSignOutConfirmDialog } from '../fabrica-profiles/FabricaProfileSignOutConfirmDialog'
-import { SupabaseAccountSignInCard } from './SupabaseAccountSignInCard'
 
 function accountStatusCopy(
   state: 'local' | 'unconfigured' | 'connected' | 'reconnect-required' | undefined,
@@ -119,8 +118,6 @@ export function FABRICAAccountSettingsPane(): React.JSX.Element {
             </Button>
           )}
         </div>
-
-        <SupabaseAccountSignInCard />
 
         <div className="space-y-4 border-t border-border/60 pt-5">
           <p className="text-[11px] font-semibold uppercase tracking-[0.05em] text-muted-foreground">

@@ -196,6 +196,18 @@ export async function exchangeFABRICACloudAuthCode(
   )
 }
 
+export async function exchangeFABRICACloudTokens(
+  config: FABRICACloudAuthConfig,
+  args: { accessToken: string; refreshToken: string }
+): Promise<FABRICACloudSessionExchangeResponse> {
+  return normalizeSessionResponse(
+    await postJson(config.sessionEndpoint, {
+      accessToken: args.accessToken,
+      refreshToken: args.refreshToken
+    })
+  )
+}
+
 export async function refreshFABRICACloudCapabilities(
   config: FABRICACloudAuthConfig,
   session: FABRICACloudSession

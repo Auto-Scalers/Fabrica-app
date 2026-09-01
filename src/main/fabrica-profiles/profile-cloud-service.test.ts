@@ -86,6 +86,7 @@ function futureExpiresAt(): number {
 
 function mockSuccessfulConnect(expiresAt = futureExpiresAt()): void {
   beginFABRICACloudPkceFlowMock.mockResolvedValue({
+    kind: 'code',
     code: 'auth-code',
     codeVerifier: 'code-verifier',
     nonce: 'nonce',
