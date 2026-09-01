@@ -1,5 +1,4 @@
 ﻿export const APP_ICON_OPTIONS = [
-  { id: 'classic', label: 'Classic FABRICA' },
   { id: 'dark', label: 'Dark FABRICA' },
   { id: 'light', label: 'Light FABRICA' }
 ] as const

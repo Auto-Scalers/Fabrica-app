@@ -145,10 +145,12 @@ describe('marketplace provenance contracts', () => {
   })
 
   it('does not trust lookalike organizations or hosts', () => {
-    expect(isOfficialOrganizationGitSource('https://github.com/autoscalers-fakes/fabrica-skills')).toBe(
+    expect(
+      isOfficialOrganizationGitSource('https://github.com/autoscalers-fakes/fabrica-skills')
+    ).toBe(false)
+    expect(isOfficialOrganizationGitSource('https://gitlab.com/autoscalers/fabrica-skills')).toBe(
       false
     )
-    expect(isOfficialOrganizationGitSource('https://gitlab.com/autoscalers/fabrica-skills')).toBe(false)
   })
 
   it('recognizes only the canonical official marketplace repository', () => {
@@ -157,7 +159,7 @@ describe('marketplace provenance contracts', () => {
         `git@github.com:${OFFICIAL_MARKETPLACE_OWNER}/${OFFICIAL_MARKETPLACE_REPOSITORY}.git`
       )
     ).toBe(true)
-    expect(isOfficialMarketplaceGitSource('git@github.com:stablyai/plugins.git')).toBe(false)
+    expect(isOfficialMarketplaceGitSource('git@github.com:autoscalers/plugins.git')).toBe(false)
   })
 
   it('parses nested repository paths without confusing the repository name', () => {

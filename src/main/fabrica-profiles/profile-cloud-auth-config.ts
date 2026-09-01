@@ -18,7 +18,7 @@ export type FABRICACloudAuthConfig = {
 const DEFAULT_SCOPE = 'openid profile email offline_access'
 const PRODUCTION_API_BASE_URL = 'https://fabrica-ai.vercel.app'
 const PRODUCTION_CLIENT_ID = 'FABRICA-desktop'
-const PRODUCTION_RELAY_DIRECTOR_URL = 'https://fabrica-relay.fabrica-relay.workers.dev'
+const PRODUCTION_RELAY_DIRECTOR_URL = 'https://fabrica.autoscalers.workers.dev'
 
 // Why: packaged main bundles never define NODE_ENV, so packaged-ness is the
 // only reliable production signal for gating dev-only auth escape hatches.
@@ -66,7 +66,9 @@ function cleanOrigin(value: string | undefined, allowLoopbackHttp: boolean): str
 export function getFABRICACloudAuthConfig(
   env: NodeJS.ProcessEnv = process.env,
   packaged: boolean = isPackagedFABRICABuild()
-): { configured: true; config: FABRICACloudAuthConfig } | { configured: false; setupMessage: string } {
+):
+  | { configured: true; config: FABRICACloudAuthConfig }
+  | { configured: false; setupMessage: string } {
   // Why: loopback HTTP endpoints are a local-development convenience only;
   // packaged builds must not accept plain-HTTP token endpoints via env vars.
   const allowLoopbackHttp = !packaged
@@ -80,7 +82,8 @@ export function getFABRICACloudAuthConfig(
     : packaged
       ? PRODUCTION_API_BASE_URL
       : null
-  const clientId = env.FABRICA_CLOUD_CLIENT_ID?.trim() || (packaged ? PRODUCTION_CLIENT_ID : undefined)
+  const clientId =
+    env.FABRICA_CLOUD_CLIENT_ID?.trim() || (packaged ? PRODUCTION_CLIENT_ID : undefined)
   if (!apiBaseUrl || !clientId) {
     return {
       configured: false,

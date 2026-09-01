@@ -35,8 +35,8 @@ import { connectMobileRelayRpcSession } from './mobile-relay-rpc-session'
 
 const relay = {
   v: 1 as const,
-  directorUrl: 'https://relay.onfabrica.dev',
-  cellUrl: 'https://relay-c1.onfabrica.dev',
+  directorUrl: 'https://relay.autoscalers.workers.dev',
+  cellUrl: 'https://relay-c1.autoscalers.workers.dev',
   assignmentEpoch: 7,
   relayHostId: 'AbCdEf0123_-xyZ9',
   e2eeFraming: 2 as const

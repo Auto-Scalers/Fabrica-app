@@ -152,7 +152,11 @@ describe('session view preference', () => {
 
     await expect(reloaded).resolves.toBe('terminal')
     expect(AsyncStorage.setItem).toHaveBeenNthCalledWith(1, 'FABRICA:defaultSessionView', 'chat')
-    expect(AsyncStorage.setItem).toHaveBeenNthCalledWith(2, 'FABRICA:defaultSessionView', 'terminal')
+    expect(AsyncStorage.setItem).toHaveBeenNthCalledWith(
+      2,
+      'FABRICA:defaultSessionView',
+      'terminal'
+    )
   })
 
   it('continues the shared default queue after a failed write', async () => {
@@ -348,7 +352,10 @@ describe('terminal autocomplete preference', () => {
 
     await saveTerminalAutocompleteEnabled(false)
 
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith('FABRICA:terminalAutocompleteEnabled', 'false')
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
+      'FABRICA:terminalAutocompleteEnabled',
+      'false'
+    )
   })
 })
 
@@ -469,13 +476,7 @@ describe('terminal link open mode preference', () => {
     expect(AsyncStorage.getItem).toHaveBeenCalledWith('FABRICA:terminalLinkOpenMode')
   })
 
-  it('migrates legacy stored values to fabrica-browser', async () => {
-    vi.mocked(AsyncStorage.getItem).mockResolvedValue('FABRICA-browser')
-    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
-
-    vi.mocked(AsyncStorage.getItem).mockResolvedValue('orca-browser')
-    await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
-
+  it('loads known modes correctly', async () => {
     vi.mocked(AsyncStorage.getItem).mockResolvedValue('fabrica-browser')
     await expect(loadTerminalLinkOpenMode()).resolves.toBe('fabrica-browser')
   })
@@ -497,6 +498,9 @@ describe('terminal link open mode preference', () => {
   it('persists the selected mode', async () => {
     await saveTerminalLinkOpenMode('phone-browser')
 
-    expect(AsyncStorage.setItem).toHaveBeenCalledWith('FABRICA:terminalLinkOpenMode', 'phone-browser')
+    expect(AsyncStorage.setItem).toHaveBeenCalledWith(
+      'FABRICA:terminalLinkOpenMode',
+      'phone-browser'
+    )
   })
 })

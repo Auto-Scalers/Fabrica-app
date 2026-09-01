@@ -9,7 +9,9 @@ const projectDir = resolve(import.meta.dirname, '../..')
 // installable stub projection is checked separately below.
 const guidePath = join(projectDir, 'skill-guides', 'fabrica-computer-use.md')
 const stubPath = join(projectDir, 'skills', 'fabrica-computer-use', 'SKILL.md')
-const bundledGuide = BUNDLED_SKILL_GUIDES.find((guide) => guide.name === 'fabrica-computer-use')?.markdown
+const bundledGuide = BUNDLED_SKILL_GUIDES.find(
+  (guide) => guide.name === 'fabrica-computer-use'
+)?.markdown
 
 describe('computer-use skill guidance', () => {
   it('keeps web-app targeting on the computer-use surface', () => {
@@ -67,7 +69,6 @@ describe('computer-use install stub', () => {
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

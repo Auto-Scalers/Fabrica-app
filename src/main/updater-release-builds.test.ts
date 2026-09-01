@@ -26,46 +26,6 @@ describe('listReleaseBuilds', () => {
     fetchMock.mockReset()
   })
 
-  it('lists hourly builds from the dedicated repo, newest first', async () => {
-    fetchMock.mockResolvedValue(
-      jsonResponse([
-        release('v1.4.160-hourly.202607280900'),
-        release('v1.4.160-hourly.202607281400'),
-        release('v1.4.160-hourly.202607281000')
-      ])
-    )
-
-    const builds = await listReleaseBuilds('hourly')
-
-    expect(fetchMock.mock.calls[0][0]).toContain('Auto-Scalers/Fabrica-hourly')
-    expect(builds.map((build) => build.version)).toEqual([
-      '1.4.160-hourly.202607281400',
-      '1.4.160-hourly.202607281000',
-      '1.4.160-hourly.202607280900'
-    ])
-  })
-
-  it('lists daily builds from the dedicated repo, newest first', async () => {
-    fetchMock.mockResolvedValue(
-      jsonResponse([
-        release('v1.4.160-daily.202607271300'),
-        release('v1.4.160-daily.202607291300'),
-        release('v1.4.160-daily.202607281300')
-      ])
-    )
-
-    const builds = await listReleaseBuilds('daily')
-
-    expect(fetchMock.mock.calls[0][0]).toContain('Auto-Scalers/Fabrica-daily')
-    expect(builds.map((build) => build.version)).toEqual([
-      '1.4.160-daily.202607291300',
-      '1.4.160-daily.202607281300',
-      '1.4.160-daily.202607271300'
-    ])
-  })
-
-  // Why: the main repo serves stable and rc from one endpoint, so an unfiltered
-  // list would offer RC tags under the Stable channel.
   it('separates stable from rc in the shared main repo', async () => {
     fetchMock.mockResolvedValue(
       jsonResponse([release('v1.4.160-rc.2'), release('v1.4.159'), release('v1.4.158')])
@@ -83,8 +43,6 @@ describe('listReleaseBuilds', () => {
     ])
   })
 
-  // Why: a draft release has no downloadable assets; offering it makes the
-  // switch action fail with a 404 after the user commits to it.
   it('skips drafts and unparseable tags', async () => {
     fetchMock.mockResolvedValue(
       jsonResponse([
@@ -99,62 +57,40 @@ describe('listReleaseBuilds', () => {
     expect(builds.map((build) => build.version)).toEqual(['1.4.159'])
   })
 
-  // Why: the hourly workflow composes the release title and the picker renders it
-  // verbatim, so the two can never drift. A title that only repeats the tag says
-  // nothing the version beside it does not, and must not become a picker row
-  // reading "v1.4.163-hourly.202607311933".
   it('keeps a composed release title and drops one that repeats the tag', async () => {
     fetchMock.mockResolvedValue(
       jsonResponse([
-        release('v1.4.163-hourly.202607312054', { name: '1.4.163 • 01 • 07-31 13:54 • e698241' }),
-        release('v1.4.163-hourly.202607311933', { name: 'v1.4.163-hourly.202607311933' }),
-        release('v1.4.163-hourly.202607311835', { name: '   ' }),
-        release('v1.4.163-hourly.202607311735', { name: 42 })
+        release('v1.4.160-rc.2', { name: '1.4.160 • 02 • RC' }),
+        release('v1.4.160-rc.1', { name: 'v1.4.160-rc.1' }),
+        release('v1.4.160-rc.0', { name: '   ' })
       ])
     )
 
-    const builds = await listReleaseBuilds('hourly')
-    expect(builds.map((build) => build.name)).toEqual([
-      '1.4.163 • 01 • 07-31 13:54 • e698241',
-      null,
-      null,
-      null
-    ])
+    const builds = await listReleaseBuilds('rc')
+    expect(builds.map((build) => build.name)).toEqual(['1.4.160 • 02 • RC', null, null])
   })
 
   it('surfaces a rate limit as an actionable message', async () => {
     fetchMock.mockResolvedValue(jsonResponse(null, { ok: false, status: 403 }))
-    await expect(listReleaseBuilds('hourly')).rejects.toThrow(/rate limit/i)
+    await expect(listReleaseBuilds('rc')).rejects.toThrow(/rate limit/i)
   })
 
-  it('reports a missing hourly repo distinctly', async () => {
+  it('reports a missing repo distinctly', async () => {
     fetchMock.mockResolvedValue(jsonResponse(null, { ok: false, status: 404 }))
-    await expect(listReleaseBuilds('hourly')).rejects.toThrow(/No releases repository/i)
+    await expect(listReleaseBuilds('rc')).rejects.toThrow(/No releases repository/i)
   })
 })
 
 describe('resolveTargetBuild', () => {
-  it('pins an hourly tag at the hourly repo download path', () => {
-    expect(resolveTargetBuild('hourly', 'v1.4.160-hourly.202607281400')).toEqual({
-      tag: 'v1.4.160-hourly.202607281400',
-      version: '1.4.160-hourly.202607281400',
-      feedUrl:
-        'https://github.com/Auto-Scalers/Fabrica-hourly/releases/download/v1.4.160-hourly.202607281400'
-    })
-  })
-
-  it('pins a daily tag at the daily repo download path', () => {
-    expect(resolveTargetBuild('daily', 'v1.4.160-daily.202607281300')).toEqual({
-      tag: 'v1.4.160-daily.202607281300',
-      version: '1.4.160-daily.202607281300',
-      feedUrl:
-        'https://github.com/Auto-Scalers/Fabrica-daily/releases/download/v1.4.160-daily.202607281300'
-    })
-  })
-
   it('pins a stable tag at the main repo download path', () => {
     expect(resolveTargetBuild('stable', 'v1.4.159').feedUrl).toBe(
       'https://github.com/Auto-Scalers/Fabrica-app/releases/download/v1.4.159'
+    )
+  })
+
+  it('pins an rc tag at the main repo download path', () => {
+    expect(resolveTargetBuild('rc', 'v1.4.160-rc.2').feedUrl).toBe(
+      'https://github.com/Auto-Scalers/Fabrica-app/releases/download/v1.4.160-rc.2'
     )
   })
 

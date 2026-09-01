@@ -125,7 +125,7 @@ export const CORE_COMMAND_SPECS: CommandSpec[] = [
       'fabrica worktree create --name agent-task --agent codex --prompt "hi" --json',
       'fabrica worktree create --repo id:<repoId> --name related-task --json',
       'fabrica worktree create --project github:Auto-Scalers/Fabrica-app --host runtime:gpu --name benchmark --json',
-      'fabrica worktree create --repo id:<repoId> --name linear-task --linear-issue https://linear.app/stably/issue/STA-335/test-issue --json',
+      'fabrica worktree create --repo id:<repoId> --name linear-task --linear-issue https://linear.app/fabrica/issue/STA-335/test-issue --json',
       'fabrica worktree create --repo id:<repoId> --name agent-task --agent codex --prompt "hi" --json',
       'fabrica worktree create --repo id:<repoId> --name folder-child --parent-worktree folder:<folderId> --json',
       'fabrica worktree create --repo id:<repoId> --name related-task --parent-worktree active --json',

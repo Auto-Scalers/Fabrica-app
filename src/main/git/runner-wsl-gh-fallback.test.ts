@@ -83,8 +83,8 @@ describe('ghExecFileAsync WSL fallback', () => {
     })
 
     await expect(
-      ghExecFileAsync(['issue', 'list', '--repo', 'stablyhq/noqa', '--json', 'number,title'], {
-        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+      ghExecFileAsync(['issue', 'list', '--repo', 'autoscalers/noqa', '--json', 'number,title'], {
+        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
       })
     ).resolves.toEqual({ stdout: '[]', stderr: '' })
 
@@ -97,7 +97,7 @@ describe('ghExecFileAsync WSL fallback', () => {
         '--',
         'bash',
         '-c',
-        "cd '/home/jinwoo/stably/noqa' && 'gh' 'issue' 'list' '--repo' 'stablyhq/noqa' '--json' 'number,title'"
+        "cd '/home/jinwoo/fabrica/noqa' && 'gh' 'issue' 'list' '--repo' 'autoscalers/noqa' '--json' 'number,title'"
       ],
       expect.objectContaining({ cwd: undefined }),
       expect.any(Function)
@@ -105,7 +105,7 @@ describe('ghExecFileAsync WSL fallback', () => {
     expect(execFileMock).toHaveBeenNthCalledWith(
       2,
       'gh',
-      ['issue', 'list', '--repo', 'stablyhq/noqa', '--json', 'number,title'],
+      ['issue', 'list', '--repo', 'autoscalers/noqa', '--json', 'number,title'],
       expect.objectContaining({ cwd: undefined }),
       expect.any(Function)
     )
@@ -123,7 +123,7 @@ describe('ghExecFileAsync WSL fallback', () => {
 
     await expect(
       ghExecFileAsync(['issue', 'list'], {
-        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
       })
     ).rejects.toThrow('Command failed: wsl.exe')
 
@@ -148,15 +148,15 @@ describe('ghExecFileAsync WSL fallback', () => {
     })
 
     await expect(
-      ghExecFileAsync(['issue', 'list', '-R', 'stablyhq/noqa'], {
-        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+      ghExecFileAsync(['issue', 'list', '-R', 'autoscalers/noqa'], {
+        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
       })
     ).resolves.toEqual({ stdout: '[]', stderr: '' })
 
     expect(execFileMock).toHaveBeenNthCalledWith(
       2,
       'gh',
-      ['issue', 'list', '-R', 'stablyhq/noqa'],
+      ['issue', 'list', '-R', 'autoscalers/noqa'],
       expect.objectContaining({ cwd: undefined }),
       expect.any(Function)
     )
@@ -180,15 +180,15 @@ describe('ghExecFileAsync WSL fallback', () => {
     })
 
     await expect(
-      ghExecFileAsync(['issue', 'list', '-Rstablyhq/noqa'], {
-        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+      ghExecFileAsync(['issue', 'list', '-Rautoscalers/noqa'], {
+        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
       })
     ).resolves.toEqual({ stdout: '[]', stderr: '' })
 
     expect(execFileMock).toHaveBeenNthCalledWith(
       2,
       'gh',
-      ['issue', 'list', '-Rstablyhq/noqa'],
+      ['issue', 'list', '-Rautoscalers/noqa'],
       expect.objectContaining({ cwd: undefined }),
       expect.any(Function)
     )
@@ -213,9 +213,9 @@ describe('ghExecFileAsync WSL fallback', () => {
 
     await expect(
       ghExecFileAsync(
-        ['repo', 'view', 'github.acme-corp.com/stablyhq/noqa', '--json', 'isFork,parent'],
+        ['repo', 'view', 'github.acme-corp.com/autoscalers/noqa', '--json', 'isFork,parent'],
         {
-          cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`,
+          cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`,
           host: 'github.acme-corp.com'
         }
       )
@@ -224,7 +224,7 @@ describe('ghExecFileAsync WSL fallback', () => {
     expect(execFileMock).toHaveBeenNthCalledWith(
       2,
       'gh',
-      ['repo', 'view', 'github.acme-corp.com/stablyhq/noqa', '--json', 'isFork,parent'],
+      ['repo', 'view', 'github.acme-corp.com/autoscalers/noqa', '--json', 'isFork,parent'],
       expect.objectContaining({ cwd: undefined }),
       expect.any(Function)
     )
@@ -241,8 +241,8 @@ describe('ghExecFileAsync WSL fallback', () => {
     })
 
     await expect(
-      ghExecFileAsync(['api', 'repos/stablyhq/noqa/branches/{branch}'], {
-        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+      ghExecFileAsync(['api', 'repos/autoscalers/noqa/branches/{branch}'], {
+        cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
       })
     ).rejects.toThrow('Command failed: wsl.exe')
 
@@ -431,7 +431,7 @@ describe('ghExecFileAsync WSL fallback', () => {
     })
 
     const options = {
-      cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\stably\noqa`
+      cwd: String.raw`\\wsl.localhost\Ubuntu\home\jinwoo\fabrica\noqa`
     }
     await expect(ghExecFileAsync(['api', 'repos/acme/widgets/pulls'], options)).rejects.toThrow(
       'rate limit'

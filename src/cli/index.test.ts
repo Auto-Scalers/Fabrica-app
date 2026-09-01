@@ -1056,7 +1056,7 @@ describe('FABRICA cli worktree awareness', () => {
           ...buildWorktree('/tmp/repo/child', 'feature/child'),
           linkedLinearIssue: 'STA-335',
           linkedLinearIssueWorkspaceId: null,
-          linkedLinearIssueOrganizationUrlKey: 'stably'
+          linkedLinearIssueOrganizationUrlKey: 'fabrica'
         }
       })
     )
@@ -1069,7 +1069,7 @@ describe('FABRICA cli worktree awareness', () => {
         '--worktree',
         'id:repo::/tmp/repo/child',
         '--linear-issue',
-        'https://linear.app/stably/issue/STA-335/test-issue',
+        'https://linear.app/fabrica/issue/STA-335/test-issue',
         '--json'
       ],
       '/tmp/repo'
@@ -1081,7 +1081,7 @@ describe('FABRICA cli worktree awareness', () => {
       linkedIssue: undefined,
       linkedLinearIssue: 'STA-335',
       linkedLinearIssueWorkspaceId: null,
-      linkedLinearIssueOrganizationUrlKey: 'stably',
+      linkedLinearIssueOrganizationUrlKey: 'fabrica',
       comment: undefined,
       workspaceStatus: undefined,
       parentWorktree: undefined,
@@ -1202,7 +1202,7 @@ describe('FABRICA cli worktree awareness', () => {
           ...buildWorktree('/tmp/repo/feature', 'feature', 'abc', 'repo-1'),
           linkedLinearIssue: 'STA-335',
           linkedLinearIssueWorkspaceId: null,
-          linkedLinearIssueOrganizationUrlKey: 'stably'
+          linkedLinearIssueOrganizationUrlKey: 'fabrica'
         }
       })
     )
@@ -1217,7 +1217,7 @@ describe('FABRICA cli worktree awareness', () => {
         '--name',
         'feature',
         '--linear-issue',
-        'https://linear.app/stably/issue/STA-335/test-issue',
+        'https://linear.app/fabrica/issue/STA-335/test-issue',
         '--json'
       ],
       '/tmp/repo'
@@ -1230,7 +1230,7 @@ describe('FABRICA cli worktree awareness', () => {
       linkedIssue: undefined,
       linkedLinearIssue: 'STA-335',
       linkedLinearIssueWorkspaceId: null,
-      linkedLinearIssueOrganizationUrlKey: 'stably',
+      linkedLinearIssueOrganizationUrlKey: 'fabrica',
       comment: undefined,
       runHooks: false,
       activate: false,

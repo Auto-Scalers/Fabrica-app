@@ -335,7 +335,7 @@ describe('filesystem-list-files', () => {
     }
   })
 
-  it('filters out .next, .cache, .stably, .vscode, .idea', async () => {
+  it('filters out .next, .cache, .fabrica, .vscode, .idea', async () => {
     const p1 = createMockProcess()
     const p2 = createMockProcess()
 
@@ -352,7 +352,7 @@ describe('filesystem-list-files', () => {
     setTimeout(() => {
       ;(p1.stdout as unknown as EventEmitter).emit('data', '.next/cache/1.js\n')
       ;(p1.stdout as unknown as EventEmitter).emit('data', '.cache/data.json\n')
-      ;(p1.stdout as unknown as EventEmitter).emit('data', '.stably/config.json\n')
+      ;(p1.stdout as unknown as EventEmitter).emit('data', '.fabrica/config.json\n')
       ;(p1.stdout as unknown as EventEmitter).emit('data', '.vscode/settings.json\n')
       ;(p1.stdout as unknown as EventEmitter).emit('data', '.idea/workspace.xml\n')
       ;(p1.stdout as unknown as EventEmitter).emit('data', 'valid.ts\n')

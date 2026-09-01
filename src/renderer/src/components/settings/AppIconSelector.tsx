@@ -1,6 +1,5 @@
 ﻿import type React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import classicIconUrl from '../../../../../resources/icon.png?url'
 import darkIconUrl from '../../../../../resources/app-icons/fabrica-dark.png?url'
 import lightIconUrl from '../../../../../resources/app-icons/fabrica-light.png?url'
 import { APP_ICON_OPTIONS, normalizeAppIconId, type AppIconId } from '../../../../shared/app-icon'
@@ -9,7 +8,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip'
 import { translate } from '@/i18n/i18n'
 
 const APP_ICON_URLS = {
-  classic: classicIconUrl,
   dark: darkIconUrl,
   light: lightIconUrl
 } satisfies Record<AppIconId, string>

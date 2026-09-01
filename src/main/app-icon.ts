@@ -7,8 +7,6 @@ import { dirname, join, resolve } from 'node:path'
 import { existsSync } from 'node:fs'
 import { app, BrowserWindow, nativeImage } from 'electron'
 import { is } from '@electron-toolkit/utils'
-import classicIcon from '../../resources/icon.png?asset'
-import classicDevIcon from '../../resources/icon-dev.png?asset'
 import darkIcon from '../../resources/app-icons/fabrica-dark.png?asset'
 import darkMacDockIcon from '../../resources/app-icons/fabrica-dark.png?asset&asarUnpack'
 import lightIcon from '../../resources/app-icons/fabrica-light.png?asset'
@@ -29,9 +27,6 @@ function resolveIconPath(assetPath: string, fallbackRelative: string): string {
 }
 
 const APP_ICON_PATHS = {
-  classic: is.dev
-    ? resolveIconPath(classicDevIcon, 'resources/icon-dev.png')
-    : resolveIconPath(classicIcon, 'resources/icon.png'),
   dark: resolveIconPath(darkIcon, 'resources/app-icons/fabrica-dark.png'),
   light: resolveIconPath(lightIcon, 'resources/app-icons/fabrica-light.png')
 } satisfies Record<AppIconId, string>
@@ -39,7 +34,7 @@ const APP_ICON_PATHS = {
 const MAC_DOCK_ICON_PATHS = {
   dark: resolveIconPath(darkMacDockIcon, 'resources/app-icons/fabrica-dark.png'),
   light: resolveIconPath(lightMacDockIcon, 'resources/app-icons/fabrica-light.png')
-} satisfies Record<Exclude<AppIconId, 'classic'>, string>
+} satisfies Record<AppIconId, string>
 
 type ExecFile = (
   file: string,
@@ -66,14 +61,6 @@ const MAC_DOCK_ICON_SCRIPT = [
   'if image is missing value then error "Fabrica app icon image could not be loaded"',
   "set ok to current application's NSWorkspace's sharedWorkspace()'s setIcon:image forFile:appPath options:0",
   'if ok is false then error "Fabrica app icon could not be persisted"'
-]
-
-const MAC_DOCK_ICON_CLEAR_SCRIPT = [
-  'use framework "AppKit"',
-  'use scripting additions',
-  'set appPath to system attribute "FABRICA_APP_BUNDLE_PATH"',
-  "set ok to current application's NSWorkspace's sharedWorkspace()'s setIcon:(missing value) forFile:appPath options:0",
-  'if ok is false then error "Fabrica app icon could not be cleared"'
 ]
 
 const MAC_DOCK_ICON_COMMAND_TIMEOUT_MS = 10_000
@@ -234,47 +221,6 @@ function enqueueMacDockIconPersistence(work: () => Promise<void>): void {
     .catch(handleMacDockIconQueueError)
 }
 
-function clearMacCustomIconMetadata(execFile: ExecFile, appBundlePath: string): Promise<void> {
-  const clearAppKitIcon = (): Promise<void> => {
-    return runBoundedMacDockIconCommand({
-      args: MAC_DOCK_ICON_CLEAR_SCRIPT.flatMap((line) => ['-e', line]),
-      execFile,
-      file: '/usr/bin/osascript',
-      onError: (error) => {
-        console.warn('[app-icon] failed to clear macOS dock icon:', error)
-      },
-      options: {
-        env: {
-          ...process.env,
-          FABRICA_APP_BUNDLE_PATH: appBundlePath
-        }
-      },
-      timeoutWarning: '[app-icon] timed out clearing macOS dock icon'
-    })
-  }
-
-  const clearAttribute = (attribute: string): Promise<void> => {
-    return runBoundedMacDockIconCommand({
-      args: ['-d', attribute, appBundlePath],
-      execFile,
-      file: '/usr/bin/xattr',
-      onError: (error) => {
-        if (!error.message.includes('No such xattr')) {
-          console.warn(`[app-icon] failed to clear macOS dock icon metadata ${attribute}:`, error)
-        }
-      },
-      timeoutWarning: `[app-icon] timed out clearing macOS dock icon metadata ${attribute}`
-    })
-  }
-
-  return clearAppKitIcon().then(() =>
-    Promise.all([
-      clearAttribute('com.apple.FinderInfo'),
-      clearAttribute('com.apple.ResourceFork')
-    ]).then(() => {})
-  )
-}
-
 export function persistMacDockIcon(value: unknown, options: PersistMacDockIconOptions = {}): void {
   const platform = options.platform ?? process.platform
   const isDevApp = options.isDevApp ?? (is.dev || !app.isPackaged)
@@ -291,10 +237,6 @@ export function persistMacDockIcon(value: unknown, options: PersistMacDockIconOp
   enqueueMacDockIconPersistence(async () => {
     // Why: stale queued writes must not reapply an older Dock pin icon.
     if (generation !== macDockIconPersistenceGeneration) {
-      return
-    }
-    if (iconId === 'classic') {
-      await clearMacCustomIconMetadata(execFile, appBundlePath)
       return
     }
     // Why: a stopped app's Dock tile is resolved from Finder metadata, not

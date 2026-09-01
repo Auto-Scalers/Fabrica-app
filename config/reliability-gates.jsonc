@@ -1380,7 +1380,7 @@
       "coverageNotes": "Deterministic fake-clock tests cover counted backoff, in-flight ownership and handoff, cancellation, supersession, transient and permanent failures, late stale rejection, silent hosts, flapping streams, viewport restarts, stale events, budget exhaustion, and manual recovery. A headless paired-runtime journey drops the real runtime connection, proves the bounded retry state and visible Reconnect control, reconnects the same host, and requires a newly painted frame. Headed paired-server, Windows, sleep/wake, and real network-partition evidence remain uncollected.",
       "motivatingLinks": [
         "https://github.com/Auto-Scalers/fabrica/pull/12787",
-        "https://linear.app/stably/issue/STA-3483"
+        "https://linear.app/fabrica/issue/STA-3483"
       ],
       "invariant": "A current remote browser stream that closes must retry transient failures on one counted, capped backoff chain. Cancellation, pane or runtime supersession, missing pages, and permanent failures stop that chain without stale state mutation. A stream that stays healthy refills the budget; a silent or flapping stream cannot retry forever. Exhaustion and every non-retrying failure leave an actionable Reconnect control, and manual reconnect creates a fresh stream without resurrecting stale subscriptions.",
       "oracle": "With one fake clock and exact pane, operation, stream, page, and runtime identities, drop a confirmed stream and require the counted delay sequence, one active chain, stale-token rejection, exact cancellation, full cleanup, and either a new live subscription or one stopped state with Reconnect after exhaustion. Inject transport error without close, close racing rejection, never-ready subscriptions, ready-then-end flapping, viewport supersession, missing pages, and permanent failures. In a separate paired client against an isolated headless Fabrica host, paint one remote frame, disconnect the owning runtime, require the bounded-retry notice and Reconnect control, reconnect, click once, and require a different frame object URL from the recovered stream.",
@@ -5887,7 +5887,7 @@
       "coveredPlatforms": ["macos"],
       "coveredProviders": ["daemon", "ssh"],
       "coverageNotes": "A preload contract and Electron main-stall oracle prove capability lookup is asynchronous. Startup prefetch covers restored primary and split-pane PTY identities before cold activation, while unknown providers remain eager. Docker SSH journeys prove remote terminals still remount eagerly and reclaim their authenticated PTY owner after restart.",
-      "motivatingLinks": ["https://stablygroup.slack.com/archives/C0BD60A5J85/p1785524559818629"],
+      "motivatingLinks": ["https://autoscalersgroup.slack.com/archives/C0BD60A5J85/p1785524559818629"],
       "invariant": "PTY snapshot capability discovery must never synchronously block renderer JavaScript. Restored daemon capability must be known before workspace readiness enables cold activation; unknown or legacy capability must remain eager. A healthy SSH provider must return definitive false without polling. One unresponsive capability batch must fail open within one second regardless of PTY count, and stale async responses must not update current bindings.",
       "oracle": "The preload test rejects sendSync and requires ipcRenderer.invoke. Unit contracts assert 512-ID batching, one-second fail-open, unknown retry, definitive SSH false, and generation-fenced stale responses. During an injected 1.5-second Electron main-thread stall, a renderer-owned 50ms interval must keep a maximum gap below 500ms and each API call must return within 100ms. The production cold-activation journey must still mount at most three of eight daemon tabs after reload, while Docker SSH restoration remains eager.",
       "commands": [
@@ -6486,7 +6486,7 @@
       "coveredProviders": ["paired-runtime"],
       "coverageNotes": "One end-to-end contract runs the real dispatcher, renderer multiplexer, remote transport, and pty-connection together and requires the tab remount, so the signal is proven past the transport callback it used to die behind. Focused contracts cover capability negotiation, legacy binary subscriptions, stream-id reuse, pane lifecycle reuse, the one-shot JSON fallback, and main refusing to answer liveness for a `remote:` id. Live headed/headless paired-runtime and mixed installed releases remain uncollected.",
       "motivatingLinks": [
-        "https://linear.app/stably/issue/STA-2830",
+        "https://linear.app/fabrica/issue/STA-2830",
         "https://github.com/Auto-Scalers/fabrica/issues/11124"
       ],
       "invariant": "When a paired-runtime client accepts terminal input locally but the authoritative host rejects the PTY write, a capability-compatible stream must notify only that current pane generation and that notification must end in an actual tab remount — no local liveness probe may veto it, because main owns no registry entry for a `remote:` id and must answer unknown for one. A host must never send the new opcode to a legacy or un-negotiated client, and a late rejection must never recover a replacement stream or pane lifecycle.",

@@ -16,36 +16,12 @@ const { writeMacBuildCompatibility } = require('./scripts/mac-build-compatibilit
 const { verifyPackagedPluginResources } = require('./scripts/verify-packaged-plugin-resources.cjs')
 const { verifySkillsCliRuntime } = require('./scripts/verify-skills-cli-runtime.cjs')
 
-// Why: dev-channel builds must carry the *release* identity — same bundle id,
+// Why: release builds must carry the *release* identity — same bundle id,
 // Developer ID signature, and notarization ticket — or Squirrel.Mac refuses to
 // swap them over an installed Fabrica and macOS treats each build as a new app.
-const isMacHourly = process.env.FABRICA_MAC_HOURLY === '1'
-const isMacDaily = process.env.FABRICA_MAC_DAILY === '1'
-const isMacAdhoc = process.env.FABRICA_MAC_ADHOC === '1'
-const isMacRelease =
-  process.env.FABRICA_MAC_RELEASE === '1' || isMacHourly || isMacDaily || isMacAdhoc
+const isMacRelease = process.env.FABRICA_MAC_RELEASE === '1'
 const isLinuxArm64Release = process.env.FABRICA_LINUX_ARM64_RELEASE === '1'
 const localBuildVersion = isMacRelease ? undefined : process.env.FABRICA_LOCAL_BUILD_VERSION
-const devChannelBuildVersion = isMacHourly
-  ? process.env.FABRICA_HOURLY_BUILD_VERSION
-  : isMacDaily
-    ? process.env.FABRICA_DAILY_BUILD_VERSION
-    : isMacAdhoc
-      ? process.env.FABRICA_ADHOC_BUILD_VERSION
-      : undefined
-// Why each dev channel gets its own repo rather than tagging into the main one:
-// the releases atom feed exposes only the 10 newest entries, so 24 hourly tags a
-// day would evict every stable/RC entry and strand users on a feed with nothing
-// to install. Keeping adhoc/daily separate from hourly too means a branch build
-// or a once-a-day cut cannot be picked up by someone who only meant to ride
-// main's hourlies.
-const devChannelRepo = isMacHourly
-  ? 'fabrica-hourly'
-  : isMacDaily
-    ? 'fabrica-daily'
-    : isMacAdhoc
-      ? 'fabrica-adhoc'
-      : null
 const appId = 'ai.autoscalers.fabrica'
 const featureWallResources = {
   from: 'resources/onboarding/feature-wall',
@@ -92,11 +68,7 @@ const winSpeechNativeResource = {
 module.exports = {
   appId,
   productName: 'Fabrica',
-  ...(devChannelBuildVersion
-    ? { extraMetadata: { version: devChannelBuildVersion } }
-    : localBuildVersion
-      ? { extraMetadata: { version: localBuildVersion } }
-      : {}),
+  ...(localBuildVersion ? { extraMetadata: { version: localBuildVersion } } : {}),
   directories: {
     buildResources: 'resources/build'
   },
@@ -500,8 +472,8 @@ module.exports = {
   publish: {
     provider: 'github',
     owner: 'Auto-Scalers',
-    repo: devChannelRepo ?? 'fabrica',
-    releaseType: devChannelRepo ? 'prerelease' : 'release'
+    repo: 'fabrica',
+    releaseType: 'release'
   }
 }
 

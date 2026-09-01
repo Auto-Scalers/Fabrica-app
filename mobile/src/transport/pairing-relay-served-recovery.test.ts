@@ -29,7 +29,7 @@ describe('served relay pairing recovery', () => {
     const journal = createJournal(cellUrl)
     const resolvedRelay = {
       ...relayFromJournal(journal),
-      cellUrl: 'https://c2.relay-staging.onfabrica.dev',
+      cellUrl: 'https://c2.relay-staging.autoscalers.workers.dev',
       assignmentEpoch: 8
     }
     const resolveDirector = vi.fn(async () => resolvedRelay)
@@ -130,7 +130,7 @@ function createJournal(cellUrl: string): MobileRelayPairingJournal {
       },
       relay: {
         v: 1,
-        directorUrl: 'https://relay-staging.onfabrica.dev',
+        directorUrl: 'https://relay-staging.autoscalers.workers.dev',
         cellUrl,
         assignmentEpoch: 7,
         relayHostId: 'AbCdEf0123_-xyZ9',

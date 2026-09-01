@@ -223,7 +223,7 @@ describe('project host setup projection', () => {
     const projection = projectHostSetupProjectionFromRepos([
       repo({
         id: 'canonical-local-repo',
-        path: '/Users/alice/stably/FABRICA',
+        path: '/Users/alice/fabrica/FABRICA',
         displayName: 'FABRICA',
         gitRemoteIdentity: {
           canonicalKey: 'github.com/Auto-Scalers/Fabrica-app',

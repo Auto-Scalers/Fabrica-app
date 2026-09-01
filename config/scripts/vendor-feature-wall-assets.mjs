@@ -10,7 +10,7 @@ const DEFAULT_MARKETING_REPO = path.join(
   homedir(),
   'source',
   'repos',
-  'Stably',
+  'Fabrica',
   'fabrica-marketing-website'
 )
 const MARKETING_REPO = process.env.FABRICA_MARKETING_REPO || DEFAULT_MARKETING_REPO

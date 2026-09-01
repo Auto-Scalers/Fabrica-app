@@ -54,9 +54,9 @@ describe('linear links', () => {
       identifier: 'ENG-123',
       organizationUrlKey: 'acme'
     })
-    expect(parseLinearIssueInput('https://linear.app/stably/issue/STA-335/test-issue')).toEqual({
+    expect(parseLinearIssueInput('https://linear.app/fabrica/issue/STA-335/test-issue')).toEqual({
       identifier: 'STA-335',
-      organizationUrlKey: 'stably'
+      organizationUrlKey: 'fabrica'
     })
   })
 

@@ -133,7 +133,6 @@ describe('fabrica CLI install stub', () => {
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

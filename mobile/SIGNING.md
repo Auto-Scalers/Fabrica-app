@@ -3,17 +3,13 @@
 Companion to `eas.json`. This covers building a Fabrica-branded (`com.autoscalers.fabrica.mobile`)
 Android APK for sideload / internal Beta distribution. **Not** for Google Play (deferred).
 
-## 1. Package identity (already rebranded)
+## 1. Package identity
 
-`app.json` already ships the correct, non-Orca identity:
+`app.json` ships the Fabrica identity:
 
 - `expo.android.package` = `com.autoscalers.fabrica.mobile`
 - `expo.ios.bundleIdentifier` = `com.autoscalers.fabrica.mobile`
 - `expo.name` = `Fabrica`, `expo.scheme` = `fabrica`
-
-No `com.stablyai.orca` / `onorca.dev` references remain. The only "orca" strings in the
-tree are intentional legacy migration keys in `src/storage/preferences.ts` (handling the
-old `orca-browser` stored value) — leave those in place.
 
 ## 2. Keystore
 

@@ -221,8 +221,8 @@ _Or via a package manager:_
 # macOS (Homebrew)
 brew install --cask autoscalers/fabrica/fabrica
 
-# Arch Linux (AUR) — or stably-fabrica-git to build from source
-yay -S stably-fabrica-bin
+# Arch Linux (AUR) — or fabrica-git to build from source
+yay -S fabrica-bin
 ```
 
 ### Mobile Companion — iOS, Android

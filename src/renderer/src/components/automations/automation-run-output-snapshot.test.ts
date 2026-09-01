@@ -43,12 +43,12 @@ describe('automation run output snapshot buffer', () => {
     buffer.append('\u001b]0;\u2834 FABRICA q\u2022Working q\u001b\\')
     buffer.append('\u001b]9;4;3;Working\u001b\\')
     buffer.append('\u001b[32m\u2022 Ran agent-slack channel list --all\u001b[0m\r\n')
-    buffer.append('\u2514 { "name": "stably-bugs-and-feedback" }\r\n')
+    buffer.append('\u2514 { "name": "fabrica-bugs-and-feedback" }\r\n')
 
     expect(buffer.snapshot()).toMatchObject({
       format: 'plain_text',
       content:
-        '\u2022 Ran agent-slack channel list --all\n\u2514 { "name": "stably-bugs-and-feedback" }',
+        '\u2022 Ran agent-slack channel list --all\n\u2514 { "name": "fabrica-bugs-and-feedback" }',
       truncated: false
     })
   })

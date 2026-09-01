@@ -110,8 +110,8 @@ class FakeLogicalClient extends FakeSession implements StableLogicalRpcClient {
 
 const relay = {
   v: 1 as const,
-  directorUrl: 'https://relay.onfabrica.dev',
-  cellUrl: 'https://relay-c1.onfabrica.dev',
+  directorUrl: 'https://relay.autoscalers.workers.dev',
+  cellUrl: 'https://relay-c1.autoscalers.workers.dev',
   assignmentEpoch: 7,
   relayHostId: 'AbCdEf0123_-xyZ9',
   e2eeFraming: 2 as const
@@ -131,7 +131,7 @@ const host: HostProfile = {
     {
       id: 'relay-primary',
       kind: 'relay',
-      url: 'wss://relay-c1.onfabrica.dev/v1/connect/id'
+      url: 'wss://relay-c1.autoscalers.workers.dev/v1/connect/id'
     }
   ],
   relayHostId: relay.relayHostId,

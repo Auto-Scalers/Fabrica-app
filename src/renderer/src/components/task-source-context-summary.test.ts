@@ -282,18 +282,18 @@ describe('task source context summary', () => {
         provider: 'linear',
         providerLabel: 'Linear',
         accountHostId: 'local',
-        linearWorkspaceName: 'Stably'
+        linearWorkspaceName: 'Fabrica'
       }).label
-    ).toBe(`Linear · ${LOCAL_HOST_LABEL} · Stably`)
+    ).toBe(`Linear · ${LOCAL_HOST_LABEL} · Fabrica`)
 
     expect(
       getTaskSourceContextSummary({
         provider: 'jira',
         providerLabel: 'Jira',
         accountHostId: 'runtime:server',
-        jiraSiteName: 'Stably Jira'
+        jiraSiteName: 'Fabrica Jira'
       }).label
-    ).toBe('Jira · server · Stably Jira')
+    ).toBe('Jira · server · Fabrica Jira')
   })
 
   it('shows account-backed source host availability', () => {
@@ -301,13 +301,13 @@ describe('task source context summary', () => {
       provider: 'linear',
       providerLabel: 'Linear',
       accountHostId: 'runtime:old-server',
-      linearWorkspaceName: 'Stably',
+      linearWorkspaceName: 'Fabrica',
       hostAvailability: [{ hostId: 'runtime:old-server', health: 'blocked' }]
     })
 
-    expect(summary.label).toBe('Linear · old-server · server update needed · Stably')
+    expect(summary.label).toBe('Linear · old-server · server update needed · Fabrica')
     expect(summary.title).toBe(
-      'Linear source · Host: old-server · Availability: old-server server update needed · Account: Stably'
+      'Linear source · Host: old-server · Availability: old-server server update needed · Account: Fabrica'
     )
   })
 

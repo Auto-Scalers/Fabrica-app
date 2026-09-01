@@ -755,7 +755,7 @@ describe('worktree RPC methods', () => {
         worktree: 'id:wt-1',
         linkedLinearIssue: 'STA-335',
         linkedLinearIssueWorkspaceId: null,
-        linkedLinearIssueOrganizationUrlKey: 'stably'
+        linkedLinearIssueOrganizationUrlKey: 'fabrica'
       })
     )
 
@@ -765,7 +765,7 @@ describe('worktree RPC methods', () => {
       expect.objectContaining({
         linkedLinearIssue: 'STA-335',
         linkedLinearIssueWorkspaceId: null,
-        linkedLinearIssueOrganizationUrlKey: 'stably'
+        linkedLinearIssueOrganizationUrlKey: 'fabrica'
       })
     )
   })

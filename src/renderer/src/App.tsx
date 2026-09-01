@@ -49,6 +49,7 @@ import { useAutomationDispatchEvents } from './hooks/useAutomationDispatchEvents
 import RetainedAgentsSyncGate from './components/dashboard/RetainedAgentsSyncGate'
 import { AgentHibernationGate } from './components/AgentHibernationGate'
 import { AiVaultTabTitleSyncGate } from './components/AiVaultTabTitleSyncGate'
+import { StartupGate } from './components/StartupGate'
 import { ActivityTitlebarControls } from './components/activity/ActivityTitlebarControls'
 import Sidebar from './components/Sidebar'
 import { shutdownBufferCaptures } from './components/terminal-pane/shutdown-buffer-captures'
@@ -1357,7 +1358,10 @@ function App(): React.JSX.Element {
     const persistBeforeUnload = createShutdownCheckpointBeforeUnloadHandler(shutdownCheckpoint)
     window.addEventListener('beforeunload', persistBeforeUnload)
     window.addEventListener(FABRICA_APP_RESTART_ABORTED_EVENT, shutdownCheckpoint.reset)
-    window.addEventListener(FABRICA_UPDATER_QUIT_AND_INSTALL_ABORTED_EVENT, shutdownCheckpoint.reset)
+    window.addEventListener(
+      FABRICA_UPDATER_QUIT_AND_INSTALL_ABORTED_EVENT,
+      shutdownCheckpoint.reset
+    )
     window.addEventListener(FABRICA_RENDERER_UNLOAD_PREVENTED_EVENT, shutdownCheckpoint.reset)
     return () => {
       window.removeEventListener('beforeunload', persistBeforeUnload)
@@ -1818,7 +1822,10 @@ function App(): React.JSX.Element {
           terminalShortcutPolicy
         })
       const notifyTerminalCapture = (actionId: KeybindingActionId): void => {
-        if (context !== 'terminal' || (terminalShortcutPolicy ?? 'FABRICA-first') !== 'FABRICA-first') {
+        if (
+          context !== 'terminal' ||
+          (terminalShortcutPolicy ?? 'FABRICA-first') !== 'FABRICA-first'
+        ) {
           return
         }
         showTerminalShortcutCaptureNotification({
@@ -2239,6 +2246,7 @@ function App(): React.JSX.Element {
         } as React.CSSProperties
       }
     >
+      <StartupGate />
       <TooltipProvider delayDuration={400}>
         <ConfirmationDialogProvider>
           <LinkRoutingPreferenceDialogProvider>

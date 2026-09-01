@@ -33,7 +33,7 @@ describe('repo slice runtime project groups', () => {
     }
     const localFABRICA: Repo = {
       id: 'local-FABRICA',
-      path: '/Users/alice/stably/FABRICA',
+      path: '/Users/alice/fabrica/FABRICA',
       displayName: 'FABRICA',
       badgeColor: '#000',
       addedAt: 1,

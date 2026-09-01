@@ -43,7 +43,7 @@ describe('assembleNativeChatSession', () => {
     expect(session.status).toBe('ready')
   })
 
-  it('sorts stably by timestamp then id for out-of-order appends', () => {
+  it('sorts consistently by timestamp then id for out-of-order appends', () => {
     const a = msg({ id: 'b', timestamp: 200, blocks: [{ type: 'text', text: 'four' }] })
     const b = msg({ id: 'a', timestamp: 100, blocks: [{ type: 'text', text: 'one' }] })
     const c = msg({ id: 'a2', timestamp: 100, blocks: [{ type: 'text', text: 'three' }] })

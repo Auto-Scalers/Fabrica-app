@@ -128,7 +128,7 @@ function createOptions(
   overrides: { isDevInstance?: boolean; devInstanceLabel?: string | null } = {}
 ) {
   return {
-    appIcon: 'classic',
+    appIcon: 'light',
     isDevInstance: overrides.isDevInstance ?? false,
     devInstanceLabel: overrides.devInstanceLabel ?? null,
     onOpen: vi.fn(),

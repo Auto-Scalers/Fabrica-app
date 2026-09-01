@@ -25,37 +25,37 @@ describe('linear issue current worktree link resolution', () => {
       path: '/tmp/worktree',
       linkedLinearIssue: 'sta-335',
       linkedLinearIssueWorkspaceId: null,
-      linkedLinearIssueOrganizationUrlKey: 'stably'
+      linkedLinearIssueOrganizationUrlKey: 'fabrica'
     })
 
     expect(link).toMatchObject({
       identifier: 'STA-335',
       workspaceId: null,
-      organizationUrlKey: 'stably',
+      organizationUrlKey: 'fabrica',
       worktreeId: 'repo::/tmp/worktree'
     })
   })
 
   it('backfills workspace id from split organization URL key metadata', () => {
     connectedWorkspaces.push(
-      makeWorkspace('workspace-1', 'stably'),
+      makeWorkspace('workspace-1', 'fabrica'),
       makeWorkspace('workspace-2', 'acme')
     )
 
-    expect(resolveLegacyLinearLinkWorkspace('STA-335', 'stably')).toEqual({
+    expect(resolveLegacyLinearLinkWorkspace('STA-335', 'fabrica')).toEqual({
       workspaceId: 'workspace-1',
-      organizationUrlKey: 'stably'
+      organizationUrlKey: 'fabrica'
     })
   })
 
   it('keeps ambiguous split organization URL key backfill workspace-free', () => {
     connectedWorkspaces.push(
-      makeWorkspace('workspace-1', 'stably'),
-      makeWorkspace('workspace-2', 'stably')
+      makeWorkspace('workspace-1', 'fabrica'),
+      makeWorkspace('workspace-2', 'fabrica')
     )
 
-    expect(resolveLegacyLinearLinkWorkspace('STA-335', 'stably')).toEqual({
-      organizationUrlKey: 'stably'
+    expect(resolveLegacyLinearLinkWorkspace('STA-335', 'fabrica')).toEqual({
+      organizationUrlKey: 'fabrica'
     })
   })
 })

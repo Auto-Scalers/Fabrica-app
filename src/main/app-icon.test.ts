@@ -31,14 +31,6 @@ vi.mock('node:fs', () => ({
   existsSync: existsSyncMock
 }))
 
-vi.mock('../../resources/icon.png?asset', () => ({
-  default: 'classic-icon'
-}))
-
-vi.mock('../../resources/icon-dev.png?asset', () => ({
-  default: 'classic-dev-icon'
-}))
-
 vi.mock('../../resources/app-icons/fabrica-dark.png?asset', () => ({
   default: 'dark-icon'
 }))
@@ -88,8 +80,7 @@ describe('app icon selection', () => {
     vi.useRealTimers()
   })
 
-  it('resolves classic, dark, light, and invalid icon ids', () => {
-    expect(getAppIconPath('classic')).toBe('classic-icon')
+  it('resolves dark, light, and invalid icon ids', () => {
     expect(getAppIconPath('dark')).toBe('dark-icon')
     expect(getAppIconPath('light')).toBe('light-icon')
     expect(getAppIconPath('missing')).toBe('light-icon')
@@ -151,134 +142,6 @@ describe('app icon selection', () => {
     )
   })
 
-  it('clears the AppKit icon and Finder metadata when switching macOS back to classic', async () => {
-    const execFile = vi.fn(
-      (
-        _file: string,
-        _args: string[],
-        optionsCallback: unknown,
-        callback?: (error: Error | null) => void
-      ) => {
-        const onComplete =
-          typeof optionsCallback === 'function'
-            ? (optionsCallback as (error: Error | null) => void)
-            : callback
-        onComplete?.(null)
-      }
-    )
-
-    persistMacDockIcon('classic', {
-      appBundlePath: '/Applications/FABRICA.app',
-      execFile,
-      isDevApp: false,
-      platform: 'darwin'
-    })
-    await waitForQueuedPersistence()
-
-    expect(execFile).toHaveBeenNthCalledWith(
-      1,
-      '/usr/bin/osascript',
-      expect.arrayContaining([
-        '-e',
-        expect.stringContaining('setIcon:(missing value) forFile:appPath')
-      ]),
-      expect.objectContaining({
-        env: expect.objectContaining({
-          FABRICA_APP_BUNDLE_PATH: '/Applications/FABRICA.app'
-        }),
-        timeout: 10_000
-      }),
-      expect.any(Function)
-    )
-    expect(execFile).toHaveBeenCalledWith(
-      '/usr/bin/xattr',
-      ['-d', 'com.apple.FinderInfo', '/Applications/FABRICA.app'],
-      expect.objectContaining({
-        timeout: 10_000
-      }),
-      expect.any(Function)
-    )
-    expect(execFile).toHaveBeenCalledWith(
-      '/usr/bin/xattr',
-      ['-d', 'com.apple.ResourceFork', '/Applications/FABRICA.app'],
-      expect.objectContaining({
-        timeout: 10_000
-      }),
-      expect.any(Function)
-    )
-  })
-
-  it('warns for non-benign failures when clearing Finder custom icon metadata', async () => {
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    const execFile = vi.fn(
-      (
-        file: string,
-        args: string[],
-        optionsCallback: unknown,
-        callback?: (error: Error | null) => void
-      ) => {
-        const onComplete =
-          typeof optionsCallback === 'function'
-            ? (optionsCallback as (error: Error | null) => void)
-            : callback
-        if (file !== '/usr/bin/xattr') {
-          onComplete?.(null)
-          return
-        }
-        onComplete?.(new Error(args[1] === 'com.apple.FinderInfo' ? 'No such xattr' : 'EACCES'))
-      }
-    )
-
-    persistMacDockIcon('classic', {
-      appBundlePath: '/Applications/FABRICA.app',
-      execFile,
-      isDevApp: false,
-      platform: 'darwin'
-    })
-    await waitForQueuedPersistence()
-
-    expect(warnSpy).toHaveBeenCalledTimes(1)
-    expect(warnSpy).toHaveBeenCalledWith(
-      '[app-icon] failed to clear macOS dock icon metadata com.apple.ResourceFork:',
-      expect.any(Error)
-    )
-
-    warnSpy.mockRestore()
-  })
-
-  it('warns when the AppKit classic icon reset fails', async () => {
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    const execFile = vi.fn(
-      (
-        file: string,
-        _args: string[],
-        optionsCallback: unknown,
-        callback?: (error: Error | null) => void
-      ) => {
-        const onComplete =
-          typeof optionsCallback === 'function'
-            ? (optionsCallback as (error: Error | null) => void)
-            : callback
-        onComplete?.(file === '/usr/bin/osascript' ? new Error('reset denied') : null)
-      }
-    )
-
-    persistMacDockIcon('classic', {
-      appBundlePath: '/Applications/FABRICA.app',
-      execFile,
-      isDevApp: false,
-      platform: 'darwin'
-    })
-    await waitForQueuedPersistence()
-
-    expect(warnSpy).toHaveBeenCalledWith(
-      '[app-icon] failed to clear macOS dock icon:',
-      expect.any(Error)
-    )
-
-    warnSpy.mockRestore()
-  })
-
   it('serializes rapid macOS dock icon persistence so the last icon request wins', async () => {
     const pendingCallbacks: (() => void)[] = []
     const execFile = vi.fn(
@@ -310,12 +173,6 @@ describe('app icon selection', () => {
       isDevApp: false,
       platform: 'darwin'
     })
-    persistMacDockIcon('classic', {
-      appBundlePath: '/Applications/FABRICA.app',
-      execFile,
-      isDevApp: false,
-      platform: 'darwin'
-    })
 
     expect(execFile).toHaveBeenCalledTimes(1)
     expect(execFile).toHaveBeenCalledWith(
@@ -333,50 +190,14 @@ describe('app icon selection', () => {
     await waitForQueuedPersistence()
 
     expect(execFile).toHaveBeenCalledTimes(2)
-    expect(execFile).not.toHaveBeenCalledWith(
+    expect(execFile).toHaveBeenNthCalledWith(
+      2,
       '/usr/bin/osascript',
       expect.any(Array),
       expect.objectContaining({
         env: expect.objectContaining({
           FABRICA_APP_ICON_PATH: 'light-icon-unpacked'
         })
-      }),
-      expect.any(Function)
-    )
-    expect(execFile).toHaveBeenNthCalledWith(
-      2,
-      '/usr/bin/osascript',
-      expect.arrayContaining([
-        '-e',
-        expect.stringContaining('setIcon:(missing value) forFile:appPath')
-      ]),
-      expect.objectContaining({
-        env: expect.objectContaining({
-          FABRICA_APP_BUNDLE_PATH: '/Applications/FABRICA.app'
-        }),
-        timeout: 10_000
-      }),
-      expect.any(Function)
-    )
-    pendingCallbacks.shift()?.()
-    await waitForQueuedPersistence()
-
-    expect(execFile).toHaveBeenCalledTimes(4)
-    expect(execFile).toHaveBeenNthCalledWith(
-      3,
-      '/usr/bin/xattr',
-      ['-d', 'com.apple.FinderInfo', '/Applications/FABRICA.app'],
-      expect.objectContaining({
-        timeout: 10_000
-      }),
-      expect.any(Function)
-    )
-    expect(execFile).toHaveBeenNthCalledWith(
-      4,
-      '/usr/bin/xattr',
-      ['-d', 'com.apple.ResourceFork', '/Applications/FABRICA.app'],
-      expect.objectContaining({
-        timeout: 10_000
       }),
       expect.any(Function)
     )

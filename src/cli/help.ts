@@ -336,7 +336,7 @@ Examples:
   $ fabrica repo list
   $ fabrica worktree create --name agent-task --agent codex --prompt "hi"
   $ fabrica worktree create --repo name:Fabrica --name cli-test-1 --issue 273
-  $ fabrica worktree create --repo name:Fabrica --name linear-task --linear-issue https://linear.app/stably/issue/STA-335/test-issue
+  $ fabrica worktree create --repo name:Fabrica --name linear-task --linear-issue https://linear.app/fabrica/issue/STA-335/test-issue
   $ fabrica worktree create --name linear-task --linear-issue STA-335
   $ fabrica worktree show --worktree branch:Jinwoo-H/cli
   $ fabrica worktree current
@@ -417,7 +417,13 @@ export function formatCommandHelp(spec: CommandSpec): string {
 
 export function formatGroupHelp(specs: CommandSpec[], group: string): string {
   const groupSpecs = specs.filter((spec) => spec.path[0] === group)
-  const lines = [`fabrica ${group}`, '', `Usage: fabrica ${group} <command> [options]`, '', 'Commands:']
+  const lines = [
+    `fabrica ${group}`,
+    '',
+    `Usage: fabrica ${group} <command> [options]`,
+    '',
+    'Commands:'
+  ]
   for (const spec of groupSpecs) {
     lines.push(`  ${spec.path.slice(1).join(' ').padEnd(18)} ${spec.summary}`)
   }

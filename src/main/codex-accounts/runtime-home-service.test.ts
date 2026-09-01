@@ -70,7 +70,7 @@ function createSettings(overrides: TestSettingsOverrides = {}): GlobalSettings {
     branchPrefixCustom: '',
     theme: 'system',
     uiLanguage: 'system',
-    appIcon: overrides.appIcon ?? 'classic',
+    appIcon: overrides.appIcon ?? 'light',
     editorAutoSave: false,
     editorAutoSaveDelayMs: 1000,
     editorMinimapEnabled: false,

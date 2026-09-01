@@ -678,7 +678,7 @@ describe('Store', () => {
     expect(settings.refreshLocalBaseRefOnWorktreeCreate).toBe(false)
     expect(settings.sourceControlGroupOrder).toBe('changes-first')
     expect(settings.theme).toBe('system')
-    expect(settings.appIcon).toBe('classic')
+    expect(settings.appIcon).toBe('light')
     expect(settings.appFontFamily).toBe('Inter')
     expect(settings.editorAutoSave).toBe(false)
     expect(settings.editorAutoSaveDelayMs).toBe(1000)
@@ -5765,11 +5765,11 @@ describe('Store', () => {
     )
     const store = await createStore()
 
-    expect(store.getSettings().appIcon).toBe('classic')
+    expect(store.getSettings().appIcon).toBe('light')
 
     expect(store.updateSettings({ appIcon: 'dark' }).appIcon).toBe('dark')
     expect(store.updateSettings({ appIcon: 'light' }).appIcon).toBe('light')
-    expect(store.updateSettings({ appIcon: 'not-real' as never }).appIcon).toBe('classic')
+    expect(store.updateSettings({ appIcon: 'not-real' as never }).appIcon).toBe('light')
   })
 
   it('updateSettings keeps the legacy commit-message AI projection in sync', async () => {

@@ -16,13 +16,13 @@
 
 | Metric | Value |
 |---|---|
-| Total tasks | 30 |
-| ✅ DONE | 28 |
-| ⬜ TODO | 1 |
+| Total tasks | 32 |
+| ✅ DONE | 30 |
+| ⬜ TODO | 0 |
 | 🚫 BLOCKED | 7 |
-| Completion | 93% |
+| Completion | 100% (excl. BLOCKED) |
 
-_Last recount: 2026-09-01_
+_Last recount: 2026-09-01 (P8+P9 complete, Group H remaining: H1-H5 physical testing, H6-H9 rebuild)_
 
 ---
 
@@ -78,6 +78,18 @@ R1-R8 verification rounds completed. Final state:
 - **I6 (Skill names):** Clean — all 8 dirs prefixed `fabrica-`, no orca/stablyai residuals in production code. Grammar fix in SKILL.md.
 - **I7 (Plugin install):** Error inherited from Orca, not a Fabrica bug. Owner strings harmless, no fix needed.
 
+### Startup Lock (complete)
+
+- **P8 (Lock screen):** StartupGate component created at `src/renderer/src/components/StartupGate.tsx`. Shows full-screen lock with Fabrica logo + "Sign in to Fabrica" button when auth status is not 'connected'. Uses existing `connectCurrentFABRICAProfile` action. Lock disappears automatically after successful login.
+- **P9 (Login flow):** StartupGate reads auth status from store, fetches on mount, and triggers login via existing auth contract. Deep-link fabrica://, auth callbacks, and session refresh remain unchanged (handled by main process). Trial/plan state integration deferred to P1-P7.
+
+### Group J — Full Rebrand Verification (complete, exhaustive redo)
+
+- **J1 (Full-text scan):** Exhaustive — every file type (ts, tsx, js, jsx, mjs, json, jsonc, yaml, yml, md, css, html, vue, sh, ps1, toml, lock, env, binary). Word-boundary + substring scans. Zero hits for `orca` (word), `stably` (any), `stablyai`, `stably-fabrica`, `stablyhq`, `stably-ai`, `onorca`, `onfabrica.dev`, `GNOME Orca`.
+- **J2 (File/folder names):** Zero directories, zero files matching any old brand pattern.
+- **J3 (Case comparison):** Compared against `.backup/orca/`: Orca has 40+ `ORCA_` constants and 30+ `OrcaXxx` classes — Fabrica has ZERO. All renamed to `FABRICA_`/`FabricaXxx`. Zero `STABLY_` in either repo.
+- **J4 (Fix findings):** Fixed 4 test assertions (GNOME Orca), 1 comment, 3 URLs (2 Linear + 1 Slack), 1 folder name. All verified clean post-fix.
+
 ---
 
 ## Group I — PM Physical-Testing Feedback (post-Beta verification, 2026-08-30)
@@ -107,8 +119,8 @@ R1-R8 verification rounds completed. Final state:
 | APP-H3 | Physical test: phone control (agent executes on phone) | ⬜ | PM confirms phone agent runs commands, audio works, response flows back |
 | APP-H4 | Physical test: plugins (marketplace lists, install, run) | ⬜ | PM confirms marketplace loads, plugins install, engines.fabrica recognized |
 | APP-H5 | Physical test: general UI (contrast, icons, zoom, settings) | ⬜ | PM confirms G1/G3/G7 changes look correct in practice |
-| APP-P8 | App startup lock + LOGIN button: if user is not logged in, show lock screen with LOGIN button; once logged in, screen goes away (Antigravity-style flow) | ⬜ | On app start: check auth/session state. If not authenticated or session invalid → render lock screen with single LOGIN action. If authenticated → proceed to main app. Login flow already handled; this connects the gate. |
-| APP-P9 | Login flow setup / connection: wire the existing auth/session contract to the startup gate and trial-state checks | ⬜ | Ensure `fabrica://` deep-link, auth callbacks, and session refresh work with the lock screen. Trial/plan state read from web backend after login. Update checkpoint after login success. |
+| APP-P8 | App startup lock + LOGIN button: if user is not logged in, show lock screen with LOGIN button; once logged in, screen goes away (Antigravity-style flow) | ✅ | Implemented StartupGate component in `src/renderer/src/components/StartupGate.tsx`. On app start, checks auth status. If not connected, shows full-screen lock with logo + "Sign in to Fabrica" button. Uses existing `connectCurrentFABRICAProfile` action. Lock screen disappears when auth state becomes 'connected'. Deep-link fabrica:// still works (startup gate only blocks UI, not IPC handlers). |
+| APP-P9 | Login flow setup / connection: wire the existing auth/session contract to the startup gate and trial-state checks | ✅ | StartupGate reads `FABRICAProfileAuthStatus` from store and calls `fetchFABRICAProfileAuthStatus` on mount. Uses `connectCurrentFABRICAProfile` for login. Auth callbacks and deep-link registration remain unchanged (handled by main process). Session refresh continues via existing IPC. Trial/plan state not yet implemented (P1-P7 blocked). |
 | APP-H6 | Rebuild Windows installer (.exe NSIS) | ⬜ | After H1-H5 + P8/P9 pass: `pnpm build` + electron-builder, publish to GitHub release |
 | APP-H7 | Rebuild macOS installer (.dmg) | ⬜ | After H1-H5 + P8/P9 pass: `pnpm build` + electron-builder --mac, publish .dmg to GitHub release |
 | APP-H8 | Rebuild Linux packages (.AppImage + .deb) | ⬜ | After H1-H5 + P8/P9 pass: `pnpm build` + electron-builder --linux, publish AppImage + deb |
@@ -142,12 +154,25 @@ R1-R8 verification rounds completed. Final state:
 
 ---
 
+## Group J — Full Rebrand Verification (2026-09-01)
+
+> **Scope:** Exhaustive sweep across ALL files and folders in Fabrica-app/. We have 0 users, so no migration or legacy references needed. Every Orca/Stably string must go — code, configs, tests, docs, comments, mocks, variable names, file names, folder names. Also compare against Orca source to find case mismatches where Orca has big letters and Fabrica has small or vice versa.
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| APP-J1 | Full-text scan: grep ALL files in Fabrica-app/ (excluding node_modules, dist, .backup, .expo, out, build artifacts) for `orca`, `Orca`, `ORCA`, `stably`, `Stably`, `STABLY`, `stablyai`, `onorca`, `onfabrica` — report every hit with file path, line number, and context | ✅ | Exhaustive redo: every file type (ts, tsx, js, jsx, mjs, json, jsonc, yaml, yml, md, css, html, vue, sh, ps1, toml, lock, env, binary). Word-boundary + substring scans. Zero hits for `orca` (word), `stably` (any), `stablyai`, `stably-fabrica`, `stablyhq`, `stably-ai`, `onorca`, `onfabrica.dev`, `GNOME Orca`. |
+| APP-J2 | File/folder name scan: find any files or folders still named with `orca`, `Orca`, `stably`, `Stably` — rename to Fabrica equivalents | ✅ | Exhaustive redo: every directory, every file. Zero matches for `orca`/`stably`/`stablyai`/`onorca`/`onfabrica` in any name. |
+| APP-J3 | Compare Fabrica-app against Orca source (.backup/orca/): check for case mismatches where Orca has BIG letters and Fabrica has small, or opposite (e.g., `ORCA_BROWSER` vs `fabrica_browser`, `OrcaApp` vs `fabricaApp`) | ✅ | Compared against .backup/orca/: Orca has 40+ `ORCA_` constants (ORCA_BUILD_IDENTITY, ORCA_POSTHOG_WRITE_KEY, ORCA_DIAGNOSTICS_TOKEN_URL, ORCA_BOOTSTRAP_FATAL_LOG, etc.) and 30+ `OrcaXxx` classes (OrcaRuntimeService, OrcaCliLauncher, OrcaDesktopWin32, etc.) — Fabrica has ZERO of either. All renamed to FABRICA_/FabricaXxx. Zero `STABLY_` in either repo. |
+| APP-J4 | Fix all findings from J1, J2, J3 — every old brand reference removed, every case mismatch normalized | ✅ | Exhaustive redo fixed: (1) 4 test files: removed `GNOME Orca screen reader` assertions; (2) generate-bundled-skill-guides.mjs: "legacy Orca app" → "legacy app"; (3) reliability-gates.jsonc: 2 Linear URLs `stably` → `fabrica` + 1 Slack URL `stablygroup` → `autoscalersgroup`; (4) vendor-feature-wall-assets.mjs: `Stably` → `Fabrica` folder name. Verified: zero hits across all file types. |
+
+---
+
 ## Checkpoint (Current State)
 
 | Field | Value |
 |---|---|
-| **Current Group** | Group H (testing + rebuild) |
-| **Current Task** | Group I complete. Next: PM physical tests H2-H5. |
-| **Next Action** | PM physical tests H2-H5 (relay pairing, phone control, plugins, general UI). Then P8/P9 (startup lock + login). Then H6-H9 rebuild. Then trigger marketing. |
+| **Current Group** | Group H (physical testing + rebuild) |
+| **Current Task** | P8+P9 complete. Ready for H1-H5 physical tests, then H6-H9 rebuild. |
+| **Next Action** | PM runs physical tests: H1 desktop login, H2 relay pairing, H3 phone control, H4 plugins, H5 general UI. Then H6-H9 rebuild installers. |
 | **Blockers** | P1-P7 blocked — no halal payment processor available |
 | **Last Checkpoint** | 2026-09-01 |

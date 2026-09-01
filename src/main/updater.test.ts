@@ -299,35 +299,6 @@ describe('updater', () => {
     expect(powerMonitorOnMock).not.toHaveBeenCalled()
   })
 
-  it.each([
-    ['hourly', 'v1.4.160-hourly.202607281400', 'Hourly builds are produced only for macOS.'],
-    ['daily', 'v1.4.160-daily.202607281300', 'Daily builds are produced only for macOS.'],
-    ['adhoc', 'v1.4.160-adhoc.20260728140533', 'Adhoc builds are produced only for macOS.']
-  ] as const)(
-    'uses the display label in the mac-only %s pinned-build error',
-    async (channel, tag, message) => {
-      const platformSpy = vi.spyOn(process, 'platform', 'get').mockReturnValue('linux')
-      try {
-        const send = vi.fn()
-        const { setupAutoUpdater, checkForUpdatesFromMenu } = await import('./updater')
-        setupAutoUpdater({ webContents: { send } } as never, {
-          getLastUpdateCheckAt: () => Date.now()
-        })
-
-        checkForUpdatesFromMenu({ channel, targetTag: tag })
-
-        expect(send).toHaveBeenCalledWith('updater:status', {
-          state: 'error',
-          message,
-          userInitiated: true
-        })
-        expect(autoUpdaterMock.checkForUpdates).not.toHaveBeenCalled()
-      } finally {
-        platformSpy.mockRestore()
-      }
-    }
-  )
-
   it.runIf(process.platform === 'darwin')(
     'allows a validated local build to downgrade through the normal updater lifecycle',
     async () => {

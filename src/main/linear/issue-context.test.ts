@@ -47,7 +47,7 @@ function rawIssue(identifier: string) {
     id: `${identifier}-id`,
     identifier,
     title: `Title ${identifier}`,
-    url: `https://linear.app/stably/issue/${identifier}`,
+    url: `https://linear.app/fabrica/issue/${identifier}`,
     labels: { nodes: [] }
   }
 }
@@ -60,10 +60,10 @@ describe('Linear issue context', () => {
   })
 
   it('resolves --current worktree links written as split Linear CLI metadata', async () => {
-    const stably = workspace('workspace-stably', 'stably')
+    const fabrica = workspace('workspace-fabrica', 'fabrica')
     const rawRequest = vi.fn().mockResolvedValue({ data: { issue: rawIssue('STA-335') } })
-    getStatus.mockReturnValue({ workspaces: [stably] })
-    getClients.mockReturnValue([makeEntry({ workspace: stably, rawRequest })])
+    getStatus.mockReturnValue({ workspaces: [fabrica] })
+    getClients.mockReturnValue([makeEntry({ workspace: fabrica, rawRequest })])
     const { readLinearIssueContext } = await import('./issue-context')
 
     await expect(
@@ -82,7 +82,7 @@ describe('Linear issue context', () => {
         async () => ({
           identifier: 'STA-335',
           workspaceId: null,
-          organizationUrlKey: 'stably',
+          organizationUrlKey: 'fabrica',
           worktreeId: 'repo::/tmp/repo/feature',
           worktreePath: '/tmp/repo/feature'
         })
@@ -91,12 +91,12 @@ describe('Linear issue context', () => {
       issue: { identifier: 'STA-335' },
       meta: {
         resolved: {
-          workspaceId: 'workspace-stably',
+          workspaceId: 'workspace-fabrica',
           worktreeId: 'repo::/tmp/repo/feature',
           worktreePath: '/tmp/repo/feature'
         }
       }
     })
-    expect(getClients).toHaveBeenCalledWith('workspace-stably')
+    expect(getClients).toHaveBeenCalledWith('workspace-fabrica')
   })
 })

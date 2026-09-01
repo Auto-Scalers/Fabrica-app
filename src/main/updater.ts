@@ -74,7 +74,6 @@ import {
 import type { LocalBuildFeed } from './local-builds/local-build-feed-server'
 import { listReleaseBuilds, resolveTargetBuild } from './updater-release-builds'
 import {
-  hasDedicatedReleaseRepo,
   isChannelSupportedOnPlatform,
   RELEASE_CHANNEL_LABELS,
   type ReleaseBuild,
@@ -1760,7 +1759,7 @@ async function checkForPinnedBuild(channel: ReleaseChannel, tag: string): Promis
       return
     }
     closeLocalBuildFeed()
-    activeUpdateSource = hasDedicatedReleaseRepo(channel) ? channel : 'release'
+    activeUpdateSource = 'release'
     isPinnedBuildActive = true
     clearPrereleaseFallbackContext()
     clearPublishingWindowLastGoodCheck()

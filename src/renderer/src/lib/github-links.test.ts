@@ -15,8 +15,8 @@ describe('buildGitHubRepoUrl', () => {
   })
 
   it('encodes path segments', () => {
-    expect(buildGitHubRepoUrl({ owner: 'stably ai', repo: 'FABRICA/tools' })).toBe(
-      'https://github.com/stably%20ai/FABRICA%2Ftools'
+    expect(buildGitHubRepoUrl({ owner: 'autoscalers', repo: 'FABRICA/tools' })).toBe(
+      'https://github.com/autoscalers/FABRICA%2Ftools'
     )
   })
 

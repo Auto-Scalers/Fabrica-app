@@ -260,7 +260,9 @@ describe('orchestration skill guidance', () => {
         'explicitly asked to keep that worker live.'
     )
     expect(workerLoop).toContain('Release is post-completion cleanup, not cancellation')
-    expect(workerLoop).toContain('fabrica orchestration worker-retain --dispatch <dispatch_id> --json')
+    expect(workerLoop).toContain(
+      'fabrica orchestration worker-retain --dispatch <dispatch_id> --json'
+    )
     expect(workerLoop).toContain(
       'the same Dispatch can be passed to `worker-release`, which clears the requested retention'
     )
@@ -364,7 +366,6 @@ describe('orchestration install stub', () => {
     expect(stub).toContain('FABRICA_CLI_COMMAND')
     expect(stub).toContain('fabrica-dev')
     expect(stub).toContain('fabrica-ide')
-    expect(stub).toContain('GNOME Orca screen reader')
     expect(stub).not.toMatch(/^fabrica /mu)
   })
 

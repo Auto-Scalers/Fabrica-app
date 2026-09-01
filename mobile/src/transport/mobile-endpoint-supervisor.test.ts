@@ -118,7 +118,11 @@ describe('mobile endpoint supervisor', () => {
       .fn()
       .mockReturnValueOnce(new FakeRelaySession('disconnected', new RelayOuterError(4409)))
       .mockReturnValueOnce(new FakeRelaySession('connected'))
-    const resolved = { ...relay, cellUrl: 'https://relay-c2.onfabrica.dev', assignmentEpoch: 8 }
+    const resolved = {
+      ...relay,
+      cellUrl: 'https://relay-c2.autoscalers.workers.dev',
+      assignmentEpoch: 8
+    }
     const deps = dependencies({
       openRelay,
       resolveRelay: vi.fn(async () => resolved)

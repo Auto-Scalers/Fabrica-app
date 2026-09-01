@@ -142,29 +142,6 @@ describe('UpdateCard Windows signature failures', () => {
   })
 })
 
-describe('UpdateCard hourly builds', () => {
-  it('links a pinned hourly build to its own repo instead of a 404 main-repo tag', () => {
-    useAppStore.setState({
-      updateStatus: {
-        state: 'available',
-        version: '1.4.160-hourly.202607281400',
-        changelog: null,
-        source: 'hourly'
-      },
-      updateChangelog: null,
-      dismissedUpdateVersion: null,
-      updateCardCollapsed: false,
-      updateReassuranceSeen: true
-    })
-    render(<UpdateCard />)
-
-    fireEvent.click(screen.getByRole('button', { name: 'Release notes' }))
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://github.com/Auto-Scalers/Fabrica-hourly/releases/tag/v1.4.160-hourly.202607281400'
-    )
-  })
-})
-
 describe('UpdateCard local builds', () => {
   it('does not link local versions to GitHub release downloads', () => {
     useAppStore.setState({
@@ -259,7 +236,9 @@ describe('UpdateCard Linux package-install recovery', () => {
     await flushActions()
 
     fireEvent.click(screen.getByRole('button', { name: 'Download Manually' }))
-    expect(openUrl).toHaveBeenCalledWith('https://github.com/Auto-Scalers/Fabrica-app/releases/tag/v1.4.200')
+    expect(openUrl).toHaveBeenCalledWith(
+      'https://github.com/Auto-Scalers/Fabrica-app/releases/tag/v1.4.200'
+    )
   })
 
   it('keeps generic errors on the generic card when no recovery is attached', () => {

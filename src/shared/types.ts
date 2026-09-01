@@ -8,7 +8,7 @@ import type {
 } from './ssh-types'
 import type { Automation, AutomationExecutionTargetType, AutomationRun } from './automations-types'
 import type { WorkspaceSource } from './workspace-source'
-import type { DedicatedRepoChannel, ReleaseBuild, ReleaseChannel } from './release-channel'
+import type { ReleaseBuild, ReleaseChannel } from './release-channel'
 import type { GitHubProjectSettings } from './github-project-types'
 import type {
   AgentStatusState,
@@ -2450,9 +2450,8 @@ export type UpdateCheckOptions = {
   targetTag?: string
 }
 
-/** Non-release origins for an update. Derived from the dev-channel list so a new
- *  channel with its own repo cannot be reported as an ordinary release. */
-export type UpdateSource = 'local' | DedicatedRepoChannel
+/** Non-release origins for an update. */
+export type UpdateSource = 'local'
 
 /** Root-package Linux install formats whose update installs need privilege escalation. */
 export type LinuxRootPackageType = 'deb' | 'rpm'

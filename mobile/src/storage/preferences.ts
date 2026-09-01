@@ -197,13 +197,9 @@ export type MobileTerminalLinkOpenMode = 'fabrica-browser' | 'phone-browser'
 const TERMINAL_LINK_OPEN_MODE_KEY = 'FABRICA:terminalLinkOpenMode'
 export const DEFAULT_TERMINAL_LINK_OPEN_MODE: MobileTerminalLinkOpenMode = 'fabrica-browser'
 
-// Migrate legacy stored values: pre-rebrand 'orca-browser' and broken-case 'FABRICA-browser'.
 function normalizeTerminalLinkOpenMode(raw: string): MobileTerminalLinkOpenMode {
-  if (raw === 'phone-browser') {
-    return 'phone-browser'
-  }
-  if (raw === 'fabrica-browser' || raw === 'FABRICA-browser' || raw === 'orca-browser') {
-    return 'fabrica-browser'
+  if (raw === 'phone-browser' || raw === 'fabrica-browser') {
+    return raw
   }
   return DEFAULT_TERMINAL_LINK_OPEN_MODE
 }

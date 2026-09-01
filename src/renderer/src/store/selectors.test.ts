@@ -446,7 +446,7 @@ describe('store selectors', () => {
     const repos = [
       makeRepo({
         id: 'local-FABRICA',
-        path: '/Users/alice/stably/FABRICA',
+        path: '/Users/alice/fabrica/FABRICA',
         displayName: 'FABRICA',
         upstream: { owner: 'Auto-Scalers', repo: 'fabrica' }
       }),
@@ -482,7 +482,7 @@ describe('store selectors', () => {
         projectId: 'github:Auto-Scalers/Fabrica-app',
         hostId: 'local' as const,
         repoId: 'local-FABRICA',
-        path: '/Users/alice/stably/FABRICA',
+        path: '/Users/alice/fabrica/FABRICA',
         displayName: 'FABRICA',
         setupState: 'ready' as const,
         setupMethod: 'legacy-repo' as const,

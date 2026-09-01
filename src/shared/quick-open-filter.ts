@@ -17,7 +17,7 @@ export const HIDDEN_DIR_BLOCKLIST: ReadonlySet<string> = new Set([
   '.next',
   '.nuxt',
   '.cache',
-  '.stably',
+  '.fabrica',
   '.vscode',
   '.idea',
   '.yarn',

@@ -60,7 +60,7 @@ function createSettings(overrides: Partial<GlobalSettings> = {}): GlobalSettings
     branchPrefixCustom: '',
     theme: 'system',
     uiLanguage: 'system',
-    appIcon: overrides.appIcon ?? 'classic',
+    appIcon: overrides.appIcon ?? 'light',
     editorAutoSave: false,
     editorAutoSaveDelayMs: 1000,
     editorMinimapEnabled: false,
@@ -1229,7 +1229,8 @@ describe('CodexAccountService config sync', () => {
 
     const wslManagedHomePath = join(testState.userDataDir, 'wsl-managed-home')
     const wslConfigPath = join(testState.userDataDir, 'wsl-config.toml')
-    const wslLinuxHomePath = '/home/alice/.local/share/fabrica/codex-accounts/account-id-for-test/home'
+    const wslLinuxHomePath =
+      '/home/alice/.local/share/fabrica/codex-accounts/account-id-for-test/home'
     writeFileSync(
       wslConfigPath,
       'sandbox_mode = "danger-full-access"\nmodel_instructions_file = "instructions.md"\n',
@@ -1350,7 +1351,8 @@ describe('CodexAccountService config sync', () => {
     })
 
     const wslManagedHomePath = join(testState.userDataDir, 'wsl-managed-home')
-    const wslLinuxHomePath = '/home/alice/.local/share/fabrica/codex-accounts/account-id-for-test/home'
+    const wslLinuxHomePath =
+      '/home/alice/.local/share/fabrica/codex-accounts/account-id-for-test/home'
 
     const execFileSyncMock = vi.fn((_command: string, args: string[]) => {
       const script = decodeEncodedWslBashCommand(String(args.at(-1)))

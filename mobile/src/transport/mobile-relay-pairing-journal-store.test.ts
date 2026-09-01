@@ -32,7 +32,8 @@ import type { PairingOffer } from './types'
 
 const now = Date.UTC(2026, 6, 13)
 const GENERATION_KEY = 'FABRICA:pairing-keychain-generation'
-const JOURNAL_PRESENCE_KEY = 'FABRICA:pairing-keychain-presence:FABRICA.mobile-relay.pairing-journal.v1'
+const JOURNAL_PRESENCE_KEY =
+  'FABRICA:pairing-keychain-presence:FABRICA.mobile-relay.pairing-journal.v1'
 const offer = {
   v: 2,
   endpoint: 'ws://192.168.1.10:6768',
@@ -40,8 +41,8 @@ const offer = {
   publicKeyB64: 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=',
   relay: {
     v: 1,
-    directorUrl: 'https://relay.onfabrica.dev',
-    cellUrl: 'https://relay-c1.onfabrica.dev',
+    directorUrl: 'https://relay.autoscalers.workers.dev',
+    cellUrl: 'https://relay-c1.autoscalers.workers.dev',
     assignmentEpoch: 7,
     relayHostId: 'AbCdEf0123_-xyZ9',
     inviteToken: 'abcdefghijklmnopqrstuvwxyzABCDEFGH012345678',

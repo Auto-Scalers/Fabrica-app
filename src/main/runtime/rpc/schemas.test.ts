@@ -81,7 +81,7 @@ describe('RPC optional pipe schemas', () => {
       worktree: 'id:wt-1',
       linkedLinearIssue: 'STA-335',
       linkedLinearIssueWorkspaceId: null,
-      linkedLinearIssueOrganizationUrlKey: 'stably'
+      linkedLinearIssueOrganizationUrlKey: 'fabrica'
     })
     expectParses(methodParams(WORKTREE_METHODS, 'worktree.prefetchCreateBase'), { repo: 'repo-1' })
   })

@@ -400,7 +400,7 @@ describe('serializeRichMarkdownForReconcile (real editor pipeline)', () => {
   const serialize = (md: string): string | null =>
     serializeRichMarkdownForReconcile(md, serializerContext)
 
-  it('applies normalizeEmptyListItems so empty list items round-trip stably', () => {
+  it('applies normalizeEmptyListItems so empty list items round-trip correctly', () => {
     // `3. ` immediately before a heading parses as an empty list item; without the
     // normalize step the safety re-parse would spuriously mismatch and no-op.
     const doc = '3. \n# Heading\n'

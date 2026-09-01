@@ -649,7 +649,7 @@ describe('registerSettingsHandlers', () => {
   })
 
   it('normalizes and applies app icon changes from renderer settings IPC', async () => {
-    store.getSettings.mockReturnValue({ appIcon: 'classic' })
+    store.getSettings.mockReturnValue({ appIcon: 'light' })
     store.updateSettings.mockReturnValue({ appIcon: 'dark' })
     registerSettingsHandlers(store as never)
 
@@ -667,9 +667,9 @@ describe('registerSettingsHandlers', () => {
     expect(applyAppIconMock).toHaveBeenCalledWith('dark')
   })
 
-  it('falls back to the classic app icon for invalid renderer settings IPC values', async () => {
+  it('falls back to the light app icon for invalid renderer settings IPC values', async () => {
     store.getSettings.mockReturnValue({ appIcon: 'dark' })
-    store.updateSettings.mockReturnValue({ appIcon: 'classic' })
+    store.updateSettings.mockReturnValue({ appIcon: 'light' })
     registerSettingsHandlers(store as never)
 
     const handler = handleMock.mock.calls.find((call) => call[0] === 'settings:set')?.[1] as (
@@ -680,10 +680,10 @@ describe('registerSettingsHandlers', () => {
     await handler(settingsInvokeEvent, { appIcon: 'not-real' })
 
     expect(store.updateSettings).toHaveBeenCalledWith(
-      { appIcon: 'classic' },
+      { appIcon: 'light' },
       { notifyListeners: true, originWebContentsId: 1 }
     )
-    expect(applyAppIconMock).toHaveBeenCalledWith('classic')
+    expect(applyAppIconMock).toHaveBeenCalledWith('light')
   })
 
   it('rebuilds the app menu after Automations sidebar visibility changes', async () => {

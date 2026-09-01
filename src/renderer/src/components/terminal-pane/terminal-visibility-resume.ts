@@ -232,7 +232,7 @@ function enforceTerminalViewportIntents(manager: PaneManager): void {
 
 function syncTerminalViewportIntents(manager: PaneManager): void {
   for (const pane of manager.getPanes()) {
-    // Why: native scrollback trimming moves a pinned viewport content-stably.
+    // Why: native scrollback trimming moves a pinned viewport content-position.
     // Capture that live position before resume/fit can disturb it.
     syncTerminalScrollIntentFromViewport(pane.terminal)
   }

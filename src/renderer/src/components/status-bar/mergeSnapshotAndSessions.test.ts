@@ -546,10 +546,15 @@ describe('mergeSnapshotAndSessions', () => {
 
   it('uses repoDisplayNameById to humanize new project groups when available', () => {
     const ds: DaemonSession[] = [
-      { id: 'stably-ai/FABRICA::/remote/Wt@@1', cwd: '', title: '', agentOwnership: 'absent' as const }
+      {
+        id: 'autoscalers/FABRICA::/remote/Wt@@1',
+        cwd: '',
+        title: '',
+        agentOwnership: 'absent' as const
+      }
     ]
     const ctx = baseCtx({
-      repoDisplayNameById: new Map([['stably-ai/FABRICA', 'FABRICA']])
+      repoDisplayNameById: new Map([['autoscalers/FABRICA', 'FABRICA']])
     })
     const out = mergeSnapshotAndSessions(null, ds, ctx)
     expect(out[0].repoName).toBe('FABRICA')

@@ -18,8 +18,8 @@ export function createMobileRelayPairingFixtures(now: number): PairingFixture[] 
   }
   const relay = {
     v: 1 as const,
-    directorUrl: 'https://relay.onfabrica.dev',
-    cellUrl: 'https://relay-c1.onfabrica.dev',
+    directorUrl: 'https://fabrica.autoscalers.workers.dev',
+    cellUrl: 'https://relay-c1.autoscalers.workers.dev',
     assignmentEpoch: 7,
     relayHostId: 'AbCdEf0123_-xyZ9',
     inviteToken: INVITE_TOKEN,
@@ -65,12 +65,18 @@ export function createMobileRelayPairingFixtures(now: number): PairingFixture[] 
     },
     {
       name: 'non-canonical director origin is invalid',
-      payload: { ...directOffer, relay: { ...relay, directorUrl: 'https://relay.onfabrica.dev/' } },
+      payload: {
+        ...directOffer,
+        relay: { ...relay, directorUrl: 'https://fabrica.autoscalers.workers.dev/' }
+      },
       expected: null
     },
     {
       name: 'non-HTTPS cell origin is invalid',
-      payload: { ...directOffer, relay: { ...relay, cellUrl: 'http://relay-c1.onfabrica.dev' } },
+      payload: {
+        ...directOffer,
+        relay: { ...relay, cellUrl: 'http://relay-c1.autoscalers.workers.dev' }
+      },
       expected: null
     },
     {

@@ -128,9 +128,9 @@ describe('task source context', () => {
       getTaskSourceCacheScope({
         ...base,
         provider: 'gitlab',
-        providerIdentity: { provider: 'gitlab', namespace: 'stably', project: 'FABRICA' }
+        providerIdentity: { provider: 'gitlab', namespace: 'fabrica', project: 'FABRICA' }
       })
-    ).toContain(encodeURIComponent('stably/FABRICA'))
+    ).toContain(encodeURIComponent('fabrica/FABRICA'))
     expect(
       getTaskSourceCacheScope({
         ...base,

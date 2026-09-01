@@ -1,6 +1,6 @@
 // Pure grouping logic for the native chat message list. Kept out of the .tsx so
 // the pairing/ordering rules are unit-testable without rendering. Two jobs:
-//   1. Order messages stably (timestamp then id; null timestamps sort first as
+//   1. Order messages deterministically (timestamp then id; null timestamps sort first as
 //      the shared model documents) — the assembler already sorts, but the list
 //      re-sorts defensively so a caller passing unordered fixtures still reads
 //      correctly.
@@ -45,7 +45,7 @@ export type NativeChatRenderItem =
       step: NativeChatToolStep
     }
 
-/** Order messages stably: null timestamps first (model rule), then ascending
+/** Order messages deterministically: null timestamps first (model rule), then ascending
  *  timestamp, ties broken by id. Shares the assembler's comparator so both
  *  paths order identically. */
 export function orderNativeChatMessages(messages: NativeChatMessage[]): NativeChatMessage[] {

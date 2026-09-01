@@ -141,7 +141,7 @@ describe('xterm native user-scrolling contract (vendored 6.1.0-beta.287)', () =>
     subscription?.dispose()
   })
 
-  it('walks a pinned viewport down content-stably when scrollback trims', async () => {
+  it('walks a pinned viewport down content-consistently when scrollback trims', async () => {
     const term = new Terminal({ rows: 5, cols: 20, scrollback: 20, allowProposedApi: true })
     await writeLines(term, 30, 'x')
     const buffer = term.buffer.active

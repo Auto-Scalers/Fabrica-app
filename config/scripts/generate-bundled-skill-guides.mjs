@@ -22,7 +22,7 @@ const CANONICAL_GUIDE_NAMES = [
 // a compatibility ledger: add entries for renames, but never remove them.
 // Each Fabrica-prefixed skill keeps its former bare name as an alias so
 // `fabrica skills get <old-name>` still resolves after the install-folder
-// rename that isolates Fabrica's skills from the legacy Orca app's.
+// rename that isolates Fabrica's skills from the legacy app's.
 const GUIDE_ALIASES = {
   'fabrica-computer-use': ['computer-use'],
   'fabrica-linear-tickets': ['linear-tickets'],

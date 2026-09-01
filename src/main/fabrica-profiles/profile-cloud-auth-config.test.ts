@@ -37,7 +37,7 @@ describe('FABRICA cloud auth config', () => {
         orgEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/org',
         logoutEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/logout',
         relayTokenEndpoint: 'https://fabrica-cloud.example/v1/desktop/auth/relay-token',
-        relayDirectorUrl: 'https://fabrica-relay.fabrica-relay.workers.dev',
+        relayDirectorUrl: 'https://fabrica.autoscalers.workers.dev',
         clientId: 'desktop-client',
         scope: 'openid profile email offline_access'
       }
@@ -57,7 +57,7 @@ describe('FABRICA cloud auth config', () => {
         orgEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/org',
         logoutEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/logout',
         relayTokenEndpoint: 'https://fabrica-ai.vercel.app/v1/desktop/auth/relay-token',
-        relayDirectorUrl: 'https://fabrica-relay.fabrica-relay.workers.dev',
+        relayDirectorUrl: 'https://fabrica.autoscalers.workers.dev',
         clientId: 'FABRICA-desktop',
         scope: 'openid profile email offline_access'
       }
