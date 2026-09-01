@@ -2,7 +2,7 @@
 
 ## What This Folder Is
 
-This is the **Fabrica desktop app** — an Electron app forked from Orca. You are a worker dispatched by the top-level orchestrator to complete a task in this repo.
+This is the **Fabrica desktop app** — an Electron app. You are a worker dispatched by the top-level orchestrator to complete a task in this repo.
 
 ## Tech Stack
 
@@ -25,11 +25,10 @@ pnpm typecheck     # TypeScript check
 
 ## What You Should Know
 
-- This is a rebrand from Orca to Fabrica
-- App ID: `ai.autoscalers.fabrica` (canonical — migrated from `com.autoscalers.fabrica` in APP-E1)
+- App ID: `ai.autoscalers.fabrica`
 - Deep link: `fabrica://`
 - CLI command: `fabrica`
-- GitHub org: `Auto-Scalers` (was `stablyai`)
+- GitHub org: `Auto-Scalers`
 
 ## Conventions
 
@@ -45,13 +44,11 @@ pnpm typecheck     # TypeScript check
 A task is DONE only when ALL of these hold:
 
 1. **Commands pass:** `pnpm lint`, `pnpm test`, `pnpm typecheck` (and `pnpm build` when build-affecting) — run them, paste real output as evidence.
-2. **Rebrand grep is clean** (for branding tasks): no `orca`/`stablyai`/`onorca` hits outside allowed exceptions (`.backup/`, `_sources/`, GNOME Orca screen-reader refs, historical GitHub URLs, wire-protocol test fixtures noted in the task file).
-3. **No functionality changed unintentionally** — rebrand edits are identity-only; behavior, tests, and imports still work.
-4. **Tracking files updated in the same edit:** task status + Rollup recount in `.Fabrica-app-board/Fabrica-app-tasks.md`, Checkpoint table, and your Session Ledger row.
+2. **No functionality changed unintentionally** — edits are identity-only; behavior, tests, and imports still work.
+3. **Tracking files updated in the same edit:** task status + Rollup recount in `.Fabrica-app-board/Fabrica-app-tasks.md`, Checkpoint table, and your Session Ledger row.
 
 ## What You Do NOT Do
 
-- **Do NOT edit** `.backup/` or `_sources/` — frozen reference copies
 - **Do NOT commit or push** — make changes only, orchestrator handles git
 - **Do NOT touch** skills/, .github/workflows/ unless the task specifically says so
 
