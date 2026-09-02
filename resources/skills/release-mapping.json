@@ -1,4 +1,18 @@
 {
   "schemaVersion": 1,
-  "releases": []
+  "releases": [
+    {
+      "appVersion": "0.0.5",
+      "skills": {
+        "fabrica-cli": 1,
+        "fabrica-computer-use": 1,
+        "fabrica-emulator": 1,
+        "fabrica-emulator-android": 1,
+        "fabrica-linear": 1,
+        "fabrica-linear-tickets": 1,
+        "fabrica-orchestration": 1,
+        "fabrica-per-workspace-env": 1
+      }
+    }
+  ]
 }
