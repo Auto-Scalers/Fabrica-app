@@ -1482,6 +1482,7 @@ jobs:
       - name: Submit Windows installer signing request
         id: submit-signing-request
         if: matrix.platform == 'win'
+        continue-on-error: true
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -1493,7 +1494,7 @@ jobs:
           wait-for-completion: false
 
       - name: Notify Slack that Windows signing is waiting for approval
-        if: matrix.platform == 'win'
+        if: matrix.platform == 'win' && steps.submit-signing-request.outcome == 'success'
         shell: pwsh
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -1557,7 +1558,7 @@ jobs:
           Invoke-RestMethod -Method Post -Uri $env:SLACK_WEBHOOK_URL -ContentType 'application/json' -Body $payload
 
       - name: Download signed Windows installer from SignPath
-        if: matrix.platform == 'win'
+        if: matrix.platform == 'win' && steps.submit-signing-request.outcome == 'success'
         shell: pwsh
         env:
           SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -1575,7 +1576,7 @@ jobs:
           Expand-Archive -Path signed-windows.zip -DestinationPath signed-windows -Force
 
       - name: Stage signed Windows release assets
-        if: matrix.platform == 'win'
+        if: matrix.platform == 'win' && steps.submit-signing-request.outcome == 'success'
         shell: pwsh
         run: |
           $signedInstaller = Get-ChildItem -Path signed-windows -Recurse -File -Filter 'fabrica-windows-setup.exe' | Select-Object -First 1
@@ -1612,7 +1613,7 @@ jobs:
           Get-Item 'dist/fabrica-windows-setup.exe', 'dist/fabrica-windows-setup.exe.blockmap', 'dist/latest.yml'
 
       - name: Verify signed Windows installer
-        if: matrix.platform == 'win'
+        if: matrix.platform == 'win' && steps.submit-signing-request.outcome == 'success'
         shell: pwsh
         run: |
           $signature = Get-AuthenticodeSignature -FilePath 'dist/fabrica-windows-setup.exe'
