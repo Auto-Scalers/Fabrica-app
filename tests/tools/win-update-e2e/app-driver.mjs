@@ -1,13 +1,13 @@
-﻿// Drive the installed, packaged Fabrica app with Playwright's Electron driver.
+// Drive the installed, packaged Fabrica app with Playwright's Electron driver.
 //
 // This targets a PRODUCTION build, so it must NOT depend on the e2e-only store
-// exposure (window.__store / window.__paneManagers) â€” those exist only under a
+// exposure (window.__store / window.__paneManagers) — those exist only under a
 // `--mode e2e` / VITE_EXPOSE_STORE build. Everything here uses ARIA/DOM
 // selectors that ship in production (matching tests/e2e/helpers/terminal.ts and
 // terminal-attention.spec.ts) and proves interactivity through filesystem
 // sentinels rather than by reading the WebGL-rendered xterm buffer:
 //   - typed commands write a marker FILE; the harness checks the file. This
-//     proves keystrokes reached the shell AND executed â€” stronger, and robust,
+//     proves keystrokes reached the shell AND executed — stronger, and robust,
 //     than scraping canvas-rendered terminal text.
 //
 // The long-running marker also sets a unique window-title canary and writes a
@@ -15,7 +15,7 @@
 // real console flash to our child, and the heartbeat proves the session is
 // live and streaming.
 
-import { _electron as electron } from '@autoscalers/playwright-test'
+import { _electron as electron } from '@playwright/test'
 import { execFileSync } from 'node:child_process'
 import { mkdirSync, realpathSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -44,7 +44,7 @@ const RESTRICTED_E2E_ENV_KEYS = new Set([
  * dir isolates this run's daemon (its socket/token path becomes unique), so
  * daemon lookups never collide with other Fabrica installs/daemons on the box.
  * Pass `seedProfile` (a buildFreshProfile object) to write fabrica-data.json
- * BEFORE this launch â€” do so only on the FIRST launch, never before the
+ * BEFORE this launch — do so only on the FIRST launch, never before the
  * post-update relaunch, or the persisted session under test is destroyed.
  */
 export async function launchInstalledApp({
@@ -95,7 +95,7 @@ export async function launchInstalledApp({
     }
   })
   // If firstWindow times out (the launched main never shows a window), the
-  // Electron process is still running â€” force-kill its tree before rethrowing so
+  // Electron process is still running — force-kill its tree before rethrowing so
   // a driving failure never leaks an orphaned main to the CI job timeout.
   let page
   try {
@@ -229,9 +229,9 @@ export async function waitForTerminalReady(page, timeoutMs = 60_000, terminalTab
  * Get the app to an interactive terminal.
  *   - `allowCreate` true (first launch): if no terminal is visible, create a
  *     workspace from the seeded repo (or a new tab if a workspace already
- *     exists) â€” the drivable composer, not the native folder dialog.
+ *     exists) — the drivable composer, not the native folder dialog.
  *   - `allowCreate` false (post-update relaunch): the session should be
- *     RESTORED, so only wait for the restored terminal â€” never create a second
+ *     RESTORED, so only wait for the restored terminal — never create a second
  *     workspace (which would mask a broken restore).
  */
 export async function ensureTerminal(page, { allowCreate = true, timeoutMs = 60_000 } = {}) {
@@ -388,7 +388,7 @@ export async function listTabIds(page) {
 
 /**
  * Focus the live terminal so keystrokes reach the shell. Clicking the visible
- * xterm surface is what actually gives xterm keyboard focus â€” focusing the
+ * xterm surface is what actually gives xterm keyboard focus — focusing the
  * off-screen helper textarea alone does not, which is why typed input was being
  * dropped. Click the pane, then focus the helper textarea as a belt-and-braces.
  */
@@ -412,7 +412,7 @@ export async function focusActiveTerminal(page, terminalTabId = null) {
   return input
 }
 
-/** Type a line and submit it (Enter â†’ \r submits in the shell). */
+/** Type a line and submit it (Enter → \r submits in the shell). */
 export async function typeLine(page, text, terminalTabId = null) {
   await focusActiveTerminal(page, terminalTabId)
   await page.keyboard.type(text)
@@ -429,7 +429,7 @@ export async function sendCtrlC(page, terminalTabId = null) {
  * Run a PowerShell command inside the active terminal by invoking a nested
  * powershell.exe. The command is wrapped in double quotes for the OUTER
  * interactive shell (also pwsh), which would otherwise expand `$var`, `$(...)`
- * and consume backticks before the nested shell sees them â€” so escape backticks,
+ * and consume backticks before the nested shell sees them — so escape backticks,
  * quotes, and `$`. Without the `$` escape, `while($true)` reaches the nested
  * shell as `while(True)` and never runs (the bug that silently broke every
  * loop/heartbeat probe while simple `$`-free commands worked).
@@ -458,7 +458,7 @@ export async function startMarker(page, { canary, pidFile, heartbeatFile }) {
  * Best-effort read of the active terminal's visible text, for the cold-restore
  * scrollback fidelity check. Prefers the SerializeAddon when the build happens
  * to expose paneManagers; falls back to DOM rows (populated only under the DOM
- * renderer, so this may be empty under WebGL â€” hence best-effort).
+ * renderer, so this may be empty under WebGL — hence best-effort).
  */
 export async function readTerminalTextBestEffort(page) {
   return page.evaluate(() => {

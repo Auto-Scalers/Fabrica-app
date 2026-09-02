@@ -1,4 +1,4 @@
-﻿import type { CDPSession, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { CDPSession, Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -107,13 +107,13 @@ test.describe('Terminal IME exact-byte forwarding', () => {
       fabricaPage,
       testInfo,
       testRepoPath,
-      'í•œabcê¸€',
+      '한abc글',
       dispatchObservedIbusHangulMixedSequence,
       (trace) => {
         const commits = trace.dom
           .filter((event) => event.type === 'input' && event.inputType === 'insertText')
           .map((event) => event.data)
-        expect(commits).toEqual(expect.arrayContaining(['í•œ', 'ê¸€']))
+        expect(commits).toEqual(expect.arrayContaining(['한', '글']))
       }
     )
   })
@@ -126,7 +126,7 @@ test.describe('Terminal IME exact-byte forwarding', () => {
       fabricaPage,
       testInfo,
       testRepoPath,
-      'í…ŒaìŠ¤',
+      '테a스',
       dispatchObservedIbusHangulRetainedCommitSequence,
       (trace) => {
         const starts = trace.dom.filter((event) => event.type === 'compositionstart')
@@ -137,8 +137,8 @@ test.describe('Terminal IME exact-byte forwarding', () => {
   })
 
   for (const scenario of [
-    { name: 'Japanese', frames: ['ã«', 'ã«ã»ã‚“ã”', 'æ—¥æœ¬èªž'], committedText: 'æ—¥æœ¬èªž' },
-    { name: 'Chinese', frames: ['n', 'ni', 'ä½ å¥½'], committedText: 'ä½ å¥½' }
+    { name: 'Japanese', frames: ['に', 'にほんご', '日本語'], committedText: '日本語' },
+    { name: 'Chinese', frames: ['n', 'ni', '你好'], committedText: '你好' }
   ]) {
     test(`does not suppress repeated legitimate ${scenario.name} conversions`, async ({
       fabricaPage,

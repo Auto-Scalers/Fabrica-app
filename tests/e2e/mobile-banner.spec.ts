@@ -1,4 +1,4 @@
-﻿import type { ElectronApplication, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -21,13 +21,13 @@ import {
 // artifact upload so reviewers can eyeball the rendering on a failed run.
 //
 // Drives the renderer by sending the same IPC events main fires in production
-// (runtime:terminalFitOverrideChanged, runtime:terminalDriverChanged â€” wired in
+// (runtime:terminalFitOverrideChanged, runtime:terminalDriverChanged — wired in
 // useIpcEvents.ts). No production-code test backdoor; the spec exercises the
-// renderer-side IPC listener â†’ state mirror â†’ banner JSX chain.
+// renderer-side IPC listener → state mirror → banner JSX chain.
 
 test.describe.configure({ mode: 'serial' })
 
-test('mobile subscribe mounts overlay; collapse â†’ chip; Take back dismisses', async ({
+test('mobile subscribe mounts overlay; collapse → chip; Take back dismisses', async ({
   fabricaPage,
   electronApp
 }, testInfo) => {
@@ -61,7 +61,7 @@ test('mobile subscribe mounts overlay; collapse â†’ chip; Take back dismiss
 
   await captureAttachment(fabricaPage, testInfo, 'overlay-loud.png')
 
-  // Click Collapse â†’ loud overlay swaps to the corner chip while the lock stays
+  // Click Collapse → loud overlay swaps to the corner chip while the lock stays
   // engaged. The user can keep watching live mobile output while the chip
   // remains a one-click escape hatch back to desktop control.
   await collapse.click()

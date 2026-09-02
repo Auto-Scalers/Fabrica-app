@@ -1,4 +1,4 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
   assertLoadedThirdEmptyOrderedListItem,

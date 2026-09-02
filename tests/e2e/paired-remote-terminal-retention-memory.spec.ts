@@ -1,4 +1,4 @@
-﻿import { test } from './helpers/fabrica-app'
+import { test } from './helpers/fabrica-app'
 import {
   createRuntimeDesktopPairingOffer,
   launchPairedWebClient

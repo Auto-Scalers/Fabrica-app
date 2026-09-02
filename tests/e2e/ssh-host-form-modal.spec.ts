@@ -1,10 +1,10 @@
-﻿/**
+/**
  * STA-3067: SSH host add/edit form must open as a modal dialog so fields stay
  * in the viewport when the host list is long (instead of mounting inline below
  * the list).
  */
 
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 
@@ -61,7 +61,7 @@ async function removeSshTargets(page: Page, ids: string[]): Promise<void> {
       try {
         await window.api.ssh.removeTarget({ id })
       } catch {
-        // Best-effort cleanup â€” target may already be gone.
+        // Best-effort cleanup — target may already be gone.
       }
     }
   }, ids)
@@ -120,7 +120,7 @@ test.describe('SSH host add/edit modal', () => {
       await expect(sshSection.getByText(label, { exact: true })).toBeVisible()
     }
 
-    // â”€â”€ Add flow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ── Add flow ────────────────────────────────────────────────────
     await sshSection.getByRole('button', { name: 'Add Target' }).click()
 
     const addDialog = fabricaPage.getByRole('dialog', { name: 'Add SSH host' })
@@ -155,7 +155,7 @@ test.describe('SSH host add/edit modal', () => {
     })
     await expect(sshSection.getByText('alice@created.example.test:2222')).toBeVisible()
 
-    // â”€â”€ Edit flow stays in viewport even with a long list above â”€â”€â”€â”€â”€
+    // ── Edit flow stays in viewport even with a long list above ─────
     const createdCard = sshSection.locator(
       `[data-ssh-target-card][data-ssh-target-label="${createdLabel}"]`
     )

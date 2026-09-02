@@ -1,4 +1,4 @@
-ï»¿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import type { DockerSshRelayTarget } from './helpers/docker-ssh-relay-target'
 
 const REMOTE_TUI_PATH = '/tmp/FABRICA-codex-display-artifacts-repro.mjs'
@@ -42,11 +42,11 @@ await write('\\x1b[2J\\x1b[H\\x1b[?25l')
 for (let frame = 0; frame < ${REMOTE_TUI_FRAMES}; frame += 1) {
   const statusRow = 8 + (frame % 13)
   const priorRow = 8 + ((frame + 12) % 13)
-  const spinner = ['â ‹', 'â ™', 'â ¹', 'â ¸', 'â ¼', 'â ´', 'â ¦', 'â §'][frame % 8]
+  const spinner = ['?', '?', '?', '?', '?', '?', '?', '?'][frame % 8]
   const bands = [
-    { row: statusRow, width: statusWidth, text: \`\${spinner} Working for background terminal Â· frame \${String(frame).padStart(3, '0')}\` },
-    { row: 27 + (frame % 9), width: Math.max(32, statusWidth - 18), text: \`gpt-5.5 high Â· ~/remote/repro/pr-5969 Â· /ps to view Â· /stop to close \${frame}\` },
-    { row: 40 + (frame % 11), width: Math.max(28, statusWidth - 8), text: \`â€¢ Working for background terminal Â· rtk bun run e2e:ui --filter=@dalp/app \${frame}\` }
+    { row: statusRow, width: statusWidth, text: \`\${spinner} Working for background terminal · frame \${String(frame).padStart(3, '0')}\` },
+    { row: 27 + (frame % 9), width: Math.max(32, statusWidth - 18), text: \`gpt-5.5 high · ~/remote/repro/pr-5969 · /ps to view · /stop to close \${frame}\` },
+    { row: 40 + (frame % 11), width: Math.max(28, statusWidth - 8), text: \`• Working for background terminal · rtk bun run e2e:ui --filter=@dalp/app \${frame}\` }
   ]
   await write('\\x1b[?2026h')
   await write(\`\\x1b[\${priorRow};1H\\x1b[2K\`)
@@ -54,19 +54,19 @@ for (let frame = 0; frame < ${REMOTE_TUI_FRAMES}; frame += 1) {
   await write(\`\\x1b[\${40 + ((frame + 10) % 11)};1H\\x1b[2K\`)
   await write('\\x1b[1;1H\\x1b[38;2;142;196;255mgpt-5.5 high\\x1b[0m ')
   await write('\\x1b[38;2;106;176;76m~/remote/repro/pr-5969\\x1b[0m ')
-  await write('/ps to view Â· /stop to close')
-  await write('\\x1b[3;1Hâ€¢ Reproducing remote Codex SSH display artifacts with fast status movement')
-  await write('\\x1b[4;1Hâ€¢ The moving status band intentionally uses gray background during frames')
-  await write('\\x1b[5;1Hâ€¢ Final screen is clean; any remaining gray slab is stale renderer state')
+  await write('/ps to view · /stop to close')
+  await write('\\x1b[3;1H• Reproducing remote Codex SSH display artifacts with fast status movement')
+  await write('\\x1b[4;1H• The moving status band intentionally uses gray background during frames')
+  await write('\\x1b[5;1H• Final screen is clean; any remaining gray slab is stale renderer state')
   for (const band of bands) {
     await write(\`\\x1b[\${band.row};1H\\x1b[48;2;72;72;72m\${pad('', band.width)}\\x1b[0m\`)
     await write(\`\\x1b[\${band.row};3H\\x1b[38;2;220;220;220;48;2;72;72;72m\${pad(band.text, band.width - 4)}\\x1b[0m\`)
   }
   await write(\`\\x1b[22;1H\\x1b[38;2;106;176;76m+\${' added code '.repeat(8)}\${frame}\\x1b[0m\`)
   await write(\`\\x1b[23;1H\\x1b[38;2;230;90;75m-\${' removed code '.repeat(8)}\${frame}\\x1b[0m\`)
-  await write(\`\\x1b[25;1H\\x1b[38;2;153;199;255mâ€º \${'Run focused and full validation gates '.repeat(3)}\${frame}\\x1b[0m\`)
+  await write(\`\\x1b[25;1H\\x1b[38;2;153;199;255m› \${'Run focused and full validation gates '.repeat(3)}\${frame}\\x1b[0m\`)
   if (frame % 18 === 0) {
-    await write(\`\\x1b[52;1H\\x1b[0mâ€¢ Waited for background terminal Â· rtk bun run e2e:ui --filter=@dalp/app \${frame}\\r\\n\`)
+    await write(\`\\x1b[52;1H\\x1b[0m• Waited for background terminal · rtk bun run e2e:ui --filter=@dalp/app \${frame}\\r\\n\`)
   }
   await write('\\x1b[?2026l')
   await sleep(8)
@@ -119,9 +119,9 @@ async function codexViewportFrame(frame) {
   await write('\\x1b[?25l')
   await write(\`\\x1b[\${viewportTop};1H\\x1b[2K\\x1b[38;2;142;196;255m>_ OpenAI Codex\\x1b[0m  \`)
   await write('\\x1b[38;2;106;176;76mgpt-5.5 high\\x1b[0m  ')
-  await write('\\x1b[38;2;180;180;180m/model to change Â· /ps to view Â· /stop to close\\x1b[0m')
-  await grayLine(viewportTop + 2 + (frame % 5), \`â€¢ Working for background terminal Â· rtk bun run e2e:ui --filter=@dalp/app \${frame}\`)
-  await write(\`\\x1b[\${viewportTop + 8};1H\\x1b[2K\\x1b[38;2;153;199;255mâ€º \${pad('Reviewing terminal renderer state after remote SSH output burst ' + frame, width - 4)}\\x1b[0m\`)
+  await write('\\x1b[38;2;180;180;180m/model to change · /ps to view · /stop to close\\x1b[0m')
+  await grayLine(viewportTop + 2 + (frame % 5), \`• Working for background terminal · rtk bun run e2e:ui --filter=@dalp/app \${frame}\`)
+  await write(\`\\x1b[\${viewportTop + 8};1H\\x1b[2K\\x1b[38;2;153;199;255m› \${pad('Reviewing terminal renderer state after remote SSH output burst ' + frame, width - 4)}\\x1b[0m\`)
   await write('\\x1b[?2026l')
 }
 
@@ -135,7 +135,7 @@ async function insertCodexHistory(frame) {
     const phase = String(frame).padStart(4, '0') + '.' + index
     await write('\\r\\n')
     await write(\`\\x1b[48;2;72;72;72m\\x1b[K\`)
-    await write(\`\\x1b[38;2;220;220;220;48;2;72;72;72m\${pad('gpt-5.5 high Â· ~/code/pr-12250-migration-compare-move-baseprice-claim Â· /ps to view Â· /stop to close ' + phase, width)}\\x1b[0m\`)
+    await write(\`\\x1b[38;2;220;220;220;48;2;72;72;72m\${pad('gpt-5.5 high · ~/code/pr-12250-migration-compare-move-baseprice-claim · /ps to view · /stop to close ' + phase, width)}\\x1b[0m\`)
   }
   await write('\\x1b[r')
   await write(\`\\x1b[\${viewportBottom};1H\`)
@@ -155,7 +155,7 @@ async function reverseIndexCodexHistory(frame) {
   await write(\`\\x1b[\${historyBottom};1H\`)
   for (let index = 0; index < scrollAmount; index += 1) {
     await write('\\r\\n')
-    await write(\`\\x1b[48;2;72;72;72m\\x1b[K\\x1b[38;2;220;220;220;48;2;72;72;72m\${pad('â€¢ Waited for background terminal Â· rtk bun run e2e:ui --filter=@dalp/app ' + frame + ':' + index, width)}\\x1b[0m\`)
+    await write(\`\\x1b[48;2;72;72;72m\\x1b[K\\x1b[38;2;220;220;220;48;2;72;72;72m\${pad('• Waited for background terminal · rtk bun run e2e:ui --filter=@dalp/app ' + frame + ':' + index, width)}\\x1b[0m\`)
   }
   await write('\\x1b[r')
   await write(\`\\x1b[\${viewportBottom};1H\`)
@@ -176,14 +176,14 @@ for (let frame = 0; frame < ${REMOTE_CODEX_FIXTURE_FRAMES}; frame += 1) {
     await reverseIndexCodexHistory(frame)
   }
   if (frame % 9 === 0) {
-    await grayScrollLine(\`gpt-5.5 high Â· ~/code/pr-12250-migration-compare-move-baseprice-claim Â· /ps to view Â· /stop to close \${frame}\`)
+    await grayScrollLine(\`gpt-5.5 high · ~/code/pr-12250-migration-compare-move-baseprice-claim · /ps to view · /stop to close \${frame}\`)
   }
   await sleep(${REMOTE_CODEX_FIXTURE_FRAME_DELAY_MS})
 }
 
 await write('Updated Plan\\r\\n')
-await write('  âœ“ Reproduce remote Codex SSH display artifact\\r\\n')
-await write('  âœ“ Capture repeated gray status bands in scrollback\\r\\n')
+await write('  ? Reproduce remote Codex SSH display artifact\\r\\n')
+await write('  ? Capture repeated gray status bands in scrollback\\r\\n')
 await write('\\x1b[r\\x1b[?2026h\\x1b[2J\\x1b[H')
 await write('Clean final frame after Codex-style gray status redraws.\\r\\n')
 await write('There should be no gray background bands on this screen.\\r\\n')

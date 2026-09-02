@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E tests for the Tasks page.
  *
  * Verifies that opening the tasks view renders correctly and that the
@@ -276,7 +276,7 @@ test.describe('Tasks page', () => {
       .poll(async () => getStoreState<string>(fabricaPage, 'activeView'), { timeout: 5_000 })
       .toBe(previousView)
     // Why: the load-bearing check is that the previous view's DOM actually
-    // re-rendered — a store-only `activeView` assertion would pass even if the
+    // re-rendered � a store-only `activeView` assertion would pass even if the
     // terminal/editor surface had silently stopped mounting. `.xterm` is the
     // stable class xterm.js emits on every live terminal pane; if the
     // previous view was terminal (by far the common case in E2E setup), that

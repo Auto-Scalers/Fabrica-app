@@ -1,6 +1,6 @@
-﻿import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { toWebTerminalSurfaceTabId } from '../../../src/shared/terminal-surface-id'
 import { expect } from './FABRICA-app'
 import { createRemoteSessionBulkOpenFixture } from './remote-session-bulk-open-fixture'
@@ -11,9 +11,9 @@ import { waitForActivePanePtyId } from './terminal'
 /** Multi-worktree load: several agent-like streaming terminals per worktree. */
 export const BULK_OPEN_WORKTREE_COUNT = 3
 export const BULK_OPEN_TABS_PER_WORKTREE = 4
-/** Soft freeze signal â€” UI feels stuck. */
+/** Soft freeze signal — UI feels stuck. */
 export const SOFT_FREEZE_LAG_MS = 2_000
-/** Hard freeze signal â€” matches trusted "screen fully frozen" reports. */
+/** Hard freeze signal — matches trusted "screen fully frozen" reports. */
 export const HARD_FREEZE_LAG_MS = 5_000
 
 export type BulkOpenSession = {

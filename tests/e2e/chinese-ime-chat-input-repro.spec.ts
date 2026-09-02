@@ -1,7 +1,7 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { CDPSession, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { CDPSession, Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -41,7 +41,7 @@ type TerminalPromptState = {
   submitted: string[]
 }
 
-const PROMPT = 'â€º '
+const PROMPT = '› '
 
 function stripTerminalControls(value: string): string {
   let output = ''
@@ -379,7 +379,7 @@ async function dispatchCandidateSelectionKey(
 ): Promise<void> {
   // Why: #7543 proves Sogou can forward candidate selectors as plain key
   // events, not Process/229. `text` is set so keyDown produces the natural
-  // keypress â€” rawKeyDown generates none and would prove nothing about leaks.
+  // keypress — rawKeyDown generates none and would prove nothing about leaks.
   await session.send('Input.dispatchKeyEvent', {
     type: 'keyDown',
     key: candidate.key,
@@ -535,8 +535,8 @@ test.describe('Chinese IME terminal chat input repro', () => {
       await installImeEventProbe(fabricaPage)
 
       await dispatchImeProcessKey(session, 'KeyN')
-      await composeAndCommitChineseText(session, fabricaPage, ['n', 'ni', 'ä½ ', 'ä½ å¥½'], 'ä½ å¥½')
-      await waitForLivePrompt(fabricaPage, 'ä½ å¥½')
+      await composeAndCommitChineseText(session, fabricaPage, ['n', 'ni', '你', '你好'], '你好')
+      await waitForLivePrompt(fabricaPage, '你好')
       await attachImeEvidence(fabricaPage, testInfo, 'after-compose-hello')
       await fabricaPage.keyboard.press('Enter')
       await expect
@@ -544,26 +544,26 @@ test.describe('Chinese IME terminal chat input repro', () => {
           timeout: 5_000,
           message: 'first submitted prompt did not match the composed Chinese text'
         })
-        .toBe('ä½ å¥½')
+        .toBe('你好')
 
-      await commitImeText(session, 'ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹å')
-      await waitForLivePrompt(fabricaPage, 'ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹å')
+      await commitImeText(session, '一二三四五六七八九十')
+      await waitForLivePrompt(fabricaPage, '一二三四五六七八九十')
       for (let index = 0; index < 5; index += 1) {
         await fabricaPage.keyboard.press('ArrowLeft')
       }
       await dispatchImeProcessKey(session, 'KeyZ')
-      await composeAndCommitChineseText(session, fabricaPage, ['z', 'zh', 'ä¸­'], 'ä¸­')
-      await waitForLivePrompt(fabricaPage, 'ä¸€äºŒä¸‰å››äº”ä¸­å…­ä¸ƒå…«ä¹å')
+      await composeAndCommitChineseText(session, fabricaPage, ['z', 'zh', '中'], '中')
+      await waitForLivePrompt(fabricaPage, '一二三四五中六七八九十')
       await attachImeEvidence(fabricaPage, testInfo, 'after-middle-insert')
 
       await setImeComposition(session, 'x')
       await fabricaPage.keyboard.press('Backspace')
-      await waitForLivePrompt(fabricaPage, 'ä¸€äºŒä¸‰å››äº”ä¸­å…­ä¸ƒå…«ä¹å')
+      await waitForLivePrompt(fabricaPage, '一二三四五中六七八九十')
       await setImeComposition(session, '')
       await commitImeText(session, '')
 
       await fabricaPage.keyboard.press('Backspace')
-      await waitForLivePrompt(fabricaPage, 'ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹å')
+      await waitForLivePrompt(fabricaPage, '一二三四五六七八九十')
       await attachImeEvidence(fabricaPage, testInfo, 'after-single-backspace')
 
       await fabricaPage.keyboard.press('Enter')
@@ -572,7 +572,7 @@ test.describe('Chinese IME terminal chat input repro', () => {
           timeout: 5_000,
           message: 'second submitted prompt did not match the visible Chinese text'
         })
-        .toBe('ä¸€äºŒä¸‰å››äº”å…­ä¸ƒå…«ä¹å')
+        .toBe('一二三四五六七八九十')
 
       const log = await readImeEventLog(fabricaPage)
       expect(
@@ -676,9 +676,9 @@ test.describe('Chinese IME terminal chat input repro', () => {
       await fabricaPage.waitForTimeout(80)
       await dispatchSogouEmptyCompositionUpdate(fabricaPage)
       await dispatchCandidateSelectionKey(session, { key: ' ', code: 'Space', keyCode: 32 }, () =>
-        commitImeText(session, 'ä½ ')
+        commitImeText(session, '你')
       )
-      await waitForLivePrompt(fabricaPage, 'ä½ ')
+      await waitForLivePrompt(fabricaPage, '你')
       await attachImeEvidence(fabricaPage, testInfo, 'sogou-after-space-commit')
       await fabricaPage.keyboard.press('Enter')
       await expect
@@ -686,17 +686,17 @@ test.describe('Chinese IME terminal chat input repro', () => {
           timeout: 5_000,
           message: 'space-selected candidate did not submit the committed Chinese character'
         })
-        .toBe('ä½ ')
+        .toBe('你')
 
-      // Digit selects a non-first candidate for a word/phrase commit â€” the
+      // Digit selects a non-first candidate for a word/phrase commit — the
       // #7543 shape where only the number used to reach the TUI.
       await setImeComposition(session, 'nihao')
       await fabricaPage.waitForTimeout(80)
       await dispatchSogouEmptyCompositionUpdate(fabricaPage)
       await dispatchCandidateSelectionKey(session, { key: '2', code: 'Digit2', keyCode: 50 }, () =>
-        commitImeText(session, 'ä½ å¥½')
+        commitImeText(session, '你好')
       )
-      await waitForLivePrompt(fabricaPage, 'ä½ å¥½')
+      await waitForLivePrompt(fabricaPage, '你好')
       await attachImeEvidence(fabricaPage, testInfo, 'sogou-after-digit-commit')
       await fabricaPage.keyboard.press('Enter')
       await expect
@@ -704,7 +704,7 @@ test.describe('Chinese IME terminal chat input repro', () => {
           timeout: 5_000,
           message: 'digit-selected candidate did not submit the committed Chinese phrase'
         })
-        .toBe('ä½ å¥½')
+        .toBe('你好')
 
       // Post-composition traces can deliver the selector after compositionend;
       // the short post-end guard must still keep that plain digit out of the PTY.
@@ -712,17 +712,17 @@ test.describe('Chinese IME terminal chat input repro', () => {
       await setImeComposition(session, 'zaijian')
       await fabricaPage.waitForTimeout(80)
       await dispatchSogouEmptyCompositionUpdate(fabricaPage)
-      await dispatchSogouPostCompositionEnd(fabricaPage, 'å†è§')
+      await dispatchSogouPostCompositionEnd(fabricaPage, '再见')
       await dispatchCandidateSelectionKey(session, { key: '3', code: 'Digit3', keyCode: 51 }, () =>
-        commitImeText(session, 'å†è§')
+        commitImeText(session, '再见')
       )
-      await waitForLivePrompt(fabricaPage, 'å†è§')
+      await waitForLivePrompt(fabricaPage, '再见')
       const postCompositionLog = await readImeEventLog(fabricaPage)
       const postCompositionEndIndex = postCompositionLog.findIndex(
         (entry, index) =>
           index >= postCompositionLogStart &&
           entry.type === 'compositionend' &&
-          entry.data === 'å†è§'
+          entry.data === '再见'
       )
       const postCompositionSelectorIndex = postCompositionLog.findIndex(
         (entry, index) =>
@@ -743,7 +743,7 @@ test.describe('Chinese IME terminal chat input repro', () => {
           timeout: 5_000,
           message: 'post-composition digit-selected candidate did not submit cleanly'
         })
-        .toBe('å†è§')
+        .toBe('再见')
 
       // Some legacy desktop Linux paths omit every composition/input event and
       // expose only an orphaned Latin release before the candidate digit.
@@ -762,7 +762,7 @@ test.describe('Chinese IME terminal chat input repro', () => {
       expect(
         promptState?.submitted,
         'candidate Space/digit selectors and pinyin preedit must not leak into the PTY'
-      ).toEqual(['ä½ ', 'ä½ å¥½', 'å†è§', ''])
+      ).toEqual(['你', '你好', '再见', ''])
     } finally {
       await attachImeEvidence(fabricaPage, testInfo, 'sogou-final-ime-evidence').catch(() => undefined)
       await session?.detach().catch(() => undefined)
@@ -794,17 +794,17 @@ test.describe('Chinese IME terminal chat input repro', () => {
       await installImeEventProbe(fabricaPage)
 
       await dispatchImeProcessKey(session, 'KeyN')
-      await composeAndCommitChineseText(session, fabricaPage, ['n', 'ni', 'ä½ ', 'ä½ å¥½'], 'ä½ å¥½')
-      await waitForCleanTerminalText(fabricaPage, /ä½ å¥½/, 'Codex input did not show composed Chinese')
+      await composeAndCommitChineseText(session, fabricaPage, ['n', 'ni', '你', '你好'], '你好')
+      await waitForCleanTerminalText(fabricaPage, /你好/, 'Codex input did not show composed Chinese')
       await attachImeEvidence(fabricaPage, testInfo, 'codex-after-compose-hello', {
         cleanTerminal: stripTerminalControls(await getTerminalContent(fabricaPage, 20_000))
       })
 
       await dispatchImeProcessKey(session, 'KeyZ')
-      await composeAndCommitChineseText(session, fabricaPage, ['z', 'zh', 'ä¸­'], 'ä¸­')
+      await composeAndCommitChineseText(session, fabricaPage, ['z', 'zh', '中'], '中')
       await waitForCleanTerminalText(
         fabricaPage,
-        /ä½ å¥½ä¸­/,
+        /你好中/,
         'Codex input did not keep previously composed text before middle-edit checks'
       )
 
@@ -813,7 +813,7 @@ test.describe('Chinese IME terminal chat input repro', () => {
       await fabricaPage.keyboard.press('Backspace')
       await waitForCleanTerminalText(
         fabricaPage,
-        /ä½ å¥½ä¸­/,
+        /你好中/,
         'Backspace during Codex composition removed committed Chinese text'
       )
       await setImeComposition(session, '')
@@ -827,9 +827,9 @@ test.describe('Chinese IME terminal chat input repro', () => {
       expect(
         cleanTerminal,
         'Codex should keep committed Chinese text when Backspace cancels an IME preedit'
-      ).toContain('ä½ å¥½ä¸­')
-      expect(cleanTerminal).not.toMatch(/\bn(?:i)?ä½ å¥½/)
-      expect(cleanTerminal).not.toMatch(/\bz(?:h)?ä¸­/)
+      ).toContain('你好中')
+      expect(cleanTerminal).not.toMatch(/\bn(?:i)?你好/)
+      expect(cleanTerminal).not.toMatch(/\bz(?:h)?中/)
     } finally {
       await attachImeEvidence(fabricaPage, testInfo, 'codex-final-ime-evidence', {
         cleanTerminal: stripTerminalControls(await getTerminalContent(fabricaPage, 20_000))

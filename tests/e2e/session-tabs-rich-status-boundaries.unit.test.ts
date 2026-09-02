@@ -1,4 +1,4 @@
-﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { FABRICARuntimeService } from '../../src/main/runtime/FABRICA-runtime'
 import type {
   RuntimeMobileSessionTabsResult,
@@ -94,14 +94,14 @@ describe('session-tabs rich-status boundaries', () => {
     const harness = createHarness()
     const firstWorkingAt = Date.now()
     setRichStatus(harness.tab, { prompt: 'previous task', at: firstWorkingAt })
-    emitTitle(harness, '⠋ Cursor Agent', firstWorkingAt)
+    emitTitle(harness, '? Cursor Agent', firstWorkingAt)
     vi.advanceTimersByTime(1)
     emitTitle(harness, 'bash')
     harness.publications.length = 0
 
     vi.advanceTimersByTime(1)
     const nextWorkingAt = Date.now()
-    emitTitle(harness, '⠙ Cursor Agent', nextWorkingAt)
+    emitTitle(harness, '? Cursor Agent', nextWorkingAt)
     expect(latestStatus(harness)).toMatchObject({
       state: 'working',
       prompt: '',
@@ -115,7 +115,7 @@ describe('session-tabs rich-status boundaries', () => {
     const harness = createHarness()
     const workingAt = Date.now()
     setRichStatus(harness.tab, { prompt: 'current task', at: workingAt })
-    emitTitle(harness, '⠋ Cursor Agent', workingAt)
+    emitTitle(harness, '? Cursor Agent', workingAt)
 
     harness.publications.length = 0
     vi.advanceTimersByTime(1)
@@ -130,7 +130,7 @@ describe('session-tabs rich-status boundaries', () => {
     harness.publications.length = 0
     vi.advanceTimersByTime(1)
     const resumedWorkingAt = Date.now()
-    emitTitle(harness, '⠙ Cursor Agent', resumedWorkingAt)
+    emitTitle(harness, '? Cursor Agent', resumedWorkingAt)
     expect(latestStatus(harness)).toMatchObject({
       state: 'working',
       prompt: 'current task',
@@ -143,7 +143,7 @@ describe('session-tabs rich-status boundaries', () => {
   it('does not resurrect a task after neutral then shell titles', () => {
     const harness = createHarness()
     setRichStatus(harness.tab, { prompt: 'completed task', at: Date.now() })
-    emitTitle(harness, '⠋ Cursor Agent')
+    emitTitle(harness, '? Cursor Agent')
     vi.advanceTimersByTime(1)
     emitTitle(harness, 'Terminal')
     vi.advanceTimersByTime(1)
@@ -152,7 +152,7 @@ describe('session-tabs rich-status boundaries', () => {
 
     vi.advanceTimersByTime(1)
     const nextWorkingAt = Date.now()
-    emitTitle(harness, '⠙ Cursor Agent', nextWorkingAt)
+    emitTitle(harness, '? Cursor Agent', nextWorkingAt)
     expect(latestStatus(harness)).toMatchObject({
       state: 'working',
       prompt: '',
@@ -181,7 +181,7 @@ describe('session-tabs rich-status boundaries', () => {
     harness.publications.length = 0
 
     vi.advanceTimersByTime(1)
-    emitTitle(harness, '⠋ Cursor Agent')
+    emitTitle(harness, '? Cursor Agent')
     expect(latestStatus(harness)).toMatchObject({ state: 'working', prompt: '' })
     expect(latestStatus(harness)).not.toHaveProperty('interactivePrompt')
     harness.unsubscribe()
@@ -209,7 +209,7 @@ describe('session-tabs rich-status boundaries', () => {
 
     harness.publications.length = 0
     vi.advanceTimersByTime(1)
-    emitTitle(harness, '⠋ Cursor Agent')
+    emitTitle(harness, '? Cursor Agent')
     expect(latestStatus(harness)).toMatchObject({ state: 'working', prompt: '' })
     expect(latestStatus(harness)).not.toHaveProperty('interactivePrompt')
     harness.unsubscribe()
@@ -235,7 +235,7 @@ describe('session-tabs rich-status boundaries', () => {
 
     harness.publications.length = 0
     vi.advanceTimersByTime(1)
-    emitTitle(harness, '⠋ Cursor Agent')
+    emitTitle(harness, '? Cursor Agent')
     expect(latestStatus(harness)).toMatchObject({ state: 'working', prompt: '' })
     expect(latestStatus(harness)).not.toHaveProperty('interactivePrompt')
     harness.unsubscribe()
@@ -253,7 +253,7 @@ describe('session-tabs rich-status boundaries', () => {
       Date.now()
     )
     vi.advanceTimersByTime(50)
-    emitTitle(harness, '⠋ Codex working')
+    emitTitle(harness, '? Codex working')
     harness.publications.length = 0
 
     vi.advanceTimersByTime(1)
@@ -266,14 +266,14 @@ describe('session-tabs rich-status boundaries', () => {
     const harness = createHarness()
     const firstWorkingAt = Date.now()
     setRichStatus(harness.tab, { prompt: 'previous provider task', at: firstWorkingAt })
-    emitTitle(harness, '⠋ Cursor Agent', firstWorkingAt)
+    emitTitle(harness, '? Cursor Agent', firstWorkingAt)
     harness.tab.agentStatus!.updatedAt = Date.now()
     harness.internals.resetTrackedTerminalStateForProviderGeneration(PTY_ID)
     harness.publications.length = 0
 
     vi.advanceTimersByTime(1)
     const replacementWorkingAt = Date.now()
-    emitTitle(harness, '⠙ Cursor Agent', replacementWorkingAt)
+    emitTitle(harness, '? Cursor Agent', replacementWorkingAt)
     expect(latestStatus(harness)).toMatchObject({
       state: 'working',
       prompt: '',
@@ -290,7 +290,7 @@ describe('session-tabs rich-status boundaries', () => {
       at: Date.now(),
       agentType: 'claude'
     })
-    emitTitle(harness, '⠋ Claude working')
+    emitTitle(harness, '? Claude working')
     harness.publications.length = 0
 
     vi.advanceTimersByTime(1)

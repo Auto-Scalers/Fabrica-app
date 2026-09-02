@@ -1,6 +1,6 @@
-﻿import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -17,9 +17,9 @@ import { PROTOCOL_VERSION } from '../../src/main/daemon/types'
 import { PTY_SESSION_ID_SEPARATOR } from '../../src/shared/pty-session-id-format'
 
 // Why: longer than FIRST_WINDOW_STARTUP_SERVICE_TIMEOUT_MS (12s) so the first
-// window fails open before the daemon provider exists â€” the exact race that
+// window fails open before the daemon provider exists — the exact race that
 // used to flip restored panes onto non-restorable LocalPtyProvider terminals
-// (#5232 Bug 1) â€” but well under the 60s local-PTY fail-open cap.
+// (#5232 Bug 1) — but well under the 60s local-PTY fail-open cap.
 const DAEMON_INIT_DELAY_MS = 15_000
 
 function readDaemonPid(userDataDir: string): number {

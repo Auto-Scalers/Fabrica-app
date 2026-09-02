@@ -1,4 +1,4 @@
-﻿export type PairedWebClientOptions = {
+export type PairedWebClientOptions = {
   disableRemoteTerminalStallRecovery?: boolean
   terminalParkingDelayMs?: number
   terminalRetentionLimit?: number

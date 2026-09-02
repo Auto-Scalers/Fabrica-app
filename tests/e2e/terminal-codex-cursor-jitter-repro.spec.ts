@@ -1,6 +1,6 @@
-﻿import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { waitForActiveTerminalManager } from './helpers/terminal'
@@ -144,14 +144,14 @@ function workingRows(snapshot: ScreenSnapshot): Set<number> {
 function isQueuedInputLine(text: string): boolean {
   return (
     /\bs\b/.test(text) &&
-    (text.includes('>') || text.includes('â€º') || text.includes('\u00e2\u20ac\u00ba'))
+    (text.includes('>') || text.includes('›') || text.includes('\u00e2\u20ac\u00ba'))
   )
 }
 
 function isInputCursorRow(snapshot: ScreenSnapshot, row: number): boolean {
   const text = snapshot.lines.find((line) => line.row === row)?.text ?? ''
   const trimmed = text.trimStart()
-  return isQueuedInputLine(text) || trimmed.startsWith('â€º')
+  return isQueuedInputLine(text) || trimmed.startsWith('›')
 }
 
 function isPromptCursorFrame(frame: ScreenSnapshot): boolean {

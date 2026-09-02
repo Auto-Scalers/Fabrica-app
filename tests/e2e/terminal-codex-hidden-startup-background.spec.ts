@@ -1,6 +1,6 @@
-﻿import { Buffer } from 'node:buffer'
+import { Buffer } from 'node:buffer'
 import { PNG } from 'pngjs'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { stageNodeScriptForTerminal } from './helpers/run-node-script-in-terminal'
 import {
@@ -27,7 +27,7 @@ const COMPOSER_BG = { red: 72, green: 72, blue: 72 }
 
 function codexLikeStartupCommand(marker: string): string {
   const script = [
-    // Why: embedded as a literal â€” an argv marker would need per-shell quoting.
+    // Why: embedded as a literal — an argv marker would need per-shell quoting.
     `const marker = ${JSON.stringify(marker)};`,
     'const width = Math.max(60, process.stdout.columns || 100);',
     'const pad = (text) => (text + " ".repeat(width)).slice(0, width);',
@@ -56,7 +56,7 @@ function codexLikeStartupCommand(marker: string): string {
     'setTimeout(render, 100);',
     'setInterval(() => {}, 1000);'
   ].join('')
-  // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
+  // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
   return stageNodeScriptForTerminal(script, { prefix: 'FABRICA-codex-startup-bg' }).command
 }
 
@@ -290,7 +290,7 @@ test.describe('Codex hidden startup composer background', () => {
       })
       .toBe(true)
     // Why: the renderer skip counter is dead under the Phase-4 main-side delivery
-    // gate (#7214) â€” hidden bytes are dropped in main before reaching the renderer.
+    // gate (#7214) — hidden bytes are dropped in main before reaching the renderer.
     // The main-buffer snapshot above proves the hidden output was handled; the
     // reveal restore below proves it repaints when the worktree first shows.
 

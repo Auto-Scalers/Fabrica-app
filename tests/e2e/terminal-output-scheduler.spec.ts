@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E repro for terminal output bursts from many background tabs.
  *
  * This is a scaled-down version of the user report: several terminal tabs are
@@ -7,7 +7,7 @@
  * the shared scheduler instead of direct xterm writes.
  */
 
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,

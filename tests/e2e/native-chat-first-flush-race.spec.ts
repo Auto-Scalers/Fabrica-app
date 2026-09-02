@@ -1,14 +1,14 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { waitForActivePaneHookDescriptor, waitForActiveTerminalManager } from './helpers/terminal'
 import type { GlobalSettings } from '../../src/shared/types'
 
-const LOADING_TITLE = 'Loading conversationâ€¦'
+const LOADING_TITLE = 'Loading conversation…'
 const ERROR_TITLE = 'Could not load conversation'
 
 async function enableNativeChatSetting(page: Page): Promise<void> {
@@ -20,7 +20,7 @@ async function enableNativeChatSetting(page: Page): Promise<void> {
 
 // Why: seeding agentStatusByPaneKey directly (rather than posting a real
 // `/hook/claude` event) mirrors the technique agent-session-quit-resume.spec.ts
-// uses to stay hermetic â€” it exercises the identical store â†’ NativeChatView
+// uses to stay hermetic — it exercises the identical store → NativeChatView
 // path a real Claude Code hook would drive, without an installed CLI.
 async function seedClaudeProviderSession(
   page: Page,
@@ -41,7 +41,7 @@ async function seedClaudeProviderSession(
 }
 
 // Why: toggleTabViewMode keys off the *unified* tab id, which can differ from
-// the terminal tab id embedded in paneKey â€” resolve it the same way
+// the terminal tab id embedded in paneKey — resolve it the same way
 // TerminalPane.tsx does before calling the store action a real toggle/shortcut
 // would use.
 async function toggleTerminalTabToChatView(
@@ -106,7 +106,7 @@ test.describe('Native chat first-flush transcript race (#8401)', () => {
     const sessionId = `e2e-first-flush-${randomUUID()}`
 
     // Why: a real Claude Code session flushes its first JSONL line up to
-    // minutes after launch (#8401) â€” this directory intentionally has no file
+    // minutes after launch (#8401) — this directory intentionally has no file
     // yet when the pane resolves its providerSession.
     const scratchDir = mkdtempSync(path.join(os.tmpdir(), 'FABRICA-e2e-native-chat-'))
     const transcriptPath = path.join(scratchDir, `${sessionId}.jsonl`)
@@ -143,7 +143,7 @@ test.describe('Native chat first-flush transcript race (#8401)', () => {
 
       // Why: a short real delay proves the first readSession attempt already
       // hit the not-yet-flushed file (returning notFound) and the renderer's
-      // backoff retry â€” not a lucky first read â€” is what picks it up below.
+      // backoff retry — not a lucky first read — is what picks it up below.
       await fabricaPage.waitForTimeout(1_500)
       await expect(fabricaPage.getByText(ERROR_TITLE)).toHaveCount(0)
 

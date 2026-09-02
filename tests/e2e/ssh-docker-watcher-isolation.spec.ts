@@ -1,4 +1,4 @@
-﻿import type { Locator, Page } from '@autoscalers/playwright-test'
+import type { Locator, Page } from '@playwright/test'
 
 import {
   connectDockerSshRelayTarget,

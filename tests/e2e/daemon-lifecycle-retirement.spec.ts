@@ -1,4 +1,4 @@
-﻿import { fork, type ChildProcess } from 'node:child_process'
+import { fork, type ChildProcess } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs'
 import { connect } from 'node:net'

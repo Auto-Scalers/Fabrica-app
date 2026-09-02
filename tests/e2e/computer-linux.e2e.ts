@@ -1,4 +1,4 @@
-﻿import { afterAll, beforeAll, describe, expect, test } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import type { ComputerActionResult, ComputerSnapshotResult } from '../../src/shared/runtime-types'
 import {
   ensureFABRICARuntimeLaunched,

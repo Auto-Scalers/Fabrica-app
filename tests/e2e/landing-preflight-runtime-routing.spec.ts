@@ -1,7 +1,7 @@
-﻿import { mkdtempSync, rmSync } from 'node:fs'
+import { mkdtempSync, rmSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { ElectronApplication, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page, TestInfo } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { createRestartSession } from './helpers/fabrica-restart'
 import {

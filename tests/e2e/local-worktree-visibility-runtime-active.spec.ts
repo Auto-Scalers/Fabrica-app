@@ -1,8 +1,8 @@
-ï»¿/**
+/**
  * Regression: a worktree created via the CLI (`FABRICA worktree
  * create`) must appear in the sidebar even while a remote runtime is active.
  *
- * The faithful trigger is the real CLI path â€” the RuntimeClient connects to the
+ * The faithful trigger is the real CLI path — the RuntimeClient connects to the
  * running app's socket and calls `worktree.create`, which registers a managed
  * worktree and fires the `worktrees:changed` IPC the renderer listens for.
  * Before the fix, the renderer dropped that IPC whenever a remote runtime was
@@ -26,7 +26,7 @@ test.describe('worktree visibility with a remote runtime active', () => {
 
     const repoId = await fabricaPage.evaluate(() => {
       const repos = window.__store?.getState().repos ?? []
-      // This case reproduces only for a local-host repo â€” one whose execution
+      // This case reproduces only for a local-host repo — one whose execution
       // host resolves to local (executionHostId unset or 'local') and which has
       // no connection binding. That is the repo whose list fetch an active
       // runtime would otherwise route away from local. Select it explicitly so
@@ -41,7 +41,7 @@ test.describe('worktree visibility with a remote runtime active', () => {
     })
 
     // The CLI talks to the running app over the socket recorded in its userData
-    // dir â€” exactly what `FABRICA worktree create` does from a terminal.
+    // dir — exactly what `FABRICA worktree create` does from a terminal.
     const userDataDir = await electronApp.evaluate(({ app }) => app.getPath('userData'))
     const client = new RuntimeClient(userDataDir, 30_000, null, null)
     const createViaCli = async (name: string): Promise<string> => {
@@ -62,7 +62,7 @@ test.describe('worktree visibility with a remote runtime active', () => {
     const controlId = await createViaCli(`wt-control-${Date.now()}`)
     await expect(worktreeRow(controlId)).toBeVisible({ timeout: 15_000 })
 
-    // Stage a remote runtime as active â€” the condition that triggered the drop.
+    // Stage a remote runtime as active — the condition that triggered the drop.
     await fabricaPage.evaluate(() => {
       window.__store?.setState((current) => ({
         settings: { ...current.settings, activeRuntimeEnvironmentId: 'e2e-fake-runtime' }

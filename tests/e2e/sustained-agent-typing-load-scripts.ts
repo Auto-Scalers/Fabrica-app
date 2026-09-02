@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Script generators for the multi-workspace sustained typing-latency bench
  * (terminal-multi-workspace-typing-latency.spec.ts):
  *

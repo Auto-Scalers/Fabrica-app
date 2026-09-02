@@ -1,5 +1,5 @@
-﻿import { execFileSync } from 'node:child_process'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import { execFileSync } from 'node:child_process'
+import type { Page, TestInfo } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -134,7 +134,7 @@ test.describe('Native macOS 2-Set Korean terminal input @headful', () => {
       testRepoPath,
       electronApp.process().pid!,
       [5, 40, 1, 15, 46, 3, 36],
-      'í•œê¸€'
+      '한글'
     )
   })
 
@@ -149,7 +149,7 @@ test.describe('Native macOS 2-Set Korean terminal input @headful', () => {
       testRepoPath,
       electronApp.process().pid!,
       [31, 40, 0, 16, 36],
-      'ã…ã…ë¬˜'
+      'ㅐㅏ묘'
     )
   })
 
@@ -164,8 +164,8 @@ test.describe('Native macOS 2-Set Korean terminal input @headful', () => {
       testRepoPath,
       electronApp.process().pid!,
       [15, 40, 1, 40, 14, 40],
-      'ê°€ë‚˜ë‹¤',
-      { committedText: 'ê°€ë‚˜', preeditText: 'ë‹¤' }
+      '가나다',
+      { committedText: '가나', preeditText: '다' }
     )
   })
 })

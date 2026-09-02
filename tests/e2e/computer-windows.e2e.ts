@@ -1,4 +1,4 @@
-﻿import { afterAll, beforeAll, describe, expect, test } from 'vitest'
+import { afterAll, beforeAll, describe, expect, test } from 'vitest'
 import type {
   ComputerActionResult,
   ComputerListAppsResult,
@@ -163,7 +163,7 @@ describe.skipIf(!isWindows || !e2eOptIn)('computer-use Windows e2e (Notepad)', (
 
   test('Unicode payloads survive paste-text', async () => {
     const app = getNotepadAppSelector()
-    const unicode = `FABRICA unicode café Ω 漢字 ${Date.now()}`
+    const unicode = `FABRICA unicode caf� O ?? ${Date.now()}`
     await focusNotepadDocument(app)
     const pasted = parseJsonOutput<{ result: ComputerActionResult }>(
       (

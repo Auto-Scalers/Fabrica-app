@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * E2E test for the saved-note "Delete" button inside a diff view.
  *
  * Why: the saved note card (DiffCommentCard) is rendered into a Monaco view
@@ -8,7 +8,7 @@
  * anywhere in that chain (e.g. flipping suppressMouseDown, adding an
  * overlay that eats pointer events, removing the always-visible styling)
  * would make the button uninteractive with no type-check or unit-test
- * signal â€” this spec is the guard.
+ * signal — this spec is the guard.
  *
  * The test seeds a DiffComment directly through the renderer store so it
  * does not depend on the hover-to-"+" affordance working, which is a
@@ -36,7 +36,7 @@ test.describe('Diff note delete', () => {
     const { relativePath } = await fabricaPage.evaluate(async (wId) => {
       const store = window.__store
       if (!store) {
-        throw new Error('window.__store is not available â€” is the app in dev mode?')
+        throw new Error('window.__store is not available — is the app in dev mode?')
       }
       const state = store.getState()
       const worktree = Object.values(state.worktreesByRepo)
@@ -108,7 +108,7 @@ test.describe('Diff note delete', () => {
 
     await deleteButton.click()
 
-    // Store must drop the comment â€¦
+    // Store must drop the comment …
     await expect
       .poll(
         async () =>
@@ -129,7 +129,7 @@ test.describe('Diff note delete', () => {
       )
       .toBe(false)
 
-    // â€¦and the view zone must be unmounted, proving the click actually
+    // …and the view zone must be unmounted, proving the click actually
     // reached the React handler (not just some other listener that
     // happened to mutate the store).
     await expect(fabricaPage.getByTitle('Delete note')).toHaveCount(0, {

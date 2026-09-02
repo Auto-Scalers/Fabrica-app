@@ -1,4 +1,4 @@
-﻿import { dirname } from 'node:path'
+import { dirname } from 'node:path'
 
 export function getFABRICAElectronLaunchArgs(mainPath: string, headful: boolean): string[] {
   // Launch through package.json so app version and resource paths match a packaged app.

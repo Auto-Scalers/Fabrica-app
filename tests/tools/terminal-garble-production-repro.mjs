@@ -1,6 +1,6 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
-import { _electron as electron } from '@autoscalers/playwright-test'
+import { _electron as electron } from '@playwright/test'
 import {
   cpSync,
   existsSync,

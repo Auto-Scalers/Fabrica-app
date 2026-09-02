@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * E2E tests for the full worktree lifecycle: removal cleanup, switching with
  * the right sidebar open, and cross-worktree tab isolation.
  *
@@ -150,7 +150,7 @@ test.describe('Worktree Lifecycle', () => {
     expect((await getBrowserTabs(fabricaPage, newWorktreeId)).length).toBeGreaterThan(0)
     expect((await getOpenFiles(fabricaPage, newWorktreeId)).length).toBeGreaterThan(0)
 
-    // Switch away before removing so we're not deleting the active worktree â€”
+    // Switch away before removing so we're not deleting the active worktree —
     // that's an easier code path and hides the cleanup regression this spec
     // is protecting.
     await switchToWorktree(fabricaPage, originalWorktreeId)
@@ -160,7 +160,7 @@ test.describe('Worktree Lifecycle', () => {
 
     const result = await removeWorktreeViaStore(fabricaPage, newWorktreeId)
     expect(result.ok).toBe(true)
-    // Successful removal â€” afterEach hook no longer needs to clean this up.
+    // Successful removal — afterEach hook no longer needs to clean this up.
     createdWorktreeId = null
 
     // Tabs / open files / browser tabs keyed by the removed worktree must all
@@ -184,20 +184,20 @@ test.describe('Worktree Lifecycle', () => {
   })
 
   /**
-   * Worktree switching preserves per-worktree state â€” specifically
+   * Worktree switching preserves per-worktree state — specifically
    * `layoutByWorktree`, `openFiles`, and the right-sidebar UI state across a
    * round-trip.
    *
    * Why a narrowed claim: the original #598 / #628 regressions were renderer
    * freezes, and #726 was split-group container teardown. Those are
-   * *renderer-side* bugs â€” a store-level test can't observe a frozen React
+   * *renderer-side* bugs — a store-level test can't observe a frozen React
    * render loop (if the renderer hung, `page.evaluate` would hang too, which
    * looks identical to any other timeout). #726 in particular is already
    * guarded at the unit level by `anyMountedWorktreeHasLayout` tests per its
    * PR summary.
    *
    * What this test *does* catch: regressions that wipe per-worktree store
-   * state during a switch â€” e.g. a cascading reducer that clears
+   * state during a switch — e.g. a cascading reducer that clears
    * `layoutByWorktree[oldWorktreeId]` when activating a new worktree, or a
    * sidebar-reset side effect attached to `setActiveWorktree`. That's a
    * smaller claim than "doesn't hang," but it's one this layer can actually
@@ -244,7 +244,7 @@ test.describe('Worktree Lifecycle', () => {
       .poll(async () => getActiveWorktreeId(fabricaPage), { timeout: 10_000 })
       .toBe(otherWorktreeId)
 
-    // Sidebar UI state must survive the switch â€” user shouldn't have to
+    // Sidebar UI state must survive the switch — user shouldn't have to
     // re-open the explorer after every worktree change.
     await expect
       .poll(
@@ -286,8 +286,8 @@ test.describe('Worktree Lifecycle', () => {
   /**
    * Covers PR #542 / #554: a regression caused terminal tab membership to
    * leak across worktrees (the wrong worktree's tab reacted to shortcuts).
-   * Guard the underlying invariant â€” tabsByWorktree[A] and tabsByWorktree[B]
-   * do not share IDs â€” at the model layer where the bug actually lived.
+   * Guard the underlying invariant — tabsByWorktree[A] and tabsByWorktree[B]
+   * do not share IDs — at the model layer where the bug actually lived.
    */
   test('terminal tabs stay scoped to the worktree that created them', async ({ fabricaPage }) => {
     const allIds = await getAllWorktreeIds(fabricaPage)

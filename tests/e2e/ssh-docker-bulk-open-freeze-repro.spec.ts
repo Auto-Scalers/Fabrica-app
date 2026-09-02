@@ -1,5 +1,5 @@
-﻿/**
- * Freeze repro R2 — direct SSH topology via Docker SSH relay.
+/**
+ * Freeze repro R2 � direct SSH topology via Docker SSH relay.
  *
  * Requires: FABRICA_E2E_SSH_DOCKER=1 and Docker available.
  *

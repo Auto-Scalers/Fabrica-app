@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E test for newly-added worktrees sorting correctly in "Recent" mode.
  *
  * Why this exists:
@@ -6,7 +6,7 @@
  *   on disk but had no persisted WorktreeMeta (the case for folder-mode
  *   repos and pre-existing worktrees discovered when adding a new git repo)
  *   fell back to `lastActivityAt: 0`. "Recent" sort orders by
- *   `lastActivityAt` descending, so those worktrees landed dead last â€”
+ *   `lastActivityAt` descending, so those worktrees landed dead last —
  *   even though the user had just added them.
  *
  *   The `worktrees:list` / `worktrees:listAll` handlers now stamp
@@ -17,7 +17,7 @@
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady, waitForActiveWorktree } from './helpers/store'
 
@@ -73,7 +73,7 @@ test.describe('Worktree Recent Sort', () => {
   })
 
   test.afterEach(() => {
-    // Why: mkdtempSync fixtures leak unless we clean them up explicitly â€”
+    // Why: mkdtempSync fixtures leak unless we clean them up explicitly —
     // matches the mkdtempSync/rmSync pairing used in helpers/fabrica-app.ts
     // and helpers/fabrica-restart.ts.
     while (createdFolderFixtures.length) {

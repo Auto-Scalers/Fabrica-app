@@ -1,4 +1,4 @@
-﻿import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 import { describe, expect, it, vi } from 'vitest'
 import {
   installSshPortForwardSnapshotBarrier,

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E tests for the workspace Back / Forward titlebar buttons + their
  * Cmd/Ctrl+Alt+Arrow shortcuts.
  *
@@ -11,7 +11,7 @@
  */
 
 import { test, expect } from './helpers/fabrica-app'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import {
   waitForSessionReady,
   waitForActiveWorktree,
@@ -26,7 +26,7 @@ import { worktreeRow } from './worktree-row-locators'
  * `activateAndRevealWorktree` makes for the history slice, without having to
  * expose the activation helper on window. This mirrors production ordering:
  * `setActiveWorktree` first, then `recordWorktreeVisit` (skipped by the real
- * helper when `isNavigatingHistory` is true â€” not relevant for seeding).
+ * helper when `isNavigatingHistory` is true — not relevant for seeding).
  */
 async function seedVisit(page: Page, worktreeId: string): Promise<void> {
   await page.evaluate((id) => {
@@ -201,7 +201,7 @@ test.describe('Workspace Back/Forward Navigation', () => {
     await (await getBackButton(fabricaPage)).click()
     await expect.poll(() => getActiveWorktreeId(fabricaPage)).toBe(primaryId)
 
-    // Forward button is live â€” a forward entry exists.
+    // Forward button is live — a forward entry exists.
     await expect(await getForwardButton(fabricaPage)).toBeEnabled()
 
     // Fresh activation from mid-history. Using secondary again is the simplest

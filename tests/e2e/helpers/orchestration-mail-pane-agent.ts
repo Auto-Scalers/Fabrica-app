@@ -1,11 +1,11 @@
-ï»¿/**
+/**
  * A scriptable stand-in for an agent CLI, for orchestration push-delivery E2E.
  *
  * Why a purpose-built process and not a bare shell emitting titles: push-on-idle
  * is gated on the status FABRICA infers from live OSC titles and delivers by
  * writing into the pane's foreground process. A shell echoes rather than
  * records, so it can prove the gate but never the payload. This process owns
- * both sides â€” the test drives its title through a control file and it appends
+ * both sides — the test drives its title through a control file and it appends
  * every stdin chunk to a ledger, which is what makes "the pointer and the Enter
  * reached the agent" an assertion instead of an inference.
  *
@@ -15,7 +15,7 @@
  *
  * Why it runs in the pane the fixture already opened, rather than a pane created
  * for it: terminal.create waits up to 10s for a renderer graph sync to bind the
- * new tab's handle, and a headless CI renderer misses that deadline â€” every spec
+ * new tab's handle, and a headless CI renderer misses that deadline — every spec
  * here died on 'Timed out waiting for terminal handle after creation'. Nothing
  * on the delivery path reads a pane's agent metadata (it resolves the leaf, the
  * OSC title, and PTY liveness), so a foreground process in a mounted pane
@@ -59,7 +59,7 @@ if (process.stdin.isTTY) {
   process.stdin.setRawMode(true)
 }
 
-// Every byte orchestration pushes lands here â€” pointer text and Enter alike.
+// Every byte orchestration pushes lands here — pointer text and Enter alike.
 process.stdin.on('data', (chunk) => log({ event: 'stdin', data: chunk.toString() }))
 process.stdin.resume()
 
@@ -94,7 +94,7 @@ export type MailPaneAgent = {
   /** Emit `title` as an OSC title from the live process. */
   setTitle: (title: string) => void
   readLedger: () => AgentLedgerEntry[]
-  /** Concatenated stdin â€” what the agent actually received. */
+  /** Concatenated stdin — what the agent actually received. */
   readStdin: () => string
   hasStarted: () => boolean
   /** Emitted-title count; the readiness signal when a title is re-sent as-is. */

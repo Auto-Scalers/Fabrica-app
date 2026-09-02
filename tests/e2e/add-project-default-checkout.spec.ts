@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdirSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import { mkdtemp } from 'node:fs/promises'
 import os from 'node:os'

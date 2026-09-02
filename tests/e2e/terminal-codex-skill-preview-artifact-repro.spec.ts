@@ -1,6 +1,6 @@
-﻿import { mkdirSync, writeFileSync, realpathSync } from 'node:fs'
+import { mkdirSync, writeFileSync, realpathSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { removeWorktreeViaStore } from './helpers/dead-terminal'
 import {

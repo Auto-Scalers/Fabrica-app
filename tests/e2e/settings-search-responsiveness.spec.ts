@@ -1,4 +1,4 @@
-﻿import path from 'node:path'
+import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import type { Repo } from '../../src/shared/types'

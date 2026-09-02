@@ -1,4 +1,4 @@
-ï»¿import { rmSync } from 'node:fs'
+import { rmSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
@@ -24,7 +24,7 @@ function writeLinkedIssuePrEchoGenerator(scriptPath: string, base: string): void
 
 test.describe('Source Control AI pull request linkedIssue', () => {
   // Why: the unlinked case separates a real resolver from one that always returns a number,
-  // and â€” because the generator echoes the whole line into the title â€” a literal
+  // and — because the generator echoes the whole line into the title — a literal
   // `{linkedIssue}` reaches the assertion as `saw-issue:{linkedIssue}` instead of
   // masquerading as the empty expansion.
   for (const { label, linkedIssue, expected } of [

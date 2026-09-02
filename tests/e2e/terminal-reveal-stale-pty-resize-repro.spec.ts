@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Repro: stale PTY resize after worktree reveal (issues #7951 / #7240 family).
  *
  * Symptom (field reports + internal, v1.4.136): returning to a worktree
@@ -11,8 +11,8 @@
  * PTY while that read is in flight, with no follow-up request queued.
  * Instrumented traces show this stale-capture interleaving on EVERY reveal;
  * correctness then hinges solely on the applied-size read being processed
- * before the fit's resize (local FIFO luck). When the read loses that race â€”
- * busy daemon serializing reveal snapshots, SSH/relay round-trips â€” the
+ * before the fit's resize (local FIFO luck). When the read loses that race —
+ * busy daemon serializing reveal snapshots, SSH/relay round-trips — the
  * resolved callback sees applied != captured target and "repairs" the PTY
  * back to the pre-reveal grid. An idle TUI redraws for the wrong grid and
  * nothing heals it: no output means no grid-drift check, and no later layout
@@ -20,7 +20,7 @@
  *
  * Test 1 drives the choreography with the natural read ordering (documents
  * the FIFO-lucky path). Test 2 delays the readback dispatch (e2e seam in
- * pty-applied-size-read-e2e-delay.ts) to model the losing ordering â€” on an
+ * pty-applied-size-read-e2e-delay.ts) to model the losing ordering — on an
  * unpatched build the stale forward fires live (verified via instrumented
  * traces: FORWARD of the pre-reveal grid over the freshly fitted one). On
  * fast idle machines a follow-up reassertion heals it within tens of ms, so
@@ -29,7 +29,7 @@
  * variant and keeps the full reveal path exercised under the field ordering.
  */
 
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import { writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
@@ -74,7 +74,7 @@ type CycleFailure = {
 const CONVERGE_TIMEOUT_MS = 6_000
 // Why: sweep the applied-size read delay across the gap between the reveal
 // fit's PTY resize landing in the daemon and the ResizeObserver follow-up
-// request â€” the window where the stale forward fires. Fast idle machines
+// request — the window where the stale forward fires. Fast idle machines
 // rescue within ~30-50ms; the field (SSH/relay, loaded frames) may never.
 const GETSIZE_DELAY_SWEEP_MS = [15, 20, 25, 30, 40, 60]
 const VIEWPORTS = [
@@ -90,7 +90,7 @@ function bottomBarTuiScript(runId: string): string {
   //
   // The bar is illustrative, NOT the assertion target: this spec asserts on
   // pty:getSize converging to xterm's grid. Do not assert on the bar's printed
-  // cols â€” Node's `process.stdout.on('resize')` is unreliable under Windows
+  // cols — Node's `process.stdout.on('resize')` is unreliable under Windows
   // ConPTY (no SIGWINCH; a long-lived process can miss the notification while
   // the OS PTY is in fact resized), so a bar-content check flakes there even
   // though delivery succeeded (confirmed via base-vs-fix A/B + fresh-process
@@ -151,7 +151,7 @@ function gridsConverged(snapshot: GridSnapshot): boolean {
 }
 
 /** Arm the e2e seam that delays the reassertion's applied-size read dispatch
- *  past the reveal fit â€” the ordering a busy daemon or SSH/relay round-trip
+ *  past the reveal fit — the ordering a busy daemon or SSH/relay round-trip
  *  produces in the field (pty-applied-size-read-e2e-delay.ts). */
 async function armSlowAppliedSizeRead(page: Page, delayMs: number): Promise<void> {
   await page.evaluate((delayMs) => {
@@ -207,7 +207,7 @@ async function driveHiddenResizeRevealCycles(args: CycleDriverArgs): Promise<Cyc
     }
     await switchToWorktree(page, firstWorktreeId)
     await expect.poll(() => getActiveWorktreeId(page), { timeout: 10_000 }).toBe(firstWorktreeId)
-    // Why: the field shape â€” the window changes while the idle TUI worktree
+    // Why: the field shape — the window changes while the idle TUI worktree
     // is hidden; hidden xterm refits drop their PTY forwards
     // (isRendererPtyResizeAuthoritative), so the reveal-time readback is the
     // sole owner of the correction.
@@ -218,7 +218,7 @@ async function driveHiddenResizeRevealCycles(args: CycleDriverArgs): Promise<Cyc
     await switchToWorktree(page, secondWorktreeId)
     await expect.poll(() => getActiveWorktreeId(page), { timeout: 10_000 }).toBe(secondWorktreeId)
 
-    // Why: sample tightly right after reveal â€” a stale forward that a later
+    // Why: sample tightly right after reveal — a stale forward that a later
     // follow-up request heals is still the corruption firing (the TUI redraws
     // for the wrong grid in that window); record every desynced sample.
     for (let sample = 0; sample < 20; sample += 1) {

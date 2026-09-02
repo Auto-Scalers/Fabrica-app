@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * Reliability contract:
  * - Invariant: link actions remain visible and interactive when they cross the Explorer seam.
  * - Failure source: the in-editor bubble was clipped by overflow-hidden workbench ancestors.
@@ -54,7 +54,7 @@ test.describe('Rich markdown link bubble stacking', () => {
       await fabricaPage.evaluate(() => {
         const store = window.__store
         if (!store) {
-          throw new Error('window.__store is not available â€” is the app in dev mode?')
+          throw new Error('window.__store is not available — is the app in dev mode?')
         }
         store.setState({
           rightSidebarOpen: true,
@@ -130,7 +130,7 @@ test.describe('Rich markdown link bubble stacking', () => {
       const originalEditorZoom = await fabricaPage.evaluate(() => {
         const store = window.__store
         if (!store) {
-          throw new Error('window.__store is not available â€” is the app in dev mode?')
+          throw new Error('window.__store is not available — is the app in dev mode?')
         }
         const zoom = store.getState().editorFontZoomLevel
         store.getState().setEditorFontZoomLevel(zoom + 1)
@@ -147,7 +147,7 @@ test.describe('Rich markdown link bubble stacking', () => {
       await fabricaPage.evaluate(() => {
         const store = window.__store
         if (!store) {
-          throw new Error('window.__store is not available â€” is the app in dev mode?')
+          throw new Error('window.__store is not available — is the app in dev mode?')
         }
         store.getState().setActiveView('settings')
       })

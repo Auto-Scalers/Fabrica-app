@@ -1,5 +1,5 @@
-﻿import { randomUUID } from 'node:crypto'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import { randomUUID } from 'node:crypto'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import type { GlobalSettings } from '../../src/shared/types'

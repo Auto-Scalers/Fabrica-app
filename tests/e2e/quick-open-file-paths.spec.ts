@@ -1,4 +1,4 @@
-﻿import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
@@ -19,7 +19,7 @@ test('cmd+p quick open prioritizes the filename and reveals the full path on hov
   await waitForActiveWorktree(fabricaPage)
   await ensureTerminalVisible(fabricaPage)
 
-  // Headless Playwright keyboard events bypass Electron’s before-input-event shortcut path.
+  // Headless Playwright keyboard events bypass Electron�s before-input-event shortcut path.
   await electronApp.evaluate(({ BrowserWindow }) => {
     BrowserWindow.getAllWindows()[0]?.webContents.send('ui:openQuickOpen')
   })

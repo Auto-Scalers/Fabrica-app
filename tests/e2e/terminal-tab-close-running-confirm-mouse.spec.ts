@@ -1,10 +1,10 @@
-﻿/**
+/**
  * #10142 follow-ups to the X-button regression: middle-click prompts too, confirming
  * actually closes, and Cmd+W raises exactly one dialog (the pane path delegates the
  * last-pane close to closeTerminalTab instead of probing a second time).
  */
 import { test, expect } from './helpers/fabrica-app'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import {
   waitForSessionReady,
   waitForActiveWorktree,
@@ -95,7 +95,7 @@ test('Cmd+W on a busy single-pane tab raises exactly one dialog', async ({ fabri
 
   await expect(busyTab).toHaveCount(0, { timeout: 15_000 })
   // Why: the pane used to probe and prompt on its own before delegating to
-  // closeTerminalTab, which now prompts too â€” a second dialog would mean a double prompt.
+  // closeTerminalTab, which now prompts too — a second dialog would mean a double prompt.
   await fabricaPage.waitForTimeout(1_500)
   await expect(closeDialogTitle(fabricaPage)).toBeHidden()
 })

@@ -1,7 +1,7 @@
-﻿import { readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { PNG } from 'pngjs'
-import type { ElectronApplication, Page, TestInfo } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -19,8 +19,8 @@ import {
 import { waitForTabParked } from './helpers/terminal-hidden-parking'
 
 // Field bug (v1.4.144-rc.4): switching back to a workspace whose Codex TUI kept
-// streaming while hidden shows a mostly-blank terminal â€” live block (input box)
-// missing, viewport stranded mid-buffer â€” until a manual resize (Cmd+L) forces
+// streaming while hidden shows a mostly-blank terminal — live block (input box)
+// missing, viewport stranded mid-buffer — until a manual resize (Cmd+L) forces
 // SIGWINCH and Codex repaints. The alt-screen park/reveal specs never caught it
 // because Codex runs in INLINE mode and keeps writing across the reveal.
 //
@@ -291,7 +291,7 @@ type StreamingTabSetup = {
 //
 // Why agent-marked: a real Codex tab carries launchAgent/telemetry, which
 // flips the reveal into the live-agent reattach branches (mode-preserving
-// resets, hidden startup query grammar, post-replay focus-in) â€” the branches
+// resets, hidden startup query grammar, post-replay focus-in) — the branches
 // the field bug lives behind.
 async function startStreamingInlineTui(
   page: Page,
@@ -440,7 +440,7 @@ async function assertRevealConvergence(
     )
     .toBeGreaterThan(convergedFrame)
 
-  // Geometry: no stale-80x24 leg â€” xterm grid, fit proposal, and PTY-applied
+  // Geometry: no stale-80x24 leg — xterm grid, fit proposal, and PTY-applied
   // size must agree without any manual resize.
   const probe = await probeRevealedPane(page, tabId)
   expect(probe, `${label}: pane disappeared after convergence`).not.toBeNull()
@@ -459,7 +459,7 @@ async function assertRevealConvergence(
 
   // Painted pixels: the live block guarantees box-drawing + text ink in the
   // pane's bottom rows. Blank band + healthy buffer = paint-layer divergence
-  // (atlas wipe race / paused RenderService) â€” the class a resize also heals.
+  // (atlas wipe race / paused RenderService) — the class a resize also heals.
   const clip = await paneClipRect(page, tabId)
   expect(clip, `${label}: pane rect unavailable for paint check`).not.toBeNull()
   const bandTop = Math.max(0, 1 - 8 / (probe!.rows || 24))
@@ -539,7 +539,7 @@ test.describe('Inline TUI reveal convergence', () => {
     test.setTimeout(120_000)
     const setup = await startStreamingInlineTui(fabricaPage, testInfo)
     try {
-      // Tab B hides tab A. Reveal quickly â€” inside the cold-park delay â€” so
+      // Tab B hides tab A. Reveal quickly — inside the cold-park delay — so
       // the reveal exercises the hidden-delivery-gate restore, not parking.
       const tabBId = await createActiveTerminalTab(fabricaPage, setup.worktreeId)
       expect(tabBId).not.toBe(setup.tabId)
@@ -601,8 +601,8 @@ test.describe('Inline TUI reveal convergence', () => {
       const tabBId = await createActiveTerminalTab(fabricaPage, setup.worktreeId)
       const decoyTabId = await createActiveTerminalTab(fabricaPage, setup.worktreeId)
 
-      // The field failure is periodic, not every reveal â€” cycle the park â†’
-      // stream â†’ reveal boundary and require convergence every time.
+      // The field failure is periodic, not every reveal — cycle the park →
+      // stream → reveal boundary and require convergence every time.
       const CYCLES = 6
       for (let cycle = 0; cycle < CYCLES; cycle += 1) {
         if (cycle > 0) {
@@ -642,7 +642,7 @@ test.describe('Inline TUI reveal convergence', () => {
     try {
       const tabBId = await createActiveTerminalTab(fabricaPage, setup.worktreeId)
       // Rapid flapping drives the hidden-delivery gate claim/release IPC and
-      // the hidden-output restore against each other at varied phases â€” the
+      // the hidden-output restore against each other at varied phases — the
       // desync class behind "bytes dropped on a visible pane" field freezes.
       for (let flap = 0; flap < 12; flap += 1) {
         await activateTerminalTab(fabricaPage, tabBId)
@@ -701,7 +701,7 @@ test.describe('Inline TUI reveal convergence', () => {
       await waitForTabParked(fabricaPage, setup.tabId, { parkDelayMs: PARKING_DELAY_MS })
 
       // Resize while parked: the remount measures a grid that matches neither
-      // the pre-park xterm nor the daemon snapshot â€” maximum dimension churn.
+      // the pre-park xterm nor the daemon snapshot — maximum dimension churn.
       await resizeAppWindow(electronApp, -180, -120)
       await streamWhileParked(setup, 100)
 

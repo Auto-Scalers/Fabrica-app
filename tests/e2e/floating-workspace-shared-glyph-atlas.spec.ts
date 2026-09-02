@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { sendToTerminal, waitForActivePanePtyId } from './helpers/terminal'
@@ -96,7 +96,7 @@ async function toggleFloatingPanel(page: Page, open: boolean): Promise<void> {
 
 async function waitForWebglOnTab(page: Page, tabId: string): Promise<boolean> {
   // Why: a pane that mounted before the GPU setting landed needs the manager
-  // call too â€” mirrors forceWebgl in terminal-image-paste-webgl-recovery.spec.
+  // call too — mirrors forceWebgl in terminal-image-paste-webgl-recovery.spec.
   await page.evaluate((id) => {
     window.__paneManagers?.get(id)?.setTerminalGpuAcceleration?.('on')
   }, tabId)
@@ -191,7 +191,7 @@ async function refreshTerminalOnTab(page: Page, tabId: string): Promise<void> {
 /**
  * True when both tabs' WebGL renderers draw from the same glyph texture atlas.
  * @xterm/addon-webgl keeps a module-global atlas cache keyed by font config,
- * so terminals with identical settings share pages â€” the precondition for the
+ * so terminals with identical settings share pages — the precondition for the
  * cross-terminal corruption this spec reproduces.
  */
 async function tabsShareGlyphAtlas(page: Page, tabIdA: string, tabIdB: string): Promise<boolean> {
@@ -301,7 +301,7 @@ async function setUpSharedAtlasScenario(page: Page): Promise<SharedAtlasScenario
     await sendToTerminal(page, ptyId, SILENT_FOREGROUND_COMMAND)
   }
   await page.waitForTimeout(1_000)
-  // Why: the hidden second tab accepts writes too â€” its buffer paints on
+  // Why: the hidden second tab accepts writes too — its buffer paints on
   // resume, refilling the cleared shared atlas with a different glyph layout.
   for (const tabId of floatingTabIds) {
     await writeStaticContent(page, tabId, 'FLOATING', FLOATING_GLYPH_ROW)
@@ -380,7 +380,7 @@ test.describe('floating workspace shared glyph atlas @headful', () => {
     fabricaPage
   }, testInfo) => {
     // Why: reopening the panel resumes its terminal, whose atlas reset clears
-    // the shared pages just like a tab switch â€” the other user flow that
+    // the shared pages just like a tab switch — the other user flow that
     // garbled visible workspace terminals before resets went global.
     const scenario = await setUpSharedAtlasScenario(fabricaPage)
     test.skip(!scenario, 'WebGL inactive or terminals do not share a glyph atlas')

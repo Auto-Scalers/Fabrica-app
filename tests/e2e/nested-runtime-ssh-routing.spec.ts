@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect, test as base } from './helpers/fabrica-app'
 import {
   cleanupDockerSshRelayTarget,

@@ -1,10 +1,10 @@
-﻿/**
+/**
  * E2E tests for the "Create Workspace" flow in FABRICA.
  *
  * Why: the old 'create-worktree' modal was replaced by the composer modal
  * (`activeModal === 'new-workspace-composer'`) in #710. A prior version of
- * this spec bypassed the UI entirely ï¿½ it called `state.createWorktree(...)`
- * directly on the store ï¿½ which is why the #1186 regression (a React #31
+ * this spec bypassed the UI entirely � it called `state.createWorktree(...)`
+ * directly on the store � which is why the #1186 regression (a React #31
  * crash when `StartFromField` rendered the new `getBaseRefDefault` envelope
  * as JSX) shipped despite a green suite.
  *
@@ -19,7 +19,7 @@
  * crash in whatever replaces it.
  */
 
-import type { ConsoleMessage } from '@autoscalers/playwright-test'
+import type { ConsoleMessage } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   waitForSessionReady,
@@ -72,7 +72,7 @@ test.describe('Create Workspace', () => {
 
       // Force the `getBaseRefDefault` IPC to round-trip so any consumer that
       // renders the envelope (e.g. SourceControl) has a chance to crash
-      // inside the open modal's React tree ï¿½ the console/pageerror sweep
+      // inside the open modal's React tree � the console/pageerror sweep
       // below is what catches #1186-class regressions now that the
       // StartFromField trigger no longer exists (#1191).
       await fabricaPage.evaluate(async () => {
@@ -102,7 +102,7 @@ test.describe('Create Workspace', () => {
 
       // 5. The modal closes once submitQuick completes successfully. If
       // something inside the flow threw (IPC failure, hook error), the modal
-      // would stay open with a createError banner ï¿½ catch that as a fail.
+      // would stay open with a createError banner � catch that as a fail.
       await expect(dialog).toBeHidden({ timeout: 15_000 })
 
       // 6. The new worktree must actually exist on disk and in the store.
@@ -270,7 +270,7 @@ test.describe('Create Workspace', () => {
         name: new RegExp(`${workspaceName} No base branch found`)
       })
       await expect(failedWorkspace).toBeVisible()
-      await expect(fabricaPage.getByText('Couldnï¿½t create worktree')).toBeVisible()
+      await expect(fabricaPage.getByText('Couldn�t create worktree')).toBeVisible()
       await expect(failedWorkspace).toContainText('No base branch found')
       await expect(fabricaPage.getByRole('button', { name: 'Retry' })).toBeVisible()
     } finally {
@@ -379,7 +379,7 @@ test.describe('Create Workspace', () => {
       await expect(fabricaPage.getByText('Linked PR #2049')).toBeVisible()
       // Why: quick create reuses the single GitHub lookup from typing (no
       // redundant re-fetch), and since #5733 ("Create PR worktrees from the PR
-      // head") it resolves the PR start point exactly once at submit time ï¿½ so
+      // head") it resolves the PR start point exactly once at submit time � so
       // the base resolves once here rather than being skipped.
       await expect
         .poll(() =>
@@ -452,7 +452,7 @@ test.describe('Create Workspace', () => {
       await expect(nameInput).toBeVisible()
       await nameInput.fill(url)
 
-      // Why: this is the regression PR #4900 missed ï¿½ selecting the resolved
+      // Why: this is the regression PR #4900 missed � selecting the resolved
       // suggestion row (instead of submitting the raw URL) must not leave the
       // pasted URL behind as the workspace name. The suggestion popover is
       // portaled outside the dialog element, so locate it page-wide.

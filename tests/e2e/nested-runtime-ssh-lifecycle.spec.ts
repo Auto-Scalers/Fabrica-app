@@ -1,4 +1,4 @@
-﻿import { expect, test } from './helpers/fabrica-app'
+import { expect, test } from './helpers/fabrica-app'
 import {
   cleanupDockerSshRelayTarget,
   dockerSshRelayRepoSentinel,

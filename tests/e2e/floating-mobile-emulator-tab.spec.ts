@@ -1,4 +1,4 @@
-﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 
 // Why: mirrors FLOATING_TERMINAL_WORKTREE_ID in src/shared/constants.ts.

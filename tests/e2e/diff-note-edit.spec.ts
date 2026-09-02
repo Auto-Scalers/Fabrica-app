@@ -1,4 +1,4 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady, waitForActiveWorktree } from './helpers/store'
 
 test.describe('Diff note edit', () => {

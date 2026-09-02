@@ -1,4 +1,4 @@
-﻿import { join } from 'node:path'
+import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { getFABRICAElectronLaunchArgs } from './electron-launch-args'
 

@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -78,7 +78,7 @@ function writeFileTree(
 
 /**
  * Repro fixture for issue #8013: a repo whose file count (tracked, untracked,
- * or modified) is large enough to stress every per-file code path — the
+ * or modified) is large enough to stress every per-file code path � the
  * streamed `git status` scan, per-entry line stats, the IPC payload, and the
  * Source Control row rendering.
  */

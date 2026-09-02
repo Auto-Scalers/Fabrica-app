@@ -1,6 +1,6 @@
-﻿import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -103,9 +103,9 @@ test('preserves a live daemon PTY when the daemon is too slow for the startup he
     await waitForTerminalOutput(secondLaunch.page, marker, 20_000)
 
     // Why: the same PID alone also holds on the healthy-adoption path, so assert
-    // the guard's own decision line â€” otherwise a seam that silently stopped
+    // the guard's own decision line — otherwise a seam that silently stopped
     // working would leave this test passing for the wrong reason. Match the
-    // stable "preserveâ€¦daemonâ€¦health check" concepts so a reword doesn't flake.
+    // stable "preserve…daemon…health check" concepts so a reword doesn't flake.
     await expect
       .poll(() => stderrLines.join(''), { timeout: 10_000 })
       .toMatch(/preserv\w*\s+daemon[^\n]*health check/i)

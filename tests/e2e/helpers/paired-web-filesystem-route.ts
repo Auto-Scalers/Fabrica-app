@@ -1,6 +1,6 @@
-﻿import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect } from './FABRICA-app'
 import {
   execDockerSshRelayTargetCommand,

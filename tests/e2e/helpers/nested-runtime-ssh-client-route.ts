@@ -1,4 +1,4 @@
-﻿import { expect } from './FABRICA-app'
+import { expect } from './FABRICA-app'
 import type {
   createRuntimeDesktopPairingOffer,
   PairedElectronClient

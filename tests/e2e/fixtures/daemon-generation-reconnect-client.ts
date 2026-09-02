@@ -1,4 +1,4 @@
-﻿import { readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import process from 'node:process'
 import { randomUUID } from 'node:crypto'
 import { DaemonPtyAdapter } from '../../../src/main/daemon/daemon-pty-adapter'

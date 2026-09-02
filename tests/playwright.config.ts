@@ -1,16 +1,16 @@
-﻿import { defineConfig } from '@autoscalers/playwright-test'
+import { defineConfig } from '@playwright/test'
 
 /**
  * Playwright config for FABRICA E2E tests.
  *
  * Run:
- *   pnpm run test:e2e              â€” build + run all tests (headless)
- *   pnpm run test:e2e:headful      â€” run with visible window (for pointer-capture tests)
- *   SKIP_BUILD=1 pnpm run test:e2e â€” skip rebuild (faster iteration)
+ *   pnpm run test:e2e              — build + run all tests (headless)
+ *   pnpm run test:e2e:headful      — run with visible window (for pointer-capture tests)
+ *   SKIP_BUILD=1 pnpm run test:e2e — skip rebuild (faster iteration)
  *
  * globalSetup builds the Electron app and creates a seeded test git repo.
  * globalTeardown cleans up the test repo.
- * Tests use _electron.launch() to start the app â€” no manual setup needed.
+ * Tests use _electron.launch() to start the app — no manual setup needed.
  */
 export default defineConfig({
   testDir: './e2e',

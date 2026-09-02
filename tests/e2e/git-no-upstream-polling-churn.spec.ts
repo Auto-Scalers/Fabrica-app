@@ -1,6 +1,6 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync, realpathSync, unlinkSync, writeFileSync } from 'node:fs'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 
 // Repro command:

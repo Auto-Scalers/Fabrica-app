@@ -1,6 +1,6 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { rmSync } from 'node:fs'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import {
@@ -103,7 +103,7 @@ test.describe('Combined diff invalidation freeze repro (STA-3420)', () => {
       expect(opened.editorCount).toBeGreaterThan(0)
 
       // Why: the reported freeze starts when the open diff is invalidated by a
-      // commit/rebase â€” the snapshot files stop having any staged diff at all.
+      // commit/rebase — the snapshot files stop having any staged diff at all.
       execFileSync('git', ['commit', '-m', 'Invalidate the open staged diff'], {
         cwd: fixture.repoPath,
         stdio: 'pipe'
@@ -160,7 +160,7 @@ test.describe('Combined diff invalidation freeze repro (STA-3420)', () => {
 
       console.log(`invalidation measurement ${JSON.stringify(measurement)}`)
       expect(measurement.maxLagMs).toBeLessThan(1_000)
-      // Why: staying responsive isn't enough â€” invalidation must also leave the rows loaded
+      // Why: staying responsive isn't enough — invalidation must also leave the rows loaded
       // instead of parking a section in its loading state.
       expect(measurement.loadingRowCount).toBe(0)
       expect(measurement.editorCount).toBeGreaterThan(0)
@@ -174,7 +174,7 @@ test.describe('Combined diff invalidation freeze repro (STA-3420)', () => {
   }) => {
     test.setTimeout(240_000)
     await waitForSessionReady(fabricaPage)
-    // Why: few but very large sections â€” the reported freeze is a *large* diff view,
+    // Why: few but very large sections — the reported freeze is a *large* diff view,
     // where every remount re-runs Monaco's diff over thousands of changed lines.
     const fixture = createIsolatedManyFileStagedDiffRepo(8, 15_000)
 
@@ -259,7 +259,7 @@ test.describe('Combined diff invalidation freeze repro (STA-3420)', () => {
           const stopBurst = startLagMeter()
           const startedAt = performance.now()
           // Why: a rebase rewrites the worktree in bursts. The watcher debounces per
-          // path, so each notification lands in its OWN task â€” never batched together.
+          // path, so each notification lands in its OWN task — never batched together.
           for (let round = 0; round < 3; round += 1) {
             for (const relativePath of relativePaths) {
               window.setTimeout(() => {
@@ -301,7 +301,7 @@ test.describe('Combined diff invalidation freeze repro (STA-3420)', () => {
       console.log(`external-change burst measurement ${JSON.stringify(measurement)}`)
       expect(measurement.stuckLoadingRowCount).toBe(0)
       expect(measurement.editorCount).toBeGreaterThan(0)
-      // Why: before the fix this window blocked continuously â€” p95 3963ms, 16 samples in 23s.
+      // Why: before the fix this window blocked continuously — p95 3963ms, 16 samples in 23s.
       // Every limit rides the identical idle window so a slow machine's floor can't fail the test;
       // the allowances on top are what the burst itself is permitted to add.
       expect(measurement.burst.p95LagMs).toBeLessThanOrEqual(measurement.baseline.p95LagMs + 100)

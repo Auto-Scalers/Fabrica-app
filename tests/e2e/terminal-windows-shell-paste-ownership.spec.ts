@@ -1,8 +1,8 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { WINDOWS_GIT_BASH_SHELL } from '../../src/shared/windows-terminal-shell'
 import { test, expect } from './helpers/fabrica-app'
 import {
@@ -217,7 +217,7 @@ test.describe('Windows terminal shell paste ownership', () => {
       `PowerShell metacharacters: ${powershellEscape} $ " ' ; | & < > @ { } ( )`,
       'quoted Windows path: C:\\Program Files\\FABRICA Test\\file name.txt',
       'cmd metacharacters preserved as text: %PATH% !PROMPT! ^ & | < >',
-      'Unicode: cafÃ© ä½ å¥½ Ù…Ø±Ø­Ø¨Ø§ ðŸ˜€',
+      'Unicode: café 你好 مرحبا 😀',
       `mixed-newline-before\r\nlf-line\ncrlf-line\r\n${sentinel}`
     ].join('\n')
     const scriptPath = path.join(testRepoPath, `.FABRICA-paste-powershell-shell-${runId}.mjs`)
@@ -372,7 +372,7 @@ test.describe('Windows terminal shell paste ownership', () => {
       'POSIX shell metacharacters: $ ` " \' ; | & < > * ? [ ] ( )',
       'Linux path with spaces: /home/user/my project/file.txt',
       'Windows path preserved as text: C:\\Users\\Name\\My Project\\file.txt',
-      'Unicode: cafÃ© ä½ å¥½ Ù…Ø±Ø­Ø¨Ø§ ðŸ˜€',
+      'Unicode: café 你好 مرحبا 😀',
       `mixed-newline-before\r\nlf-line\ncrlf-line\r\n${sentinel}`
     ].join('\n')
     const scriptPath = path.join(testRepoPath, `.FABRICA-paste-wsl-shell-${runId}.mjs`)

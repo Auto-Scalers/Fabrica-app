@@ -1,4 +1,4 @@
-﻿import { expect, test } from './helpers/fabrica-app'
+import { expect, test } from './helpers/fabrica-app'
 import { launchHeadlessPairedRuntimeHost } from './helpers/headless-paired-runtime-host'
 
 // Why (#10333): a windowless `FABRICA serve` host answered every focus-requested
@@ -44,7 +44,7 @@ test('creates a focus-requested terminal against a headless serve host', async (
     expect(created.result.terminal.worktreeId).toBe(worktreeId)
 
     // Why: a handle the host cannot resolve back to a live PTY would be a
-    // hollow pass — confirm the degraded create really produced a terminal.
+    // hollow pass � confirm the degraded create really produced a terminal.
     const listedTerminals = await host.client.call<{
       terminals: { handle: string }[]
     }>('terminal.list', { worktree: `id:${worktreeId}` })

@@ -1,4 +1,4 @@
-﻿import { execSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import { chmodSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -10,7 +10,7 @@ const fakeGhBody = `#!/usr/bin/env node
 const args = process.argv.slice(2)
 const joined = args.join(' ')
 if (args[0] === 'auth' && args[1] === 'status') {
-  console.error('github.com\\n  ✓ Logged in to github.com account e2e (GITHUB_TOKEN)')
+  console.error('github.com\\n  ? Logged in to github.com account e2e (GITHUB_TOKEN)')
   process.exit(0)
 }
 if (args[0] === 'api' && args[1] === 'user') {

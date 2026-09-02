@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E tests for the first-launch Onboarding flow.
  *
  * The onboarding overlay is gated by `OnboardingState.closedAt === null` (see
@@ -9,7 +9,7 @@
 
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import type { GlobalSettings, TuiAgent } from '../../src/shared/types'
 import { ONBOARDING_FINAL_STEP } from '../../src/shared/constants'
 import { encodePairingOffer, PAIRING_OFFER_VERSION } from '../../src/shared/pairing'
@@ -169,14 +169,14 @@ test.describe('Onboarding flow', () => {
     // Why: Back is not rendered on the first step (was previously rendered-but-
     // disabled with `disabled:invisible`, now conditionally mounted).
     await expect(fabricaPage.getByRole('button', { name: 'Back', exact: true })).toHaveCount(0)
-    // Footer hint shows the platform-correct continue shortcut (âŒ˜ on Mac,
+    // Footer hint shows the platform-correct continue shortcut (⌘ on Mac,
     // Ctrl elsewhere). Match either form so the test runs cross-platform.
     // Why: scope to the footer action so background UI shortcut hints cannot
     // false-positive this assertion.
     await expect(
       onboardingFooterButton(fabricaPage, /^Continue\b/)
         .locator('span')
-        .filter({ hasText: /âŒ˜|Ctrl/ })
+        .filter({ hasText: /⌘|Ctrl/ })
         .first()
     ).toBeVisible()
   })
@@ -193,10 +193,10 @@ test.describe('Onboarding flow', () => {
     // proves the wizard actually wrote the user's choice (not just the
     // pre-selected detected agent). Codex sits in the top-6 catalog when no
     // agents are detected, otherwise behind the "Show N more agents" details
-    // expander â€” open it if codex isn't visible.
+    // expander — open it if codex isn't visible.
     const targetAgent: TuiAgent = 'codex'
     const codexButton = fabricaPage.getByRole('button', { name: /^Codex\s/ })
-    // Why: isVisible() is a one-shot probe â€” on slow renderer paint it would
+    // Why: isVisible() is a one-shot probe — on slow renderer paint it would
     // race the wizard mount and falsely take the "show more agents" branch.
     // waitFor with a small timeout actually retries until the button paints.
     const codexVisible = await codexButton
@@ -227,10 +227,10 @@ test.describe('Onboarding flow', () => {
     // --- Step 2: theme ---
     // Default settings.theme is 'system', so the document class can resolve to
     // either 'dark' or 'light' depending on the host. Click the opposite tile
-    // so we always observe a live flip â€” the assertion that proves the wizard
+    // so we always observe a live flip — the assertion that proves the wizard
     // applies the choice immediately, not just on Continue.
     // Why: 'system' resolves async on mount, so wait for the class to settle
-    // before snapshotting â€” otherwise startingTheme can be stale.
+    // before snapshotting — otherwise startingTheme can be stale.
     await fabricaPage.waitForFunction(
       () =>
         document.documentElement.classList.contains('dark') ||
@@ -422,7 +422,7 @@ test.describe('Onboarding flow', () => {
     await expect(fabricaPage.getByRole('heading', { name: /Pick your default agent/i })).toBeVisible({
       timeout: 15_000
     })
-    // Why: since #10011 `settings:set` strips activeRuntimeEnvironmentId â€” the
+    // Why: since #10011 `settings:set` strips activeRuntimeEnvironmentId — the
     // durable Active Server preference is only writable through its dedicated
     // handler, which resolves the id against the main-process environment
     // store. So the host has to be registered for real, not faked in the
@@ -465,7 +465,7 @@ test.describe('Onboarding flow', () => {
         checkedAt: Date.now()
       })
       // Why: the store's switchRuntimeEnvironment probes reachability, which a
-      // synthetic host can't satisfy â€” write the preference directly and push
+      // synthetic host can't satisfy — write the preference directly and push
       // the returned settings in rather than refetching (fetchSettings would
       // kick off a status hydrate that clobbers the seeded 'available' health).
       const settings = await window.api.settings.setActiveRuntimeEnvironmentPreference({
@@ -609,14 +609,14 @@ test.describe('Onboarding flow', () => {
       })
       .toBe(1)
 
-    // Why: exact match â€” the app sidebar also exposes a "Go back" button that
+    // Why: exact match — the app sidebar also exposes a "Go back" button that
     // would otherwise match this regex.
     await fabricaPage.getByRole('button', { name: 'Back', exact: true }).click()
     await expect(fabricaPage.getByRole('heading', { name: /Pick your default agent/i })).toBeVisible()
     await expectOnboardingProgress(fabricaPage, /^1 of [345]$/)
 
     // Why: "without losing progress" means persisted lastCompletedStep stays
-    // at 1 â€” Back rewinds the visible step but must not roll persistence back.
+    // at 1 — Back rewinds the visible step but must not roll persistence back.
     // Poll because persistence flushes async via IPC after the Back click.
     await expect
       .poll(async () => (await getOnboardingState(fabricaPage)).lastCompletedStep, {
@@ -631,7 +631,7 @@ test.describe('Onboarding flow', () => {
     })
 
     // Advance to the final notification step. Its primary button hands off to
-    // Add Project, so the footer offers no "Skip to project setup" shortcut â€”
+    // Add Project, so the footer offers no "Skip to project setup" shortcut —
     // but click-off and Escape must still open the skip-confirmation dialog like
     // every other step, so the modal never feels stuck.
     await continueOnboarding(fabricaPage)
@@ -651,7 +651,7 @@ test.describe('Onboarding flow', () => {
     expect((await getOnboardingState(fabricaPage)).closedAt).toBeNull()
 
     // Click-off opens the confirmation; Skip dismisses onboarding outright (no
-    // Add Project handoff â€” that is the primary button's job).
+    // Add Project handoff — that is the primary button's job).
     await fabricaPage.locator('[data-onboarding-overlay]').click({ position: { x: 8, y: 40 } })
     await expectOnboardingSkipConfirmationOpen(fabricaPage)
     await fabricaPage.getByRole('button', { name: /^Skip$/ }).click()

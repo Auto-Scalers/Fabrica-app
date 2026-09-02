@@ -1,5 +1,5 @@
-﻿import { test, expect } from './helpers/fabrica-app'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import { test, expect } from './helpers/fabrica-app'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { getRendererTitleLog, installRendererTitleLog } from './helpers/terminal-title-log'
 import {
   sendToTerminal,
@@ -424,7 +424,7 @@ test.describe('Droid notifications', () => {
     await sendToTerminal(fabricaPage, ptyId, `printf '${marker}\\n'\r`)
     await waitForTerminalOutput(fabricaPage, marker)
 
-    await emitOscTitle(fabricaPage, ptyId, 'â ‹ Droid')
+    await emitOscTitle(fabricaPage, ptyId, '⠋ Droid')
     await emitOscTitle(fabricaPage, ptyId, 'Factory Droid needs input')
 
     await expect

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Two-launch Electron helper for restart-persistence tests.
  *
  * Why: the default `fabricaPage` fixture creates a fresh `userDataDir` per test
@@ -14,7 +14,7 @@ import {
   type ElectronApplication,
   type Page,
   type TestInfo
-} from '@autoscalers/playwright-test'
+} from '@playwright/test'
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { createServer } from 'node:net'
@@ -181,7 +181,7 @@ export function createRestartSession(
         FABRICA_E2E_RUNTIME_WS_PORT: String(runtimeWsPort)
       }
     })
-    // Why: attach before firstWindow â€” the main-process daemon guard and the
+    // Why: attach before firstWindow — the main-process daemon guard and the
     // plugin-system startup metrics can both emit before the renderer is ready.
     if (options?.onStderr) {
       const onStderr = options.onStderr

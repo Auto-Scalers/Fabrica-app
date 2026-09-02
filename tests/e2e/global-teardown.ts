@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Playwright globalTeardown: cleans up the test git repo and worktrees.
  *
  * Why: the temp repo created by globalSetup should be removed after the

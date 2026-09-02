@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { waitForRestoredTerminalInputReady } from './helpers/restored-terminal-input-readiness'
 

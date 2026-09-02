@@ -1,6 +1,6 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -168,7 +168,7 @@ test.describe('Native IBus Hangul terminal input @headful', () => {
     fabricaPage,
     testRepoPath
   }, testInfo) => {
-    await runNativeIbusScenario(fabricaPage, testInfo, testRepoPath, 'í•œabcê¸€', typeExactByteSequence)
+    await runNativeIbusScenario(fabricaPage, testInfo, testRepoPath, '한abc글', typeExactByteSequence)
   })
 
   test('forwards the issue sentence stress sequence without leaked ASCII', async ({
@@ -179,7 +179,7 @@ test.describe('Native IBus Hangul terminal input @headful', () => {
       fabricaPage,
       testInfo,
       testRepoPath,
-      'í…ŒìŠ¤íŠ¸ë¥¼ í•˜ê³  ìžˆëŠ”ë° ì—¬ì „ížˆ ê·¸ëŸ¬ë„¤',
+      '테스트를 하고 있는데 여전히 그러네',
       typeSentenceSequence
     )
   })

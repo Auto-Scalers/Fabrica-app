@@ -1,4 +1,4 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 
 test.describe('Settings sidebar search on the Shortcuts pane', () => {

@@ -1,4 +1,4 @@
-﻿import path from 'node:path'
+import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { SleepingAgentSessionRecord } from '../../src/shared/agent-session-resume'
 import { makePaneKey } from '../../src/shared/stable-pane-id'

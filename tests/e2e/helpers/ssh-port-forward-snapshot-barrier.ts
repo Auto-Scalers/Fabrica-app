@@ -1,6 +1,6 @@
-﻿import { createServer } from 'node:net'
+import { createServer } from 'node:net'
 
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 
 type InvokeHandler = (event: unknown, args?: { targetId?: string }) => unknown
 

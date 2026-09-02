@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, realpathSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -75,7 +75,7 @@ function buildSourceLikeFile(fileIndex: number, lineCount: number, revision: num
   return `${lines.join('\n')}\n`
 }
 
-/** Many staged sections, each with a real multi-hunk diff — the shape a rebase invalidates. */
+/** Many staged sections, each with a real multi-hunk diff � the shape a rebase invalidates. */
 export function createIsolatedManyFileStagedDiffRepo(
   fileCount = 120,
   lineCount = 600

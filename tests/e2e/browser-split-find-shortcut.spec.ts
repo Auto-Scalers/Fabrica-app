@@ -1,5 +1,5 @@
-﻿import { expect, test } from './helpers/fabrica-app'
-import type { Page } from '@autoscalers/playwright-test'
+import { expect, test } from './helpers/fabrica-app'
+import type { Page } from '@playwright/test'
 import { focusActiveTerminalInput } from './helpers/terminal'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 

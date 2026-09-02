@@ -1,4 +1,4 @@
-﻿import { readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import process from 'node:process'
 import { FABRICARuntimeService } from '../../../src/main/runtime/FABRICA-runtime'
 import { RpcDispatcher } from '../../../src/main/runtime/rpc/dispatcher'

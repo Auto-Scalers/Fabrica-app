@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { stageNodeScriptForTerminal } from './helpers/run-node-script-in-terminal'
 import {
@@ -57,7 +57,7 @@ function buildSigwinchResetProbeCommand(): string {
     "process.on('SIGWINCH',()=>{if(armed===false)return;page=0;paint(topLabel)})",
     'setInterval(()=>{},1000)'
   ].join(';')
-  // Why: delivered via a temp file â€” `node -e` quoting is not PowerShell-safe (#8521).
+  // Why: delivered via a temp file — `node -e` quoting is not PowerShell-safe (#8521).
   return stageNodeScriptForTerminal(script, { prefix: 'FABRICA-sigwinch-probe' }).command
 }
 

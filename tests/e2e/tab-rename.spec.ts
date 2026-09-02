@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * E2E tests for inline tab renaming (double-click a tab to rename).
  *
  * User Prompt:
@@ -166,7 +166,7 @@ test.describe('Tab Rename (Inline)', () => {
     // Why: the final assertion must be on user-observable DOM, not the store's
     // customTitle field. A render-layer bug where the tab silently paints the
     // in-progress "Should Be Discarded" text would leave customTitle null
-    // (Escape cleared it) yet flash the discarded label to the user â€” the
+    // (Escape cleared it) yet flash the discarded label to the user — the
     // original title must still be the one rendered on the tab.
     await expect(tabLocatorByTitle(fabricaPage, originalTitle)).toBeVisible()
     await expect
@@ -178,14 +178,14 @@ test.describe('Tab Rename (Inline)', () => {
     const worktreeId = (await getActiveWorktreeId(fabricaPage))!
 
     // Snapshot the default (non-custom) title first so the DOM assertion later
-    // can verify the tab reverts to *this exact* rendered text â€” a store-only
+    // can verify the tab reverts to *this exact* rendered text — a store-only
     // `customTitle === null` check would pass even if the rendered label was
     // stuck on "Seeded Custom".
     const defaultTitle = await getActiveTabTitle(fabricaPage, worktreeId)
     expect(defaultTitle.length).toBeGreaterThan(0)
 
     // Why: seed a custom title directly via the store so this test asserts the
-    // "empty string â†’ reset" behavior independently from the double-click flow.
+    // "empty string ? reset" behavior independently from the double-click flow.
     await fabricaPage.evaluate((targetWorktreeId) => {
       const store = window.__store
       if (!store) {
@@ -331,7 +331,7 @@ test.describe('Tab Rename (Inline)', () => {
       tabs.map((tab) => tab.evaluate((element) => element.getBoundingClientRect().width))
     )
     // Why: at the 88px shrink floor widths are stable for the wrong reason, and being above it is
-    // also what proves the definite tab width applied â€” so this fails first on a regression.
+    // also what proves the definite tab width applied — so this fails first on a regression.
     expect(
       Math.min(...before),
       'tabs must be above the 88px shrink floor for the stability check to mean anything'
@@ -368,7 +368,7 @@ test.describe('Tab Rename (Inline)', () => {
     // above the threshold at which the pre-fix input collapsed, and it keeps
     // the test fast. The width fix pins the input to 72px (matching the
     // slimmer tab title box), so even saturated, it should stay near that
-    // size â€” we assert â‰¥60px to allow a bit of slack for fonts/padding/
+    // size — we assert =60px to allow a bit of slack for fonts/padding/
     // containers differing between environments. The meaningful guarantee is
     // that the input does not collapse to ~0 when flex space is saturated.
     await fabricaPage.evaluate(
@@ -452,7 +452,7 @@ test.describe('Tab Rename (Inline)', () => {
     // isn't closed while the user is editing.
     await dispatchMiddleClickSequence(renameInput)
 
-    // The tab must still exist â€” no regression where editing-then-middle-click
+    // The tab must still exist — no regression where editing-then-middle-click
     // accidentally closes the tab out from under the input.
     await expect(renameInput).toBeVisible()
     await expect(tabLocatorByTitle(fabricaPage, originalTitle)).toBeVisible()

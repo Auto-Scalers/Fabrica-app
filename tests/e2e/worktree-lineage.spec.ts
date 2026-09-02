@@ -1,4 +1,4 @@
-﻿import type { Locator, Page } from '@autoscalers/playwright-test'
+import type { Locator, Page } from '@playwright/test'
 import { mkdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
@@ -262,7 +262,7 @@ test.describe('Worktree Lineage', () => {
     })
     await expect(sleepSubtree).toBeVisible()
     await expect(sleepSubtree).toBeEnabled()
-    await expect(fabricaPage.getByRole('menuitem', { name: 'Delete with Descendantsâ€¦' })).toBeVisible()
+    await expect(fabricaPage.getByRole('menuitem', { name: 'Delete with Descendants…' })).toBeVisible()
     await captureEvidence(fabricaPage, 'workspace-descendant-actions.png')
     await sleepSubtree.click()
 

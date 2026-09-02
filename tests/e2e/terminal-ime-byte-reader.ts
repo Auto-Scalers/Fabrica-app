@@ -1,8 +1,8 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
-import { expect } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { getTerminalContent, sendToTerminal, waitForTerminalOutput } from './helpers/terminal'
 
 export type TerminalImeByteReader = {

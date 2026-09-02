@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Shared helpers for dead-terminal reproduction tests.
  *
  * These helpers exercise the real production worktree-creation-with-setup-split
@@ -207,6 +207,6 @@ export async function checkWebglState(page: TestPage, label: string): Promise<vo
 
   const hasCanvas = paneStates.some((p) => p.canvasCount > 0)
   if (!hasCanvas) {
-    console.warn(`[${label}] No WebGL canvases — DOM renderer only.`)
+    console.warn(`[${label}] No WebGL canvases � DOM renderer only.`)
   }
 }

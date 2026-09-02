@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * E2E tests for what happens when tabs are closed: which neighbor becomes
  * active, and how the app returns to Landing when the last tab is gone.
  *
@@ -154,7 +154,7 @@ test.describe('Tab Close Navigation', () => {
     // from the post-close list (editor.ts:681-684). For a middle close on
     // [pkg, README, tsconfig], closedIdx=1 and the post-close list is
     // [pkg, tsconfig], so the neighbor is tsconfig.json (fileIds[2]). PR #693
-    // regressed this by leaving `activeFileId` pointing at a closed file â€” a
+    // regressed this by leaving `activeFileId` pointing at a closed file — a
     // laxer assertion like "some open file is active" would have missed that
     // specific regression, since any order-agnostic fallback would still pass.
     await expect
@@ -170,7 +170,7 @@ test.describe('Tab Close Navigation', () => {
   })
 
   /**
-   * Same visual-neighbor invariant but for diff tabs â€” they share the
+   * Same visual-neighbor invariant but for diff tabs — they share the
    * openFiles list with editor tabs (contentType='diff') and route through
    * the same closeFile path, which is where #693 regressed.
    */
@@ -222,7 +222,7 @@ test.describe('Tab Close Navigation', () => {
     // Why README.md specifically: the diff tab was appended last
     // (index 2 in openFiles). Closing it hits the
     // `closedWorktreeIdx >= worktreeFiles.length` branch in closeFile
-    // (editor.ts:681-683) which picks `worktreeFiles.at(-1)` â€” the last
+    // (editor.ts:681-683) which picks `worktreeFiles.at(-1)` — the last
     // remaining file, README.md (editorIds[1]). Asserting the exact ID makes
     // this a real guard against #693 instead of a tautology.
     await expect
@@ -247,7 +247,7 @@ test.describe('Tab Close Navigation', () => {
     // Why re-activate at the end: closing the last unified tab for a worktree
     // that has no editor/browser surfaces triggers the `shouldDeactivateWorktree`
     // cascade in closeUnifiedTab, which clears activeWorktreeId. That's the
-    // exact behavior this test eventually asserts â€” but we need the worktree
+    // exact behavior this test eventually asserts — but we need the worktree
     // active again in order to seed the editor that we will close. Re-selecting
     // it here keeps the helpers below self-contained and the test's setup
     // order-independent instead of depending on whichever surface-close

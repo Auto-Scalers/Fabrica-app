@@ -1,4 +1,4 @@
-﻿import type {
+import type {
   ComputerActionResult,
   ComputerSnapshotResult
 } from '../../../src/shared/runtime-types'

@@ -1,4 +1,4 @@
-﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
 import {
   execDockerSshRelayTargetCommand,
   type DockerSshRelayTarget,

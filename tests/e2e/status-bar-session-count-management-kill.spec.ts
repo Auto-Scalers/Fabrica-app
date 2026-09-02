@@ -1,12 +1,12 @@
-﻿/**
- * E2E regression for #8372 â€” the status-bar CLI session count froze after a Manage Sessions kill.
+/**
+ * E2E regression for #8372 — the status-bar CLI session count froze after a Manage Sessions kill.
  *
  * `pty:management:killOne` tears a session down with `adapter.shutdown()`. The daemon only fans
  * `exit` to the clients attached to that session, so when the killed session belongs to *another*
  * daemon client (a previous app generation, `FABRICA serve`, a second FABRICA client) this window's main
  * process never emits `pty:exit`. The status-bar chip is an event-sourced cache: with no lifecycle
  * event and no interval it kept painting the pre-kill count until the Resource Manager popover was
- * opened â€” and opening the popover refreshes, which is exactly why this spec never opens it.
+ * opened — and opening the popover refreshes, which is exactly why this spec never opens it.
  *
  * The spec creates that foreign session the way the daemon protocol really does it: a second
  * DaemonClient connected to the app's own daemon socket. The app then sees three live sessions
@@ -18,7 +18,7 @@
 
 import path from 'node:path'
 import { randomUUID } from 'node:crypto'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { DaemonClient } from '../../src/main/daemon/client'
 import { PROTOCOL_VERSION } from '../../src/main/daemon/types'

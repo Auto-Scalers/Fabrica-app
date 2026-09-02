@@ -1,4 +1,4 @@
-ï»¿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
   cleanupMarkdownFixture,
@@ -58,7 +58,7 @@ test.describe('Markdown add-review-note shortcut', () => {
       await openMarkdownFixture(fabricaPage, context, filePath)
       await waitForRichMarkdownEditor(fabricaPage)
       await fabricaPage.evaluate(() => {
-        // Why: switch to source mode through the store â€” the toolbar toggle is
+        // Why: switch to source mode through the store — the toolbar toggle is
         // an icon menu that is brittle to locate; the store action is what it
         // dispatches anyway, and the shortcut under test is mode-independent.
         const store = window.__store
@@ -102,7 +102,7 @@ test.describe('Markdown add-review-note shortcut', () => {
       await openMarkdownFixture(fabricaPage, context, filePath)
       await waitForRichMarkdownEditor(fabricaPage)
       await fabricaPage.evaluate(() => {
-        // Why: open the real markdown-preview tab through the store â€” preview
+        // Why: open the real markdown-preview tab through the store — preview
         // is a separate file mode, not a view mode of the edit tab, and the
         // toolbar entry point is an icon menu that is brittle to locate.
         const store = window.__store
@@ -130,7 +130,7 @@ test.describe('Markdown add-review-note shortcut', () => {
       })
 
       await fabricaPage.evaluate(() => {
-        // Why: mirror a reader selecting rendered text â€” focus lands on the
+        // Why: mirror a reader selecting rendered text — focus lands on the
         // preview's tabIndex=0 root and the DOM selection covers the block.
         const block = document.querySelector<HTMLElement>('[data-annotation-block-key]')
         if (!block) {

@@ -1,6 +1,6 @@
-﻿import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -130,7 +130,7 @@ test('resumes an agent session after quit when its daemon PTY died while the app
     stubPersistedResumeCommand(session.userDataDir)
 
     // Why: simulates the daemon (and the agent CLI inside it) dying while the
-    // app is closed â€” reboot, crash, or update kill. SIGKILL leaves history
+    // app is closed — reboot, crash, or update kill. SIGKILL leaves history
     // checkpoints unclean so the relaunch takes the cold-restore path.
     process.kill(daemonPid, 'SIGKILL')
 

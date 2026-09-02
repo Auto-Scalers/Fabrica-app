@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdtempSync, realpathSync, rmSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -10,7 +10,7 @@ test.describe('Workspace Space git status checks', () => {
     fabricaPage,
     testRepoPath
   }) => {
-    // Why: on symlinked tmpdirs (/var→/private/var on macOS, /tmp→… on CI) FABRICA
+    // Why: on symlinked tmpdirs (/var?/private/var on macOS, /tmp?� on CI) FABRICA
     // registers worktrees under their realpath, so the parent must be canonical
     // before `git worktree add` or the recorded paths won't match and rows drop.
     const worktreeParent = realpathSync(

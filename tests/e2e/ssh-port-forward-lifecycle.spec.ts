@@ -1,4 +1,4 @@
-﻿import { createServer } from 'node:net'
+import { createServer } from 'node:net'
 
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
@@ -135,7 +135,7 @@ test.describe('Docker SSH port-forward lifecycle', () => {
       await forwardPortFromPanel(fabricaPage, localPort, REMOTE_PORT)
       await expect(fabricaPage.getByText('Forwarded', { exact: true })).toBeVisible()
       await expect(
-        fabricaPage.getByText(`:${localPort} → :${REMOTE_PORT}`, { exact: true })
+        fabricaPage.getByText(`:${localPort} ? :${REMOTE_PORT}`, { exact: true })
       ).toBeVisible()
       await expect.poll(() => requestForward(localPort)).toContain(marker)
       await expectForwardEvidence(fabricaPage, remote.targetId, [
@@ -177,7 +177,7 @@ test.describe('Docker SSH port-forward lifecycle', () => {
         []
       )
       await expect(
-        fabricaPage.getByText(`:${localPort} → :${REMOTE_PORT}`, { exact: true })
+        fabricaPage.getByText(`:${localPort} ? :${REMOTE_PORT}`, { exact: true })
       ).toBeVisible()
       await expectForwardEvidence(fabricaPage, remote.targetId, [
         { localPort, remotePort: REMOTE_PORT }
@@ -250,10 +250,10 @@ test.describe('Docker SSH port-forward lifecycle', () => {
       await expect.poll(() => requestForward(localPort)).toContain(marker)
       await expect.poll(() => requestForward(unrelatedLocalPort)).toContain(unrelatedMarker)
       await expect(
-        fabricaPage.getByText(`:${localPort} → :${REMOTE_PORT}`, { exact: true })
+        fabricaPage.getByText(`:${localPort} ? :${REMOTE_PORT}`, { exact: true })
       ).toBeVisible()
       await expect(
-        fabricaPage.getByText(`:${unrelatedLocalPort} → :${REFRESH_BARRIER_PORT}`, { exact: true })
+        fabricaPage.getByText(`:${unrelatedLocalPort} ? :${REFRESH_BARRIER_PORT}`, { exact: true })
       ).toBeVisible()
 
       const collisionServer = createServer()
@@ -300,11 +300,11 @@ test.describe('Docker SSH port-forward lifecycle', () => {
       ])
 
       const primaryRow = fabricaPage
-        .getByText(`:${localPort} → :${REMOTE_PORT}`, { exact: true })
+        .getByText(`:${localPort} ? :${REMOTE_PORT}`, { exact: true })
         .locator('../../..')
       await primaryRow.getByTitle('Remove').click()
       await expect(
-        fabricaPage.getByText(`:${localPort} → :${REMOTE_PORT}`, { exact: true })
+        fabricaPage.getByText(`:${localPort} ? :${REMOTE_PORT}`, { exact: true })
       ).not.toBeVisible()
       await expectForwardEvidence(fabricaPage, remote.targetId, [
         { localPort: unrelatedLocalPort, remotePort: REFRESH_BARRIER_PORT }

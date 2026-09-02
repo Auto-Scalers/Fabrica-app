@@ -1,4 +1,4 @@
-ï»¿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
   focusActiveTerminalInput,
@@ -11,11 +11,11 @@ import {
 // Repro for the permanent frozen-pane state behind issue #8104-class reports:
 // once a pane's xterm WriteBuffer wedges (an escaping throw from an unguarded
 // write callback, or a write into a disposed terminal silently dropping its
-// completion â€” both verified against vendored xterm 6.1.0-beta.287), every
+// completion — both verified against vendored xterm 6.1.0-beta.287), every
 // later write queues forever: output stops rendering while the PTY stays
 // alive. The replay guard's probe certifies the wedge and fires the
 // terminal_replay_guard_wedged_release breadcrumb ("pane likely needs
-// recovery") â€” but nothing performs that recovery, so the pane stays a fossil
+// recovery") — but nothing performs that recovery, so the pane stays a fossil
 // until the user reloads the window. These tests pin the recovery contract.
 
 async function wedgeActivePaneWritePipeline(
@@ -64,14 +64,14 @@ test.describe('Wedged terminal write pipeline recovery', () => {
     await expect
       .poll(async () => (await getTerminalContent(fabricaPage)).includes(beforeMarker), {
         timeout: 15_000,
-        message: 'Baseline echo did not render â€” pane unhealthy before wedge'
+        message: 'Baseline echo did not render — pane unhealthy before wedge'
       })
       .toBe(true)
 
     await wedgeActivePaneWritePipeline(fabricaPage)
 
     // Type through the wedge. The PTY is alive: bytes reach the shell and the
-    // shell echoes them â€” but a wedged pipeline never parses the echo, so
+    // shell echoes them — but a wedged pipeline never parses the echo, so
     // without recovery the marker never renders.
     const afterMarker = `WEDGE_RECOVERED_${runId}`
     await focusActiveTerminalInput(fabricaPage)
@@ -84,7 +84,7 @@ test.describe('Wedged terminal write pipeline recovery', () => {
         // check, so the rebuild can legitimately take >20s to kick in.
         timeout: 45_000,
         message:
-          'Pane never rendered output typed after the write pipeline wedged â€” wedged pane was not recovered'
+          'Pane never rendered output typed after the write pipeline wedged — wedged pane was not recovered'
       })
       .toBe(true)
   })
@@ -106,14 +106,14 @@ test.describe('Wedged terminal write pipeline recovery', () => {
     await expect
       .poll(async () => (await getTerminalContent(fabricaPage)).includes(beforeMarker), {
         timeout: 15_000,
-        message: 'Baseline echo did not render â€” pane unhealthy before dispose'
+        message: 'Baseline echo did not render — pane unhealthy before dispose'
       })
       .toBe(true)
 
     // The production zombie: disposePane/teardown raced pane bindings, leaving
     // delivery and input routed at a disposed xterm. write() on a disposed
     // terminal silently drops its completion callback (verified against
-    // 6.1.0-beta.287), so delivery acks leak and keyboard onData never fires â€”
+    // 6.1.0-beta.287), so delivery acks leak and keyboard onData never fires —
     // the pane looks painted but is a fossil: input dead, output dead, PTY alive.
     await fabricaPage.evaluate(() => {
       const state = window.__store?.getState()
@@ -133,7 +133,7 @@ test.describe('Wedged terminal write pipeline recovery', () => {
     })
 
     // Generate PTY output daemon-side; delivery into the disposed xterm is the
-    // health signal recovery must catch (typing can't be one here â€” a disposed
+    // health signal recovery must catch (typing can't be one here — a disposed
     // xterm emits no onData at all).
     const outputMarker = `ZOMBIE_OUTPUT_${runId}`
     await sendToTerminal(fabricaPage, ptyId, `echo ${outputMarker}\r`)
@@ -142,7 +142,7 @@ test.describe('Wedged terminal write pipeline recovery', () => {
       .poll(async () => (await getTerminalContent(fabricaPage)).includes(outputMarker), {
         timeout: 45_000,
         message:
-          'Output written after the pane xterm was disposed never rendered â€” zombie pane was not recovered'
+          'Output written after the pane xterm was disposed never rendered — zombie pane was not recovered'
       })
       .toBe(true)
 

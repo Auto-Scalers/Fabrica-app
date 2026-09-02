@@ -1,12 +1,12 @@
-﻿/**
+/**
  * Shared helpers for SSH config host picker / import E2E specs.
  * Prefer role/label locators and user-visible copy over ids / data-*.
  */
 
 import { mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Locator, Page } from '@autoscalers/playwright-test'
-import { expect } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Locator, Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 
 export function makeSshConfigHostPrefix(): string {
   return `e2e-ssh-cfg-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
@@ -98,7 +98,7 @@ export async function returnToAppShell(page: Page): Promise<void> {
   await closeOpenDialogs(page)
 }
 
-/** Add Project â†’ Host â†’ Add remote host â†’ Add SSH host â†’ form dialog. */
+/** Add Project → Host → Add remote host → Add SSH host → form dialog. */
 export async function openAddSshHostDialog(page: Page): Promise<Locator> {
   await returnToAppShell(page)
   await page
@@ -117,7 +117,7 @@ export async function openAddSshHostDialog(page: Page): Promise<Locator> {
   await expect(addRemoteHostItem).toBeVisible({ timeout: 5_000 })
   await addRemoteHostItem.click()
 
-  // Nested popover is portaled; name includes the â€œexisting machine over SSHâ€ detail.
+  // Nested popover is portaled; name includes the “existing machine over SSH” detail.
   const addSshHostAction = page.getByRole('button', {
     name: /Add SSH host.*existing machine over SSH/i
   })
@@ -139,11 +139,11 @@ export async function openSshConfigHostPicker(page: Page): Promise<Locator> {
     pickerDialog.getByRole('heading', { name: 'Choose from ~/.ssh/config' })
   ).toBeVisible()
   // Wait past the loading empty-state before asserting host rows.
-  await expect(pickerDialog.getByText('Reading ~/.ssh/configâ€¦')).toBeHidden({ timeout: 10_000 })
+  await expect(pickerDialog.getByText('Reading ~/.ssh/config…')).toBeHidden({ timeout: 10_000 })
   return pickerDialog
 }
 
-/** Settings â†’ SSH pane: section the user sees under the â€œSSH Hostsâ€ heading. */
+/** Settings → SSH pane: section the user sees under the “SSH Hosts” heading. */
 export async function openSshHostSettings(page: Page): Promise<Locator> {
   await closeOpenDialogs(page)
   await page.evaluate(() => {
@@ -166,7 +166,7 @@ export async function openSshHostSettings(page: Page): Promise<Locator> {
   return sshSection
 }
 
-/** Form fields on Add SSH host â€” labels the user reads. */
+/** Form fields on Add SSH host — labels the user reads. */
 export function addSshHostFormFields(dialog: Locator): {
   label: Locator
   host: Locator
@@ -200,7 +200,7 @@ export function configHostRow(
 
 /**
  * Assert a saved host appears in Settings. Card subtitle is
- * `user@host:port â€¢ terminal timeout: â€¦`, so match the endpoint as a prefix.
+ * `user@host:port • terminal timeout: …`, so match the endpoint as a prefix.
  */
 export async function expectSshHostListedInSettings(
   sshSection: Locator,

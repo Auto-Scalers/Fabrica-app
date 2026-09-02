@@ -1,9 +1,9 @@
-﻿/**
+/**
  * Mail must survive a restart: never injected on restored state alone, always
  * pointed once the agent speaks again (#12536).
  *
- * Push-on-idle now fires when mail arrives rather than only on a busyâ†’idle edge,
- * which puts restart squarely on the delivery path â€” a pane comes back carrying
+ * Push-on-idle now fires when mail arrives rather than only on a busy→idle edge,
+ * which puts restart squarely on the delivery path — a pane comes back carrying
  * the title it had at snapshot time, and anything the runtime infers from that
  * is a memory, not an observation. Typing on it would submit into an agent that
  * may be mid-turn.
@@ -11,7 +11,7 @@
  * Scope, stated plainly: this covers the restart path, not the
  * `lastAgentStatusObservedLive` gate itself. The seed only reaches leaves that
  * already exist when pty:spawn returns the restore payload, and a cold relaunch
- * publishes its graph after that â€” so the leaf here comes back with no agent
+ * publishes its graph after that — so the leaf here comes back with no agent
  * status rather than a seeded idle, and this spec passes with the gate removed.
  * The gate is pinned in src/main/runtime/FABRICA-runtime.test.ts
  * ('does not push on a cold-restore seeded idle status with no live
@@ -20,7 +20,7 @@
  * is reachable from a single-launch spec at all.
  */
 import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import { attachRepoAndOpenTerminal, createRestartSession } from './helpers/fabrica-restart'
@@ -161,7 +161,7 @@ test('keeps mail pending across a restart and delivers it when the agent reports
     expect(mailDisposition(readMailRow(session.userDataDir, messageId))).toBe('pending')
     expect(agent.readStdin()).not.toContain(POINTER_COMMAND)
 
-    // Re-emitting the SAME idle title changes no status â€” only its liveness â€” so
+    // Re-emitting the SAME idle title changes no status — only its liveness — so
     // the pointer appearing here is delivery resuming on the agent's own signal.
     agent.setTitle(CODEX_IDLE_TITLE)
     await expect

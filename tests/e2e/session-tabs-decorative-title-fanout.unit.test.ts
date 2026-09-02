@@ -1,4 +1,4 @@
-﻿import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type {
   RuntimeMobileSessionTabsResult,
   RuntimeMobileSessionTabsSnapshot
@@ -25,7 +25,7 @@ vi.mock('../../src/renderer/src/store', () => ({
 
 const ENVIRONMENT_ID = 'paired-runtime'
 const WORKTREE_COUNT = 24
-const DECORATIVE_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+const DECORATIVE_FRAMES = ['?', '?', '?', '?', '?', '?', '?', '?', '?', '?']
 
 type RuntimeInternals = {
   mobileSessionTabsByWorktree: Map<string, RuntimeMobileSessionTabsSnapshot>
@@ -182,7 +182,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     })
 
     for (const ptyId of ptyIds) {
-      runtime.onPtyData(ptyId, '\x1b]0;⠋ Cursor Agent\x07', Date.now())
+      runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     }
     vi.advanceTimersByTime(50)
     expect(counters.hostPublications).toBe(WORKTREE_COUNT)
@@ -304,8 +304,8 @@ describe('real PTY decorative session-tabs fanout', () => {
   })
 
   it.each([
-    ['build ⠁', 'build ⠂'],
-    ['Codex working task ⠁', 'Codex working task ⠂']
+    ['build ?', 'build ?'],
+    ['Codex working task ?', 'Codex working task ?']
   ])('publishes meaningful real-title changes from %j to %j', (firstTitle, secondTitle) => {
     const runtime = new FABRICARuntimeService()
     seedWorktree(runtime, 0)
@@ -357,7 +357,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     })
 
     for (const ptyId of ptyIds) {
-      runtime.onPtyData(ptyId, '\x1b]0;⠋ Cursor Agent\x07', Date.now())
+      runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     }
     vi.advanceTimersByTime(50)
     const initialStateStartedAtByWorktree = new Map(
@@ -367,7 +367,7 @@ describe('real PTY decorative session-tabs fanout', () => {
 
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_INTERVAL_MS - 51)
     for (const ptyId of ptyIds) {
-      runtime.onPtyData(ptyId, '\x1b]0;⠙ Cursor Agent\x07', Date.now())
+      runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     }
     vi.advanceTimersByTime(50)
     expect(publications).toEqual([])
@@ -375,7 +375,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     vi.advanceTimersByTime(1)
     const heartbeatStartedAt = Date.now()
     for (const ptyId of ptyIds) {
-      runtime.onPtyData(ptyId, '\x1b]0;⠹ Cursor Agent\x07', Date.now())
+      runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     }
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_SPACING_MS * WORKTREE_COUNT + 50)
 
@@ -398,7 +398,7 @@ describe('real PTY decorative session-tabs fanout', () => {
 
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_INTERVAL_MS)
     for (const ptyId of ptyIds) {
-      runtime.onPtyData(ptyId, '\x1b]0;⠸ Cursor Agent\x07', Date.now())
+      runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     }
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_SPACING_MS * WORKTREE_COUNT + 50)
     expect(publications).toHaveLength(WORKTREE_COUNT)
@@ -427,15 +427,15 @@ describe('real PTY decorative session-tabs fanout', () => {
   it.each([
     {
       agent: 'pi' as const,
-      firstTitle: '⠋ π - project',
-      heartbeatTitles: ['⠋ π - project', '⠙ π - project'],
-      expectedTitle: '⠋ Pi'
+      firstTitle: '? p - project',
+      heartbeatTitles: ['? p - project', '? p - project'],
+      expectedTitle: '? Pi'
     },
     {
       agent: 'grok-build' as const,
-      firstTitle: '⠋ - Waiting for response… - grok',
-      heartbeatTitles: ['⠴ - Thinking - grok', '⠦ - Sleep 2s then echo hello… - grok'],
-      expectedTitle: '⠋ Grok'
+      firstTitle: '? - Waiting for response� - grok',
+      heartbeatTitles: ['? - Thinking - grok', '? - Sleep 2s then echo hello� - grok'],
+      expectedTitle: '? Grok'
     }
   ])('renews exact and normalized $agent frames beyond the viewer stale boundary', (testCase) => {
     const runtime = new FABRICARuntimeService()
@@ -542,7 +542,7 @@ describe('real PTY decorative session-tabs fanout', () => {
       publications.push(structuredClone(snapshot))
     })
 
-    runtime.onPtyData(ptyId, '\x1b]0;⠋ Cursor Agent\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     vi.advanceTimersByTime(50)
     publications.length = 0
     vi.advanceTimersByTime(1)
@@ -583,7 +583,7 @@ describe('real PTY decorative session-tabs fanout', () => {
       publications.push(structuredClone(snapshot))
     })
 
-    runtime.onPtyData(ptyId, '\x1b]0;⠋ Cursor Agent\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', Date.now())
     vi.advanceTimersByTime(50)
     vi.advanceTimersByTime(1)
     runtime.onPtyData(ptyId, '\x1b]0;bash\x07', Date.now())
@@ -603,7 +603,7 @@ describe('real PTY decorative session-tabs fanout', () => {
 
     vi.advanceTimersByTime(1)
     const nextWorkingAt = Date.now()
-    runtime.onPtyData(ptyId, '\x1b]0;⠙ Cursor Agent\x07', nextWorkingAt)
+    runtime.onPtyData(ptyId, '\x1b]0;? Cursor Agent\x07', nextWorkingAt)
     vi.advanceTimersByTime(50)
 
     const terminal = publications.at(-1)?.tabs[0]
@@ -636,8 +636,8 @@ describe('real PTY decorative session-tabs fanout', () => {
       publications.push(structuredClone(snapshot))
     })
 
-    runtime.onPtyData(ptyId, '\x1b]0;⠋ Pi\x07', Date.now())
-    runtime.onPtyData(ptyId, '\x1b]0;⠙ Pi\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Pi\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Pi\x07', Date.now())
     await vi.advanceTimersByTimeAsync(50)
     expect(getForegroundProcess).toHaveBeenCalledTimes(1)
     expect(publications).toHaveLength(0)
@@ -647,16 +647,16 @@ describe('real PTY decorative session-tabs fanout', () => {
     expect(publications).toHaveLength(1)
     expect(publications[0]?.tabs[0]).toMatchObject({
       type: 'terminal',
-      title: '⠋ Pi',
+      title: '? Pi',
       agentStatus: { state: 'working' }
     })
 
-    runtime.onPtyData(ptyId, '\x1b]0;⠹ Pi\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Pi\x07', Date.now())
     await vi.advanceTimersByTimeAsync(50)
     expect(publications).toHaveLength(1)
 
     await vi.advanceTimersByTimeAsync(SESSION_TABS_AGENT_STATUS_HEARTBEAT_INTERVAL_MS)
-    runtime.onPtyData(ptyId, '\x1b]0;⠸ Pi\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Pi\x07', Date.now())
     await vi.advanceTimersByTimeAsync(50)
     expect(publications).toHaveLength(2)
     unsubscribe()
@@ -677,7 +677,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     const ptyId = seedWorktree(runtime, 0)
     const internals = runtime as unknown as RuntimeInternals
 
-    runtime.onPtyData(ptyId, '\x1b]0;⠋ Pi\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Pi\x07', Date.now())
     await vi.advanceTimersByTimeAsync(0)
     expect(internals.ptyDelayedForegroundSnapshotTitleObservations.has(ptyId)).toBe(true)
 
@@ -726,7 +726,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     publications.length = 0
 
     vi.advanceTimersByTime(10)
-    runtime.onPtyData(ptyId, '\x1b]0;⠋ Codex working\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Codex working\x07', Date.now())
     vi.advanceTimersByTime(50)
     expect(publications).toHaveLength(1)
     const titledTerminal = publications[0]?.tabs[0]
@@ -737,7 +737,7 @@ describe('real PTY decorative session-tabs fanout', () => {
     publications.length = 0
 
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_INTERVAL_MS)
-    runtime.onPtyData(ptyId, '\x1b]0;⠙ Codex working\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Codex working\x07', Date.now())
     vi.advanceTimersByTime(50)
 
     expect(publications).toHaveLength(1)
@@ -751,7 +751,7 @@ describe('real PTY decorative session-tabs fanout', () => {
 
     publications.length = 0
     vi.advanceTimersByTime(SESSION_TABS_AGENT_STATUS_HEARTBEAT_INTERVAL_MS)
-    runtime.onPtyData(ptyId, '\x1b]0;⠹ Codex working\x07', Date.now())
+    runtime.onPtyData(ptyId, '\x1b]0;? Codex working\x07', Date.now())
     vi.advanceTimersByTime(50)
 
     expect(publications).toHaveLength(1)

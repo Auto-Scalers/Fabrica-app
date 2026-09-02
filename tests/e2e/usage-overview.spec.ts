@@ -1,4 +1,4 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { getStoreState, waitForSessionReady } from './helpers/store'
 
 test.describe('usage overview', () => {

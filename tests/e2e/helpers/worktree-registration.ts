@@ -1,9 +1,9 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect } from './FABRICA-app'
 import type { CommitMessageAiSettings } from '../../../src/shared/types'
 
 // Why: these specs create worktrees via raw `git worktree add`, which bypasses
-// FABRICA's own add/remove path â€” the one thing that invalidates the main-process
+// FABRICA's own add/remove path — the one thing that invalidates the main-process
 // worktrees.list scan cache (DETECTED_WORKTREE_SCAN_CACHE_TTL_MS = 5_000). So a
 // read inside the TTL window can serve a stale miss. No renderer-reachable
 // cache-invalidation seam exists without adding product surface, so poll past

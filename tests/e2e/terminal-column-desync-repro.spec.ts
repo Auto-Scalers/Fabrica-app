@@ -1,8 +1,8 @@
-﻿/**
+/**
  * Repro: xterm <-> PTY column desync.
  *
  * Symptom (observed live, macOS, build 1.4.103): an interactive TUI (Claude
- * Code) renders garbled â€” ~1 char per line, overlapping text. Ruled out:
+ * Code) renders garbled — ~1 char per line, overlapping text. Ruled out:
  * xterm version, font/letter-spacing, pane width, GPU (DOM renderer).
  *
  * Hypothesis: xterm reflows to the visible width but the PTY's
@@ -28,7 +28,7 @@
  * `-g "during initial mount"` test (serial, reload-looped) is the golden repro.
  */
 
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -134,9 +134,9 @@ test.describe('Terminal column desync repro', () => {
     await ensureTerminalVisible(fabricaPage)
     const ptyId = await settleTerminal(fabricaPage)
 
-    // Why: the resize chain (ResizeObserver â†’ rAF fit â†’ PTY resize IPC) needs
+    // Why: the resize chain (ResizeObserver → rAF fit → PTY resize IPC) needs
     // longer than a fixed wait under loaded CI, and the two columns are sampled
-    // non-atomically. Poll until they converge â€” a genuinely dropped resize
+    // non-atomically. Poll until they converge — a genuinely dropped resize
     // never converges and still fails, so this keeps the regression guard.
     const expectColumnsInSync = async (label: string): Promise<void> => {
       await expect
@@ -181,7 +181,7 @@ test.describe('Terminal column desync repro', () => {
     await fabricaPage.setViewportSize({ width: 900, height: 800 })
 
     // Why: poll until pty:getSize converges to the real applied columns instead
-    // of sampling once after a fixed wait â€” the resize can still be settling on
+    // of sampling once after a fixed wait — the resize can still be settling on
     // loaded CI. A getSize that reports intent (not the applied size) never
     // converges to process.stdout.columns and still fails the guard.
     await expect
@@ -327,13 +327,13 @@ test.describe('Terminal column desync repro', () => {
     }
   })
 
-  // Why: the user-reported case â€” "start a new worktree with the side split
+  // Why: the user-reported case — "start a new worktree with the side split
   // panel on". A tab that MOUNTS with a split layout already present (two panes
   // side by side from frame 0) spawns each PTY at the wide window width, then
   // the split equalize narrows each pane AFTER the post-spawn reconcile window
   // has closed. The corrective onResize is dropped by the visibility gate during
   // the mount window, so the PTY stays pinned wide while xterm shows the narrow
-  // split width â€” only a later manual resize re-syncs it ("resizing fixed it").
+  // split width — only a later manual resize re-syncs it ("resizing fixed it").
   // We reproduce the fresh split mount by splitting then reloading: the split
   // layout persists across reload, so the tab remounts with two panes already
   // present, re-running the first-mount spawn for each.
@@ -403,19 +403,19 @@ test.describe('Terminal column desync repro', () => {
   })
 
   // Why: this is the tightest isolation of the real bug. A viewport resize that
-  // lands in the terminal's initial mount window â€” after xterm exists but
-  // before the PTY binding/visibility settle â€” reflows xterm to the new width,
+  // lands in the terminal's initial mount window — after xterm exists but
+  // before the PTY binding/visibility settle — reflows xterm to the new width,
   // but forwardPtyResize drops it (isRendererPtyResizeAuthoritative()===false,
   // or the spawn captures the pre-resize cols and no later resize fires). The
   // PTY stays pinned at the startup width while xterm shows the new width, and
   // nothing re-syncs. A long-output program then prints sized for the stale
-  // PTY width into the narrower pane â†’ the garbled "1 char per line" render.
+  // PTY width into the narrower pane → the garbled "1 char per line" render.
   test('PTY columns stay synced when the window is resized during initial mount', async ({
     fabricaPage
   }) => {
     test.setTimeout(240_000)
 
-    // Why: the desync is a race in the *initial* mount window â€” the first
+    // Why: the desync is a race in the *initial* mount window — the first
     // terminal spawns its PTY at the wide default window width, and a resize
     // landing before the PTY binding/visibility settle reflows xterm but is
     // dropped by forwardPtyResize, with no later correction. A single attempt

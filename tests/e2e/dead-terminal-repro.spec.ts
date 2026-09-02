@@ -1,7 +1,7 @@
-﻿/**
+/**
  * Stress test for dead-terminal reproduction (setup-split flow).
  *
- * Why @headful: the dead-terminal bug is a WebGL canvas staleness issue — after
+ * Why @headful: the dead-terminal bug is a WebGL canvas staleness issue � after
  * wrapInSplit() reparents the existing pane's container, the WebGL canvas can
  * fail to repaint. In headless mode WebGL is NEVER active, so the DOM fallback
  * renderer is used and the bug cannot manifest. Running headful ensures real

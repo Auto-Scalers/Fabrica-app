@@ -1,8 +1,8 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 
@@ -457,7 +457,7 @@ test.describe('Combined diff scroll restore', () => {
       // Why: when a section above the viewport swaps its estimated height for
       // Monaco's measured one, scrollHeight changes and Chromium's default
       // scroll anchoring (no `overflow-anchor: none` here) legitimately moves
-      // raw scrollTop to keep the row above asserted `top` pinned â€” that is
+      // raw scrollTop to keep the row above asserted `top` pinned — that is
       // not an anchoring regression, so only cap scrollTop drift when content
       // height held steady (same rule as getLargestBackwardScrollJump above).
       if (afterLineClick.scrollHeight === afterSwitch.scrollHeight) {

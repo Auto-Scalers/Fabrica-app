@@ -1,4 +1,4 @@
-ï»¿/**
+/**
  * Regression guard for the "Cmd+B collapse occludes first tab" bug fixed in
  * PR #1112. When the left sidebar is collapsed in workspace view, the
  * `.titlebar-left` header floats absolutely over the tab row. Each tab
@@ -45,7 +45,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     // Precondition: confirm the fixture left us in the default terminal
     // view with the sidebar open. If a future fixture change lands us in
     // Settings/Tasks or starts collapsed, the regression geometry we care
-    // about (toggling openâ†’closed, back/forward nav in the floating row)
+    // about (toggling open?closed, back/forward nav in the floating row)
     // isn't what gets tested.
     await expect
       .poll(
@@ -53,10 +53,10 @@ test.describe('Tab visibility with closed sidebar', () => {
           fabricaPage.evaluate(() => {
             const store = window.__store
             if (!store) {
-              // Why: match helpers/store.ts â€” a missing store in dev means
+              // Why: match helpers/store.ts — a missing store in dev means
               // the test harness is misconfigured. Throwing here keeps the
               // failure mode legible instead of timing out on toEqual.
-              throw new Error('window.__store is not available â€” is the app in dev mode?')
+              throw new Error('window.__store is not available — is the app in dev mode?')
             }
             const state = store.getState()
             return { activeView: state.activeView, sidebarOpen: state.sidebarOpen }
@@ -72,7 +72,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     // (line ~582) and bails when focus is inside input/textarea/
     // contenteditable so TipTap's bold keymap can run. xterm's
     // helper-textarea is explicitly carved out of the carve-out, so the
-    // fixture's default terminal-focused state is fine â€” but if a future
+    // fixture's default terminal-focused state is fine — but if a future
     // fixture change leaves focus on a rich input the keypress would
     // silently no-op. Blur any non-xterm focused element defensively so
     // the chord reaches the toggleSidebar branch.
@@ -89,7 +89,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     // re-render and the ResizeObserver that sizes
     // `--collapsed-sidebar-header-width` run on subsequent frames.
     // Waiting for `sidebarOpen === false` here doubles as a guard on the
-    // keybinding itself â€” if Cmd+B ever stops reaching toggleSidebar,
+    // keybinding itself — if Cmd+B ever stops reaching toggleSidebar,
     // this poll times out with a message that names the exact cause
     // instead of a downstream geometry failure.
     await expect
@@ -98,13 +98,13 @@ test.describe('Tab visibility with closed sidebar', () => {
           fabricaPage.evaluate(() => {
             const store = window.__store
             if (!store) {
-              throw new Error('window.__store is not available â€” is the app in dev mode?')
+              throw new Error('window.__store is not available — is the app in dev mode?')
             }
             return store.getState().sidebarOpen
           }),
         {
           timeout: 5_000,
-          message: 'Cmd/Ctrl+B did not collapse the sidebar â€” keymap binding may be broken'
+          message: 'Cmd/Ctrl+B did not collapse the sidebar — keymap binding may be broken'
         }
       )
       .toBe(false)
@@ -129,7 +129,7 @@ test.describe('Tab visibility with closed sidebar', () => {
           return null
         }
         // Why: `.titlebar-left` exists in both the sidebar-open (flex-flow)
-        // and sidebar-collapsed (`position: absolute`) branches â€” see
+        // and sidebar-collapsed (`position: absolute`) branches — see
         // App.tsx around line 1000. Only the collapsed branch can produce
         // the regression, so gate the measurement on the floating layout
         // actually being active. Returning null forces the poll to retry
@@ -165,7 +165,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     // ResizeObserver that sizes `--collapsed-sidebar-header-width` fires
     // on the next frame. Capture the measurement inside the poll so the
     // post-poll assertion runs against the exact frame that satisfied the
-    // condition â€” a separate re-measurement could race and return null,
+    // condition — a separate re-measurement could race and return null,
     // masking a readable failure behind a destructure TypeError.
     let geometry: {
       titlebarRight: number
@@ -193,13 +193,13 @@ test.describe('Tab visibility with closed sidebar', () => {
     expect(geometry).not.toBeNull()
     const { titlebarRight, firstTabLeft, centerIsTabOrDescendant } = geometry!
 
-    // Why: the core geometry invariant â€” the first tab's left edge must
+    // Why: the core geometry invariant — the first tab's left edge must
     // clear the floating titlebar's right edge. Pre-fix the gap was ~55px,
     // so the -1 is sub-pixel rounding tolerance only; a real regression
     // can't hide inside one pixel.
     expect(firstTabLeft).toBeGreaterThanOrEqual(titlebarRight - 1)
 
-    // Why: reachability check â€” even if geometry looks right, a z-index
+    // Why: reachability check — even if geometry looks right, a z-index
     // or pointer-events regression could still overlay the titlebar on
     // top of the tab. A click at the tab's center must actually land on
     // the tab.
@@ -244,7 +244,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     await fabricaPage.evaluate(() => {
       const store = window.__store
       if (!store) {
-        throw new Error('window.__store is not available â€” is the app in dev mode?')
+        throw new Error('window.__store is not available — is the app in dev mode?')
       }
       store.getState().setSidebarOpen(true)
     })
@@ -255,7 +255,7 @@ test.describe('Tab visibility with closed sidebar', () => {
           fabricaPage.evaluate(() => {
             const store = window.__store
             if (!store) {
-              throw new Error('window.__store is not available â€” is the app in dev mode?')
+              throw new Error('window.__store is not available — is the app in dev mode?')
             }
             const state = store.getState()
             return { activeView: state.activeView, sidebarOpen: state.sidebarOpen }
@@ -270,7 +270,7 @@ test.describe('Tab visibility with closed sidebar', () => {
     await fabricaPage.evaluate(() => {
       const store = window.__store
       if (!store) {
-        throw new Error('window.__store is not available â€” is the app in dev mode?')
+        throw new Error('window.__store is not available — is the app in dev mode?')
       }
       // Why: CI runs Electron hidden, where Playwright can wait forever for
       // a titlebar button to be "stable". The regression is the collapsed
@@ -284,7 +284,7 @@ test.describe('Tab visibility with closed sidebar', () => {
           fabricaPage.evaluate(() => {
             const store = window.__store
             if (!store) {
-              throw new Error('window.__store is not available â€” is the app in dev mode?')
+              throw new Error('window.__store is not available — is the app in dev mode?')
             }
             return store.getState().sidebarOpen
           }),

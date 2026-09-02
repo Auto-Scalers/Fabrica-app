@@ -1,6 +1,6 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { getStoreState, waitForSessionReady } from './helpers/store'
-import type { ElectronApplication } from '@autoscalers/playwright-test'
+import type { ElectronApplication } from '@playwright/test'
 
 async function openFeatureTourFromMenu(electronApp: ElectronApplication): Promise<void> {
   await electronApp.evaluate(({ BrowserWindow, Menu }) => {

@@ -1,11 +1,11 @@
-﻿/**
+/**
  * Playwright globalSetup: builds the Electron app and creates a test git repo.
  *
  * Why: _electron.launch() needs the compiled output in out/main/index.js.
  * Running electron-vite build here ensures the tests are always against
  * the current source, without requiring the user to remember a manual step.
  *
- * Why: a dedicated test repo makes the suite idempotent — tests don't
+ * Why: a dedicated test repo makes the suite idempotent � tests don't
  * depend on whatever the user has open. The repo path is written to a
  * temp file so the worker fixture can pick it up at runtime.
  */
@@ -29,9 +29,9 @@ export default function globalSetup(): void {
   const outCli = path.join(root, 'out', 'cli', 'index.js')
   const outWeb = path.join(root, 'out', 'web', 'web-index.html')
 
-  // ── 1. Build the Electron app ──────────────────────────────────────
+  // -- 1. Build the Electron app --------------------------------------
   if (process.env.SKIP_BUILD && existsSync(outMain)) {
-    console.error('[e2e] SKIP_BUILD set and out/main/index.js exists — skipping build')
+    console.error('[e2e] SKIP_BUILD set and out/main/index.js exists � skipping build')
   } else {
     // Why: --mode e2e is the build-time signal that exposes window.__store;
     // the explicit env var keeps older local overrides working too.
@@ -47,7 +47,7 @@ export default function globalSetup(): void {
     console.error('[e2e] Build complete.')
   }
   if (process.env.SKIP_BUILD && existsSync(outCli)) {
-    console.error('[e2e] SKIP_BUILD set and out/cli/index.js exists — skipping CLI build')
+    console.error('[e2e] SKIP_BUILD set and out/cli/index.js exists � skipping CLI build')
   } else {
     console.error('[e2e] Building bundled CLI...')
     execSync('pnpm run build:cli', {
@@ -59,7 +59,7 @@ export default function globalSetup(): void {
   }
   if (process.env.FABRICA_E2E_WEB_CLIENT === '1') {
     if (process.env.SKIP_BUILD && existsSync(outWeb)) {
-      console.error('[e2e] SKIP_BUILD set and web client exists — skipping web build')
+      console.error('[e2e] SKIP_BUILD set and web client exists � skipping web build')
     } else {
       // Why: paired-browser specs need the web bundle served by the runtime; ordinary Electron E2E does not.
       console.error('[e2e] Building paired runtime web client...')
@@ -92,7 +92,7 @@ export default function globalSetup(): void {
     prepareDockerSshRelayImage(root)
   }
 
-  // ── 2. Create a seeded test git repo ───────────────────────────────
+  // -- 2. Create a seeded test git repo -------------------------------
   // Why: each test run gets its own git repo so the suite is fully
   // idempotent. No test depends on whatever repos the user has open.
   // Why: realpathSync so the seeded path matches the store's repo.path on

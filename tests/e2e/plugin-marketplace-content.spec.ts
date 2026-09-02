@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Invariant: a fresh profile discovers the managed official marketplace and
  * completes the Phase 1 language, VM-recipe, and keybinding journey through
  * production Git paths.
@@ -10,8 +10,8 @@ import { tmpdir } from 'node:os'
 import { join, sep } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
-import { expect, test } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 import { createRestartSession } from './helpers/fabrica-restart'
 
 const execFileAsync = promisify(execFile)
@@ -180,7 +180,7 @@ async function installMarketplacePluginThroughUi(
   await expect(listing).toBeVisible()
   await listing.getByRole('button', { name: 'Install' }).click()
   const preview = page.getByRole('dialog', { name: pluginName })
-  await expect(preview).toContainText('Official Â· autoscalers')
+  await expect(preview).toContainText('Official · autoscalers')
   await preview.getByRole('button', { name: 'Install plugin' }).click()
   const consent = page.getByRole('dialog', { name: consentDialogName })
   await expect(consent).toBeVisible()
@@ -215,7 +215,7 @@ async function applyInstalledLanguage(page: Page): Promise<void> {
   await expect(page.locator('[data-settings-section="appearance"]')).toBeVisible()
   await page.evaluate(() => window.__store?.setState({ settingsSearchQuery: 'Language' }))
   await page.getByRole('combobox', { name: 'Language' }).click()
-  await page.getByRole('option', { name: 'pt-BR â€” autoscalers.FABRICA-portuguese', exact: true }).click()
+  await page.getByRole('option', { name: 'pt-BR — autoscalers.FABRICA-portuguese', exact: true }).click()
   await expect
     .poll(() => page.evaluate(() => window.__store?.getState().settings?.uiLanguage))
     .toBe(languageId)
@@ -251,7 +251,7 @@ async function runMarketplaceJourney(page: Page): Promise<void> {
   await installMarketplacePluginThroughUi(
     page,
     'autoscalers.FABRICA-portuguese',
-    'PortuguÃªs do Brasil',
+    'Português do Brasil',
     'Review plugin'
   )
   await installMarketplacePluginThroughUi(

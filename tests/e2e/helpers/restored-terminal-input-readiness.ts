@@ -1,5 +1,5 @@
-﻿import { randomUUID } from 'node:crypto'
-import type { Page } from '@autoscalers/playwright-test'
+import { randomUUID } from 'node:crypto'
+import type { Page } from '@playwright/test'
 import { buildFreshShellProbeInputSequence } from '../terminal-probe-input-sequence'
 
 type ReadinessAttempt = {

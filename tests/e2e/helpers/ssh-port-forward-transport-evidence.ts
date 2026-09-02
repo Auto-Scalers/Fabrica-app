@@ -1,8 +1,8 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { chmodSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-import { expect, type ElectronApplication, type Page } from '@autoscalers/playwright-test'
+import { expect, type ElectronApplication, type Page } from '@playwright/test'
 import {
   execDockerSshRelayTargetCommand,
   shellQuote,

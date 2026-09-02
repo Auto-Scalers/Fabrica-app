@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Seeded git repo for FABRICA E2E fixtures: creation and validity checks for the
  * disposable test repo (plus its secondary worktree) that specs operate on.
  */

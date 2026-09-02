@@ -1,4 +1,4 @@
-﻿import { test, expect } from './helpers/fabrica-app'
+import { test, expect } from './helpers/fabrica-app'
 import { RuntimeClient } from '../../src/cli/runtime-client'
 import type { RuntimeTerminalListResult } from '../../src/shared/runtime-types'
 import { waitForSessionReady, ensureTerminalVisible } from './helpers/store'

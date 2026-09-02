@@ -1,14 +1,14 @@
-﻿/**
+/**
  * Regression proof for #8291: a real alt-screen TUI survives an FABRICA quit/relaunch, and after the
  * warm reattach a drag over it must still go to the TUI as mouse reports, not to xterm's row
- * selection. Drives the rendered surface only â€” no mocks, no direct mode assertions.
+ * selection. Drives the rendered surface only — no mocks, no direct mode assertions.
  */
 
 import { execFileSync } from 'node:child_process'
 import { mkdtempSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   execInTerminal,
@@ -133,7 +133,7 @@ function readRenderedTuiOffset(visibleText: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-/** Real CDP drag across three TUI rows â€” the gesture from the bug report. */
+/** Real CDP drag across three TUI rows — the gesture from the bug report. */
 async function dragAcrossTuiRows(page: Page, screen: TerminalSurface['screen']): Promise<void> {
   const startX = screen.left + Math.min(24, screen.width / 4)
   const startY = screen.top + screen.cellHeight * 2.5
@@ -158,7 +158,7 @@ test.describe('terminal reattach mouse mode', () => {
     let secondApp: ElectronApplication | null = null
 
     try {
-      // â”€â”€ First launch: a real TUI arms mouse reporting â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── First launch: a real TUI arms mouse reporting ──────────────────
       const firstLaunch = await session.launch()
       firstApp = firstLaunch.app
       await attachRepoAndOpenTerminal(firstLaunch.page, repoPath)
@@ -184,11 +184,11 @@ test.describe('terminal reattach mouse mode', () => {
       expect(beforeRestart.mouseTrackingMode).toBe('any')
 
       // Why: the daemon is a detached fork, so closing the app leaves this PTY
-      // â€” and the TUI running inside it â€” alive for the relaunch to reattach.
+      // — and the TUI running inside it — alive for the relaunch to reattach.
       await session.close(firstApp)
       firstApp = null
 
-      // â”€â”€ Second launch: warm reattach to the still-running TUI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── Second launch: warm reattach to the still-running TUI ──────────
       const secondLaunch = await session.launch()
       secondApp = secondLaunch.app
       await waitForSessionReady(secondLaunch.page)
@@ -203,7 +203,7 @@ test.describe('terminal reattach mouse mode', () => {
       // Beacon: drive one report straight down the PTY so the TUI repaints
       // `offset=1`. That row can only reach the pane through the reattach
       // stream, so its arrival is the deterministic "replay + reset applied"
-      // point â€” no sleep needed before sampling the modes.
+      // point — no sleep needed before sampling the modes.
       const secondPtyId = await waitForActivePanePtyId(secondLaunch.page)
       await sendToTerminal(secondLaunch.page, secondPtyId, WHEEL_DOWN_REPORT)
       const afterReattach = await waitForTerminalSurface(
@@ -212,11 +212,11 @@ test.describe('terminal reattach mouse mode', () => {
         'Reattached pane never rendered the live TUI repaint after the restart'
       )
 
-      // â”€â”€ The reported symptom: drag now paints a selection over the TUI â”€â”€
+      // ── The reported symptom: drag now paints a selection over the TUI ──
       await dragAcrossTuiRows(secondLaunch.page, afterReattach.screen)
       const afterDrag = await readTerminalSurface(secondLaunch.page)
       // Why a screenshot and not the video fixture: this spec quits and relaunches FABRICA,
-      // so the recorder's WebM never flushes. This frame IS the proof â€” on main the drag
+      // so the recorder's WebM never flushes. This frame IS the proof — on main the drag
       // paints an xterm row selection across the live TUI; here it must stay clean.
       const proofShot = process.env.FABRICA_E2E_PROOF_SCREENSHOT
       if (proofShot) {
@@ -229,7 +229,7 @@ test.describe('terminal reattach mouse mode', () => {
       ).toBe('')
       expect(afterDrag!.hasSelection).toBe(false)
 
-      // â”€â”€ And the wheel must still reach the TUI as mouse reports â”€â”€â”€â”€â”€â”€â”€â”€â”€
+      // ── And the wheel must still reach the TUI as mouse reports ─────────
       const wheelTargetX = afterReattach.screen.left + afterReattach.screen.width / 2
       const wheelTargetY = afterReattach.screen.top + afterReattach.screen.height / 2
       await secondLaunch.page.mouse.move(wheelTargetX, wheelTargetY)
@@ -239,7 +239,7 @@ test.describe('terminal reattach mouse mode', () => {
       const afterWheel = await waitForTerminalSurface(
         secondLaunch.page,
         (surface) => (readRenderedTuiOffset(surface.visibleText) ?? 0) > 1,
-        'Wheel gestures never reached the reattached TUI â€” its rendered offset row never advanced',
+        'Wheel gestures never reached the reattached TUI — its rendered offset row never advanced',
         15_000
       )
       expect(readRenderedTuiOffset(afterWheel.visibleText)).toBeGreaterThan(1)

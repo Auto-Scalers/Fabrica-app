@@ -1,4 +1,4 @@
-﻿import { expect, type ElectronApplication } from '@autoscalers/playwright-test'
+import { expect, type ElectronApplication } from '@playwright/test'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import {

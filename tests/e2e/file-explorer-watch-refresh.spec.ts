@@ -1,4 +1,4 @@
-﻿import { renameSync, rmSync, writeFileSync } from 'node:fs'
+import { renameSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
 import { openFileExplorer } from './helpers/file-explorer'

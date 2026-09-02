@@ -1,7 +1,7 @@
-﻿import { randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -19,7 +19,7 @@ import {
 import { waitForPtyShellEcho } from './terminal-pty-readiness'
 
 /**
- * Repro for: a clickable terminal link (file path, URL, â€¦) becomes dead after
+ * Repro for: a clickable terminal link (file path, URL, …) becomes dead after
  * switching to another worktree and returning, until the user scrolls the
  * terminal a little.
  *
@@ -27,7 +27,7 @@ import { waitForPtyShellEcho } from './terminal-pty-readiness'
  * buffer cell changes vs its `_lastBufferCell` cache. Hiding the surface fires
  * mouseleave (clearing the current link) but leaves that cache, so returning
  * the pointer to the same cell short-circuits and the link is never
- * re-established â€” `currentLink` stays null. File-path links are the worst case
+ * re-established — `currentLink` stays null. File-path links are the worst case
  * because their geometry click fallback does not compensate after reveal.
  */
 type HoverProbe = { col: number; row: number; tabId: string }

@@ -1,6 +1,6 @@
-﻿import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { TEST_REPO_PATH_FILE } from './global-setup'
 import {
@@ -44,11 +44,11 @@ function writeStreamingTui(scriptPath: string): void {
       '  frame += 1',
       '  writeFileSync(heartbeatPath, String(frame))',
       '  const body = [',
-      "    'â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®',",
-      "    `â”‚ FABRICA warm reattach frame ${String(frame).padStart(6, '0')} ðŸŸ¢ â”‚`,",
-      "    'â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤',",
-      '    `â”‚ REATTACH_FRAME_${frame} live daemon output             â”‚`,',
-      "    'â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯'",
+      "    '╭────────────────────────────────────────────────────╮',",
+      "    `│ FABRICA warm reattach frame ${String(frame).padStart(6, '0')} 🟢 │`,",
+      "    '├────────────────────────────────────────────────────┤',",
+      '    `│ REATTACH_FRAME_${frame} live daemon output             │`,',
+      "    '╰────────────────────────────────────────────────────╯'",
       "  ].join('\\r\\n')",
       '  process.stdout.write(`\\x1b[?2026h\\x1b[2J\\x1b[H${body}\\x1b[?2026l`)',
       '}, 50)',

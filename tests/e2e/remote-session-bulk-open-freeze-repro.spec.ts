@@ -1,5 +1,5 @@
-﻿/**
- * Freeze repro R1 — bulk-open remote sessions under multi-worktree flood load.
+/**
+ * Freeze repro R1 � bulk-open remote sessions under multi-worktree flood load.
  *
  * Trigger: reopening many remote sessions on Remote Server / SSH with agents.
  *

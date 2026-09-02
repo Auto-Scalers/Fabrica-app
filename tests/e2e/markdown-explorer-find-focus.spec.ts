@@ -1,4 +1,4 @@
-﻿import { expect, test } from './helpers/fabrica-app'
+import { expect, test } from './helpers/fabrica-app'
 import { openFileExplorer } from './helpers/file-explorer'
 import { pressShortcut } from './helpers/shortcuts'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'

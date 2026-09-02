@@ -1,19 +1,19 @@
-﻿/**
+/**
  * Repro + recovery for the stuck-occlusion freeze (field snapshot,
  * v1.4.124-rc.2.perf, 2026-07-06): macOS occlusion tracking wedges
  * document.visibilityState at 'hidden' after display sleep and never fires
  * another visibilitychange. The hidden-delivery gate then marks the pane the
  * user is looking at as hidden, and main drops its renderer-bound bytes
- * indefinitely (78MB dropped across 2 visible ptys in the field) â€” a frozen
+ * indefinitely (78MB dropped across 2 visible ptys in the field) — a frozen
  * terminal with a perfectly healthy transport.
  *
  * The test emulates the wedge exactly as Chromium produces it: visibilityState
  * pinned to 'hidden' with one final visibilitychange, then silence. Recovery
- * must come from the staleness proof â€” a real keystroke while the document
- * claims hidden â€” which unlatches the gate and repaints the missed output from
+ * must come from the staleness proof — a real keystroke while the document
+ * claims hidden — which unlatches the gate and repaints the missed output from
  * the main-owned snapshot, WITHOUT a reload and WITHOUT any visibilitychange.
  */
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady, waitForActiveWorktree, ensureTerminalVisible } from './helpers/store'
 import {
@@ -60,7 +60,7 @@ test.describe('terminal stuck-occlusion recovery', () => {
     await waitForActiveTerminalManager(fabricaPage)
     const ptyId = await waitForActivePanePtyId(fabricaPage)
 
-    // Live baseline: foreground delivery works. The $((â€¦)) arithmetic keeps
+    // Live baseline: foreground delivery works. The $((…)) arithmetic keeps
     // the asserted string out of the typed command's local echo.
     await execInTerminal(fabricaPage, ptyId, 'echo live-before-$((41+1))')
     await expect
@@ -77,7 +77,7 @@ test.describe('terminal stuck-occlusion recovery', () => {
       document.dispatchEvent(new Event('visibilitychange'))
     })
 
-    // The visible pane's pty gets marked hidden in main â€” the field state:
+    // The visible pane's pty gets marked hidden in main — the field state:
     // gate holding a pty that main's own visibility set says is visible.
     await expect
       .poll(async () => (await getDeliverySnapshot(fabricaPage)).hiddenDeliveryGatedPtyCount, {
@@ -99,11 +99,11 @@ test.describe('terminal stuck-occlusion recovery', () => {
     expect(await getTerminalContent(fabricaPage)).not.toContain('occluded-78')
 
     // The staleness proof: one real keystroke while the document claims
-    // hidden. No visibilitychange fires â€” recovery must ride the proof alone.
+    // hidden. No visibilitychange fires — recovery must ride the proof alone.
     await fabricaPage.keyboard.press('Shift')
 
     // Gate unlatches and the missed output repaints from the main-owned
-    // snapshot â€” no reload, visibilityState still reads 'hidden'.
+    // snapshot — no reload, visibilityState still reads 'hidden'.
     await expect
       .poll(async () => getTerminalContent(fabricaPage), { timeout: 30_000 })
       .toContain('occluded-78')

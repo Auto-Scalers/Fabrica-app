@@ -1,5 +1,5 @@
-﻿import type { Buffer } from 'node:buffer'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Buffer } from 'node:buffer'
+import type { Page } from '@playwright/test'
 import { captureGraySlabAnalysis, type GraySlabAnalysis } from './terminal-raster-artifact-analysis'
 
 export async function resetWebglAndCaptureGraySlabAnalysis(page: Page): Promise<{

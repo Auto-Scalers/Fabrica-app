@@ -1,11 +1,11 @@
-﻿/**
+/**
  * Carries a host-rejected paired-runtime write the whole way: the real
  * terminal.multiplex dispatcher rejects the authoritative PTY write, the real
  * renderer multiplexer and remote transport decode the WriteUnavailable frame,
  * and pty-connection must turn it into an actual tab remount.
  *
  * Every other test for this signal stops at a transport callback, so the last
- * hop was unproven — and that hop is where it died: pane recovery probes
+ * hop was unproven � and that hop is where it died: pane recovery probes
  * `pty:hasPty`, which owns no registry entry for a `remote:` id. The parametrized
  * liveness answers below cover every reply main can produce for one.
  */

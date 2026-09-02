@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { randomUUID } from 'node:crypto'
 import { rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -13,8 +13,8 @@ import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } fro
 
 // Reproduction harness for issue #5096: terminal output delay and input lag
 // reported to grow with session history and disappear after compacting/clearing
-// the agent session. Measures keypressâ†’echo latency through the full pipeline
-// (renderer keyboard â†’ PTY â†’ echo â†’ xterm paint-adjacent buffer read) at three
+// the agent session. Measures keypress→echo latency through the full pipeline
+// (renderer keyboard → PTY → echo → xterm paint-adjacent buffer read) at three
 // scrollback fills. The fill also keeps the session continuously dirty, so
 // daemon checkpoint serialization (every 5s) lands inside the sampling window
 // exactly as it does in real agent sessions.

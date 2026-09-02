@@ -1,5 +1,5 @@
-﻿import type { Page, TestInfo } from '@autoscalers/playwright-test'
-import { expect } from '@autoscalers/playwright-test'
+import type { Page, TestInfo } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { randomUUID } from 'node:crypto'
 import { rmSync } from 'node:fs'
 import path from 'node:path'
@@ -54,7 +54,7 @@ type HiddenPressureDeps<TMeasurement, TDebug, TScheduler, TMainPressure, TAckGat
   writeInteractivePromptScript: (scriptPath: string, runId: string) => void
 }
 
-// Why: the renderer hidden-skip counters are gone with the skip grammar â€”
+// Why: the renderer hidden-skip counters are gone with the skip grammar —
 // withheld hidden output is observed via main's delivery-drop counters only.
 type HiddenPressureDebug = {
   hiddenRendererMode2031ReplyCount: number
@@ -89,7 +89,7 @@ type HiddenPressureAckGate = {
 // branch keeps a far stricter budget with only a small margin for the whole-buffer
 // serialize-poll overhead (seen at ~1.5s), so a genuinely slow restore is still caught.
 const MAX_HIDDEN_RESTORE_LATENCY_MS = 2_000
-// Why: Phase-4 hidden-delivery gate contract â€” hidden PTY bytes are dropped in
+// Why: Phase-4 hidden-delivery gate contract — hidden PTY bytes are dropped in
 // main after model ingestion, so renderer-delivery pressure must stay FAR
 // below the old 2 MB ACK-backpressure target instead of reaching it.
 const MAIN_RENDERER_PRESSURE_TARGET_CHARS = 2 * 1024 * 1024
@@ -193,8 +193,8 @@ export async function runHiddenRealPtyPressureScenario<
     )
 
     // Hidden-delivery contract (all pressure modes): bytes never reach the
-    // renderer â€” main's drop counter is the withheld-output signal (the
-    // renderer skip counters were deleted with the skip grammar) â€” and main's
+    // renderer — main's drop counter is the withheld-output signal (the
+    // renderer skip counters were deleted with the skip grammar) — and main's
     // renderer-delivery pressure must stay clearly below the old 2 MB
     // backpressure target.
     expect(mainPressure?.hiddenDeliveryDroppedChars ?? 0).toBeGreaterThanOrEqual(
@@ -204,14 +204,14 @@ export async function runHiddenRealPtyPressureScenario<
       MAIN_RENDERER_PRESSURE_TARGET_CHARS
     )
     // Why: the renderer scheduler queue must stay ~empty (no hidden bytes to
-    // queue) and must never drop a backlog â€” strict, per the gate contract.
+    // queue) and must never drop a backlog — strict, per the gate contract.
     expect(scheduler?.peakQueuedChars ?? 0).toBeLessThan(pressureOutputChars)
     expect(scheduler?.droppedBacklogCount ?? Number.POSITIVE_INFINITY).toBe(0)
     expect(measurement.medianLatencyMs).toBeLessThan(75)
     // Why: worst *single-key echo* under 8MB synthetic backpressure lands behind
     // whichever flush it collides with, so on a contended OSS shard it is
     // environment-dominated (seen at ~2s). Keep it only as a catastrophic-hang
-    // detector â€” the original regression (input freezing for seconds) shows up in
+    // detector — the original regression (input freezing for seconds) shows up in
     // the median too. Aligns with ssh-docker-relay-perf's 2s worst-key tolerance.
     expect(measurement.worstLatencyMs).toBeLessThan(3_000)
     expect(measurement.maxTimerDriftMs).toBeLessThan(MAX_HIDDEN_PRESSURE_TIMER_DRIFT_MS)
@@ -246,7 +246,7 @@ export async function runHiddenRealPtyPressureScenario<
   }
 }
 
-// Why: replaces the old waitForMainPtyPressureBacklog premise â€” the Phase-4
+// Why: replaces the old waitForMainPtyPressureBacklog premise — the Phase-4
 // gate drops hidden bytes in main, so renderer-delivery pressure never builds;
 // readiness is the gate reporting one pane's worth of dropped output.
 async function waitForMainHiddenDeliveryDrops<TMainPressure extends HiddenPressureMainSnapshot>(

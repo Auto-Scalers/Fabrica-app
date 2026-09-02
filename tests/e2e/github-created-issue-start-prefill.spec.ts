@@ -1,4 +1,4 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { chmodSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -26,7 +26,7 @@ const issue = {
 }
 
 if (args[0] === 'auth' && args[1] === 'status') {
-  console.error('github.com\\n  ✓ Logged in to github.com account e2e (GITHUB_TOKEN)')
+  console.error('github.com\\n  ? Logged in to github.com account e2e (GITHUB_TOKEN)')
   process.exit(0)
 }
 if (args[0] === 'api' && args[1] === 'user') {
@@ -122,7 +122,7 @@ function configureGitHubRemote(repoPath: string): void {
 // Why: the remote must exist before Electron launches. `repos.add` probes the
 // remote once, and a settled "no remote" both makes the repo ineligible for the
 // tasks page (disabling "New GitHub issue") and suppresses re-probes for five
-// minutes — so adding origin inside the test body can never recover.
+// minutes � so adding origin inside the test body can never recover.
 test.beforeAll(({ testRepoPath }) => {
   configureGitHubRemote(testRepoPath)
 })

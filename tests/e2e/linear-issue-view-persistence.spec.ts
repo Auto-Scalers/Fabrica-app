@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Linear issue list view persistence.
  *
  * Layout (list/board), grouping, ordering, and per-workspace attribute filters are
@@ -9,7 +9,7 @@
  */
 
 import { existsSync, readFileSync } from 'node:fs'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { attachRepoAndOpenTerminal, createRestartSession } from './helpers/fabrica-restart'
 import { getStoreState, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
@@ -284,7 +284,7 @@ async function setLinearViewPreferences(
   page: Page,
   options: { viewMode: 'List' | 'Board'; groupBy: string; orderBy: string }
 ): Promise<void> {
-  // Why: grouping/ordering first, then Board last â€” Board remounts the issue
+  // Why: grouping/ordering first, then Board last — Board remounts the issue
   // surface and would detach an open menu if applied earlier.
   await selectViewMenuRadio(page, options.groupBy)
   await selectViewMenuRadio(page, options.orderBy)
@@ -458,7 +458,7 @@ test.describe('Linear issue view persistence', () => {
 
     await switchLinearWorkspace(fabricaPage, WORKSPACE_B.organizationName)
     await waitForLinearIssuesChrome(fabricaPage, ISSUE_B.title)
-    // Workspace B starts unfiltered â€” Alpha's High must not leak.
+    // Workspace B starts unfiltered — Alpha's High must not leak.
     await expect(fabricaPage.getByRole('button', { name: 'Remove Priority filter' })).toHaveCount(0)
 
     await applyPriorityFilter(fabricaPage, 'Low')

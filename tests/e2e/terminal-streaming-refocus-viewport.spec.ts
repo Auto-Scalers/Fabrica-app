@@ -1,5 +1,5 @@
-﻿import path from 'node:path'
-import type { Page } from '@autoscalers/playwright-test'
+import path from 'node:path'
+import type { Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {

@@ -1,4 +1,4 @@
-﻿import { test as base, expect } from './helpers/fabrica-app'
+import { test as base, expect } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
   waitForActivePaneHookDescriptor,

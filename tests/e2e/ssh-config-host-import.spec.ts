@@ -1,10 +1,10 @@
-﻿/**
+/**
  * E2E: SSH config bulk import (picker "Add all") vs Settings Import re-adopt.
  * Covers plan cases P5, P6, P7, P9. Picker list/filter/select live in
  * ssh-config-host-picker.spec.ts.
  */
 
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import {
@@ -84,7 +84,7 @@ test.describe('SSH config host import (bulk + settings re-adopt)', () => {
     await removeSshTargetsByPrefix(fabricaPage, HOST_PREFIX).catch(() => undefined)
   })
 
-  // â”€â”€ P5 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── P5 ─────────────────────────────────────────────────────────────
   test('P5: already-in-FABRICA badge, disabled row, and Add all counts only new hosts', async ({
     electronApp,
     fabricaPage
@@ -113,7 +113,7 @@ test.describe('SSH config host import (bulk + settings re-adopt)', () => {
     await expect(picker.getByRole('button', { name: 'Add all 2 to FABRICA' })).toHaveCount(0)
   })
 
-  // â”€â”€ P6 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── P6 ─────────────────────────────────────────────────────────────
   test('P6: Add all N to FABRICA imports new hosts; re-open shows all in FABRICA', async ({
     electronApp,
     fabricaPage
@@ -151,7 +151,7 @@ test.describe('SSH config host import (bulk + settings re-adopt)', () => {
     await expect(reopened.getByRole('button', { name: 'No new hosts to add' })).toBeDisabled()
   })
 
-  // â”€â”€ P7 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── P7 ─────────────────────────────────────────────────────────────
   test('P7: Add all does not re-adopt deleted config hosts (suppress tombstones)', async ({
     electronApp,
     fabricaPage
@@ -179,12 +179,12 @@ test.describe('SSH config host import (bulk + settings re-adopt)', () => {
 
     await returnToAppShell(fabricaPage)
     const sshSection = await openSshHostSettings(fabricaPage)
-    // Pane auto-syncs without reAdopt â€” deleted alpha must stay gone.
+    // Pane auto-syncs without reAdopt — deleted alpha must stay gone.
     await expectSshHostListedInSettings(sshSection, hosts.bravo)
     await expectSshHostAbsentFromSettings(sshSection, hosts.alpha)
   })
 
-  // â”€â”€ P9 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── P9 ─────────────────────────────────────────────────────────────
   test('P9: Settings Import re-adopts deleted config hosts', async ({ electronApp, fabricaPage }) => {
     const hosts = await importPairThenDeleteAlias(
       fabricaPage,

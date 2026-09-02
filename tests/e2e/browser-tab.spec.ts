@@ -1,4 +1,4 @@
-﻿/**
+/**
  * E2E tests for the browser tab: creating browser tabs and state retention.
  *
  * User Prompt:
@@ -223,7 +223,7 @@ async function startBrowserWindowCloseServer(): Promise<{
       <html>
         <head><title>Window close repro</title></head>
         <body>
-          <p id="s">Attempting close…</p>
+          <p id="s">Attempting close�</p>
           <script>
             window.close()
             setTimeout(() => {

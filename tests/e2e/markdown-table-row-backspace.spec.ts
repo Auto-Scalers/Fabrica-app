@@ -1,4 +1,4 @@
-﻿import path from 'node:path'
+import path from 'node:path'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import {
@@ -78,14 +78,14 @@ test.describe('Markdown table keyboard', () => {
       await expect(editor.getByText('keep')).toBeVisible()
       await expect(editor.getByText('stay')).toBeVisible()
 
-      // ── Tab / Shift-Tab cell navigation ────────────────────────────
+      // -- Tab / Shift-Tab cell navigation ----------------------------
       await editor.getByText('keep').click()
 
       await fabricaPage.keyboard.press('Tab')
       await expect
         .poll(async () => selectionCellText(fabricaPage), {
           timeout: 5_000,
-          message: 'Tab should move from keep → a'
+          message: 'Tab should move from keep ? a'
         })
         .toBe('a')
 
@@ -115,7 +115,7 @@ test.describe('Markdown table keyboard', () => {
         })
         .toBe('')
 
-      // ── Empty-row Backspace deletes the whole row ──────────────────
+      // -- Empty-row Backspace deletes the whole row ------------------
       // Enter above already left the caret in the empty body row.
       await editor.screenshot({
         path: path.join(SCRATCH_DIR, 'electron-table-row-backspace-before.png')

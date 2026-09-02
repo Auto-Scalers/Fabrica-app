@@ -1,9 +1,9 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
-import { expect } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 
 // Why: the retention-budget spec needs several worktrees of ONE connected remote
 // repo (adding a second repo mid-session misroutes its pty spawn to the local
-// daemon â€” pre-existing multi-repo issue). Creation goes through the product's
+// daemon — pre-existing multi-repo issue). Creation goes through the product's
 // own createWorktree path so the result lands in worktreesByRepo (an external
 // `git worktree add` only shows up as a detected worktree needing adoption).
 // The create is polled: the relay channel can drop and reconnect shortly after

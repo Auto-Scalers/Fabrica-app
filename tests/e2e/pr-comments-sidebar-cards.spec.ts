@@ -1,4 +1,4 @@
-﻿import type { Locator } from '@autoscalers/playwright-test'
+import type { Locator } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { openChecks } from './helpers/source-control-ai-generation'
 import { seedPRCommentsSidebarFixture } from './helpers/pr-comments-sidebar-fixture'
@@ -55,7 +55,7 @@ test.describe('PR comments sidebar cards view', () => {
     const commentsSection = fabricaPage.getByText('Comments', { exact: true })
     await expect(commentsSection).toBeVisible({ timeout: 10_000 })
 
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible()
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible()
     await expect(fabricaPage.getByText('Please update this handler before merge.')).toBeVisible()
     await expect(fabricaPage.getByText('coderabbitai')).toBeVisible()
     await expect(fabricaPage.getByText('LGTM on the overall approach.')).toBeVisible()
@@ -77,7 +77,7 @@ test.describe('PR comments sidebar cards view', () => {
     )
     await expectOpenTextNotShiftedLeft(openThreadCard, conversationCard, 'coderabbitai', 'bob')
 
-    const resolvedTrigger = fabricaPage.getByRole('button', { name: 'Resolved Â· 1' })
+    const resolvedTrigger = fabricaPage.getByRole('button', { name: 'Resolved · 1' })
     await expect(resolvedTrigger).toBeVisible()
     await expect(fabricaPage.getByText('Already fixed upstream.')).toBeHidden()
 
@@ -98,11 +98,11 @@ test.describe('PR comments sidebar cards view', () => {
     const { worktreeId } = await seedPRCommentsSidebarFixture(fabricaPage)
     await openChecks(fabricaPage, worktreeId)
 
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible({ timeout: 10_000 })
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible({ timeout: 10_000 })
     await fabricaPage.getByRole('button', { name: 'Comment display options' }).click()
     await fabricaPage.getByRole('menuitemradio', { name: 'Timeline' }).click()
 
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toHaveCount(0)
+    await expect(fabricaPage.getByText('Needs review · 1')).toHaveCount(0)
     await expect(fabricaPage.getByText('Already fixed upstream.')).toBeVisible()
 
     const comments = [
@@ -129,7 +129,7 @@ test.describe('PR comments sidebar cards view', () => {
   }, testInfo) => {
     const { worktreeId } = await seedPRCommentsSidebarFixture(fabricaPage)
     await openChecks(fabricaPage, worktreeId)
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible({ timeout: 10_000 })
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible({ timeout: 10_000 })
 
     const reviewThreadCard = fabricaPage.getByTestId('pr-comment-group').filter({
       hasText: 'Please update this handler before merge.'
@@ -173,7 +173,7 @@ test.describe('PR comments sidebar cards view', () => {
   test('keeps reaction focus while a remote mutation fails', async ({ fabricaPage }) => {
     const { worktreeId } = await seedPRCommentsSidebarFixture(fabricaPage)
     await openChecks(fabricaPage, worktreeId)
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible({ timeout: 10_000 })
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible({ timeout: 10_000 })
     await fabricaPage.evaluate(() => {
       window.__store?.setState({
         setPRCommentReaction: async () => {
@@ -232,7 +232,7 @@ test.describe('PR comments sidebar cards view', () => {
     const { worktreeId } = await seedPRCommentsSidebarFixture(fabricaPage)
     await openChecks(fabricaPage, worktreeId)
 
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible({ timeout: 10_000 })
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible({ timeout: 10_000 })
 
     const openThreadCard = fabricaPage.getByTestId('pr-comment-group').filter({
       hasText: 'Please update this handler before merge.'
@@ -284,7 +284,7 @@ test.describe('PR comments sidebar cards view', () => {
     const { worktreeId } = await seedPRCommentsSidebarFixture(fabricaPage)
     await openChecks(fabricaPage, worktreeId)
 
-    await expect(fabricaPage.getByText('Needs review Â· 1')).toBeVisible({ timeout: 10_000 })
+    await expect(fabricaPage.getByText('Needs review · 1')).toBeVisible({ timeout: 10_000 })
     const openThreadCard = fabricaPage.getByTestId('pr-comment-group').filter({
       hasText: 'Please update this handler before merge.'
     })

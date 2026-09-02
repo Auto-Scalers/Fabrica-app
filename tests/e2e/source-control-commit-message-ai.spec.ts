@@ -1,4 +1,4 @@
-ï»¿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -43,7 +43,7 @@ function cleanupWorktree(repoPath: string, worktreePath: string, branchName: str
 
 test.describe('Source Control AI commit messages', () => {
   // Why: the unlinked case separates a real resolver from one that always returns a number,
-  // and â€” because the generator echoes the whole line â€” a literal `{linkedIssue}` reaches the
+  // and — because the generator echoes the whole line — a literal `{linkedIssue}` reaches the
   // assertion as `saw-issue:{linkedIssue}` instead of masquerading as the empty expansion.
   for (const { label, linkedIssue, expected } of [
     { label: 'substitutes the workspace-linked issue into', linkedIssue: 4242, expected: '4242' },

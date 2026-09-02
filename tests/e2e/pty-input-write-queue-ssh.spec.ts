@@ -1,4 +1,4 @@
-﻿import { test } from './helpers/fabrica-app'
+import { test } from './helpers/fabrica-app'
 import { connectDockerSshRelayTarget } from './helpers/docker-ssh-relay-connection'
 import {
   cleanupDockerSshRelayTarget,

@@ -1,5 +1,5 @@
-﻿import { randomUUID } from 'node:crypto'
-import type { Page, TestInfo } from '@autoscalers/playwright-test'
+import { randomUUID } from 'node:crypto'
+import type { Page, TestInfo } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, waitForSessionReady } from './helpers/store'
 import {

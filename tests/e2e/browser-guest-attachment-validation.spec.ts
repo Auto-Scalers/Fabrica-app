@@ -1,8 +1,8 @@
-﻿import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { expect, test } from './helpers/fabrica-app'
 import { ensureTerminalVisible, getActiveWorktreeId, waitForActiveWorktree } from './helpers/store'
 

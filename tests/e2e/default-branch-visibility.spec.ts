@@ -1,10 +1,10 @@
-﻿/**
+/**
  * Regression #8873: with "Hide sleeping" on, the project's main workspace must
- * stay in the sidebar â€” it is the only guaranteed way back into the project â€”
+ * stay in the sidebar — it is the only guaranteed way back into the project —
  * while a sleeping feature workspace is still swept.
  */
 
-import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { worktreeRow } from './worktree-row-locators'

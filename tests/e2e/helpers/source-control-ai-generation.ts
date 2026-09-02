@@ -1,5 +1,5 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
-import { expect } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { execFileSync } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -42,7 +42,7 @@ export async function openChecks(page: Page, worktreeId: string): Promise<void> 
       { timeout: 5_000 }
     )
     .toBe(true)
-  // Why: the activity-bar label carries an optional shortcut and a failure suffix ("Checks â€” Error"),
+  // Why: the activity-bar label carries an optional shortcut and a failure suffix ("Checks — Error"),
   // so an exact 'Checks' name silently stops matching once the active branch has failing checks.
   const checksButton = page.getByRole('button', { name: /^Checks(\s|$)/ })
   await expect

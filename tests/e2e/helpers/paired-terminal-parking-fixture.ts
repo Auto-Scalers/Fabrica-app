@@ -1,4 +1,4 @@
-﻿import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 
@@ -6,7 +6,7 @@ const FILL_ROWS = 6_000
 const FLOOD_ROWS = 4_000
 const TITLE_FRAME_INTERVAL_MS = 70
 const TITLE_FRAME_COUNT = 30
-const TITLE_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+const TITLE_FRAMES = ['?', '?', '?', '?', '?', '?', '?', '?', '?', '?']
 
 function shellQuote(value: string): string {
   return `'${value.replaceAll("'", `'\\''`)}'`
@@ -36,7 +36,7 @@ export function createPairedTerminalParkingFixture(): {
       '  for (const command of data.split(/\\r\\n|\\r|\\n/).filter(Boolean)) {',
       "    if (command.startsWith('TITLE_START:')) {",
       "      const token = command.slice('TITLE_START:'.length)",
-      "      process.stdout.write('\\u001b]0;⠋ Cursor Agent\\u0007')",
+      "      process.stdout.write('\\u001b]0;? Cursor Agent\\u0007')",
       '      process.stdout.write(`TITLE_STARTED:${token}\\r\\n`)',
       '      continue',
       '    }',

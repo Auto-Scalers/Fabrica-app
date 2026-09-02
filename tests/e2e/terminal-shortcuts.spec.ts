@@ -1,8 +1,8 @@
-﻿/**
+/**
  * E2E test for terminal keyboard shortcuts.
  *
  * Verifies every chord resolved by resolveTerminalShortcutAction end-to-end:
- * real DOM keydown â†’ window capture handler â†’ policy â†’ transport â†’ IPC.
+ * real DOM keydown → window capture handler → policy → transport → IPC.
  *
  * sendInput chords are verified by intercepting pty:write in the Electron main
  * process so the test proves the bytes actually leave the renderer, without
@@ -15,7 +15,7 @@
  */
 
 import { test, expect } from './helpers/fabrica-app'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { FLOATING_TERMINAL_WORKTREE_ID } from '../../src/shared/constants'
 import {
   execInTerminal,
@@ -302,7 +302,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
     textarea.focus()
 
     const keydown = new KeyboardEvent('keydown', {
-      key: 'Ð¤',
+      key: 'Ф',
       code: 'KeyA',
       shiftKey: true,
       bubbles: true,
@@ -323,7 +323,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
     }
 
     const keypress = new KeyboardEvent('keypress', {
-      key: 'Ð¤',
+      key: 'Ф',
       code: 'KeyA',
       shiftKey: true,
       bubbles: true,
@@ -336,7 +336,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
 
     const makeTextInputEvent = (): InputEvent => {
       const input = new InputEvent('input', {
-        data: 'Ð¤',
+        data: 'Ф',
         inputType: 'insertText',
         bubbles: true,
         cancelable: false,
@@ -345,7 +345,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
       // Why: older Linux Chromium builds can ignore InputEventInit fields on
       // synthetic events; xterm's input fallback reads these exact properties.
       Object.defineProperties(input, {
-        data: { get: () => 'Ð¤' },
+        data: { get: () => 'Ф' },
         inputType: { get: () => 'insertText' },
         composed: { get: () => false }
       })
@@ -358,7 +358,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
     textarea.dispatchEvent(input)
 
     const keyup = new KeyboardEvent('keyup', {
-      key: 'Ð¤',
+      key: 'Ф',
       code: 'KeyA',
       shiftKey: true,
       bubbles: true,
@@ -373,7 +373,7 @@ async function pressShiftedRussianLayoutKey(page: Page): Promise<{
     // public input API exercises the same PTY data path without that browser
     // trust boundary, while the keydown assertion below still catches kitty
     // encoded sequences leaking from shifted layout keys.
-    pane.terminal.input('Ð¤')
+    pane.terminal.input('Ф')
 
     return {
       keydownDefaultPrevented: false,
@@ -741,21 +741,21 @@ test.describe('Terminal Shortcuts', () => {
 
     // --- send-input chords (platform-agnostic) ---
 
-    // Alt+â†/â†’ â†’ readline backward-word / forward-word (\eb / \ef).
+    // Alt+←/→ → readline backward-word / forward-word (\eb / \ef).
     await pressAndExpectWrite(fabricaPage, electronApp, 'Alt+ArrowLeft', '\x1bb')
     await pressAndExpectWrite(fabricaPage, electronApp, 'Alt+ArrowRight', '\x1bf')
 
-    // Ctrl+â†/â†’ on non-mac â†’ readline backward-word / forward-word (\eb / \ef).
+    // Ctrl+←/→ on non-mac → readline backward-word / forward-word (\eb / \ef).
     // macOS reserves Ctrl+Arrow; Windows ConPTY leaves it to PSReadLine.
     if (!isMac && process.platform !== 'win32') {
       await pressAndExpectWrite(fabricaPage, electronApp, 'Control+ArrowLeft', '\x1bb')
       await pressAndExpectWrite(fabricaPage, electronApp, 'Control+ArrowRight', '\x1bf')
     }
 
-    // Alt+Backspace â†’ Esc+DEL (readline backward-kill-word).
+    // Alt+Backspace → Esc+DEL (readline backward-kill-word).
     await pressAndExpectWrite(fabricaPage, electronApp, 'Alt+Backspace', '\x1b\x7f')
 
-    // Ctrl+Backspace â†’ \x17 (unix-word-rubout).
+    // Ctrl+Backspace → \x17 (unix-word-rubout).
     await pressAndExpectWrite(fabricaPage, electronApp, 'Control+Backspace', '\x17')
 
     // The shell has not enabled KKP, so Shift+Enter must not leak CSI-u text.
@@ -764,11 +764,11 @@ test.describe('Terminal Shortcuts', () => {
     // --- send-input chords (macOS-only) ---
 
     if (isMac) {
-      // Cmd+â†/â†’ â†’ Ctrl+A / Ctrl+E (beginning/end of line).
+      // Cmd+←/→ → Ctrl+A / Ctrl+E (beginning/end of line).
       await pressAndExpectWrite(fabricaPage, electronApp, 'Meta+ArrowLeft', '\x01')
       await pressAndExpectWrite(fabricaPage, electronApp, 'Meta+ArrowRight', '\x05')
 
-      // Cmd+Backspace â†’ Ctrl+U (kill line). Cmd+Delete â†’ Ctrl+K (kill to EOL).
+      // Cmd+Backspace → Ctrl+U (kill line). Cmd+Delete → Ctrl+K (kill to EOL).
       await pressAndExpectWrite(fabricaPage, electronApp, 'Meta+Backspace', '\x15')
       await pressAndExpectWrite(fabricaPage, electronApp, 'Meta+Delete', '\x0b')
     }
@@ -785,7 +785,7 @@ test.describe('Terminal Shortcuts', () => {
       })
       .toBe(false)
 
-    // Split vertically (chord varies by platform â€” see splitVerticalChord).
+    // Split vertically (chord varies by platform — see splitVerticalChord).
     const panesBeforeSplit = await countVisibleTerminalPanes(fabricaPage)
     await focusActiveTerminalInput(fabricaPage)
     await fabricaPage.keyboard.press(splitVerticalChord)
@@ -827,7 +827,7 @@ test.describe('Terminal Shortcuts', () => {
     // Cmd/Ctrl+W closes the active split pane (not the whole tab: >1 pane).
     await closeActivePaneAndSettle(fabricaPage, panesBeforeSplit)
 
-    // Split horizontally (chord varies by platform â€” see splitHorizontalChord).
+    // Split horizontally (chord varies by platform — see splitHorizontalChord).
     const panesBeforeHSplit = await countVisibleTerminalPanes(fabricaPage)
     await focusActiveTerminalInput(fabricaPage)
     await fabricaPage.keyboard.press(splitHorizontalChord)
@@ -927,7 +927,7 @@ test.describe('Terminal Shortcuts', () => {
       keyupSent: true
     })
     await expect
-      .poll(async () => (await getPtyWrites(electronApp)).some((write) => write.includes('Ð¤')), {
+      .poll(async () => (await getPtyWrites(electronApp)).some((write) => write.includes('Ф')), {
         timeout: 5_000,
         message: 'Shift+Russian layout text did not reach the PTY as Cyrillic'
       })

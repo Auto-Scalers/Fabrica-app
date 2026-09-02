@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Aggressive stress tests for dead-terminal reproduction.
  *
  * These tests target specific failure vectors beyond the basic setup-split flow:
@@ -52,8 +52,8 @@ test.describe('Dead Terminal Stress @headful', () => {
   /**
    * Force WebGL context loss on visible canvases immediately after a setup
    * split. In production, Chromium reclaims WebGL contexts under memory
-   * pressure — especially with many worktrees open. The recovery path is:
-   * onContextLoss → dispose WebGL → DOM fallback → rAF → fit + refresh.
+   * pressure � especially with many worktrees open. The recovery path is:
+   * onContextLoss ? dispose WebGL ? DOM fallback ? rAF ? fit + refresh.
    */
   test('@headful setup-split with forced WebGL context loss recovers', async ({ fabricaPage }) => {
     test.setTimeout(120_000)
@@ -121,7 +121,7 @@ test.describe('Dead Terminal Stress @headful', () => {
       await switchToWorktree(fabricaPage, homeWorktreeId)
       await fabricaPage.waitForTimeout(50)
 
-      // Switch back — triggers resumeRendering on partially-initialized panes
+      // Switch back � triggers resumeRendering on partially-initialized panes
       await switchToWorktree(fabricaPage, newId)
       await expect.poll(async () => getActiveWorktreeId(fabricaPage), { timeout: 10_000 }).toBe(newId)
       await ensureTerminalVisible(fabricaPage)

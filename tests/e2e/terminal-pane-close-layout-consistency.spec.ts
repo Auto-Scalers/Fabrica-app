@@ -1,4 +1,4 @@
-﻿import type { Page } from '@autoscalers/playwright-test'
+import type { Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import {
   ensureTerminalVisible,
@@ -16,25 +16,25 @@ import { parkHiddenTabBehindDecoy } from './helpers/terminal-hidden-parking'
 
 /**
  * Repro hunt for the "ghost blank pane" field incident: a split pane whose PTY
- * and leafâ†’PTY binding were torn down while the persisted layout `root` kept
+ * and leaf→PTY binding were torn down while the persisted layout `root` kept
  * the leaf, so revisiting the tab materialized a permanently blank pane with
  * no terminal behind it.
  *
  * Field state (workspace remote-issue-2, 2026-07-09): root held 3 leaves,
- * ptyIdsByLeafId held 2, no daemon session for the third â€” the close/exit ran
+ * ptyIdsByLeafId held 2, no daemon session for the third — the close/exit ran
  * near a hidden/park boundary. Each test here closes (or exits) a split pane
  * at a different phase of the hidden-view parking lifecycle and asserts the
  * invariant that broke in the field:
  *
  *   leaves(persisted root) === keys(persisted ptyIdsByLeafId) === live panes
  *
- * A failing scenario IS the finding â€” it pins which boundary loses the layout
+ * A failing scenario IS the finding — it pins which boundary loses the layout
  * collapse.
  */
 
 // Why 2000ms: the override shrinks BOTH cold-park delay and hot-retain, and
 // the hidden-but-mounted scenario needs the shell exit to land well inside the
-// hot-retain window â€” 500ms let slow shell teardown race past parking and turn
+// hot-retain window — 500ms let slow shell teardown race past parking and turn
 // that scenario into the exits-while-parked one.
 const PARKING_DELAY_MS = Number(process.env.FABRICA_E2E_TERMINAL_PARKING_DELAY_MS) || 2_000
 
@@ -123,7 +123,7 @@ async function expectLayoutConsistent(
   deadPtyId?: string
 ): Promise<void> {
   // Why: polling a shape (not a boolean) makes a timeout print the diverged
-  // state â€” which of root/bindings/live panes went stale is the finding.
+  // state — which of root/bindings/live panes went stale is the finding.
   await expect
     .poll(
       async () => {
@@ -227,7 +227,7 @@ type SplitTabSetup = {
   splitPtyId: string
 }
 
-// Why: every scenario starts from the field shape â€” a tab whose main pane got
+// Why: every scenario starts from the field shape — a tab whose main pane got
 // a split (the "setup pane" analog) that is fully bound and settled.
 async function setUpSplitTab(page: Page): Promise<SplitTabSetup> {
   await waitForSessionReady(page)
@@ -304,7 +304,7 @@ test.describe('terminal pane close vs hidden/park lifecycle keeps layout consist
     })
     await activateTerminalTab(fabricaPage, tabId)
     await waitForTabRemounted(fabricaPage, tabId)
-    // Close as soon as the manager exists â€” panes may still be attaching.
+    // Close as soon as the manager exists — panes may still be attaching.
     await fabricaPage.evaluate((tabId) => {
       const manager = window.__paneManagers?.get(tabId)
       const target = manager?.getPanes().at(-1)
@@ -351,7 +351,7 @@ test.describe('terminal pane close vs hidden/park lifecycle keeps layout consist
     await activateTerminalTab(fabricaPage, tabId)
     await waitForTabRemounted(fabricaPage, tabId)
     // Why: the parked exit is deliberately deferred (no PaneManager to promote
-    // siblings) â€” the reveal remount owns the per-leaf teardown. This asserts
+    // siblings) — the reveal remount owns the per-leaf teardown. This asserts
     // that ownership actually resolves instead of leaving a ghost pane.
     await expectLayoutConsistent(fabricaPage, tabId, 1, 'shell-exit-while-parked', splitPtyId)
   })

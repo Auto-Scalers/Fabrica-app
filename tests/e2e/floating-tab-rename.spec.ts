@@ -1,5 +1,5 @@
-﻿import path from 'node:path'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import path from 'node:path'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForSessionReady } from './helpers/store'
 import { createRestartSession } from './helpers/fabrica-restart'
@@ -147,7 +147,7 @@ test('Electron serializes native Unicode rename aliases', async ({ fabricaPage }
   const suffix = Date.now().toString(36)
   const firstPath = path.join(directory, `floating-unicode-first-${suffix}.md`)
   const secondPath = path.join(directory, `floating-unicode-second-${suffix}.md`)
-  const sharpSDestination = path.join(directory, `floating-destination-${suffix}-straÃŸe.md`)
+  const sharpSDestination = path.join(directory, `floating-destination-${suffix}-straße.md`)
   const expandedDestination = path.join(directory, `floating-destination-${suffix}-STRASSE.MD`)
 
   const result = await fabricaPage.evaluate(

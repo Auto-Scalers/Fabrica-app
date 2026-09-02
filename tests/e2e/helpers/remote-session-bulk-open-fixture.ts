@@ -1,4 +1,4 @@
-﻿import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 
@@ -16,7 +16,7 @@ function fixtureCommand(fixturePath: string, marker: string): string {
 /**
  * Continuous remote-agent-like flood fixture for freeze repros.
  * Many remote sessions stream while the client bulk-opens them.
- * One-shot FLOOD is not enough — agents keep writing.
+ * One-shot FLOOD is not enough � agents keep writing.
  */
 export function createRemoteSessionBulkOpenFixture(): {
   command: (marker: string) => string

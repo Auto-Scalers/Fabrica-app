@@ -1,4 +1,4 @@
-﻿import type { JSHandle, Page } from '@autoscalers/playwright-test'
+import type { JSHandle, Page } from '@playwright/test'
 
 export type PairedRetentionSample = {
   bufferCells: number

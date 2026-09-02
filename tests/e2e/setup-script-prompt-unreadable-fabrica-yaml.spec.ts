@@ -1,7 +1,7 @@
-﻿import { execFileSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
-import type { ElectronApplication, Page } from '@autoscalers/playwright-test'
+import type { ElectronApplication, Page } from '@playwright/test'
 import { test, expect } from './helpers/fabrica-app'
 import { waitForActiveWorktree, waitForSessionReady } from './helpers/store'
 import { worktreeRow, worktreeRowSurface } from './worktree-row-locators'
@@ -62,7 +62,7 @@ async function installUnreadableFABRICAYamlFault(electronApp: ElectronApplicatio
   })
 }
 
-/** FABRICA.yaml becomes readable again â€” every later check runs the production handler. */
+/** FABRICA.yaml becomes readable again — every later check runs the production handler. */
 async function healFABRICAYamlRead(electronApp: ElectronApplication): Promise<void> {
   await electronApp.evaluate(() => {
     ;(
