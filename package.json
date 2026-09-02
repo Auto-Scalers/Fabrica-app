@@ -1,6 +1,6 @@
 {
   "name": "fabrica",
-  "version": "1.4.178-rc.2",
+  "version": "0.0.5",
   "description": "Next-gen IDE for parallel agentic development",
   "homepage": "https://github.com/Auto-Scalers/Fabrica-app",
   "author": "Auto-Scalers",
@@ -153,7 +153,6 @@
     "zod": "~4.4.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.59.1",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@electron-toolkit/tsconfig": "^2.0.0",
